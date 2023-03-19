@@ -32,3 +32,6 @@ class Rule(PolymorphicModel):
 
 class KeywordRule(Rule):
     keyword = models.CharField(max_length=200)
+
+    def __str__(self):
+        return "Keyword: {}".format(self.keyword)

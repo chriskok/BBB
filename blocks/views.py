@@ -18,10 +18,6 @@ from .forms import *
 import warnings
 warnings.filterwarnings("ignore")
 
-# ================================== #
-#               ICSA V4              #
-# ================================== #
-
 # @login_required
 def building_blocks_view(request, q_id, filter=None):
     q_list = Question.objects.all()
