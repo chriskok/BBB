@@ -66,7 +66,7 @@ def similar_keyword(df, keyword, sim_score_threshold=0.7, n_return_threshold=Non
 
     matching_words = []
     for idx, data_row in enumerate(data):
-        words = keyword + " " + str(data_row)
+        words = keyword.lower() + " " + str(data_row).lower()
 
         tokens = nlp(words)
         

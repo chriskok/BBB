@@ -53,8 +53,9 @@
             <div class="card mb-2 {% if forloop.counter > 15 %}hidden_card{% endif %}">
                 <div class="card-body">
                     <p class="card-text answer-card">{{answer.answer_text}}</p>
-                    <p class="card-text grade-card"><small class="text-muted">Grade: {{answer.points}}{% if answer.word %}, Word: {{answer.word}}{% endif %}
+                    <p class="card-text grade-card"><small class="text-muted">Grade: {{answer.assigned_grade}}{% if answer.word %}, Word: {{answer.word}}{% endif %}
                         {% if answer.score %}, Similarity Score: {{answer.score}}{% endif %} </small></p>
+                    <p class="card-text rules-card"><small class="text-muted">Rules that apply: {{answer.rule_set.all}}</small></p>
                 </div>
             </div>
             {% if forloop.counter|divisibleby:3  %} 
