@@ -1,0 +1,146 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+{% load crispy_forms_tags %}
+{% load static %}
+
+<div class="row">
+    <div class="col-6 d-flex align-items-center">
+        <div class="dropdown">
+            <button class="btn btn-success dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Question Select
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                {% for q in question_list %}
+                <a class="dropdown-item" href="{% url 'building_blocks' q.pk %}">Question {{ q.question_exam_id }}</a>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+<br>
+
+<h2>Building Blocks</h2>
+
+<p class="text-secondary">TODO: Add description
+</p>
+
+<div class="row">
+    <div class="col-9">
+        {% if question_obj.question_image_url %}
+        <h4>Question {{ question_obj.question_exam_id }}: {{ question_obj.question_text }}
+            <a data-toggle="collapse" href="#showImg" role="button" aria-expanded="false" aria-controls="showImg">[show image]</a></h4>
+        <div class="collapse" id="showImg"> <img src="{% static question_obj.question_image_url %} "  class="rounded mx-auto d-block"></img> </div>
+        {% else %}
+        <h4>Question {{ question_obj.question_exam_id }}: {{ question_obj.question_text }}</h4>
+        {% endif %}
+
+        <p>Total answers: {{ answer_count }}</p>
+        {% if filter_strings %}
+        <p>Filters:</p>
+        <ul>
+            {% for filter_string in filter_strings %}
+            <li>{{filter_string}}</li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+
+        <br>
+
+        <div class="card-deck" id="answer_card_deck">
+        {% for answer in answers %}
+            <div class="card mb-2 {% if forloop.counter > 15 %}hidden_card{% endif %}">
+                <div class="card-body">
+                    <p class="card-text answer-card">{{answer.answer_text}}</p>
+                    <p class="card-text grade-card"><small class="text-muted">Grade: {{answer.points}}{% if answer.word %}, Word: {{answer.word}}{% endif %}
+                        {% if answer.score %}, Similarity Score: {{answer.score}}{% endif %} </small></p>
+                </div>
+            </div>
+            {% if forloop.counter|divisibleby:3  %} 
+            <div class="w-100 d-none d-block"></div> 
+            {% endif %}
+        {% endfor%}
+        </div>
+        <div class="d-flex justify-content-center">
+            <button onclick="handleHiddenCards()" type="button" class="btn btn-primary">Show/Hide</button>
+        </div>
+    </div>
+    <div class="col-3">
+        <form action="{% url 'building_blocks' question_exam_id %}" method="post">
+            {% csrf_token %}
+            
+            <div class="d-flex align-items-center">
+                {{ form.keyword|as_crispy_field }}
+            </div>
+            <div class="d-flex align-items-center">
+                {{ form.similarity|as_crispy_field }}
+                <output class="mx-3" name="similarity_choice" id="similarity_choice" for="similarityInput">{{ form.similarity.value|default_if_none:1.0 }}</output>
+            </div>
+            <div class="col-1 d-flex align-items-center">
+                <button type="submit" class="btn btn-primary">Filter</button>
+            </div>
+       </form>
+    </div>
+</div>
+
+<style>
+    .highlight {
+        background-color: yellow;
+    }
+</style>
+
+<script>
+    var hidden = true;
+
+    $(document).ready(function () {
+        const collection = document.querySelectorAll('.hidden_card');
+        for (const el of collection) {
+            el.classList.add('d-none');
+        }
+
+        var words_array = {{ keywords | safe }};
+        console.log(words_array);
+    
+        $('.answer-card').html(function(i, html){
+            for (let i = 0; i < words_array.length; i++) {
+                var regEx = new RegExp("(" + words_array[i] + ")(?!([^<]+)?>)", "gi");
+                html = html.replace(regEx, '<span class="text-primary">$1</span>');
+            }
+            // return html.replace("attribute", '<span class="text-primary">attribute</span>'); 
+            return html; 
+        });
+    })
+
+    $(".hBack").on("click", function(e){
+        e.preventDefault();
+        window.history.back();
+    });
+
+    function handleHiddenCards(){
+        const collection = document.querySelectorAll('.hidden_card');
+        if (hidden){ 
+            for (const el of collection) { el.classList.remove('d-none'); }
+            hidden = false;
+        } else {
+            for (const el of collection) { el.classList.add('d-none'); }
+            hidden = true;
+        }
+    }
+
+    function highlight() {
+        var text = document.getElementById("id_keyword").value;
+        const answers = document.querySelectorAll('.answer-card');
+
+        answers.forEach((answer) => {
+            answer.innerHTML = answer.innerHTML.replaceAll(/\<span class\=\"highlight\"\>(.*?)\<\/span\>/gi, "$1")
+            var regEx = new RegExp("(" + text + ")(?!([^<]+)?>)", "gi");
+            answer.innerHTML = answer.innerHTML.replace(regEx, '<span class="highlight">$1</span>');
+            //var innerHTML = answer.innerHTML.replaceAll(/\<span class\=\"highlight\"\>(.*?)\<\/span\>/gi, "$1").replaceAll(text, '<span class="highlight">' + text + "</span>");
+            //answer.innerHTML = innerHTML;
+        });
+    }
+
+</script>
+
+{% endblock %}

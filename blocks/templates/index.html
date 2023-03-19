@@ -1,9 +1,11 @@
-<!DOCTYPE html>
-<html>
-<body>
+{% extends 'base.html' %}
 
-<h1>Hello World!</h1>
-<p>Welcome to my first Django project!</p>
+{% block content %}
 
-</body>
-</html>
+{% load crispy_forms_tags %}
+{% load static %}
+
+<h2>HELLO WORLD!</h2>
+
+
+{% endblock %}
