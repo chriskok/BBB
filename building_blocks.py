@@ -86,7 +86,7 @@ def similar_keyword(df, keyword, sim_score_threshold=0.7, n_return_threshold=Non
 
         # print("Best word: {}, best score: {}".format(best_word, best_score))
         matching_words.append({'index': idx, 'word': best_word, 'score': best_score, 'student_id': df.iloc[idx]['student_id'], 
-            "answer_text": df.iloc[idx]["answer_text"], 'points': df.iloc[idx]['points']})
+            "answer_text": df.iloc[idx]["answer_text"], 'assigned_grade': df.iloc[idx]['assigned_grade']})
     
     matching_words = sorted(matching_words, key=lambda x: x['score'], reverse=True)
 
@@ -262,17 +262,17 @@ def cluster_answers(df, num_clusters=6):
 
 def merge_results(left, right, how='inner'):
     # how: One of 'left', 'right', 'outer', 'inner', 'cross'. Defaults to inner.
-    merged = pd.merge(left, right, on=["student_id", "answer_text", 'points'], how=how)
-    return merged[['student_id', "answer_text", "points"]]
+    merged = pd.merge(left, right, on=["student_id", "answer_text", 'assigned_grade'], how=how)
+    return merged[['student_id', "answer_text", "assigned_grade"]]
 
 def invert_results(ori_df, filtered_df):
     inverse_df = pd.merge(ori_df, filtered_df, indicator=True, how='outer').query('_merge=="left_only"').drop('_merge', axis=1)
-    return inverse_df[['student_id', "answer_text", "points"]]
+    return inverse_df[['student_id', "answer_text", "assigned_grade"]]
 
 def main():
     df = load_data()
-    df = df.rename(columns={"Filename": 'student_id', "Q11":"answer_text", "11 (2.0 pts)":"points"})
-    df = df[['student_id', "answer_text", "points"]]
+    df = df.rename(columns={"Filename": 'student_id', "Q11":"answer_text", "11 (2.0 pts)":"assigned_grade"})
+    df = df[['student_id', "answer_text", "assigned_grade"]]
 
     df = cluster_answers(df)
     write_results(df, 'unfiltered', write_mode='w')
