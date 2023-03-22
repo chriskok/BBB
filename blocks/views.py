@@ -126,5 +126,17 @@ def building_blocks_view(request, q_id, filter=None):
 
     return render(request, "building_blocks.html", context)
 
+def system_reset_view(request, question_id=None, include_rules=True):
+
+    if(include_rules): 
+        Rule.objects.all().delete()
+
+    # get specific answers for the current question
+    if (question_id): chosen_answers = Answer.objects.filter(question_id=question_id).all()
+    else: chosen_answers = Answer.objects.all()
+    chosen_answers.update(rule_strings="[]") 
+
+    return JsonResponse({'message': "System Reset!"}) 
+
 def index(request):
   return render(request, "index.html", context={})

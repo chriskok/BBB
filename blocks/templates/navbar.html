@@ -1,20 +1,42 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-    <a class="navbar-brand" href="/">Block-by-Block</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-      <div class="navbar-nav">
-        {% comment %} <a class="nav-item nav-link active" href="/clustering/question_list">Questions</a>
-        <a class="nav-item nav-link active" href="/clustering/answer_list">Answers</a> {% endcomment %}
-        <a class="nav-item nav-link active" href="{% url 'building_blocks' 1 %}">Building Blocks</a>
-      
-      <ul class="navbar-nav ml-auto">
-        {% comment %} <a class="nav-item nav-link active" role="button" data-toggle="modal" data-target="#ResetModal">System Reset</a> {% endcomment %}
-        <a class="nav-item nav-link active" href="/admin">Admin Panel</a>
-        {% comment %} <a class="nav-item nav-link active" href="{% url 'logout' %}">Log Out</a> {% endcomment %}
-      </ul>
-    </div>
-  </nav>
+  <a class="navbar-brand" href="/">Block-by-Block</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+    <div class="navbar-nav">
+      {% comment %} <a class="nav-item nav-link active" href="/clustering/question_list">Questions</a>
+      <a class="nav-item nav-link active" href="/clustering/answer_list">Answers</a> {% endcomment %}
+      <a class="nav-item nav-link active" href="{% url 'building_blocks' 1 %}">Building Blocks</a>
+    
+    <ul class="navbar-nav ml-auto">
+      <a class="nav-item nav-link active" role="button" data-toggle="modal" data-target="#ResetModal">System Reset</a>
+      <a class="nav-item nav-link active" href="/admin">Admin Panel</a>
+      {% comment %} <a class="nav-item nav-link active" href="{% url 'logout' %}">Log Out</a> {% endcomment %}
+    </ul>
+  </div>
+</nav>
 
-  </script>
+  <!-- System Reset Modal -->
+<div class="modal fade" id="ResetModal" tabindex="-1" role="dialog" aria-labelledby="ResetModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+      <div class="modal-content" id="navbar_modal_content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="ResetModalLabel">System Reset</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <p id="start_clustering_prompt">
+              Are you sure you want to remove all rules?
+            </p>
+          </div>
+          <div class="modal-footer" >
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              <a type="button" class="btn btn-primary" href="#" hx-get="{% url 'system_reset' %}" 
+                hx-swap="none" hx-trigger="click" onClick="setTimeout(function(){window.location.reload()}, 150);">Continue</a>
+          </div>
+      </div>
+  </div>
+</div>
