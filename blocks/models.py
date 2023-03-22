@@ -14,7 +14,17 @@ class Question(models.Model):
 
     def __str__(self):
         return "{}. {}".format(str(self.id), self.question_text)
+    
+class Rule(PolymorphicModel):
+    question = models.ForeignKey(Question, on_delete=models.CASCADE, default=None, null=True, blank=True)
 
+class KeywordRule(Rule):
+    keyword = models.CharField(max_length=200)
+    similarity_threshold = models.FloatField(default=1.0, null=True, blank=True)
+
+    def __str__(self):
+        return "Keyword: {}".format(self.keyword)
+    
 class Answer(models.Model):
     answer_text = models.TextField()
     student_id = models.IntegerField()
@@ -22,16 +32,17 @@ class Answer(models.Model):
 
     # https://docs.djangoproject.com/en/4.0/ref/models/fields/#foreignkey
     question = models.ForeignKey(Question, on_delete=models.CASCADE, default=None, null=True, blank=True)
+    applied_rules = models.ManyToManyField(Rule, default=None)
+
+    rule_strings = models.CharField(max_length=1000, default="[]")  
+
+    # https://stackoverflow.com/questions/22340258/list-field-in-model
+    def set_rule_strings(self, x):
+        self.rule_strings = json.dumps(x)
+
+    def get_rule_strings(self):
+        return json.loads(self.rule_strings)
 
     def __str__(self):
         return "Q #{}: {}".format(self.question.id, self.answer_text)
 
-class Rule(PolymorphicModel):
-    question = models.ForeignKey(Question, on_delete=models.SET_NULL, default=None, null=True, blank=True)
-    applied_answers = models.ManyToManyField(Answer)
-
-class KeywordRule(Rule):
-    keyword = models.CharField(max_length=200)
-
-    def __str__(self):
-        return "Keyword: {}".format(self.keyword)

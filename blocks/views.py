@@ -90,13 +90,17 @@ def building_blocks_view(request, q_id, filter=None):
             # filters answers that have keyword 
             df = pd.DataFrame(list(chosen_answers.values()))
             df = bb.similar_keyword(df, keyword, sim_score_threshold=similarity)
+            new_rule,_ = KeywordRule.objects.get_or_create(question=current_question_obj, keyword=keyword, similarity_threshold=similarity) # handle keyword rule creation
             student_id_list = df["student_id"].values.tolist()
             filtered_answers = Answer.objects.filter(question=current_question_obj, student_id__in=student_id_list)
 
-            # handle keyword rule creation
-            new_rule,_ = KeywordRule.objects.get_or_create(question=current_question_obj, keyword=keyword)
-            new_rule.applied_answers.add(*filtered_answers)
-            new_rule.save()
+            for answer in filtered_answers:
+                answer.applied_rules.add(new_rule)
+
+                # TODO: change model for Answer to have rules applied (as ManyToMany) instead of in Rule
+                # TODO: for each filtered answer, in json object for rule strings, add rule string for the applied rules to each answer. 
+                # e.g. Keyword "talking" similarility 0.5 -> word 'talk'
+                # TODO: ^ can be extracted from the DF above, for each answer. 
 
             return HttpResponseRedirect(reverse('building_blocks', args=(q_id,)))
             # return HttpResponseRedirect(reverse('building_blocks', args=(q_id, "sk_{}_{}".format(keyword, similarity),)))

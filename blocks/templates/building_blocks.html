@@ -60,10 +60,10 @@
                                 {% if answer.score %}, Similarity Score: {{answer.score}}{% endif %} </small><br>
                         </div>
                         <div class="col-sm-9">
-                            {% if answer.rule_set.all %}
+                            {% if answer.applied_rules.all %}
                             <small class="text-muted">Rules:
                                 <ul>
-                                    {% for rule in answer.rule_set.all %}<li>{{rule}}</li>{% endfor %}
+                                    {% for rule in answer.applied_rules.all %}<li>{{rule}}</li>{% endfor %}
                                 </ul>
                             </small>
                             {% endif %}
