@@ -90,17 +90,21 @@ def building_blocks_view(request, q_id, filter=None):
             # filters answers that have keyword 
             df = pd.DataFrame(list(chosen_answers.values()))
             df = bb.similar_keyword(df, keyword, sim_score_threshold=similarity)
-            new_rule,_ = KeywordRule.objects.get_or_create(question=current_question_obj, keyword=keyword, similarity_threshold=similarity) # handle keyword rule creation
+            relevant_keywords = df.word.unique().tolist()
+
+            # handle keyword rule creation
+            new_rule,_ = KeywordRule.objects.get_or_create(question=current_question_obj, keyword=keyword, similarity_threshold=similarity, relevant_keywords=relevant_keywords) 
             student_id_list = df["student_id"].values.tolist()
             filtered_answers = Answer.objects.filter(question=current_question_obj, student_id__in=student_id_list)
 
+            # go through each filtered answer and assign the rule and rule strings
             for answer in filtered_answers:
                 answer.applied_rules.add(new_rule)
-
-                # TODO: change model for Answer to have rules applied (as ManyToMany) instead of in Rule
-                # TODO: for each filtered answer, in json object for rule strings, add rule string for the applied rules to each answer. 
-                # e.g. Keyword "talking" similarility 0.5 -> word 'talk'
-                # TODO: ^ can be extracted from the DF above, for each answer. 
+                curr_row = df[df['student_id'] == answer.student_id].iloc[0]
+                curr_rule_strings = answer.get_rule_strings()
+                curr_rule_strings.append((new_rule.id, f"Keyword: {keyword} -> Matched: {curr_row['word']}, Similarity: {curr_row['score']}"))
+                answer.set_rule_strings(curr_rule_strings)
+                answer.save()
 
             return HttpResponseRedirect(reverse('building_blocks', args=(q_id,)))
             # return HttpResponseRedirect(reverse('building_blocks', args=(q_id, "sk_{}_{}".format(keyword, similarity),)))

@@ -21,6 +21,14 @@ class Rule(PolymorphicModel):
 class KeywordRule(Rule):
     keyword = models.CharField(max_length=200)
     similarity_threshold = models.FloatField(default=1.0, null=True, blank=True)
+    relevant_keywords = models.CharField(max_length=1000, default="[]")  
+
+    # https://stackoverflow.com/questions/22340258/list-field-in-model
+    def set_relevant_keywords(self, x):
+        self.relevant_keywords = json.dumps(x)
+
+    def get_relevant_keywords(self):
+        return json.loads(self.relevant_keywords)
 
     def __str__(self):
         return "Keyword: {}".format(self.keyword)
