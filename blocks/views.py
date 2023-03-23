@@ -110,7 +110,8 @@ def building_blocks_view(request, q_id, filter=None):
 def system_reset_view(request, question_id=None, include_rules=True):
 
     if(include_rules): 
-        Rule.objects.all().delete()
+        KeywordRule.objects.all().delete()
+        SentenceSimilarityRule.objects.all().delete()
 
     # get specific answers for the current question
     if (question_id): chosen_answers = Answer.objects.filter(question_id=question_id).all()
