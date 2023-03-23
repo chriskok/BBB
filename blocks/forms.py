@@ -17,7 +17,7 @@ class BuildingBlocksForm(forms.Form):
     keyword_similarity = forms.FloatField(widget=forms.NumberInput(attrs=similarity_input_attrs), label='Similarity to Keyword', min_value=0.3, max_value=1.0)
 
     # sentence similarity form
-    sentence = forms.CharField(required=False, widget=forms.TextInput(attrs={'class':'form-control','placeholder':'sentence'}))
+    sentence = forms.CharField(required=False, widget=forms.Textarea(attrs={'rows': 3}))
     sentence_similarity_input_attrs = {'type':'range', 'id':"sentenceSimilarityInput", 'name':"sentenceSimilarityInput", 'step': '0.1', 'min': '0.3', 'max': '1.0',
                                'value': '0.8', 'oninput':"sentence_similarity_choice.value=sentenceSimilarityInput.value"}
     sentence_similarity = forms.FloatField(widget=forms.NumberInput(attrs=sentence_similarity_input_attrs), label='Similarity to Sentence', min_value=0.3, max_value=1.0)
