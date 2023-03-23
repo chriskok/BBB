@@ -18,8 +18,14 @@ from .forms import *
 import warnings
 warnings.filterwarnings("ignore")
 
+def add_rule_string(answer, new_rule, rule_string):
+    answer.applied_rules.add(new_rule)
+    curr_rule_strings = answer.get_rule_strings()
+    curr_rule_strings.append((new_rule.id, rule_string))
+    answer.set_rule_strings(curr_rule_strings)
+    answer.save()
+
 def handle_rule_input(form, chosen_answers, current_question_obj):
-    print(form.cleaned_data)
 
     if (form.cleaned_data['rule_type_selection'] == 'keyword_rule'):
         keyword = form.cleaned_data['keyword']
@@ -37,12 +43,8 @@ def handle_rule_input(form, chosen_answers, current_question_obj):
 
         # go through each filtered answer and assign the rule and rule strings
         for answer in filtered_answers:
-            answer.applied_rules.add(new_rule)
             curr_row = df[df['student_id'] == answer.student_id].iloc[0]
-            curr_rule_strings = answer.get_rule_strings()
-            curr_rule_strings.append((new_rule.id, f"Keyword: {keyword} -> Matched: {curr_row['word']}, Similarity: {curr_row['score']}"))
-            answer.set_rule_strings(curr_rule_strings)
-            answer.save()
+            add_rule_string(answer, new_rule, f"Keyword: {keyword} -> Matched: {curr_row['word']}, Similarity: {curr_row['score']}")
     elif (form.cleaned_data['rule_type_selection'] == 'sentence_rule'):
         sentence = form.cleaned_data['sentence']
         similarity = form.cleaned_data['sentence_similarity']
@@ -59,12 +61,8 @@ def handle_rule_input(form, chosen_answers, current_question_obj):
 
         # go through each filtered answer and assign the rule and rule strings
         for answer in filtered_answers:
-            answer.applied_rules.add(new_rule)
             curr_row = df[df['student_id'] == answer.student_id].iloc[0]
-            curr_rule_strings = answer.get_rule_strings()
-            curr_rule_strings.append((new_rule.id, f"Sentence: {sentence} -> Similarity: {curr_row['score']}"))
-            answer.set_rule_strings(curr_rule_strings)
-            answer.save()
+            add_rule_string(answer, new_rule, f"Sentence: {sentence} -> Similarity: {curr_row['score']}")
     else: 
         print(form.cleaned_data)
 
