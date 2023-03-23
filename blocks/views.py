@@ -19,6 +19,7 @@ import warnings
 warnings.filterwarnings("ignore")
 
 def handle_rule_input(form, chosen_answers, current_question_obj):
+    print(form.cleaned_data)
 
     if (form.cleaned_data['rule_type_selection'] == 'keyword_rule'):
         keyword = form.cleaned_data['keyword']
@@ -42,6 +43,28 @@ def handle_rule_input(form, chosen_answers, current_question_obj):
             curr_rule_strings.append((new_rule.id, f"Keyword: {keyword} -> Matched: {curr_row['word']}, Similarity: {curr_row['score']}"))
             answer.set_rule_strings(curr_rule_strings)
             answer.save()
+    elif (form.cleaned_data['rule_type_selection'] == 'sentence_rule'):
+        sentence = form.cleaned_data['sentence']
+        similarity = form.cleaned_data['sentence_similarity']
+        method = form.cleaned_data['sentence_similarity_method']
+
+        # filters answers that have keyword 
+        df = pd.DataFrame(list(chosen_answers.values()))
+        df = bb.similar_sentence(df, sentence, sim_score_threshold=similarity, method=method)
+
+        # # handle keyword rule creation
+        # new_rule,_ = KeywordRule.objects.get_or_create(question=current_question_obj, keyword=keyword, similarity_threshold=similarity, relevant_keywords=relevant_keywords) 
+        # student_id_list = df["student_id"].values.tolist()
+        # filtered_answers = Answer.objects.filter(question=current_question_obj, student_id__in=student_id_list)
+
+        # # go through each filtered answer and assign the rule and rule strings
+        # for answer in filtered_answers:
+        #     answer.applied_rules.add(new_rule)
+        #     curr_row = df[df['student_id'] == answer.student_id].iloc[0]
+        #     curr_rule_strings = answer.get_rule_strings()
+        #     curr_rule_strings.append((new_rule.id, f"Keyword: {keyword} -> Matched: {curr_row['word']}, Similarity: {curr_row['score']}"))
+        #     answer.set_rule_strings(curr_rule_strings)
+        #     answer.save()
     else: 
         print(form.cleaned_data)
 
