@@ -36,10 +36,17 @@ class KeywordRule(Rule):
 class SentenceSimilarityRule(Rule):
     sentence = models.CharField(max_length=2048)
     similarity_threshold = models.FloatField(default=0.8, null=True, blank=True)
-    method = models.CharField(max_length=200, default="SBert", null=True, blank=True)
+    method = models.CharField(max_length=200, default="sbert", null=True, blank=True)
 
     def __str__(self):
         return "Sentence: {}".format(self.sentence)
+
+class AnswerLengthRule(Rule):
+    length_type = models.CharField(max_length=200, default="word", null=True, blank=True)
+    length = models.IntegerField(null=True, blank=True)
+
+    def __str__(self):
+        return "Answer Length: {} {}s".format(self.length, self.length_type)
     
 class Answer(models.Model):
     answer_text = models.TextField()

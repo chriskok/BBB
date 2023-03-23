@@ -269,6 +269,23 @@ def filter_by_question(df, is_question=True):
 # Building Block 9 - Causation detection
 # TODO: add logic
 
+# Building Block 10 - Answer Length
+def answer_length(df, length, length_type="word"):
+    return_df = df.copy()
+
+    if (length_type == "word"): return_df['length'] = return_df['answer_text'].str.split().str.len()
+    else: return_df['length'] = return_df['answer_text'].str.len()
+
+    if(not return_df.empty): return_df = return_df[return_df['length'] <= length] 
+
+    return return_df
+
+# Building Block 11 - Similarity to Question
+# TODO: add logic
+
+# Building Block 12 - Number of different keypoints (too scattered?)
+# TODO: add logic
+
 # ================================== #
 #              EXECUTION             #
 # ================================== #

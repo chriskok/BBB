@@ -63,6 +63,23 @@ def handle_rule_input(form, chosen_answers, current_question_obj):
         for answer in filtered_answers:
             curr_row = df[df['student_id'] == answer.student_id].iloc[0]
             add_rule_string(answer, new_rule, f"Sentence: {sentence} -> Similarity: {curr_row['score']}")
+    elif (form.cleaned_data['rule_type_selection'] == 'length_rule'):
+        length_type = form.cleaned_data['length_type']
+        length = form.cleaned_data['answer_length']
+
+        # filters answers that have keyword 
+        df = pd.DataFrame(list(chosen_answers.values()))
+        df = bb.answer_length(df, length, length_type=length_type)
+
+        # handle sentence sim rule creation
+        new_rule,_ = AnswerLengthRule.objects.get_or_create(question=current_question_obj, length=length, length_type=length_type) 
+        student_id_list = df["student_id"].values.tolist()
+        filtered_answers = Answer.objects.filter(question=current_question_obj, student_id__in=student_id_list)
+
+        # go through each filtered answer and assign the rule and rule strings
+        for answer in filtered_answers:
+            curr_row = df[df['student_id'] == answer.student_id].iloc[0]
+            add_rule_string(answer, new_rule, f"Length: {length} {length_type}s -> Answer Length: {curr_row['length']}")
     else: 
         print(form.cleaned_data)
 
@@ -110,6 +127,7 @@ def system_reset_view(request, question_id=None, include_rules=True):
     if(include_rules): 
         KeywordRule.objects.all().delete()
         SentenceSimilarityRule.objects.all().delete()
+        AnswerLengthRule.objects.all().delete()
 
     # get specific answers for the current question
     if (question_id): chosen_answers = Answer.objects.filter(question_id=question_id).all()
