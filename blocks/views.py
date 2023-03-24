@@ -118,6 +118,7 @@ def building_blocks_view(request, q_id, filter=None):
         "answer_count": answer_count,
         "form": form,
         "keywords": keywords,
+        "rules": Rule.objects.filter(question=current_question_obj),
     }
 
     return render(request, "building_blocks.html", context)

@@ -75,6 +75,7 @@
         </div>
     </div>
     <div class="col-3">
+        <h4>Create Rule</h4>
         <form action="{% url 'building_blocks' question_exam_id %}" method="post">
             {% csrf_token %}
 
@@ -121,7 +122,28 @@
             <div class="d-flex align-items-center">
                 <button type="submit" class="btn btn-primary">Submit</button>
             </div>
-       </form>
+        </form>
+
+        <br><br>
+        <h4>Created Rules</h4>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Rule</th>
+                    <th scope="col">Answers</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for rule in rules %}
+                <tr>
+                    <th scope="row">{{forloop.counter}}</th>
+                    <td>{{rule}}</td>
+                    <td>{{rule.answer_set.all.count}}</td>
+                </tr>
+                {% endfor%}
+            </tbody>
+        </table>
     </div>
 </div>
 
