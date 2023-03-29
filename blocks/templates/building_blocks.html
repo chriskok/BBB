@@ -6,10 +6,12 @@
 {% load static %}
 {% load block_extras %}
 
+<link rel="stylesheet" href="{% static 'css/blocks.css' %}">
+
 <div class="row">
     <div class="col-6 d-flex align-items-center">
         <div class="dropdown">
-            <button class="btn btn-success dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 Question Select
             </button>
             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
@@ -55,11 +57,11 @@
                         </div>
                     </div>
                 </div>
-                <div class="card-footer text-muted">
+                <div class="card-footer">
                     {% if answer.rule_strings != "[]" %}
                         {% for rule in answer.get_rule_strings %}
                         <button type="button" style="background-color:{{ color_to_rule|get_item:rule.0 }}; color:DarkSlateGray" 
-                            class="btn btn-primary btn-sm btn-block border-white">{{rule.1}}</button>
+                            class="btn btn-primary btn-sm btn-block unpadded-button border-white text-truncate">{{rule.1}}</button>
                         {% endfor %}
                     {% endif %}
                 </div>
