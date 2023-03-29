@@ -14,6 +14,7 @@ import building_blocks as bb
 
 from .models import *
 from .forms import *
+from .colors import colors
 
 import warnings
 warnings.filterwarnings("ignore")
@@ -109,6 +110,8 @@ def building_blocks_view(request, q_id, filter=None):
         form = BuildingBlocksForm()
     
     keywords = list(KeywordRule.objects.filter(question=current_question_obj).values_list('keyword', flat=True))
+    rules = Rule.objects.filter(question=current_question_obj)
+    color_to_rule = { k.id:v for (k,v) in zip(rules, colors[:len(rules)])} 
 
     context = {
         "question_obj": current_question_obj,
@@ -118,7 +121,8 @@ def building_blocks_view(request, q_id, filter=None):
         "answer_count": answer_count,
         "form": form,
         "keywords": keywords,
-        "rules": Rule.objects.filter(question=current_question_obj),
+        "rules": rules,
+        "color_to_rule": color_to_rule,
     }
 
     return render(request, "building_blocks.html", context)

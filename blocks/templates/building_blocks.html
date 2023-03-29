@@ -4,6 +4,7 @@
 
 {% load crispy_forms_tags %}
 {% load static %}
+{% load block_extras %}
 
 <div class="row">
     <div class="col-6 d-flex align-items-center">
@@ -23,8 +24,7 @@
 
 <h2>Building Blocks</h2>
 
-<p class="text-secondary">TODO: Add description
-</p>
+{% comment %} <p class="text-secondary">TODO: Add description</p> {% endcomment %}
 
 <div class="row">
     <div class="col-9">
@@ -52,17 +52,16 @@
                                 {% if answer.score %}, Similarity Score: {{answer.score}}{% endif %} </small><br>
                         </div>
                         <div class="col-sm-9">
-                            {% if answer.rule_strings != "[]" %}
-                            <small class="text-muted">Rules:
-                                <ul>
-                                    {% for rule in answer.get_rule_strings %}
-                                        <li>{{rule.1}}</li>
-                                    {% endfor %}
-                                </ul>
-                            </small>
-                            {% endif %}
                         </div>
                     </div>
+                </div>
+                <div class="card-footer text-muted">
+                    {% if answer.rule_strings != "[]" %}
+                        {% for rule in answer.get_rule_strings %}
+                        <button type="button" style="background-color:{{ color_to_rule|get_item:rule.0 }}; color:gray" 
+                            class="btn btn-primary btn-sm btn-block border-white">{{rule.1}}</button>
+                        {% endfor %}
+                    {% endif %}
                 </div>
             </div>
             {% if forloop.counter|divisibleby:3  %} 
@@ -75,7 +74,7 @@
         </div>
     </div>
     <div class="col-3">
-        <h4>Create Rule</h4>
+        <h4>Create Block</h4>
         <form action="{% url 'building_blocks' question_exam_id %}" method="post">
             {% csrf_token %}
 
@@ -125,12 +124,12 @@
         </form>
 
         <br><br>
-        <h4>Created Rules</h4>
+        <h4>Created Blocks</h4>
         <table class="table">
             <thead>
                 <tr>
                     <th scope="col">#</th>
-                    <th scope="col">Rule</th>
+                    <th scope="col">Building Blocks</th>
                     <th scope="col">Answers</th>
                 </tr>
             </thead>
@@ -138,7 +137,7 @@
                 {% for rule in rules %}
                 <tr>
                     <th scope="row">{{forloop.counter}}</th>
-                    <td>{{rule}}</td>
+                    <td><span style="color:{{ color_to_rule|get_item:rule.id }}">{{rule}}</span>{% if rule.similarity_threshold %} - similarity: {{rule.similarity_threshold}}{% endif %}</td>
                     <td>{{rule.answer_set.all.count}}</td>
                 </tr>
                 {% endfor%}
