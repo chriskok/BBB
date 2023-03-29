@@ -58,7 +58,7 @@
                 <div class="card-footer text-muted">
                     {% if answer.rule_strings != "[]" %}
                         {% for rule in answer.get_rule_strings %}
-                        <button type="button" style="background-color:{{ color_to_rule|get_item:rule.0 }}; color:gray" 
+                        <button type="button" style="background-color:{{ color_to_rule|get_item:rule.0 }}; color:DarkSlateGray" 
                             class="btn btn-primary btn-sm btn-block border-white">{{rule.1}}</button>
                         {% endfor %}
                     {% endif %}
@@ -137,7 +137,7 @@
                 {% for rule in rules %}
                 <tr>
                     <th scope="row">{{forloop.counter}}</th>
-                    <td><span style="color:{{ color_to_rule|get_item:rule.id }}">{{rule}}</span>{% if rule.similarity_threshold %} - similarity: {{rule.similarity_threshold}}{% endif %}</td>
+                    <td><span style="background-color:{{ color_to_rule|get_item:rule.id }}">{{rule}}</span>{% if rule.similarity_threshold %} - similarity: {{rule.similarity_threshold}}{% endif %}</td>
                     <td>{{rule.answer_set.all.count}}</td>
                 </tr>
                 {% endfor%}
