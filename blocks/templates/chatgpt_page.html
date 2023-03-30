@@ -65,7 +65,11 @@
             </div>
         </div>
         <div class="card-footer">
-
+            {% with chatgpt_resp=answer.chatgptgradeandfeedback_set|filter_chatgpt_by_method:method %}
+            {% if chatgpt_resp %}
+            <p>{{ chatgpt_resp.response }} - {{ chatgpt_resp.prompt_type }} - {{ chatgpt_resp.trial_run_number }}</p>
+            {% endif %}
+            {% endwith %}
         </div>
     </div>
     {% if forloop.counter|divisibleby:4  %} 

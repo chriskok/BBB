@@ -150,6 +150,7 @@ def chatgpt_view(request, q_id, method="question_only"):
         "question_list": q_list,
         "answers": chosen_answers,
         "answer_count": answer_count,
+        "method": method,
     }
 
     return render(request, "chatgpt_page.html", context)
