@@ -7,9 +7,10 @@
     <div class="navbar-nav">
       {% comment %} <a class="nav-item nav-link active" href="/clustering/question_list">Questions</a>
       <a class="nav-item nav-link active" href="/clustering/answer_list">Answers</a> {% endcomment %}
-      <a class="nav-item nav-link active" href="{% url 'building_blocks' 1 %}">Building Blocks</a>
-      <a class="nav-item nav-link active" role="button" data-toggle="modal" data-target="#ResetModal">System Reset</a>
-      <a class="nav-item nav-link active" href="/admin">Admin Panel</a>
+      <a class="nav-item nav-link {% if request.resolver_match.url_name == 'building_blocks' %}active{% endif %}" href="{% url 'building_blocks' 1 %}">Building Blocks</a>
+      <a class="nav-item nav-link {% if request.resolver_match.url_name == 'chatgpt' %}active{% endif %}" href="{% url 'chatgpt' 1 %}">ChatGPT</a>
+      <a class="nav-item nav-link" role="button" data-toggle="modal" data-target="#ResetModal">System Reset</a>
+      <a class="nav-item nav-link" href="/admin">Admin Panel</a>
       {% comment %} <a class="nav-item nav-link active" href="{% url 'logout' %}">Log Out</a> {% endcomment %}
     </div>
   </div>

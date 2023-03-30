@@ -68,4 +68,11 @@ class Answer(models.Model):
 
     def __str__(self):
         return "Q #{}: {}".format(self.question.id, self.answer_text)
+    
+class ChatGPTGradeAndFeedback(models.Model):
+    answer = models.ForeignKey(Answer, on_delete=models.CASCADE, default=None, null=True, blank=True)
+    response = models.TextField()
+    prompt = models.TextField()
+    prompt_type = models.CharField(max_length=200)
+    trial_run_number = models.IntegerField()
 

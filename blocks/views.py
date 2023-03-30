@@ -15,6 +15,9 @@ import building_blocks as bb
 from .models import *
 from .forms import *
 from .colors import colors
+from .my_secrets import my_secrets
+
+openai_key = my_secrets.get('openai_key')
 
 import warnings
 warnings.filterwarnings("ignore")
@@ -126,6 +129,30 @@ def building_blocks_view(request, q_id, filter=None):
     }
 
     return render(request, "building_blocks.html", context)
+
+# methods: question_only, examples, rubrics, rubrics_and_examples
+def chatgpt_view(request, q_id, method="question_only"):
+    q_list = Question.objects.all()
+
+    # if the question queried does not exist, get the first Question available
+    if Question.objects.filter(pk=q_id).exists():
+        current_question_obj = Question.objects.get(pk=q_id)
+    else:
+        current_question_obj = Question.objects.first()
+        q_id = current_question_obj.id
+
+    chosen_answers = Answer.objects.filter(question_id=q_id)
+    answer_count = len(chosen_answers)
+
+    context = {
+        "question_obj": current_question_obj,
+        "question_exam_id": q_id,
+        "question_list": q_list,
+        "answers": chosen_answers,
+        "answer_count": answer_count,
+    }
+
+    return render(request, "chatgpt_page.html", context)
 
 def system_reset_view(request, question_id=None, include_rules=True):
 
