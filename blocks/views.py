@@ -15,9 +15,6 @@ import building_blocks as bb
 from .models import *
 from .forms import *
 from .colors import colors
-from .my_secrets import my_secrets
-
-openai_key = my_secrets.get('openai_key')
 
 import warnings
 warnings.filterwarnings("ignore")
