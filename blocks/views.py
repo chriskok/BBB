@@ -128,8 +128,11 @@ def building_blocks_view(request, q_id, filter=None):
     return render(request, "building_blocks.html", context)
 
 # methods: question_only, examples, rubrics, rubrics_and_examples
-def chatgpt_view(request, q_id, method="question_only"):
+def chatgpt_view(request, q_id, method='question_only'):
     q_list = Question.objects.all()
+
+    # method = request.GET.get('method', 'question_only')
+    model = request.GET.get('model', 'text-davinci-003')
 
     # if the question queried does not exist, get the first Question available
     if Question.objects.filter(pk=q_id).exists():
@@ -148,6 +151,7 @@ def chatgpt_view(request, q_id, method="question_only"):
         "answers": chosen_answers,
         "answer_count": answer_count,
         "method": method,
+        "model": model,
     }
 
     return render(request, "chatgpt_page.html", context)

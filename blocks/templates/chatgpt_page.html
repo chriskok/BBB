@@ -22,13 +22,22 @@
         </div>
         <div class="dropdown">
             <button class="btn btn-secondary dropdown-toggle ml-3" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Method Select
+                Method Select - {{method}}
             </button>
             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                <a class="dropdown-item" href="{% url 'chatgpt' question_exam_id 'question_only' %}">Question Only</a>
-                <a class="dropdown-item" href="{% url 'chatgpt' question_exam_id 'examples' %}">Examples</a>
-                <a class="dropdown-item" href="{% url 'chatgpt' question_exam_id 'rubrics' %}">Rubrics</a>
-                <a class="dropdown-item" href="{% url 'chatgpt' question_exam_id 'rubrics_and_examples' %}">Examples and Rubrics</a>
+                <a class="dropdown-item" href="{% url 'chatgpt' question_exam_id 'question_only' %}?model={{model}}">Question Only</a>
+                <a class="dropdown-item" href="{% url 'chatgpt' question_exam_id 'examples' %}?model={{model}}">Examples</a>
+                <a class="dropdown-item" href="{% url 'chatgpt' question_exam_id 'rubrics' %}?model={{model}}">Rubrics</a>
+                <a class="dropdown-item" href="{% url 'chatgpt' question_exam_id 'rubrics_and_examples' %}?model={{model}}">Examples and Rubrics</a>
+            </div>
+        </div>
+        <div class="dropdown">
+            <button class="btn btn-secondary dropdown-toggle ml-3" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Model Select - {{model}}
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                <a class="dropdown-item" href="{% url 'chatgpt' q_id=question_exam_id method=method %}?model=text-davinci-003">text-davinci-003</a>
+                <a class="dropdown-item" href="{% url 'chatgpt' question_exam_id method %}?model=gpt-3.5-turbo">gpt-3.5-turbo</a>
             </div>
         </div>
     </div>
@@ -65,11 +74,10 @@
             </div>
         </div>
         <div class="card-footer">
-            {% with chatgpt_resp=answer.chatgptgradeandfeedback_set|filter_chatgpt_by_method:method %}
+            {% filter_chatgpt answer.chatgptgradeandfeedback_set method model as chatgpt_resp %}
             {% if chatgpt_resp %}
-            <p>{{ chatgpt_resp.response }} - {{ chatgpt_resp.prompt_type }} - {{ chatgpt_resp.trial_run_number }}</p>
+            <p>{{ chatgpt_resp.response }}</p>
             {% endif %}
-            {% endwith %}
         </div>
     </div>
     {% if forloop.counter|divisibleby:4  %} 
