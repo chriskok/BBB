@@ -67,7 +67,7 @@ class Answer(models.Model):
         return json.loads(self.rule_strings)
 
     def __str__(self):
-        return "Q #{}: {}".format(self.question.id, self.answer_text)
+        return "{}. Q #{}: {}".format(self.id, self.question.id, self.answer_text)
     
 class ChatGPTGradeAndFeedback(models.Model):
     answer = models.ForeignKey(Answer, on_delete=models.CASCADE, default=None, null=True, blank=True)
@@ -75,4 +75,8 @@ class ChatGPTGradeAndFeedback(models.Model):
     prompt = models.TextField()
     prompt_type = models.CharField(max_length=200)
     trial_run_number = models.IntegerField()
+    openai_model = models.CharField(max_length=200, default="", null=True, blank=True)
+
+    def __str__(self):
+        return "{}. Trial: {}, Prompt: {}, Model: {}".format(self.id, self.trial_run_number, self.prompt_type, self.openai_model)
 
