@@ -16,7 +16,7 @@
             </button>
             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                 {% for q in question_list %}
-                <a class="dropdown-item" href="{% url 'chatgpt' q.pk %}">Question {{ q.question_exam_id }}</a>
+                <a class="dropdown-item" href="{% url 'chatgpt' q.pk method %}?model={{model}}">Question {{ q.question_exam_id }}</a>
                 {% endfor %}
             </div>
         </div>

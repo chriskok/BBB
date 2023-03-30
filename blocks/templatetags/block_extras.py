@@ -12,4 +12,4 @@ def filter_chatgpt_by_method(queryset, method):
 
 @register.simple_tag(name='filter_chatgpt')
 def filter_chatgpt(queryset, method, model):
-    return queryset.filter(prompt_type=method, openai_model=model).first()
+    return queryset.filter(prompt_type=method, openai_model=model).last()
