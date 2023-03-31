@@ -14,5 +14,5 @@
 
 ## Dev Notes
 - When new files are imported: `pip list --format=freeze > requirements.txt`
-- Data dumps: `python manage.py dumpdata --natural-foreign --natural-primary -e contenttypes -e auth.Permission --indent 2 > dump.json`
+- Data dumps: `python -Xutf8 manage.py dumpdata --natural-foreign --natural-primary -e contenttypes -e auth.Permission --indent 2 > dump.json`
 - Current superuser: `admin`, pass: `blockpass`
