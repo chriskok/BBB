@@ -1,4 +1,4 @@
-# COMB
+# Comb
 
 ## Setup
 - Install conda
