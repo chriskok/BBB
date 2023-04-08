@@ -24,7 +24,7 @@
 </div>
 <br>
 
-<h2>Building Blocks</h2>
+<h2>Rule Creation</h2>
 
 {% comment %} <p class="text-secondary">TODO: Add description</p> {% endcomment %}
 
@@ -76,7 +76,7 @@
         </div>
     </div>
     <div class="col-3">
-        <h4>Create Block</h4>
+        <h4>Create Rule</h4>
         <form action="{% url 'building_blocks' question_exam_id %}" method="post">
             {% csrf_token %}
 
@@ -126,12 +126,12 @@
         </form>
 
         <br><br>
-        <h4>Created Blocks</h4>
+        <h4>Created Rules</h4>
         <table class="table">
             <thead>
                 <tr>
                     <th scope="col">#</th>
-                    <th scope="col">Building Blocks</th>
+                    <th scope="col">Rules</th>
                     <th scope="col">Answers</th>
                 </tr>
             </thead>
