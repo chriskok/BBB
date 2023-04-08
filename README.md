@@ -1,4 +1,4 @@
-# Block-by-Block (BBB)
+# COMB
 
 ## Setup
 - Install conda
