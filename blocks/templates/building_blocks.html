@@ -139,7 +139,9 @@
                 {% for rule in rules %}
                 <tr>
                     <th scope="row">{{forloop.counter}}</th>
-                    <td><span style="background-color:{{ color_to_rule|get_item:rule.id }}">{{rule}}</span>{% if rule.similarity_threshold %} - similarity: {{rule.similarity_threshold}}{% endif %}</td>
+                    <td><span style="background-color:{{ color_to_rule|get_item:rule.id }}">
+                        {% if rule.polymorphic_ctype_id == 9 %}<a href="{% url 'keywordrule_update' rule.pk %}" class="text-dark">{{rule}}</a>{% else %}{{rule}}{% endif %}</span> 
+                        {% if rule.similarity_threshold %} - similarity: {{rule.similarity_threshold}}{% endif %}</td>
                     <td>{{rule.answer_set.all.count}}</td>
                 </tr>
                 {% endfor%}

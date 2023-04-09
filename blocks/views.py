@@ -4,10 +4,11 @@ import json
 import csv
 
 from django.shortcuts import render, get_object_or_404, redirect
-from django.urls import reverse
+from django.urls import reverse, reverse_lazy
 from django.http import HttpResponse, JsonResponse, HttpResponseRedirect
 from django.db.models import Avg, Max, Min, Sum
 from django.contrib.auth.decorators import login_required
+from django.views.generic.edit import UpdateView
 
 from itertools import product
 import building_blocks as bb 
@@ -172,3 +173,21 @@ def system_reset_view(request, question_id=None, include_rules=True):
 
 def index(request):
   return render(request, "landing_page.html", context={})
+
+#############################################
+#               GENERIC VIEWS               #
+#############################################
+class KeywordRuleUpdateView(UpdateView):
+    model = KeywordRule
+    fields = ['keyword', 'similarity_threshold']
+    template_name = 'generic_views/keywordrule_update.html'
+
+    def get_success_url(self):
+        return reverse_lazy('building_blocks', kwargs={'q_id': self.object.question.id})
+
+    def form_valid(self, form):
+        print(self.object)
+        # self.object.human_edited = True
+        # self.object.human_approved = True
+        # self.object.save()
+        return super().form_valid(form) 
