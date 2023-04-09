@@ -148,7 +148,8 @@
                 </tr>
             </thead>
             <tbody>
-                {% for rule in rules %}
+                {% for rule in orphan_rules %}
+                {% if not rule.parent %}
                 <tr>
                     <th scope="row">{{forloop.counter}}</th>
                     <td>
@@ -156,9 +157,22 @@
                             {% if rule.polymorphic_ctype.name == "keyword rule" %}<a href="{% url 'keywordrule_update' rule.pk %}" class="text-dark">{{rule}}</a>
                             {% else %}{{rule}}{% endif %}
                         </span> 
-                        {% if rule.similarity_threshold %} - similarity: {{rule.similarity_threshold}}{% endif %}</td>
+                        {% if rule.similarity_threshold %} - similarity: {{rule.similarity_threshold}}{% endif %}
+                        <br>
+                        {% for subrule in rule.rule_set.all %}
+                        <p class="mt-1" style='margin: 0; padding: 0;'>--<span style="background-color:{{ color_to_rule|get_item:subrule.id }}">
+                            {{subrule}} (n: {{subrule.answer_set.all.count}})
+                        </span></p>
+                            {% for subsubrule in subrule.rule_set.all %}
+                            <p class="mt-1" style='margin: 0; padding: 0;'>----<span style="background-color:{{ color_to_rule|get_item:subsubrule.id }}">
+                                {{subsubrule}} (n: {{subsubrule.answer_set.all.count}})
+                            </span></p>
+                            {% endfor%}
+                        {% endfor%}
+                    </td>
                     <td>{{rule.answer_set.all.count}}</td>
                 </tr>
+                {% endif %}
                 {% endfor%}
             </tbody>
         </table>
