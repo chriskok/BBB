@@ -58,11 +58,20 @@ def answer_length_filter(chosen_answers, current_question_obj, length, length_ty
 def recursive_filtering_chosen_answers(rule, chosen_answers):
     if (rule.parent):
         parent_rule = rule.parent
-        chosen_answers = recursive_filtering_chosen_answers(parent_rule, chosen_answers)
+        return_answers = recursive_filtering_chosen_answers(parent_rule, chosen_answers)
     
     # check the content type of this rule and apply filtering accordingly
+    print(rule.polymorphic_ctype.name)
+    if rule.polymorphic_ctype.name == "keyword rule":
+        _, return_answers, _ = similar_keyword_filter(chosen_answers, rule.question, rule.keyword, rule.similarity_threshold)
+    elif rule.polymorphic_ctype.name == "sentence similarity rule":
+        _, return_answers = similar_sentence_filter(chosen_answers, rule.question, rule.sentence, rule.similarity_threshold, rule.method)
+    elif rule.polymorphic_ctype.name == "answer length rule":
+        _, return_answers = answer_length_filter(chosen_answers, rule.question, rule.length, rule.length_type)
+    else:
+        return_answers = chosen_answers
 
-    return chosen_answers
+    return return_answers
 
 def handle_rule_input(form, chosen_answers, current_question_obj):
 
