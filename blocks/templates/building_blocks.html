@@ -60,8 +60,9 @@
                 <div class="card-footer">
                     {% if answer.rule_strings != "[]" %}
                         {% for rule in answer.get_rule_strings %}
-                        <button type="button" style="background-color:{{ color_to_rule|get_item:rule.0 }}; color:DarkSlateGray" 
-                            class="btn btn-primary btn-sm btn-block unpadded-button border-white text-truncate">{{rule.1}}</button>
+                        <button type="button" style="background-color:{{ color_to_rule|get_item:rule.0 }}; color:DarkSlateGray;" 
+                            class="btn btn-primary btn-sm btn-block unpadded-button border-white text-truncate" 
+                            data-toggle="tooltip" data-placement="top" title="{{rule.1}}">{{rule.1}}</button>
                         {% endfor %}
                     {% endif %}
                 </div>
@@ -139,8 +140,11 @@
                 {% for rule in rules %}
                 <tr>
                     <th scope="row">{{forloop.counter}}</th>
-                    <td><span style="background-color:{{ color_to_rule|get_item:rule.id }}">
-                        {% if rule.polymorphic_ctype_id == 9 %}<a href="{% url 'keywordrule_update' rule.pk %}" class="text-dark">{{rule}}</a>{% else %}{{rule}}{% endif %}</span> 
+                    <td>
+                        <span style="background-color:{{ color_to_rule|get_item:rule.id }}">
+                            {% if rule.polymorphic_ctype.name == "keyword rule" %}<a href="{% url 'keywordrule_update' rule.pk %}" class="text-dark">{{rule}}</a>
+                            {% else %}{{rule}}{% endif %}
+                        </span> 
                         {% if rule.similarity_threshold %} - similarity: {{rule.similarity_threshold}}{% endif %}</td>
                     <td>{{rule.answer_set.all.count}}</td>
                 </tr>
@@ -187,6 +191,10 @@
             $('.rule_input_div').hide()
             $('#' + this.value).show();
         });
+
+        $(function () {
+            $('[data-toggle="tooltip"]').tooltip()
+        })
     })
 
     $(".hBack").on("click", function(e){

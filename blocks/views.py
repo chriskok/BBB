@@ -177,6 +177,23 @@ def index(request):
 #############################################
 #               GENERIC VIEWS               #
 #############################################
+
+def keywordrule_update(rule, keyword, similarity, chosen_answers, current_question_obj):
+
+    # filters answers that have keyword 
+    df = pd.DataFrame(list(chosen_answers.values()))
+    df = bb.similar_keyword(df, keyword, sim_score_threshold=similarity)
+    relevant_keywords = df.word.unique().tolist()
+
+    # handle keyword rule creation
+    student_id_list = df["student_id"].values.tolist()
+    filtered_answers = Answer.objects.filter(question=current_question_obj, student_id__in=student_id_list)
+
+    # go through each filtered answer and assign the rule and rule strings
+    for answer in filtered_answers:
+        curr_row = df[df['student_id'] == answer.student_id].iloc[0]
+        add_rule_string(answer, rule, f"Keyword: {keyword} -> Matched: {curr_row['word']}, Similarity: {curr_row['score']}")
+
 class KeywordRuleUpdateView(UpdateView):
     model = KeywordRule
     fields = ['keyword', 'similarity_threshold']
@@ -186,8 +203,15 @@ class KeywordRuleUpdateView(UpdateView):
         return reverse_lazy('building_blocks', kwargs={'q_id': self.object.question.id})
 
     def form_valid(self, form):
-        print(self.object)
-        # self.object.human_edited = True
-        # self.object.human_approved = True
-        # self.object.save()
+        chosen_answers = Answer.objects.filter(question_id=self.object.question.id).all()
+
+        for ans in chosen_answers:
+            rule_strings = ans.get_rule_strings()
+            new_rule_strings = [x for x in rule_strings if x[0] != self.object.id]
+            ans.set_rule_strings(new_rule_strings)
+            ans.applied_rules.remove(self.object)
+            ans.save()
+
+        keywordrule_update(self.object, form.cleaned_data['keyword'], form.cleaned_data['similarity_threshold'], chosen_answers, self.object.question)
+
         return super().form_valid(form) 
