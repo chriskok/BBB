@@ -2,7 +2,7 @@
 
 ## Setup
 - Install conda
-- `conda create -n bbb python=3.9`
+- `conda create -n comb python=3.9`
 - `pip install -r requirements.txt`
 - `python manage.py shell < populate_questions.py`
 - `python manage.py shell < populate_answers.py`

@@ -171,4 +171,4 @@ def system_reset_view(request, question_id=None, include_rules=True):
     return JsonResponse({'message': "System Reset!"}) 
 
 def index(request):
-  return render(request, "index.html", context={})
+  return render(request, "landing_page.html", context={})
