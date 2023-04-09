@@ -10,6 +10,7 @@ urlpatterns = [
 
     # SYSTEM
     path('system_reset/', views.system_reset_view, name='system_reset'),            # non-page
+    path('system_reset/<int:question_id>', views.system_reset_view, name='system_reset'),            # non-page
 
     # GENERIC
     path("keywordrule_update/<pk>", views.KeywordRuleUpdateView.as_view(), name="keywordrule_update"),

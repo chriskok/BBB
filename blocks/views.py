@@ -46,7 +46,7 @@ def handle_rule_input(form, chosen_answers, current_question_obj):
         # go through each filtered answer and assign the rule and rule strings
         for answer in filtered_answers:
             curr_row = df[df['student_id'] == answer.student_id].iloc[0]
-            add_rule_string(answer, new_rule, f"Keyword: {keyword} -> Matched: {curr_row['word']}, Similarity: {curr_row['score']}")
+            add_rule_string(answer, new_rule, f"Keyword: {keyword} -> Matched: {curr_row['word']}, Similarity: {curr_row['score']:.2f}")
     elif (form.cleaned_data['rule_type_selection'] == 'sentence_rule'):
         sentence = form.cleaned_data['sentence']
         similarity = form.cleaned_data['sentence_similarity']
@@ -64,7 +64,7 @@ def handle_rule_input(form, chosen_answers, current_question_obj):
         # go through each filtered answer and assign the rule and rule strings
         for answer in filtered_answers:
             curr_row = df[df['student_id'] == answer.student_id].iloc[0]
-            add_rule_string(answer, new_rule, f"Sentence: {sentence} -> Similarity: {curr_row['score']}")
+            add_rule_string(answer, new_rule, f"Sentence: {sentence} -> Similarity: {curr_row['score']:.2f}")
     elif (form.cleaned_data['rule_type_selection'] == 'length_rule'):
         length_type = form.cleaned_data['length_type']
         length = form.cleaned_data['answer_length']
@@ -157,16 +157,19 @@ def chatgpt_view(request, q_id, method='question_only'):
 
     return render(request, "chatgpt_page.html", context)
 
-def system_reset_view(request, question_id=None, include_rules=True):
+def system_reset_view(request, question_id=None):
 
-    if(include_rules): 
+    # get specific answers for the current question
+    if (question_id): 
+        chosen_answers = Answer.objects.filter(question_id=question_id).all()
+        KeywordRule.objects.filter(question_id=question_id).all().delete()
+        SentenceSimilarityRule.objects.filter(question_id=question_id).all().delete()
+        AnswerLengthRule.objects.filter(question_id=question_id).all().delete()
+    else: 
+        chosen_answers = Answer.objects.all()
         KeywordRule.objects.all().delete()
         SentenceSimilarityRule.objects.all().delete()
         AnswerLengthRule.objects.all().delete()
-
-    # get specific answers for the current question
-    if (question_id): chosen_answers = Answer.objects.filter(question_id=question_id).all()
-    else: chosen_answers = Answer.objects.all()
     chosen_answers.update(rule_strings="[]") 
 
     return JsonResponse({'message': "System Reset!"}) 
@@ -192,7 +195,7 @@ def keywordrule_update(rule, keyword, similarity, chosen_answers, current_questi
     # go through each filtered answer and assign the rule and rule strings
     for answer in filtered_answers:
         curr_row = df[df['student_id'] == answer.student_id].iloc[0]
-        add_rule_string(answer, rule, f"Keyword: {keyword} -> Matched: {curr_row['word']}, Similarity: {curr_row['score']}")
+        add_rule_string(answer, rule, f"Keyword: {keyword} -> Matched: {curr_row['word']}, Similarity: {curr_row['score']:.2f}")
 
 class KeywordRuleUpdateView(UpdateView):
     model = KeywordRule
