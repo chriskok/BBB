@@ -17,6 +17,7 @@ class Question(models.Model):
     
 class Rule(PolymorphicModel):
     question = models.ForeignKey(Question, on_delete=models.CASCADE, default=None, null=True, blank=True)
+    parent = models.ForeignKey('self', on_delete=models.CASCADE, default=None, null=True, blank=True)
 
 class KeywordRule(Rule):
     keyword = models.CharField(max_length=200)

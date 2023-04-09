@@ -27,21 +27,43 @@ def add_rule_string(answer, new_rule, rule_string):
     answer.set_rule_strings(curr_rule_strings)
     answer.save()
 
+def similar_keyword_filter(chosen_answers, current_question_obj, keyword, similarity):
+    # filters answers that have keyword 
+    df = pd.DataFrame(list(chosen_answers.values()))
+    df = bb.similar_keyword(df, keyword, sim_score_threshold=similarity)
+    relevant_keywords = df.word.unique().tolist()
+    student_id_list = df["student_id"].values.tolist()
+    filtered_answers = Answer.objects.filter(question=current_question_obj, student_id__in=student_id_list)
+
+    return df, filtered_answers, relevant_keywords
+
+def recursive_filtering_chosen_answers(rule, chosen_answers):
+    if (rule.parent):
+        parent_rule = rule.parent
+        chosen_answers = recursive_filtering_chosen_answers(parent_rule, chosen_answers)
+    
+    # check the content type of this rule and apply filtering accordingly
+
+    return chosen_answers
+
 def handle_rule_input(form, chosen_answers, current_question_obj):
+
+    parent_string = form.data['parent']
+    parent_rule = None
+    if parent_string != '-- Parent Rule --': 
+        parent_rule = Rule.objects.get(pk = int(parent_string))
+        # filter chosen answers by parent rule(s)
+        chosen_answers = recursive_filtering_chosen_answers(parent_rule, chosen_answers)
 
     if (form.cleaned_data['rule_type_selection'] == 'keyword_rule'):
         keyword = form.cleaned_data['keyword']
         similarity = form.cleaned_data['keyword_similarity']
 
         # filters answers that have keyword 
-        df = pd.DataFrame(list(chosen_answers.values()))
-        df = bb.similar_keyword(df, keyword, sim_score_threshold=similarity)
-        relevant_keywords = df.word.unique().tolist()
+        df, filtered_answers, relevant_keywords = similar_keyword_filter(chosen_answers, current_question_obj, keyword, similarity)
 
         # handle keyword rule creation
-        new_rule,_ = KeywordRule.objects.get_or_create(question=current_question_obj, keyword=keyword, similarity_threshold=similarity, relevant_keywords=relevant_keywords) 
-        student_id_list = df["student_id"].values.tolist()
-        filtered_answers = Answer.objects.filter(question=current_question_obj, student_id__in=student_id_list)
+        new_rule,_ = KeywordRule.objects.get_or_create(question=current_question_obj, parent=parent_rule, keyword=keyword, similarity_threshold=similarity, relevant_keywords=relevant_keywords) 
 
         # go through each filtered answer and assign the rule and rule strings
         for answer in filtered_answers:
@@ -52,12 +74,12 @@ def handle_rule_input(form, chosen_answers, current_question_obj):
         similarity = form.cleaned_data['sentence_similarity']
         method = form.cleaned_data['sentence_similarity_method']
 
-        # filters answers that have keyword 
+        # filters answers 
         df = pd.DataFrame(list(chosen_answers.values()))
         df = bb.similar_sentence(df, sentence, sim_score_threshold=similarity, method=method)
 
         # handle sentence sim rule creation
-        new_rule,_ = SentenceSimilarityRule.objects.get_or_create(question=current_question_obj, sentence=sentence, similarity_threshold=similarity, method=method) 
+        new_rule,_ = SentenceSimilarityRule.objects.get_or_create(question=current_question_obj, parent=parent_rule, sentence=sentence, similarity_threshold=similarity, method=method) 
         student_id_list = df["student_id"].values.tolist()
         filtered_answers = Answer.objects.filter(question=current_question_obj, student_id__in=student_id_list)
 
@@ -69,12 +91,12 @@ def handle_rule_input(form, chosen_answers, current_question_obj):
         length_type = form.cleaned_data['length_type']
         length = form.cleaned_data['answer_length']
 
-        # filters answers that have keyword 
+        # filters answers 
         df = pd.DataFrame(list(chosen_answers.values()))
         df = bb.answer_length(df, length, length_type=length_type)
 
-        # handle sentence sim rule creation
-        new_rule,_ = AnswerLengthRule.objects.get_or_create(question=current_question_obj, length=length, length_type=length_type) 
+        # handle rule creation
+        new_rule,_ = AnswerLengthRule.objects.get_or_create(question=current_question_obj, parent=parent_rule, length=length, length_type=length_type) 
         student_id_list = df["student_id"].values.tolist()
         filtered_answers = Answer.objects.filter(question=current_question_obj, student_id__in=student_id_list)
 

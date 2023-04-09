@@ -81,7 +81,6 @@
         <form action="{% url 'building_blocks' question_exam_id %}" method="post">
             {% csrf_token %}
 
-            
             <div class="rule_type_select">
                 <div class="d-flex align-items-center">
                     {{ form.rule_type_selection|as_crispy_field }}
@@ -121,6 +120,18 @@
                     {{ form.answer_length|as_crispy_field }}
                 </div>
             </div>
+
+            <div class="parent_select mb-3">
+                <div class="d-flex align-items-center">
+                    <select class="select form-control" name="parent" style="width:auto;">
+                        <option selected>-- Parent Rule --</option>
+                        {% for rule in rules %}
+                        <option value="{{rule.id}}">{{rule}}</option>
+                        {% endfor%}
+                    </select>
+                </div>
+            </div>
+
             <div class="d-flex align-items-center">
                 <button type="submit" class="btn btn-primary">Submit</button>
             </div>
