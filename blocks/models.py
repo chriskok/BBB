@@ -40,7 +40,7 @@ class SentenceSimilarityRule(Rule):
     method = models.CharField(max_length=200, default="sbert", null=True, blank=True)
 
     def __str__(self):
-        return "Sentence: {}".format(self.sentence)
+        return "Sentence: {:.20s}...".format(self.sentence) if len(self.sentence) > 20 else "Sentence: {}".format(self.sentence)
 
 class AnswerLengthRule(Rule):
     length_type = models.CharField(max_length=200, default="word", null=True, blank=True)
