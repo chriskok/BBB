@@ -20,6 +20,10 @@ from .colors import colors
 import warnings
 warnings.filterwarnings("ignore")
 
+#############################################
+#               RULE HELPERS                #
+#############################################
+
 def add_rule_string(answer, new_rule, rule_string):
     answer.applied_rules.add(new_rule)
     curr_rule_strings = answer.get_rule_strings()
@@ -54,6 +58,19 @@ def answer_length_filter(chosen_answers, current_question_obj, length, length_ty
     filtered_answers = Answer.objects.filter(question=current_question_obj, student_id__in=student_id_list)
 
     return df, filtered_answers
+
+def recursive_rule_child_chain(rule):
+    children = rule.rule_set.all()
+    if not children: return [], []
+
+    child_list = list(children)
+    id_list = list(children.values_list('id', flat=True)) 
+    for child in children:
+        child_child_list, child_id_list = recursive_rule_child_chain(child)
+        child_list.extend(child_child_list)
+        id_list.extend(child_id_list)
+
+    return child_list, id_list
 
 def recursive_filtering_chosen_answers(rule, chosen_answers):
     if (rule.parent):
@@ -132,6 +149,10 @@ def handle_rule_input(form, chosen_answers, current_question_obj):
             add_rule_string(answer, new_rule, f"Length: {length} {length_type}s -> Answer Length: {curr_row['length']}")
     else: 
         print(form.cleaned_data)
+
+#############################################
+#                PAGE VIEWS                 #
+#############################################
 
 # @login_required
 def building_blocks_view(request, q_id, filter=None):
@@ -233,19 +254,21 @@ def index(request):
 
 def keywordrule_update(rule, keyword, similarity, chosen_answers, current_question_obj):
 
-    # filters answers that have keyword 
-    df = pd.DataFrame(list(chosen_answers.values()))
-    df = bb.similar_keyword(df, keyword, sim_score_threshold=similarity)
-    relevant_keywords = df.word.unique().tolist()
-
-    # handle keyword rule creation
-    student_id_list = df["student_id"].values.tolist()
-    filtered_answers = Answer.objects.filter(question=current_question_obj, student_id__in=student_id_list)
+    df, filtered_answers, _ = similar_keyword_filter(chosen_answers, current_question_obj, keyword, similarity)
 
     # go through each filtered answer and assign the rule and rule strings
     for answer in filtered_answers:
         curr_row = df[df['student_id'] == answer.student_id].iloc[0]
         add_rule_string(answer, rule, f"Keyword: {keyword} -> Matched: {curr_row['word']}, Similarity: {curr_row['score']:.2f}")
+
+def remove_rule_strings(id_array, rule_array, chosen_answers):
+    for ans in chosen_answers:
+        rule_strings = ans.get_rule_strings()
+        new_rule_strings = [x for x in rule_strings if x[0] not in id_array]
+        ans.set_rule_strings(new_rule_strings)
+        for rule in rule_array:
+            ans.applied_rules.remove(rule)
+        ans.save()
 
 class KeywordRuleUpdateView(UpdateView):
     model = KeywordRule
@@ -257,14 +280,10 @@ class KeywordRuleUpdateView(UpdateView):
 
     def form_valid(self, form):
         chosen_answers = Answer.objects.filter(question_id=self.object.question.id).all()
-
-        for ans in chosen_answers:
-            rule_strings = ans.get_rule_strings()
-            new_rule_strings = [x for x in rule_strings if x[0] != self.object.id]
-            ans.set_rule_strings(new_rule_strings)
-            ans.applied_rules.remove(self.object)
-            ans.save()
-
+        child_child_list, child_id_list = recursive_rule_child_chain(self.object)
+        
+        # remove rule strings for this rule and all child rules from all applied answers
+        remove_rule_strings(child_id_list + [self.object.id], child_child_list + [self.object], chosen_answers)  
         keywordrule_update(self.object, form.cleaned_data['keyword'], form.cleaned_data['similarity_threshold'], chosen_answers, self.object.question)
 
         return super().form_valid(form) 
