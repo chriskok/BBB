@@ -61,8 +61,8 @@
                     {% if answer.rule_strings != "[]" %}
                         {% for rule in answer.get_rule_strings %}
                         <button type="button" style="background-color:{{ color_to_rule|get_item:rule.0 }}; color:DarkSlateGray;" 
-                            class="btn btn-primary btn-sm btn-block unpadded-button border-white text-truncate" 
-                            data-toggle="tooltip" data-placement="top" title="{{rule.1}}">{{rule.1}}</button>
+                            class="btn btn-primary btn-sm btn-block unpadded-button border-white text-truncate text-left" 
+                            data-toggle="tooltip" data-placement="top" title="{{rule.1}}">{{ rule.0|count_parents }} {{rule.1}}</button>
                         {% endfor %}
                     {% endif %}
                 </div>
@@ -162,14 +162,14 @@
                         {% if rule.similarity_threshold %} - similarity: {{rule.similarity_threshold}}{% endif %}
                         <br>
                         {% for subrule in rule.rule_set.all %}
-                        <p class="mt-1" style='margin: 0; padding: 0;'>--<span style="background-color:{{ color_to_rule|get_item:subrule.id }}">
+                        <p class="mt-1" style='margin: 0; padding: 0;'>-- <span style="background-color:{{ color_to_rule|get_item:subrule.id }}">
                             {% if subrule.polymorphic_ctype.name == "keyword rule" %}<a href="{% url 'keywordrule_update' subrule.pk %}" class="text-dark">{{subrule}}</a>
                             {% elif subrule.polymorphic_ctype.name == "sentence similarity rule" %}<a href="{% url 'sentencesimilarityrule_update' subrule.pk %}" class="text-dark">{{subrule}}</a>
                             {% elif subrule.polymorphic_ctype.name == "answer length rule" %}<a href="{% url 'answerlengthrule_update' subrule.pk %}" class="text-dark">{{subrule}}</a>
                             {% else %}{{subrule}}{% endif %} (n: {{subrule.answer_set.all.count}})
                         </span></p>
                             {% for subsubrule in subrule.rule_set.all %}
-                            <p class="mt-1" style='margin: 0; padding: 0;'>----<span style="background-color:{{ color_to_rule|get_item:subsubrule.id }}">
+                            <p class="mt-1" style='margin: 0; padding: 0;'>---- <span style="background-color:{{ color_to_rule|get_item:subsubrule.id }}">
                                 {% if subsubrule.polymorphic_ctype.name == "keyword rule" %}<a href="{% url 'keywordrule_update' subsubrule.pk %}" class="text-dark">{{subsubrule}}</a>
                                 {% elif subsubrule.polymorphic_ctype.name == "sentence similarity rule" %}<a href="{% url 'sentencesimilarityrule_update' subsubrule.pk %}" class="text-dark">{{subsubrule}}</a>
                                 {% elif subsubrule.polymorphic_ctype.name == "answer length rule" %}<a href="{% url 'answerlengthrule_update' subsubrule.pk %}" class="text-dark">{{subsubrule}}</a>

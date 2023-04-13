@@ -24,6 +24,9 @@ warnings.filterwarnings("ignore")
 #               RULE HELPERS                #
 #############################################
 
+def recursive_sort_rule_strings(rule_strings):
+    print(rule_strings)
+
 def add_rule_string(answer, new_rule, rule_string):
     answer.applied_rules.add(new_rule)
     curr_rule_strings = answer.get_rule_strings()
