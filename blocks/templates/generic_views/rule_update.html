@@ -12,6 +12,57 @@
         <br>                
 		<button class="btn btn-primary" type="submit">Update</button>
 	</form>
+
+	<br>
+	{% if word_similarities %}
+		<input id="similarity_slider" type="range" value="{{similarity_threshold}}" min="0.0" max="1.0" step="0.05" oninput="on_similarity_slider_change()">
+		<output id="similarity_slider_output">{{similarity_threshold}}</output>
+		<br>
+		<div id="similar_word_container"></div>
+	{% endif %}
 </div>
+
+<script>
+	{% if word_similarities %}
+
+	function sort_object(dict) {
+		// Create items array
+		var items = Object.keys(dict).map(function(key) {
+			return [key, dict[key]];
+		});
+		
+		// Sort the array based on the second element
+		items.sort(function(first, second) {
+			return second[1] - first[1];
+		});
+	
+		return(items)
+	} 
+	
+	var words_dict = {{ word_similarities|safe }};
+	const words = Object.fromEntries(sort_object(words_dict));
+
+	function on_similarity_slider_change(){
+		var slider_value = document.getElementById("similarity_slider").value;
+		document.getElementById("similarity_slider_output").value = slider_value;
+		var filtered = Object.keys(words).reduce(function (filtered, key) {
+			if (words[key] >= slider_value) filtered[key] = words[key];
+			return filtered;
+		}, {});
+
+		var similar_word_container = document.getElementById("similar_word_container")
+		similar_word_container.innerHTML = "";
+		for (let key in filtered) {
+			const div = document.createElement("div");
+			div.innerText = key + " (" + filtered[key].toFixed(2) + ")"
+			similar_word_container.appendChild(div)
+		}
+	}
+
+	$( document ).ready(function() {
+		on_similarity_slider_change()
+	});
+	{% endif %}
+</script>
 
 {% endblock %}

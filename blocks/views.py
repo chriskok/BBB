@@ -12,6 +12,8 @@ from django.views.generic.edit import UpdateView
 
 from itertools import product
 import building_blocks as bb 
+import spacy
+nlp = spacy.load('en_core_web_lg')  # if not downloaded, run: python -m spacy download en_core_web_lg
 
 from .models import *
 from .forms import *
@@ -313,6 +315,27 @@ class KeywordRuleUpdateView(UpdateView):
     model = KeywordRule
     fields = ['keyword', 'similarity_threshold']
     template_name = 'generic_views/rule_update.html'
+
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        
+        all_answers = Answer.objects.filter(question_id=self.object.question.id).all()
+        df = pd.DataFrame(list(all_answers.values()))
+
+        # TODO: Implement this same optimization to building_blocks.py "similar_keyword" --> get all the keyword similarity weights first and THEN parse
+        unique_words = set([self.object.keyword])
+        df['answer_text'].str.lower().str.replace('[^\w\s]','').str.split().apply(unique_words.update)
+        unique_words_as_str = self.object.keyword.lower() + " " + ' '.join(unique_words)
+        tokens = nlp(unique_words_as_str)
+        word_similarities = {}
+        for token in tokens[1:]:
+            curr_sim = tokens[0].similarity(token)
+            word_similarities[token] = curr_sim
+
+        context['word_similarities'] = word_similarities
+        context['similarity_threshold'] = self.object.similarity_threshold
+        return context
 
     def get_success_url(self):
         return reverse_lazy('building_blocks', kwargs={'q_id': self.object.question.id})
