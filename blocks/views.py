@@ -72,13 +72,13 @@ def recursive_rule_child_chain(rule):
 
     return child_list, id_list
 
-def recursive_filtering_chosen_answers(rule, chosen_answers):
+def recursive_filtering_chosen_answers(rule, all_answers):
+    chosen_answers = all_answers
     if (rule.parent):
         parent_rule = rule.parent
-        return_answers = recursive_filtering_chosen_answers(parent_rule, chosen_answers)
+        chosen_answers = recursive_filtering_chosen_answers(parent_rule, all_answers)
     
     # check the content type of this rule and apply filtering accordingly
-    print(rule.polymorphic_ctype.name)
     if rule.polymorphic_ctype.name == "keyword rule":
         _, return_answers, _ = similar_keyword_filter(chosen_answers, rule.question, rule.keyword, rule.similarity_threshold)
     elif rule.polymorphic_ctype.name == "sentence similarity rule":
@@ -87,7 +87,7 @@ def recursive_filtering_chosen_answers(rule, chosen_answers):
         _, return_answers = answer_length_filter(chosen_answers, rule.question, rule.length, rule.length_type)
     else:
         return_answers = chosen_answers
-
+    
     return return_answers
 
 def handle_rule_input(form, chosen_answers, current_question_obj):
@@ -261,6 +261,24 @@ def keywordrule_update(rule, keyword, similarity, chosen_answers, current_questi
         curr_row = df[df['student_id'] == answer.student_id].iloc[0]
         add_rule_string(answer, rule, f"Keyword: {keyword} -> Matched: {curr_row['word']}, Similarity: {curr_row['score']:.2f}")
 
+def sentencesimilarityrule_update(rule, sentence, similarity, method, chosen_answers, current_question_obj):
+        
+    df, filtered_answers = similar_sentence_filter(chosen_answers, current_question_obj, sentence, similarity, method)
+
+    # go through each filtered answer and assign the rule and rule strings
+    for answer in filtered_answers:
+        curr_row = df[df['student_id'] == answer.student_id].iloc[0]
+        add_rule_string(answer, rule, f"Sentence: {sentence} -> Similarity: {curr_row['score']:.2f}")
+
+def answerlengthrule_update(rule, length, length_type, chosen_answers, current_question_obj):
+
+    df, filtered_answers = answer_length_filter(chosen_answers, current_question_obj, length, length_type)
+
+    # go through each filtered answer and assign the rule and rule strings
+    for answer in filtered_answers:
+        curr_row = df[df['student_id'] == answer.student_id].iloc[0]
+        add_rule_string(answer, rule, f"Length: {length} {length_type}s -> Answer Length: {curr_row['length']}")
+
 def remove_rule_strings(id_array, rule_array, chosen_answers):
     for ans in chosen_answers:
         rule_strings = ans.get_rule_strings()
@@ -269,6 +287,17 @@ def remove_rule_strings(id_array, rule_array, chosen_answers):
         for rule in rule_array:
             ans.applied_rules.remove(rule)
         ans.save()
+
+def update_all_children_rules(child_child_list, chosen_answers, question):
+
+    for rule in child_child_list:
+        if rule.polymorphic_ctype.name == "keyword rule":
+            # TODO: Make these more efficient by saying we don't have to search past current object as parent, can have param in keywordrule_update
+            keywordrule_update(rule, rule.keyword, rule.similarity_threshold, recursive_filtering_chosen_answers(rule, chosen_answers), question)
+        elif rule.polymorphic_ctype.name == "sentence similarity rule":
+            sentencesimilarityrule_update(rule, rule.sentence, rule.similarity_threshold, rule.method, recursive_filtering_chosen_answers(rule, chosen_answers), question)
+        elif rule.polymorphic_ctype.name == "answer length rule":
+            answerlengthrule_update(rule, rule.length, rule.length_type, recursive_filtering_chosen_answers(rule, chosen_answers), question)
 
 class KeywordRuleUpdateView(UpdateView):
     model = KeywordRule
@@ -279,11 +308,13 @@ class KeywordRuleUpdateView(UpdateView):
         return reverse_lazy('building_blocks', kwargs={'q_id': self.object.question.id})
 
     def form_valid(self, form):
-        chosen_answers = Answer.objects.filter(question_id=self.object.question.id).all()
+        all_answers = Answer.objects.filter(question_id=self.object.question.id).all()
+        chosen_answers = recursive_filtering_chosen_answers(self.object, all_answers)
         child_child_list, child_id_list = recursive_rule_child_chain(self.object)
-        
+
         # remove rule strings for this rule and all child rules from all applied answers
-        remove_rule_strings(child_id_list + [self.object.id], child_child_list + [self.object], chosen_answers)  
-        keywordrule_update(self.object, form.cleaned_data['keyword'], form.cleaned_data['similarity_threshold'], chosen_answers, self.object.question)
+        remove_rule_strings(child_id_list + [self.object.id], child_child_list + [self.object], all_answers)  
+        keywordrule_update(self.object, form.cleaned_data['keyword'], form.cleaned_data['similarity_threshold'], chosen_answers, self.object.question)  
+        update_all_children_rules(child_child_list, chosen_answers, self.object.question)  
 
         return super().form_valid(form) 

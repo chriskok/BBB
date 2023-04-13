@@ -161,7 +161,8 @@
                         <br>
                         {% for subrule in rule.rule_set.all %}
                         <p class="mt-1" style='margin: 0; padding: 0;'>--<span style="background-color:{{ color_to_rule|get_item:subrule.id }}">
-                            {{subrule}} (n: {{subrule.answer_set.all.count}})
+                            {% if subrule.polymorphic_ctype.name == "keyword rule" %}<a href="{% url 'keywordrule_update' subrule.pk %}" class="text-dark">{{subrule}}</a>
+                            {% else %}{{subrule}}{% endif %} (n: {{subrule.answer_set.all.count}})
                         </span></p>
                             {% for subsubrule in subrule.rule_set.all %}
                             <p class="mt-1" style='margin: 0; padding: 0;'>----<span style="background-color:{{ color_to_rule|get_item:subsubrule.id }}">
