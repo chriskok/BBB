@@ -24,13 +24,20 @@ warnings.filterwarnings("ignore")
 #               RULE HELPERS                #
 #############################################
 
-def recursive_sort_rule_strings(rule_strings):
-    print(rule_strings)
+def find_element(x, lst):
+    res = [i for i, curr_list in enumerate(lst) if curr_list[0] == x]
+    return res[0] if res else -1
 
 def add_rule_string(answer, new_rule, rule_string):
     answer.applied_rules.add(new_rule)
     curr_rule_strings = answer.get_rule_strings()
-    curr_rule_strings.append((new_rule.id, rule_string))
+
+    # If this new rule has a parent, append it right after the parent to preserve order
+    if (new_rule.parent): 
+        parent_id = new_rule.parent.id
+        curr_rule_strings.insert(find_element(parent_id, curr_rule_strings)+1, (new_rule.id, rule_string))
+    else:
+        curr_rule_strings.append((new_rule.id, rule_string))
     answer.set_rule_strings(curr_rule_strings)
     answer.save()
 
