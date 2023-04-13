@@ -302,7 +302,7 @@ def update_all_children_rules(child_child_list, chosen_answers, question):
 class KeywordRuleUpdateView(UpdateView):
     model = KeywordRule
     fields = ['keyword', 'similarity_threshold']
-    template_name = 'generic_views/keywordrule_update.html'
+    template_name = 'generic_views/rule_update.html'
 
     def get_success_url(self):
         return reverse_lazy('building_blocks', kwargs={'q_id': self.object.question.id})
@@ -315,6 +315,47 @@ class KeywordRuleUpdateView(UpdateView):
         # remove rule strings for this rule and all child rules from all applied answers
         remove_rule_strings(child_id_list + [self.object.id], child_child_list + [self.object], all_answers)  
         keywordrule_update(self.object, form.cleaned_data['keyword'], form.cleaned_data['similarity_threshold'], chosen_answers, self.object.question)  
+        update_all_children_rules(child_child_list, chosen_answers, self.object.question)  
+
+        return super().form_valid(form) 
+
+class SentenceSimilarityRuleUpdateView(UpdateView):
+    model = SentenceSimilarityRule
+    fields = ['sentence', 'similarity_threshold']
+    template_name = 'generic_views/rule_update.html'
+
+    def get_success_url(self):
+        return reverse_lazy('building_blocks', kwargs={'q_id': self.object.question.id})
+
+    def form_valid(self, form):
+        all_answers = Answer.objects.filter(question_id=self.object.question.id).all()
+        chosen_answers = recursive_filtering_chosen_answers(self.object, all_answers)
+        child_child_list, child_id_list = recursive_rule_child_chain(self.object)
+
+        # remove rule strings for this rule and all child rules from all applied answers
+        remove_rule_strings(child_id_list + [self.object.id], child_child_list + [self.object], all_answers)  
+        sentencesimilarityrule_update(self.object, form.cleaned_data['sentence'], form.cleaned_data['similarity_threshold'], self.object.method, chosen_answers, self.object.question)  
+        update_all_children_rules(child_child_list, chosen_answers, self.object.question)  
+
+        return super().form_valid(form) 
+
+
+class AnswerLengthRuleUpdateView(UpdateView):
+    model = AnswerLengthRule
+    fields = ['length', 'length_type']
+    template_name = 'generic_views/rule_update.html'
+
+    def get_success_url(self):
+        return reverse_lazy('building_blocks', kwargs={'q_id': self.object.question.id})
+
+    def form_valid(self, form):
+        all_answers = Answer.objects.filter(question_id=self.object.question.id).all()
+        chosen_answers = recursive_filtering_chosen_answers(self.object, all_answers)
+        child_child_list, child_id_list = recursive_rule_child_chain(self.object)
+
+        # remove rule strings for this rule and all child rules from all applied answers
+        remove_rule_strings(child_id_list + [self.object.id], child_child_list + [self.object], all_answers)  
+        answerlengthrule_update(self.object, form.cleaned_data['length'], form.cleaned_data['length_type'], chosen_answers, self.object.question)  
         update_all_children_rules(child_child_list, chosen_answers, self.object.question)  
 
         return super().form_valid(form) 

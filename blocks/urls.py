@@ -14,4 +14,6 @@ urlpatterns = [
 
     # GENERIC
     path("keywordrule_update/<pk>", views.KeywordRuleUpdateView.as_view(), name="keywordrule_update"),
+    path("sentencesimilarityrule_update/<pk>", views.SentenceSimilarityRuleUpdateView.as_view(), name="sentencesimilarityrule_update"),
+    path("answerlengthrule_update/<pk>", views.AnswerLengthRuleUpdateView.as_view(), name="answerlengthrule_update"), 
 ]
