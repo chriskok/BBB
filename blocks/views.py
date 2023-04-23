@@ -177,7 +177,7 @@ def building_blocks_view(request, q_id, filter=None):
         current_question_obj = Question.objects.first()
         q_id = current_question_obj.id
 
-    chosen_answers = Answer.objects.filter(question_id=q_id)
+    chosen_answers = Answer.objects.filter(question_id=q_id).order_by('outlier_score')
     answer_count = len(chosen_answers)
     # NOTE: maybe instead of AND, OR, and NOT, we can just either apply a sequential filter or allow MERGING (with logic gates)
 
