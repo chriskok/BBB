@@ -59,6 +59,7 @@ class Answer(models.Model):
     applied_rules = models.ManyToManyField(Rule, default=None)
 
     rule_strings = models.CharField(max_length=1000, default="[]")  
+    outlier_score = models.FloatField(default=0.0)
 
     # https://stackoverflow.com/questions/22340258/list-field-in-model
     def set_rule_strings(self, x):
