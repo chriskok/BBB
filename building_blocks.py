@@ -81,11 +81,12 @@ def get_synset_count(cleaned_data, keyword):
     for synset in get_synsets(keyword):
         synset_count[synset] = 0
     for idx, data_row in enumerate(data):
-        curr_synset = simple_lesk(data_row, keyword)
-        if curr_synset in synset_count:
-            synset_count[curr_synset] += 1
-        else:
-            synset_count[curr_synset] = 1
+        if keyword in data_row:
+            curr_synset = simple_lesk(data_row, keyword)
+            if curr_synset in synset_count:
+                synset_count[curr_synset] += 1
+            else:
+                synset_count[curr_synset] = 1
     
     # sort synset_count by value
     synset_count = {k: v for k, v in sorted(synset_count.items(), key=lambda item: item[1], reverse=True)}
