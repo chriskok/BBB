@@ -3,9 +3,10 @@ import pandas as pd
 import re
 
 import nltk
-nltk.download('wordnet')
-nltk.download('omw-1.4')
+# nltk.download('wordnet')
+# nltk.download('omw-1.4')
 from nltk.corpus import wordnet
+from nltk.wsd import lesk
 
 import spacy
 from spacy import displacy
@@ -21,7 +22,7 @@ from transformers import pipeline
 nlp = spacy.load('en_core_web_lg')  # if not downloaded, run: python -m spacy download en_core_web_lg
 modelPath = 'all-MiniLM-L6-v2'
 model = SentenceTransformer(modelPath)
-sentiment_pipeline = pipeline("sentiment-analysis")  # TODO: download locally so we can run the app without Wi-Fi
+# sentiment_pipeline = pipeline("sentiment-analysis")  # TODO: download locally so we can run the app without Wi-Fi
 
 # ================================== #
 #            PREPROCESSING           #
@@ -59,6 +60,12 @@ def get_synonyms(keyword):
         for lm in syn.lemmas():
             synonyms.append(lm.name().replace('_', " "))  # adding into synonyms
     return list(set(synonyms))
+
+def get_definitions(keyword):
+    definitions = []
+    for syn in wordnet.synsets(keyword):
+        definitions.append(syn.definition())
+    return list(set(definitions))
 
 def similar_keyword_slow(df, keyword, sim_score_threshold=0.7, n_return_threshold=None):
     synonyms = get_synonyms(keyword) # TODO: use synonyms on top of nlp sim score

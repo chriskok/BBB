@@ -334,6 +334,8 @@ class KeywordRuleUpdateView(UpdateView):
             word_similarities[token] = curr_sim
 
         context['word_similarities'] = word_similarities
+        context['definitions'] = bb.get_definitions(self.object.keyword)
+        context['synonyms'] = bb.get_synonyms(self.object.keyword)
         context['similarity_threshold'] = self.object.similarity_threshold
         return context
 
