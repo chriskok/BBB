@@ -5,8 +5,10 @@ import re
 import nltk
 # nltk.download('wordnet')
 # nltk.download('omw-1.4')
+# nltk.download('popular')
 from nltk.corpus import wordnet
 from nltk.wsd import lesk
+from pywsd.lesk import simple_lesk
 
 import spacy
 from spacy import displacy
@@ -79,8 +81,7 @@ def get_synset_count(cleaned_data, keyword):
     for synset in get_synsets(keyword):
         synset_count[synset] = 0
     for idx, data_row in enumerate(data):
-        print(data_row)
-        curr_synset = lesk(data_row, keyword)
+        curr_synset = simple_lesk(data_row, keyword)
         if curr_synset in synset_count:
             synset_count[curr_synset] += 1
         else:
@@ -153,7 +154,7 @@ def similar_keyword(df, keyword, sim_score_threshold=0.7, n_return_threshold=Non
 
     matching_words = []
     for idx, data_row in enumerate(data):
-        words_in_this_row = str(data_row).lower().replace('[^\w\s]','').split()
+        words_in_this_row = str(data_row).lower().split()
 
         # for each word in words_in_this_row, find the most similar word in word_similarities
         best_word = ""
@@ -266,20 +267,20 @@ def filter_by_negation(df, is_negative=True):
 
     return df[df['negation_check'] == is_negative] 
 
-# Building Block 5 - Sentiment Analysis
-def sentiment_analysis(df, label = "POSITIVE", score_threshold=0.7):
-    sentences = df["answer_text"].apply(str).tolist()
+# # Building Block 5 - Sentiment Analysis
+# def sentiment_analysis(df, label = "POSITIVE", score_threshold=0.7):
+#     sentences = df["answer_text"].apply(str).tolist()
 
-    sentiments = sentiment_pipeline(sentences)
-    for idx, sent in enumerate(sentiments):
-        for column_name in df.columns:
-            if (column_name == 'label'): continue
-            sent[column_name] = df.iloc[idx][column_name]
+#     sentiments = sentiment_pipeline(sentences)
+#     for idx, sent in enumerate(sentiments):
+#         for column_name in df.columns:
+#             if (column_name == 'label'): continue
+#             sent[column_name] = df.iloc[idx][column_name]
 
-    return_df = pd.DataFrame([x for x in sentiments if x['label'] == label.upper()])
-    if(not return_df.empty): return_df = return_df[return_df['score'] > score_threshold] 
+#     return_df = pd.DataFrame([x for x in sentiments if x['label'] == label.upper()])
+#     if(not return_df.empty): return_df = return_df[return_df['score'] > score_threshold] 
 
-    return return_df
+#     return return_df
 
 # Building Block 6 - Specific Named Entities
 def get_named_entities(sentence_index, sentences):
