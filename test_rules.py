@@ -2,7 +2,7 @@ from nltk.wsd import lesk
 from nltk.corpus import wordnet as wn
 from itertools import product
 
-sent1 = "Because then we can reuse them in different areas, rather than hardcoding them to one area."
+sent1 = "Because then we can them in different areas, rather than hardcoding them to one area."
 sent2 = "They can help create designs that will be consistent across different pages or projects."
 
 print(lesk(sent1, 'reuse'))

@@ -67,6 +67,41 @@ def get_definitions(keyword):
         definitions.append(syn.definition())
     return list(set(definitions))
 
+def get_synsets(keyword):
+    synsets = []
+    for syn in wordnet.synsets(keyword):
+        synsets.append(syn)
+    return list(set(synsets))
+
+def get_synset_count(cleaned_data, keyword):
+    data = cleaned_data.apply(str).tolist()
+    synset_count = {}
+    for synset in get_synsets(keyword):
+        synset_count[synset] = 0
+    for idx, data_row in enumerate(data):
+        print(data_row)
+        curr_synset = lesk(data_row, keyword)
+        if curr_synset in synset_count:
+            synset_count[curr_synset] += 1
+        else:
+            synset_count[curr_synset] = 1
+    
+    # sort synset_count by value
+    synset_count = {k: v for k, v in sorted(synset_count.items(), key=lambda item: item[1], reverse=True)}
+    return synset_count
+
+def get_word_similarities(cleaned_data, keyword):
+    unique_words = set([keyword])
+    cleaned_data.str.split().apply(unique_words.update)
+    unique_words_as_str = keyword.lower() + " " + ' '.join(unique_words)
+    tokens = nlp(unique_words_as_str)
+    word_similarities = {}
+    for token in tokens[1:]:
+        curr_sim = tokens[0].similarity(token)
+        word_similarities[str(token)] = curr_sim
+
+    return word_similarities
+
 def similar_keyword_slow(df, keyword, sim_score_threshold=0.7, n_return_threshold=None):
     synonyms = get_synonyms(keyword) # TODO: use synonyms on top of nlp sim score
 
@@ -110,19 +145,11 @@ def similar_keyword_slow(df, keyword, sim_score_threshold=0.7, n_return_threshol
     return return_df
 
 def similar_keyword(df, keyword, sim_score_threshold=0.7, n_return_threshold=None):
-    synonyms = get_synonyms(keyword) # TODO: use synonyms on top of nlp sim score
 
     cleaned_data = df['answer_text'].str.lower().str.replace('[^\w\s]','')
     data = cleaned_data.apply(str).tolist()
 
-    unique_words = set([keyword])
-    cleaned_data.str.split().apply(unique_words.update)
-    unique_words_as_str = keyword.lower() + " " + ' '.join(unique_words)
-    tokens = nlp(unique_words_as_str)
-    word_similarities = {}
-    for token in tokens[1:]:
-        curr_sim = tokens[0].similarity(token)
-        word_similarities[str(token)] = curr_sim
+    word_similarities = get_word_similarities(cleaned_data, keyword)
 
     matching_words = []
     for idx, data_row in enumerate(data):

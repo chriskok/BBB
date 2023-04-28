@@ -323,18 +323,9 @@ class KeywordRuleUpdateView(UpdateView):
         all_answers = Answer.objects.filter(question_id=self.object.question.id).all()
         df = pd.DataFrame(list(all_answers.values()))
 
-        # TODO: Implement this same optimization to building_blocks.py "similar_keyword" --> get all the keyword similarity weights first and THEN parse
-        unique_words = set([self.object.keyword])
-        df['answer_text'].str.lower().str.replace('[^\w\s]','').str.split().apply(unique_words.update)
-        unique_words_as_str = self.object.keyword.lower() + " " + ' '.join(unique_words)
-        tokens = nlp(unique_words_as_str)
-        word_similarities = {}
-        for token in tokens[1:]:
-            curr_sim = tokens[0].similarity(token)
-            word_similarities[token] = curr_sim
-
-        context['word_similarities'] = word_similarities
-        context['definitions'] = bb.get_definitions(self.object.keyword)
+        cleaned_data = df['answer_text'].str.lower().str.replace('[^\w\s]','')
+        context['word_similarities'] = bb.get_word_similarities(cleaned_data, self.object.keyword) 
+        context['synset_count'] = bb.get_synset_count(cleaned_data, self.object.keyword)
         context['synonyms'] = bb.get_synonyms(self.object.keyword)
         context['similarity_threshold'] = self.object.similarity_threshold
         return context

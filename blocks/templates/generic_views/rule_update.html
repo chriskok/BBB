@@ -27,8 +27,8 @@
 		  <div class="col-sm">
 			<h3>Keyword Definitions</h3>
 			<ul>
-			{% for definition in definitions %}
-				<li>{{ definition }}</li>
+			{% for synset, count in synset_count.items %}
+				<li>{% if count > 0 %}<b>{{ synset.definition }}</b> [count: {{count}}]{% else %}{{ synset.definition }}{% endif %}</li>
 			{% endfor %}
 		  </div>
 		  <div class="col-sm">
