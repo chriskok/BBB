@@ -1,5 +1,6 @@
 
 import pandas as pd
+import re
 
 import nltk
 nltk.download('wordnet')
@@ -59,7 +60,7 @@ def get_synonyms(keyword):
             synonyms.append(lm.name().replace('_', " "))  # adding into synonyms
     return list(set(synonyms))
 
-def similar_keyword(df, keyword, sim_score_threshold=0.7, n_return_threshold=None):
+def similar_keyword_slow(df, keyword, sim_score_threshold=0.7, n_return_threshold=None):
     synonyms = get_synonyms(keyword) # TODO: use synonyms on top of nlp sim score
 
     data = df["answer_text"].apply(str).tolist()
@@ -95,6 +96,46 @@ def similar_keyword(df, keyword, sim_score_threshold=0.7, n_return_threshold=Non
     # for match in matching_words[0:5]:
     #     i = match['index']
     #     print("Score: {:.4f} - Word: {} - Sentence: {} (file: {})\n".format(match['score'], match['word'], match["answer_text"], match['student_id']))
+    
+    return_df = pd.DataFrame(matching_words)
+    if(not return_df.empty): return_df = return_df[return_df['score'] >= sim_score_threshold] 
+
+    return return_df
+
+def similar_keyword(df, keyword, sim_score_threshold=0.7, n_return_threshold=None):
+    synonyms = get_synonyms(keyword) # TODO: use synonyms on top of nlp sim score
+
+    cleaned_data = df['answer_text'].str.lower().str.replace('[^\w\s]','')
+    data = cleaned_data.apply(str).tolist()
+
+    unique_words = set([keyword])
+    cleaned_data.str.split().apply(unique_words.update)
+    unique_words_as_str = keyword.lower() + " " + ' '.join(unique_words)
+    tokens = nlp(unique_words_as_str)
+    word_similarities = {}
+    for token in tokens[1:]:
+        curr_sim = tokens[0].similarity(token)
+        word_similarities[str(token)] = curr_sim
+
+    matching_words = []
+    for idx, data_row in enumerate(data):
+        words_in_this_row = str(data_row).lower().replace('[^\w\s]','').split()
+
+        # for each word in words_in_this_row, find the most similar word in word_similarities
+        best_word = ""
+        best_score = 0.0
+        for word in words_in_this_row:
+            if word in word_similarities:
+                if word_similarities[word] > best_score:
+                    best_score = word_similarities[word]
+                    best_word = word
+
+        matching_words.append({'index': idx, 'word': best_word, 'score': best_score, 'student_id': df.iloc[idx]['student_id'],
+            "answer_text": df.iloc[idx]["answer_text"], 'assigned_grade': df.iloc[idx]['assigned_grade']})
+    
+    matching_words = sorted(matching_words, key=lambda x: x['score'], reverse=True)
+
+    if(n_return_threshold): matching_words = matching_words[0:n_return_threshold]
     
     return_df = pd.DataFrame(matching_words)
     if(not return_df.empty): return_df = return_df[return_df['score'] >= sim_score_threshold] 
