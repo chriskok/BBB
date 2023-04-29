@@ -424,8 +424,8 @@ def main():
     filtered_df = filter_by_negation(df)
     write_results(filtered_df, 'filtered_by_negation')
 
-    sen_ana_df = sentiment_analysis(df, "POSITIVE")
-    write_results(sen_ana_df, 'filtered_by_positive_sentiment')
+    # sen_ana_df = sentiment_analysis(df, "POSITIVE")
+    # write_results(sen_ana_df, 'filtered_by_positive_sentiment')
 
     # get_named_entities(0, ["The Indian Space Research Organisation or is the national space agency of India, headquartered in Bengaluru."])
     # get_named_entities(0, data_list)
