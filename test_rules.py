@@ -72,16 +72,12 @@ sentence_set = [' '.join([word for word in sentence.split() if word not in stop_
 
 # identify all common words in the sentences
 common_words = set.intersection(*map(set, map(str.split, sentence_set)))
-print(common_words)
-
-# identify all parts of speech in the sentences
-pos_set = [nltk.pos_tag(word_tokenize(sentence.lower())) for sentence in ori_sentence_set]
-print(pos_set)
+print(f"common_words: {common_words}")
 
 # get stems of words in common_words
 stemmer = nltk.stem.PorterStemmer()
 stemmed_common_words = [stemmer.stem(word) for word in common_words]
-print(stemmed_common_words)
+print(f"stemmed_common_words: {stemmed_common_words}")
 
 # get synonyms of words in common_words
 synonyms = []
@@ -90,13 +86,78 @@ for word in common_words:
         for l in syn.lemmas():
             synonyms.append(l.name())
 synonyms = set(synonyms)
-print(synonyms)
+print(f"synonyms: {synonyms}")
 
 # get named entities in the sentences
 named_entities = []
 for sentence in ori_sentence_set:
     for chunk in nltk.ne_chunk(nltk.pos_tag(word_tokenize(sentence))):
         if hasattr(chunk, 'label'):
-            named_entities.append(' '.join(c[0] for c in chunk))
+            named_entities.append((' '.join(c[0] for c in chunk), chunk.label()))
 named_entities = set(named_entities)
-print(named_entities)
+named_entities = dict((x, y) for x, y in named_entities)
+print(f"named_entities: {named_entities}")
+
+# recursively process the next string in the list
+patterns = {}
+pattern_limit = 2
+
+def add_pattern(pattern):
+    if pattern in patterns:
+        patterns[pattern] += 1
+    else:
+        patterns[pattern] = 1
+
+def process_next_string(word, tag, pos_set, ori_i, i, current_pattern):
+    
+    # stop if we've reached the end of the list
+    if i == len(pos_set) - 1:
+        return current_pattern
+    
+    # stop if we've reached the pattern limit
+    if i - ori_i > pattern_limit:
+        return current_pattern
+    
+    word_l = word.lower()
+    
+    # check if word in common words (or a stem of that)
+    if stemmer.stem(word_l) in stemmed_common_words:
+        new_pattern_and = f"[{word_l}]" if current_pattern == "" else current_pattern + "+" + f"[{word_l}]"
+        new_pattern_or = f"[{word_l}]" if current_pattern == "" else current_pattern + "|" + f"[{word_l}]"
+        for pattern in [new_pattern_and, new_pattern_or]:
+            add_pattern(pattern)
+            process_next_string(pos_set[i + 1][0], pos_set[i + 1][1], pos_set, ori_i, i + 1, pattern)
+
+    # check if word is a synonym of a common word
+    if word_l in synonyms:
+        new_pattern_and = f"({word_l})" if current_pattern == "" else current_pattern + "+" + f"({word_l})"
+        new_pattern_or = f"({word_l})" if current_pattern == "" else current_pattern + "|" + f"({word_l})"
+        for pattern in [new_pattern_and, new_pattern_or]:
+            add_pattern(pattern)
+            process_next_string(pos_set[i + 1][0], pos_set[i + 1][1], pos_set, ori_i, i + 1, pattern)
+
+    # check if word is a named entity
+    if word in named_entities:
+        new_pattern_and = f"({word})" if current_pattern == "" else current_pattern + "+" + f"({word})"
+        new_pattern_or = f"({word})" if current_pattern == "" else current_pattern + "|" + f"({word})"
+        new_pattern_label_and = f"${named_entities[word]}" if current_pattern == "" else current_pattern + "+" + f"${named_entities[word]}"
+        new_pattern_label_or = f"${named_entities[word]}" if current_pattern == "" else current_pattern + "|" + f"${named_entities[word]}"
+        for pattern in [new_pattern_and, new_pattern_or, new_pattern_label_and, new_pattern_label_or]:
+            add_pattern(pattern)
+            process_next_string(pos_set[i + 1][0], pos_set[i + 1][1], pos_set, ori_i, i + 1, pattern)
+
+    # check if word
+    # if tag in patterns:
+    #     patterns[tag].append(word)
+    # else:
+    #     patterns[tag] = [word]
+
+# identify all parts of speech in the sentences
+pos_set = [nltk.pos_tag(word_tokenize(sentence)) for sentence in ori_sentence_set]
+
+# iterate through the pos_set to build patterns for matching
+for pos in pos_set:
+    for i, (word, tag) in enumerate(pos):
+        process_next_string(word, tag, pos, i, i, "")
+
+print(patterns)
