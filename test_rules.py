@@ -8,6 +8,7 @@ from pywsd.lesk import simple_lesk
 from pywsd import disambiguate
 from pywsd.similarity import max_similarity as maxsim
 import re
+stemmer = nltk.stem.PorterStemmer()
 
 # ================================== #
 #          KEYWORD MATCHING          #
@@ -63,40 +64,46 @@ ori_sentence_set = ['We can change a Google page without reloading it and send, 
                 'We want to be able to make changes to a Google page without reloading it every time. We also want to send, request, and receive data from an AWS server without blocking the interface.', 
                 'It changes the Google page without reloading it and can send, request and receive data without blocking the rest of the interface']
 
-# clean sentences (lowercase, remove punctuation)
-sentence_set = [re.sub(r'[^\w\s]', '', sentence.lower()) for sentence in ori_sentence_set]
+negative_sentence_set = ['This allows for multiple tasks to run at the same time.',
+                         'This is to allow other components when showing the webpage does not get blocked by operations that require long time.',
+                         'This way you dont have to wait for things to happen to update other separate parts of a webpage/app.']
 
-# remove stopwords with nltk
-stop_words = set(stopwords.words('english'))
-sentence_set = [' '.join([word for word in sentence.split() if word not in stop_words]) for sentence in sentence_set]
+def process_sentences(ori_sentence_set, verbose=False):
+    # clean sentences (lowercase, remove punctuation)
+    sentence_set = [re.sub(r'[^\w\s]', '', sentence.lower()) for sentence in ori_sentence_set]
 
-# identify all common words in the sentences
-common_words = set.intersection(*map(set, map(str.split, sentence_set)))
-print(f"common_words: {common_words}")
+    # remove stopwords with nltk
+    stop_words = set(stopwords.words('english'))
+    sentence_set = [' '.join([word for word in sentence.split() if word not in stop_words]) for sentence in sentence_set]
 
-# get stems of words in common_words
-stemmer = nltk.stem.PorterStemmer()
-stemmed_common_words = [stemmer.stem(word) for word in common_words]
-print(f"stemmed_common_words: {stemmed_common_words}")
+    # identify all common words in the sentences
+    common_words = set.intersection(*map(set, map(str.split, sentence_set)))
+    if(verbose): print(f"common_words: {common_words}")
 
-# get synonyms of words in common_words
-synonyms = []
-for word in common_words:
-    for syn in wn.synsets(word):
-        for l in syn.lemmas():
-            synonyms.append(l.name())
-synonyms = set(synonyms)
-print(f"synonyms: {synonyms}")
+    # get stems of words in common_words
+    stemmed_common_words = [stemmer.stem(word) for word in common_words]
+    if(verbose): print(f"stemmed_common_words: {stemmed_common_words}")
 
-# get named entities in the sentences
-named_entities = []
-for sentence in ori_sentence_set:
-    for chunk in nltk.ne_chunk(nltk.pos_tag(word_tokenize(sentence))):
-        if hasattr(chunk, 'label'):
-            named_entities.append((' '.join(c[0] for c in chunk), chunk.label()))
-named_entities = set(named_entities)
-named_entities = dict((x, y) for x, y in named_entities)
-print(f"named_entities: {named_entities}")
+    # get synonyms of words in common_words
+    synonyms = []
+    for word in common_words:
+        for syn in wn.synsets(word):
+            for l in syn.lemmas():
+                synonyms.append(l.name())
+    synonyms = set(synonyms)
+    if(verbose): print(f"synonyms: {synonyms}")
+
+    # get named entities in the sentences
+    named_entities = []
+    for sentence in ori_sentence_set:
+        for chunk in nltk.ne_chunk(nltk.pos_tag(word_tokenize(sentence))):
+            if hasattr(chunk, 'label'):
+                named_entities.append((' '.join(c[0] for c in chunk), chunk.label()))
+    named_entities = set(named_entities)
+    named_entities = dict((x, y) for x, y in named_entities)
+    if(verbose): print(f"named_entities: {named_entities}")
+
+    return sentence_set, common_words, stemmed_common_words, synonyms, named_entities
 
 # recursively process the next string in the list
 patterns = {}
@@ -154,6 +161,8 @@ def process_next_string(word, tag, pos_set, ori_i, i, current_pattern):
 
 # identify all parts of speech in the sentences
 pos_set = [nltk.pos_tag(word_tokenize(sentence)) for sentence in ori_sentence_set]
+sentence_set, common_words, stemmed_common_words, synonyms, named_entities = process_sentences(ori_sentence_set)
+n_sentence_set, n_common_words, n_stemmed_common_words, n_synonyms, n_named_entities = process_sentences(negative_sentence_set)
 
 # iterate through the pos_set to build patterns for matching
 for pos in pos_set:
