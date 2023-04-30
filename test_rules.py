@@ -64,9 +64,10 @@ ori_sentence_set = ['We can change a Google page without reloading it and send, 
                 'We want to be able to make changes to a Google page without reloading it every time. We also want to send, request, and receive data from an AWS server without blocking the interface.', 
                 'It changes the Google page without reloading it and can send, request and receive data without blocking the rest of the interface']
 
-negative_sentence_set = ['This allows for multiple tasks to run at the same time.',
-                         'This is to allow other components when showing the webpage does not get blocked by operations that require long time.',
-                         'This way you dont have to wait for things to happen to update other separate parts of a webpage/app.']
+negative_sentence_set = ['This is to allow other components when showing the webpage does not get blocked by operations that require long time.',]
+# negative_sentence_set = ['This allows for multiple tasks to run at the same time.',
+#                          'This is to allow other components when showing the webpage does not get blocked by operations that require long time.',
+#                          'This way you dont have to wait for things to happen to update other separate parts of a webpage/app.']
 
 def process_sentences(ori_sentence_set, verbose=False):
     # clean sentences (lowercase, remove punctuation)
@@ -107,13 +108,13 @@ def process_sentences(ori_sentence_set, verbose=False):
 
 # recursively process the next string in the list
 patterns = {}
-pattern_limit = 2
+pattern_limit = 3
 
-def add_pattern(pattern):
+def add_pattern(pattern, depth, negative=False):
     if pattern in patterns:
-        patterns[pattern] += 1
+        patterns[pattern] += 1 * (depth * 0.5) if not negative else -2 * (depth * 0.5)
     else:
-        patterns[pattern] = 1
+        patterns[pattern] = 1 * (depth * 0.5) if not negative else -2 * (depth * 0.5)
 
 def process_next_string(word, tag, pos_set, ori_i, i, current_pattern):
     
@@ -122,7 +123,8 @@ def process_next_string(word, tag, pos_set, ori_i, i, current_pattern):
         return current_pattern
     
     # stop if we've reached the pattern limit
-    if i - ori_i > pattern_limit:
+    curr_depth = i - ori_i + 1
+    if curr_depth > pattern_limit:
         return current_pattern
     
     word_l = word.lower()
@@ -132,7 +134,14 @@ def process_next_string(word, tag, pos_set, ori_i, i, current_pattern):
         new_pattern_and = f"[{word_l}]" if current_pattern == "" else current_pattern + "+" + f"[{word_l}]"
         new_pattern_or = f"[{word_l}]" if current_pattern == "" else current_pattern + "|" + f"[{word_l}]"
         for pattern in [new_pattern_and, new_pattern_or]:
-            add_pattern(pattern)
+            add_pattern(pattern, curr_depth)
+            process_next_string(pos_set[i + 1][0], pos_set[i + 1][1], pos_set, ori_i, i + 1, pattern)
+    
+    if stemmer.stem(word_l) in n_stemmed_common_words:
+        new_pattern_and = f"[{word_l}]" if current_pattern == "" else current_pattern + "+" + f"[{word_l}]"
+        new_pattern_or = f"[{word_l}]" if current_pattern == "" else current_pattern + "|" + f"[{word_l}]"
+        for pattern in [new_pattern_and, new_pattern_or]:
+            add_pattern(pattern, curr_depth, negative=True)
             process_next_string(pos_set[i + 1][0], pos_set[i + 1][1], pos_set, ori_i, i + 1, pattern)
 
     # check if word is a synonym of a common word
@@ -140,7 +149,14 @@ def process_next_string(word, tag, pos_set, ori_i, i, current_pattern):
         new_pattern_and = f"({word_l})" if current_pattern == "" else current_pattern + "+" + f"({word_l})"
         new_pattern_or = f"({word_l})" if current_pattern == "" else current_pattern + "|" + f"({word_l})"
         for pattern in [new_pattern_and, new_pattern_or]:
-            add_pattern(pattern)
+            add_pattern(pattern, curr_depth)
+            process_next_string(pos_set[i + 1][0], pos_set[i + 1][1], pos_set, ori_i, i + 1, pattern)
+
+    if word_l in n_synonyms:
+        new_pattern_and = f"({word_l})" if current_pattern == "" else current_pattern + "+" + f"({word_l})"
+        new_pattern_or = f"({word_l})" if current_pattern == "" else current_pattern + "|" + f"({word_l})"
+        for pattern in [new_pattern_and, new_pattern_or]:
+            add_pattern(pattern, curr_depth, negative=True)
             process_next_string(pos_set[i + 1][0], pos_set[i + 1][1], pos_set, ori_i, i + 1, pattern)
 
     # check if word is a named entity
@@ -150,7 +166,16 @@ def process_next_string(word, tag, pos_set, ori_i, i, current_pattern):
         new_pattern_label_and = f"${named_entities[word]}" if current_pattern == "" else current_pattern + "+" + f"${named_entities[word]}"
         new_pattern_label_or = f"${named_entities[word]}" if current_pattern == "" else current_pattern + "|" + f"${named_entities[word]}"
         for pattern in [new_pattern_and, new_pattern_or, new_pattern_label_and, new_pattern_label_or]:
-            add_pattern(pattern)
+            add_pattern(pattern, curr_depth)
+            process_next_string(pos_set[i + 1][0], pos_set[i + 1][1], pos_set, ori_i, i + 1, pattern)
+
+    if word in n_named_entities:
+        new_pattern_and = f"({word})" if current_pattern == "" else current_pattern + "+" + f"({word})"
+        new_pattern_or = f"({word})" if current_pattern == "" else current_pattern + "|" + f"({word})"
+        new_pattern_label_and = f"${named_entities[word]}" if current_pattern == "" else current_pattern + "+" + f"${named_entities[word]}"
+        new_pattern_label_or = f"${named_entities[word]}" if current_pattern == "" else current_pattern + "|" + f"${named_entities[word]}"
+        for pattern in [new_pattern_and, new_pattern_or, new_pattern_label_and, new_pattern_label_or]:
+            add_pattern(pattern, curr_depth, negative=True)
             process_next_string(pos_set[i + 1][0], pos_set[i + 1][1], pos_set, ori_i, i + 1, pattern)
 
     # check if word
@@ -169,4 +194,6 @@ for pos in pos_set:
     for i, (word, tag) in enumerate(pos):
         process_next_string(word, tag, pos, i, i, "")
 
+# sort patterns dictionary by value
+patterns = {k: v for k, v in sorted(patterns.items(), key=lambda item: item[1], reverse=True)}
 print(patterns)
