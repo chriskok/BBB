@@ -19,6 +19,8 @@ class Rule(PolymorphicModel):
     question = models.ForeignKey(Question, on_delete=models.CASCADE, default=None, null=True, blank=True)
     parent = models.ForeignKey('self', on_delete=models.CASCADE, default=None, null=True, blank=True)
     polarity = models.CharField(max_length=200, default="positive", null=True, blank=True)
+    positive_examples = models.CharField(max_length=1000, default="[]")
+    negative_examples = models.CharField(max_length=1000, default="[]")
 
 def get_polarity_emoji(polarity):
     return "✔️" if polarity == "positive" else "❌"
@@ -26,7 +28,7 @@ def get_polarity_emoji(polarity):
 class KeywordRule(Rule):
     keyword = models.CharField(max_length=200)
     similarity_threshold = models.FloatField(default=1.0, null=True, blank=True)
-    relevant_keywords = models.CharField(max_length=1000, default="[]")  
+    relevant_keywords = models.CharField(max_length=1000, default="[]")  \
 
     # https://stackoverflow.com/questions/22340258/list-field-in-model
     def set_relevant_keywords(self, x):

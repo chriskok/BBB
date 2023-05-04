@@ -56,8 +56,21 @@
                         <div class="col-sm-9">
                         </div>
                     </div>
+
                 </div>
                 <div class="card-footer">
+                    
+                    <div class="example_buttons">
+                        <div class="btn-group-toggle d-flex justify-content-center" data-toggle="buttons">
+                            <label class="btn btn-sm btn-success mx-1">
+                                <input type="checkbox" autocomplete="off" id="positive_{{ answer.id }}" value="{{ answer.id }}">➕
+                            </label>
+                            <label class="btn btn-sm btn-danger mx-1">
+                                <input type="checkbox" autocomplete="off" id="negative_{{ answer.id }}" value="{{ answer.id }}">➖
+                            </label>
+                        </div>
+                    </div>
+
                     {% if answer.rule_strings != "[]" %}
                         {% for rule in answer.get_rule_strings %}
                         <button type="button" style="background-color:{{ color_to_rule|get_item:rule.0 }}; color:DarkSlateGray;" 
@@ -221,22 +234,76 @@
         });
 
         // hide all the divs
-        $('.rule_input_div').hide()
+        $('.rule_input_div').hide();
+        $('.example_buttons').hide();
 
         // Show and hide selected div
         $('#id_rule_type_selection').change(function () {
             var value = this.value;
 
-            console.log(value);
-
-            $('.rule_input_div').hide()
+            $('.rule_input_div').hide();
+            $('.example_buttons').hide();
             $('#' + this.value).show();
+
             if (value != "pick") {$('#all_rules').show()};
+            if (value == "keyword_rule" || value == "sentence_rule") {$('.example_buttons').show()};
         });
 
         $(function () {
             $('[data-toggle="tooltip"]').tooltip()
         })
+
+        const positive_examples = [];
+        const negative_examples = [];
+
+        function addBorders(card_body, button_id, current_value){
+            if (button_id.startsWith('negative')){
+                if (card_body.hasClass('border-3')) {
+                    card_body.removeClass('border-danger');
+                    card_body.removeClass('border-3');
+                    var myIndex = negative_examples.indexOf(current_value);
+                    if (myIndex !== -1) {
+                        negative_examples.splice(myIndex, 1);
+                    }
+                    document.getElementById("positive_" + current_value).parentElement.classList.remove('disabled');
+                }
+                else {
+                    card_body.addClass('border-3');
+                    card_body.addClass('border-danger');
+                    negative_examples.push(current_value);
+                    document.getElementById("positive_" + current_value).parentElement.classList.add('disabled');
+                }
+            } else {
+                if (card_body.hasClass('border-3')) {
+                    card_body.removeClass('border-success');
+                    card_body.removeClass('border-3');
+                    var myIndex = positive_examples.indexOf(current_value);
+                    if (myIndex !== -1) {
+                        positive_examples.splice(myIndex, 1);
+                    }
+                    document.getElementById("negative_" + current_value).parentElement.classList.remove('disabled');
+                }
+                else {
+                    card_body.addClass('border-3');
+                    card_body.addClass('border-success');
+                    positive_examples.push(current_value);
+                    document.getElementById("negative_" + current_value).parentElement.classList.add('disabled');
+                }
+            }
+
+        }
+
+        // Card Multi Select
+        $('input[type=checkbox]').click(function () {
+            //console.log($(this).attr('value'));
+            //console.log($(this).attr('id'));
+            current_value = $(this).attr('value');
+            button_id = $(this).attr('id');
+            var card_body = $(this).parent().parent().parent().parent().parent();
+            addBorders(card_body, button_id, current_value);
+            console.log(positive_examples);
+            console.log(negative_examples);
+        });
     })
 
     $(".hBack").on("click", function(e){
