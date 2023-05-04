@@ -22,6 +22,18 @@ class Rule(PolymorphicModel):
     positive_examples = models.CharField(max_length=1000, default="[]")
     negative_examples = models.CharField(max_length=1000, default="[]")
 
+    def set_positive_examples(self, x):
+        self.positive_examples = json.dumps(x)
+
+    def get_positive_examples(self):
+        return json.loads(self.positive_examples)
+
+    def set_negative_examples(self, x):
+        self.negative_examples = json.dumps(x)
+
+    def get_negative_examples(self):
+        return json.loads(self.negative_examples)
+
 def get_polarity_emoji(polarity):
     return "✔️" if polarity == "positive" else "❌"
 

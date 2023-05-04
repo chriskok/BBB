@@ -255,12 +255,13 @@
 
         const positive_examples = [];
         const negative_examples = [];
+        const border_weight = "border-2";
 
         function addBorders(card_body, button_id, current_value){
             if (button_id.startsWith('negative')){
-                if (card_body.hasClass('border-3')) {
+                if (card_body.hasClass(border_weight)) {
                     card_body.removeClass('border-danger');
-                    card_body.removeClass('border-3');
+                    card_body.removeClass(border_weight);
                     var myIndex = negative_examples.indexOf(current_value);
                     if (myIndex !== -1) {
                         negative_examples.splice(myIndex, 1);
@@ -268,15 +269,15 @@
                     document.getElementById("positive_" + current_value).parentElement.classList.remove('disabled');
                 }
                 else {
-                    card_body.addClass('border-3');
+                    card_body.addClass(border_weight);
                     card_body.addClass('border-danger');
                     negative_examples.push(current_value);
                     document.getElementById("positive_" + current_value).parentElement.classList.add('disabled');
                 }
             } else {
-                if (card_body.hasClass('border-3')) {
+                if (card_body.hasClass(border_weight)) {
                     card_body.removeClass('border-success');
-                    card_body.removeClass('border-3');
+                    card_body.removeClass(border_weight);
                     var myIndex = positive_examples.indexOf(current_value);
                     if (myIndex !== -1) {
                         positive_examples.splice(myIndex, 1);
@@ -284,7 +285,7 @@
                     document.getElementById("negative_" + current_value).parentElement.classList.remove('disabled');
                 }
                 else {
-                    card_body.addClass('border-3');
+                    card_body.addClass(border_weight);
                     card_body.addClass('border-success');
                     positive_examples.push(current_value);
                     document.getElementById("negative_" + current_value).parentElement.classList.add('disabled');
@@ -336,5 +337,17 @@
     }
 
 </script>
+
+<style>
+    .border-3 {
+        border-width:3px !important;
+    }
+    .border-4 {
+        border-width:4px !important;
+    }
+    .border-2 {
+        border-width:2px !important;
+    }
+</style>
 
 {% endblock %}

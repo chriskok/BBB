@@ -111,6 +111,9 @@ def handle_rule_input(form, chosen_answers, current_question_obj):
         # filter chosen answers by parent rule(s)
         chosen_answers = recursive_filtering_chosen_answers(parent_rule, chosen_answers)
 
+    polarity=form.cleaned_data['rule_polarity']
+    polarity_emoji = "✔️" if polarity == "positive" else "❌"
+
     # KEYWORD RULE
     if (form.cleaned_data['rule_type_selection'] == 'keyword_rule'):
         keyword = form.cleaned_data['keyword']
@@ -125,7 +128,7 @@ def handle_rule_input(form, chosen_answers, current_question_obj):
         # go through each filtered answer and assign the rule and rule strings
         for answer in filtered_answers:
             curr_row = df[df['student_id'] == answer.student_id].iloc[0]
-            add_rule_string(answer, new_rule, f"Keyword: {keyword} -> Matched: {curr_row['word']}, Similarity: {curr_row['score']:.2f}")
+            add_rule_string(answer, new_rule, f"{polarity_emoji} Keyword: {keyword} -> Matched: {curr_row['word']}, Similarity: {curr_row['score']:.2f}")
     
     # SENTENCE SIM RULE
     elif (form.cleaned_data['rule_type_selection'] == 'sentence_rule'):
@@ -142,7 +145,7 @@ def handle_rule_input(form, chosen_answers, current_question_obj):
         # go through each filtered answer and assign the rule and rule strings
         for answer in filtered_answers:
             curr_row = df[df['student_id'] == answer.student_id].iloc[0]
-            add_rule_string(answer, new_rule, f"Sentence: {sentence} -> Similarity: {curr_row['score']:.2f}")
+            add_rule_string(answer, new_rule, f"{polarity_emoji} Sentence: {sentence} -> Similarity: {curr_row['score']:.2f}")
 
     # LENGTH RULE
     elif (form.cleaned_data['rule_type_selection'] == 'length_rule'):
@@ -158,7 +161,7 @@ def handle_rule_input(form, chosen_answers, current_question_obj):
         # go through each filtered answer and assign the rule and rule strings
         for answer in filtered_answers:
             curr_row = df[df['student_id'] == answer.student_id].iloc[0]
-            add_rule_string(answer, new_rule, f"Length: {length} {length_type}s -> Answer Length: {curr_row['length']}")
+            add_rule_string(answer, new_rule, f"{polarity_emoji} Length: {length} {length_type}s -> Answer Length: {curr_row['length']}")
     else: 
         print(form.cleaned_data)
 
