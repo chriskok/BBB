@@ -243,17 +243,16 @@ def chatgpt_view(request, q_id, method='question_only'):
 def system_reset_view(request, question_id=None):
 
     # get specific answers for the current question
-    if (question_id): 
-        chosen_answers = Answer.objects.filter(question_id=question_id).all()
-        KeywordRule.objects.filter(question_id=question_id).all().delete()
-        SentenceSimilarityRule.objects.filter(question_id=question_id).all().delete()
-        AnswerLengthRule.objects.filter(question_id=question_id).all().delete()
-    else: 
-        chosen_answers = Answer.objects.all()
-        KeywordRule.objects.all().delete()
-        SentenceSimilarityRule.objects.all().delete()
-        AnswerLengthRule.objects.all().delete()
+    chosen_answers = Answer.objects.filter(question_id=question_id).all() if question_id else Answer.objects.all()
     chosen_answers.update(rule_strings="[]") 
+
+    # delete all rules for the current question, iteratively - if not, the deletions will have a foreign key constraint error
+    rules = Rule.objects.filter(question_id=question_id).all() if question_id else Rule.objects.all()
+    while rules:
+        non_parent_rules = rules.filter(rule=None)
+        for rule in non_parent_rules:
+            rule.delete()
+        rules = Rule.objects.filter(question_id=question_id).all() if question_id else Rule.objects.all()
 
     return JsonResponse({'message': "System Reset!"}) 
 
