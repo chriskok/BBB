@@ -18,6 +18,10 @@ class Question(models.Model):
 class Rule(PolymorphicModel):
     question = models.ForeignKey(Question, on_delete=models.CASCADE, default=None, null=True, blank=True)
     parent = models.ForeignKey('self', on_delete=models.CASCADE, default=None, null=True, blank=True)
+    polarity = models.CharField(max_length=200, default="positive", null=True, blank=True)
+
+def get_polarity_emoji(polarity):
+    return "✔️" if polarity == "positive" else "❌"
 
 class KeywordRule(Rule):
     keyword = models.CharField(max_length=200)
@@ -32,7 +36,7 @@ class KeywordRule(Rule):
         return json.loads(self.relevant_keywords)
 
     def __str__(self):
-        return "Keyword: {}".format(self.keyword)
+        return "{} Keyword: {}".format(get_polarity_emoji(self.polarity), self.keyword)
 
 class SentenceSimilarityRule(Rule):
     sentence = models.CharField(max_length=2048)
@@ -40,14 +44,14 @@ class SentenceSimilarityRule(Rule):
     method = models.CharField(max_length=200, default="sbert", null=True, blank=True)
 
     def __str__(self):
-        return "Sentence: {:.20s}...".format(self.sentence) if len(self.sentence) > 20 else "Sentence: {}".format(self.sentence)
+        return "{} Sentence: {:.20s}...".format(get_polarity_emoji(self.polarity), self.sentence) if len(self.sentence) > 20 else "{} Sentence: {}".format(get_polarity_emoji(self.polarity), self.sentence)
 
 class AnswerLengthRule(Rule):
     length_type = models.CharField(max_length=200, default="word", null=True, blank=True)
     length = models.IntegerField(null=True, blank=True)
 
     def __str__(self):
-        return "Answer Length: {} {}s".format(self.length, self.length_type)
+        return "{} Answer Length: {} {}s".format(get_polarity_emoji(self.polarity), self.length, self.length_type)
     
 class Answer(models.Model):
     answer_text = models.TextField()

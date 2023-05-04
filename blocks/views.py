@@ -120,7 +120,7 @@ def handle_rule_input(form, chosen_answers, current_question_obj):
         df, filtered_answers, relevant_keywords = similar_keyword_filter(chosen_answers, current_question_obj, keyword, similarity)
 
         # handle keyword rule creation
-        new_rule,_ = KeywordRule.objects.get_or_create(question=current_question_obj, parent=parent_rule, keyword=keyword, similarity_threshold=similarity, relevant_keywords=relevant_keywords) 
+        new_rule,_ = KeywordRule.objects.get_or_create(question=current_question_obj, parent=parent_rule, keyword=keyword, similarity_threshold=similarity, relevant_keywords=relevant_keywords, polarity=form.cleaned_data['rule_polarity']) 
 
         # go through each filtered answer and assign the rule and rule strings
         for answer in filtered_answers:
@@ -137,7 +137,7 @@ def handle_rule_input(form, chosen_answers, current_question_obj):
         df, filtered_answers = similar_sentence_filter(chosen_answers, current_question_obj, sentence, similarity, method)
 
         # handle sentence sim rule creation
-        new_rule,_ = SentenceSimilarityRule.objects.get_or_create(question=current_question_obj, parent=parent_rule, sentence=sentence, similarity_threshold=similarity, method=method) 
+        new_rule,_ = SentenceSimilarityRule.objects.get_or_create(question=current_question_obj, parent=parent_rule, sentence=sentence, similarity_threshold=similarity, method=method, polarity=form.cleaned_data['rule_polarity']) 
 
         # go through each filtered answer and assign the rule and rule strings
         for answer in filtered_answers:
@@ -153,7 +153,7 @@ def handle_rule_input(form, chosen_answers, current_question_obj):
         df, filtered_answers = answer_length_filter(chosen_answers, current_question_obj, length, length_type)
 
         # handle rule creation
-        new_rule,_ = AnswerLengthRule.objects.get_or_create(question=current_question_obj, parent=parent_rule, length=length, length_type=length_type) 
+        new_rule,_ = AnswerLengthRule.objects.get_or_create(question=current_question_obj, parent=parent_rule, length=length, length_type=length_type, polarity=form.cleaned_data['rule_polarity']) 
 
         # go through each filtered answer and assign the rule and rule strings
         for answer in filtered_answers:

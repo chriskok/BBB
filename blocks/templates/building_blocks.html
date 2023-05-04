@@ -121,19 +121,25 @@
                 </div>
             </div>
 
-            <div class="parent_select mb-3">
+            <div class="rule_input_div" id="all_rules">
                 <div class="d-flex align-items-center">
-                    <select class="select form-control" name="parent" style="width:auto;">
-                        <option selected>-- Parent Rule --</option>
-                        {% for rule in rules %}
-                        <option value="{{rule.id}}">{{rule}}</option>
-                        {% endfor%}
-                    </select>
+                    {{ form.rule_polarity|as_crispy_field }}
                 </div>
-            </div>
 
-            <div class="d-flex align-items-center">
-                <button type="submit" class="btn btn-primary">Submit</button>
+                <div class="parent_select mb-3">
+                    <div class="d-flex align-items-center">
+                        <select class="select form-control" name="parent" style="width:auto;">
+                            <option selected>-- Parent Rule --</option>
+                            {% for rule in rules %}
+                            <option value="{{rule.id}}">{{rule}}</option>
+                            {% endfor%}
+                        </select>
+                    </div>
+                </div>
+
+                <div class="d-flex align-items-center">
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </div>
             </div>
         </form>
 
@@ -221,8 +227,11 @@
         $('#id_rule_type_selection').change(function () {
             var value = this.value;
 
+            console.log(value);
+
             $('.rule_input_div').hide()
             $('#' + this.value).show();
+            if (value != "pick") {$('#all_rules').show()};
         });
 
         $(function () {

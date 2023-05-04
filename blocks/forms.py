@@ -26,3 +26,6 @@ class BuildingBlocksForm(forms.Form):
     # answer length form
     length_type = forms.ChoiceField(choices = (('word', "Word Count"), ('char', "Character Count")))
     answer_length = forms.IntegerField(required=False, )
+
+    # meta
+    rule_polarity = forms.ChoiceField(choices = (('positive', "Positive ✔️"), ('negative', "Negative ❌")))
