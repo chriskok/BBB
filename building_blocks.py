@@ -6,9 +6,12 @@ import nltk
 # nltk.download('wordnet')
 # nltk.download('omw-1.4')
 # nltk.download('popular')
-from nltk.corpus import wordnet
+from nltk.corpus import wordnet as wn
+from nltk.corpus import stopwords
+from nltk.tokenize import word_tokenize
 from nltk.wsd import lesk
 from pywsd.lesk import simple_lesk
+stemmer = nltk.stem.PorterStemmer()
 
 import spacy
 from spacy import displacy
@@ -58,20 +61,20 @@ def specific_keyword(df, keyword):
 # Building Block 2 - Similar Keyword/Phrase
 def get_synonyms(keyword):
     synonyms = []
-    for syn in wordnet.synsets(keyword):
+    for syn in wn.synsets(keyword):
         for lm in syn.lemmas():
             synonyms.append(lm.name().replace('_', " "))  # adding into synonyms
     return list(set(synonyms))
 
 def get_definitions(keyword):
     definitions = []
-    for syn in wordnet.synsets(keyword):
+    for syn in wn.synsets(keyword):
         definitions.append(syn.definition())
     return list(set(definitions))
 
 def get_synsets(keyword):
     synsets = []
-    for syn in wordnet.synsets(keyword):
+    for syn in wn.synsets(keyword):
         synsets.append(syn)
     return list(set(synsets))
 
@@ -179,6 +182,137 @@ def similar_keyword(df, keyword, sim_score_threshold=0.7, n_return_threshold=Non
     return return_df
 
 # Building Block 3 - Similar Sentence
+
+def sentence_pattern_breakdown(positive_examples, negative_examples):
+    def process_sentences(ori_sentence_set, verbose=False):
+        # clean sentences (lowercase, remove punctuation)
+        sentence_set = [re.sub(r'[^\w\s]', '', sentence.lower()) for sentence in ori_sentence_set]
+
+        # remove stopwords with nltk
+        stop_words = set(stopwords.words('english'))
+        sentence_set = [' '.join([word for word in sentence.split() if word not in stop_words]) for sentence in sentence_set]
+
+        # identify all common words in the sentences
+        common_words = set.intersection(*map(set, map(str.split, sentence_set))) if sentence_set else set()
+        if(verbose): print(f"common_words: {common_words}")
+
+        # get stems of words in common_words
+        stemmed_common_words = [stemmer.stem(word) for word in common_words]
+        if(verbose): print(f"stemmed_common_words: {stemmed_common_words}")
+
+        # get synonyms of words in common_words
+        synonyms = []
+        for word in common_words:
+            for syn in wn.synsets(word):
+                for l in syn.lemmas():
+                    synonyms.append(l.name())
+        synonyms = set(synonyms)
+        if(verbose): print(f"synonyms: {synonyms}")
+
+        # get named entities in the sentences
+        named_entities = []
+        for sentence in ori_sentence_set:
+            for chunk in nltk.ne_chunk(nltk.pos_tag(word_tokenize(sentence))):
+                if hasattr(chunk, 'label'):
+                    named_entities.append((' '.join(c[0] for c in chunk), chunk.label()))
+        named_entities = set(named_entities)
+        named_entities = dict((x, y) for x, y in named_entities)
+        if(verbose): print(f"named_entities: {named_entities}")
+
+        return sentence_set, common_words, stemmed_common_words, synonyms, named_entities
+
+    # recursively process the next string in the list
+    patterns = {}
+    pattern_limit = 3
+
+    def add_pattern(pattern, depth, negative=False):
+        if pattern in patterns:
+            patterns[pattern] += 1 * (depth * 0.5) if not negative else -2 * (depth * 0.5)
+        else:
+            patterns[pattern] = 1 * (depth * 0.5) if not negative else -2 * (depth * 0.5)
+
+    def process_next_string(word, tag, pos_set, ori_i, i, current_pattern):
+        
+        # stop if we've reached the end of the list
+        if i == len(pos_set) - 1:
+            return current_pattern
+        
+        # stop if we've reached the pattern limit
+        curr_depth = i - ori_i + 1
+        if curr_depth > pattern_limit:
+            return current_pattern
+        
+        word_l = word.lower()
+        
+        # check if word in common words (or a stem of that)
+        if stemmer.stem(word_l) in stemmed_common_words:
+            new_pattern_and = f"[{word_l}]" if current_pattern == "" else current_pattern + "+" + f"[{word_l}]"
+            new_pattern_or = f"[{word_l}]" if current_pattern == "" else current_pattern + "|" + f"[{word_l}]"
+            for pattern in [new_pattern_and, new_pattern_or]:
+                add_pattern(pattern, curr_depth)
+                process_next_string(pos_set[i + 1][0], pos_set[i + 1][1], pos_set, ori_i, i + 1, pattern)
+        
+        if stemmer.stem(word_l) in n_stemmed_common_words:
+            new_pattern_and = f"[{word_l}]" if current_pattern == "" else current_pattern + "+" + f"[{word_l}]"
+            new_pattern_or = f"[{word_l}]" if current_pattern == "" else current_pattern + "|" + f"[{word_l}]"
+            for pattern in [new_pattern_and, new_pattern_or]:
+                add_pattern(pattern, curr_depth, negative=True)
+                process_next_string(pos_set[i + 1][0], pos_set[i + 1][1], pos_set, ori_i, i + 1, pattern)
+
+        # check if word is a synonym of a common word
+        if word_l in synonyms:
+            new_pattern_and = f"({word_l})" if current_pattern == "" else current_pattern + "+" + f"({word_l})"
+            new_pattern_or = f"({word_l})" if current_pattern == "" else current_pattern + "|" + f"({word_l})"
+            for pattern in [new_pattern_and, new_pattern_or]:
+                add_pattern(pattern, curr_depth)
+                process_next_string(pos_set[i + 1][0], pos_set[i + 1][1], pos_set, ori_i, i + 1, pattern)
+
+        if word_l in n_synonyms:
+            new_pattern_and = f"({word_l})" if current_pattern == "" else current_pattern + "+" + f"({word_l})"
+            new_pattern_or = f"({word_l})" if current_pattern == "" else current_pattern + "|" + f"({word_l})"
+            for pattern in [new_pattern_and, new_pattern_or]:
+                add_pattern(pattern, curr_depth, negative=True)
+                process_next_string(pos_set[i + 1][0], pos_set[i + 1][1], pos_set, ori_i, i + 1, pattern)
+
+        # check if word is a named entity
+        if word in named_entities:
+            new_pattern_and = f"({word})" if current_pattern == "" else current_pattern + "+" + f"({word})"
+            new_pattern_or = f"({word})" if current_pattern == "" else current_pattern + "|" + f"({word})"
+            new_pattern_label_and = f"${named_entities[word]}" if current_pattern == "" else current_pattern + "+" + f"${named_entities[word]}"
+            new_pattern_label_or = f"${named_entities[word]}" if current_pattern == "" else current_pattern + "|" + f"${named_entities[word]}"
+            for pattern in [new_pattern_and, new_pattern_or, new_pattern_label_and, new_pattern_label_or]:
+                add_pattern(pattern, curr_depth)
+                process_next_string(pos_set[i + 1][0], pos_set[i + 1][1], pos_set, ori_i, i + 1, pattern)
+
+        if word in n_named_entities:
+            new_pattern_and = f"({word})" if current_pattern == "" else current_pattern + "+" + f"({word})"
+            new_pattern_or = f"({word})" if current_pattern == "" else current_pattern + "|" + f"({word})"
+            new_pattern_label_and = f"${named_entities[word]}" if current_pattern == "" else current_pattern + "+" + f"${named_entities[word]}"
+            new_pattern_label_or = f"${named_entities[word]}" if current_pattern == "" else current_pattern + "|" + f"${named_entities[word]}"
+            for pattern in [new_pattern_and, new_pattern_or, new_pattern_label_and, new_pattern_label_or]:
+                add_pattern(pattern, curr_depth, negative=True)
+                process_next_string(pos_set[i + 1][0], pos_set[i + 1][1], pos_set, ori_i, i + 1, pattern)
+
+        # check if word
+        # if tag in patterns:
+        #     patterns[tag].append(word)
+        # else:
+        #     patterns[tag] = [word]
+
+    # identify all parts of speech in the sentences
+    pos_set = [nltk.pos_tag(word_tokenize(sentence)) for sentence in positive_examples]
+    sentence_set, common_words, stemmed_common_words, synonyms, named_entities = process_sentences(positive_examples)
+    n_sentence_set, n_common_words, n_stemmed_common_words, n_synonyms, n_named_entities = process_sentences(negative_examples)
+
+    # iterate through the pos_set to build patterns for matching
+    for pos in pos_set:
+        for i, (word, tag) in enumerate(pos):
+            process_next_string(word, tag, pos, i, i, "")
+
+    # sort patterns dictionary by value
+    patterns = {k: v for k, v in sorted(patterns.items(), key=lambda item: item[1], reverse=True)}
+    return patterns
+
 # methods: sbert, spacy, gensim
 def similar_sentence(df, sentence, sim_score_threshold=0.7, n_return_threshold=None, method='sbert'):
 

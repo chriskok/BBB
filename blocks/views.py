@@ -320,7 +320,6 @@ class KeywordRuleUpdateView(UpdateView):
     fields = ['keyword', 'similarity_threshold']
     template_name = 'generic_views/rule_update.html'
 
-
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         
@@ -354,6 +353,20 @@ class SentenceSimilarityRuleUpdateView(UpdateView):
     fields = ['sentence', 'similarity_threshold']
     template_name = 'generic_views/rule_update.html'
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        
+        positive_examples = Answer.objects.filter(pk__in=self.object.get_positive_examples()).values_list('answer_text',flat=True)
+        negative_examples = Answer.objects.filter(pk__in=self.object.get_negative_examples()).values_list('answer_text',flat=True)
+        
+        print(positive_examples)
+        print(negative_examples)
+
+        context['sentence_pattern_breakdown'] = bb.sentence_pattern_breakdown(positive_examples, negative_examples) 
+        context['positive_examples'] = positive_examples
+        context['negative_examples'] = negative_examples
+        return context
+    
     def get_success_url(self):
         return reverse_lazy('building_blocks', kwargs={'q_id': self.object.question.id})
 

@@ -41,6 +41,22 @@
 		</div>
 	  </div>
 	{% endif %}
+	{% if sentence_pattern_breakdown %}
+	<div class="container">
+		<h3>Positive Examples</h3>
+		{% for eg in positive_examples %}
+			<li>{{ eg }}</li>
+		{% endfor %}
+
+		<h3>Negative Examples</h3>
+		{% for eg in negative_examples %}
+			<li>{{ eg }}</li>
+		{% endfor %}
+
+		<h3>Patterns</h3>
+		{{sentence_pattern_breakdown}}
+	  </div>
+	{% endif %}
 </div>
 
 <script>
