@@ -275,7 +275,7 @@ def keywordrule_update(rule, keyword, similarity, chosen_answers, current_questi
     # go through each filtered answer and assign the rule and rule strings
     for answer in filtered_answers:
         curr_row = df[df['student_id'] == answer.student_id].iloc[0]
-        add_rule_string(answer, rule, f"Keyword: {keyword} -> Matched: {curr_row['word']}, Similarity: {curr_row['score']:.2f}")
+        add_rule_string(answer, rule, f"{'✔️' if rule.polarity == 'positive' else '❌'} Keyword: {keyword} -> Matched: {curr_row['word']}, Similarity: {curr_row['score']:.2f}")
 
 def sentencesimilarityrule_update(rule, sentence, similarity, method, chosen_answers, current_question_obj):
         
@@ -284,7 +284,7 @@ def sentencesimilarityrule_update(rule, sentence, similarity, method, chosen_ans
     # go through each filtered answer and assign the rule and rule strings
     for answer in filtered_answers:
         curr_row = df[df['student_id'] == answer.student_id].iloc[0]
-        add_rule_string(answer, rule, f"Sentence: {sentence} -> Similarity: {curr_row['score']:.2f}")
+        add_rule_string(answer, rule, f"{'✔️' if rule.polarity == 'positive' else '❌'} Sentence: {sentence} -> Similarity: {curr_row['score']:.2f}")
 
 def answerlengthrule_update(rule, length, length_type, chosen_answers, current_question_obj):
 
@@ -293,7 +293,7 @@ def answerlengthrule_update(rule, length, length_type, chosen_answers, current_q
     # go through each filtered answer and assign the rule and rule strings
     for answer in filtered_answers:
         curr_row = df[df['student_id'] == answer.student_id].iloc[0]
-        add_rule_string(answer, rule, f"Length: {length} {length_type}s -> Answer Length: {curr_row['length']}")
+        add_rule_string(answer, rule, f"{'✔️' if rule.polarity == 'positive' else '❌'} Length: {length} {length_type}s -> Answer Length: {curr_row['length']}")
 
 def remove_rule_strings(id_array, rule_array, chosen_answers):
     for ans in chosen_answers:

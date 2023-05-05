@@ -196,7 +196,17 @@ def sentence_pattern_breakdown(positive_examples, negative_examples, pattern_lim
         sentence_set = [' '.join([word for word in sentence.split() if word not in stop_words]) for sentence in sentence_set]
 
         # identify all common words in the sentences
-        common_words = set.intersection(*map(set, map(str.split, sentence_set))) if sentence_set else set()
+        # common_words = set.intersection(*map(set, map(str.split, sentence_set))) if sentence_set else set()
+        common_words = {}
+        for sentence in sentence_set:
+            curr_words = set(sentence.split())
+            for word in curr_words:
+                if word in common_words:
+                    common_words[word] += 1
+                else:
+                    common_words[word] = 1
+        # remove words that appear only once
+        common_words = {k: v for k, v in common_words.items() if v > 1}
         if(verbose): print(f"common_words: {common_words}")
 
         # get stems of words in common_words
@@ -340,7 +350,8 @@ def sentence_pattern_breakdown(positive_examples, negative_examples, pattern_lim
         if val not in temp:
             temp.append(val)
             res[key] = val
-    patterns = res
+    # take top 5 patterns
+    patterns = dict(list(res.items())[:5])
 
     return patterns
 

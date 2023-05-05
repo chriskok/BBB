@@ -54,7 +54,10 @@
 		{% endfor %}
 
 		<h3>Patterns</h3>
-		{{sentence_pattern_breakdown}}
+		
+		{% for k,v in sentence_pattern_breakdown.items %}
+			<li>{{k}} - {{v}}</li>
+		{% endfor %}
 	  </div>
 	{% endif %}
 </div>
