@@ -29,3 +29,5 @@ class BuildingBlocksForm(forms.Form):
 
     # meta
     rule_polarity = forms.ChoiceField(choices = (('positive', "Positive ✔️"), ('negative', "Negative ❌")))
+    positive_examples = forms.CharField(required=False)
+    negative_examples = forms.CharField(required=False)

@@ -113,6 +113,8 @@ def handle_rule_input(form, chosen_answers, current_question_obj):
 
     polarity=form.cleaned_data['rule_polarity']
     polarity_emoji = "✔️" if polarity == "positive" else "❌"
+    positive_examples = form.cleaned_data['positive_examples'].split(',') if form.cleaned_data['positive_examples'] else []
+    negative_examples = form.cleaned_data['negative_examples'].split(',') if form.cleaned_data['negative_examples'] else []
 
     # KEYWORD RULE
     if (form.cleaned_data['rule_type_selection'] == 'keyword_rule'):
@@ -123,7 +125,7 @@ def handle_rule_input(form, chosen_answers, current_question_obj):
         df, filtered_answers, relevant_keywords = similar_keyword_filter(chosen_answers, current_question_obj, keyword, similarity)
 
         # handle keyword rule creation
-        new_rule,_ = KeywordRule.objects.get_or_create(question=current_question_obj, parent=parent_rule, keyword=keyword, similarity_threshold=similarity, relevant_keywords=relevant_keywords, polarity=form.cleaned_data['rule_polarity']) 
+        new_rule,_ = KeywordRule.objects.get_or_create(question=current_question_obj, parent=parent_rule, keyword=keyword, similarity_threshold=similarity, relevant_keywords=relevant_keywords, polarity=form.cleaned_data['rule_polarity'], positive_examples=json.dumps(positive_examples), negative_examples=json.dumps(negative_examples))
 
         # go through each filtered answer and assign the rule and rule strings
         for answer in filtered_answers:
@@ -140,7 +142,7 @@ def handle_rule_input(form, chosen_answers, current_question_obj):
         df, filtered_answers = similar_sentence_filter(chosen_answers, current_question_obj, sentence, similarity, method)
 
         # handle sentence sim rule creation
-        new_rule,_ = SentenceSimilarityRule.objects.get_or_create(question=current_question_obj, parent=parent_rule, sentence=sentence, similarity_threshold=similarity, method=method, polarity=form.cleaned_data['rule_polarity']) 
+        new_rule,_ = SentenceSimilarityRule.objects.get_or_create(question=current_question_obj, parent=parent_rule, sentence=sentence, similarity_threshold=similarity, method=method, polarity=form.cleaned_data['rule_polarity'], positive_examples=json.dumps(positive_examples), negative_examples=json.dumps(negative_examples))
 
         # go through each filtered answer and assign the rule and rule strings
         for answer in filtered_answers:

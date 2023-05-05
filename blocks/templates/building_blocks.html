@@ -94,6 +94,9 @@
         <form action="{% url 'building_blocks' question_exam_id %}" method="post">
             {% csrf_token %}
 
+            {{ form.positive_examples.as_hidden }}
+            {{ form.negative_examples.as_hidden }}
+
             <div class="rule_type_select">
                 <div class="d-flex align-items-center">
                     {{ form.rule_type_selection|as_crispy_field }}
@@ -302,8 +305,8 @@
             button_id = $(this).attr('id');
             var card_body = $(this).parent().parent().parent().parent().parent();
             addBorders(card_body, button_id, current_value);
-            console.log(positive_examples);
-            console.log(negative_examples);
+            $("#id_positive_examples").val(positive_examples.join(","));
+            $("#id_negative_examples").val(negative_examples.join(","));
         });
     })
 
