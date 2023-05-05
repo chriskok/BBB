@@ -104,6 +104,7 @@
             </div>
             
             <div class="rule_input_div" id="keyword_rule">
+                <hr />
                 <div class="d-flex align-items-center">
                     {{ form.keyword|as_crispy_field }}
                 </div>
@@ -115,6 +116,7 @@
                 </div>
             </div>
             <div class="rule_input_div" id="sentence_rule">
+                <hr />
                 <div class="d-flex align-items-center">
                     {{ form.sentence|as_crispy_field }}
                 </div>
@@ -129,6 +131,7 @@
                 </div>
             </div>
             <div class="rule_input_div" id="length_rule">
+                <hr />
                 <div class="d-flex align-items-center">
                     {{ form.length_type|as_crispy_field }}
                 </div>
@@ -137,7 +140,20 @@
                 </div>
             </div>
 
+            <div class="rule_input_div" id="progress_bars">
+                <hr />
+                <label for="positive_examples_progress">Positive Examples:</label>
+                <div class="progress">
+                    <div id="positive_examples_progress" class="progress-bar bg-success" role="progressbar" style="width: 0%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+                <label for="negative_examples_progress">Negative Examples:</label>
+                <div class="progress">
+                    <div id="negative_examples_progress" class="progress-bar bg-danger" role="progressbar" style="width: 0%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+            </div>
+
             <div class="rule_input_div" id="all_rules">
+                <hr />
                 <div class="d-flex align-items-center">
                     {{ form.rule_polarity|as_crispy_field }}
                 </div>
@@ -249,7 +265,7 @@
             $('#' + this.value).show();
 
             if (value != "pick") {$('#all_rules').show()};
-            if (value == "keyword_rule" || value == "sentence_rule") {$('.example_buttons').show()};
+            if (value == "keyword_rule" || value == "sentence_rule") {$('.example_buttons').show(); $('#progress_bars').show()};
         });
 
         $(function () {
@@ -305,6 +321,8 @@
             button_id = $(this).attr('id');
             var card_body = $(this).parent().parent().parent().parent().parent();
             addBorders(card_body, button_id, current_value);
+            $('#positive_examples_progress').css('width', (positive_examples.length*25)+'%').attr('aria-valuenow', (positive_examples.length*25));
+            $('#negative_examples_progress').css('width', (negative_examples.length*25)+'%').attr('aria-valuenow', (negative_examples.length*25));
             $("#id_positive_examples").val(positive_examples.join(","));
             $("#id_negative_examples").val(negative_examples.join(","));
         });
