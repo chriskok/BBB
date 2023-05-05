@@ -332,7 +332,7 @@ def sentence_pattern_breakdown(positive_examples, negative_examples, pattern_lim
         #     patterns[tag] = [word]
 
     # identify all parts of speech in the sentences
-    pos_set = [nltk.pos_tag(word_tokenize(sentence)) for sentence in positive_examples]
+    pos_set = [nltk.pos_tag(word_tokenize(sentence)) for sentence in [re.sub(r'[^\w\s]', '', eg.lower()) for eg in positive_examples]]
     sentence_set, common_words, stemmed_common_words, synonyms, named_entities = process_sentences(positive_examples)
     n_sentence_set, n_common_words, n_stemmed_common_words, n_synonyms, n_named_entities = process_sentences(negative_examples)
 
@@ -354,6 +354,17 @@ def sentence_pattern_breakdown(positive_examples, negative_examples, pattern_lim
     patterns = dict(list(res.items())[:5])
 
     return patterns
+
+# convert patterns to regex
+# e.g. "[without]+[reloading]+*+(send)" --> ".*\bwithout\b \breloading\b.*(\bsend\b|\bdispatch\b|\bmail\b).*"
+def convert_patterns_to_regex(patterns):
+    regex_patterns = []
+    for pattern, value in patterns.items():
+        pattern = pattern.replace("+", " ").replace("*", ".*").replace("[", r"\b").replace("]", r"\b")
+        pattern = ".*" + pattern + ".*"
+        regex_patterns.append(pattern)
+    
+    print(regex_patterns)
 
 # methods: sbert, spacy, gensim
 def similar_sentence(df, sentence, sim_score_threshold=0.7, n_return_threshold=None, method='sbert'):
