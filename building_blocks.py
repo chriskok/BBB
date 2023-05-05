@@ -46,7 +46,7 @@ def load_data():
 # e.g. https://www.digitalocean.com/community/tutorials/how-to-perform-sentiment-analysis-in-python-3-using-the-natural-language-toolkit-nltk
 
 # ================================== #
-#           BUILDING BLOCKS          #
+#           KEYWORD BLOCKS           #
 # ================================== #
 
 # Building Block 1 - Specific Keyword/Phrase
@@ -181,9 +181,12 @@ def similar_keyword(df, keyword, sim_score_threshold=0.7, n_return_threshold=Non
 
     return return_df
 
-# Building Block 3 - Similar Sentence
+# ================================== #
+#          SENTENCE BLOCKS           #
+# ================================== #
 
-def sentence_pattern_breakdown(positive_examples, negative_examples):
+# Building Block 3 - Similar Sentence
+def sentence_pattern_breakdown(positive_examples, negative_examples, pattern_limit=3):
     def process_sentences(ori_sentence_set, verbose=False):
         # clean sentences (lowercase, remove punctuation)
         sentence_set = [re.sub(r'[^\w\s]', '', sentence.lower()) for sentence in ori_sentence_set]
@@ -223,9 +226,9 @@ def sentence_pattern_breakdown(positive_examples, negative_examples):
 
     # recursively process the next string in the list
     patterns = {}
-    pattern_limit = 3
 
-    def add_pattern(pattern, depth, negative=False):
+    def add_pattern(pattern, depth, negative=False, wildcard=False):
+        if (wildcard): depth = 0
         if pattern in patterns:
             patterns[pattern] += 1 * (depth * 0.5) if not negative else -2 * (depth * 0.5)
         else:
@@ -243,55 +246,74 @@ def sentence_pattern_breakdown(positive_examples, negative_examples):
             return current_pattern
         
         word_l = word.lower()
+        matched = False
         
         # check if word in common words (or a stem of that)
         if stemmer.stem(word_l) in stemmed_common_words:
+            matched = True
             new_pattern_and = f"[{word_l}]" if current_pattern == "" else current_pattern + "+" + f"[{word_l}]"
             new_pattern_or = f"[{word_l}]" if current_pattern == "" else current_pattern + "|" + f"[{word_l}]"
-            for pattern in [new_pattern_and, new_pattern_or]:
+            new_pattern_array = [new_pattern_and, new_pattern_or] if not current_pattern.endswith("*") else [new_pattern_and]
+            for pattern in new_pattern_array:
                 add_pattern(pattern, curr_depth)
                 process_next_string(pos_set[i + 1][0], pos_set[i + 1][1], pos_set, ori_i, i + 1, pattern)
         
         if stemmer.stem(word_l) in n_stemmed_common_words:
+            matched = True
             new_pattern_and = f"[{word_l}]" if current_pattern == "" else current_pattern + "+" + f"[{word_l}]"
             new_pattern_or = f"[{word_l}]" if current_pattern == "" else current_pattern + "|" + f"[{word_l}]"
-            for pattern in [new_pattern_and, new_pattern_or]:
+            new_pattern_array = [new_pattern_and, new_pattern_or] if not current_pattern.endswith("*") else [new_pattern_and]
+            for pattern in new_pattern_array:
                 add_pattern(pattern, curr_depth, negative=True)
                 process_next_string(pos_set[i + 1][0], pos_set[i + 1][1], pos_set, ori_i, i + 1, pattern)
 
         # check if word is a synonym of a common word
         if word_l in synonyms:
+            matched = True
             new_pattern_and = f"({word_l})" if current_pattern == "" else current_pattern + "+" + f"({word_l})"
             new_pattern_or = f"({word_l})" if current_pattern == "" else current_pattern + "|" + f"({word_l})"
-            for pattern in [new_pattern_and, new_pattern_or]:
+            new_pattern_array = [new_pattern_and, new_pattern_or] if not current_pattern.endswith("*") else [new_pattern_and]
+            for pattern in new_pattern_array:
                 add_pattern(pattern, curr_depth)
                 process_next_string(pos_set[i + 1][0], pos_set[i + 1][1], pos_set, ori_i, i + 1, pattern)
 
         if word_l in n_synonyms:
+            matched = True
             new_pattern_and = f"({word_l})" if current_pattern == "" else current_pattern + "+" + f"({word_l})"
             new_pattern_or = f"({word_l})" if current_pattern == "" else current_pattern + "|" + f"({word_l})"
-            for pattern in [new_pattern_and, new_pattern_or]:
+            new_pattern_array = [new_pattern_and, new_pattern_or] if not current_pattern.endswith("*") else [new_pattern_and]
+            for pattern in new_pattern_array:
                 add_pattern(pattern, curr_depth, negative=True)
                 process_next_string(pos_set[i + 1][0], pos_set[i + 1][1], pos_set, ori_i, i + 1, pattern)
 
         # check if word is a named entity
         if word in named_entities:
+            matched = True
             new_pattern_and = f"({word})" if current_pattern == "" else current_pattern + "+" + f"({word})"
             new_pattern_or = f"({word})" if current_pattern == "" else current_pattern + "|" + f"({word})"
             new_pattern_label_and = f"${named_entities[word]}" if current_pattern == "" else current_pattern + "+" + f"${named_entities[word]}"
             new_pattern_label_or = f"${named_entities[word]}" if current_pattern == "" else current_pattern + "|" + f"${named_entities[word]}"
-            for pattern in [new_pattern_and, new_pattern_or, new_pattern_label_and, new_pattern_label_or]:
+            new_pattern_array = [new_pattern_and, new_pattern_or, new_pattern_label_and, new_pattern_label_or] if not current_pattern.endswith("*") else [new_pattern_and, new_pattern_label_and]
+            for pattern in new_pattern_array:
                 add_pattern(pattern, curr_depth)
                 process_next_string(pos_set[i + 1][0], pos_set[i + 1][1], pos_set, ori_i, i + 1, pattern)
 
         if word in n_named_entities:
+            matched = True
             new_pattern_and = f"({word})" if current_pattern == "" else current_pattern + "+" + f"({word})"
             new_pattern_or = f"({word})" if current_pattern == "" else current_pattern + "|" + f"({word})"
             new_pattern_label_and = f"${named_entities[word]}" if current_pattern == "" else current_pattern + "+" + f"${named_entities[word]}"
             new_pattern_label_or = f"${named_entities[word]}" if current_pattern == "" else current_pattern + "|" + f"${named_entities[word]}"
-            for pattern in [new_pattern_and, new_pattern_or, new_pattern_label_and, new_pattern_label_or]:
+            new_pattern_array = [new_pattern_and, new_pattern_or, new_pattern_label_and, new_pattern_label_or] if not current_pattern.endswith("*") else [new_pattern_and, new_pattern_label_and]
+            for pattern in new_pattern_array:
                 add_pattern(pattern, curr_depth, negative=True)
                 process_next_string(pos_set[i + 1][0], pos_set[i + 1][1], pos_set, ori_i, i + 1, pattern)
+
+        # if nothing matches, attach wildcard symbol
+        if (not matched and current_pattern != ""):
+            wildcard_pattern = current_pattern + "+" + "*" if not current_pattern.endswith("*") else current_pattern
+            add_pattern(wildcard_pattern, curr_depth, negative=False, wildcard=True)
+            process_next_string(pos_set[i + 1][0], pos_set[i + 1][1], pos_set, ori_i, i + 1, wildcard_pattern)
 
         # check if word
         # if tag in patterns:
@@ -309,8 +331,17 @@ def sentence_pattern_breakdown(positive_examples, negative_examples):
         for i, (word, tag) in enumerate(pos):
             process_next_string(word, tag, pos, i, i, "")
 
-    # sort patterns dictionary by value
-    patterns = {k: v for k, v in sorted(patterns.items(), key=lambda item: item[1], reverse=True)}
+    # sort patterns dictionary by value & remove all keys that ends with "*"
+    patterns = {k: v for k, v in sorted(patterns.items(), key=lambda item: item[1], reverse=True) if not k.endswith("*") and v > 0.0}
+    # remove duplicates of patterns with same value
+    temp = []
+    res = dict()
+    for key, val in patterns.items():
+        if val not in temp:
+            temp.append(val)
+            res[key] = val
+    patterns = res
+
     return patterns
 
 # methods: sbert, spacy, gensim
@@ -381,6 +412,10 @@ def similar_sentence_by_index(df, sentence_index, sim_score_threshold=0.7, n_ret
     if(not return_df.empty): return_df = return_df[return_df['score'] > sim_score_threshold] 
 
     return return_df
+
+# ================================== #
+#            OTHER BLOCKS            #
+# ================================== #
 
 # Building Block 4 - Negation Detection
 def filter_by_negation(df, is_negative=True):
