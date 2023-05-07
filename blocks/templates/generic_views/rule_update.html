@@ -41,7 +41,7 @@
 		</div>
 	  </div>
 	{% endif %}
-	{% if sentence_pattern_breakdown %}
+	{% if regex_patterns %}
 	<div class="container">
 		<h3>Positive Examples</h3>
 		{% for eg in positive_examples %}
@@ -54,9 +54,13 @@
 		{% endfor %}
 
 		<h3>Patterns</h3>
-		
-		{% for k,v in sentence_pattern_breakdown.items %}
-			<li>{{k}} - {{v}}</li>
+		{% for k,v in regex_patterns.items %}
+			<li><b>{{k}}</b>
+				<ul>
+					<li>Regex: {{v.regex}}</li>
+					<li>Points: {{v.points}}</li>
+				</ul>
+			</li>
 		{% endfor %}
 	  </div>
 	{% endif %}

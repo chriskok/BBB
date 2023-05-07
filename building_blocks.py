@@ -59,11 +59,12 @@ def specific_keyword(df, keyword):
     return df[mask]
 
 # Building Block 2 - Similar Keyword/Phrase
-def get_synonyms(keyword):
+def get_synonyms(keyword, for_regex=False):
     synonyms = []
     for syn in wn.synsets(keyword):
         for lm in syn.lemmas():
-            synonyms.append(lm.name().replace('_', " "))  # adding into synonyms
+            lemma = f"\\b{lm.name().replace('_', ' ')}\\b" if for_regex else lm.name().replace('_', " ") 
+            synonyms.append(lemma)  # adding into synonyms
     return list(set(synonyms))
 
 def get_definitions(keyword):
@@ -358,13 +359,31 @@ def sentence_pattern_breakdown(positive_examples, negative_examples, pattern_lim
 # convert patterns to regex
 # e.g. "[without]+[reloading]+*+(send)" --> ".*\bwithout\b \breloading\b.*(\bsend\b|\bdispatch\b|\bmail\b).*"
 def convert_patterns_to_regex(patterns):
-    regex_patterns = []
-    for pattern, value in patterns.items():
-        pattern = pattern.replace("+", " ").replace("*", ".*").replace("[", r"\b").replace("]", r"\b")
-        pattern = ".*" + pattern + ".*"
-        regex_patterns.append(pattern)
-    
-    print(regex_patterns)
+    return_dict = {}
+    def add_synonyms(word):
+        word = word.replace('(', '').replace(')', '')
+        synonyms = [w for w in get_synonyms(word, for_regex=True) if ' ' not in w]
+        return "(" + '_'.join(synonyms) + ")"
+
+    def pattern_to_regex(pattern):
+        pattern_str = pattern
+        pattern_str = pattern_str.replace('[', r'\b').replace(']', r'\b').replace('+', ' ').replace('*', '.*').replace('[', r'\b')
+        bracket_words = re.findall(r"\(.*?\)", pattern_str)
+        for word in bracket_words:
+            pattern_str = pattern_str.replace(word, add_synonyms(word))
+
+        pattern_str = re.sub(r" (\S*?\|\S*?) ", r" (\1) ", pattern_str)
+        pattern_str = pattern_str.replace('_','|')
+        pattern_str = ".*" + pattern_str + ".*"
+        return pattern_str
+
+    for pattern,value in patterns.items():
+        return_dict[pattern] = {'regex': pattern_to_regex(pattern), 'points': value}
+        # print(pattern_to_regex(pattern))
+
+    # print(pattern_to_regex("[consistent]+*+(design)|[individual]|(home)"))
+
+    return return_dict
 
 # methods: sbert, spacy, gensim
 def similar_sentence(df, sentence, sim_score_threshold=0.7, n_return_threshold=None, method='sbert'):
