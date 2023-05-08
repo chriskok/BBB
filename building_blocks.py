@@ -187,14 +187,23 @@ def similar_keyword(df, keyword, sim_score_threshold=0.7, n_return_threshold=Non
 # ================================== #
 
 # Building Block 3 - Similar Sentence
+
+stop_words = set(stopwords.words('english'))
+def remove_stopwords(sentence):
+    return ' '.join([word for word in sentence.split() if word not in stop_words])
+
+def remove_punctuation(sentence):
+    return re.sub(r'[^\w\s]', '', sentence.lower())
+
+def clean_sentence(sentence):
+    return_sentence = remove_punctuation(sentence)
+    return_sentence = remove_stopwords(return_sentence)
+    return return_sentence
+
 def sentence_pattern_breakdown(positive_examples, negative_examples, pattern_limit=3):
     def process_sentences(ori_sentence_set, verbose=False):
-        # clean sentences (lowercase, remove punctuation)
-        sentence_set = [re.sub(r'[^\w\s]', '', sentence.lower()) for sentence in ori_sentence_set]
-
-        # remove stopwords with nltk
-        stop_words = set(stopwords.words('english'))
-        sentence_set = [' '.join([word for word in sentence.split() if word not in stop_words]) for sentence in sentence_set]
+        # clean sentences (lowercase, remove punctuation) and remove stop words
+        sentence_set = [clean_sentence(sentence) for sentence in ori_sentence_set]
 
         # identify all common words in the sentences
         # common_words = set.intersection(*map(set, map(str.split, sentence_set))) if sentence_set else set()
@@ -333,7 +342,8 @@ def sentence_pattern_breakdown(positive_examples, negative_examples, pattern_lim
         #     patterns[tag] = [word]
 
     # identify all parts of speech in the sentences
-    pos_set = [nltk.pos_tag(word_tokenize(sentence)) for sentence in [re.sub(r'[^\w\s]', '', eg.lower()) for eg in positive_examples]]
+    # TODO: only take into account the NEGATIVE parts of speech (for negation detection)
+    pos_set = [nltk.pos_tag(word_tokenize(sentence)) for sentence in [remove_punctuation(eg) for eg in positive_examples]]
     sentence_set, common_words, stemmed_common_words, synonyms, named_entities = process_sentences(positive_examples)
     n_sentence_set, n_common_words, n_stemmed_common_words, n_synonyms, n_named_entities = process_sentences(negative_examples)
 
@@ -358,7 +368,7 @@ def sentence_pattern_breakdown(positive_examples, negative_examples, pattern_lim
 
 # convert patterns to regex
 # e.g. "[without]+[reloading]+*+(send)" --> ".*\bwithout\b \breloading\b.*(\bsend\b|\bdispatch\b|\bmail\b).*"
-def convert_patterns_to_regex(patterns):
+def convert_patterns_to_regex(patterns, chosen_answers):
     return_dict = {}
     def add_synonyms(word):
         word = word.replace('(', '').replace(')', '')
@@ -378,8 +388,16 @@ def convert_patterns_to_regex(patterns):
         return pattern_str
 
     for pattern,value in patterns.items():
-        return_dict[pattern] = {'regex': pattern_to_regex(pattern), 'points': value}
-        # print(pattern_to_regex(pattern))
+        regex_pattern = pattern_to_regex(pattern)
+        applies_count = 0 
+        applies_to = []
+        for ans in chosen_answers.values_list('answer_text', flat=True):
+            result = re.match(regex_pattern, remove_punctuation(ans))
+            if result: 
+                applies_count += 1
+                applies_to.append(ans)
+
+        return_dict[pattern] = {'regex': regex_pattern, 'points': value, 'applies_to': applies_to, 'applies_count': applies_count}
 
     # print(pattern_to_regex("[consistent]+*+(design)|[individual]|(home)"))
 

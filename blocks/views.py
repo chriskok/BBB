@@ -359,9 +359,10 @@ class SentenceSimilarityRuleUpdateView(UpdateView):
         positive_examples = Answer.objects.filter(pk__in=self.object.get_positive_examples()).values_list('answer_text',flat=True)
         negative_examples = Answer.objects.filter(pk__in=self.object.get_negative_examples()).values_list('answer_text',flat=True)
         patterns = bb.sentence_pattern_breakdown(positive_examples, negative_examples, pattern_limit=10) 
+        chosen_answers = Answer.objects.filter(question_id=self.object.question.id)
 
         # context['sentence_pattern_breakdown'] = patterns
-        context['regex_patterns'] = bb.convert_patterns_to_regex(patterns) 
+        context['regex_patterns'] = bb.convert_patterns_to_regex(patterns, chosen_answers) 
         context['positive_examples'] = positive_examples
         context['negative_examples'] = negative_examples
         return context

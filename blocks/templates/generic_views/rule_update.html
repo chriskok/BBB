@@ -59,6 +59,23 @@
 				<ul>
 					<li>Regex: {{v.regex}}</li>
 					<li>Points: {{v.points}}</li>
+					<li>Applies count: {{v.applies_count}} answers</li>
+					<li>
+						<p>
+							<a class="btn btn-secondary" data-toggle="collapse" href="#applied_answers_collapse_{{forloop.counter}}" role="button" aria-expanded="false" aria-controls="applied_answers_collapse_{{forloop.counter}}">
+							Applies To:
+							</a>
+						</p>
+						<div class="collapse" id="applied_answers_collapse_{{forloop.counter}}">
+							<div class="card card-body">
+								{% for ans in v.applies_to %}
+									<ul>
+										<li>{{ ans }}</li>
+									</ul>
+								{% endfor %}
+							</div>
+						</div>
+					</li>
 				</ul>
 			</li>
 		{% endfor %}
