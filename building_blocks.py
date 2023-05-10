@@ -481,6 +481,37 @@ def similar_sentence_by_index(df, sentence_index, sim_score_threshold=0.7, n_ret
 #           OPENAI BLOCKS            #
 # ================================== #
 
+def prompt_chatgpt(prompt):
+    model="gpt-3.5-turbo"
+    try:
+        response = openai.ChatCompletion.create(
+            model=model,
+            messages=prompt,
+            temperature=0,
+        )
+        if "error" in response:
+            print("OPENAI ERROR: {}".format(response))
+            return "ERROR"
+        else:
+            return response["choices"][0]["message"]["content"]
+    except Exception as e: 
+        print(e)
+        return "ERROR"
+
+def get_question_concepts(question_text):
+    prompt = [
+                {"role": "system", "content": f"You are an expert teacher in a class, you have the following question in your final exam: {question_text}"},
+                {"role": "user", "content": f"Please list all related concepts to this question in a numbered list along with a brief description after each of the points. Follow the format <number>. <concept>: <description>"},
+            ]
+    chatgpt_response = prompt_chatgpt(prompt)
+    return chatgpt_response
+
+def convert_question_concepts(question_concepts):
+    # convert numbered list in string to list of strings
+    concepts = [x.strip() for x in question_concepts.split('\n') if x.strip() != '']
+    return concepts
+
+
 def too_general(df, question, score_threshold=0.7, concept_threshold=2):
 
     # sentences = [sentence] + df["answer_text"].apply(str).tolist()

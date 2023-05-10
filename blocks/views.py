@@ -201,6 +201,10 @@ def building_blocks_view(request, q_id, filter=None):
     orphan_rules = Rule.objects.filter(question=current_question_obj, parent=None)
     color_to_rule = { k.id:v for (k,v) in zip(rules, colors[:len(rules)])} 
 
+    if (current_question_obj.related_concepts == ""): 
+        current_question_obj.related_concepts = bb.get_question_concepts(current_question_obj.question_text)
+        current_question_obj.save()
+
     context = {
         "question_obj": current_question_obj,
         "question_exam_id": q_id,
@@ -212,6 +216,7 @@ def building_blocks_view(request, q_id, filter=None):
         "rules": rules,
         "orphan_rules": orphan_rules,
         "color_to_rule": color_to_rule,
+        "related_concepts": bb.convert_question_concepts(current_question_obj.related_concepts),
     }
 
     return render(request, "building_blocks.html", context)

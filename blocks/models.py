@@ -7,8 +7,9 @@ class Question(models.Model):
     question_exam_id = models.CharField(max_length = 200, blank=True, null=True)
     question_text = models.TextField(blank=True, null=True)
     question_keywords = models.TextField(blank=True, null=True)
-    question_image_url = models.TextField(blank=True, null=True)  # right now, using static/images to hold media files
-    
+    question_image_url = models.TextField(blank=True, null=True)  # right now, using static/images to hold media files\
+    related_concepts = models.TextField(default="", blank=True, null=True)
+
     class Meta:
         ordering = ['question_exam_id']
 

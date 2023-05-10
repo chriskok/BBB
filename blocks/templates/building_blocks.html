@@ -38,6 +38,19 @@
         <h4>Question {{ question_obj.question_exam_id }}: {{ question_obj.question_text }}</h4>
         {% endif %}
 
+        <p>
+            <button class="btn btn-secondary" type="button" data-toggle="collapse" data-target="#relatedConceptsCollapse" aria-expanded="false" aria-controls="relatedConceptsCollapse">
+                Related Concepts
+            </button>
+            </p>
+            <div class="collapse" id="relatedConceptsCollapse">
+            <div class="card card-body">
+                {% for concept in related_concepts %}
+                <p>{{ concept }}</p>
+                {% endfor %}
+            </div>
+        </div>
+
         <p>Total answers: {{ answer_count }}</p>
 
         <br>
