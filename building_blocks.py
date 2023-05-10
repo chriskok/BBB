@@ -29,6 +29,11 @@ modelPath = 'all-MiniLM-L6-v2'
 model = SentenceTransformer(modelPath)
 # sentiment_pipeline = pipeline("sentiment-analysis")  # TODO: download locally so we can run the app without Wi-Fi
 
+import openai
+from my_secrets import my_secrets
+openai_key = my_secrets.get('openai_key')
+openai.api_key = openai_key
+
 # ================================== #
 #            PREPROCESSING           #
 # ================================== #
@@ -469,6 +474,45 @@ def similar_sentence_by_index(df, sentence_index, sim_score_threshold=0.7, n_ret
     return_df = return_df.sort_values(by=['score'], ascending=False)
     if(n_return_threshold): return_df = return_df.head(n_return_threshold)
     if(not return_df.empty): return_df = return_df[return_df['score'] > sim_score_threshold] 
+
+    return return_df
+
+# ================================== #
+#           OPENAI BLOCKS            #
+# ================================== #
+
+def too_general(df, question, score_threshold=0.7, concept_threshold=2):
+
+    # sentences = [sentence] + df["answer_text"].apply(str).tolist()
+
+    # if (method == 'sbert'):
+    #     #Compute embeddings
+    #     embeddings = model.encode(sentences, convert_to_tensor=True)
+
+    #     #Compute cosine-similarities for each sentence with each other sentence
+    #     cosine_scores = util.cos_sim(embeddings, embeddings)
+    #     chosen_scores = cosine_scores[0]
+
+    # elif (method == 'spacy'):
+    #     embeddings = [nlp(x) for x in sentences]
+    #     chosen_scores = [embeddings[0].similarity(x) for x in embeddings]
+
+    # elif (method == 'tfidf'):
+    #     tfidf_vectorizer = TfidfVectorizer()
+    #     tfidf_matrix = tfidf_vectorizer.fit_transform(sentences)
+    #     cosine_sim = cosine_similarity(tfidf_matrix, tfidf_matrix)
+    #     chosen_scores = cosine_sim[0]
+
+    # # TODO: Add gensim method as well, https://datascience.stackexchange.com/questions/23969/sentence-similarity-prediction
+
+    # return_df = df.copy()
+    # return_df['score'] = chosen_scores[1:]  # assign all scores to df, while removing the first sentence that we added
+
+    # return_df = return_df.sort_values(by=['score'], ascending=False)
+    # if(n_return_threshold): return_df = return_df.head(n_return_threshold)
+    # if(not return_df.empty): return_df = return_df[return_df['score'] > sim_score_threshold] 
+
+    return_df = df.copy()
 
     return return_df
 
