@@ -511,10 +511,42 @@ def convert_question_concepts(question_concepts):
     concepts = [x.strip() for x in question_concepts.split('\n') if x.strip() != '']
     return concepts
 
+def map_concepts_to_answers(question, answers):
+    answers_string = '\n'.join([f"#{i+1}: {e}" for i, e in enumerate(answers)])
+    prompt = [
+            {"role": "system", "content": f"You are an expert teacher in a class, you have the following question in your final exam: {question.question_text}. You have the following numbered list of related concepts: {question.related_concepts}"},
+            {"role": "user", "content": f"For each of the following students' answers (formatted as such: #<number>: <answer>) please tell us the top 3 related concepts among those listed. Then, include a score from 0 to 1 of how related they were to that concept. For each new answer (seperated by new lines), follow the format: #<number>: <first concept> (<score>), <second concept> (<score>), <third concept> (<score>)\n{answers_string}"},
+        ]
+    chatgpt_response = prompt_chatgpt(prompt)
+    return chatgpt_response
+
+def convert_answer_concepts(answer_concepts):
+    # convert numbered list in string to list of strings
+    concepts = [x.strip().split(': ')[1] for x in answer_concepts.split('\n') if x.strip() != '']
+    return concepts
 
 def too_general(df, question, score_threshold=0.7, concept_threshold=2):
+    answers = df["answer_text"].apply(str).tolist()
 
-    # sentences = [sentence] + df["answer_text"].apply(str).tolist()
+    all_concept_maps = []
+
+    # iterate through answers and add to list if they are under 8000 characters total
+    curr_length = 0
+    curr_answers = []
+    for index, ans in enumerate(answers):
+        if (curr_length + len(ans) < 8000):
+            curr_answers.append(ans)
+            curr_length += len(ans)
+        else:
+            all_concept_maps.extend(convert_answer_concepts(map_concepts_to_answers(question, curr_answers)))
+            # TODO: Asynchronous execution of OpenAI API calls
+            print(f"Index: {index} - Added {len(curr_answers)} answers to concept map")
+            curr_answers = [ans]
+            curr_length = len(ans)
+    all_concept_maps.extend(convert_answer_concepts(map_concepts_to_answers(question, curr_answers)))  # final time, with remaining answers
+    
+    print(all_concept_maps)
+    print(len(all_concept_maps))
 
     # if (method == 'sbert'):
     #     #Compute embeddings

@@ -7,6 +7,7 @@ class BuildingBlocksForm(forms.Form):
         ('pick', "-- Pick One --"), 
         ('keyword_rule', "Keyword Similarity"), 
         ('sentence_rule', "Sentence Similarity"), 
+        ('concept_rule', "Concept Similarity"),
         ('length_rule', "Answer Length"),
     ))
 

@@ -62,8 +62,15 @@ def similar_sentence_filter(chosen_answers, current_question_obj, sentence, simi
 
     return df, filtered_answers
 
+def similar_concept_filter(chosen_answers, current_question_obj):
+    df = pd.DataFrame(list(chosen_answers.values()))
+    df = bb.too_general(df, current_question_obj)
+    student_id_list = df["student_id"].values.tolist()
+    filtered_answers = Answer.objects.filter(question=current_question_obj, student_id__in=student_id_list)
+
+    return df, filtered_answers
+
 def answer_length_filter(chosen_answers, current_question_obj, length, length_type):
-    # filters answers that have keyword 
     df = pd.DataFrame(list(chosen_answers.values()))
     df = bb.answer_length(df, length, length_type=length_type)
     student_id_list = df["student_id"].values.tolist()
@@ -164,6 +171,22 @@ def handle_rule_input(form, chosen_answers, current_question_obj):
         for answer in filtered_answers:
             curr_row = df[df['student_id'] == answer.student_id].iloc[0]
             add_rule_string(answer, new_rule, f"{polarity_emoji} Length: {length} {length_type}s -> Answer Length: {curr_row['length']}")
+
+    # CONCEPT RULE
+    elif (form.cleaned_data['rule_type_selection'] == 'concept_rule'):
+        # length_type = form.cleaned_data['length_type']
+        # length = form.cleaned_data['answer_length']
+
+        # filters answers 
+        df, filtered_answers = similar_concept_filter(chosen_answers, current_question_obj)
+
+        # # handle rule creation
+        # new_rule,_ = AnswerLengthRule.objects.get_or_create(question=current_question_obj, parent=parent_rule, length=length, length_type=length_type, polarity=form.cleaned_data['rule_polarity']) 
+
+        # # go through each filtered answer and assign the rule and rule strings
+        # for answer in filtered_answers:
+        #     curr_row = df[df['student_id'] == answer.student_id].iloc[0]
+        #     add_rule_string(answer, new_rule, f"{polarity_emoji} Length: {length} {length_type}s -> Answer Length: {curr_row['length']}")
     else: 
         print(form.cleaned_data)
 
