@@ -64,7 +64,7 @@ def similar_sentence_filter(chosen_answers, current_question_obj, sentence, simi
 
 def similar_concept_filter(chosen_answers, current_question_obj):
     df = pd.DataFrame(list(chosen_answers.values()))
-    df = bb.too_general(df, current_question_obj)
+    df = bb.similar_concept(df, current_question_obj)
     student_id_list = df["student_id"].values.tolist()
     filtered_answers = Answer.objects.filter(question=current_question_obj, student_id__in=student_id_list)
 

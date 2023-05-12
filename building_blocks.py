@@ -525,7 +525,7 @@ def convert_answer_concepts(answer_concepts):
     concepts = [x.strip().split(': ')[1] for x in answer_concepts.split('\n') if x.strip() != '']
     return concepts
 
-def too_general(df, question, score_threshold=0.7, concept_threshold=2):
+def similar_concept(df, question, score_threshold=0.7, concept_threshold=2):
     answers = df["answer_text"].apply(str).tolist()
 
     all_concept_maps = []
