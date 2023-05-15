@@ -177,14 +177,15 @@ def handle_rule_input(form, chosen_answers, current_question_obj):
 
     # CONCEPT RULE
     elif (form.cleaned_data['rule_type_selection'] == 'concept_rule'):
+
+        # # populate concepts for ALL answers of this question
+        # # TODO: get a better process to do this through pre-loading instead
+        # bb.populate_answer_concepts(current_question_obj, chosen_answers)
+
         concept_string = form.data['concept']
         if concept_string == '-- Select Concept --': 
             return 
         similarity = form.cleaned_data['concept_similarity']
-
-        # populate concepts for ALL answers of this question
-        # TODO: get a better process to do this through pre-loading instead
-        # bb.populate_answer_concepts(current_question_obj, chosen_answers)
 
         # filters answers 
         df, filtered_answers = similar_concept_filter(chosen_answers, current_question_obj, concept_string, similarity)
