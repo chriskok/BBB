@@ -2,6 +2,7 @@
 import pandas as pd
 import re
 import time
+import json
 
 import nltk
 # nltk.download('wordnet')
@@ -579,8 +580,9 @@ def populate_answer_concepts(question, answers):
         print(all_concept_maps)
         print(len(all_concept_maps))
 
-def similar_concept(df, question, score_threshold=0.7, concept_threshold=2):
+def similar_concept(df, question, concept, score_threshold=0.7):
     answers = df["answer_text"].apply(str).tolist()
+    answers = df["concept_scores"].apply(json.loads).tolist()
 
     # if (method == 'sbert'):
     #     #Compute embeddings

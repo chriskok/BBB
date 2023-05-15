@@ -24,6 +24,11 @@ class BuildingBlocksForm(forms.Form):
     sentence_similarity = forms.FloatField(widget=forms.NumberInput(attrs=sentence_similarity_input_attrs), label='Similarity to Sentence', min_value=0.3, max_value=1.0)
     sentence_similarity_method = forms.ChoiceField(choices = (('sbert', "SBert"), ('spacy', "Spacy"), ('tfidf', "TF-IDF")))
 
+    # concept similarity form
+    concept_similarity_input_attrs = {'type':'range', 'id':"conceptSimilarityInput", 'name':"conceptSimilarityInput", 'step': '0.1', 'min': '0.3', 'max': '1.0',
+                               'value': '0.6', 'oninput':"concept_similarity_choice.value=conceptSimilarityInput.value"}
+    concept_similarity = forms.FloatField(widget=forms.NumberInput(attrs=concept_similarity_input_attrs), label='Similarity to Concept', min_value=0.3, max_value=1.0)
+
     # answer length form
     length_type = forms.ChoiceField(choices = (('word', "Word Count"), ('char', "Character Count")))
     answer_length = forms.IntegerField(required=False, )

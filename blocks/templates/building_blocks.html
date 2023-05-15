@@ -145,7 +145,24 @@
             </div>
             <div class="rule_input_div" id="concept_rule">
                 <hr />
-                <p> EMPTY FOR NOW </p>
+
+                <div class="parent_select mb-3">
+                    <div class="d-flex align-items-center">
+                        <select class="select form-control" name="concept" style="width:auto;">
+                            <option selected>-- Select Concept --</option>
+                            {% for concept in answer_concepts %}
+                            <option value="{{concept}}">{{concept}}</option>
+                            {% endfor%}
+                        </select>
+                    </div>
+                </div>
+
+                <div class="d-flex align-items-center">
+                    {{ form.concept_similarity|as_crispy_field }}
+                    <output class="mx-3" name="concept_similarity_choice" id="concept_similarity_choice" for="conceptSimilarityInput">
+                        {{ form.concept_similarity.value|default_if_none:0.6 }}
+                    </output>
+                </div>
             </div>
             <div class="rule_input_div" id="length_rule">
                 <hr />

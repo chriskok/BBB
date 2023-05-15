@@ -178,7 +178,12 @@ def handle_rule_input(form, chosen_answers, current_question_obj):
         # length_type = form.cleaned_data['length_type']
         # length = form.cleaned_data['answer_length']
 
-        bb.populate_answer_concepts(current_question_obj, chosen_answers)
+        concept_string = form.data['concept']
+        similarity = form.cleaned_data['concept_similarity']
+
+        print(concept_string, similarity)
+
+        # bb.populate_answer_concepts(current_question_obj, chosen_answers)
 
         # # filters answers 
         # df, filtered_answers = similar_concept_filter(chosen_answers, current_question_obj)
@@ -230,6 +235,14 @@ def building_blocks_view(request, q_id, filter=None):
     if (current_question_obj.related_concepts == ""): 
         current_question_obj.related_concepts = bb.get_question_concepts(current_question_obj.question_text)
         current_question_obj.save()
+    
+    answer_concepts = []
+    for ans in chosen_answers:
+        curr_concept_list = ans.get_concept_scores()
+        if (not curr_concept_list): continue
+        for item in curr_concept_list:
+            if item not in answer_concepts:
+                answer_concepts.append(item)
 
     context = {
         "question_obj": current_question_obj,
@@ -243,6 +256,7 @@ def building_blocks_view(request, q_id, filter=None):
         "orphan_rules": orphan_rules,
         "color_to_rule": color_to_rule,
         "related_concepts": bb.convert_question_concepts(current_question_obj.related_concepts),
+        "answer_concepts": answer_concepts
     }
 
     return render(request, "building_blocks.html", context)
