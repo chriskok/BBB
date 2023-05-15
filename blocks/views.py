@@ -62,11 +62,11 @@ def similar_sentence_filter(chosen_answers, current_question_obj, sentence, simi
 
     return df, filtered_answers
 
-def similar_concept_filter(chosen_answers, current_question_obj):
+def similar_concept_filter(chosen_answers, current_question_obj, concept, similarity):
 
     df = pd.DataFrame(list(chosen_answers.values()))
-    df = bb.similar_concept(df, current_question_obj)
-    student_id_list = df["student_id"].values.tolist()
+    df = bb.similar_concept(df, current_question_obj, concept, score_threshold=similarity)
+    student_id_list = df["student_id"].values.tolist() if not df.empty else []
     filtered_answers = Answer.objects.filter(question=current_question_obj, student_id__in=student_id_list)
 
     return df, filtered_answers
@@ -105,6 +105,8 @@ def recursive_filtering_chosen_answers(rule, all_answers):
         _, return_answers = similar_sentence_filter(chosen_answers, rule.question, rule.sentence, rule.similarity_threshold, rule.method)
     elif rule.polymorphic_ctype.name == "answer length rule":
         _, return_answers = answer_length_filter(chosen_answers, rule.question, rule.length, rule.length_type)
+    elif rule.polymorphic_ctype.name == "concept similarity rule":
+        _, return_answers = similar_concept_filter(chosen_answers, rule.question, rule.concept, rule.similarity_threshold)
     else:
         return_answers = chosen_answers
     
@@ -175,26 +177,25 @@ def handle_rule_input(form, chosen_answers, current_question_obj):
 
     # CONCEPT RULE
     elif (form.cleaned_data['rule_type_selection'] == 'concept_rule'):
-        # length_type = form.cleaned_data['length_type']
-        # length = form.cleaned_data['answer_length']
-
         concept_string = form.data['concept']
+        if concept_string == '-- Select Concept --': 
+            return 
         similarity = form.cleaned_data['concept_similarity']
 
-        print(concept_string, similarity)
-
+        # populate concepts for ALL answers of this question
+        # TODO: get a better process to do this through pre-loading instead
         # bb.populate_answer_concepts(current_question_obj, chosen_answers)
 
-        # # filters answers 
-        # df, filtered_answers = similar_concept_filter(chosen_answers, current_question_obj)
+        # filters answers 
+        df, filtered_answers = similar_concept_filter(chosen_answers, current_question_obj, concept_string, similarity)
 
-        # # handle rule creation
-        # new_rule,_ = AnswerLengthRule.objects.get_or_create(question=current_question_obj, parent=parent_rule, length=length, length_type=length_type, polarity=form.cleaned_data['rule_polarity']) 
+        # handle rule creation
+        new_rule,_ = ConceptSimilarityRule.objects.get_or_create(question=current_question_obj, parent=parent_rule, concept=concept_string, similarity_threshold=similarity, polarity=form.cleaned_data['rule_polarity']) 
 
-        # # go through each filtered answer and assign the rule and rule strings
-        # for answer in filtered_answers:
-        #     curr_row = df[df['student_id'] == answer.student_id].iloc[0]
-        #     add_rule_string(answer, new_rule, f"{polarity_emoji} Length: {length} {length_type}s -> Answer Length: {curr_row['length']}")
+        # go through each filtered answer and assign the rule and rule strings
+        for answer in filtered_answers:
+            curr_row = df[df['student_id'] == answer.student_id].iloc[0]
+            add_rule_string(answer, new_rule, f"{polarity_emoji} Concept: {concept_string} -> Similarity: {curr_row['score']:.2f}")
     else: 
         print(form.cleaned_data)
 
@@ -331,6 +332,15 @@ def sentencesimilarityrule_update(rule, sentence, similarity, method, chosen_ans
         curr_row = df[df['student_id'] == answer.student_id].iloc[0]
         add_rule_string(answer, rule, f"{'✔️' if rule.polarity == 'positive' else '❌'} Sentence: {sentence} -> Similarity: {curr_row['score']:.2f}")
 
+def conceptsimilarityrule_update(rule, concept, similarity, chosen_answers, current_question_obj):
+        
+    df, filtered_answers = similar_concept_filter(chosen_answers, current_question_obj, concept, similarity)
+
+    # go through each filtered answer and assign the rule and rule strings
+    for answer in filtered_answers:
+        curr_row = df[df['student_id'] == answer.student_id].iloc[0]
+        add_rule_string(answer, rule, f"{'✔️' if rule.polarity == 'positive' else '❌'} Concept: {concept} -> Similarity: {curr_row['score']:.2f}")
+
 def answerlengthrule_update(rule, length, length_type, chosen_answers, current_question_obj):
 
     df, filtered_answers = answer_length_filter(chosen_answers, current_question_obj, length, length_type)
@@ -357,6 +367,8 @@ def update_all_children_rules(child_child_list, chosen_answers, question):
             keywordrule_update(rule, rule.keyword, rule.similarity_threshold, recursive_filtering_chosen_answers(rule, chosen_answers), question)
         elif rule.polymorphic_ctype.name == "sentence similarity rule":
             sentencesimilarityrule_update(rule, rule.sentence, rule.similarity_threshold, rule.method, recursive_filtering_chosen_answers(rule, chosen_answers), question)
+        elif rule.polymorphic_ctype.name == "concept similarity rule":
+            conceptsimilarityrule_update(rule, rule.concept, rule.similarity_threshold, recursive_filtering_chosen_answers(rule, chosen_answers), question)
         elif rule.polymorphic_ctype.name == "answer length rule":
             answerlengthrule_update(rule, rule.length, rule.length_type, recursive_filtering_chosen_answers(rule, chosen_answers), question)
 

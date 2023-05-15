@@ -61,6 +61,13 @@ class SentenceSimilarityRule(Rule):
     def __str__(self):
         return "{} Sentence: {:.20s}...".format(get_polarity_emoji(self.polarity), self.sentence) if len(self.sentence) > 20 else "{} Sentence: {}".format(get_polarity_emoji(self.polarity), self.sentence)
 
+class ConceptSimilarityRule(Rule):
+    concept = models.CharField(max_length=2048)
+    similarity_threshold = models.FloatField(default=0.8, null=True, blank=True)
+
+    def __str__(self):
+        return "{} Concept: {:.20s}...".format(get_polarity_emoji(self.polarity), self.concept) if len(self.concept) > 20 else "{} Concept: {}".format(get_polarity_emoji(self.polarity), self.concept)
+
 class AnswerLengthRule(Rule):
     length_type = models.CharField(max_length=200, default="word", null=True, blank=True)
     length = models.IntegerField(null=True, blank=True)

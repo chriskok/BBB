@@ -440,7 +440,7 @@ def similar_sentence(df, sentence, sim_score_threshold=0.7, n_return_threshold=N
 
     return_df = return_df.sort_values(by=['score'], ascending=False)
     if(n_return_threshold): return_df = return_df.head(n_return_threshold)
-    if(not return_df.empty): return_df = return_df[return_df['score'] > sim_score_threshold] 
+    if(not return_df.empty): return_df = return_df[return_df['score'] >= sim_score_threshold] 
 
     return return_df
 
@@ -581,37 +581,19 @@ def populate_answer_concepts(question, answers):
         print(len(all_concept_maps))
 
 def similar_concept(df, question, concept, score_threshold=0.7):
-    answers = df["answer_text"].apply(str).tolist()
-    answers = df["concept_scores"].apply(json.loads).tolist()
+    if (df.empty): return df
+    concept_scores = df["concept_scores"].apply(json.loads).tolist()
 
-    # if (method == 'sbert'):
-    #     #Compute embeddings
-    #     embeddings = model.encode(sentences, convert_to_tensor=True)
-
-    #     #Compute cosine-similarities for each sentence with each other sentence
-    #     cosine_scores = util.cos_sim(embeddings, embeddings)
-    #     chosen_scores = cosine_scores[0]
-
-    # elif (method == 'spacy'):
-    #     embeddings = [nlp(x) for x in sentences]
-    #     chosen_scores = [embeddings[0].similarity(x) for x in embeddings]
-
-    # elif (method == 'tfidf'):
-    #     tfidf_vectorizer = TfidfVectorizer()
-    #     tfidf_matrix = tfidf_vectorizer.fit_transform(sentences)
-    #     cosine_sim = cosine_similarity(tfidf_matrix, tfidf_matrix)
-    #     chosen_scores = cosine_sim[0]
-
-    # # TODO: Add gensim method as well, https://datascience.stackexchange.com/questions/23969/sentence-similarity-prediction
-
-    # return_df = df.copy()
-    # return_df['score'] = chosen_scores[1:]  # assign all scores to df, while removing the first sentence that we added
-
-    # return_df = return_df.sort_values(by=['score'], ascending=False)
-    # if(n_return_threshold): return_df = return_df.head(n_return_threshold)
-    # if(not return_df.empty): return_df = return_df[return_df['score'] > sim_score_threshold] 
+    specific_concept_scores = []
+    for score_dict in concept_scores:
+        if (concept in score_dict):
+            specific_concept_scores.append(score_dict[concept])
+        else:
+            specific_concept_scores.append(0)
 
     return_df = df.copy()
+    return_df['score'] = specific_concept_scores 
+    if(not return_df.empty): return_df = return_df[return_df['score'] >= score_threshold] 
 
     return return_df
 
