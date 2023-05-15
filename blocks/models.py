@@ -79,6 +79,7 @@ class Answer(models.Model):
 
     rule_strings = models.CharField(max_length=1000, default="[]")  
     outlier_score = models.FloatField(default=0.0)
+    concept_scores = models.CharField(max_length=1000, default="[]")  
 
     # https://stackoverflow.com/questions/22340258/list-field-in-model
     def set_rule_strings(self, x):
@@ -86,6 +87,12 @@ class Answer(models.Model):
 
     def get_rule_strings(self):
         return json.loads(self.rule_strings)
+    
+    def set_concept_scores(self, x):
+        self.concept_scores = json.dumps(x)
+
+    def get_concept_scores(self):
+        return json.loads(self.concept_scores)
 
     def __str__(self):
         return "{}. Q #{}: {}".format(self.id, self.question.id, self.answer_text)

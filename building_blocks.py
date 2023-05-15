@@ -1,6 +1,7 @@
 
 import pandas as pd
 import re
+import time
 
 import nltk
 # nltk.download('wordnet')
@@ -523,18 +524,38 @@ def map_concepts_to_answers(question, answers):
 def convert_answer_concepts(answer_concepts):
     # convert numbered list in string to list of strings
     concepts = [x.strip().split(': ')[1] for x in answer_concepts.split('\n') if x.strip() != '']
-    return concepts
+    concept_dicts = []
+    
+    for concept in concepts:
+        concept_dict = {}
+        pairs = concept.split(', ')
+        try:
+            for pair in pairs:
+                try:
+                    key, value = pair.split(' (')
+                except:
+                    continue
+                value = float(value[:-1])
+                concept_dict[key] = value
+        except Exception as e:
+            print(f"ERROR: {e}, pair: {pairs}")
+            concept_dict = {"FAILED": 1.0}
+        concept_dicts.append(concept_dict)
+    
+    return concept_dicts
 
-def similar_concept(df, question, score_threshold=0.7, concept_threshold=2):
-    answers = df["answer_text"].apply(str).tolist()
+def populate_answer_concepts(question, answers):
+
+    answers_list = answers.values_list('answer_text', flat=True)
+    answers_id_list = answers.values_list('id', flat=True)
 
     all_concept_maps = []
 
     # iterate through answers and add to list if they are under 8000 characters total
     curr_length = 0
     curr_answers = []
-    for index, ans in enumerate(answers):
-        if (curr_length + len(ans) < 8000):
+    for index, ans in enumerate(answers_list):
+        if (curr_length + len(ans) < 5000):
             curr_answers.append(ans)
             curr_length += len(ans)
         else:
@@ -543,10 +564,23 @@ def similar_concept(df, question, score_threshold=0.7, concept_threshold=2):
             print(f"Index: {index} - Added {len(curr_answers)} answers to concept map")
             curr_answers = [ans]
             curr_length = len(ans)
+            time.sleep(30) # wait for 1 minute to avoid OpenAI API rate limit
     all_concept_maps.extend(convert_answer_concepts(map_concepts_to_answers(question, curr_answers)))  # final time, with remaining answers
     
-    print(all_concept_maps)
-    print(len(all_concept_maps))
+    if (len(all_concept_maps) == len(answers_list)):
+        for index, answer_id in enumerate(answers_id_list):
+            # save each concept map to the django answer object at that index
+            answer = answers.get(id=answer_id)
+            answer.set_concept_scores(all_concept_maps[index])
+            # print(f"answer id: {answer_id}, text: {answer.answer_text}, concepts: {answer.concept_scores}")
+            answer.save()
+    else:
+        print("ERROR: Number of concept maps does not match number of answers")
+        print(all_concept_maps)
+        print(len(all_concept_maps))
+
+def similar_concept(df, question, score_threshold=0.7, concept_threshold=2):
+    answers = df["answer_text"].apply(str).tolist()
 
     # if (method == 'sbert'):
     #     #Compute embeddings

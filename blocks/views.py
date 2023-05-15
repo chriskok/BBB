@@ -63,6 +63,7 @@ def similar_sentence_filter(chosen_answers, current_question_obj, sentence, simi
     return df, filtered_answers
 
 def similar_concept_filter(chosen_answers, current_question_obj):
+
     df = pd.DataFrame(list(chosen_answers.values()))
     df = bb.similar_concept(df, current_question_obj)
     student_id_list = df["student_id"].values.tolist()
@@ -177,8 +178,10 @@ def handle_rule_input(form, chosen_answers, current_question_obj):
         # length_type = form.cleaned_data['length_type']
         # length = form.cleaned_data['answer_length']
 
-        # filters answers 
-        df, filtered_answers = similar_concept_filter(chosen_answers, current_question_obj)
+        bb.populate_answer_concepts(current_question_obj, chosen_answers)
+
+        # # filters answers 
+        # df, filtered_answers = similar_concept_filter(chosen_answers, current_question_obj)
 
         # # handle rule creation
         # new_rule,_ = AnswerLengthRule.objects.get_or_create(question=current_question_obj, parent=parent_rule, length=length, length_type=length_type, polarity=form.cleaned_data['rule_polarity']) 
