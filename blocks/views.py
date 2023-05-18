@@ -239,11 +239,12 @@ def building_blocks_view(request, q_id, filter=None):
         current_question_obj.save()
     
     answer_concepts = []
+    related_concepts = bb.extract_key_question_concepts(current_question_obj.related_concepts)
     for ans in chosen_answers:
         curr_concept_list = ans.get_concept_scores()
         if (not curr_concept_list): continue
         for item in curr_concept_list:
-            if item not in answer_concepts:
+            if item not in answer_concepts and item in related_concepts:
                 answer_concepts.append(item)
 
     context = {

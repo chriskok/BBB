@@ -513,6 +513,17 @@ def convert_question_concepts(question_concepts):
     concepts = [x.strip() for x in question_concepts.split('\n') if x.strip() != '']
     return concepts
 
+def extract_key_question_concepts(question_concepts):
+    # from string of numbered list, extract the concepts that are most likely to be key concepts
+    concepts = [x.strip() for x in question_concepts.split('\n') if x.strip() != '']
+    key_concepts = []
+    for concept in concepts:
+        try:
+            key_concepts.append(concept.split(': ')[0].split('. ')[1].strip())
+        except:
+            continue
+    return key_concepts
+
 def map_concepts_to_answers(question, answers):
     answers_string = '\n'.join([f"#{i+1}: {e}" for i, e in enumerate(answers)])
     prompt = [
