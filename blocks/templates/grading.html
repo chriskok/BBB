@@ -4,13 +4,14 @@
 
 {% load crispy_forms_tags %}
 {% load render_table from django_tables2 %}
+{% load block_extras %}
 
 <!doctype html>
 <html>
     <body>
         <div class="row">
             <div class="col-3 d-flex align-items-center">
-                <a href="{% url 'refinement' question_id %}" class="btn btn-success">Stage 2: Rule Refinement</a>
+                <a href="{% url 'refinement' question_id %}" class="btn btn-secondary">Stage 2: Rule Refinement</a>
             </div>
             <div class="col-6 d-flex align-items-center justify-content-center">
             {% for clus in cluster_list %}
@@ -49,12 +50,11 @@
                 <div {% if cluster_id != -1 %}class="col-8"{% else %}class="col-12"{% endif %}>
                     <h2>Answer Group #{{ cluster_id }} ({{ table.rows|length }} rows)</h2>
                     
-                    <ul class="list-inline">
-                        <li class="list-inline-item">Keywords: </li>
+                    <ul>
                         {% for rule in applied_rules %}
-                            <li class="list-inline-item text-primary">
-                                {{ rule }} 
-                            </li>
+                        <li>
+                            <span style="background-color:{{ color_to_rule|get_item:rule.id }}">{{ rule.id|count_parents }} {{rule}}</span><br>
+                        </li>
                         {% endfor %}
                     </ul>
                     {% render_table table %}

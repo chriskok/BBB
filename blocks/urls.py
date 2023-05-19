@@ -16,6 +16,7 @@ urlpatterns = [
     path('cluster_reset/<int:question_id>', views.cluster_reset_view, name='cluster_reset'),        # non-page
 
     # GRADING
+    path('answer_edit/<int:id>', views.answer_edit_view, name='answer_edit'), 
     path('grade/<int:q_id>/<negint:id>', views.cluster_grade_view, name='grade'),
 
     # SYSTEM

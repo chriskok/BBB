@@ -429,6 +429,20 @@ def rule_refinement_view(request, q_id):
     }
     return render(request, "rule_refinement.html", context)
 
+def answer_edit_view(request, id):
+    obj = get_object_or_404(Answer, id=id)
+    form = AnswerEditForm(request.POST or None, instance=obj)
+    if form.is_valid():
+        form.save()
+        form = AnswerEditForm(instance=obj)
+        # return HttpResponseRedirect(reverse('grade', kwargs={'q_id': q_id, 'id': c_id}))
+
+    context = {
+        'form': form,
+        'answer_id': id,
+    }
+    return render(request, 'answer_edit.html', context)
+
 def cluster_grade_view(request, q_id, id):
     question_id_list = list(Question.objects.values_list('pk', flat=True))
 
@@ -477,7 +491,7 @@ def cluster_grade_view(request, q_id, id):
         "table": table,
         "cluster_list": cluster_list,
         "applied_rules": curr_cluster.applied_rules.all(),
-        # "applied_rubrics": curr_applied_rubrics,
+        "color_to_rule": color_to_rule,
         "form": form,
         "question_id_list": question_id_list,
     }
@@ -637,7 +651,6 @@ class SentenceSimilarityRuleUpdateView(UpdateView):
         update_all_children_rules(child_child_list, chosen_answers, self.object.question)  
 
         return super().form_valid(form) 
-
 
 class AnswerLengthRuleUpdateView(UpdateView):
     model = AnswerLengthRule

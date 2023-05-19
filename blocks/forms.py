@@ -48,3 +48,16 @@ class ClusterGradingForm(forms.ModelForm):
     class Meta:
         model = Cluster
         fields  = ['cluster_name','cluster_grade', 'cluster_feedback', 'cluster_description', ]
+
+
+class AnswerEditForm(forms.ModelForm):
+    answer_text = forms.CharField(widget=forms.Textarea(attrs={'rows': 3}), required=True)
+    override_feedback = forms.CharField(widget=forms.Textarea(attrs={'rows': 3}), label='Feedback', required=False)
+    class Meta:
+        model = Answer
+        fields  = ['answer_text','override_feedback','override_grade',]
+        labels = {
+            'answer_text': 'Answer',
+            'override_feedback': 'Feedback',
+            'override_grade': 'Grade',
+        }
