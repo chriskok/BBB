@@ -293,6 +293,107 @@ def chatgpt_view(request, q_id, method='question_only'):
 
     return render(request, "chatgpt_page.html", context)
 
+def bulk_change_topic(chosen_answers, q_id, new_topic):
+    cluster_obj = Cluster.objects.get(question_id=q_id, cluster_id=new_topic)
+
+    # Update all answers
+    for answer in chosen_answers:
+        answer.cluster = cluster_obj
+    Answer.objects.bulk_update(chosen_answers, ['cluster']) 
+
+def parse_request(request, q_id):
+    to_delete = request.GET.get('delete')
+    to_add = request.GET.get('add')
+    to_merge = request.GET.get('merge')
+
+    if (to_delete):
+        update_list = [int(i) for i in to_delete.split(',')]
+        print('Deleting: {}'.format(update_list))
+        for cluster_id in update_list:
+            chosen_answers = Answer.objects.filter(question_id=q_id, cluster__cluster_id=cluster_id)
+            bulk_change_topic(chosen_answers, q_id, -1)
+            curr_cluster = Cluster.objects.get(question_id=q_id, cluster_id=cluster_id)
+            curr_cluster.delete()
+    elif (to_add):
+        new_id = int(Cluster.objects.filter(question_id=q_id).aggregate(Max('cluster_id'))['cluster_id__max']) + 1
+        print('Adding Cluster: {}'.format(new_id))
+        Cluster.objects.create(
+            cluster_id = new_id,
+            cluster_keywords = json.dumps([]),
+            cluster_weights = json.dumps([]),
+            cluster_locked = False,
+            question_id = q_id,
+        )
+    # elif (to_merge):
+    #     update_list = [int(i) for i in to_merge.split(',')]
+    #     print('Merging: {}'.format(update_list))
+    #     min_in_list = min(update_list)
+    #     print(min_in_list)
+    #     for cluster_id in update_list:
+    #         if (cluster_id == min_in_list): continue
+    #         chosen_answers = Answer.objects.filter(question_id=q_id, cluster__cluster_id=cluster_id)
+    #         print(chosen_answers)
+    #         bulk_change_topic(chosen_answers, q_id, min_in_list)
+    #         curr_cluster = Cluster.objects.get(question_id=q_id, cluster_id=cluster_id)
+    #         curr_cluster.delete()
+    else:
+        return False
+    
+    return True
+
+def change_answer_cluster(request, q_id):
+    changed_item = request.POST.getlist('changed_item')[0]
+    new_topic = request.POST.getlist('new_topic')[0]
+    print('change answer #{} to topic #{}'.format(changed_item, new_topic))
+
+    clus_obj = Cluster.objects.get(question_id=q_id, cluster_id=new_topic)
+    ans_obj = Answer.objects.filter(pk=changed_item).update(cluster=clus_obj)
+
+    return JsonResponse({"changed_item":changed_item})
+
+def rule_refinement_view(request, q_id):
+    question_id_list = list(Question.objects.values_list('pk', flat=True))
+
+    args_found = parse_request(request, q_id)
+    if (args_found): return HttpResponseRedirect(reverse('refined_clustering', kwargs={'q_id': q_id}))
+
+    current_question_obj = Question.objects.filter(pk=q_id)[0]
+    cluster_dict = {}
+    average_points_dict = {}
+    cluster_rules = {}
+    cluster_ids = {}
+
+    # calculate average points of each cluster
+    cluster_list = Cluster.objects.filter(question_id=q_id)
+    for cluster in cluster_list:
+        if (int(cluster.cluster_id) == -1): continue  # skip to leave till the end of the list
+        cluster_dict[cluster.cluster_id] = Answer.objects.filter(question_id=q_id, cluster__cluster_id=cluster.cluster_id)
+        point_avg = cluster_dict[cluster.cluster_id].aggregate(Avg('assigned_grade'))['assigned_grade__avg']
+        average_points_dict[cluster.cluster_id] = point_avg if point_avg != None else 0
+        if (cluster.cluster_rules): 
+            curr_cluster_rules = [x.strip() for x in cluster.cluster_rules.split(',')]
+            cluster_rules[cluster.id] = curr_cluster_rules
+            cluster_ids[cluster.id] = cluster.cluster_id
+    cluster_dict[-1] = Answer.objects.filter(question_id=q_id, cluster__cluster_id=-1)
+    point_avg = Answer.objects.filter(question_id=q_id, cluster__cluster_id=-1).aggregate(Avg('assigned_grade'))['assigned_grade__avg']
+    average_points_dict[-1] = point_avg if point_avg != None else 0
+
+    # Develop recommendations for changing clusters based on user-inputted keywords
+    # TODO: Change rules to keywords - cluster.get_cluster_keywords()
+    chosen_answers = Answer.objects.filter(question_id=q_id)
+    query_df = pd.DataFrame(list(chosen_answers.values()))
+    # recommended_reclusters = similarity_reclustering(q_id, query_df, cluster_rules, cluster_ids)
+
+    context = {
+        "cluster_dict": cluster_dict,
+        "cluster_list": json.dumps(list(cluster_list.values())),
+        "question_obj": current_question_obj,
+        "average_points_dict": average_points_dict,
+        "question_id_list": question_id_list,
+        # "recommended_reclusters": recommended_reclusters,
+    }
+    return render(request, "rule_refinement.html", context)
+
 def system_reset_view(request, question_id=None):
 
     # get specific answers for the current question

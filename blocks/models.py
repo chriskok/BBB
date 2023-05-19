@@ -75,6 +75,19 @@ class AnswerLengthRule(Rule):
     def __str__(self):
         return "{} Answer Length: {} {}s".format(get_polarity_emoji(self.polarity), self.length, self.length_type)
     
+class Cluster(models.Model):
+    question = models.ForeignKey(Question, on_delete=models.SET_NULL, default=None, null=True, blank=True)
+    cluster_name = models.CharField(max_length = 200, blank=True, null=True)
+    cluster_id = models.IntegerField(default=0)
+
+    applied_rules = models.ManyToManyField(Rule, default=None)
+    cluster_description = models.TextField(blank=True, null=True)
+    cluster_grade = models.FloatField(blank=True, null=True)
+    cluster_feedback = models.TextField(blank=True, null=True)
+
+    class Meta:
+        ordering = ['question__id', 'cluster_id']
+
 class Answer(models.Model):
     answer_text = models.TextField()
     student_id = models.IntegerField()
@@ -82,6 +95,7 @@ class Answer(models.Model):
 
     # https://docs.djangoproject.com/en/4.0/ref/models/fields/#foreignkey
     question = models.ForeignKey(Question, on_delete=models.CASCADE, default=None, null=True, blank=True)
+    cluster = models.ForeignKey(Cluster, on_delete=models.SET_NULL, default=None, null=True, blank=True)
     applied_rules = models.ManyToManyField(Rule, default=None)
 
     rule_strings = models.CharField(max_length=1000, default="[]")  
@@ -114,4 +128,3 @@ class ChatGPTGradeAndFeedback(models.Model):
 
     def __str__(self):
         return "{}. Trial: {}, Prompt: {}, Model: {}".format(self.id, self.trial_run_number, self.prompt_type, self.openai_model)
-

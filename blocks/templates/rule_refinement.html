@@ -1,0 +1,177 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+{% load crispy_forms_tags %}
+{% load static %}
+{% load block_extras %}
+
+<div class="row">
+     <div class="col-6 d-flex align-items-center">
+          {% comment %} <a href="/clustering/interactive/static/{{ question_obj.id }}" class="btn btn-success"> Stage 1: Rough Clustering</a> {% endcomment %}
+          <a href="{% url 'building_blocks' question_obj.id %}" class="btn btn-secondary  my-3">Back To Rule Creation</a>
+     </div>
+     <div class="col-6 d-flex align-items-center justify-content-end">
+          {% comment %} <a href="/clustering/grade/{{ question_obj.id }}/0" class="btn btn-success">Stage 3: Grading and Feedback</a> {% endcomment %}
+     </div>
+</div>
+
+<br>
+
+<h2>Refined Grouping</h2>
+
+<p class="text-secondary">Now that we have a better idea of the possible answers, lets make sure the answer groups are exactly as we expect! Drag and drop different answers 
+     to the answer groups where you feel they belong. Naming each group helps you remember what each of them represent. You can also add, delete, or merge clusters as needed. Don't
+     worry about accidentally removing answers either, all unclustered items will go to the Answer Group #-1 at the bottom. Just make sure to drag them into the appropriate groups 
+     before we go to the next stage: grading these answer groups!
+</p>
+
+{% if question_obj.question_image_url %}
+<h4>Question {{ question_obj.id }}: {{ question_obj.question_text }}
+     <a data-toggle="collapse" href="#showImg" role="button" aria-expanded="false" aria-controls="showImg">[show image]</a></h4>
+<div class="collapse" id="showImg"> <img src="{% static question_obj.question_image_url %} "  class="rounded mx-auto d-block"></img> </div>
+{% else %}
+<h4>Question {{ question_obj.id }}: {{ question_obj.question_text }}</h4>
+{% endif %}
+
+<br>
+<br>
+
+<!-- bootstrap alerts -->
+<div id="compare_warning" style="display:none;" class="alert alert-warning alert-dismissible fade show" role="alert">
+     Please select only 2 answer groups for comparison.
+</div>
+<div id="merge_warning" style="display:none;" class="alert alert-warning alert-dismissible fade show" role="alert">
+     Please select at least 2 answer groups to merge.
+</div>
+<div id="delete_warning" style="display:none;" class="alert alert-warning alert-dismissible fade show" role="alert">
+     Please select at least 1 answer groups to delete.
+</div>
+
+<div class="row d-flex justify-content-center">
+
+     <a href="#" id="compare_cluster_button" class="btn btn-primary mx-1">Compare Groups</a>
+     <a href="{% url 'refinement' question_obj.id %}?add=1" id="add_cluster_button" class="btn btn-primary mx-1">Add Group</a>
+     <a href="#" id="delete_cluster_button" class="btn btn-primary mx-1">Delete Group(s)</a>
+     <a href="#" id="merge_cluster_button" class="btn btn-primary mx-1">Merge Groups</a>
+</div>
+
+<br>
+
+<div class="card-deck">
+     {% for key, values in cluster_dict.items %}
+          <div class="card mb-4 overflow-auto" style=" height: 20rem;">
+               <div class="card-body ">
+                    <h5 class="card-title align-middle">
+                         Answer Group #{{ key }}{% if values.first.cluster.cluster_name  %}: {{ values.first.cluster.cluster_name }}{% endif %} 
+                         <span class="badge badge-secondary mx-1">grade: {{ values.first.cluster.cluster_grade|floatformat:2 }}</span>
+                         <span class="badge badge-secondary mx-1">size: {{ values|length }}</span>
+                         {% comment %} <span class="badge badge-secondary mx-1">avg score: {{ values2|floatformat:2 }}</span> {% endcomment %}
+                    </h5>
+                    <div class="row" id="buttonRow{{ key }}">
+                         <div class="btn-group-toggle mx-2" data-toggle="buttons">
+                              {% comment %} <a href="{% url 'cluster_details_refined' question_obj.id key %}" class="btn btn-primary mx-1">Details</a> {% endcomment %}
+                              {% if key != -1 %}
+                              <label class="btn btn-success mx-1">
+                                   <input type="checkbox" autocomplete="off" value="{{ key }}"> Select
+                              </label>
+                              {% endif %}
+                         </div>
+                    </div>
+                    <br>
+                    <form id="answerList{{ key }}" class="list-group" hx-post="{% url 'change_cluster' question_obj.id %}" 
+                         hx-trigger="add" hx-swap="none" hx-vals='js:{changed_item: get_childs_value(event.item), new_topic: {{ key }}}'>
+                    {% for answer in values %}
+                         <div>
+                              <input type='hidden' name='item' value='{{ answer.pk }}'/>
+                              <li class="list-group-item {% if answer.flagged %}text-info{% endif %}">{{ answer.student_id }}: {{ answer.answer_text }}
+                                   {% if answer.id in recommended_reclusters %}<span class="badge badge-warning mx-1">#{{ recommended_reclusters|lookup:answer.id }}?</span>{% endif %}</li>
+                         </div>
+                    {% empty %}
+                         <div>
+                              <input type='hidden' name='item'/>
+                              <li class="list-group-item">Empty Placeholder</li>
+                         </div>
+                    {% endfor %}
+                    </form>
+               </div>
+          </div>
+          <br>
+     {% if forloop.counter|divisibleby:3  %} 
+          <div class="w-100 d-none d-block"></div> 
+     {% endif %}  
+
+     {% endfor %}
+</div>
+
+<script>
+$(document).ready(function () {
+     const selected_clusters = [];
+
+     // Card Multi Select
+     $('input[type=checkbox]').click(function () {
+          // console.log($(this).attr('value'));
+          current_value = $(this).attr('value')
+          var card_body = $(this).parent().parent().parent().parent().parent();
+          if (card_body.hasClass('border-3')) {
+               card_body.removeClass('border-primary');
+               card_body.removeClass('border-3');
+               var myIndex = selected_clusters.indexOf(current_value);
+               if (myIndex !== -1) {
+                    selected_clusters.splice(myIndex, 1);
+               }
+          }
+          else {
+               card_body.addClass('border-3');
+               card_body.addClass('border-primary');
+               selected_clusters.push(current_value);
+          }
+     });
+     
+     /*$('#compare_cluster_button').click(function () {
+          if (selected_clusters.length == 2){
+               window.location.href = '/clustering/cluster_compare/refined/{{ question_obj.id }}/' + selected_clusters[0] + '/' + selected_clusters[1];
+          } else {
+               $('#compare_warning').show();
+          }
+     });*/
+
+     /*$('#merge_cluster_button').click(function () {
+          if (selected_clusters.length >= 2){
+               window.location.href = "{% url 'refinement' question_obj.id %}?merge=" + selected_clusters.join();
+          } else {
+               $('#merge_warning').show();
+          }
+     });*/
+
+     $('#delete_cluster_button').click(function () {
+          if (selected_clusters.length > 0){
+               window.location.href = "{% url 'refinement' question_obj.id %}?delete=" + selected_clusters.join();
+          } else {
+               $('#delete_warning').show();
+          }
+     });
+
+     var cluster_list = {{ cluster_list | safe }};
+
+     Object.entries(cluster_list).forEach(([key, value]) => {
+          var curr_list = document.getElementById('answerList' + value.cluster_id);
+          if (curr_list){
+               Sortable.create(curr_list,{
+                    group: 'foo',
+                    animation: 100
+               });
+          }
+     });
+
+     /*const unclustered_buttons = document.getElementById("buttonRow-1");
+     unlustered_buttons.remove();*/
+});
+
+function get_childs_value(htmlElement){
+     return htmlElement.querySelector('input[name="item"]').value;
+}
+
+</script>
+
+{% endblock %}

@@ -24,3 +24,7 @@ def filter_chatgpt_by_method(queryset, method):
 @register.simple_tag(name='filter_chatgpt')
 def filter_chatgpt(queryset, method, model):
     return queryset.filter(prompt_type=method, openai_model=model).last()
+
+@register.filter(name='lookup')
+def lookup(value, arg):
+    return value[arg]
