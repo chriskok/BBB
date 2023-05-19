@@ -47,8 +47,8 @@
 
         <div class="container-fluid">
             <div class="row">
-                <div {% if cluster_id != -1 %}class="col-8"{% else %}class="col-12"{% endif %}>
-                    <h2>Answer Group #{{ cluster_id }} ({{ table.rows|length }} rows)</h2>
+                <div {% if cluster.cluster_id != -1 %}class="col-8"{% else %}class="col-12"{% endif %}>
+                    <h2>Answer Group #{{ cluster.cluster_id }} ({{ table.rows|length }} rows)</h2>
                     
                     <ul>
                         {% for rule in applied_rules %}
@@ -60,7 +60,7 @@
                     {% render_table table %}
 
                 </div>
-                {% if cluster_id != -1 %}
+                {% if cluster.cluster_id != -1 %}
                 <div class="col-4">
                     <form action="{% url 'grade' question_id cluster_id %}" method="post">
                         {% csrf_token %}
@@ -70,35 +70,6 @@
                         <button type="submit" class="btn btn-primary">Save</button>
 
                     </form>
-
-                    <br>
-                    {% comment %} <h4 class="my-3">Question {{ question_id }} Rubric List</h4> {% endcomment %}
-
-                    {% comment %} <form id='topic_rubric_list' hx-post="{% url 'update_rubric' %}?apply_grade={{ question_id }}&cluster={{ cluster_id }}" hx-trigger="change" 
-                        hx-swap="none" hx-vals='js:{id: event.target.id, type: event.target.name, value: event.target.value, checked: event.target.checked}'>
-                        <table class="table">
-                            <thead>
-                                <tr>
-                                    <th scope="col">Apply</th>
-                                    <th scope="col">Description</th>
-                                    <th scope="col">Score</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                            {% for rubric_item in rubrics %}
-                                <tr>
-                                    <td>
-                                        <div class="form-check">
-                                            <input class="form-check-input" name="checkbox" type="checkbox" value="{{rubric_item.rubric_grade}}" id="{{rubric_item.pk}}" {% if rubric_item.pk in applied_rubrics %} checked {% endif %}>
-                                        </div>
-                                    </td>
-                                    <td>{{rubric_item.rubric_description}}</td>
-                                    <td>{{rubric_item.rubric_grade}}</td>
-                                </tr>
-                            {% endfor %}
-                            </tbody>
-                        </table>
-                    </form> {% endcomment %}
                 </div>
                 {% endif %}
             </div>

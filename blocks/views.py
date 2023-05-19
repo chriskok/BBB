@@ -486,6 +486,7 @@ def cluster_grade_view(request, q_id, id):
     table = ClusterGradeTable(answer_qs) if curr_cluster.cluster_id != -1 else UnclusteredGradeTable(answer_qs)
 
     context = {
+        "cluster": curr_cluster,
         "cluster_id": id,
         "question_id": q_id,
         "table": table,
