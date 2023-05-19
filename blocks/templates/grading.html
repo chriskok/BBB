@@ -1,0 +1,165 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+{% load crispy_forms_tags %}
+{% load render_table from django_tables2 %}
+
+<!doctype html>
+<html>
+    <body>
+        <div class="row">
+            <div class="col-3 d-flex align-items-center">
+                <a href="{% url 'refinement' question_id %}" class="btn btn-success">Stage 2: Rule Refinement</a>
+            </div>
+            <div class="col-6 d-flex align-items-center justify-content-center">
+            {% for clus in cluster_list %}
+                {% if clus.cluster_id is -1 %}
+                {% else %}
+                    {% if clus.cluster_grade is None %}
+                    <a href="{% url 'grade' question_id clus.id %}" class="btn btn-secondary mx-2">#{{ clus.cluster_id }}</a>
+                    {% else %}
+                    <a href="{% url 'grade' question_id clus.pk %}" class="btn btn-success mx-2">#{{ clus.cluster_id }}</a>
+                    {% endif %}
+                {% endif %}
+            {% endfor %}
+            {% if cluster_list.0.cluster_id is -1 %}
+                {% if cluster_list.0.cluster_grade is None %}
+                <a href="{% url 'grade' question_id cluster_list.0.id %}" class="btn btn-secondary mx-2">#{{ cluster_list.0.cluster_id }}</a>
+                {% else %}
+                <a href="{% url 'grade' question_id cluster_list.0.id %}" class="btn btn-success mx-2">#{{ cluster_list.0.cluster_id }}</a>
+                {% endif %}
+            {% endif %}
+        </div>
+            <div class="col-3 d-flex align-items-center justify-content-end">
+                {% comment %} <a href="{% url 'overview' question_id %}" class="btn btn-success">Stage 4: Overview</a> {% endcomment %}
+            </div>
+        </div>
+
+        <br>
+
+        <h2>Grading and Feedback</h2>
+
+        <p class="text-secondary">Next, we get to grade and provide feedback for the finalized answer groups. You can set the grade outright, apply rubrics you've developed, or use both!</p>
+
+        <br>
+
+        <div class="container-fluid">
+            <div class="row">
+                <div {% if cluster_id != -1 %}class="col-8"{% else %}class="col-12"{% endif %}>
+                    <h2>Answer Group #{{ cluster_id }} ({{ table.rows|length }} rows)</h2>
+                    
+                    <ul class="list-inline">
+                        <li class="list-inline-item">Keywords: </li>
+                        {% for rule in applied_rules %}
+                            <li class="list-inline-item text-primary">
+                                {{ rule }} 
+                            </li>
+                        {% endfor %}
+                    </ul>
+                    {% render_table table %}
+
+                </div>
+                {% if cluster_id != -1 %}
+                <div class="col-4">
+                    <form action="{% url 'grade' question_id cluster_id %}" method="post">
+                        {% csrf_token %}
+                        
+                        {{ form | crispy }}
+
+                        <button type="submit" class="btn btn-primary">Save</button>
+
+                    </form>
+
+                    <br>
+                    {% comment %} <h4 class="my-3">Question {{ question_id }} Rubric List</h4> {% endcomment %}
+
+                    {% comment %} <form id='topic_rubric_list' hx-post="{% url 'update_rubric' %}?apply_grade={{ question_id }}&cluster={{ cluster_id }}" hx-trigger="change" 
+                        hx-swap="none" hx-vals='js:{id: event.target.id, type: event.target.name, value: event.target.value, checked: event.target.checked}'>
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Apply</th>
+                                    <th scope="col">Description</th>
+                                    <th scope="col">Score</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            {% for rubric_item in rubrics %}
+                                <tr>
+                                    <td>
+                                        <div class="form-check">
+                                            <input class="form-check-input" name="checkbox" type="checkbox" value="{{rubric_item.rubric_grade}}" id="{{rubric_item.pk}}" {% if rubric_item.pk in applied_rubrics %} checked {% endif %}>
+                                        </div>
+                                    </td>
+                                    <td>{{rubric_item.rubric_description}}</td>
+                                    <td>{{rubric_item.rubric_grade}}</td>
+                                </tr>
+                            {% endfor %}
+                            </tbody>
+                        </table>
+                    </form> {% endcomment %}
+                </div>
+                {% endif %}
+            </div>
+        </div>
+
+        <!-- Modal -->
+        <div class="modal fade" id="AnswerEditModal" tabindex="-1" role="dialog" aria-labelledby="AnswerEditModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="AnswerEditModalLabel">Edit Individual Answer</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div id="AnswerEditDiv"></div>
+                    </div>
+                    {% comment %} <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    </div> {% endcomment %}
+                </div>
+            </div>
+        </div>
+    </body>
+
+</html>
+
+<script>
+    // get the serialized keyword dictionary from django template
+    var words_array = {{ keyword_list | safe }};
+    console.log(words_array);
+
+    $('td').html(function(i, html){
+        for (let i = 0; i < words_array.length; i++) {
+            var regEx = new RegExp("(" + words_array[i] + ")(?!([^<]+)?>)", "gi");
+            html = html.replace(regEx, '<span class="text-primary">$1</span>');
+        }
+        // return html.replace("attribute", '<span class="text-primary">attribute</span>'); 
+        return html; 
+    });
+
+    // change grade input in form upon click of checkboxes
+    $('input.form-check-input').on('change', function () {
+        // console.log($(this).is(':checked'));
+        // console.log($(this).val());
+
+        if ($(this).is(':checked')) {
+            if ($('#cluster_grade').val() != ''){
+                // $('#cluster_grade').attr('value', parseFloat($('#cluster_grade').val()) + parseFloat($(this).val()));
+                document.getElementById('cluster_grade').value = parseFloat($('#cluster_grade').val()) + parseFloat($(this).val());
+            } else{
+                // $('#cluster_grade').attr('value',$(this).val());
+                document.getElementById('cluster_grade').value =$(this).val();
+            }
+        } else {
+            // $('#cluster_grade').attr('value', parseFloat($('#cluster_grade').val()) - parseFloat($(this).val()));
+            document.getElementById('cluster_grade').value = parseFloat($('#cluster_grade').val()) - parseFloat($(this).val());
+        }
+    });
+
+</script>
+
+{% endblock %}

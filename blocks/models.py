@@ -98,6 +98,10 @@ class Answer(models.Model):
     cluster = models.ForeignKey(Cluster, on_delete=models.SET_NULL, default=None, null=True, blank=True)
     applied_rules = models.ManyToManyField(Rule, default=None)
 
+    # answer model features if user edits/inputs individually
+    override_grade = models.FloatField(blank=True, null=True)
+    override_feedback =  models.TextField(blank=True, null=True)
+
     rule_strings = models.CharField(max_length=1000, default="[]")  
     outlier_score = models.FloatField(default=0.0)
     concept_scores = models.CharField(max_length=1000, default="[]")  

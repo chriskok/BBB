@@ -9,6 +9,7 @@ from django.http import HttpResponse, JsonResponse, HttpResponseRedirect
 from django.db.models import Avg, Max, Min, Sum
 from django.contrib.auth.decorators import login_required
 from django.views.generic.edit import UpdateView
+from django_tables2 import SingleTableView
 
 from itertools import product
 import building_blocks as bb 
@@ -17,6 +18,7 @@ nlp = spacy.load('en_core_web_lg')  # if not downloaded, run: python -m spacy do
 
 from .models import *
 from .forms import *
+from .tables import *
 from .colors import colors
 
 import warnings
@@ -426,6 +428,61 @@ def rule_refinement_view(request, q_id):
         # "recommended_reclusters": recommended_reclusters,
     }
     return render(request, "rule_refinement.html", context)
+
+def cluster_grade_view(request, q_id, id):
+    question_id_list = list(Question.objects.values_list('pk', flat=True))
+
+    # go through each cluster and check if any aren't referenced, if so, remove them from the list to grade
+    cluster_list = Cluster.objects.filter(question_id=q_id)
+    empty_cluster_ids = []
+    for curr_cluster in cluster_list:
+        curr_cluster_answers = curr_cluster.answer_set.all()
+        if (curr_cluster_answers.count() == 0):
+            empty_cluster_ids.append(curr_cluster.id)
+        elif (curr_cluster.cluster_id == -1):  # check if all answers are complete specifically for Unclustered
+            if(curr_cluster_answers.filter(override_grade__isnull=True).count() == 0): curr_cluster.cluster_grade = 0.0
+            else: curr_cluster.cluster_grade = None
+            curr_cluster.save()
+    cluster_list = Cluster.objects.filter(question_id=q_id).exclude(id__in=empty_cluster_ids)
+
+    # if the ID is for a cluster that doesn't exist, get the lowest cluster
+    if cluster_list.filter(question_id=q_id, pk=id).exists():
+        curr_cluster = Cluster.objects.get(question_id=q_id, pk=id)
+    else:
+        curr_cluster = cluster_list.filter(question_id=q_id, cluster_id__gte=0).first()
+        curr_cluster = cluster_list.get(question_id=q_id, cluster_id=-1) if not curr_cluster else curr_cluster
+        id = curr_cluster.id
+    
+    # curr_applied_rubrics = [] if isinstance(curr_cluster.get_cluster_rubrics(), str) else curr_cluster.get_cluster_rubrics()
+
+    rules = Rule.objects.filter(question_id=q_id)
+    color_to_rule = { k.id:v for (k,v) in zip(rules, colors[:len(rules)])} 
+
+    # if this is a POST request we need to process the form data]
+    # TODO: there's a bug here with saving the form and then applying the rubrics after - reverts back to form input
+    if request.method == 'POST':        
+        form = ClusterGradingForm(request.POST, instance=curr_cluster)
+        # check whether it's valid:
+        if form.is_valid():
+            form.save()
+    else:
+        form = ClusterGradingForm(instance=curr_cluster)
+
+    answer_qs = Answer.objects.filter(question_id=q_id, cluster__id=id)
+    table = ClusterGradeTable(answer_qs) if curr_cluster.cluster_id != -1 else UnclusteredGradeTable(answer_qs)
+
+    context = {
+        "cluster_id": id,
+        "question_id": q_id,
+        "table": table,
+        "cluster_list": cluster_list,
+        "applied_rules": curr_cluster.applied_rules.all(),
+        # "applied_rubrics": curr_applied_rubrics,
+        "form": form,
+        "question_id_list": question_id_list,
+    }
+
+    return render(request, "grading.html", context)
 
 def cluster_reset_view(request, question_id):
     chosen_answers = Answer.objects.filter(question_id=question_id).all() 

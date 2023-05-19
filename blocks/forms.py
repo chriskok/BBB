@@ -1,5 +1,5 @@
 from django import forms
-from .models import Answer
+from .models import Answer, Cluster
 
 class BuildingBlocksForm(forms.Form):
 
@@ -37,3 +37,14 @@ class BuildingBlocksForm(forms.Form):
     rule_polarity = forms.ChoiceField(choices = (('positive', "Positive ✔️"), ('negative', "Negative ❌")))
     positive_examples = forms.CharField(required=False)
     negative_examples = forms.CharField(required=False)
+
+
+class ClusterGradingForm(forms.ModelForm):
+    cluster_feedback = forms.CharField(widget=forms.Textarea(attrs={'rows': 3}), required=False)
+    cluster_description = forms.CharField(widget=forms.Textarea(attrs={'rows': 3}), required=False)
+    cluster_grade_attrs = {'type': 'number', 'id':"cluster_grade", 'name':"cluster_grade", 'step': '0.1', 'min': '-5', 'max': '5'}
+    cluster_grade = forms.FloatField(widget=forms.NumberInput(attrs=cluster_grade_attrs), label='Grade (-5 to 5)', min_value=-5, max_value=5, required=False)
+
+    class Meta:
+        model = Cluster
+        fields  = ['cluster_name','cluster_grade', 'cluster_feedback', 'cluster_description', ]

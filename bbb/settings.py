@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'polymorphic',
     'crispy_bootstrap4',
     'crispy_forms',
+    'django_tables2',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',

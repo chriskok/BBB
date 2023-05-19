@@ -10,11 +10,10 @@
 
 <div class="row">
      <div class="col-6 d-flex align-items-center">
-          {% comment %} <a href="/clustering/interactive/static/{{ question_obj.id }}" class="btn btn-success"> Stage 1: Rough Clustering</a> {% endcomment %}
-          <a href="{% url 'building_blocks' question_obj.id %}" class="btn btn-secondary  my-3">Back To Rule Creation</a>
+          <a href="{% url 'building_blocks' question_obj.id %}" class="btn btn-secondary  my-3">Stage 1: Rule Creation</a>
      </div>
      <div class="col-6 d-flex align-items-center justify-content-end">
-          {% comment %} <a href="/clustering/grade/{{ question_obj.id }}/0" class="btn btn-success">Stage 3: Grading and Feedback</a> {% endcomment %}
+          <a href="{% url 'grade' question_obj.id 0 %}" class="btn btn-secondary  my-3">Stage 3: Grading and Feedback</a>
      </div>
 </div>
 
@@ -86,7 +85,7 @@
                         </div>
                     </div>
                     {% for rule in values.first.cluster.applied_rules.all %}
-                    <span style="background-color:{{ color_to_rule|get_item:rule.id }}">{{rule}}</span><br>
+                    <span style="background-color:{{ color_to_rule|get_item:rule.id }}">{{ rule.id|count_parents }} {{rule}}</span><br>
                     {% endfor %}
                     <br>
                     <form id="answerList{{ key }}" class="list-group" hx-post="{% url 'change_cluster' question_obj.id %}" 
