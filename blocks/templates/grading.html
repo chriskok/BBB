@@ -14,28 +14,37 @@
                 <a href="{% url 'refinement' question_id %}" class="btn btn-secondary">Stage 2: Rule Refinement</a>
             </div>
             <div class="col-6 d-flex align-items-center justify-content-center">
-            {% for clus in cluster_list %}
-                {% if clus.cluster_id is -1 %}
-                {% else %}
-                    {% if clus.cluster_grade is None %}
-                    <a href="{% url 'grade' question_id clus.id %}" class="btn btn-secondary mx-2">#{{ clus.cluster_id }}</a>
-                    {% else %}
-                    <a href="{% url 'grade' question_id clus.pk %}" class="btn btn-success mx-2">#{{ clus.cluster_id }}</a>
-                    {% endif %}
-                {% endif %}
-            {% endfor %}
-            {% if cluster_list.0.cluster_id is -1 %}
-                {% if cluster_list.0.cluster_grade is None %}
-                <a href="{% url 'grade' question_id cluster_list.0.id %}" class="btn btn-secondary mx-2">#{{ cluster_list.0.cluster_id }}</a>
-                {% else %}
-                <a href="{% url 'grade' question_id cluster_list.0.id %}" class="btn btn-success mx-2">#{{ cluster_list.0.cluster_id }}</a>
-                {% endif %}
-            {% endif %}
-        </div>
+            </div>
             <div class="col-3 d-flex align-items-center justify-content-end">
-                {% comment %} <a href="{% url 'overview' question_id %}" class="btn btn-success">Stage 4: Overview</a> {% endcomment %}
+                <a href="#" class="btn btn-secondary">Stage 4: Export</a>
             </div>
         </div>
+
+        <nav aria-label="...">
+            <ul class="pagination justify-content-center flex-wrap mt-1">
+                <li class="page-item {% if cluster_id < cluster_list.2.id %}disabled{% endif %}">
+                    <a class="page-link my-1" href="{% url 'grade' question_id cluster_id|add:"-1" %}" aria-label="Previous">
+                        <span aria-hidden="true">&laquo;</span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                </li>
+
+                {% for clus in cluster_list %}
+                    {% if clus.cluster_id != -1 %}
+                    <li class="page-item"><a href="{% url 'grade' question_id clus.id %}" class="btn {% if clus.cluster_grade is None %}btn-secondary{% else %}btn-success{% endif %} ml-1 my-1">#{{ clus.cluster_id }}</a></li>
+                    {% endif %}
+                {% endfor %}
+                {% if cluster_list.0.cluster_id is -1 %}
+                    <li class="page-item"><a href="{% url 'grade' question_id cluster_list.0.id %}" class="btn {% if cluster_list.0.cluster_grade is None %}btn-secondary{% else %}btn-success{% endif %} ml-1 my-1">#{{ cluster_list.0.cluster_id }}</a></li>
+                {% endif %}
+                <li class="page-item {% if cluster_id >= cluster_list.last.id or cluster.cluster_id == -1 %}disabled{% endif %}">
+                    <a class="page-link ml-1 my-1" href="{% url 'grade' question_id cluster_id|add:"1" %}" aria-label="Next">
+                        <span aria-hidden="true">&raquo;</span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
 
         <br>
 
