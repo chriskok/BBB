@@ -364,7 +364,7 @@ def create_rule_clusters(answers, question):
         new_cluster = Cluster.objects.create(
             question = question,
             cluster_id = new_id,
-            cluster_name = "Cluster {}".format(new_id),
+            cluster_name = "Group {}".format(new_id),
         )
         for rule in rules:
             new_cluster.applied_rules.add(rule)

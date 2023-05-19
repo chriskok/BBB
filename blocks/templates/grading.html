@@ -31,11 +31,11 @@
 
                 {% for clus in cluster_list %}
                     {% if clus.cluster_id != -1 %}
-                    <li class="page-item"><a href="{% url 'grade' question_id clus.id %}" class="btn {% if clus.cluster_grade is None %}btn-secondary{% else %}btn-success{% endif %} ml-1 my-1">#{{ clus.cluster_id }}</a></li>
+                    <li class="page-item "><a href="{% url 'grade' question_id clus.id %}" class="btn {% if clus.cluster_grade is None %}btn-secondary{% else %}btn-success{% endif %} {% if clus.id == cluster_id %}border-dark border-3{% endif %} ml-1 my-1">#{{ clus.cluster_id }}</a></li>
                     {% endif %}
                 {% endfor %}
                 {% if cluster_list.0.cluster_id is -1 %}
-                    <li class="page-item"><a href="{% url 'grade' question_id cluster_list.0.id %}" class="btn {% if cluster_list.0.cluster_grade is None %}btn-secondary{% else %}btn-success{% endif %} ml-1 my-1">#{{ cluster_list.0.cluster_id }}</a></li>
+                    <li class="page-item"><a href="{% url 'grade' question_id cluster_list.0.id %}" class="btn {% if cluster_list.0.cluster_grade is None %}btn-secondary{% else %}btn-success{% endif %} {% if cluster_list.0.id == cluster_id %}border-dark border-3{% endif %} ml-1 my-1">#{{ cluster_list.0.cluster_id }}</a></li>
                 {% endif %}
                 <li class="page-item {% if cluster_id >= cluster_list.last.id or cluster.cluster_id == -1 %}disabled{% endif %}">
                     <a class="page-link ml-1 my-1" href="{% url 'grade' question_id cluster_id|add:"1" %}" aria-label="Next">
@@ -50,7 +50,7 @@
 
         <h2>Grading and Feedback</h2>
 
-        <p class="text-secondary">Next, we get to grade and provide feedback for the finalized answer groups. You can set the grade outright, apply rubrics you've developed, or use both!</p>
+        <p class="text-secondary">Next, we get to grade and provide feedback for the finalized answer groups.</p>
 
         <br>
 
@@ -141,5 +141,17 @@
     });
 
 </script>
+
+<style>
+    .border-3 {
+        border-width:3px !important;
+    }
+    .border-4 {
+        border-width:4px !important;
+    }
+    .border-2 {
+        border-width:2px !important;
+    }
+</style>
 
 {% endblock %}

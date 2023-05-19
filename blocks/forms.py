@@ -40,8 +40,9 @@ class BuildingBlocksForm(forms.Form):
 
 
 class ClusterGradingForm(forms.ModelForm):
-    cluster_feedback = forms.CharField(widget=forms.Textarea(attrs={'rows': 3}), required=False)
-    cluster_description = forms.CharField(widget=forms.Textarea(attrs={'rows': 3}), required=False)
+    cluster_name = forms.CharField(label='Group Name', required=False)
+    cluster_feedback = forms.CharField(widget=forms.Textarea(attrs={'rows': 3}), label='Feedback', required=False)
+    cluster_description = forms.CharField(widget=forms.Textarea(attrs={'rows': 3}), label='Description', required=False)
     cluster_grade_attrs = {'type': 'number', 'id':"cluster_grade", 'name':"cluster_grade", 'step': '0.1', 'min': '-5', 'max': '5'}
     cluster_grade = forms.FloatField(widget=forms.NumberInput(attrs=cluster_grade_attrs), label='Grade (-5 to 5)', min_value=-5, max_value=5, required=False)
 
