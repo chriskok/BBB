@@ -9,6 +9,7 @@ urlpatterns = [
     path('chatgpt/<int:q_id>/<str:method>', views.chatgpt_view, name='chatgpt'),
     path('refinement/<int:q_id>', views.rule_refinement_view, name='refinement'),
     path('change_cluster/<int:q_id>', views.change_answer_cluster, name='change_cluster'),          # non-page
+    path('cluster_reset/<int:question_id>', views.cluster_reset_view, name='cluster_reset'),           # non-page
 
     # SYSTEM
     path('system_reset/', views.system_reset_view, name='system_reset'),                            # non-page

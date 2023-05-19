@@ -319,9 +319,6 @@ def parse_request(request, q_id):
         print('Adding Cluster: {}'.format(new_id))
         Cluster.objects.create(
             cluster_id = new_id,
-            cluster_keywords = json.dumps([]),
-            cluster_weights = json.dumps([]),
-            cluster_locked = False,
             question_id = q_id,
         )
     # elif (to_merge):
@@ -351,17 +348,50 @@ def change_answer_cluster(request, q_id):
 
     return JsonResponse({"changed_item":changed_item})
 
+def create_rule_clusters(answers, question):
+    Cluster.objects.filter(question = question).delete()
+
+    norule_cluster = Cluster.objects.create(
+        question = question,
+        cluster_id = -1,
+        cluster_name = "No Rules",
+    )
+
+    def create_new_cluster(rules):
+        new_id = int(Cluster.objects.filter(question = question).aggregate(Max('cluster_id'))['cluster_id__max']) + 1
+        new_cluster = Cluster.objects.create(
+            question = question,
+            cluster_id = new_id,
+            cluster_name = "Cluster {}".format(new_id),
+        )
+        for rule in rules:
+            new_cluster.applied_rules.add(rule)
+        new_cluster.save()
+        return new_cluster
+    
+    existing_clusters = {'': norule_cluster}
+    for ans in answers:
+        curr_rule_ids = ",".join([str(i) for i in ans.applied_rules.all().values_list('id', flat=True)])
+        if curr_rule_ids not in existing_clusters:
+            existing_clusters[curr_rule_ids] = create_new_cluster(ans.applied_rules.all())
+        ans.cluster = existing_clusters[curr_rule_ids]
+        ans.save()
+
 def rule_refinement_view(request, q_id):
     question_id_list = list(Question.objects.values_list('pk', flat=True))
 
     args_found = parse_request(request, q_id)
-    if (args_found): return HttpResponseRedirect(reverse('refined_clustering', kwargs={'q_id': q_id}))
+    if (args_found): return HttpResponseRedirect(reverse('refinement', kwargs={'q_id': q_id}))
 
+    chosen_answers = Answer.objects.filter(question_id=q_id)
     current_question_obj = Question.objects.filter(pk=q_id)[0]
+    if not Cluster.objects.filter(question = current_question_obj):
+        create_rule_clusters(chosen_answers, current_question_obj)
+
     cluster_dict = {}
     average_points_dict = {}
-    cluster_rules = {}
-    cluster_ids = {}
+    # cluster_rules = {}
+    # cluster_ids = {}
 
     # calculate average points of each cluster
     cluster_list = Cluster.objects.filter(question_id=q_id)
@@ -370,19 +400,21 @@ def rule_refinement_view(request, q_id):
         cluster_dict[cluster.cluster_id] = Answer.objects.filter(question_id=q_id, cluster__cluster_id=cluster.cluster_id)
         point_avg = cluster_dict[cluster.cluster_id].aggregate(Avg('assigned_grade'))['assigned_grade__avg']
         average_points_dict[cluster.cluster_id] = point_avg if point_avg != None else 0
-        if (cluster.cluster_rules): 
-            curr_cluster_rules = [x.strip() for x in cluster.cluster_rules.split(',')]
-            cluster_rules[cluster.id] = curr_cluster_rules
-            cluster_ids[cluster.id] = cluster.cluster_id
+        # if (cluster.cluster_rules): 
+        #     curr_cluster_rules = [x.strip() for x in cluster.cluster_rules.split(',')]
+        #     cluster_rules[cluster.id] = curr_cluster_rules
+        #     cluster_ids[cluster.id] = cluster.cluster_id
     cluster_dict[-1] = Answer.objects.filter(question_id=q_id, cluster__cluster_id=-1)
     point_avg = Answer.objects.filter(question_id=q_id, cluster__cluster_id=-1).aggregate(Avg('assigned_grade'))['assigned_grade__avg']
     average_points_dict[-1] = point_avg if point_avg != None else 0
 
     # Develop recommendations for changing clusters based on user-inputted keywords
     # TODO: Change rules to keywords - cluster.get_cluster_keywords()
-    chosen_answers = Answer.objects.filter(question_id=q_id)
-    query_df = pd.DataFrame(list(chosen_answers.values()))
+    # query_df = pd.DataFrame(list(chosen_answers.values()))
     # recommended_reclusters = similarity_reclustering(q_id, query_df, cluster_rules, cluster_ids)
+
+    rules = Rule.objects.filter(question=current_question_obj)
+    color_to_rule = { k.id:v for (k,v) in zip(rules, colors[:len(rules)])} 
 
     context = {
         "cluster_dict": cluster_dict,
@@ -390,9 +422,16 @@ def rule_refinement_view(request, q_id):
         "question_obj": current_question_obj,
         "average_points_dict": average_points_dict,
         "question_id_list": question_id_list,
+        "color_to_rule": color_to_rule,
         # "recommended_reclusters": recommended_reclusters,
     }
     return render(request, "rule_refinement.html", context)
+
+def cluster_reset_view(request, question_id):
+    chosen_answers = Answer.objects.filter(question_id=question_id).all() 
+    create_rule_clusters(chosen_answers, Question.objects.get(pk=question_id))
+
+    return JsonResponse({'message': "Clusters Reset!"}) 
 
 def system_reset_view(request, question_id=None):
 

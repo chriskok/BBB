@@ -6,6 +6,8 @@
 {% load static %}
 {% load block_extras %}
 
+<link rel="stylesheet" href="{% static 'css/blocks.css' %}">
+
 <div class="row">
      <div class="col-6 d-flex align-items-center">
           {% comment %} <a href="/clustering/interactive/static/{{ question_obj.id }}" class="btn btn-success"> Stage 1: Rough Clustering</a> {% endcomment %}
@@ -27,11 +29,11 @@
 </p>
 
 {% if question_obj.question_image_url %}
-<h4>Question {{ question_obj.id }}: {{ question_obj.question_text }}
+<h4>Question {{ question_obj.question_exam_id }}: {{ question_obj.question_text }}
      <a data-toggle="collapse" href="#showImg" role="button" aria-expanded="false" aria-controls="showImg">[show image]</a></h4>
 <div class="collapse" id="showImg"> <img src="{% static question_obj.question_image_url %} "  class="rounded mx-auto d-block"></img> </div>
 {% else %}
-<h4>Question {{ question_obj.id }}: {{ question_obj.question_text }}</h4>
+<h4>Question {{ question_obj.question_exam_id }}: {{ question_obj.question_text }}</h4>
 {% endif %}
 
 <br>
@@ -50,10 +52,12 @@
 
 <div class="row d-flex justify-content-center">
 
-     <a href="#" id="compare_cluster_button" class="btn btn-primary mx-1">Compare Groups</a>
      <a href="{% url 'refinement' question_obj.id %}?add=1" id="add_cluster_button" class="btn btn-primary mx-1">Add Group</a>
      <a href="#" id="delete_cluster_button" class="btn btn-primary mx-1">Delete Group(s)</a>
-     <a href="#" id="merge_cluster_button" class="btn btn-primary mx-1">Merge Groups</a>
+     {% comment %} <a href="#" id="compare_cluster_button" class="btn btn-primary mx-1">Compare Groups</a> {% endcomment %}
+     {% comment %} <a href="#" id="merge_cluster_button" class="btn btn-primary mx-1">Merge Groups</a> {% endcomment %}
+     <a type="button" class="btn btn-primary" href="#" hx-get="{% url 'cluster_reset' question_obj.id %}" 
+     hx-swap="none" hx-trigger="click" onClick="setTimeout(function(){window.location.reload()}, 500);">Reset Grouping</a>
 </div>
 
 <br>
@@ -62,29 +66,35 @@
      {% for key, values in cluster_dict.items %}
           <div class="card mb-4 overflow-auto" style=" height: 20rem;">
                <div class="card-body ">
-                    <h5 class="card-title align-middle">
-                         Answer Group #{{ key }}{% if values.first.cluster.cluster_name  %}: {{ values.first.cluster.cluster_name }}{% endif %} 
-                         <span class="badge badge-secondary mx-1">grade: {{ values.first.cluster.cluster_grade|floatformat:2 }}</span>
-                         <span class="badge badge-secondary mx-1">size: {{ values|length }}</span>
-                         {% comment %} <span class="badge badge-secondary mx-1">avg score: {{ values2|floatformat:2 }}</span> {% endcomment %}
-                    </h5>
                     <div class="row" id="buttonRow{{ key }}">
-                         <div class="btn-group-toggle mx-2" data-toggle="buttons">
-                              {% comment %} <a href="{% url 'cluster_details_refined' question_obj.id key %}" class="btn btn-primary mx-1">Details</a> {% endcomment %}
-                              {% if key != -1 %}
-                              <label class="btn btn-success mx-1">
-                                   <input type="checkbox" autocomplete="off" value="{{ key }}"> Select
-                              </label>
-                              {% endif %}
-                         </div>
+
+                        <div class="col-9 d-flex align-items-center">
+                            <h5 class="card-title align-middle">
+                                Answer Group #{{ key }}{% if values.first.cluster.cluster_name  %}{% endif %} 
+                                <span class="badge badge-secondary mx-1">size: {{ values|length }}</span>
+                            </h5> 
+                        </div>
+                        <div class="col-3 d-flex align-items-center justify-content-end">
+                            <div class="btn-group-toggle mx-2" data-toggle="buttons">
+                                {% comment %} <a href="{% url 'cluster_details_refined' question_obj.id key %}" class="btn btn-primary mx-1">Details</a> {% endcomment %}
+                                {% if key != -1 %}
+                                <label class="btn btn-sm btn-primary mx-1">
+                                        <input type="checkbox" autocomplete="off" value="{{ key }}"> Select
+                                </label>
+                                {% endif %}
+                            </div>
+                        </div>
                     </div>
+                    {% for rule in values.first.cluster.applied_rules.all %}
+                    <span style="background-color:{{ color_to_rule|get_item:rule.id }}">{{rule}}</span><br>
+                    {% endfor %}
                     <br>
                     <form id="answerList{{ key }}" class="list-group" hx-post="{% url 'change_cluster' question_obj.id %}" 
                          hx-trigger="add" hx-swap="none" hx-vals='js:{changed_item: get_childs_value(event.item), new_topic: {{ key }}}'>
                     {% for answer in values %}
                          <div>
                               <input type='hidden' name='item' value='{{ answer.pk }}'/>
-                              <li class="list-group-item {% if answer.flagged %}text-info{% endif %}">{{ answer.student_id }}: {{ answer.answer_text }}
+                              <li class="list-group-item {% if answer.flagged %}text-info{% endif %}">{{ answer.answer_text }}
                                    {% if answer.id in recommended_reclusters %}<span class="badge badge-warning mx-1">#{{ recommended_reclusters|lookup:answer.id }}?</span>{% endif %}</li>
                          </div>
                     {% empty %}
@@ -112,17 +122,17 @@ $(document).ready(function () {
      $('input[type=checkbox]').click(function () {
           // console.log($(this).attr('value'));
           current_value = $(this).attr('value')
-          var card_body = $(this).parent().parent().parent().parent().parent();
-          if (card_body.hasClass('border-3')) {
+          var card_body = $(this).parent().parent().parent().parent().parent().parent();
+          if (card_body.hasClass('border-2')) {
                card_body.removeClass('border-primary');
-               card_body.removeClass('border-3');
+               card_body.removeClass('border-2');
                var myIndex = selected_clusters.indexOf(current_value);
                if (myIndex !== -1) {
                     selected_clusters.splice(myIndex, 1);
                }
           }
           else {
-               card_body.addClass('border-3');
+               card_body.addClass('border-2');
                card_body.addClass('border-primary');
                selected_clusters.push(current_value);
           }
@@ -173,5 +183,17 @@ function get_childs_value(htmlElement){
 }
 
 </script>
+
+<style>
+    .border-3 {
+        border-width:3px !important;
+    }
+    .border-4 {
+        border-width:4px !important;
+    }
+    .border-2 {
+        border-width:2px !important;
+    }
+</style>
 
 {% endblock %}
