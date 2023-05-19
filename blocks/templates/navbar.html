@@ -37,12 +37,12 @@
           </div>
           <div class="modal-footer" >
               <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              <a type="button" class="btn btn-danger" href="#" hx-get="{% url 'system_reset' %}" 
+                hx-swap="none" hx-trigger="click" onClick="setTimeout(function(){window.location.reload()}, 150);">Remove All</a>
               {% if question_exam_id %}
-              <a type="button" class="btn btn-primary" href="#" hx-get="{% url 'system_reset' question_exam_id %}" 
+              <a type="button" class="btn btn-warning" href="#" hx-get="{% url 'system_reset' question_exam_id %}" 
                 hx-swap="none" hx-trigger="click" onClick="setTimeout(function(){window.location.reload()}, 150);">This Question</a>
               {% endif %}
-              <a type="button" class="btn btn-primary" href="#" hx-get="{% url 'system_reset' %}" 
-                hx-swap="none" hx-trigger="click" onClick="setTimeout(function(){window.location.reload()}, 150);">Remove All</a>
           </div>
       </div>
   </div>

@@ -419,6 +419,7 @@ def rule_refinement_view(request, q_id):
     color_to_rule = { k.id:v for (k,v) in zip(rules, colors[:len(rules)])} 
 
     context = {
+        "question_exam_id": q_id,
         "cluster_dict": cluster_dict,
         "cluster_list": json.dumps(list(cluster_list.values())),
         "question_obj": current_question_obj,
@@ -445,6 +446,11 @@ def answer_edit_view(request, id):
 
 def cluster_grade_view(request, q_id, id):
     question_id_list = list(Question.objects.values_list('pk', flat=True))
+
+    chosen_answers = Answer.objects.filter(question_id=q_id)
+    current_question_obj = Question.objects.filter(pk=q_id)[0]
+    if not Cluster.objects.filter(question = current_question_obj):
+        create_rule_clusters(chosen_answers, current_question_obj)
 
     # go through each cluster and check if any aren't referenced, if so, remove them from the list to grade
     cluster_list = Cluster.objects.filter(question_id=q_id)
@@ -488,6 +494,7 @@ def cluster_grade_view(request, q_id, id):
     context = {
         "cluster": curr_cluster,
         "cluster_id": id,
+        "question_exam_id": q_id,
         "question_id": q_id,
         "table": table,
         "cluster_list": cluster_list,
@@ -510,6 +517,13 @@ def system_reset_view(request, question_id=None):
     # get specific answers for the current question
     chosen_answers = Answer.objects.filter(question_id=question_id).all() if question_id else Answer.objects.all()
     chosen_answers.update(rule_strings="[]") 
+    chosen_answers.update(override_grade=None)  # remove previous overriden grade and feedback
+    chosen_answers.update(override_feedback=None)
+    chosen_answers.update(cluster=None)
+
+    # delete all clusters
+    if (question_id): Cluster.objects.filter(question_id=question_id).all().delete()
+    else: Cluster.objects.all().delete()
 
     # delete all rules for the current question, iteratively - if not, the deletions will have a foreign key constraint error
     rules = Rule.objects.filter(question_id=question_id).all() if question_id else Rule.objects.all()
