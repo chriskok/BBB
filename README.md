@@ -28,3 +28,5 @@
         christopherkok@djangostack-1-vm:~/BBB$ bg 1
         [1]+ python3 manage.py runserver 0.0.0.0:5000 &
         ```
+    - How to remove from bg:
+        `ps auxw | grep runserver` -> `kill <pid>`

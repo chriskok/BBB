@@ -21,6 +21,8 @@ from spacy import displacy
 from sklearn.cluster import AgglomerativeClustering
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.metrics.pairwise import cosine_similarity
+from sklearn.preprocessing import MinMaxScaler
+scaler = MinMaxScaler()
 
 import numpy as np
 from sentence_transformers import SentenceTransformer, util
@@ -437,6 +439,7 @@ def similar_sentence(df, sentence, sim_score_threshold=0.7, n_return_threshold=N
 
     return_df = df.copy()
     return_df['score'] = chosen_scores[1:]  # assign all scores to df, while removing the first sentence that we added
+    return_df[['score']] = scaler.fit_transform(return_df[['score']])
 
     return_df = return_df.sort_values(by=['score'], ascending=False)
     if(n_return_threshold): return_df = return_df.head(n_return_threshold)
