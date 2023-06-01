@@ -412,7 +412,7 @@ def convert_patterns_to_regex(patterns, chosen_answers):
 
     return return_dict
 
-# methods: sbert, spacy, gensim
+# methods: sbert, spacy, tfidf
 def similar_sentence(df, sentence, sim_score_threshold=0.7, n_return_threshold=None, method='sbert'):
 
     sentences = [sentence] + df["answer_text"].apply(str).tolist()
@@ -439,7 +439,7 @@ def similar_sentence(df, sentence, sim_score_threshold=0.7, n_return_threshold=N
 
     return_df = df.copy()
     return_df['score'] = chosen_scores[1:]  # assign all scores to df, while removing the first sentence that we added
-    return_df[['score']] = scaler.fit_transform(return_df[['score']])
+    if (not return_df.empty): return_df[['score']] = scaler.fit_transform(return_df[['score']])
 
     return_df = return_df.sort_values(by=['score'], ascending=False)
     if(n_return_threshold): return_df = return_df.head(n_return_threshold)

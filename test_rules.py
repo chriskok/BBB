@@ -1,14 +1,26 @@
 import nltk
-from nltk.tokenize import word_tokenize
-from nltk.wsd import lesk
-from nltk.corpus import wordnet as wn
-from nltk.corpus import stopwords
-from itertools import product
-from pywsd.lesk import simple_lesk
-from pywsd import disambiguate
-from pywsd.similarity import max_similarity as maxsim
 import re
-stemmer = nltk.stem.PorterStemmer()
+import pandas as pd
+import time
+
+# from nltk.tokenize import word_tokenize
+# from nltk.wsd import lesk
+# from nltk.corpus import wordnet as wn
+# from nltk.corpus import stopwords
+# stemmer = nltk.stem.PorterStemmer()
+# from itertools import product
+
+# from pywsd.lesk import simple_lesk
+# from pywsd import disambiguate
+# from pywsd.similarity import max_similarity as maxsim
+
+from blocks.models import *
+import building_blocks as bb 
+import openai
+from my_secrets import my_secrets
+openai_key = my_secrets.get('openai_key')
+openai.api_key = openai_key
+
 
 # ================================== #
 #          KEYWORD MATCHING          #
@@ -60,140 +72,239 @@ stemmer = nltk.stem.PorterStemmer()
 #          SENTENCE MATCHING         #
 # ================================== #
 
-ori_sentence_set = ['We can change a Google page without reloading it and send, request, and receive data from an AWS server without blocking the rest of your interface.', 
-                'We want to be able to make changes to a Google page without reloading it every time. We also want to send, request, and receive data from an AWS server without blocking the interface.', 
-                'It changes the Google page without reloading it and can send, request and receive data without blocking the rest of the interface']
+# ori_sentence_set = ['We can change a Google page without reloading it and send, request, and receive data from an AWS server without blocking the rest of your interface.', 
+#                 'We want to be able to make changes to a Google page without reloading it every time. We also want to send, request, and receive data from an AWS server without blocking the interface.', 
+#                 'It changes the Google page without reloading it and can send, request and receive data without blocking the rest of the interface']
 
-negative_sentence_set = ['This is to allow other components when showing the webpage does not get blocked by operations that require long time.',]
-# negative_sentence_set = ['This allows for multiple tasks to run at the same time.',
-#                          'This is to allow other components when showing the webpage does not get blocked by operations that require long time.',
-#                          'This way you dont have to wait for things to happen to update other separate parts of a webpage/app.']
+# negative_sentence_set = ['This is to allow other components when showing the webpage does not get blocked by operations that require long time.',]
+# # negative_sentence_set = ['This allows for multiple tasks to run at the same time.',
+# #                          'This is to allow other components when showing the webpage does not get blocked by operations that require long time.',
+# #                          'This way you dont have to wait for things to happen to update other separate parts of a webpage/app.']
 
-def process_sentences(ori_sentence_set, verbose=False):
-    # clean sentences (lowercase, remove punctuation)
-    sentence_set = [re.sub(r'[^\w\s]', '', sentence.lower()) for sentence in ori_sentence_set]
+# def process_sentences(ori_sentence_set, verbose=False):
+#     # clean sentences (lowercase, remove punctuation)
+#     sentence_set = [re.sub(r'[^\w\s]', '', sentence.lower()) for sentence in ori_sentence_set]
 
-    # remove stopwords with nltk
-    stop_words = set(stopwords.words('english'))
-    sentence_set = [' '.join([word for word in sentence.split() if word not in stop_words]) for sentence in sentence_set]
+#     # remove stopwords with nltk
+#     stop_words = set(stopwords.words('english'))
+#     sentence_set = [' '.join([word for word in sentence.split() if word not in stop_words]) for sentence in sentence_set]
 
-    # identify all common words in the sentences
-    common_words = set.intersection(*map(set, map(str.split, sentence_set)))
-    if(verbose): print(f"common_words: {common_words}")
+#     # identify all common words in the sentences
+#     common_words = set.intersection(*map(set, map(str.split, sentence_set)))
+#     if(verbose): print(f"common_words: {common_words}")
 
-    # get stems of words in common_words
-    stemmed_common_words = [stemmer.stem(word) for word in common_words]
-    if(verbose): print(f"stemmed_common_words: {stemmed_common_words}")
+#     # get stems of words in common_words
+#     stemmed_common_words = [stemmer.stem(word) for word in common_words]
+#     if(verbose): print(f"stemmed_common_words: {stemmed_common_words}")
 
-    # get synonyms of words in common_words
-    synonyms = []
-    for word in common_words:
-        for syn in wn.synsets(word):
-            for l in syn.lemmas():
-                synonyms.append(l.name())
-    synonyms = set(synonyms)
-    if(verbose): print(f"synonyms: {synonyms}")
+#     # get synonyms of words in common_words
+#     synonyms = []
+#     for word in common_words:
+#         for syn in wn.synsets(word):
+#             for l in syn.lemmas():
+#                 synonyms.append(l.name())
+#     synonyms = set(synonyms)
+#     if(verbose): print(f"synonyms: {synonyms}")
 
-    # get named entities in the sentences
-    named_entities = []
-    for sentence in ori_sentence_set:
-        for chunk in nltk.ne_chunk(nltk.pos_tag(word_tokenize(sentence))):
-            if hasattr(chunk, 'label'):
-                named_entities.append((' '.join(c[0] for c in chunk), chunk.label()))
-    named_entities = set(named_entities)
-    named_entities = dict((x, y) for x, y in named_entities)
-    if(verbose): print(f"named_entities: {named_entities}")
+#     # get named entities in the sentences
+#     named_entities = []
+#     for sentence in ori_sentence_set:
+#         for chunk in nltk.ne_chunk(nltk.pos_tag(word_tokenize(sentence))):
+#             if hasattr(chunk, 'label'):
+#                 named_entities.append((' '.join(c[0] for c in chunk), chunk.label()))
+#     named_entities = set(named_entities)
+#     named_entities = dict((x, y) for x, y in named_entities)
+#     if(verbose): print(f"named_entities: {named_entities}")
 
-    return sentence_set, common_words, stemmed_common_words, synonyms, named_entities
+#     return sentence_set, common_words, stemmed_common_words, synonyms, named_entities
 
-# recursively process the next string in the list
-patterns = {}
-pattern_limit = 3
+# # recursively process the next string in the list
+# patterns = {}
+# pattern_limit = 3
 
-def add_pattern(pattern, depth, negative=False):
-    if pattern in patterns:
-        patterns[pattern] += 1 * (depth * 0.5) if not negative else -2 * (depth * 0.5)
-    else:
-        patterns[pattern] = 1 * (depth * 0.5) if not negative else -2 * (depth * 0.5)
+# def add_pattern(pattern, depth, negative=False):
+#     if pattern in patterns:
+#         patterns[pattern] += 1 * (depth * 0.5) if not negative else -2 * (depth * 0.5)
+#     else:
+#         patterns[pattern] = 1 * (depth * 0.5) if not negative else -2 * (depth * 0.5)
 
-def process_next_string(word, tag, pos_set, ori_i, i, current_pattern):
+# def process_next_string(word, tag, pos_set, ori_i, i, current_pattern):
     
-    # stop if we've reached the end of the list
-    if i == len(pos_set) - 1:
-        return current_pattern
+#     # stop if we've reached the end of the list
+#     if i == len(pos_set) - 1:
+#         return current_pattern
     
-    # stop if we've reached the pattern limit
-    curr_depth = i - ori_i + 1
-    if curr_depth > pattern_limit:
-        return current_pattern
+#     # stop if we've reached the pattern limit
+#     curr_depth = i - ori_i + 1
+#     if curr_depth > pattern_limit:
+#         return current_pattern
     
-    word_l = word.lower()
+#     word_l = word.lower()
     
-    # check if word in common words (or a stem of that)
-    if stemmer.stem(word_l) in stemmed_common_words:
-        new_pattern_and = f"[{word_l}]" if current_pattern == "" else current_pattern + "+" + f"[{word_l}]"
-        new_pattern_or = f"[{word_l}]" if current_pattern == "" else current_pattern + "|" + f"[{word_l}]"
-        for pattern in [new_pattern_and, new_pattern_or]:
-            add_pattern(pattern, curr_depth)
-            process_next_string(pos_set[i + 1][0], pos_set[i + 1][1], pos_set, ori_i, i + 1, pattern)
+#     # check if word in common words (or a stem of that)
+#     if stemmer.stem(word_l) in stemmed_common_words:
+#         new_pattern_and = f"[{word_l}]" if current_pattern == "" else current_pattern + "+" + f"[{word_l}]"
+#         new_pattern_or = f"[{word_l}]" if current_pattern == "" else current_pattern + "|" + f"[{word_l}]"
+#         for pattern in [new_pattern_and, new_pattern_or]:
+#             add_pattern(pattern, curr_depth)
+#             process_next_string(pos_set[i + 1][0], pos_set[i + 1][1], pos_set, ori_i, i + 1, pattern)
     
-    if stemmer.stem(word_l) in n_stemmed_common_words:
-        new_pattern_and = f"[{word_l}]" if current_pattern == "" else current_pattern + "+" + f"[{word_l}]"
-        new_pattern_or = f"[{word_l}]" if current_pattern == "" else current_pattern + "|" + f"[{word_l}]"
-        for pattern in [new_pattern_and, new_pattern_or]:
-            add_pattern(pattern, curr_depth, negative=True)
-            process_next_string(pos_set[i + 1][0], pos_set[i + 1][1], pos_set, ori_i, i + 1, pattern)
+#     if stemmer.stem(word_l) in n_stemmed_common_words:
+#         new_pattern_and = f"[{word_l}]" if current_pattern == "" else current_pattern + "+" + f"[{word_l}]"
+#         new_pattern_or = f"[{word_l}]" if current_pattern == "" else current_pattern + "|" + f"[{word_l}]"
+#         for pattern in [new_pattern_and, new_pattern_or]:
+#             add_pattern(pattern, curr_depth, negative=True)
+#             process_next_string(pos_set[i + 1][0], pos_set[i + 1][1], pos_set, ori_i, i + 1, pattern)
 
-    # check if word is a synonym of a common word
-    if word_l in synonyms:
-        new_pattern_and = f"({word_l})" if current_pattern == "" else current_pattern + "+" + f"({word_l})"
-        new_pattern_or = f"({word_l})" if current_pattern == "" else current_pattern + "|" + f"({word_l})"
-        for pattern in [new_pattern_and, new_pattern_or]:
-            add_pattern(pattern, curr_depth)
-            process_next_string(pos_set[i + 1][0], pos_set[i + 1][1], pos_set, ori_i, i + 1, pattern)
+#     # check if word is a synonym of a common word
+#     if word_l in synonyms:
+#         new_pattern_and = f"({word_l})" if current_pattern == "" else current_pattern + "+" + f"({word_l})"
+#         new_pattern_or = f"({word_l})" if current_pattern == "" else current_pattern + "|" + f"({word_l})"
+#         for pattern in [new_pattern_and, new_pattern_or]:
+#             add_pattern(pattern, curr_depth)
+#             process_next_string(pos_set[i + 1][0], pos_set[i + 1][1], pos_set, ori_i, i + 1, pattern)
 
-    if word_l in n_synonyms:
-        new_pattern_and = f"({word_l})" if current_pattern == "" else current_pattern + "+" + f"({word_l})"
-        new_pattern_or = f"({word_l})" if current_pattern == "" else current_pattern + "|" + f"({word_l})"
-        for pattern in [new_pattern_and, new_pattern_or]:
-            add_pattern(pattern, curr_depth, negative=True)
-            process_next_string(pos_set[i + 1][0], pos_set[i + 1][1], pos_set, ori_i, i + 1, pattern)
+#     if word_l in n_synonyms:
+#         new_pattern_and = f"({word_l})" if current_pattern == "" else current_pattern + "+" + f"({word_l})"
+#         new_pattern_or = f"({word_l})" if current_pattern == "" else current_pattern + "|" + f"({word_l})"
+#         for pattern in [new_pattern_and, new_pattern_or]:
+#             add_pattern(pattern, curr_depth, negative=True)
+#             process_next_string(pos_set[i + 1][0], pos_set[i + 1][1], pos_set, ori_i, i + 1, pattern)
 
-    # check if word is a named entity
-    if word in named_entities:
-        new_pattern_and = f"({word})" if current_pattern == "" else current_pattern + "+" + f"({word})"
-        new_pattern_or = f"({word})" if current_pattern == "" else current_pattern + "|" + f"({word})"
-        new_pattern_label_and = f"${named_entities[word]}" if current_pattern == "" else current_pattern + "+" + f"${named_entities[word]}"
-        new_pattern_label_or = f"${named_entities[word]}" if current_pattern == "" else current_pattern + "|" + f"${named_entities[word]}"
-        for pattern in [new_pattern_and, new_pattern_or, new_pattern_label_and, new_pattern_label_or]:
-            add_pattern(pattern, curr_depth)
-            process_next_string(pos_set[i + 1][0], pos_set[i + 1][1], pos_set, ori_i, i + 1, pattern)
+#     # check if word is a named entity
+#     if word in named_entities:
+#         new_pattern_and = f"({word})" if current_pattern == "" else current_pattern + "+" + f"({word})"
+#         new_pattern_or = f"({word})" if current_pattern == "" else current_pattern + "|" + f"({word})"
+#         new_pattern_label_and = f"${named_entities[word]}" if current_pattern == "" else current_pattern + "+" + f"${named_entities[word]}"
+#         new_pattern_label_or = f"${named_entities[word]}" if current_pattern == "" else current_pattern + "|" + f"${named_entities[word]}"
+#         for pattern in [new_pattern_and, new_pattern_or, new_pattern_label_and, new_pattern_label_or]:
+#             add_pattern(pattern, curr_depth)
+#             process_next_string(pos_set[i + 1][0], pos_set[i + 1][1], pos_set, ori_i, i + 1, pattern)
 
-    if word in n_named_entities:
-        new_pattern_and = f"({word})" if current_pattern == "" else current_pattern + "+" + f"({word})"
-        new_pattern_or = f"({word})" if current_pattern == "" else current_pattern + "|" + f"({word})"
-        new_pattern_label_and = f"${named_entities[word]}" if current_pattern == "" else current_pattern + "+" + f"${named_entities[word]}"
-        new_pattern_label_or = f"${named_entities[word]}" if current_pattern == "" else current_pattern + "|" + f"${named_entities[word]}"
-        for pattern in [new_pattern_and, new_pattern_or, new_pattern_label_and, new_pattern_label_or]:
-            add_pattern(pattern, curr_depth, negative=True)
-            process_next_string(pos_set[i + 1][0], pos_set[i + 1][1], pos_set, ori_i, i + 1, pattern)
+#     if word in n_named_entities:
+#         new_pattern_and = f"({word})" if current_pattern == "" else current_pattern + "+" + f"({word})"
+#         new_pattern_or = f"({word})" if current_pattern == "" else current_pattern + "|" + f"({word})"
+#         new_pattern_label_and = f"${named_entities[word]}" if current_pattern == "" else current_pattern + "+" + f"${named_entities[word]}"
+#         new_pattern_label_or = f"${named_entities[word]}" if current_pattern == "" else current_pattern + "|" + f"${named_entities[word]}"
+#         for pattern in [new_pattern_and, new_pattern_or, new_pattern_label_and, new_pattern_label_or]:
+#             add_pattern(pattern, curr_depth, negative=True)
+#             process_next_string(pos_set[i + 1][0], pos_set[i + 1][1], pos_set, ori_i, i + 1, pattern)
 
-    # check if word
-    # if tag in patterns:
-    #     patterns[tag].append(word)
-    # else:
-    #     patterns[tag] = [word]
+#     # check if word
+#     # if tag in patterns:
+#     #     patterns[tag].append(word)
+#     # else:
+#     #     patterns[tag] = [word]
 
-# identify all parts of speech in the sentences
-pos_set = [nltk.pos_tag(word_tokenize(sentence)) for sentence in ori_sentence_set]
-sentence_set, common_words, stemmed_common_words, synonyms, named_entities = process_sentences(ori_sentence_set)
-n_sentence_set, n_common_words, n_stemmed_common_words, n_synonyms, n_named_entities = process_sentences(negative_sentence_set)
+# # identify all parts of speech in the sentences
+# pos_set = [nltk.pos_tag(word_tokenize(sentence)) for sentence in ori_sentence_set]
+# sentence_set, common_words, stemmed_common_words, synonyms, named_entities = process_sentences(ori_sentence_set)
+# n_sentence_set, n_common_words, n_stemmed_common_words, n_synonyms, n_named_entities = process_sentences(negative_sentence_set)
 
-# iterate through the pos_set to build patterns for matching
-for pos in pos_set:
-    for i, (word, tag) in enumerate(pos):
-        process_next_string(word, tag, pos, i, i, "")
+# # iterate through the pos_set to build patterns for matching
+# for pos in pos_set:
+#     for i, (word, tag) in enumerate(pos):
+#         process_next_string(word, tag, pos, i, i, "")
 
-# sort patterns dictionary by value
-patterns = {k: v for k, v in sorted(patterns.items(), key=lambda item: item[1], reverse=True)}
-print(patterns)
+# # sort patterns dictionary by value
+# patterns = {k: v for k, v in sorted(patterns.items(), key=lambda item: item[1], reverse=True)}
+# print(patterns)
+
+q7_rubrics = ["Allow user interaction at any time", "Allow query data from server/API without disrupting user flow", "Render content on the webpage in real-time", "Javascript is single-threaded"]
+q27_rubrics = ["Clearly states the reason of consistency and reusability/efficiency", "Clearly states the reason of consistency only", "Clearly states the reason of reusability/efficiency only", "Does not explicitly state either reason but is somewhat correct."]
+
+def prompt_chatgpt(prompt):
+    model="gpt-3.5-turbo"
+    try:
+        response = openai.ChatCompletion.create(
+            model=model,
+            messages=prompt,
+            temperature=0,
+        )
+        if "error" in response:
+            print("OPENAI ERROR: {}".format(response))
+            return "ERROR"
+        else:
+            return response["choices"][0]["message"]["content"]
+    except Exception as e: 
+        print(e)
+        return "ERROR"
+
+
+def map_concepts_to_answers(question, answers):
+    answers_string = '\n'.join([f"#{i+1}: {e}" for i, e in enumerate(answers)])
+    prompt = [
+            {"role": "system", "content": f"You are an expert teacher in a class, you have the following question in your final exam: {question.question_text}. You have the following numbered list of related concepts: {question.related_concepts}"},
+            {"role": "user", "content": f"For each of the following students' answers (formatted as such: #<number>: <answer>) please tell us the top 3 related concepts among those listed. Then, include a score from 0 to 1 of how related they were to that concept. For each new answer (seperated by new lines), follow the format: #<number>: <first concept> (<score>), <second concept> (<score>), <third concept> (<score>)\n{answers_string}"},
+        ]
+    chatgpt_response = prompt_chatgpt(prompt)
+    return chatgpt_response
+
+def convert_answer_concepts(answer_concepts):
+    # convert numbered list in string to list of strings
+    concepts = [x.strip().split(': ')[1] for x in answer_concepts.split('\n') if x.strip() != '']
+    concept_dicts = []
+    
+    for concept in concepts:
+        concept_dict = {}
+        pairs = concept.split(', ')
+        try:
+            for pair in pairs:
+                try:
+                    key, value = pair.split(' (')
+                except:
+                    continue
+                value = float(value[:-1])
+                concept_dict[key] = value
+        except Exception as e:
+            print(f"ERROR: {e}, pair: {pairs}")
+            concept_dict = {"FAILED": 1.0}
+        concept_dicts.append(concept_dict)
+    
+    return concept_dicts
+
+def populate_answer_concepts(question, answers):
+
+    answers_list = answers.values_list('answer_text', flat=True)
+    answers_id_list = answers.values_list('id', flat=True)
+
+    all_concept_maps = []
+
+    # iterate through answers and add to list if they are under 8000 characters total
+    curr_length = 0
+    curr_answers = []
+    for index, ans in enumerate(answers_list):
+        if (curr_length + len(ans) < 5000):
+            curr_answers.append(ans)
+            curr_length += len(ans)
+        else:
+            all_concept_maps.extend(convert_answer_concepts(map_concepts_to_answers(question, curr_answers)))
+            # TODO: Asynchronous execution of OpenAI API calls
+            print(f"Index: {index} - Added {len(curr_answers)} answers to concept map")
+            curr_answers = [ans]
+            curr_length = len(ans)
+            time.sleep(30) # wait for 1 minute to avoid OpenAI API rate limit
+    all_concept_maps.extend(convert_answer_concepts(map_concepts_to_answers(question, curr_answers)))  # final time, with remaining answers
+
+def produce_comparisons(chosen_answers, sentence):
+    # filters answers 
+    df = pd.DataFrame(list(chosen_answers.values()))
+    # apply existing sentence similarity methods
+    methods = ['sbert', 'spacy', 'tfidf']
+    sim_scores = [0.5, 0.6, 0.7, 0.8]
+    for method in methods:
+        for sim_score in sim_scores:
+            new_df = bb.similar_sentence(df, sentence, sim_score_threshold=sim_score, method=method)
+            print(f"evaluating: {method} @ {sim_score}")
+            print(new_df.shape)
+            # add column to df: True if row in new_df, False otherwise
+            df[f"{method}_{sim_score}"] = df["answer_text"].isin(new_df["answer_text"])
+            # print(df[f"{method}_{sim_score}"].value_counts())  # checking if the column is added correctly
+    # apply chatgpt rubric checking
+
+
+# get all answers for a question
+chosen_answers = Answer.objects.filter(question_id=35).order_by('outlier_score')
+for rubric in q7_rubrics:
+    produce_comparisons(chosen_answers, rubric)
+
