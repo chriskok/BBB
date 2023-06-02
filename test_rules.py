@@ -232,8 +232,9 @@ def prompt_chatgpt(prompt):
 
 def classify_with_rubric(question, answers, rubric):
     answers_string = '\n'.join([f"#{i+1}: {e}" for i, e in enumerate(answers)])
+    all_rubrics_string = '\n'.join(q7_rubrics)
     prompt = [
-            {"role": "system", "content": f"You are an expert teacher in a class, you have the following question in your final exam: {question.question_text}. You are currently evaluating which of the answers match the following rubric: {rubric}"},
+            {"role": "system", "content": f"You are an expert teacher in a class, you have the following question in your final exam: {question.question_text}. You are currently evaluating which of the answers match the following rubric: {rubric}. This is the full list of rubrics: \n\n{all_rubrics_string}"},
             {"role": "user", "content": f"For each of the following students' answers (formatted as such: #<number>: <answer>) please state if the rubric applies to it. For each answer, strictly follow the output format: \'#<number>: <Y/N>\' where Y is Yes and N is No.\n\n{answers_string}"},
         ]
     chatgpt_response = prompt_chatgpt(prompt)
