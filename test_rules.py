@@ -235,7 +235,8 @@ def classify_with_rubric(question, answers, rubric, all_rubrics):
     all_rubrics_string = '\n'.join(all_rubrics)
     prompt = [
             {"role": "system", "content": f"You are an expert teacher in a class, you have the following question in your final exam: {question.question_text}. You are currently evaluating which of the answers match the following rubric: {rubric}. This is the full list of rubrics: \n\n{all_rubrics_string}"},
-            {"role": "user", "content": f"For each of the following students' answers (formatted as such: #<number>: <answer>) please state if the rubric applies to it. Please be conservative by only saying Yes if this is the MOST relevant rubric amongst the list of rubrics. For each answer, strictly follow the output format: \'#<number>: <Y/N>\' where Y is Yes and N is No.\n\n{answers_string}"},
+            # {"role": "user", "content": f"For each of the following students' answers (formatted as such: #<number>: <answer>) please state if the rubric applies to it. Please be conservative by only saying Yes if this is the MOST relevant rubric amongst the list of rubrics. For each answer, strictly follow the output format: \'#<number>: <Y/N>\' where Y is Yes and N is No.\n\n{answers_string}"},
+            {"role": "user", "content": f"For each of the following students' answers (formatted as such: #<number>: <answer>) please score it from a scale of 0.0 to 1.0 based on how applicable the rubric is to it. Please be conservative and take all the other rubrcs into account from the list of rubrics. For each answer, strictly follow the output format: \'#<number>: <score>\'\n\n{answers_string}"},
         ]
     chatgpt_response = prompt_chatgpt(prompt)
     return chatgpt_response
