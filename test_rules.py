@@ -210,9 +210,6 @@ openai.api_key = openai_key
 # patterns = {k: v for k, v in sorted(patterns.items(), key=lambda item: item[1], reverse=True)}
 # print(patterns)
 
-q7_rubrics = ["Allow user interaction at any time", "Allow query data from server/API without disrupting user flow", "Render content on the webpage in real-time", "Javascript is single-threaded"]
-q27_rubrics = ["Clearly states the reason of consistency and reusability/efficiency", "Clearly states the reason of consistency only", "Clearly states the reason of reusability/efficiency only", "Does not explicitly state either reason but is somewhat correct."]
-
 def prompt_chatgpt(prompt):
     model="gpt-3.5-turbo"
     try:
@@ -293,9 +290,11 @@ def produce_comparisons(chosen_answers, chosen_question, sentence, index, all_ru
     df.to_csv(f"results/sentencesim_comparisons/Q{chosen_question.id}_R{index+1}.csv")
     print(f"Completed: Question - {chosen_question.id}, Rubric #{index+1} - {sentence}")
 
+q7_rubrics = ["Allow user interaction at any time", "Allow query data from server/API without disrupting user flow", "Render content on the webpage in real-time", "Javascript is single-threaded"]
+q27_rubrics = ["Clearly states the reason of consistency and reusability/efficiency", "Clearly states the reason of consistency only", "Clearly states the reason of reusability/efficiency only", "Does not explicitly state either reason but is somewhat correct."]
 # get all answers for a question
-chosen_answers = Answer.objects.filter(question_id=35).order_by('outlier_score')
-chosen_question = Question.objects.get(id=35)
-for index, rubric in enumerate(q7_rubrics):
-    produce_comparisons(chosen_answers, chosen_question, rubric, index, q7_rubrics)
+chosen_answers = Answer.objects.filter(question_id=37).order_by('outlier_score')
+chosen_question = Question.objects.get(id=37)
+for index, rubric in enumerate(q27_rubrics):
+    produce_comparisons(chosen_answers, chosen_question, rubric, index, q27_rubrics)
 
