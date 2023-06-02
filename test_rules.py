@@ -230,9 +230,9 @@ def prompt_chatgpt(prompt):
         print(e)
         return "ERROR"
 
-def classify_with_rubric(question, answers, rubric):
+def classify_with_rubric(question, answers, rubric, all_rubrics):
     answers_string = '\n'.join([f"#{i+1}: {e}" for i, e in enumerate(answers)])
-    all_rubrics_string = '\n'.join(q7_rubrics)
+    all_rubrics_string = '\n'.join(all_rubrics)
     prompt = [
             {"role": "system", "content": f"You are an expert teacher in a class, you have the following question in your final exam: {question.question_text}. You are currently evaluating which of the answers match the following rubric: {rubric}. This is the full list of rubrics: \n\n{all_rubrics_string}"},
             {"role": "user", "content": f"For each of the following students' answers (formatted as such: #<number>: <answer>) please state if the rubric applies to it. For each answer, strictly follow the output format: \'#<number>: <Y/N>\' where Y is Yes and N is No.\n\n{answers_string}"},
@@ -245,7 +245,7 @@ def convert_chatgpt_response(chatgpt_response):
     rubric_classifications = [x.strip().split(': ')[1] for x in chatgpt_response.split('\n') if x.strip() != '']
     return rubric_classifications
 
-def get_rubric_classifications(question, answers, rubric):
+def get_rubric_classifications(question, answers, rubric, all_rubrics):
     answers_list = answers.values_list('answer_text', flat=True)
     answers_id_list = answers.values_list('id', flat=True)
     all_classifications = []
@@ -257,14 +257,14 @@ def get_rubric_classifications(question, answers, rubric):
             curr_answers.append(ans)
             curr_length += len(ans)
         else:
-            all_classifications.extend(convert_chatgpt_response(classify_with_rubric(question, curr_answers, rubric)))
+            all_classifications.extend(convert_chatgpt_response(classify_with_rubric(question, curr_answers, rubric, all_rubrics)))
             # TODO: Asynchronous execution of OpenAI API calls
             print(f"Index: {index} - Added {len(curr_answers)} answers")
             curr_answers = [ans]
             curr_length = len(ans)
             time.sleep(15) # wait avoid OpenAI API rate limit
     
-    all_classifications.extend(convert_chatgpt_response(classify_with_rubric(question, curr_answers, rubric)))  # final time, with remaining answers
+    all_classifications.extend(convert_chatgpt_response(classify_with_rubric(question, curr_answers, rubric, all_rubrics)))  # final time, with remaining answers
     if (len(all_classifications) == len(answers_list)):
         return all_classifications
     else:
@@ -273,7 +273,7 @@ def get_rubric_classifications(question, answers, rubric):
         print(len(all_classifications))
         return None
 
-def produce_comparisons(chosen_answers, chosen_question, sentence, index):
+def produce_comparisons(chosen_answers, chosen_question, sentence, index, all_rubrics):
     # filters answers 
     df = pd.DataFrame(list(chosen_answers.values()))
     # apply existing sentence similarity methods
@@ -287,7 +287,7 @@ def produce_comparisons(chosen_answers, chosen_question, sentence, index):
             df[f"{method}_{sim_score}"] = df["answer_text"].isin(new_df["answer_text"])
             # print(df[f"{method}_{sim_score}"].value_counts())  # checking if the column is added correctly
     # apply chatgpt rubric checking
-    chatgpt_rubrics = get_rubric_classifications(chosen_question, chosen_answers, sentence)
+    chatgpt_rubrics = get_rubric_classifications(chosen_question, chosen_answers, sentence, all_rubrics)
     if (chatgpt_rubrics): df['chatgpt_classified_rubric'] = chatgpt_rubrics
     df.to_csv(f"results/sentencesim_comparisons/Q{chosen_question.id}_R{index+1}.csv")
     print(f"Completed: Question - {chosen_question.id}, Rubric #{index+1} - {sentence}")
@@ -296,5 +296,5 @@ def produce_comparisons(chosen_answers, chosen_question, sentence, index):
 chosen_answers = Answer.objects.filter(question_id=35).order_by('outlier_score')
 chosen_question = Question.objects.get(id=35)
 for index, rubric in enumerate(q7_rubrics):
-    produce_comparisons(chosen_answers, chosen_question, rubric, index)
+    produce_comparisons(chosen_answers, chosen_question, rubric, index, q7_rubrics)
 
