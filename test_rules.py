@@ -230,63 +230,49 @@ def prompt_chatgpt(prompt):
         print(e)
         return "ERROR"
 
-
-def map_concepts_to_answers(question, answers):
+def classify_with_rubric(question, answers, rubric):
     answers_string = '\n'.join([f"#{i+1}: {e}" for i, e in enumerate(answers)])
     prompt = [
-            {"role": "system", "content": f"You are an expert teacher in a class, you have the following question in your final exam: {question.question_text}. You have the following numbered list of related concepts: {question.related_concepts}"},
-            {"role": "user", "content": f"For each of the following students' answers (formatted as such: #<number>: <answer>) please tell us the top 3 related concepts among those listed. Then, include a score from 0 to 1 of how related they were to that concept. For each new answer (seperated by new lines), follow the format: #<number>: <first concept> (<score>), <second concept> (<score>), <third concept> (<score>)\n{answers_string}"},
+            {"role": "system", "content": f"You are an expert teacher in a class, you have the following question in your final exam: {question.question_text}. You are currently evaluating which of the answers match the following rubric: {rubric}"},
+            {"role": "user", "content": f"For each of the following students' answers (formatted as such: #<number>: <answer>) please state if the rubric applies to it. For each answer, strictly follow the output format: \'#<number>: <Y/N>\' where Y is Yes and N is No.\n\n{answers_string}"},
         ]
     chatgpt_response = prompt_chatgpt(prompt)
     return chatgpt_response
 
-def convert_answer_concepts(answer_concepts):
+def convert_chatgpt_response(chatgpt_response):
     # convert numbered list in string to list of strings
-    concepts = [x.strip().split(': ')[1] for x in answer_concepts.split('\n') if x.strip() != '']
-    concept_dicts = []
-    
-    for concept in concepts:
-        concept_dict = {}
-        pairs = concept.split(', ')
-        try:
-            for pair in pairs:
-                try:
-                    key, value = pair.split(' (')
-                except:
-                    continue
-                value = float(value[:-1])
-                concept_dict[key] = value
-        except Exception as e:
-            print(f"ERROR: {e}, pair: {pairs}")
-            concept_dict = {"FAILED": 1.0}
-        concept_dicts.append(concept_dict)
-    
-    return concept_dicts
+    rubric_classifications = [x.strip().split(': ')[1] for x in chatgpt_response.split('\n') if x.strip() != '']
+    return rubric_classifications
 
-def populate_answer_concepts(question, answers):
-
+def get_rubric_classifications(question, answers, rubric):
     answers_list = answers.values_list('answer_text', flat=True)
     answers_id_list = answers.values_list('id', flat=True)
-
-    all_concept_maps = []
-
+    all_classifications = []
     # iterate through answers and add to list if they are under 8000 characters total
     curr_length = 0
     curr_answers = []
     for index, ans in enumerate(answers_list):
-        if (curr_length + len(ans) < 5000):
+        if (curr_length + len(ans) < 10000):
             curr_answers.append(ans)
             curr_length += len(ans)
         else:
-            all_concept_maps.extend(convert_answer_concepts(map_concepts_to_answers(question, curr_answers)))
+            all_classifications.extend(convert_chatgpt_response(classify_with_rubric(question, curr_answers, rubric)))
             # TODO: Asynchronous execution of OpenAI API calls
-            print(f"Index: {index} - Added {len(curr_answers)} answers to concept map")
+            print(f"Index: {index} - Added {len(curr_answers)} answers")
             curr_answers = [ans]
             curr_length = len(ans)
-            time.sleep(30) # wait for 1 minute to avoid OpenAI API rate limit
-    all_concept_maps.extend(convert_answer_concepts(map_concepts_to_answers(question, curr_answers)))  # final time, with remaining answers
+            time.sleep(15) # wait avoid OpenAI API rate limit
+    
+    all_classifications.extend(convert_chatgpt_response(classify_with_rubric(question, curr_answers, rubric)))  # final time, with remaining answers
+    if (len(all_classifications) == len(answers_list)):
+        return all_classifications
+    else:
+        print("ERROR: Number of concept maps does not match number of answers")
+        print(all_classifications)
+        print(len(all_classifications))
+        return None
 
-def produce_comparisons(chosen_answers, sentence):
+def produce_comparisons(chosen_answers, chosen_question, sentence, index):
     # filters answers 
     df = pd.DataFrame(list(chosen_answers.values()))
     # apply existing sentence similarity methods
@@ -295,16 +281,19 @@ def produce_comparisons(chosen_answers, sentence):
     for method in methods:
         for sim_score in sim_scores:
             new_df = bb.similar_sentence(df, sentence, sim_score_threshold=sim_score, method=method)
-            print(f"evaluating: {method} @ {sim_score}")
-            print(new_df.shape)
+            # print(f"evaluating: {method} @ {sim_score} -> {new_df.shape}")
             # add column to df: True if row in new_df, False otherwise
             df[f"{method}_{sim_score}"] = df["answer_text"].isin(new_df["answer_text"])
             # print(df[f"{method}_{sim_score}"].value_counts())  # checking if the column is added correctly
     # apply chatgpt rubric checking
-
+    chatgpt_rubrics = get_rubric_classifications(chosen_question, chosen_answers, sentence)
+    if (chatgpt_rubrics): df['chatgpt_classified_rubric'] = chatgpt_rubrics
+    df.to_csv(f"results/sentencesim_comparisons/Q{chosen_question.id}_R{index+1}.csv")
+    print(f"Completed: Question - {chosen_question.id}, Rubric #{index+1} - {sentence}")
 
 # get all answers for a question
 chosen_answers = Answer.objects.filter(question_id=35).order_by('outlier_score')
-for rubric in q7_rubrics:
-    produce_comparisons(chosen_answers, rubric)
+chosen_question = Question.objects.get(id=35)
+for index, rubric in enumerate(q7_rubrics):
+    produce_comparisons(chosen_answers, chosen_question, rubric, index)
 
