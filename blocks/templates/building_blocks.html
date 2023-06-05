@@ -106,19 +106,6 @@
         </div>
     </div>
     <div class="col-3">
-        <div class="card sticky-top border-0">
-            <h4>Rule Suggestions</h4>
-            <form hx-target="#rule_suggestion" hx-swap="innerHTML" hx-post="{% url 'rule_suggestions' question_exam_id %}">
-                {% csrf_token %}
-                {{ suggestions_form.selection|as_crispy_field }}
-                {{ suggestions_form.reason|as_crispy_field }}
-                {{ suggestions_form.full_ans.as_hidden }}
-                <input type="submit" value="Submit">
-            </form>
-
-            <p class="mt-3" id="rule_suggestion"></p>
-        </div>
-        <br>
 
         <h4>Create Rule</h4>
         <form action="{% url 'building_blocks' question_exam_id %}" method="post">
@@ -225,8 +212,27 @@
                 </div>
             </div>
         </form>
-
         <br>
+
+        <div class="card sticky-top border-0">
+            <h4>Rule Suggestions</h4>
+            <form hx-target="#rule_suggestion" hx-swap="innerHTML" hx-post="{% url 'rule_suggestions' question_exam_id %}" hx-indicator="#suggestions_spinner">
+                {% csrf_token %}
+                {{ suggestions_form.selection|as_crispy_field }}
+                {{ suggestions_form.reason|as_crispy_field }}
+                {{ suggestions_form.full_ans.as_hidden }}
+                <div class="d-flex flex-row align-items-center">
+                    <input class="btn btn-secondary mr-3" type="submit" value="Submit">
+                    <div id="suggestions_spinner" class="spinner-border text-primary htmx-indicator" role="status">
+                        <span class="sr-only">Loading...</span>
+                    </div>
+                </div>
+            </form>
+
+            <p class="mt-3" id="rule_suggestion"></p>
+        </div>
+        <br>
+
         <h4>Created Rules</h4>
         <table class="table">
             <thead>
@@ -438,6 +444,17 @@
     }
     .border-2 {
         border-width:2px !important;
+    }
+
+    .htmx-indicator{
+        opacity:0;
+        transition: opacity 500ms ease-in;
+    }
+    .htmx-request .htmx-indicator{
+        opacity:1
+    }
+    .htmx-request.htmx-indicator{
+        opacity:1
     }
 </style>
 
