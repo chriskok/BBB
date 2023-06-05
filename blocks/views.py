@@ -206,6 +206,24 @@ def handle_rule_input(form, chosen_answers, current_question_obj):
 #                PAGE VIEWS                 #
 #############################################
 
+def rule_suggestions(request):
+
+    # if this is a POST request we need to process the form data
+    if request.method == "POST":
+        # create a form instance and populate it with data from the request:
+        form = RuleSuggestionForm(request.POST)
+        # check whether it's valid:
+        if form.is_valid():
+
+            selection = form.cleaned_data["selection"]
+            reason = form.cleaned_data["reason"]
+
+            print(selection, reason)
+            return JsonResponse({"rule_type": "keywordsim", "args": selection, "reason": reason})
+            # return JsonResponse({"rule_type": "keywordsim", "args": "reuse", "reason": "The common keyword 'reuse' is present in all the answers, indicating that they are all discussing the benefits of reusing components. Therefore, a keyword similarity rule is appropriate."})
+
+    return JsonResponse({"rule_type": "keywordsim", "args": "selection", "reason": "reason"})
+
 # @login_required
 def building_blocks_view(request, q_id, filter=None):
     q_list = Question.objects.all()
@@ -255,6 +273,7 @@ def building_blocks_view(request, q_id, filter=None):
         "question_list": q_list,
         "answers": chosen_answers,
         "answer_count": answer_count,
+        "suggestions_form": RuleSuggestionForm(),
         "form": form,
         "keywords": keywords,
         "rules": rules,

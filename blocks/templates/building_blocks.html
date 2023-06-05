@@ -108,10 +108,13 @@
     <div class="col-3">
         <div class="card sticky-top border-0">
             <h4>Rule Suggestions</h4>
-            Selection:
-            <textarea id="sel" rows="2" cols="50"></textarea>
-            Reason:
-            <textarea id="sel" rows="2" cols="50"></textarea>
+            <form hx-target="#rule_suggestion" hx-swap="innerHTML" hx-post="{% url 'rule_suggestions' %}">
+                {% csrf_token %}
+                {{ suggestions_form }}
+                <input type="submit" value="Submit">
+            </form>
+
+            <p class="mt-3" id="rule_suggestion"></p>
         </div>
         <br>
 
@@ -405,7 +408,7 @@
     }
 
     function getSelectionText() {
-        var text = document.getElementById("sel").value;
+        var text = document.getElementById("id_selection").value;
         if (window.getSelection && window.getSelection().toString() != "") {
             text = window.getSelection().toString();
         } else if (document.selection && document.selection.type != "Control") {
@@ -415,7 +418,7 @@
     }
     
     document.onmouseup = document.onkeyup = document.onselectionchange = function() {
-      document.getElementById("sel").value = getSelectionText();
+      document.getElementById("id_selection").value = getSelectionText();
     };
 
 </script>

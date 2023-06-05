@@ -5,8 +5,13 @@ register_converter(converters.NegativeIntConverter, 'negint')
 
 urlpatterns = [
     path('', views.index, name='index'),
+
+    # BUILDING BLOCKS
+    path('rule_suggestions/', views.rule_suggestions, name='rule_suggestions'),                      # non-page
     path('building_blocks/<int:q_id>', views.building_blocks_view, name='building_blocks'),
     path('building_blocks/<int:q_id>/<str:filter>', views.building_blocks_view, name='building_blocks'),
+
+    # CHATGPT
     path('chatgpt/<int:q_id>', views.chatgpt_view, name='chatgpt'),
     path('chatgpt/<int:q_id>/<str:method>', views.chatgpt_view, name='chatgpt'),
 
