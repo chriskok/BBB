@@ -106,6 +106,15 @@
         </div>
     </div>
     <div class="col-3">
+        <div class="card sticky-top border-0">
+            <h4>Rule Suggestions</h4>
+            Selection:
+            <textarea id="sel" rows="2" cols="50"></textarea>
+            Reason:
+            <textarea id="sel" rows="2" cols="50"></textarea>
+        </div>
+        <br>
+
         <h4>Create Rule</h4>
         <form action="{% url 'building_blocks' question_exam_id %}" method="post">
             {% csrf_token %}
@@ -212,7 +221,7 @@
             </div>
         </form>
 
-        <br><br>
+        <br>
         <h4>Created Rules</h4>
         <table class="table">
             <thead>
@@ -260,6 +269,7 @@
             </tbody>
         </table>
     </div>
+</div>
 </div>
 
 <style>
@@ -393,6 +403,20 @@
             //answer.innerHTML = innerHTML;
         });
     }
+
+    function getSelectionText() {
+        var text = document.getElementById("sel").value;
+        if (window.getSelection && window.getSelection().toString() != "") {
+            text = window.getSelection().toString();
+        } else if (document.selection && document.selection.type != "Control") {
+            text = document.selection.createRange().text;
+        } 
+        return text;
+    }
+    
+    document.onmouseup = document.onkeyup = document.onselectionchange = function() {
+      document.getElementById("sel").value = getSelectionText();
+    };
 
 </script>
 
