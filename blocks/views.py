@@ -206,7 +206,9 @@ def handle_rule_input(form, chosen_answers, current_question_obj):
 #                PAGE VIEWS                 #
 #############################################
 
-def rule_suggestions(request):
+def rule_suggestions(request, q_id):
+
+    current_question_obj = Question.objects.get(pk=q_id)
 
     # if this is a POST request we need to process the form data
     if request.method == "POST":
@@ -217,12 +219,18 @@ def rule_suggestions(request):
 
             selection = form.cleaned_data["selection"]
             reason = form.cleaned_data["reason"]
+            ans = form.cleaned_data["full_ans"]
 
-            print(selection, reason)
-            return JsonResponse({"rule_type": "keywordsim", "args": selection, "reason": reason})
-            # return JsonResponse({"rule_type": "keywordsim", "args": "reuse", "reason": "The common keyword 'reuse' is present in all the answers, indicating that they are all discussing the benefits of reusing components. Therefore, a keyword similarity rule is appropriate."})
+            # TODO: The output must be in a strict JSON format: {{'rule_type': 'the type of rule you have chosen', 'args': 'the arguments associated to that rule', 'reason': 'your detailed reason for the choice'}}.
+            prompt = [
+                        {"role": "system", "content": f"You are an expert instructor for your given course. You've given the question {current_question_obj.question_text} on a recent final exam. Now you have to grade all the responses to that open-ended question with our grading system. The goal is to use your expert knowledge to create specific, understandable, rule-based clusters of answers so that we can grade and provide feedback to each cluster all at once. \n\nGiven an annotation that you (or another expert instructor) has made on one of the answers, you are to select one most suitable rule from a list of possible rules that can be used to best define the annotation made (that would apply to most other answers of the same type). \n\nHere is the list of rules for you to choose from:\n- Keyword Similarity: Measures word-level similarity and applies to all answers that have a similar/same keyword (rule_type: keywordsim, args: <one keyword, usually from the answer itself>)\n- Sentence Similarity: Measures sentence-level similarity through TF-IDF, Sentence-BERT, or Spacy and applies to all answers that have a similar/same sentence meaning (rule_type: sentencesim, args: <full sentence or part of sentence, usually from the answer itself>)\n- Concept Similarity: Leverages ChatGPT to classify each answer based on automatically generated concepts derived from the question's related topics. Matches any other answers classified as having the same concept. For this question, the list of concepts are: Asynchronous programming, Callback functions, Promises, Event loop, Non-blocking I/O, Performance. (rule_type: conceptsim, args: <chosen concept from list of concepts>)\n- Answer Length: Word- or character-level length checking to determine if the answer exceeds a specific threshold. (rule_type: answerlength, args: <number of words/characters to set as limit>)\n\nPlease give the following as output: Rule Type, Arguments, and Reasoning."},
+                        {"role": "user", "content": f"Answer: {ans.strip()}\nHighlighted section: {selection}\nAnnotation: {reason}"},
+                    ]
+            chatgpt_response = bb.prompt_chatgpt(prompt)
 
-    return JsonResponse({"rule_type": "keywordsim", "args": "selection", "reason": "reason"})
+            return HttpResponse(chatgpt_response)
+
+    return HttpResponse("Incorrectly formatted rule suggestion request")
 
 # @login_required
 def building_blocks_view(request, q_id, filter=None):

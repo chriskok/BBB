@@ -61,8 +61,8 @@
         <div class="card-deck" id="answer_card_deck">
         {% for answer in answers %}
             <div class="card mb-2 {% if forloop.counter > 15 %}hidden_card{% endif %}">
-                <div class="card-body">
-                            <p class="card-text answer-card">{{answer.answer_text}}</p>
+                <div class="card-body" id="answer_card_{{answer.id}}">
+                            <p class="card-text answer-card" id="answer_text_{{answer.id}}">{{answer.answer_text}}</p>
                             
                     <div class="row">
                         <div class="col-sm-3">
@@ -108,9 +108,11 @@
     <div class="col-3">
         <div class="card sticky-top border-0">
             <h4>Rule Suggestions</h4>
-            <form hx-target="#rule_suggestion" hx-swap="innerHTML" hx-post="{% url 'rule_suggestions' %}">
+            <form hx-target="#rule_suggestion" hx-swap="innerHTML" hx-post="{% url 'rule_suggestions' question_exam_id %}">
                 {% csrf_token %}
-                {{ suggestions_form }}
+                {{ suggestions_form.selection|as_crispy_field }}
+                {{ suggestions_form.reason|as_crispy_field }}
+                {{ suggestions_form.full_ans.as_hidden }}
                 <input type="submit" value="Submit">
             </form>
 
@@ -409,8 +411,12 @@
 
     function getSelectionText() {
         var text = document.getElementById("id_selection").value;
+
         if (window.getSelection && window.getSelection().toString() != "") {
             text = window.getSelection().toString();
+            sel = window.getSelection();
+            parentEl = sel.getRangeAt(0).commonAncestorContainer;
+            document.getElementById("id_full_ans").value = parentEl.textContent;
         } else if (document.selection && document.selection.type != "Control") {
             text = document.selection.createRange().text;
         } 

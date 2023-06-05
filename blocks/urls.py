@@ -7,7 +7,7 @@ urlpatterns = [
     path('', views.index, name='index'),
 
     # BUILDING BLOCKS
-    path('rule_suggestions/', views.rule_suggestions, name='rule_suggestions'),                      # non-page
+    path('rule_suggestions/<int:q_id>', views.rule_suggestions, name='rule_suggestions'),                      # non-page
     path('building_blocks/<int:q_id>', views.building_blocks_view, name='building_blocks'),
     path('building_blocks/<int:q_id>/<str:filter>', views.building_blocks_view, name='building_blocks'),
 
