@@ -447,6 +447,31 @@ def similar_sentence(df, sentence, sim_score_threshold=0.7, n_return_threshold=N
 
     return return_df
 
+# methods: sbert, spacy, tfidf
+def similar_sentence_by_example(df, sentence, positive_examples, negative_examples):
+
+    sentences = [sentence] + df["answer_text"].apply(str).tolist()
+
+    #Compute embeddings
+    embeddings = model.encode(sentences, convert_to_tensor=True)
+
+    #Compute cosine-similarities for each sentence with each other sentence
+    cosine_scores = util.cos_sim(embeddings, embeddings)
+    chosen_scores = cosine_scores[0]
+
+    return_df = df.copy()
+    return_df['score'] = chosen_scores[1:]  # assign all scores to df, while removing the first sentence that we added
+    if (not return_df.empty): return_df[['score']] = scaler.fit_transform(return_df[['score']])
+
+    return_df = return_df.sort_values(by=['score'], ascending=False)
+
+    # get score of lowest positive example (by id)
+    lowest_positive_score = return_df[return_df['id'].isin([int(x) for x in positive_examples])].tail(1)['score'].values[0]
+
+    if(not return_df.empty): return_df = return_df[return_df['score'] >= lowest_positive_score] 
+
+    return return_df, lowest_positive_score
+
 # Building Block 3.5 - Similar Sentence by Index
 def similar_sentence_by_index(df, sentence_index, sim_score_threshold=0.7, n_return_threshold=None, method='sbert'):
 

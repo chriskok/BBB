@@ -1,5 +1,6 @@
 from django import forms
 from .models import Answer, Cluster
+from django.core.exceptions import ValidationError
 
 class BuildingBlocksForm(forms.Form):
 
@@ -21,8 +22,8 @@ class BuildingBlocksForm(forms.Form):
     sentence = forms.CharField(required=False, widget=forms.Textarea(attrs={'rows': 3}))
     sentence_similarity_input_attrs = {'type':'range', 'id':"sentenceSimilarityInput", 'name':"sentenceSimilarityInput", 'step': '0.1', 'min': '0.3', 'max': '1.0',
                                'value': '0.6', 'oninput':"sentence_similarity_choice.value=sentenceSimilarityInput.value"}
-    sentence_similarity = forms.FloatField(widget=forms.NumberInput(attrs=sentence_similarity_input_attrs), label='Similarity to Sentence', min_value=0.3, max_value=1.0)
-    sentence_similarity_method = forms.ChoiceField(choices = (('sbert', "SBert"), ('spacy', "Spacy"), ('tfidf', "TF-IDF")))
+    sentence_similarity = forms.FloatField(required=False, widget=forms.NumberInput(attrs=sentence_similarity_input_attrs), label='Similarity to Sentence', min_value=0.3, max_value=1.0)
+    sentence_similarity_method = forms.ChoiceField(required=False, choices = (('sbert', "SBert"), ('spacy', "Spacy"), ('tfidf', "TF-IDF")))
 
     # concept similarity form
     concept_similarity_input_attrs = {'type':'range', 'id':"conceptSimilarityInput", 'name':"conceptSimilarityInput", 'step': '0.1', 'min': '0.3', 'max': '1.0',
@@ -37,6 +38,19 @@ class BuildingBlocksForm(forms.Form):
     rule_polarity = forms.ChoiceField(choices = (('positive', "Positive ✔️"), ('negative', "Negative ❌")))
     positive_examples = forms.CharField(required=False)
     negative_examples = forms.CharField(required=False)
+
+    def clean(self):
+        cleaned_data = super().clean()
+        rule_type = cleaned_data.get("rule_type_selection")
+        positive = cleaned_data.get("positive_examples")
+
+        if rule_type == "sentence_rule":
+            if (positive is None) or (positive == ""):
+                raise ValidationError(
+                    "Sentence similarity rules must come with at least 1 similar/dissimilar sentence. Please select them by clicking the PLUS and MINUS buttons on different answers.",
+                )
+        
+        return cleaned_data
 
 class RuleSuggestionForm(forms.Form):
     full_ans = forms.CharField(required=False, widget=forms.Textarea(attrs={'rows': 2}))

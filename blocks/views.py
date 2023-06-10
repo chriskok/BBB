@@ -55,14 +55,15 @@ def similar_keyword_filter(chosen_answers, current_question_obj, keyword, simila
 
     return df, filtered_answers, relevant_keywords
 
-def similar_sentence_filter(chosen_answers, current_question_obj, sentence, similarity, method):
+def similar_sentence_filter(chosen_answers, current_question_obj, sentence, positive_examples, negative_examples):
     # filters answers 
     df = pd.DataFrame(list(chosen_answers.values()))
-    df = bb.similar_sentence(df, sentence, sim_score_threshold=similarity, method=method)
+    # df = bb.similar_sentence(df, sentence, sim_score_threshold=similarity, method=method)
+    df, lowest_positive_score = bb.similar_sentence_by_example(df, sentence, positive_examples, negative_examples)
     student_id_list = df["student_id"].values.tolist()
     filtered_answers = Answer.objects.filter(question=current_question_obj, student_id__in=student_id_list)
 
-    return df, filtered_answers
+    return df, filtered_answers, lowest_positive_score
 
 def similar_concept_filter(chosen_answers, current_question_obj, concept, similarity):
 
@@ -147,14 +148,14 @@ def handle_rule_input(form, chosen_answers, current_question_obj):
     # SENTENCE SIM RULE
     elif (form.cleaned_data['rule_type_selection'] == 'sentence_rule'):
         sentence = form.cleaned_data['sentence']
-        similarity = form.cleaned_data['sentence_similarity']
-        method = form.cleaned_data['sentence_similarity_method']
+        # similarity = form.cleaned_data['sentence_similarity']
+        # method = form.cleaned_data['sentence_similarity_method']
 
         # filters answers 
-        df, filtered_answers = similar_sentence_filter(chosen_answers, current_question_obj, sentence, similarity, method)
+        df, filtered_answers, lowest_positive_score = similar_sentence_filter(chosen_answers, current_question_obj, sentence, positive_examples, negative_examples)
 
         # handle sentence sim rule creation
-        new_rule,_ = SentenceSimilarityRule.objects.get_or_create(question=current_question_obj, parent=parent_rule, sentence=sentence, similarity_threshold=similarity, method=method, polarity=form.cleaned_data['rule_polarity'], positive_examples=json.dumps(positive_examples), negative_examples=json.dumps(negative_examples))
+        new_rule,_ = SentenceSimilarityRule.objects.get_or_create(question=current_question_obj, parent=parent_rule, sentence=sentence, similarity_threshold=lowest_positive_score, method="sbert", polarity=form.cleaned_data['rule_polarity'], positive_examples=json.dumps(positive_examples), negative_examples=json.dumps(negative_examples))
 
         # go through each filtered answer and assign the rule and rule strings
         for answer in filtered_answers:
@@ -247,13 +248,16 @@ def building_blocks_view(request, q_id, filter=None):
     answer_count = len(chosen_answers)
     # NOTE: maybe instead of AND, OR, and NOT, we can just either apply a sequential filter or allow MERGING (with logic gates)
 
+    old_form = None
     # Handle form input
     if request.method == 'POST':
         form = BuildingBlocksForm(request.POST)
         if form.is_valid():
             handle_rule_input(form, chosen_answers, current_question_obj)
-
             return HttpResponseRedirect(reverse('building_blocks', args=(q_id,)))
+        else:
+            old_form = form
+            form = BuildingBlocksForm()
     else:
         form = BuildingBlocksForm()
     
@@ -283,6 +287,7 @@ def building_blocks_view(request, q_id, filter=None):
         "answer_count": answer_count,
         "suggestions_form": RuleSuggestionForm(),
         "form": form,
+        "old_form": old_form,
         "keywords": keywords,
         "rules": rules,
         "orphan_rules": orphan_rules,

@@ -110,6 +110,13 @@
         <h4>Create Rule</h4>
         <form action="{% url 'building_blocks' question_exam_id %}" method="post">
             {% csrf_token %}
+            {% if old_form.non_field_errors %}
+            <div class="non-field-errors">
+                {% for err in old_form.non_field_errors %}
+                <p class="form-error text-danger">{{ err }}</p>
+                {% endfor %}
+            </div>
+            {% endif %}
 
             {{ form.positive_examples.as_hidden }}
             {{ form.negative_examples.as_hidden }}
@@ -136,6 +143,8 @@
                 <hr />
                 <div class="d-flex align-items-center">
                     {{ form.sentence|as_crispy_field }}
+                    {{ form.sentence_similarity.as_hidden }}
+                    {{ form.sentence_similarity_method.as_hidden }}
                 </div>
                 {% comment %} <div class="d-flex align-items-center">
                     {{ form.sentence_similarity|as_crispy_field }}
