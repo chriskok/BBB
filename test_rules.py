@@ -210,6 +210,10 @@ openai.api_key = openai_key
 # patterns = {k: v for k, v in sorted(patterns.items(), key=lambda item: item[1], reverse=True)}
 # print(patterns)
 
+# ================================== #
+#         SENTENCE COMPARISONS       #
+# ================================== #
+
 def prompt_chatgpt(prompt):
     model="gpt-3.5-turbo"
     try:

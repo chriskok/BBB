@@ -137,7 +137,7 @@
                 <div class="d-flex align-items-center">
                     {{ form.sentence|as_crispy_field }}
                 </div>
-                <div class="d-flex align-items-center">
+                {% comment %} <div class="d-flex align-items-center">
                     {{ form.sentence_similarity|as_crispy_field }}
                     <output class="mx-3" name="sentence_similarity_choice" id="sentence_similarity_choice" for="sentenceSimilarityInput">
                         {{ form.sentence_similarity.value|default_if_none:0.6 }}
@@ -145,7 +145,7 @@
                 </div>
                 <div class="d-flex align-items-center">
                     {{ form.sentence_similarity_method|as_crispy_field }}
-                </div>
+                </div> {% endcomment %}
             </div>
             <div class="rule_input_div" id="concept_rule">
                 <hr />
@@ -179,12 +179,11 @@
             </div>
 
             <div class="rule_input_div" id="progress_bars">
-                <hr />
-                <label for="positive_examples_progress">Positive Examples:</label>
+                <label for="positive_examples_progress">Similar Examples:</label>
                 <div class="progress">
                     <div id="positive_examples_progress" class="progress-bar bg-success" role="progressbar" style="width: 0%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
                 </div>
-                <label for="negative_examples_progress">Negative Examples:</label>
+                <label for="negative_examples_progress">Dissimilar Examples:</label>
                 <div class="progress">
                     <div id="negative_examples_progress" class="progress-bar bg-danger" role="progressbar" style="width: 0%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
                 </div>
@@ -218,9 +217,10 @@
             <h4>Rule Suggestions</h4>
             <form hx-target="#rule_suggestion" hx-swap="innerHTML" hx-post="{% url 'rule_suggestions' question_exam_id %}" hx-indicator="#suggestions_spinner">
                 {% csrf_token %}
+                {{ suggestions_form.full_ans|as_crispy_field }}
                 {{ suggestions_form.selection|as_crispy_field }}
                 {{ suggestions_form.reason|as_crispy_field }}
-                {{ suggestions_form.full_ans.as_hidden }}
+                {% comment %} {{ suggestions_form.full_ans.as_hidden }} {% endcomment %}
                 <div class="d-flex flex-row align-items-center">
                     <input class="btn btn-secondary mr-3" type="submit" value="Submit">
                     <div id="suggestions_spinner" class="spinner-border text-primary htmx-indicator" role="status">
@@ -323,7 +323,8 @@
             $('#' + this.value).show();
 
             if (value != "pick") {$('#all_rules').show()};
-            if (value == "keyword_rule" || value == "sentence_rule") {$('.example_buttons').show(); $('#progress_bars').show()};
+            //if (value == "keyword_rule" || value == "sentence_rule") {$('.example_buttons').show(); $('#progress_bars').show()};
+            if (value == "sentence_rule") {$('.example_buttons').show(); $('#progress_bars').show()};
         });
 
         $(function () {

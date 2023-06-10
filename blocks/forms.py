@@ -39,11 +39,14 @@ class BuildingBlocksForm(forms.Form):
     negative_examples = forms.CharField(required=False)
 
 class RuleSuggestionForm(forms.Form):
+    full_ans = forms.CharField(required=False, widget=forms.Textarea(attrs={'rows': 2}))
+    full_ans.disabled = True
     selection = forms.CharField(required=False, widget=forms.Textarea(attrs={'rows': 2}))
+    selection.disabled = True
     reason = forms.CharField(required=False, widget=forms.Textarea(attrs={'rows': 2}))
 
-    # meta
-    full_ans = forms.CharField(required=False)
+    # # meta
+    # full_ans = forms.CharField(required=False)
 
 class ClusterGradingForm(forms.ModelForm):
     cluster_name = forms.CharField(label='Group Name', required=False)
