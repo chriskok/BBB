@@ -453,6 +453,7 @@ def similar_sentence_by_example(df, sentence, positive_examples, negative_exampl
     sentences = [sentence] + df["answer_text"].apply(str).tolist()
 
     #Compute embeddings
+    model = SentenceTransformer(modelPath)
     embeddings = model.encode(sentences, convert_to_tensor=True)
 
     #Compute cosine-similarities for each sentence with each other sentence

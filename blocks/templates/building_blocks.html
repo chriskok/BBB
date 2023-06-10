@@ -263,7 +263,7 @@
                             {% elif rule.polymorphic_ctype.name == "answer length rule" %}<a href="{% url 'answerlengthrule_update' rule.pk %}" class="text-dark">{{rule}}</a>
                             {% else %}{{rule}}{% endif %}
                         </span> 
-                        {% if rule.similarity_threshold %} - similarity: {{rule.similarity_threshold}}{% endif %}
+                        {% if rule.similarity_threshold %} - similarity: {{rule.similarity_threshold|floatformat:2}}{% endif %}
                         <br>
                         {% for subrule in rule.rule_set.all %}
                         <p class="mt-1" style='margin: 0; padding: 0;'>-- <span style="background-color:{{ color_to_rule|get_item:subrule.id }}">

@@ -585,12 +585,14 @@ def keywordrule_update(rule, keyword, similarity, chosen_answers, current_questi
 
 def sentencesimilarityrule_update(rule, sentence, positive_examples, negative_examples, chosen_answers, current_question_obj):
         
-    df, filtered_answers, _ = similar_sentence_filter(chosen_answers, current_question_obj, sentence, positive_examples, negative_examples)
+    df, filtered_answers, lowest_positive_score = similar_sentence_filter(chosen_answers, current_question_obj, sentence, positive_examples, negative_examples)
 
     # go through each filtered answer and assign the rule and rule strings
     for answer in filtered_answers:
         curr_row = df[df['student_id'] == answer.student_id].iloc[0]
         add_rule_string(answer, rule, f"{'✔️' if rule.polarity == 'positive' else '❌'} Sentence: {sentence} -> Similarity: {curr_row['score']:.2f}")
+
+    return lowest_positive_score
 
 def conceptsimilarityrule_update(rule, concept, similarity, chosen_answers, current_question_obj):
         
@@ -667,7 +669,7 @@ class KeywordRuleUpdateView(UpdateView):
 
 class SentenceSimilarityRuleUpdateView(UpdateView):
     model = SentenceSimilarityRule
-    fields = ['sentence', 'similarity_threshold']
+    fields = ['sentence']
     template_name = 'generic_views/rule_update.html'
 
     def get_context_data(self, **kwargs):
@@ -695,7 +697,13 @@ class SentenceSimilarityRuleUpdateView(UpdateView):
         # remove rule strings for this rule and all child rules from all applied answers
         remove_rule_strings(child_id_list + [self.object.id], child_child_list + [self.object], all_answers)  
         # sentencesimilarityrule_update(self.object, form.cleaned_data['sentence'], form.cleaned_data['similarity_threshold'], self.object.method, chosen_answers, self.object.question)  
-        sentencesimilarityrule_update(self.object, form.cleaned_data['sentence'], self.object.get_positive_examples(), self.object.get_negative_examples(), chosen_answers, self.object.question)  
+        lowest_positive_score = sentencesimilarityrule_update(self.object, form.cleaned_data['sentence'], self.object.get_positive_examples(), self.object.get_negative_examples(), chosen_answers, self.object.question)  
+        
+        # BUG: fix lowest_positive_score is 0 because it runs twice when updating.
+        # print(lowest_positive_score)
+        # print(self.object)
+        # self.object.similarity_threshold = lowest_positive_score
+        # self.object.save()
         update_all_children_rules(child_child_list, chosen_answers, self.object.question)  
 
         return super().form_valid(form) 
