@@ -466,7 +466,9 @@ def similar_sentence_by_example(df, sentence, positive_examples, negative_exampl
     return_df = return_df.sort_values(by=['score'], ascending=False)
 
     # get score of lowest positive example (by id)
-    lowest_positive_score = return_df[return_df['id'].isin([int(x) for x in positive_examples])].tail(1)['score'].values[0]
+    positive_ex_df = return_df[return_df['id'].isin([int(x) for x in positive_examples])]
+    if (not positive_ex_df.empty): lowest_positive_score = positive_ex_df.tail(1)['score'].values[0]
+    else: lowest_positive_score = 0.5
 
     if(not return_df.empty): return_df = return_df[return_df['score'] >= lowest_positive_score] 
 

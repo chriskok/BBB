@@ -105,7 +105,7 @@ def recursive_filtering_chosen_answers(rule, all_answers):
     if rule.polymorphic_ctype.name == "keyword rule":
         _, return_answers, _ = similar_keyword_filter(chosen_answers, rule.question, rule.keyword, rule.similarity_threshold)
     elif rule.polymorphic_ctype.name == "sentence similarity rule":
-        _, return_answers = similar_sentence_filter(chosen_answers, rule.question, rule.sentence, rule.similarity_threshold, rule.method)
+        _, return_answers, _ = similar_sentence_filter(chosen_answers, rule.question, rule.sentence, rule.get_positive_examples(), rule.get_negative_examples())
     elif rule.polymorphic_ctype.name == "answer length rule":
         _, return_answers = answer_length_filter(chosen_answers, rule.question, rule.length, rule.length_type)
     elif rule.polymorphic_ctype.name == "concept similarity rule":
@@ -583,9 +583,9 @@ def keywordrule_update(rule, keyword, similarity, chosen_answers, current_questi
         curr_row = df[df['student_id'] == answer.student_id].iloc[0]
         add_rule_string(answer, rule, f"{'✔️' if rule.polarity == 'positive' else '❌'} Keyword: {keyword} -> Matched: {curr_row['word']}, Similarity: {curr_row['score']:.2f}")
 
-def sentencesimilarityrule_update(rule, sentence, similarity, method, chosen_answers, current_question_obj):
+def sentencesimilarityrule_update(rule, sentence, positive_examples, negative_examples, chosen_answers, current_question_obj):
         
-    df, filtered_answers = similar_sentence_filter(chosen_answers, current_question_obj, sentence, similarity, method)
+    df, filtered_answers, _ = similar_sentence_filter(chosen_answers, current_question_obj, sentence, positive_examples, negative_examples)
 
     # go through each filtered answer and assign the rule and rule strings
     for answer in filtered_answers:
@@ -626,7 +626,7 @@ def update_all_children_rules(child_child_list, chosen_answers, question):
             # TODO: Make these more efficient by saying we don't have to search past current object as parent, can have param in keywordrule_update
             keywordrule_update(rule, rule.keyword, rule.similarity_threshold, recursive_filtering_chosen_answers(rule, chosen_answers), question)
         elif rule.polymorphic_ctype.name == "sentence similarity rule":
-            sentencesimilarityrule_update(rule, rule.sentence, rule.similarity_threshold, rule.method, recursive_filtering_chosen_answers(rule, chosen_answers), question)
+            sentencesimilarityrule_update(rule, rule.sentence, rule.get_positive_examples(), rule.get_negative_examples(), recursive_filtering_chosen_answers(rule, chosen_answers), question)
         elif rule.polymorphic_ctype.name == "concept similarity rule":
             conceptsimilarityrule_update(rule, rule.concept, rule.similarity_threshold, recursive_filtering_chosen_answers(rule, chosen_answers), question)
         elif rule.polymorphic_ctype.name == "answer length rule":
@@ -694,7 +694,8 @@ class SentenceSimilarityRuleUpdateView(UpdateView):
 
         # remove rule strings for this rule and all child rules from all applied answers
         remove_rule_strings(child_id_list + [self.object.id], child_child_list + [self.object], all_answers)  
-        sentencesimilarityrule_update(self.object, form.cleaned_data['sentence'], form.cleaned_data['similarity_threshold'], self.object.method, chosen_answers, self.object.question)  
+        # sentencesimilarityrule_update(self.object, form.cleaned_data['sentence'], form.cleaned_data['similarity_threshold'], self.object.method, chosen_answers, self.object.question)  
+        sentencesimilarityrule_update(self.object, form.cleaned_data['sentence'], self.object.get_positive_examples(), self.object.get_negative_examples(), chosen_answers, self.object.question)  
         update_all_children_rules(child_child_list, chosen_answers, self.object.question)  
 
         return super().form_valid(form) 
