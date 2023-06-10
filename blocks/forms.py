@@ -53,7 +53,7 @@ class BuildingBlocksForm(forms.Form):
         return cleaned_data
 
 class RuleSuggestionForm(forms.Form):
-    full_ans = forms.CharField(required=False, widget=forms.Textarea(attrs={'rows': 2}))
+    full_ans = forms.CharField(required=False, widget=forms.Textarea(attrs={'rows': 2}), label="Answer")
     full_ans.disabled = True
     selection = forms.CharField(required=False, widget=forms.Textarea(attrs={'rows': 2}))
     selection.disabled = True
