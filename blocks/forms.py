@@ -43,11 +43,12 @@ class BuildingBlocksForm(forms.Form):
         cleaned_data = super().clean()
         rule_type = cleaned_data.get("rule_type_selection")
         positive = cleaned_data.get("positive_examples")
+        negative = cleaned_data.get("negative_examples")
 
         if rule_type == "sentence_rule":
-            if (positive is None) or (positive == ""):
+            if (positive is None) or (positive == "") or (negative is None) or (negative == ""):
                 raise ValidationError(
-                    "Sentence similarity rules must come with at least 1 similar/dissimilar sentence. Please select them by clicking the PLUS and MINUS buttons on different answers.",
+                    "Sentence similarity rules must come with at least 1 similar/dissimilar sentence each. Please select them by clicking the PLUS and MINUS buttons on different answers.",
                 )
         
         return cleaned_data

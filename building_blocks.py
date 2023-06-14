@@ -447,32 +447,68 @@ def similar_sentence(df, sentence, sim_score_threshold=0.7, n_return_threshold=N
 
     return return_df
 
+def calculate_best_method(df, positive_examples, negative_examples):
+
+    method_score_columns = ['sbert_score', 'spacy_score', 'tfidf_score']
+    positive_ex_df = df[df['id'].isin([int(x) for x in positive_examples])]
+    negative_ex_df = df[df['id'].isin([int(x) for x in negative_examples])]
+    # Choose the similarity method based on biggest (non modulo) distance between lowest positive example and highest negative example
+    if (not positive_ex_df.empty): 
+        best_method = None
+        biggest_difference = -1000.0
+        for method in method_score_columns:
+            positive_ex_df = positive_ex_df.sort_values(by=[method], ascending=False)
+            negative_ex_df = negative_ex_df.sort_values(by=[method], ascending=False)
+            lowest_positive_score = positive_ex_df.tail(1)[method].values[0]
+            highest_negative_score = negative_ex_df.head(1)[method].values[0]
+            difference = lowest_positive_score - highest_negative_score 
+            if (difference > biggest_difference):
+                best_method = method
+                biggest_difference = difference
+        
+        # Get the average score of the best method within the positive_examples
+        best_score = positive_ex_df[best_method].mean()
+        return best_method, best_score
+    else: 
+        return 'sbert_score', 0.5
+
 # methods: sbert, spacy, tfidf
 def similar_sentence_by_example(df, sentence, positive_examples, negative_examples):
 
     sentences = [sentence] + df["answer_text"].apply(str).tolist()
 
-    #Compute embeddings
+    # Compute SBERT embeddings
     model = SentenceTransformer(modelPath)
     embeddings = model.encode(sentences, convert_to_tensor=True)
-
-    #Compute cosine-similarities for each sentence with each other sentence
     cosine_scores = util.cos_sim(embeddings, embeddings)
-    chosen_scores = cosine_scores[0]
+    sbert_scores = cosine_scores[0]
+
+    # Compute Spacy embeddings
+    embeddings = [nlp(x) for x in sentences]
+    spacy_scores = [embeddings[0].similarity(x) for x in embeddings]
+
+    # Compute TFIDF embeddings
+    tfidf_vectorizer = TfidfVectorizer()
+    tfidf_matrix = tfidf_vectorizer.fit_transform(sentences)
+    cosine_sim = cosine_similarity(tfidf_matrix, tfidf_matrix)
+    tfidf_scores = cosine_sim[0]
 
     return_df = df.copy()
-    return_df['score'] = chosen_scores[1:]  # assign all scores to df, while removing the first sentence that we added
-    if (not return_df.empty): return_df[['score']] = scaler.fit_transform(return_df[['score']])
+    return_df['sbert_score'] = sbert_scores[1:]  # assign all scores to df, while removing the first sentence that we added
+    return_df['spacy_score'] = spacy_scores[1:]  
+    return_df['tfidf_score'] = tfidf_scores[1:]  
+    if (not return_df.empty): 
+        return_df[['sbert_score']] = scaler.fit_transform(return_df[['sbert_score']])
+        return_df[['spacy_score']] = scaler.fit_transform(return_df[['spacy_score']])
+        return_df[['tfidf_score']] = scaler.fit_transform(return_df[['tfidf_score']])
 
+    method, lowest_positive_score = calculate_best_method(return_df, positive_examples, negative_examples)
+
+    # TODO: run few-shot regression model based on scores and positive/negative examples to determine final classification
+
+    return_df['score'] = return_df[method]
     return_df = return_df.sort_values(by=['score'], ascending=False)
-
-    # get score of lowest positive example (by id)
-    positive_ex_df = return_df[return_df['id'].isin([int(x) for x in positive_examples])]
-    if (not positive_ex_df.empty): lowest_positive_score = positive_ex_df.tail(1)['score'].values[0]
-    else: lowest_positive_score = 0.5
-
     if(not return_df.empty): return_df = return_df[return_df['score'] >= lowest_positive_score] 
-
     return return_df, lowest_positive_score
 
 # Building Block 3.5 - Similar Sentence by Index
