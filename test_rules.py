@@ -1,25 +1,25 @@
-import nltk
-import re
-import pandas as pd
-import time
+# import nltk
+# import re
+# import pandas as pd
+# import time
 
-# from nltk.tokenize import word_tokenize
-# from nltk.wsd import lesk
-# from nltk.corpus import wordnet as wn
-# from nltk.corpus import stopwords
-# stemmer = nltk.stem.PorterStemmer()
-# from itertools import product
+# # from nltk.tokenize import word_tokenize
+# # from nltk.wsd import lesk
+# # from nltk.corpus import wordnet as wn
+# # from nltk.corpus import stopwords
+# # stemmer = nltk.stem.PorterStemmer()
+# # from itertools import product
 
-# from pywsd.lesk import simple_lesk
-# from pywsd import disambiguate
-# from pywsd.similarity import max_similarity as maxsim
+# # from pywsd.lesk import simple_lesk
+# # from pywsd import disambiguate
+# # from pywsd.similarity import max_similarity as maxsim
 
-from blocks.models import *
-import building_blocks as bb 
-import openai
-from my_secrets import my_secrets
-openai_key = my_secrets.get('openai_key')
-openai.api_key = openai_key
+# from blocks.models import *
+# import building_blocks as bb 
+# import openai
+# from my_secrets import my_secrets
+# openai_key = my_secrets.get('openai_key')
+# openai.api_key = openai_key
 
 
 # ================================== #
@@ -214,91 +214,208 @@ openai.api_key = openai_key
 #         SENTENCE COMPARISONS       #
 # ================================== #
 
-def prompt_chatgpt(prompt):
-    model="gpt-3.5-turbo"
-    try:
-        response = openai.ChatCompletion.create(
-            model=model,
-            messages=prompt,
-            temperature=0,
-        )
-        if "error" in response:
-            print("OPENAI ERROR: {}".format(response))
-            return "ERROR"
-        else:
-            return response["choices"][0]["message"]["content"]
-    except Exception as e: 
-        print(e)
-        return "ERROR"
+# def prompt_chatgpt(prompt):
+#     model="gpt-3.5-turbo"
+#     try:
+#         response = openai.ChatCompletion.create(
+#             model=model,
+#             messages=prompt,
+#             temperature=0,
+#         )
+#         if "error" in response:
+#             print("OPENAI ERROR: {}".format(response))
+#             return "ERROR"
+#         else:
+#             return response["choices"][0]["message"]["content"]
+#     except Exception as e: 
+#         print(e)
+#         return "ERROR"
 
-def classify_with_rubric(question, answers, rubric, all_rubrics):
-    answers_string = '\n'.join([f"#{i+1}: {e}" for i, e in enumerate(answers)])
-    all_rubrics_string = '\n'.join(all_rubrics)
-    prompt = [
-            {"role": "system", "content": f"You are an expert teacher in a class, you have the following question in your final exam: {question.question_text}. You are currently evaluating which of the answers match the following rubric: {rubric}. This is the full list of rubrics: \n\n{all_rubrics_string}"},
-            # {"role": "user", "content": f"For each of the following students' answers (formatted as such: #<number>: <answer>) please state if the rubric applies to it. Please be conservative by only saying Yes if this is the MOST relevant rubric amongst the list of rubrics. For each answer, strictly follow the output format: \'#<number>: <Y/N>\' where Y is Yes and N is No.\n\n{answers_string}"},
-            {"role": "user", "content": f"For each of the following students' answers (formatted as such: #<number>: <answer>) please score it from a scale of 0.0 to 1.0 based on how applicable the rubric is to it. Please be conservative and take all the other rubrcs into account from the list of rubrics. For each answer, strictly follow the output format: \'#<number>: <score>\'\n\n{answers_string}"},
-        ]
-    chatgpt_response = prompt_chatgpt(prompt)
-    return chatgpt_response
+# def classify_with_rubric(question, answers, rubric, all_rubrics):
+#     answers_string = '\n'.join([f"#{i+1}: {e}" for i, e in enumerate(answers)])
+#     all_rubrics_string = '\n'.join(all_rubrics)
+#     prompt = [
+#             {"role": "system", "content": f"You are an expert teacher in a class, you have the following question in your final exam: {question.question_text}. You are currently evaluating which of the answers match the following rubric: {rubric}. This is the full list of rubrics: \n\n{all_rubrics_string}"},
+#             # {"role": "user", "content": f"For each of the following students' answers (formatted as such: #<number>: <answer>) please state if the rubric applies to it. Please be conservative by only saying Yes if this is the MOST relevant rubric amongst the list of rubrics. For each answer, strictly follow the output format: \'#<number>: <Y/N>\' where Y is Yes and N is No.\n\n{answers_string}"},
+#             {"role": "user", "content": f"For each of the following students' answers (formatted as such: #<number>: <answer>) please score it from a scale of 0.0 to 1.0 based on how applicable the rubric is to it. Please be conservative and take all the other rubrcs into account from the list of rubrics. For each answer, strictly follow the output format: \'#<number>: <score>\'\n\n{answers_string}"},
+#         ]
+#     chatgpt_response = prompt_chatgpt(prompt)
+#     return chatgpt_response
 
-def convert_chatgpt_response(chatgpt_response):
-    # convert numbered list in string to list of strings
-    rubric_classifications = [x.strip().split(': ')[1] for x in chatgpt_response.split('\n') if x.strip() != '']
-    return rubric_classifications
+# def convert_chatgpt_response(chatgpt_response):
+#     # convert numbered list in string to list of strings
+#     rubric_classifications = [x.strip().split(': ')[1] for x in chatgpt_response.split('\n') if x.strip() != '']
+#     return rubric_classifications
 
-def get_rubric_classifications(question, answers, rubric, all_rubrics):
-    answers_list = answers.values_list('answer_text', flat=True)
-    answers_id_list = answers.values_list('id', flat=True)
-    all_classifications = []
-    # iterate through answers and add to list if they are under 8000 characters total
-    curr_length = 0
-    curr_answers = []
-    for index, ans in enumerate(answers_list):
-        if (curr_length + len(ans) < 10000):
-            curr_answers.append(ans)
-            curr_length += len(ans)
-        else:
-            all_classifications.extend(convert_chatgpt_response(classify_with_rubric(question, curr_answers, rubric, all_rubrics)))
-            # TODO: Asynchronous execution of OpenAI API calls
-            print(f"Index: {index} - Added {len(curr_answers)} answers")
-            curr_answers = [ans]
-            curr_length = len(ans)
-            time.sleep(15) # wait avoid OpenAI API rate limit
+# def get_rubric_classifications(question, answers, rubric, all_rubrics):
+#     answers_list = answers.values_list('answer_text', flat=True)
+#     answers_id_list = answers.values_list('id', flat=True)
+#     all_classifications = []
+#     # iterate through answers and add to list if they are under 8000 characters total
+#     curr_length = 0
+#     curr_answers = []
+#     for index, ans in enumerate(answers_list):
+#         if (curr_length + len(ans) < 10000):
+#             curr_answers.append(ans)
+#             curr_length += len(ans)
+#         else:
+#             all_classifications.extend(convert_chatgpt_response(classify_with_rubric(question, curr_answers, rubric, all_rubrics)))
+#             # TODO: Asynchronous execution of OpenAI API calls
+#             print(f"Index: {index} - Added {len(curr_answers)} answers")
+#             curr_answers = [ans]
+#             curr_length = len(ans)
+#             time.sleep(15) # wait avoid OpenAI API rate limit
     
-    all_classifications.extend(convert_chatgpt_response(classify_with_rubric(question, curr_answers, rubric, all_rubrics)))  # final time, with remaining answers
-    if (len(all_classifications) == len(answers_list)):
-        return all_classifications
-    else:
-        print("ERROR: Number of concept maps does not match number of answers")
-        print(all_classifications)
-        print(len(all_classifications))
-        return None
+#     all_classifications.extend(convert_chatgpt_response(classify_with_rubric(question, curr_answers, rubric, all_rubrics)))  # final time, with remaining answers
+#     if (len(all_classifications) == len(answers_list)):
+#         return all_classifications
+#     else:
+#         print("ERROR: Number of concept maps does not match number of answers")
+#         print(all_classifications)
+#         print(len(all_classifications))
+#         return None
 
-def produce_comparisons(chosen_answers, chosen_question, sentence, index, all_rubrics):
-    # filters answers 
-    df = pd.DataFrame(list(chosen_answers.values()))
-    # apply existing sentence similarity methods
-    methods = ['sbert', 'spacy', 'tfidf']
-    sim_scores = [0.5, 0.6, 0.7, 0.8]
-    for method in methods:
-        for sim_score in sim_scores:
-            new_df = bb.similar_sentence(df, sentence, sim_score_threshold=sim_score, method=method)
-            # print(f"evaluating: {method} @ {sim_score} -> {new_df.shape}")
-            # add column to df: True if row in new_df, False otherwise
-            df[f"{method}_{sim_score}"] = df["answer_text"].isin(new_df["answer_text"])
-            # print(df[f"{method}_{sim_score}"].value_counts())  # checking if the column is added correctly
-    # apply chatgpt rubric checking
-    chatgpt_rubrics = get_rubric_classifications(chosen_question, chosen_answers, sentence, all_rubrics)
-    if (chatgpt_rubrics): df['chatgpt_classified_rubric'] = chatgpt_rubrics
-    df.to_csv(f"results/sentencesim_comparisons/Q{chosen_question.id}_R{index+1}.csv")
-    print(f"Completed: Question - {chosen_question.id}, Rubric #{index+1} - {sentence}")
+# def produce_comparisons(chosen_answers, chosen_question, sentence, index, all_rubrics):
+#     # filters answers 
+#     df = pd.DataFrame(list(chosen_answers.values()))
+#     # apply existing sentence similarity methods
+#     methods = ['sbert', 'spacy', 'tfidf']
+#     sim_scores = [0.5, 0.6, 0.7, 0.8]
+#     for method in methods:
+#         for sim_score in sim_scores:
+#             new_df = bb.similar_sentence(df, sentence, sim_score_threshold=sim_score, method=method)
+#             # print(f"evaluating: {method} @ {sim_score} -> {new_df.shape}")
+#             # add column to df: True if row in new_df, False otherwise
+#             df[f"{method}_{sim_score}"] = df["answer_text"].isin(new_df["answer_text"])
+#             # print(df[f"{method}_{sim_score}"].value_counts())  # checking if the column is added correctly
+#     # apply chatgpt rubric checking
+#     chatgpt_rubrics = get_rubric_classifications(chosen_question, chosen_answers, sentence, all_rubrics)
+#     if (chatgpt_rubrics): df['chatgpt_classified_rubric'] = chatgpt_rubrics
+#     df.to_csv(f"results/sentencesim_comparisons/Q{chosen_question.id}_R{index+1}.csv")
+#     print(f"Completed: Question - {chosen_question.id}, Rubric #{index+1} - {sentence}")
 
-q7_rubrics = ["Allow user interaction at any time", "Allow query data from server/API without disrupting user flow", "Render content on the webpage in real-time", "Javascript is single-threaded"]
-q27_rubrics = ["Clearly states the reason of consistency and reusability/efficiency", "Clearly states the reason of consistency only", "Clearly states the reason of reusability/efficiency only", "Does not explicitly state either reason but is somewhat correct."]
-# get all answers for a question
-chosen_answers = Answer.objects.filter(question_id=37).order_by('outlier_score')
-chosen_question = Question.objects.get(id=37)
-for index, rubric in enumerate(q27_rubrics):
-    produce_comparisons(chosen_answers, chosen_question, rubric, index, q27_rubrics)
+# q7_rubrics = ["Allow user interaction at any time", "Allow query data from server/API without disrupting user flow", "Render content on the webpage in real-time", "Javascript is single-threaded"]
+# q27_rubrics = ["Clearly states the reason of consistency and reusability/efficiency", "Clearly states the reason of consistency only", "Clearly states the reason of reusability/efficiency only", "Does not explicitly state either reason but is somewhat correct."]
+# # get all answers for a question
+# chosen_answers = Answer.objects.filter(question_id=37).order_by('outlier_score')
+# chosen_question = Question.objects.get(id=37)
+# for index, rubric in enumerate(q27_rubrics):
+#     produce_comparisons(chosen_answers, chosen_question, rubric, index, q27_rubrics)
 
+
+# ================================== #
+#         LANGCHAIN + RUBRICS        #
+# ================================== #
+
+# from langchain.llms import OpenAI
+# from langchain.chains import LLMChain
+# from langchain.prompts import PromptTemplate
+# import os
+
+# import openai
+# from my_secrets import my_secrets
+# openai_key = my_secrets.get('openai_key')
+# openai.api_key = openai_key
+# os.environ["OPENAI_API_KEY"] = openai_key
+
+# # This is an LLMChain to write a synopsis given a title of a play.
+# llm = OpenAI(temperature=.7)
+# template = """You are a playwright. Given the title of play, it is your job to write a synopsis for that title.
+
+# Title: {title}
+# Playwright: This is a synopsis for the above play:"""
+# prompt_template = PromptTemplate(input_variables=["title"], template=template)
+# synopsis_chain = LLMChain(llm=llm, prompt=prompt_template)
+# # This is an LLMChain to write a review of a play given a synopsis.
+# llm = OpenAI(temperature=.7)
+# template = """You are a play critic from the New York Times. Given the synopsis of play, it is your job to write a review for that play.
+
+# Play Synopsis:
+# {synopsis}
+# Review from a New York Times play critic of the above play:"""
+# prompt_template = PromptTemplate(input_variables=["synopsis"], template=template)
+# review_chain = LLMChain(llm=llm, prompt=prompt_template)
+
+# # This is the overall chain where we run these two chains in sequence.
+# from langchain.chains import SimpleSequentialChain
+# overall_chain = SimpleSequentialChain(chains=[synopsis_chain, review_chain], verbose=True)
+
+# review = overall_chain.run("Tragedy at sunset on the beach")
+
+
+# ================================== #
+#          CHATGPT FUNCTIONS         #
+# ================================== #
+
+import openai
+from my_secrets import my_secrets
+openai_key = my_secrets.get('openai_key')
+openai.api_key = openai_key
+import json
+
+# Example dummy function hard coded to return the same weather
+# In production, this could be your backend API or an external API
+def get_current_weather(location, unit="fahrenheit"):
+    """Get the current weather in a given location"""
+    weather_info = {
+        "location": location,
+        "temperature": "72",
+        "unit": unit,
+        "forecast": ["sunny", "windy"],
+    }
+    return json.dumps(weather_info)
+
+# Step 1, send model the user query and what functions it has access to
+def run_conversation():
+    response = openai.ChatCompletion.create(
+        model="gpt-3.5-turbo-0613",
+        messages=[{"role": "user", "content": "What's the weather like in Boston?"}],
+        functions=[
+            {
+                "name": "get_current_weather",
+                "description": "Get the current weather in a given location",
+                "parameters": {
+                    "type": "object",
+                    "properties": {
+                        "location": {
+                            "type": "string",
+                            "description": "The city and state, e.g. San Francisco, CA",
+                        },
+                        "unit": {"type": "string", "enum": ["celsius", "fahrenheit"]},
+                    },
+                    "required": ["location"],
+                },
+            }
+        ],
+        function_call="auto",
+    )
+
+    message = response["choices"][0]["message"]
+
+    # Step 2, check if the model wants to call a function
+    if message.get("function_call"):
+        function_name = message["function_call"]["name"]
+
+        # Step 3, call the function
+        # Note: the JSON response from the model may not be valid JSON
+        function_response = get_current_weather(
+            location=message.get("location"),
+            unit=message.get("unit"),
+        )
+
+        # Step 4, send model the info on the function call and function response
+        second_response = openai.ChatCompletion.create(
+            model="gpt-3.5-turbo-0613",
+            messages=[
+                {"role": "user", "content": "What is the weather like in boston?"},
+                message,
+                {
+                    "role": "function",
+                    "name": function_name,
+                    "content": function_response,
+                },
+            ],
+        )
+        return second_response
+
+print(run_conversation())
