@@ -100,6 +100,22 @@ def rubric_tagging(request, q_id):
     chosen_answers = Answer.objects.filter(question_id=q_id)
     answer_count = len(chosen_answers)
 
+    # check if rubric object exists for this question
+    if not Rubric.objects.filter(question_id=q_id).exists():
+        rubrics, msgs = llmh.create_rubrics(current_question_obj, chosen_answers)
+        rubric_obj = Rubric.objects.create(question_id=q_id, rubric_dict=json.dumps(rubrics), message_history=json.dumps(msgs))
+    else:
+        rubric_obj = Rubric.objects.filter(question_id=q_id).first()
+        rubrics = rubric_obj.get_rubric_dict()
+
+    # check if AnswerTag objects exist for this question
+    if not AnswerTag.objects.filter(question_id=q_id).exists():
+        tags, msgs = llmh.tag_answers(current_question_obj, chosen_answers, rubrics)
+        for tag in tags:
+            AnswerTag.objects.create(question_id=q_id, answer_id=int(tag["answer_id"]), tag=tag["rubrics"], reasoning_dict=tag["reasoning"])
+        ans_tags = AnswerTag.objects.filter(question_id=q_id)
+    else:
+        ans_tags = AnswerTag.objects.filter(question_id=q_id)
 
     context = {
         "question_obj": current_question_obj,
@@ -107,6 +123,7 @@ def rubric_tagging(request, q_id):
         "question_list": q_list,
         "answers": chosen_answers,
         "answer_count": answer_count,
+        "ans_tags": ans_tags,
     }
 
     return render(request, "rubric_tagging.html", context)

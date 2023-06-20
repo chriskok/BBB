@@ -32,6 +32,18 @@
 
 <br>
 
+{% for tag in ans_tags %}
+<div class="card">
+    <div class="card-header">
+        <h5>Answer {{ forloop.counter }}: {{ tag.answer.answer_text }}</h5>
+    </div>
+    <div class="card-body">
+        <p>Tagged as: {{ tag.tag }}</p>
+        <p>Reason: {{ tag.reasoning_dict }}</p>
+    </div>
+</div>
+{% endfor %}
+
 <style>
     .highlight {
         background-color: yellow;

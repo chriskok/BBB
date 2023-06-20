@@ -47,3 +47,24 @@ def create_rubrics(question, answers):
         rubrics = []
 
     return rubrics, msgs
+
+
+def tag_answers(question, answers, rubrics):
+    random_answers = random.sample(list(answers), 40)
+
+    answers_str = "\n".join(["{}. {}".format(answer.id, answer.answer_text) for i, answer in enumerate(random_answers)])
+    rubrics_str = "\n".join(["R{}. {} (meaning: {})".format(i+1, rubric["rubric"], rubric['explanation']) for i, rubric in enumerate(rubrics)])
+    system_prompt = f"""You are an expert instructor for your given course. You've given the short-answer, open-ended question "{question.question_text}" on a recent final exam. You and your expert instructor partner created the following rubrics for this question (labelled R<rubric number> below): \n\n{rubrics_str}"""
+    user_prompt = """Your task is to assign the rubric labels to each of the following students' answers (formatted: <answer ID>. <answer>). Please assign labels to each of the answers provided. Each answer can have multiple rubrics applied too. Treat this as a multi-class classification task. Please provide reasoning for your labels as well. For the output, create a comma-separated list of python dictionaries that STRICTLY follow the JSON format: [{"answer_id": "<id of the answer>", "rubrics": "<comma-separated list of rubrics (labelled R<number>) that apply to this answer>", "reasoning": "<reason you think the rubrics you chose apply to this answer>"}, ...]\n\nStudents' Answers:\n""" + answers_str
+
+    msgs = [{"role": "system", "content": system_prompt}, {"role": "user", "content": user_prompt}]
+
+    response = prompt_chatgpt(msgs)
+
+    try:
+        tags = json.loads(response)
+    except Exception as e:
+        print(e)
+        tags = []
+
+    return tags, msgs

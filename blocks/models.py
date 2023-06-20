@@ -154,10 +154,17 @@ class Rubric(models.Model):
         return "{}. Question: {}".format(self.id, self.question.question_text)
     
 class AnswerTag(models.Model):
+    question = models.ForeignKey(Question, on_delete=models.CASCADE, default=None, null=True, blank=True)
     answer = models.ForeignKey(Answer, on_delete=models.CASCADE, default=None, null=True, blank=True)
     tag = models.CharField(max_length=200, default="", null=True, blank=True)
     reasoning_dict = models.TextField()  # dictionary with highlighted section and reasoning for chosen tags
     feedback = models.TextField()
+    
+    def set_reasoning_dict(self, x):
+        self.reasoning_dict = json.dumps(x)
+
+    def get_reasoning_dict(self):
+        return json.loads(self.reasoning_dict)
 
     def __str__(self):
         return "{}. Answer: {}, Tag: {}".format(self.id, self.answer.id, self.tag)
