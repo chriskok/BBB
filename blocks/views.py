@@ -48,7 +48,8 @@ def rubric_creation(request, q_id):
         print(f"Created new rubrics: {rubrics}")
         Rubric.objects.create(question_id=q_id, rubric_dict=json.dumps(rubrics), message_history=json.dumps(msgs))
     else:
-        rubrics = Rubric.objects.filter(question_id=q_id).first()
+        rubric_obj = Rubric.objects.filter(question_id=q_id).first()
+        rubrics = rubric_obj.get_rubric_dict()
         print(f"Found old rubrics: {rubrics}")
 
     # replace answer ids with answer objects

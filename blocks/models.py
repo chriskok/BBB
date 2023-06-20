@@ -151,4 +151,4 @@ class Rubric(models.Model):
         return json.loads(self.message_history)
 
     def __str__(self):
-        return "{}. Trial: {}, Prompt: {}, Model: {}".format(self.id, self.trial_run_number, self.prompt_type, self.openai_model)
+        return "{}. Question: {}".format(self.id, self.question.question_text)
