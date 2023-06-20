@@ -39,18 +39,33 @@ def rubric_creation(request, q_id):
         current_question_obj = Question.objects.first()
         q_id = current_question_obj.id
 
+    # on POST request, parse the form 
+    if request.method == "POST":
+        form = RubricCreationForm(request.POST)
+        if form.is_valid():
+            rubric_suggestions = form.cleaned_data["rubric_suggestions"]
+            method = form.cleaned_data["method"]
+
+            print(f"Rubric suggestions: {rubric_suggestions}")
+            print(f"Method: {method}")
+
+            # redirect to the same page
+            return HttpResponseRedirect(reverse("rubric_creation", args=(q_id,)))
+    else:
+        form = RubricCreationForm()
+
     chosen_answers = Answer.objects.filter(question_id=q_id)
     answer_count = len(chosen_answers)
 
     # check if rubric object exists for this question
     if not Rubric.objects.filter(question_id=q_id).exists():
         rubrics, msgs = llmh.create_rubrics(current_question_obj, chosen_answers)
-        print(f"Created new rubrics: {rubrics}")
         Rubric.objects.create(question_id=q_id, rubric_dict=json.dumps(rubrics), message_history=json.dumps(msgs))
+        # print(f"Created new rubrics: {rubrics}")
     else:
         rubric_obj = Rubric.objects.filter(question_id=q_id).first()
         rubrics = rubric_obj.get_rubric_dict()
-        print(f"Found old rubrics: {rubrics}")
+        # print(f"Found old rubrics: {rubrics}")
 
     # replace answer ids with answer objects
     for rubric in rubrics:
@@ -67,6 +82,7 @@ def rubric_creation(request, q_id):
         "answers": chosen_answers,
         "answer_count": answer_count,
         "rubrics": rubrics,
+        "form": form,
     }
 
     return render(request, "rubric_creation.html", context)

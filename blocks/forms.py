@@ -86,3 +86,15 @@ class AnswerEditForm(forms.ModelForm):
             'override_feedback': 'Feedback',
             'override_grade': 'Grade',
         }
+
+class RubricCreationForm(forms.Form):
+    rubric_suggestions = forms.CharField(widget=forms.Textarea(attrs={'rows': 3}), required=True)
+    CHOICES = [
+        ('recreate', 'Recreate rubrics from suggestions'),
+        ('append', 'Add new rubrics from suggestions'),
+    ]
+    method = forms.ChoiceField(
+        widget=forms.RadioSelect,
+        choices=CHOICES, 
+        initial="recreate",
+    )
