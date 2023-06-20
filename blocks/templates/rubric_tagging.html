@@ -32,17 +32,29 @@
 
 <br>
 
-{% for tag in ans_tags %}
-<div class="card">
-    <div class="card-header">
-        <h5>Answer {{ forloop.counter }}: {{ tag.answer.answer_text }}</h5>
+<div class="card-deck" id="answer_card_deck">
+    {% for tag in ans_tags %}
+    <div class="card mb-2">
+        <div class="card-header">
+            <h4>Answer {{ forloop.counter }}</h4>
+        </div>
+        <div class="card-body">
+            <div class="row">
+                <div class="col-6">
+                    <p>{{ tag.answer.answer_text }}</p>
+                </div>
+                <div class="col-6">
+                    <p>Tagged as: {{ tag.tag }}</p>
+                    <p>Reason: {{ tag.reasoning_dict }}</p>
+                </div>
+            </div>
+        </div>
     </div>
-    <div class="card-body">
-        <p>Tagged as: {{ tag.tag }}</p>
-        <p>Reason: {{ tag.reasoning_dict }}</p>
-    </div>
+    {% if forloop.counter|divisibleby:2  %} 
+    <div class="w-100 d-none d-block"></div> 
+    {% endif %}
+    {% endfor%}
 </div>
-{% endfor %}
 
 <style>
     .highlight {

@@ -110,12 +110,17 @@ def rubric_tagging(request, q_id):
 
     # check if AnswerTag objects exist for this question
     if not AnswerTag.objects.filter(question_id=q_id).exists():
-        tags, msgs = llmh.tag_answers(current_question_obj, chosen_answers, rubrics)
+        tags, msgs = llmh.tag_answers(current_question_obj, chosen_answers, rubrics, num_samples=20)
         for tag in tags:
             AnswerTag.objects.create(question_id=q_id, answer_id=int(tag["answer_id"]), tag=tag["rubrics"], reasoning_dict=tag["reasoning"])
         ans_tags = AnswerTag.objects.filter(question_id=q_id)
     else:
         ans_tags = AnswerTag.objects.filter(question_id=q_id)
+
+    # make dictionary of R<number>: <rubric> for each rubric
+    rubric_dict = {}
+    for i, rubric in enumerate(rubrics):
+        rubric_dict[f"R{i+1}"] = rubric["rubric"]
 
     context = {
         "question_obj": current_question_obj,
@@ -124,6 +129,7 @@ def rubric_tagging(request, q_id):
         "answers": chosen_answers,
         "answer_count": answer_count,
         "ans_tags": ans_tags,
+        "rubric_dict": rubric_dict,
     }
 
     return render(request, "rubric_tagging.html", context)

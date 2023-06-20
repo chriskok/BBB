@@ -26,8 +26,8 @@ def prompt_chatgpt(prompt):
         print(e)
         return "ERROR"
 
-def create_rubrics(question, answers):
-    random_answers = random.sample(list(answers), 40)
+def create_rubrics(question, answers, num_samples=40):
+    random_answers = random.sample(list(answers), num_samples)
     max_grade = 2
 
     answers_str = "\n".join(["{}. {}".format(answer.id, answer.answer_text) for i, answer in enumerate(random_answers)])
@@ -49,8 +49,8 @@ def create_rubrics(question, answers):
     return rubrics, msgs
 
 
-def tag_answers(question, answers, rubrics):
-    random_answers = random.sample(list(answers), 40)
+def tag_answers(question, answers, rubrics, num_samples=40):
+    random_answers = random.sample(list(answers), num_samples)
 
     answers_str = "\n".join(["{}. {}".format(answer.id, answer.answer_text) for i, answer in enumerate(random_answers)])
     rubrics_str = "\n".join(["R{}. {} (meaning: {})".format(i+1, rubric["rubric"], rubric['explanation']) for i, rubric in enumerate(rubrics)])
