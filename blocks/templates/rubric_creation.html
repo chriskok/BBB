@@ -64,9 +64,20 @@
                 </div>
             </div>
             <div class="col-4">
-                <a href="#" class="btn btn-success">Accept</a>
+                {% comment %} <a href="#" class="btn btn-success">Accept</a>
                 <a href="#" class="btn btn-danger">Reject</a>
-                <a href="#" class="btn btn-primary">Edit</a>
+                <a href="#" class="btn btn-primary">Edit</a> {% endcomment %}
+                <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                    <label class="btn btn-success active">
+                      <input type="radio" name="options" id="option1" autocomplete="off"> Accept
+                    </label>
+                    <label class="btn btn-danger">
+                      <input type="radio" name="options" id="option2" autocomplete="off"> Reject
+                    </label>
+                    <label class="btn btn-primary">
+                      <input type="radio" name="options" id="option3" autocomplete="off"> Edit
+                    </label>
+                  </div>
             </div>
         </div>
         {% endfor %}

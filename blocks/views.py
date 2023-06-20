@@ -43,10 +43,10 @@ def rubric_creation(request, q_id):
     if request.method == "POST":
         form = RubricCreationForm(request.POST)
         if form.is_valid():
-            rubric_suggestions = form.cleaned_data["rubric_suggestions"]
+            suggestions = form.cleaned_data["rubric_suggestions"]
             method = form.cleaned_data["method"]
 
-            print(f"Rubric suggestions: {rubric_suggestions}")
+            print(f"Rubric suggestions: {suggestions}")
             print(f"Method: {method}")
 
             # redirect to the same page
