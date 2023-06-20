@@ -25,6 +25,33 @@ import warnings
 warnings.filterwarnings("ignore")
 
 #############################################
+#                  COMB V5                  #
+#############################################
+
+def rubric_creation(request, q_id):
+    q_list = Question.objects.all()
+
+    # if the question queried does not exist, get the first Question available
+    if Question.objects.filter(pk=q_id).exists():
+        current_question_obj = Question.objects.get(pk=q_id)
+    else:
+        current_question_obj = Question.objects.first()
+        q_id = current_question_obj.id
+
+    chosen_answers = Answer.objects.filter(question_id=q_id)
+    answer_count = len(chosen_answers)
+
+    context = {
+        "question_obj": current_question_obj,
+        "question_exam_id": q_id,
+        "question_list": q_list,
+        "answers": chosen_answers,
+        "answer_count": answer_count,
+    }
+
+    return render(request, "rubric_creation.html", context)
+
+#############################################
 #               RULE HELPERS                #
 #############################################
 

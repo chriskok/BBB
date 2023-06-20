@@ -6,6 +6,9 @@ register_converter(converters.NegativeIntConverter, 'negint')
 urlpatterns = [
     path('', views.index, name='index'),
 
+    # COMB V5
+    path('rubric_creation/<int:q_id>', views.rubric_creation, name='rubric_creation'),                      # non-page
+
     # BUILDING BLOCKS
     path('rule_suggestions/<int:q_id>', views.rule_suggestions, name='rule_suggestions'),                      # non-page
     path('building_blocks/<int:q_id>', views.building_blocks_view, name='building_blocks'),

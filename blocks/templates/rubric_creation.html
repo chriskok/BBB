@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+{% load crispy_forms_tags %}
+{% load static %}
+{% load block_extras %}
+
+<link rel="stylesheet" href="{% static 'css/blocks.css' %}">
+
+<div class="row">
+    <div class="col-6 d-flex align-items-center">
+        <div class="dropdown">
+            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Question Select
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                {% for q in question_list %}
+                <a class="dropdown-item" href="{% url 'rubric_creation' q.pk %}">Question {{ q.question_exam_id }}</a>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+<br>
+
+<h2>Rubric Creation</h2>
+
+{% if question_obj.question_image_url %}
+<h4>Question {{ question_obj.question_exam_id }}: {{ question_obj.question_text }}
+    <a data-toggle="collapse" href="#showImg" role="button" aria-expanded="false" aria-controls="showImg">[show image]</a></h4>
+<div class="collapse" id="showImg"> <img src="{% static question_obj.question_image_url %} "  class="rounded mx-auto d-block"></img> </div>
+{% else %}
+<h4>Question {{ question_obj.question_exam_id }}: {{ question_obj.question_text }}</h4>
+{% endif %}
+
+<p>Total answers: {{ answer_count }}</p>
+
+<br>
+
+<style>
+    .highlight {
+        background-color: yellow;
+    }
+</style>
+
+<script>
+    $(document).ready(function () {
+        
+    })
+
+</script>
+
+{% endblock %}
