@@ -38,6 +38,22 @@
 
 <br>
 
+{% for rubric in rubrics %}
+<div class="row">
+    <div class="col-6">
+        <h4>{{forloop.counter}}. {{ rubric.rubric }}: {{ rubric.explanation }}</h4>
+        {% for answer in rubric.answers %}
+        {% comment %} Create list of answers {% endcomment %}
+        <li>{{ answer.answer_text }}</li>
+        {% endfor %}
+    </div>
+    <div class="col-6">
+        <a href="#" class="btn btn-primary">Edit</a>
+        <a href="#" class="btn btn-danger">Delete</a>
+    </div>
+</div>
+{% endfor %}
+
 <style>
     .highlight {
         background-color: yellow;

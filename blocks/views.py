@@ -13,6 +13,7 @@ from django_tables2 import SingleTableView
 
 from itertools import product
 import building_blocks as bb 
+import llm_helpers as llmh
 import spacy
 nlp = spacy.load('en_core_web_lg')  # if not downloaded, run: python -m spacy download en_core_web_lg
 
@@ -41,12 +42,25 @@ def rubric_creation(request, q_id):
     chosen_answers = Answer.objects.filter(question_id=q_id)
     answer_count = len(chosen_answers)
 
+    rubrics = llmh.create_rubrics(current_question_obj, chosen_answers)
+
+    print(rubrics)
+
+    # replace answer ids with answer objects
+    for rubric in rubrics:
+        answer_ids = rubric["answer_ids"]
+        # transform comma-seperated string of IDs into list of ints
+        answer_ids = [int(i) for i in answer_ids.split(",")]
+        # replace answer IDs with answer objects
+        rubric["answers"] = [Answer.objects.get(pk=answer_id) for answer_id in answer_ids]
+
     context = {
         "question_obj": current_question_obj,
         "question_exam_id": q_id,
         "question_list": q_list,
         "answers": chosen_answers,
         "answer_count": answer_count,
+        "rubrics": rubrics,
     }
 
     return render(request, "rubric_creation.html", context)
