@@ -36,7 +36,14 @@
     {% for tag in ans_tags %}
     <div class="card mb-2">
         <div class="card-header">
-            <h4>Answer {{ forloop.counter }}</h4>
+            <div class="row align-items-center">
+                <div class="col-6">
+                    <h4>Answer {{ forloop.counter }}</h4>
+                </div>
+                <div class="col-6 d-flex justify-content-end">
+                    <p class="text-secondary" id="status_{{forloop.counter}}"></p>
+                </div>
+            </div>
         </div>
         <div class="card-body">
             <div class="row">
@@ -44,8 +51,21 @@
                     <p>{{ tag.answer.answer_text }}</p>
                 </div>
                 <div class="col-6">
-                    <p>Tagged as: {{ tag.tag }}</p>
-                    <p>Reason: {{ tag.reasoning_dict }}</p>
+                    <p><b>Rubrics</b>: {{ rubric_dict|rubric_transform:tag.tag }}</p>
+                    <p><b>Reason</b>: {{ tag.reasoning_dict }}</p>
+                    <p><b>Feedback</b>: -</p>
+                    
+                    <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                        <label class="btn btn-secondary active">
+                            <input type="radio" name="options" id="accept_{{forloop.counter}}" autocomplete="off" onclick="update_status(this.id)"> Accept
+                        </label>
+                        <label class="btn btn-secondary">
+                            <input type="radio" name="options" id="reject_{{forloop.counter}}" autocomplete="off" onclick="update_status(this.id)"> Reject
+                        </label>
+                        <label class="btn btn-secondary">
+                            <input type="radio" name="options" id="edit_{{forloop.counter}}" autocomplete="off" onclick="update_status(this.id)"> Edit
+                        </label>
+                    </div>
                 </div>
             </div>
         </div>
@@ -66,6 +86,29 @@
     $(document).ready(function () {
         
     })
+
+    function update_status(clicked_id) 
+    {
+        const myArray = clicked_id.split("_");
+        let action = myArray[0];
+        let id_num = myArray[1];
+        
+        var status_el = document.getElementById("status_" + id_num)
+        status_el.classList.remove("text-success");
+        status_el.classList.remove("text-danger");
+        status_el.classList.remove("text-secondary");
+
+        if (action == "accept") {
+            status_el.innerHTML = "Accepted"
+            status_el.classList.add("text-success");
+        } else if (action == "reject") {
+            status_el.innerHTML = "Rejected"
+            status_el.classList.add("text-danger");
+        } else if (action == "edit"){
+            status_el.innerHTML = "Edited"
+            status_el.classList.add("text-secondary");
+        }
+    }
 
 </script>
 

@@ -28,3 +28,9 @@ def filter_chatgpt(queryset, method, model):
 @register.filter(name='lookup')
 def lookup(value, arg):
     return value[arg]
+
+@register.filter(name='rubric_transform')
+def rubric_transform(dictionary, rubric_string):
+    rubric_ids = rubric_string.split(",")
+    full_rubrics = [f"{rubric_id} - {dictionary[rubric_id]}" for rubric_id in rubric_ids]
+    return ", ".join(full_rubrics)
