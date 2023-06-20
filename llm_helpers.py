@@ -26,7 +26,7 @@ def prompt_chatgpt(prompt):
         print(e)
         return "ERROR"
 
-def create_rubrics(question, answers):
+def create_rubrics(question, answers, history):
     random_answers = random.sample(list(answers), 40)
     max_grade = 2
 
@@ -46,4 +46,4 @@ def create_rubrics(question, answers):
         print(e)
         rubrics = []
 
-    return rubrics
+    return rubrics, msgs

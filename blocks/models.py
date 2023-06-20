@@ -132,3 +132,23 @@ class ChatGPTGradeAndFeedback(models.Model):
 
     def __str__(self):
         return "{}. Trial: {}, Prompt: {}, Model: {}".format(self.id, self.trial_run_number, self.prompt_type, self.openai_model)
+
+class Rubric(models.Model):
+    question = models.ForeignKey(Question, on_delete=models.CASCADE, default=None, null=True, blank=True)
+    rubric_dict = models.TextField()
+    message_history = models.TextField()
+    
+    def set_rubric_dict(self, x):
+        self.rubric_dict = json.dumps(x)
+
+    def get_rubric_dict(self):
+        return json.loads(self.rubric_dict)
+    
+    def set_message_history(self, x):
+        self.message_history = json.dumps(x)
+
+    def get_message_history(self):
+        return json.loads(self.message_history)
+
+    def __str__(self):
+        return "{}. Trial: {}, Prompt: {}, Model: {}".format(self.id, self.trial_run_number, self.prompt_type, self.openai_model)

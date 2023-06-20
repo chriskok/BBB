@@ -42,9 +42,14 @@ def rubric_creation(request, q_id):
     chosen_answers = Answer.objects.filter(question_id=q_id)
     answer_count = len(chosen_answers)
 
-    rubrics = llmh.create_rubrics(current_question_obj, chosen_answers)
-
-    print(rubrics)
+    # check if rubric object exists for this question
+    if not Rubric.objects.filter(question_id=q_id).exists():
+        rubrics, msgs = llmh.create_rubrics(current_question_obj, chosen_answers)
+        print(f"Created new rubrics: {rubrics}")
+        Rubric.objects.create(question_id=q_id, rubric_dict=json.dumps(rubrics), message_history=json.dumps(msgs))
+    else:
+        rubrics = Rubric.objects.filter(question_id=q_id).first()
+        print(f"Found old rubrics: {rubrics}")
 
     # replace answer ids with answer objects
     for rubric in rubrics:
