@@ -13,7 +13,7 @@
         <a href="{% url 'rubric_creation' question_obj.id %}" class="btn btn-secondary">Stage 1: Rubric Creation</a>
     </div>
     <div class="col-6 d-flex align-items-center justify-content-end">
-          <a href="#" class="btn btn-secondary">Stage 3: Export</a>
+          <a href="#" class="btn btn-secondary">Stage 3: Apply Feedback and Export</a>
     </div>
 </div>
 <br>
@@ -29,6 +29,14 @@
 {% endif %}
 
 <p>Total answers: {{ answer_count }}</p>
+
+<br>
+
+<h3>TODO</h3>
+<li>Highlight the parts of text that the reasoning is based on</li>
+<li>Provide guidance/counter showing how many accepted rubrics and feedback is needed - I'm thinking just 3 of each rubric to start</li>
+<li>Automatically generated feedback</li>
+<li>Button to regenerate all feedback based on existing input</li>
 
 <br>
 
