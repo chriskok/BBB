@@ -46,8 +46,8 @@ def rubric_creation(request, q_id):
             suggestions = form.cleaned_data["rubric_suggestions"]
             method = form.cleaned_data["method"]
 
-            print(f"Rubric suggestions: {suggestions}")
-            print(f"Method: {method}")
+            # print(f"Rubric suggestions: {suggestions}")
+            # print(f"Method: {method}")
 
             # redirect to the same page
             return HttpResponseRedirect(reverse("rubric_creation", args=(q_id,)))
