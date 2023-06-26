@@ -128,7 +128,9 @@
         for (var i = 0; i < individual_tags.length; i++) {
             var tag = individual_tags[i];
             if (action == "accept" || action == "edit") {
-                progress_dict[tag].push(ans_id);
+                if(!progress_dict[tag].includes(ans_id)){
+                    progress_dict[tag].push(ans_id);
+                } 
             } else if (action == "reject") {
                 var index = progress_dict[tag].indexOf(ans_id);
                 if (index > -1) {
