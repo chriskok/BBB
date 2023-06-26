@@ -32,11 +32,15 @@
 
 <br>
 
-<h3>TODO</h3>
-<li>Highlight the parts of text that the reasoning is based on</li>
-<li>Provide guidance/counter showing how many accepted rubrics and feedback is needed - I'm thinking just 3 of each rubric to start</li>
-<li>Automatically generated feedback</li>
-<li>Button to regenerate all feedback based on existing input</li>
+<div class="row">
+    <div class="col-12">
+        <h3>TODO</h3>
+        <li>Highlight the parts of text that the reasoning is based on</li>
+        <li>Automatically generated feedback</li>
+        <li>Button to regenerate all feedback based on existing input</li>
+    </div>
+</div>
+
 
 <br>
 
@@ -49,7 +53,7 @@
                     <h4>Answer {{ forloop.counter }}</h4>
                 </div>
                 <div class="col-6 d-flex justify-content-end">
-                    <p class="text-secondary" id="status_{{forloop.counter}}"></p>
+                    <p class="text-secondary" id="status_{{ tag.answer.id }}"></p>
                 </div>
             </div>
         </div>
@@ -65,13 +69,13 @@
                     
                     <div class="btn-group btn-group-toggle" data-toggle="buttons">
                         <label class="btn btn-secondary active">
-                            <input type="radio" name="options" id="accept_{{forloop.counter}}" autocomplete="off" onclick="update_status(this.id)"> Accept
+                            <input type="radio" name="options" id="accept_{{ tag.answer.id }}_{{ tag.tag }}" autocomplete="off" onclick="update_status(this.id)"> Accept
                         </label>
                         <label class="btn btn-secondary">
-                            <input type="radio" name="options" id="reject_{{forloop.counter}}" autocomplete="off" onclick="update_status(this.id)"> Reject
+                            <input type="radio" name="options" id="reject_{{ tag.answer.id }}_{{ tag.tag }}" autocomplete="off" onclick="update_status(this.id)"> Reject
                         </label>
                         <label class="btn btn-secondary">
-                            <input type="radio" name="options" id="edit_{{forloop.counter}}" autocomplete="off" onclick="update_status(this.id)"> Edit
+                            <input type="radio" name="options" id="edit_{{ tag.answer.id }}_{{ tag.tag }}" autocomplete="off" onclick="update_status(this.id)"> Edit
                         </label>
                     </div>
                 </div>
@@ -82,6 +86,23 @@
     <div class="w-100 d-none d-block"></div> 
     {% endif %}
     {% endfor%}
+</div>
+
+<div class="row fixed-bottom p-3" style="pointer-events: none;">
+    <div class="col-4"></div>
+    <div class="col-4"></div>
+    <div class="col-4">
+        <div class="card p-3">
+            <h4>Progress</h4>
+            {% for rubric_id, rubric in rubric_dict.items %}
+
+            <label for="positive_examples_progress">{{rubric_id}}: {{rubric}}</label>
+            <div class="progress">
+                <div id="positive_examples_progress" class="progress-bar bg-success" role="progressbar" style="width: 0%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
 </div>
 
 <style>
@@ -95,16 +116,29 @@
         
     })
 
+    var r_dict = {{ rubric_dict | safe }};
+    var progress_dict = {};
+    for(var key in r_dict) {
+        progress_dict[key] = [];
+    }
+
+    function handle_progress(){
+        
+    }
+
     function update_status(clicked_id) 
     {
         const myArray = clicked_id.split("_");
         let action = myArray[0];
         let id_num = myArray[1];
+        let tags = myArray[2];
         
         var status_el = document.getElementById("status_" + id_num)
         status_el.classList.remove("text-success");
         status_el.classList.remove("text-danger");
         status_el.classList.remove("text-secondary");
+
+        console.log(action + ": " + id_num + ", tags: " + tags);
 
         if (action == "accept") {
             status_el.innerHTML = "Accepted"
