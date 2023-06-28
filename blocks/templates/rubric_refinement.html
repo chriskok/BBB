@@ -1,0 +1,104 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+{% load crispy_forms_tags %}
+{% load static %}
+{% load block_extras %}
+
+<link rel="stylesheet" href="{% static 'css/blocks.css' %}">
+
+<div class="row">
+    <div class="col-6 d-flex align-items-center">
+        <a href="{% url 'rubric_creation' question_obj.id %}" class="btn btn-secondary">Stage 1: Rubric Creation</a>
+    </div>
+    <div class="col-6 d-flex align-items-center justify-content-end">
+          <a href="#" class="btn btn-secondary">Stage 3: Apply Feedback and Export</a>
+    </div>
+</div>
+<br>
+
+<h2>Rubric Tagging and Feedback</h2>
+
+{% if question_obj.question_image_url %}
+<h4>Question {{ question_obj.question_exam_id }}: {{ question_obj.question_text }}
+    <a data-toggle="collapse" href="#showImg" role="button" aria-expanded="false" aria-controls="showImg">[show image]</a></h4>
+<div class="collapse" id="showImg"> <img src="{% static question_obj.question_image_url %} "  class="rounded mx-auto d-block"></img> </div>
+{% else %}
+<h4>Question {{ question_obj.question_exam_id }}: {{ question_obj.question_text }}</h4>
+{% endif %}
+
+<p>Total answers: {{ answer_count }}</p>
+
+<br>
+
+<div class="row">
+    <div class="col-12">
+        <h3>TODO</h3>
+        <li>Highlight the parts of text that the reasoning is based on</li>
+        <li>Automatically generated feedback</li>
+        <li>Button to regenerate all feedback based on existing input</li>
+    </div>
+</div>
+
+
+<br>
+
+<div class="card-deck" id="answer_card_deck">
+    {% for tag in ans_tags %}
+    <div class="card mb-2">
+        <div class="card-header">
+            <div class="row align-items-center">
+                <div class="col-6">
+                    <h4>Answer {{ forloop.counter }}</h4>
+                </div>
+                <div class="col-6 d-flex justify-content-end">
+                    <p class="text-secondary" id="status_{{ tag.answer.id }}"></p>
+                </div>
+            </div>
+        </div>
+        <div class="card-body">
+            <div class="row">
+                <div class="col-6">
+                    <p>{{ tag.answer.answer_text }}</p>
+                </div>
+                <div class="col-6">
+                    <p><b>Rubrics</b>: {{ rubric_dict|rubric_transform:tag.tag }}</p>
+                    <p><b>Reason</b>: {{ tag.reasoning_dict }}</p>
+                    <p><b>Feedback</b>: -</p>
+                    
+                    <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                        <label class="btn btn-secondary active">
+                            <input type="radio" name="options" id="accept_{{ tag.answer.id }}_{{ tag.tag }}" autocomplete="off" onclick="update_status(this.id)"> Accept
+                        </label>
+                        <label class="btn btn-secondary">
+                            <input type="radio" name="options" id="reject_{{ tag.answer.id }}_{{ tag.tag }}" autocomplete="off" onclick="update_status(this.id)"> Reject
+                        </label>
+                        <label class="btn btn-secondary">
+                            <input type="radio" name="options" id="edit_{{ tag.answer.id }}_{{ tag.tag }}" autocomplete="off" onclick="update_status(this.id)"> Edit
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% if forloop.counter|divisibleby:2  %} 
+    <div class="w-100 d-none d-block"></div> 
+    {% endif %}
+    {% endfor%}
+</div>
+
+<style>
+    .highlight {
+        background-color: yellow;
+    }
+</style>
+
+<script>
+    $(document).ready(function () {
+        
+    })
+
+</script>
+
+{% endblock %}

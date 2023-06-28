@@ -39,50 +39,62 @@ def rubric_creation(request, q_id):
         current_question_obj = Question.objects.first()
         q_id = current_question_obj.id
 
-    # on POST request, parse the form 
-    if request.method == "POST":
-        form = RubricCreationForm(request.POST)
-        if form.is_valid():
-            suggestions = form.cleaned_data["rubric_suggestions"]
-            method = form.cleaned_data["method"]
+    # # on POST request, parse the form 
+    # if request.method == "POST":
+    #     form = RubricCreationForm(request.POST)
+    #     if form.is_valid():
+    #         suggestions = form.cleaned_data["rubric_suggestions"]
+    #         method = form.cleaned_data["method"]
 
-            # print(f"Rubric suggestions: {suggestions}")
-            # print(f"Method: {method}")
+    #         # print(f"Rubric suggestions: {suggestions}")
+    #         # print(f"Method: {method}")
 
-            # redirect to the same page
-            return HttpResponseRedirect(reverse("rubric_creation", args=(q_id,)))
-    else:
-        form = RubricCreationForm()
+    #         # redirect to the same page
+    #         return HttpResponseRedirect(reverse("rubric_creation", args=(q_id,)))
+    # else:
+    #     form = RubricCreationForm()
 
     chosen_answers = Answer.objects.filter(question_id=q_id)
     answer_count = len(chosen_answers)
 
-    # check if rubric object exists for this question
-    if not Rubric.objects.filter(question_id=q_id).exists():
-        rubrics, msgs = llmh.create_rubrics(current_question_obj, chosen_answers)
-        Rubric.objects.create(question_id=q_id, rubric_dict=json.dumps(rubrics), message_history=json.dumps(msgs))
-        # print(f"Created new rubrics: {rubrics}")
-    else:
-        rubric_obj = Rubric.objects.filter(question_id=q_id).first()
-        rubrics = rubric_obj.get_rubric_dict()
-        # print(f"Found old rubrics: {rubrics}")
+    # # check if rubric object exists for this question
+    # if not Rubric.objects.filter(question_id=q_id).exists():
+    #     rubrics, msgs = llmh.create_rubrics(current_question_obj, chosen_answers)
+    #     Rubric.objects.create(question_id=q_id, rubric_dict=json.dumps(rubrics), message_history=json.dumps(msgs))
+    #     # print(f"Created new rubrics: {rubrics}")
+    # else:
+    #     rubric_obj = Rubric.objects.filter(question_id=q_id).first()
+    #     rubrics = rubric_obj.get_rubric_dict()
+    #     # print(f"Found old rubrics: {rubrics}")
 
-    # replace answer ids with answer objects
-    for rubric in rubrics:
-        answer_ids = rubric["answer_ids"]
-        # transform comma-seperated string of IDs into list of ints
-        answer_ids = [int(i) for i in answer_ids.split(",")]
-        # replace answer IDs with answer objects
-        rubric["answers"] = [Answer.objects.get(pk=answer_id) for answer_id in answer_ids]
+    # # replace answer ids with answer objects
+    # for rubric in rubrics:
+    #     answer_ids = rubric["answer_ids"]
+    #     # transform comma-seperated string of IDs into list of ints
+    #     answer_ids = [int(i) for i in answer_ids.split(",")]
+    #     # replace answer IDs with answer objects
+    #     rubric["answers"] = [Answer.objects.get(pk=answer_id) for answer_id in answer_ids]
+
+    max_outlier_score = Answer.objects.aggregate(Max('outlier_score'))
+    min_outlier_score = Answer.objects.aggregate(Min('outlier_score'))
+    number_of_bins = 10
+    bin_size = (max_outlier_score['outlier_score__max'] - min_outlier_score['outlier_score__min']) / number_of_bins
+
+    # get one random example from each bin
+    outlier_examples = []
+    for i in range(number_of_bins):
+        curr_bin = Answer.objects.filter(outlier_score__gte=min_outlier_score['outlier_score__min']+i*bin_size, outlier_score__lt=min_outlier_score['outlier_score__min']+(i+1)*bin_size)
+        if curr_bin.exists():
+            outlier_examples.append(curr_bin.order_by('?').first())
 
     context = {
         "question_obj": current_question_obj,
         "question_exam_id": q_id,
         "question_list": q_list,
-        "answers": chosen_answers,
+        "answers": outlier_examples,
         "answer_count": answer_count,
-        "rubrics": rubrics,
-        "form": form,
+        # "rubrics": rubrics,
+        # "form": form,
     }
 
     return render(request, "rubric_creation.html", context)

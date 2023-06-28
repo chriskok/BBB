@@ -22,7 +22,8 @@
         </div>
     </div>
     <div class="col-6 d-flex align-items-center justify-content-end">
-          <a href="{% url 'rubric_tagging' question_obj.id %}" class="btn btn-secondary">Stage 2: Tagging and Feedback</a>
+          {% comment %} <a href="{% url 'rubric_tagging' question_obj.id %}" class="btn btn-secondary">Stage 2: Tagging and Feedback</a> {% endcomment %}
+          <a href="{% url 'rubric_tagging' question_obj.id %}" class="btn btn-secondary">Stage 2: Rubric Refinement</a>
     </div>
 </div>
 <br>
@@ -42,7 +43,7 @@
 <br>
 
 <div class="row">
-    <div class="col-8">
+    {% comment %} <div class="col-8">
         {% for rubric in rubrics %}
         <div class="row">
             <div class="col-8">
@@ -67,9 +68,6 @@
                 </div>
             </div>
             <div class="col-4">
-                {% comment %} <a href="#" class="btn btn-success">Accept</a>
-                <a href="#" class="btn btn-danger">Reject</a>
-                <a href="#" class="btn btn-primary">Edit</a> {% endcomment %}
                 <div class="btn-group btn-group-toggle" data-toggle="buttons">
                     <label class="btn btn-success active">
                         <input type="radio" name="options" id="option1" autocomplete="off"> Accept
@@ -96,7 +94,74 @@
         <br>
         <br>
         <a href="#" class="btn btn-success">Add New Rubrics from Edits</a>
+    </div> {% endcomment %}
+    <div class="col-8">
+        <div class="card-deck" id="answer_card_deck">
+            {% for answer in answers %}
+            <div class="card mb-2">
+                <div class="card-header">
+                    <div class="row align-items-center">
+                        <div class="col-6">
+                            <h4>Answer {{ forloop.counter }}</h4>
+                        </div>
+                        <div class="col-6 d-flex justify-content-end">
+                            <p class="text-secondary px-2" id="status_{{ answer.id }}"></p>
+                            {% comment %} <p class="text-secondary">Diversity Score: {{answer.outlier_score|floatformat:2}}</p> {% endcomment %}
+                        </div>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <p>{{ answer.answer_text }}</p>
+                    </div>
+                </div>
+            </div>
+            {% if forloop.counter|divisibleby:2  %} 
+            <div class="w-100 d-none d-block"></div> 
+            {% endif %}
+            {% endfor%}
+        </div>
     </div>
+    <div class="col-4">
+        <h4>Positive Rubrics</h4>
+        <div id="accordion">
+            <div class="card">
+              <div class="card-header" id="headingOne">
+                <h5 class="mb-0">
+                  <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                    Rubric #1
+                  </button>
+                </h5>
+              </div>
+          
+              <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
+                <div class="card-body">
+                    <li>Answer 1</li>
+                    <li>Answer 2</li>   
+                </div>
+              </div>
+            </div>
+        </div>
+        <h4 class="mt-4">Negative Rubrics</h4>
+        <div id="accordion">
+            <div class="card">
+              <div class="card-header" id="headingOne">
+                <h5 class="mb-0">
+                  <button class="btn btn-link" data-toggle="collapse" data-target="#collapse2" aria-expanded="true" aria-controls="collapse2">
+                    Rubric #3
+                  </button>
+                </h5>
+              </div>
+          
+              <div id="collapse2" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
+                <div class="card-body">
+                    <li>Answer 1</li>
+                    <li>Answer 2</li>   
+                </div>
+              </div>
+            </div>
+        </div>
+    </div> 
 </div>
 
 <style>
