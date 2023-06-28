@@ -125,38 +125,101 @@
     </div>
     <div class="col-4">
         <div class="container sticky-top">
-            <h4>Positive Rubrics</h4>
+
+            <div class="row mb-2">
+                <div class="col-8">
+                    <h4>Positive Rubrics</h4>
+                </div>
+                <div class="col-4 d-flex justify-content-end">
+                    <a href="#" class="btn btn-success btn-sm">Add</a>
+                </div>
+            </div>
             <div id="accordion">
                 <div class="card" id="rubric_1" ondrop="drop(event)" ondragover="allowDrop(event)">
                     <div class="card-header" id="rubricheading_1">
-                    <h5 class="mb-0">
-                        <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne" >
-                        Rubric #1
-                        </button>
-                    </h5>
+                        <div class="row">
+                            <div class="col-8">
+                                <h5 class="mb-0">
+                                    <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne" >
+                                    Rubric #1
+                                    </button>
+                                </h5>
+                            </div>
+
+                            <div class="col-4">
+                                <div class="btn-group btn-group-sm float-right" role="group" aria-label="Basic example">
+                                    <button type="button" class="btn btn-secondary">Edit</button>
+                                    <button type="button" class="btn btn-secondary">Delete</button>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 
                     <div id="collapseOne" class="collapse" aria-labelledby="rubricheading_1" data-parent="#accordion">
                     <div class="card-body"  id="rubricbody_1">
                         <li>Sample Answer 1</li>
-                        <li>Sample Answer 2</li>   
+                    </div>
+                    </div>
+                </div>
+                <div class="card" id="rubric_2" ondrop="drop(event)" ondragover="allowDrop(event)">
+                    <div class="card-header" id="rubricheading_2">
+                        <div class="row">
+                            <div class="col-8">
+                                <h5 class="mb-0">
+                                    <button class="btn btn-link" data-toggle="collapse" data-target="#collapse_2" aria-expanded="true" aria-controls="collapse_2" >
+                                    Rubric #2
+                                    </button>
+                                </h5>
+                            </div>
+
+                            <div class="col-4">
+                                <div class="btn-group btn-group-sm float-right" role="group" aria-label="Basic example">
+                                    <button type="button" class="btn btn-secondary">Edit</button>
+                                    <button type="button" class="btn btn-secondary">Delete</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                
+                    <div id="collapse_2" class="collapse" aria-labelledby="rubricheading_2" data-parent="#accordion">
+                    <div class="card-body"  id="rubricbody_2">
+                        <li>Sample Answer 2</li>
                     </div>
                     </div>
                 </div>
             </div>
 
-            <h4 class="mt-4">Negative Rubrics</h4>
+            
+            <div class="row mt-4 mb-2">
+                <div class="col-8">
+                    <h4>Negative Rubrics</h4>
+                </div>
+                <div class="col-4 d-flex justify-content-end">
+                    <a href="#" class="btn btn-success btn-sm">Add</a>
+                </div>
+            </div>
             <div id="accordion">
                 <div class="card" id="rubric_3" ondrop="drop(event)" ondragover="allowDrop(event)">
                     <div class="card-header" id="rubricheading_3">
-                    <h5 class="mb-0">
-                        <button class="btn btn-link" data-toggle="collapse" data-target="#collapse2" aria-expanded="true" aria-controls="collapse2">
-                        Rubric #3
-                        </button>
-                    </h5>
+                        <div class="row">
+                            <div class="col-8">
+                                <h5 class="mb-0">
+                                    <button class="btn btn-link" data-toggle="collapse" data-target="#collapse_3" aria-expanded="true" aria-controls="collapse_3" >
+                                    Rubric #3
+                                    </button>
+                                </h5>
+                            </div>
+
+                            <div class="col-4">
+                                <div class="btn-group btn-group-sm float-right" role="group" aria-label="Basic example">
+                                    <button type="button" class="btn btn-secondary">Edit</button>
+                                    <button type="button" class="btn btn-secondary">Delete</button>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 
-                    <div id="collapse2" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
+                    <div id="collapse_3" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
                     <div class="card-body" id="rubricbody_3">
                         <li>Sample Answer 3</li>
                         <li>Sample Answer 4</li>   
@@ -198,9 +261,9 @@
         var dragging_el = document.getElementById(data);
         var answer_id = dragging_el.id.split("_")[1];
 
-        // loop until parent of ev.target is a div
+        // loop until parent of ev.target is a card
         var parent = ev.target;
-        while (parent.tagName != "DIV") {
+        while (parent.className != "card") {
             parent = parent.parentNode;
         }
 
@@ -208,9 +271,13 @@
         var rubric_id = parent.id.split("_")[1];
         var rubric_body = document.getElementById("rubricbody_" + rubric_id);
         var new_li = document.createElement("li");
+
         new_li.innerHTML = answers[answer_id];
         rubric_body.appendChild(new_li);
 
+        // add indication that the rubric was applied to this answer (in the answer status_{{answer.id}} element)
+        var status = document.getElementById("status_" + answer_id);
+        status.innerHTML = "R" + rubric_id;
     }
 
 </script>

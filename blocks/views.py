@@ -68,8 +68,6 @@ def rubric_creation(request, q_id):
     else:
         rubric_obj = Rubric.objects.filter(question_id=q_id).first()
 
-    print(examples_dict)
-
     context = {
         "question_obj": current_question_obj,
         "question_exam_id": q_id,
