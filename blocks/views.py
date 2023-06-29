@@ -43,15 +43,15 @@ def rubric_creation(request, q_id):
     chosen_answers = Answer.objects.filter(question_id=q_id)
     answer_count = len(chosen_answers)
 
-    max_outlier_score = Answer.objects.aggregate(Max('outlier_score'))
-    min_outlier_score = Answer.objects.aggregate(Min('outlier_score'))
+    max_outlier_score = chosen_answers.aggregate(Max('outlier_score'))
+    min_outlier_score = chosen_answers.aggregate(Min('outlier_score'))
     number_of_bins = 10
     bin_size = (max_outlier_score['outlier_score__max'] - min_outlier_score['outlier_score__min']) / number_of_bins
 
     # get one random example from each bin
     outlier_examples = []
     for i in range(number_of_bins):
-        curr_bin = Answer.objects.filter(outlier_score__gte=min_outlier_score['outlier_score__min']+i*bin_size, outlier_score__lt=min_outlier_score['outlier_score__min']+(i+1)*bin_size)
+        curr_bin = chosen_answers.filter(outlier_score__gte=min_outlier_score['outlier_score__min']+i*bin_size, outlier_score__lt=min_outlier_score['outlier_score__min']+(i+1)*bin_size)
         if curr_bin.exists():
             # outlier_examples.append(curr_bin.order_by('?').first())  # randomized
             # outlier_examples.append(model_to_dict(curr_bin.last(), fields=["id", "answer_text", "student_id", "outlier_score"]))
@@ -150,15 +150,15 @@ def rubric_refinement(request, q_id):
     chosen_answers = Answer.objects.filter(question_id=q_id)
     answer_count = len(chosen_answers)
 
-    max_outlier_score = Answer.objects.aggregate(Max('outlier_score'))
-    min_outlier_score = Answer.objects.aggregate(Min('outlier_score'))
+    max_outlier_score = chosen_answers.aggregate(Max('outlier_score'))
+    min_outlier_score = chosen_answers.aggregate(Min('outlier_score'))
     number_of_bins = 10
     bin_size = (max_outlier_score['outlier_score__max'] - min_outlier_score['outlier_score__min']) / number_of_bins
 
     # get one random example from each bin
     outlier_examples = []
     for i in range(number_of_bins):
-        curr_bin = Answer.objects.filter(outlier_score__gte=min_outlier_score['outlier_score__min']+i*bin_size, outlier_score__lt=min_outlier_score['outlier_score__min']+(i+1)*bin_size)
+        curr_bin = chosen_answers.filter(outlier_score__gte=min_outlier_score['outlier_score__min']+i*bin_size, outlier_score__lt=min_outlier_score['outlier_score__min']+(i+1)*bin_size)
         if curr_bin.exists():
             outlier_examples.append(curr_bin.order_by('?').first())
 

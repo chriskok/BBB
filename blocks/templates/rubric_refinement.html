@@ -32,6 +32,64 @@
 
 <br>
 
+{% comment %} Iterate through each answer and make a container containing a card for the answer text {% endcomment %}
+{% for answer in answers %}
+<div class="row mb-5">
+    <div class="col-6">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Answer {{ forloop.counter }}</h5>
+                <h1 class="card-text" id="anstext_{{answer.id}}">{{ answer.answer_text }}</h1>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-6">
+        <form class="form">
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-3">
+                        <label for="rubric">Rubric:</label>
+                        <select id="rubric" name="rubric" multiple class="form-control">
+                            <option value="rubric1" selected>Rubric 1</option>
+                            <option value="rubric2">Rubric 2</option>
+                            <option value="rubric3">Rubric 3</option>
+                            <!-- Add more rubric options as needed -->
+                        </select>
+                    </div>
+                    <div class="col-9">
+                        <label for="reasoning">Reasoning:</label>
+                        <textarea id="reasoning" name="reasoning" rows="1" cols="50" class="form-control" placeholder="Enter reasoning..."></textarea>
+                        <label for="highlighted-text">Highlighted Text:</label>
+                        <textarea id="highlighted-text_{{answer.id}}_1" name="highlighted-text_{{answer.id}}_1" rows="1" cols="50" class="form-control" placeholder="Enter highlighted text...">{% get_words answer.answer_text 4 True as words %}{{ words }}</textarea>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-3">
+                        <label for="rubric">Rubric:</label>
+                        <select id="rubric" name="rubric" multiple class="form-control">
+                            <option value="rubric1" selected>Rubric 1</option>
+                            <option value="rubric2">Rubric 2</option>
+                            <option value="rubric3" selected>Rubric 3</option>
+                            <!-- Add more rubric options as needed -->
+                        </select>
+                    </div>
+                    <div class="col-9">
+                        <label for="reasoning">Reasoning:</label>
+                        <textarea id="reasoning" name="reasoning" rows="1" cols="50" class="form-control" placeholder="Enter reasoning..."></textarea>
+                        <label for="highlighted-text">Highlighted Text:</label>
+                        <textarea id="highlighted-text_{{answer.id}}_2" name="highlighted-text_{{answer.id}}_2" rows="1" cols="50" class="form-control" placeholder="Enter highlighted text...">{% get_words answer.answer_text 3 False as words %}{{ words }}</textarea>
+                    </div>
+                </div>
+            </div>
+        </form>          
+    </div>
+</div>
+
+{% endfor %}
+
 <style>
     .highlight {
         background-color: yellow;
@@ -40,6 +98,26 @@
 
 <script>
     $(document).ready(function () {
+        // Get all forms, and highlight the text in the highlighted-text textarea
+        // when the document loads
+        var forms = document.getElementsByClassName('form');
+        for (var i = 0; i < forms.length; i++) {
+            var form = forms[i];
+            // get all elements that have an id that starts with highlighted-text
+            var highlightedText = form.querySelectorAll('[id^="highlighted-text"]');
+            for (var j = 0; j < highlightedText.length; j++) {
+                var text = highlightedText[j];
+                var text_to_highlight = text.value;
+                var ans_id = text.id.split("_")[1];
+                var ans_text_el = document.getElementById("anstext_" + ans_id);
+                var ans_text = ans_text_el.innerHTML;
+
+                // match whole phrase from text_to_highlight and replace with highlighted span in ans_text
+                var regex = new RegExp(text_to_highlight, "g");
+                var highlighted_ans_text = ans_text.replace(regex, "<span class='highlight'>" + text_to_highlight + "</span>");
+                ans_text_el.innerHTML = highlighted_ans_text;
+            }
+        }
         
     })
 

@@ -34,3 +34,10 @@ def rubric_transform(dictionary, rubric_string):
     rubric_ids = rubric_string.split(",")
     full_rubrics = [f"{rubric_id} - {dictionary[rubric_id]}" for rubric_id in rubric_ids]
     return ", ".join(full_rubrics)
+
+@register.simple_tag(name='get_words')
+def get_words(string, count, first=True):
+    # Get the first/last few words of a string
+    words = string.split(" ")
+    if first: return " ".join(words[:count])
+    else: return " ".join(words[-count:])
