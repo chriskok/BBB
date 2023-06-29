@@ -172,6 +172,41 @@ def rubric_refinement(request, q_id):
 
     return render(request, "rubric_refinement.html", context)
 
+def rubric_feedback(request, q_id):
+    q_list = Question.objects.all()
+
+    # if the question queried does not exist, get the first Question available
+    if Question.objects.filter(pk=q_id).exists():
+        current_question_obj = Question.objects.get(pk=q_id)
+    else:
+        current_question_obj = Question.objects.first()
+        q_id = current_question_obj.id
+
+    chosen_answers = Answer.objects.filter(question_id=q_id)
+    answer_count = len(chosen_answers)
+
+    max_outlier_score = chosen_answers.aggregate(Max('outlier_score'))
+    min_outlier_score = chosen_answers.aggregate(Min('outlier_score'))
+    number_of_bins = 10
+    bin_size = (max_outlier_score['outlier_score__max'] - min_outlier_score['outlier_score__min']) / number_of_bins
+
+    # get one random example from each bin
+    outlier_examples = []
+    for i in range(number_of_bins):
+        curr_bin = chosen_answers.filter(outlier_score__gte=min_outlier_score['outlier_score__min']+i*bin_size, outlier_score__lt=min_outlier_score['outlier_score__min']+(i+1)*bin_size)
+        if curr_bin.exists():
+            outlier_examples.append(curr_bin.order_by('?').first())
+
+    context = {
+        "question_obj": current_question_obj,
+        "question_exam_id": q_id,
+        "question_list": q_list,
+        "answers": outlier_examples,
+        "answer_count": answer_count,
+    }
+
+    return render(request, "rubric_feedback.html", context)
+
 def rubric_tagging(request, q_id):
     q_list = Question.objects.all()
 

@@ -9,6 +9,7 @@ urlpatterns = [
     # COMB V5
     path('rubric_creation/<int:q_id>', views.rubric_creation, name='rubric_creation'),
     path('rubric_refinement/<int:q_id>', views.rubric_refinement, name='rubric_refinement'),
+    path('rubric_feedback/<int:q_id>', views.rubric_feedback, name='rubric_feedback'),
     path('rubric_tagging/<int:q_id>', views.rubric_tagging, name='rubric_tagging'),
 
     # BUILDING BLOCKS

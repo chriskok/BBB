@@ -10,15 +10,15 @@
 
 <div class="row">
     <div class="col-6 d-flex align-items-center">
-        <a href="{% url 'rubric_creation' question_obj.id %}" class="btn btn-secondary">Stage 1: Rubric Creation</a>
+        <a href="{% url 'rubric_refinement' question_obj.id %}" class="btn btn-secondary">Stage 2: Rubric Refinement</a>
     </div>
     <div class="col-6 d-flex align-items-center justify-content-end">
-          <a href="{% url 'rubric_feedback' question_obj.id %}" class="btn btn-secondary">Stage 3: Feedback</a>
+          <a href="#" class="btn btn-secondary">Stage 4: Apply and Export!</a>
     </div>
 </div>
 <br>
 
-<h2>Rubric Refinement</h2>
+<h2>Feedback Refinement</h2>
 
 {% if question_obj.question_image_url %}
 <h4>Question {{ question_obj.question_exam_id }}: {{ question_obj.question_text }}
