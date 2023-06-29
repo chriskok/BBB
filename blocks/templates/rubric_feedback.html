@@ -58,8 +58,18 @@
                         <input type="range" id="r3_{{answer.id}}" name="r3_{{answer.id}}" min="0" max="1" step="0.5" value="0.5" class="form-control-range" oninput="updateSliderValue(this, 'r3_{{answer.id}}')">
                     </div>
                     <div class="col-6">
-                        <h5>Feedback:</h5>
-                        <p>{% lorem 1 b random %}
+                        <div class="row">
+                            <div class="col-6">
+                                <h5>Feedback:</h5>
+                            </div>
+                            <div class="col-6">
+                                <div class="btn-group btn-group-sm float-right" role="group" aria-label="Basic example">
+                                    <button type="button" class="btn btn-secondary">Edit</button>
+                                    <button type="button" class="btn btn-secondary">Regenerate</button>
+                                </div>
+                            </div>
+                        </div>
+                        <p id="feedbacktext_{{answer.id}}">{% lorem 1 b random %}</p>
                         {% comment %} <label for="reasoning">Reasoning:</label>
                         <textarea id="reasoning" name="reasoning" rows="1" cols="50" class="form-control" placeholder="Enter reasoning..."></textarea>
                         <label for="highlighted-text">Highlighted Text:</label>
@@ -85,6 +95,40 @@
         var sliders = document.querySelectorAll('input[type="range"]');
         sliders.forEach(function(slider) {
             updateSliderValue(slider, slider.id);
+        });
+
+        // get all feedback textareas, select a substring at random and add an onmouseover call for highlighting a word in the anstext_{{answer.id}} element
+        var feedbackTextareas = document.querySelectorAll('[id^="feedbacktext"]');
+        feedbackTextareas.forEach(function(textarea) {
+            var anstextId = textarea.id.split("_")[1];
+            var anstext = document.getElementById("anstext_" + anstextId);
+            var anstextWords = anstext.innerHTML.split(" ");
+
+            // select a random word from the textarea
+            var randomWord = textarea.innerHTML.split(" ")[Math.floor(Math.random() * textarea.innerHTML.split(" ").length)];
+            // create a link from this word
+            var randomWordLink = "<a href=\"#\" id=\"randomWordLink_" + anstextId + "\">" + randomWord + "</a>";
+            // replace the word in the textarea with the link
+            textarea.innerHTML = textarea.innerHTML.replace(randomWord, randomWordLink);
+            // get the link element
+            var randomWordLinkElement = document.getElementById("randomWordLink_" + anstextId);
+
+            // select a random word from the answer text
+            var randomWord = anstextWords[Math.floor(Math.random() * anstextWords.length)];
+            var randomWordIndex = anstextWords.indexOf(randomWord);
+            var randomWordLength = randomWord.length;
+            var randomWordStart = anstext.innerHTML.indexOf(randomWord);
+            var randomWordEnd = randomWordStart + randomWordLength;
+            var randomWordSubstring = anstext.innerHTML.substring(randomWordStart, randomWordEnd);
+            var randomWordHighlighted = "<span class=\"highlight\">" + randomWordSubstring + "</span>";
+
+            randomWordLinkElement.onmouseover = function() {
+                anstext.innerHTML = anstext.innerHTML.replace(randomWordSubstring, randomWordHighlighted);
+            }
+            randomWordLinkElement.onmouseout = function() {
+                // remove all highlights from anstext
+                anstext.innerHTML = anstext.innerHTML.replace(randomWordHighlighted, randomWordSubstring);
+            }
         });
     })
 
