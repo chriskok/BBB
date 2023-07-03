@@ -158,7 +158,9 @@ def rubric_refinement(request, q_id):
     else:
         current_question_obj = Question.objects.first()
         q_id = current_question_obj.id
-
+    
+    rubric_obj = RubricList.objects.filter(question_id=q_id).first()
+    rubric_list = rubric_obj.get_rubric_list()
     chosen_answers = Answer.objects.filter(question_id=q_id)
     answer_count = len(chosen_answers)
 
@@ -172,12 +174,14 @@ def rubric_refinement(request, q_id):
     for i in range(number_of_bins):
         curr_bin = chosen_answers.filter(outlier_score__gte=min_outlier_score['outlier_score__min']+i*bin_size, outlier_score__lt=min_outlier_score['outlier_score__min']+(i+1)*bin_size)
         if curr_bin.exists():
-            outlier_examples.append(curr_bin.order_by('?').first())
+            # outlier_examples.append(curr_bin.order_by('?').first())
+            outlier_examples.append(curr_bin.last())
 
     context = {
         "question_obj": current_question_obj,
         "question_exam_id": q_id,
         "question_list": q_list,
+        "rubric_list": rubric_list,
         "answers": outlier_examples,
         "answer_count": answer_count,
     }
@@ -207,7 +211,8 @@ def rubric_feedback(request, q_id):
     for i in range(number_of_bins):
         curr_bin = chosen_answers.filter(outlier_score__gte=min_outlier_score['outlier_score__min']+i*bin_size, outlier_score__lt=min_outlier_score['outlier_score__min']+(i+1)*bin_size)
         if curr_bin.exists():
-            outlier_examples.append(curr_bin.order_by('?').first())
+            # outlier_examples.append(curr_bin.order_by('?').first())
+            outlier_examples.append(curr_bin.last())
 
     context = {
         "question_obj": current_question_obj,

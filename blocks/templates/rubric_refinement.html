@@ -18,7 +18,7 @@
 </div>
 <br>
 
-<h2>Rubric Refinement</h2>
+<h2>Rubric Refinement 🔍</h2>
 
 {% if question_obj.question_image_url %}
 <h4>Question {{ question_obj.question_exam_id }}: {{ question_obj.question_text }}
@@ -35,7 +35,7 @@
 {% comment %} Iterate through each answer and make a container containing a card for the answer text {% endcomment %}
 {% for answer in answers %}
 <div class="row mb-5">
-    <div class="col-6">
+    <div class="col-4">
         <div class="card">
             <div class="card-body">
                 <h5 class="card-title">Answer {{ forloop.counter }}</h5>
@@ -44,20 +44,21 @@
         </div>
     </div>
 
-    <div class="col-6">
+    <div class="col-8">
         <form class="form">
             <div class="form-group">
                 <div class="row">
-                    <div class="col-3">
-                        <label for="rubric">Rubric:</label>
+                    <div class="col-5">
+                        <label for="rubric">Rubric(s):</label>
                         <select id="rubric" name="rubric" multiple class="form-control">
-                            <option value="rubric1" selected>Rubric 1</option>
-                            <option value="rubric2">Rubric 2</option>
-                            <option value="rubric3">Rubric 3</option>
-                            <!-- Add more rubric options as needed -->
+                            {% for rubric in rubric_list %}
+                            {% if rubric.id != 0 %}
+                            <option value="rubric{{rubric.id}}" {% if rubric.id == 1 %}selected{% endif %}>Rubric {{rubric.id}}: {{rubric.title}}</option>
+                            {% endif %}
+                            {% endfor %}
                         </select>
                     </div>
-                    <div class="col-9">
+                    <div class="col-7">
                         <label for="reasoning">Reasoning:</label>
                         <textarea id="reasoning" name="reasoning" rows="1" cols="50" class="form-control" placeholder="Enter reasoning..."></textarea>
                         <label for="highlighted-text">Highlighted Text:</label>
@@ -67,16 +68,17 @@
             </div>
             <div class="form-group">
                 <div class="row">
-                    <div class="col-3">
-                        <label for="rubric">Rubric:</label>
+                    <div class="col-5">
+                        <label for="rubric">Rubric(s):</label>
                         <select id="rubric" name="rubric" multiple class="form-control">
-                            <option value="rubric1" selected>Rubric 1</option>
-                            <option value="rubric2">Rubric 2</option>
-                            <option value="rubric3" selected>Rubric 3</option>
-                            <!-- Add more rubric options as needed -->
+                            {% for rubric in rubric_list %}
+                            {% if rubric.id != 0 %}
+                            <option value="rubric{{rubric.id}}" {% if rubric.id|divisibleby:2 %}selected{% endif %}>Rubric {{rubric.id}}: {{rubric.title}}</option>
+                            {% endif %}
+                            {% endfor %}
                         </select>
                     </div>
-                    <div class="col-9">
+                    <div class="col-7">
                         <label for="reasoning">Reasoning:</label>
                         <textarea id="reasoning" name="reasoning" rows="1" cols="50" class="form-control" placeholder="Enter reasoning..."></textarea>
                         <label for="highlighted-text">Highlighted Text:</label>
