@@ -41,3 +41,14 @@ def get_words(string, count, first=True):
     words = string.split(" ")
     if first: return " ".join(words[:count])
     else: return " ".join(words[-count:])
+
+@register.simple_tag(name='compare_rubrics')
+def compare_rubrics(rubric_id, rubric_from_tag):
+    rubric_string = "R" + str(rubric_id)
+    if rubric_string in rubric_from_tag: return True
+    else: return False
+
+@register.filter(name="get_tagdict_item")
+def get_tagdict_item(tag, key):
+    tag_dict = tag.get_reasoning_dict()
+    return tag_dict.get(key)

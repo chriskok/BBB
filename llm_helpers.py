@@ -68,3 +68,42 @@ def tag_answers(question, answers, rubrics, num_samples=40):
         tags = []
 
     return tags, msgs
+
+def apply_rubrics(question, answers, rubrics):
+
+    answers_str = "\n".join(["{}. {}".format(answer.id, answer.answer_text) for i, answer in enumerate(answers)])
+    rubrics_str = "\n".join(["R{}. {} (polarity: {}, meaning: {})".format(rubric["id"], rubric["title"], rubric["polarity"], rubric['description']) for i, rubric in enumerate(rubrics) if rubric['id'] != 0])
+    system_prompt = f"""You are an expert instructor for your given course. You've given the short-answer, open-ended question "{question.question_text}" on a recent final exam. You and your expert instructor partner created the following rubrics for this question (labelled R<rubric number> below): \n\n{rubrics_str}"""
+    # user_prompt = """Your task is to assign the rubric labels to each of the following students' answers (formatted: <answer ID>. <answer>). Please assign labels to each of the answers provided. Each answer can have multiple rubrics applied too. Treat this as a multi-class classification task. Please provide reasoning for your labels as well. For the output, create a comma-separated list of python dictionaries that STRICTLY follow the JSON format: [{"answer_id": "<id of the answer>", "rubrics": "<comma-separated list of rubrics (labelled R<number>) that apply to this answer>", "reasoning": "<reason you think the rubrics you chose apply to this answer>"}, ...]\n\nStudents' Answers:\n""" + answers_str
+
+    user_prompt = """
+    Given the rubrics mentioned and the following student answers (formatted: <answer ID>. <answer>):\n""" + answers_str + """
+
+    Label and highlight each student's answer based on the rubric(s) that applies to it. Each answer can have multiple rubrics applied, so treat this as a multi-label classification task. Please provide reasoning for your labels as well. For the output, create python dictionary that STRICTLY follow the JSON format:
+
+    {"answer_id": [
+        {
+            "rubric": "<rubric that applies to this answer (labelled R<number>)>",
+            "reasoning": "<reason why rubric R<number> applies>",
+            "highlighted": "<highlighted portion of the answer that supports the reasoning>"
+        },
+        {
+            "rubric": "<rubric that applies to this answer (labelled R<number>)>",
+            "reasoning": "<reason why rubric R<number> applies>",
+            "highlighted": "<highlighted portion of the answer that supports the reasoning>"
+        },
+        ...
+    ], ...}
+    """
+
+    msgs = [{"role": "system", "content": system_prompt}, {"role": "user", "content": user_prompt}]
+
+    response = prompt_chatgpt(msgs)
+
+    try:
+        tags = json.loads(response)
+    except Exception as e:
+        print(e)
+        tags = []
+
+    return tags
