@@ -72,9 +72,11 @@ def rubric_creation(request, q_id):
         {'id': 0, 'polarity': 'negative', 'title': 'Dependency on Frequent Data Sending', 'description': 'States that asynchronous programming requires frequent data sending for every change.'},
     ]
     if not RubricList.objects.filter(question_id=q_id).exists():
-        RubricList.objects.create(question_id=q_id, rubric_list=json.dumps(default_list))
+        rubric_obj = RubricList.objects.create(question_id=q_id, rubric_list=json.dumps(default_list))
     else:
         rubric_obj = RubricList.objects.filter(question_id=q_id).first()
+
+    rubric_list = rubric_obj.get_rubric_list()
 
     context = {
         "question_obj": current_question_obj,
@@ -83,6 +85,8 @@ def rubric_creation(request, q_id):
         "answers": outlier_examples,
         "answer_count": answer_count,
         "examples_dict": examples_dict,
+        "positive_rubrics": [rubric for rubric in rubric_list if rubric["polarity"] == "positive"],
+        "negative_rubrics": [rubric for rubric in rubric_list if rubric["polarity"] == "negative"],
     }
 
     return render(request, "rubric_creation.html", context)
