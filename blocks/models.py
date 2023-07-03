@@ -153,6 +153,20 @@ class Rubric(models.Model):
     def __str__(self):
         return "{}. Question: {}".format(self.id, self.question.question_text)
     
+class RubricList(models.Model):
+    question = models.ForeignKey(Question, on_delete=models.CASCADE, default=None, null=True, blank=True)
+    # format: [{id: <rubric_id>, polarity: <positive or negative>, title: <name of rubric>, description: <optional: explanation of rubric>}, ...]
+    rubric_list = models.TextField()
+    
+    def set_rubric_list(self, x):
+        self.rubric_list = json.dumps(x)
+
+    def get_rubric_list(self):
+        return json.loads(self.rubric_list)
+    
+    def __str__(self):
+        return "{}. Question: {}".format(self.id, self.question.question_text)
+    
 class AnswerTag(models.Model):
     question = models.ForeignKey(Question, on_delete=models.CASCADE, default=None, null=True, blank=True)
     answer = models.ForeignKey(Answer, on_delete=models.CASCADE, default=None, null=True, blank=True)

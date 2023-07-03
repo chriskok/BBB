@@ -61,12 +61,20 @@ def rubric_creation(request, q_id):
     examples_dict = {}
     for answer in outlier_examples:
         examples_dict[answer.id] = answer.answer_text
-    
+
     # check if rubric object exists for this question
-    if not Rubric.objects.filter(question_id=q_id).exists():
-        Rubric.objects.create(question_id=q_id, rubric_dict=json.dumps([]), message_history=json.dumps([]))
+    default_list = [
+        {'id': 1, 'polarity': 'positive', 'title': 'Non-blocking Execution', 'description': 'Clearly states the purpose of asynchronous programming: to send, request, and receive data from a server without blocking other parts of the interface.'},
+        {'id': 2, 'polarity': 'positive', 'title': 'User Interaction and Background Tasks', 'description': 'Highlights the need to allow user interaction with the page/app while certain operations are in progress.'},
+        {'id': 3, 'polarity': 'negative', 'title': 'Reloading the Page', 'description': 'Mentions the need to reload the page when updating it.'},
+        {'id': 4, 'polarity': 'negative', 'title': 'Sequential Execution', 'description': 'Describes the execution of instructions in a strictly sequential manner, without considering concurrent execution.'},
+        {'id': 0, 'polarity': 'positive', 'title': 'Dynamic Web Pages', 'description': 'Emphasizes the capability to update specific parts of a page while keeping other parts unchanged.'},
+        {'id': 0, 'polarity': 'negative', 'title': 'Dependency on Frequent Data Sending', 'description': 'States that asynchronous programming requires frequent data sending for every change.'},
+    ]
+    if not RubricList.objects.filter(question_id=q_id).exists():
+        RubricList.objects.create(question_id=q_id, rubric_list=json.dumps(default_list))
     else:
-        rubric_obj = Rubric.objects.filter(question_id=q_id).first()
+        rubric_obj = RubricList.objects.filter(question_id=q_id).first()
 
     context = {
         "question_obj": current_question_obj,
