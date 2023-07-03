@@ -79,18 +79,18 @@ def apply_rubrics(question, answers, rubrics):
     user_prompt = """
     Given the rubrics mentioned and the following student answers (formatted: <answer ID>. <answer>):\n""" + answers_str + """
 
-    Label and highlight each student's answer based on the rubric(s) that applies to it. Each answer can have multiple rubrics applied, so treat this as a multi-label classification task. Please provide reasoning for your labels as well. For the output, create python dictionary that STRICTLY follow the JSON format:
+    Label and highlight each student's answer based on the rubric(s) that applies to it. Each answer can have multiple rubrics applied, so treat this as a multi-label classification task. Only highlight the most relevant words per rubric that you choose to apply - keep it short! Please provide reasoning for your labels as well. For the output, create python dictionary that STRICTLY follow the JSON format:
 
     {"answer_id": [
         {
             "rubric": "<rubric that applies to this answer (labelled R<number>)>",
             "reasoning": "<reason why rubric R<number> applies>",
-            "highlighted": "<highlighted portion of the answer that supports the reasoning>"
+            "highlighted": "<substring within the answer of 3-6 words that best supports the reasoning>"
         },
         {
             "rubric": "<rubric that applies to this answer (labelled R<number>)>",
             "reasoning": "<reason why rubric R<number> applies>",
-            "highlighted": "<highlighted portion of the answer that supports the reasoning>"
+            "highlighted": "<substring within the answer of 3-6 words that best supports the reasoning>"
         },
         ...
     ], ...}

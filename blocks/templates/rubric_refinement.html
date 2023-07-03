@@ -61,7 +61,7 @@
                     </div>
                     <div class="col-7">
                         <label for="reasoning">Reasoning:</label>
-                        <textarea id="reasoning" name="reasoning" rows="1" cols="50" class="form-control" placeholder="Enter reasoning..."></textarea>
+                        <textarea id="reasoning" name="reasoning" rows="2" cols="50" class="form-control" placeholder="Enter reasoning...">{{ tag|get_tagdict_item:"reasoning" }}</textarea>
                         <label for="highlighted-text">Highlighted Text:</label>
                         <textarea id="highlighted-text_{{answer.id}}_1" name="highlighted-text_{{answer.id}}_1" rows="1" cols="50" class="form-control" placeholder="Enter highlighted text...">{{ tag|get_tagdict_item:"highlighted" }}</textarea>
                     </div>
