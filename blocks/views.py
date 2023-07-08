@@ -64,12 +64,12 @@ def rubric_creation(request, q_id):
 
     # check if rubric object exists for this question
     default_list = [
-        {'id': 1, 'polarity': 'positive', 'title': 'Non-blocking Execution', 'description': 'Clearly states the purpose of asynchronous programming: to send, request, and receive data from a server without blocking other parts of the interface.'},
-        {'id': 2, 'polarity': 'positive', 'title': 'User Interaction and Background Tasks', 'description': 'Highlights the need to allow user interaction with the page/app while certain operations are in progress.'},
-        {'id': 3, 'polarity': 'negative', 'title': 'Reloading the Page', 'description': 'Mentions the need to reload the page when updating it.'},
-        {'id': 4, 'polarity': 'negative', 'title': 'Sequential Execution', 'description': 'Describes the execution of instructions in a strictly sequential manner, without considering concurrent execution.'},
-        {'id': 0, 'polarity': 'positive', 'title': 'Dynamic Web Pages', 'description': 'Emphasizes the capability to update specific parts of a page while keeping other parts unchanged.'},
-        {'id': 0, 'polarity': 'negative', 'title': 'Dependency on Frequent Data Sending', 'description': 'States that asynchronous programming requires frequent data sending for every change.'},
+        {'id': 1, 'polarity': 'positive', 'title': 'Non-blocking Execution', 'description': 'Clearly states the purpose of asynchronous programming: to send, request, and receive data from a server without blocking other parts of the interface.', 'reasoning_dict': {}},
+        {'id': 2, 'polarity': 'positive', 'title': 'User Interaction and Background Tasks', 'description': 'Highlights the need to allow user interaction with the page/app while certain operations are in progress.', 'reasoning_dict': {}},
+        {'id': 3, 'polarity': 'negative', 'title': 'Reloading the Page', 'description': 'Mentions the need to reload the page when updating it.', 'reasoning_dict': {}},
+        {'id': 4, 'polarity': 'negative', 'title': 'Sequential Execution', 'description': 'Describes the execution of instructions in a strictly sequential manner, without considering concurrent execution.', 'reasoning_dict': {}},
+        {'id': 0, 'polarity': 'positive', 'title': 'Dynamic Web Pages', 'description': 'Emphasizes the capability to update specific parts of a page while keeping other parts unchanged.', 'reasoning_dict': {}},
+        {'id': 0, 'polarity': 'negative', 'title': 'Dependency on Frequent Data Sending', 'description': 'States that asynchronous programming requires frequent data sending for every change.', 'reasoning_dict': {}},
     ]
     if not RubricList.objects.filter(question_id=q_id).exists():
         rubric_obj = RubricList.objects.create(question_id=q_id, rubric_list=json.dumps(default_list))
@@ -85,8 +85,9 @@ def rubric_creation(request, q_id):
         "answers": outlier_examples,
         "answer_count": answer_count,
         "examples_dict": examples_dict,
-        "positive_rubrics": [rubric for rubric in rubric_list if rubric["polarity"] == "positive"],
-        "negative_rubrics": [rubric for rubric in rubric_list if rubric["polarity"] == "negative"],
+        # "positive_rubrics": [rubric for rubric in rubric_list if rubric["polarity"] == "positive"],
+        # "negative_rubrics": [rubric for rubric in rubric_list if rubric["polarity"] == "negative"],
+        "rubric_list": rubric_list,
     }
 
     return render(request, "rubric_creation.html", context)

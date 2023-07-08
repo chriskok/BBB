@@ -81,8 +81,8 @@
                     <a href="#" class="btn btn-success btn-sm">Add</a>
                 </div>
             </div>
-            {% for rubric in positive_rubrics %}
-            {% if rubric.id != 0 %}
+            {% for rubric in rubric_list %}
+            {% if rubric.id != 0 and rubric.polarity == "positive" %}
             <div class="card" id="rubric_{{rubric.id}}" ondrop="drop(event)" ondragover="allowDrop(event)">
                 <div class="card-header" id="rubricheading_{{rubric.id}}">
                     <div class="row">
@@ -106,19 +106,19 @@
                 <div id="collapse{{rubric.id}}" class="collapse {% if rubric.id == 1 %}show{% endif %}" aria-labelledby="rubricheading_{{rubric.id}}" >
                 <div class="card-body"  id="rubricbody_{{rubric.id}}">
                     <p>Description: {{ rubric.description }}</p>
-                    <div class="card">
+                    {% comment %} <div class="card mb-2">
                         <div class="card-body">
                             <p class="card-text">Sample Answer {{rubric.id}}</p>
                         </div>
-                    </div>
+                    </div> {% endcomment %}
                 </div>
                 </div>
             </div>
             {% endif %}
             {% endfor %}
 
-            {% for rubric in positive_rubrics %}
-            {% if rubric.id == 0 %}
+            {% for rubric in rubric_list %}
+            {% if rubric.id == 0 and rubric.polarity == "positive" %}
             <div class="card" id="suggested_positive_{{forloop.counter}}" style="border-style: dashed; border-width: 4px;">
                 <div class="card-body" id="suggested_positive_heading_{{forloop.counter}}">
                     <div class="row">
@@ -156,8 +156,8 @@
                     <a href="#" class="btn btn-success btn-sm">Add</a>
                 </div>
             </div>
-            {% for rubric in negative_rubrics %}
-            {% if rubric.id != 0 %}
+            {% for rubric in rubric_list %}
+            {% if rubric.id != 0 and rubric.polarity == "negative" %}
             <div class="card" id="rubric_{{rubric.id}}" ondrop="drop(event)" ondragover="allowDrop(event)">
                 <div class="card-header" id="rubricheading_{{rubric.id}}">
                     <div class="row">
@@ -181,15 +181,19 @@
                 <div id="collapse{{rubric.id}}" class="collapse" aria-labelledby="rubricheading_{{rubric.id}}">
                 <div class="card-body"  id="rubricbody_{{rubric.id}}">
                     <p>Description: {{ rubric.description }}</p>
-                    <li>Sample Answer {{rubric.id}}</li>
+                    {% comment %} <div class="card mb-2">
+                        <div class="card-body">
+                            <p class="card-text">Sample Answer {{rubric.id}}</p>
+                        </div>
+                    </div> {% endcomment %}
                 </div>
                 </div>
             </div>
             {% endif %}
             {% endfor %}
 
-            {% for rubric in negative_rubrics %}
-            {% if rubric.id == 0 %}
+            {% for rubric in rubric_list %}
+            {% if rubric.id == 0 and rubric.polarity == "negative" %}
             <div class="card" id="suggested_negative_{{forloop.counter}}" style="border-style: dashed; border-width: 4px;">
                 <div class="card-body" id="suggested_negative_heading_{{forloop.counter}}">
                     <div class="row">
@@ -234,6 +238,8 @@
 
     // parse django answers to js dict
     var answers = {{ examples_dict|safe }};
+    var rubric_list = {{ rubric_list|safe }};
+    console.log(rubric_list);
 
     function allowDrop(ev) {
         ev.preventDefault();
@@ -257,21 +263,55 @@
             parent = parent.parentNode;
         }
 
-        // add list item to rubric body
+        // add item to rubric body
         var rubric_id = parent.id.split("_")[1];
         var rubric_body = document.getElementById("rubricbody_" + rubric_id);
 
-        /*var new_li = document.createElement("li");
-        new_li.innerHTML = answers[answer_id];*/
+        var to_cancel = false;
+        rubric_list.forEach(function(rubric) {
+            if (rubric.id == rubric_id) {
+                // check if answer is already in rubric
+                if (answer_id in rubric.reasoning_dict) {
+                    console.log("answer already in rubric");
+                    to_cancel = true;
+                    return;
+                } else {
+                    // add answer to reasoning dict with empty string as Reasoning
+                    rubric.reasoning_dict[answer_id] = "";
+                }
+            }
+        });
+        if (to_cancel) {
+            return;
+        }
 
         // create new card item to append to rubric_body
         var new_card = document.createElement("div");
         new_card.className = "card";
+        new_card.classList.add("mb-2");
         var new_card_body = document.createElement("div");
         new_card_body.className = "card-body";
         new_card.appendChild(new_card_body);
         new_card_body.innerHTML = answers[answer_id];
 
+        // add an input field for reasoning
+        var new_input = document.createElement("input");
+        new_input.className = "form-control";
+        new_input.type = "text";
+        new_input.placeholder = "Tell us why...";
+        new_card.appendChild(new_input);
+
+        // add event listener to input field
+        new_input.addEventListener("input", function() {
+            // update reasoning in rubric_list
+            rubric_list.forEach(function(rubric) {
+                if (rubric.id == rubric_id) {
+                    rubric.reasoning_dict[answer_id] = new_input.value;
+                }
+            });
+        });
+
+        // finally, add the new card to the rubric body
         rubric_body.appendChild(new_card);
 
         // add indication that the rubric was applied to this answer (in the answer status_{{answer.id}} element)
