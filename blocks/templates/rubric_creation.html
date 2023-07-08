@@ -53,7 +53,7 @@
                             <b>Answer {{ forloop.counter }}</b>
                         </div>
                         <div class="col-6 d-flex justify-content-end">
-                            <p class="text-secondary px-2" id="status_{{ answer.id }}"></p>
+                            <p class="text-secondary px-2 font-weight-bold" id="status_{{ answer.id }}"></p>
                             {% comment %} <p class="text-secondary">Diversity Score: {{answer.outlier_score|floatformat:2}}</p> {% endcomment %}
                         </div>
                     </div>
@@ -81,69 +81,71 @@
                     <a href="#" class="btn btn-success btn-sm">Add</a>
                 </div>
             </div>
-            <div id="accordion">
-                {% for rubric in positive_rubrics %}
-                {% if rubric.id != 0 %}
-                <div class="card" id="rubric_{{rubric.id}}" ondrop="drop(event)" ondragover="allowDrop(event)">
-                    <div class="card-header" id="rubricheading_{{rubric.id}}">
-                        <div class="row">
-                            <div class="col-8">
-                                <h5 class="mb-0">
-                                    <button class="btn btn-link text-left" data-toggle="collapse" data-target="#collapse{{rubric.id}}" aria-expanded="true" aria-controls="collapse{{rubric.id}}" >
-                                    Rubric #{{rubric.id}}: {{ rubric.title }}
-                                    </button>
-                                </h5>
-                            </div>
+            {% for rubric in positive_rubrics %}
+            {% if rubric.id != 0 %}
+            <div class="card" id="rubric_{{rubric.id}}" ondrop="drop(event)" ondragover="allowDrop(event)">
+                <div class="card-header" id="rubricheading_{{rubric.id}}">
+                    <div class="row">
+                        <div class="col-8">
+                            <h5 class="mb-0">
+                                <button class="btn btn-link text-left" data-toggle="collapse" data-target="#collapse{{rubric.id}}" aria-expanded="true" aria-controls="collapse{{rubric.id}}" >
+                                Rubric #{{rubric.id}}: {{ rubric.title }}
+                                </button>
+                            </h5>
+                        </div>
 
-                            <div class="col-4">
-                                <div class="btn-group btn-group-sm float-right" role="group" aria-label="Basic example">
-                                    <button type="button" class="btn btn-secondary">Edit</button>
-                                    <button type="button" class="btn btn-secondary">Delete</button>
-                                </div>
+                        <div class="col-4">
+                            <div class="btn-group btn-group-sm float-right" role="group" aria-label="Basic example">
+                                <button type="button" class="btn btn-secondary">Edit</button>
+                                <button type="button" class="btn btn-secondary">Delete</button>
                             </div>
                         </div>
                     </div>
-                
-                    <div id="collapse{{rubric.id}}" class="collapse {% if rubric.id == 1 %}show{% endif %}" aria-labelledby="rubricheading_{{rubric.id}}" data-parent="#accordion">
-                    <div class="card-body"  id="rubricbody_{{rubric.id}}">
-                        <p>Description: {{ rubric.description }}</p>
-                        <li>Sample Answer {{rubric.id}}</li>
-                    </div>
-                    </div>
                 </div>
-                {% endif %}
-                {% endfor %}
-
-                {% for rubric in positive_rubrics %}
-                {% if rubric.id == 0 %}
-                <div class="card" id="suggested_positive_{{forloop.counter}}">
-                    <div class="card-header" id="suggested_positive_heading_{{forloop.counter}}">
-                        <div class="row">
-                            <div class="col-8">
-                                <h5 class="mb-0">
-                                    <button class="btn btn-link text-left" data-toggle="collapse" data-target="#suggested_positive_collapse{{forloop.counter}}" aria-expanded="true" aria-controls="suggested_positive_collapse{{forloop.counter}}" >
-                                    Suggested: {{ rubric.title }}
-                                    </button>
-                                </h5>
-                            </div>
-
-                            <div class="col-4">
-                                <div class="btn-group btn-group-sm float-right" role="group" aria-label="Basic example">
-                                    <button type="button" class="btn btn-secondary">Add</button>
-                                </div>
-                            </div>
+            
+                <div id="collapse{{rubric.id}}" class="collapse {% if rubric.id == 1 %}show{% endif %}" aria-labelledby="rubricheading_{{rubric.id}}" >
+                <div class="card-body"  id="rubricbody_{{rubric.id}}">
+                    <p>Description: {{ rubric.description }}</p>
+                    <div class="card">
+                        <div class="card-body">
+                            <p class="card-text">Sample Answer {{rubric.id}}</p>
                         </div>
                     </div>
-                
-                    <div id="suggested_positive_collapse{{forloop.counter}}" class="collapse" aria-labelledby="suggested_positive_heading_{{forloop.counter}}" data-parent="#accordion">
-                    <div class="card-body"  id="rubricbody_{{rubric.id}}">
-                        <p>Description: {{ rubric.description }}</p>
-                    </div>
-                    </div>
                 </div>
-                {% endif %}
-                {% endfor %}
+                </div>
             </div>
+            {% endif %}
+            {% endfor %}
+
+            {% for rubric in positive_rubrics %}
+            {% if rubric.id == 0 %}
+            <div class="card" id="suggested_positive_{{forloop.counter}}" style="border-style: dashed; border-width: 4px;">
+                <div class="card-body" id="suggested_positive_heading_{{forloop.counter}}">
+                    <div class="row">
+                        <div class="col-8">
+                            <h5 class="mb-0">
+                                <button class="btn btn-link text-left" data-toggle="collapse" data-target="#suggested_positive_collapse{{forloop.counter}}" aria-expanded="true" aria-controls="suggested_positive_collapse{{forloop.counter}}" >
+                                Suggested: {{ rubric.title }}
+                                </button>
+                            </h5>
+                        </div>
+
+                        <div class="col-4">
+                            <div class="btn-group btn-group-sm float-right" role="group" aria-label="Basic example">
+                                <button type="button" class="btn btn-secondary">Add</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            
+                <div id="suggested_positive_collapse{{forloop.counter}}" class="collapse" aria-labelledby="suggested_positive_heading_{{forloop.counter}}">
+                <div class="card-body"  id="rubricbody_{{rubric.id}}">
+                    <p>Description: {{ rubric.description }}</p>
+                </div>
+                </div>
+            </div>
+            {% endif %}
+            {% endfor %}
 
             
             <div class="row mt-4 mb-2">
@@ -154,69 +156,67 @@
                     <a href="#" class="btn btn-success btn-sm">Add</a>
                 </div>
             </div>
-            <div id="accordion2">
-                {% for rubric in negative_rubrics %}
-                {% if rubric.id != 0 %}
-                <div class="card" id="rubric_{{rubric.id}}" ondrop="drop(event)" ondragover="allowDrop(event)">
-                    <div class="card-header" id="rubricheading_{{rubric.id}}">
-                        <div class="row">
-                            <div class="col-8">
-                                <h5 class="mb-0">
-                                    <button class="btn btn-link text-left" data-toggle="collapse" data-target="#collapse{{rubric.id}}" aria-expanded="true" aria-controls="collapse{{rubric.id}}" >
-                                    Rubric #{{rubric.id}}: {{ rubric.title }}
-                                    </button>
-                                </h5>
-                            </div>
+            {% for rubric in negative_rubrics %}
+            {% if rubric.id != 0 %}
+            <div class="card" id="rubric_{{rubric.id}}" ondrop="drop(event)" ondragover="allowDrop(event)">
+                <div class="card-header" id="rubricheading_{{rubric.id}}">
+                    <div class="row">
+                        <div class="col-8">
+                            <h5 class="mb-0">
+                                <button class="btn btn-link text-left" data-toggle="collapse" data-target="#collapse{{rubric.id}}" aria-expanded="true" aria-controls="collapse{{rubric.id}}" >
+                                Rubric #{{rubric.id}}: {{ rubric.title }}
+                                </button>
+                            </h5>
+                        </div>
 
-                            <div class="col-4">
-                                <div class="btn-group btn-group-sm float-right" role="group" aria-label="Basic example">
-                                    <button type="button" class="btn btn-secondary">Edit</button>
-                                    <button type="button" class="btn btn-secondary">Delete</button>
-                                </div>
+                        <div class="col-4">
+                            <div class="btn-group btn-group-sm float-right" role="group" aria-label="Basic example">
+                                <button type="button" class="btn btn-secondary">Edit</button>
+                                <button type="button" class="btn btn-secondary">Delete</button>
                             </div>
                         </div>
                     </div>
-                
-                    <div id="collapse{{rubric.id}}" class="collapse" aria-labelledby="rubricheading_{{rubric.id}}" data-parent="#accordion2">
-                    <div class="card-body"  id="rubricbody_{{rubric.id}}">
-                        <p>Description: {{ rubric.description }}</p>
-                        <li>Sample Answer {{rubric.id}}</li>
-                    </div>
-                    </div>
                 </div>
-                {% endif %}
-                {% endfor %}
-
-                {% for rubric in negative_rubrics %}
-                {% if rubric.id == 0 %}
-                <div class="card" id="suggested_negative_{{forloop.counter}}">
-                    <div class="card-header" id="suggested_negative_heading_{{forloop.counter}}">
-                        <div class="row">
-                            <div class="col-8">
-                                <h5 class="mb-0">
-                                    <button class="btn btn-link text-left" data-toggle="collapse" data-target="#suggested_negative_collapse{{forloop.counter}}" aria-expanded="true" aria-controls="suggested_negative_collapse{{forloop.counter}}" >
-                                    Suggested: {{ rubric.title }}
-                                    </button>
-                                </h5>
-                            </div>
-
-                            <div class="col-4">
-                                <div class="btn-group btn-group-sm float-right" role="group" aria-label="Basic example">
-                                    <button type="button" class="btn btn-secondary">Add</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                
-                    <div id="suggested_negative_collapse{{forloop.counter}}" class="collapse" aria-labelledby="suggested_negative_heading_{{forloop.counter}}" data-parent="#accordion2">
-                    <div class="card-body"  id="rubricbody_{{rubric.id}}">
-                        <p>Description: {{ rubric.description }}</p>
-                    </div>
-                    </div>
+            
+                <div id="collapse{{rubric.id}}" class="collapse" aria-labelledby="rubricheading_{{rubric.id}}">
+                <div class="card-body"  id="rubricbody_{{rubric.id}}">
+                    <p>Description: {{ rubric.description }}</p>
+                    <li>Sample Answer {{rubric.id}}</li>
                 </div>
-                {% endif %}
-                {% endfor %}
+                </div>
             </div>
+            {% endif %}
+            {% endfor %}
+
+            {% for rubric in negative_rubrics %}
+            {% if rubric.id == 0 %}
+            <div class="card" id="suggested_negative_{{forloop.counter}}" style="border-style: dashed; border-width: 4px;">
+                <div class="card-body" id="suggested_negative_heading_{{forloop.counter}}">
+                    <div class="row">
+                        <div class="col-8">
+                            <h5 class="mb-0">
+                                <button class="btn btn-link text-left" data-toggle="collapse" data-target="#suggested_negative_collapse{{forloop.counter}}" aria-expanded="true" aria-controls="suggested_negative_collapse{{forloop.counter}}" >
+                                Suggested: {{ rubric.title }}
+                                </button>
+                            </h5>
+                        </div>
+
+                        <div class="col-4">
+                            <div class="btn-group btn-group-sm float-right" role="group" aria-label="Basic example">
+                                <button type="button" class="btn btn-secondary">Add</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            
+                <div id="suggested_negative_collapse{{forloop.counter}}" class="collapse" aria-labelledby="suggested_negative_heading_{{forloop.counter}}">
+                <div class="card-body"  id="rubricbody_{{rubric.id}}">
+                    <p>Description: {{ rubric.description }}</p>
+                </div>
+                </div>
+            </div>
+            {% endif %}
+            {% endfor %}
         </div>
     </div> 
 </div>
@@ -253,17 +253,26 @@
 
         // loop until parent of ev.target is a card
         var parent = ev.target;
-        while (parent.className != "card") {
+        while (parent.id.split("_")[0] != "rubric") {
             parent = parent.parentNode;
         }
 
         // add list item to rubric body
         var rubric_id = parent.id.split("_")[1];
         var rubric_body = document.getElementById("rubricbody_" + rubric_id);
-        var new_li = document.createElement("li");
 
-        new_li.innerHTML = answers[answer_id];
-        rubric_body.appendChild(new_li);
+        /*var new_li = document.createElement("li");
+        new_li.innerHTML = answers[answer_id];*/
+
+        // create new card item to append to rubric_body
+        var new_card = document.createElement("div");
+        new_card.className = "card";
+        var new_card_body = document.createElement("div");
+        new_card_body.className = "card-body";
+        new_card.appendChild(new_card_body);
+        new_card_body.innerHTML = answers[answer_id];
+
+        rubric_body.appendChild(new_card);
 
         // add indication that the rubric was applied to this answer (in the answer status_{{answer.id}} element)
         var status = document.getElementById("status_" + answer_id);
