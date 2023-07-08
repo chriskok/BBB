@@ -246,11 +246,10 @@
     function add_cards(answer_id, rubric_id) {
         // create new card item to append to rubric_body
         var new_card = document.createElement("div");
-        new_card.className = "card";
-        new_card.classList.add("mb-2");
+        new_card.className = "card mb-2";
         new_card.id = "matchedcard_" + answer_id + "_" + rubric_id;
         var new_card_body = document.createElement("div");
-        new_card_body.className = "card-body";
+        new_card_body.className = "card-body mr-2";
         new_card.appendChild(new_card_body);
         new_card_body.innerHTML = answers[answer_id];
 
@@ -279,8 +278,12 @@
 
         // add button to remove card
         var new_button = document.createElement("button");
+        // make button at the top right of the card
+        new_button.style.position = "absolute";
+        new_button.style.top = "0";
+        new_button.style.right = "0";
         new_button.className = "btn btn-danger btn-sm";
-        new_button.innerHTML = "Remove";
+        new_button.innerHTML = "x";
         new_button.addEventListener("click", function() {
             // remove card from rubric body
             var card_to_remove = document.getElementById("matchedcard_" + answer_id + "_" + rubric_id);
@@ -293,6 +296,17 @@
                 }
             });
             update_rubric_list();
+
+            // remove rubric id from answer status
+            var status = document.getElementById("status_" + answer_id);
+            var status_list = status.innerHTML.split(", ");
+            var new_status_list = [];
+            status_list.forEach(function(item) {
+                if (item != "R" + rubric_id) {
+                    new_status_list.push(item);
+                }
+            });
+            status.innerHTML = new_status_list.join(", ");
         });
         new_card.appendChild(new_button);
 
