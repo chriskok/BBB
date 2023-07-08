@@ -85,12 +85,21 @@ def rubric_creation(request, q_id):
         "answers": outlier_examples,
         "answer_count": answer_count,
         "examples_dict": examples_dict,
-        # "positive_rubrics": [rubric for rubric in rubric_list if rubric["polarity"] == "positive"],
-        # "negative_rubrics": [rubric for rubric in rubric_list if rubric["polarity"] == "negative"],
         "rubric_list": rubric_list,
     }
 
     return render(request, "rubric_creation.html", context)
+
+def update_rubric_list(request, q_id):
+    if request.method == 'POST':
+        new_rubric_list = json.loads(request.POST.get("rubric_list", None))
+        rubric_obj = RubricList.objects.filter(question_id=q_id).first()
+        rubric_obj.set_rubric_list(new_rubric_list)
+        rubric_obj.save()
+        message = 'update successful'
+    else:
+        message = 'update failed'
+    return HttpResponse(message)
 
 def old_rubric_creation(request, q_id):
     q_list = Question.objects.all()

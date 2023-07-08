@@ -106,11 +106,6 @@
                 <div id="collapse{{rubric.id}}" class="collapse {% if rubric.id == 1 %}show{% endif %}" aria-labelledby="rubricheading_{{rubric.id}}" >
                 <div class="card-body"  id="rubricbody_{{rubric.id}}">
                     <p>Description: {{ rubric.description }}</p>
-                    {% comment %} <div class="card mb-2">
-                        <div class="card-body">
-                            <p class="card-text">Sample Answer {{rubric.id}}</p>
-                        </div>
-                    </div> {% endcomment %}
                 </div>
                 </div>
             </div>
@@ -232,14 +227,100 @@
 </style>
 
 <script>
-    $(document).ready(function () {
-        
-    })
-
     // parse django answers to js dict
     var answers = {{ examples_dict|safe }};
     var rubric_list = {{ rubric_list|safe }};
     console.log(rubric_list);
+
+    function update_rubric_list() {
+        $.ajax({
+            url: "{% url 'update_rubric_list' question_obj.id %}",
+            data: {csrfmiddlewaretoken: "{{ csrf_token }}", 'rubric_list':  JSON.stringify(rubric_list)},
+            dataType: "json",
+            type: 'POST',
+        }).done(function(response){
+            console.log(response);
+        });
+    }
+
+    function add_cards(answer_id, rubric_id) {
+        // create new card item to append to rubric_body
+        var new_card = document.createElement("div");
+        new_card.className = "card";
+        new_card.classList.add("mb-2");
+        new_card.id = "matchedcard_" + answer_id + "_" + rubric_id;
+        var new_card_body = document.createElement("div");
+        new_card_body.className = "card-body";
+        new_card.appendChild(new_card_body);
+        new_card_body.innerHTML = answers[answer_id];
+
+        // add an input field for reasoning
+        var new_input = document.createElement("input");
+        new_input.className = "form-control";
+        new_input.type = "text";
+        new_input.placeholder = "Tell us why...";
+        for (var i = 0; i < rubric_list.length; i++) {
+            if (rubric_list[i].id == rubric_id) {
+                new_input.value = rubric_list[i].reasoning_dict[answer_id];
+            }
+        }
+        new_card.appendChild(new_input);
+
+        // add event listener to input field
+        new_input.addEventListener("input", function() {
+            // update reasoning in rubric_list
+            rubric_list.forEach(function(rubric) {
+                if (rubric.id == rubric_id) {
+                    rubric.reasoning_dict[answer_id] = new_input.value;
+                }
+            });
+            update_rubric_list();
+        });
+
+        // add button to remove card
+        var new_button = document.createElement("button");
+        new_button.className = "btn btn-danger btn-sm";
+        new_button.innerHTML = "Remove";
+        new_button.addEventListener("click", function() {
+            // remove card from rubric body
+            var card_to_remove = document.getElementById("matchedcard_" + answer_id + "_" + rubric_id);
+            card_to_remove.parentNode.removeChild(card_to_remove);
+
+            // remove answer from reasoning dict
+            rubric_list.forEach(function(rubric) {
+                if (rubric.id == rubric_id) {
+                    delete rubric.reasoning_dict[answer_id];
+                }
+            });
+            update_rubric_list();
+        });
+        new_card.appendChild(new_button);
+
+        // finally, add the new card to the rubric body
+        var rubric_body = document.getElementById("rubricbody_" + rubric_id);
+        rubric_body.appendChild(new_card);
+
+        // add indication that the rubric was applied to this answer (in the answer status_{{answer.id}} element)
+        var status = document.getElementById("status_" + answer_id);
+        // check if status already has writing, if so, add a comma and the rubric id
+        if (status.innerHTML != "") {
+            status.innerHTML += ", R" + rubric_id;;
+        } else{
+            status.innerHTML = "R" + rubric_id;;
+        }
+    }
+
+    $(document).ready(function () {
+        // add cards for all reasoning_dict items in each rubric
+        rubric_list.forEach(function(rubric) {
+            if (rubric.id != 0) {
+                for (var answer_id in rubric.reasoning_dict) {
+                    // console.log(answer_id, rubric.id, rubric.reasoning_dict[answer_id]);
+                    add_cards(answer_id, rubric.id);
+                }
+            }
+        });
+    })
 
     function allowDrop(ev) {
         ev.preventDefault();
@@ -285,38 +366,8 @@
             return;
         }
 
-        // create new card item to append to rubric_body
-        var new_card = document.createElement("div");
-        new_card.className = "card";
-        new_card.classList.add("mb-2");
-        var new_card_body = document.createElement("div");
-        new_card_body.className = "card-body";
-        new_card.appendChild(new_card_body);
-        new_card_body.innerHTML = answers[answer_id];
-
-        // add an input field for reasoning
-        var new_input = document.createElement("input");
-        new_input.className = "form-control";
-        new_input.type = "text";
-        new_input.placeholder = "Tell us why...";
-        new_card.appendChild(new_input);
-
-        // add event listener to input field
-        new_input.addEventListener("input", function() {
-            // update reasoning in rubric_list
-            rubric_list.forEach(function(rubric) {
-                if (rubric.id == rubric_id) {
-                    rubric.reasoning_dict[answer_id] = new_input.value;
-                }
-            });
-        });
-
-        // finally, add the new card to the rubric body
-        rubric_body.appendChild(new_card);
-
-        // add indication that the rubric was applied to this answer (in the answer status_{{answer.id}} element)
-        var status = document.getElementById("status_" + answer_id);
-        status.innerHTML = "R" + rubric_id;
+        update_rubric_list();
+        add_cards(answer_id, rubric_id);
     }
 
 </script>
