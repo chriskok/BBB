@@ -26,6 +26,23 @@ def prompt_chatgpt(prompt):
         print(e)
         return "ERROR"
 
+def prompt_gpt4(prompt):
+    model="gpt-4"
+    try:
+        response = openai.ChatCompletion.create(
+            model=model,
+            messages=prompt,
+            temperature=0.0,
+        )
+        if "error" in response:
+            print("OPENAI ERROR: {}".format(response))
+            return "ERROR"
+        else:
+            return response["choices"][0]["message"]["content"]
+    except Exception as e: 
+        print(e)
+        return "ERROR"
+
 def create_rubrics(question, answers, num_samples=40):
     random_answers = random.sample(list(answers), num_samples)
     max_grade = 2
@@ -107,3 +124,11 @@ def apply_rubrics(question, answers, rubrics):
         tags = []
 
     return tags
+
+def main():
+    response = prompt_gpt4([{"role": "system", "content": "You are a wise professor in HCI"}, {"role": "user", "content": "Give your students your top 3 tips for success in this class."}])
+
+    print(response)
+
+if __name__ == "__main__":
+    main()
