@@ -74,8 +74,8 @@
             <div class="form-group">
                 <h5>Rubrics:</h5>
                 {% for tag in answer.answertag_set.all %}
-                    <label for="{{tag.tag}}_{{answer.id}}" id="label_{{tag.tag}}_{{answer.id}}">{{tag.tag}} - {{ rubric_dict|get_item:tag.tag }}:</label>
-                    <input type="range" id="{{tag.tag}}_{{answer.id}}" name="{{tag.tag}}_{{answer.id}}" min="0" max="1" step="0.5" value="{{ tag|get_tagdict_item:"relevancy" }}" class="form-control-range" oninput="updateSliderValue(this, '{{tag.tag}}_{{answer.id}}')">
+                    <label for="slider_{{tag.id}}" id="label_slider_{{tag.id}}">{{tag.tag}} - {{ rubric_dict|get_item:tag.tag }}:</label>
+                    <input type="range" id="slider_{{tag.id}}" name="slider_{{tag.id}}" min="0" max="1" step="0.5" value="{{ tag|get_tagdict_item:"relevancy" }}" class="form-control-range" oninput="updateSliderValue(this, 'slider_{{tag.id}}')">
 
                     <div id='taginfo_{{tag.id}}' class="mb-3">
                         <label for="reasoning_{{tag.id}}">Reasoning:</label>
@@ -90,8 +90,16 @@
 
     </div>
 </div>
-
 {% endfor %}
+
+{% comment %} big button to "Get 10 New Answers" {% endcomment %}
+<div class="row">
+    <div class="col-12 d-flex justify-content-center">
+        <button class="btn btn-primary btn-lg btn-block" id="get_new_answers">Apply to 10 New Answers</button>
+    </div>
+</div>
+
+<br>
 
 <style>
     .highlight {
@@ -143,7 +151,8 @@
 
         var taginfo_divs = document.querySelectorAll('[id^="taginfo_"]');
         taginfo_divs.forEach(function(div) {
-            // div.style.display = "none"; // hide all taginfo divs
+            var tag_id = div.id.split("_")[1];
+            div.style.display = "none"; // hide all taginfo divs
             
             // attach event listener to each textarea in the div to update the answer tag associated to the div when the input fields inside it changes
             var textareas = div.querySelectorAll('textarea');
@@ -159,6 +168,21 @@
                     });
                     update_answer_tag(tag_id, reasoning_dict);
                 });
+            });
+
+            // get the associated slider
+            var slider = document.getElementById("slider_" + tag_id);
+            slider.addEventListener('input', function() {
+                var tag_id = div.id.split("_")[1];
+                var reasoning_dict = {};
+
+                // get the sliders value and update the reasoning dict key for relevancy
+                var sliderValue = slider.value;
+                reasoning_dict["relevancy"] = sliderValue;
+                update_answer_tag(tag_id, reasoning_dict);
+
+                // make the current div visible again
+                div.style.display = "block";
             });
 
         });
