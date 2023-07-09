@@ -185,7 +185,7 @@ def rubric_refinement(request, q_id):
         curr_bin = chosen_answers.filter(outlier_score__gte=min_outlier_score['outlier_score__min']+i*bin_size, outlier_score__lt=min_outlier_score['outlier_score__min']+(i+1)*bin_size)
         if curr_bin.exists():
             # outlier_examples.append(curr_bin.order_by('?').first())
-            outlier_examples.append(curr_bin.last())
+            outlier_examples.append(curr_bin.first())
     
     # check if AnswerTag objects exist for this question
     if not AnswerTag.objects.filter(question_id=q_id).exists():
@@ -193,7 +193,6 @@ def rubric_refinement(request, q_id):
         for ans_id in tags:
             for tag_dict in tags[ans_id]:
                 AnswerTag.objects.create(question_id=q_id, answer_id=int(ans_id), tag=tag_dict["rubric"], reasoning_dict=json.dumps(tag_dict))
-            # AnswerTag.objects.create(question_id=q_id, answer_id=int(ans_id), tag=tag["rubrics"], reasoning_dict=tag["reasoning"])
         ans_tags = AnswerTag.objects.filter(question_id=q_id)
     else:
         ans_tags = AnswerTag.objects.filter(question_id=q_id)
