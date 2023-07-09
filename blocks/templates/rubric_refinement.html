@@ -62,8 +62,8 @@
                     <div class="col-7">
                         <label for="reasoning">Reasoning:</label>
                         <textarea id="reasoning" name="reasoning" rows="2" cols="50" class="form-control" placeholder="Enter reasoning...">{{ tag|get_tagdict_item:"reasoning" }}</textarea>
-                        <label for="highlighted-text">Highlighted Text:</label>
-                        <textarea id="highlighted-text_{{answer.id}}_1" name="highlighted-text_{{answer.id}}_1" rows="1" cols="50" class="form-control" placeholder="Enter highlighted text...">{{ tag|get_tagdict_item:"highlighted" }}</textarea>
+                        <label for="highlighted">Highlighted Text:</label>
+                        <textarea id="highlighted_{{answer.id}}_1" name="highlighted_{{answer.id}}_1" rows="1" cols="50" class="form-control" placeholder="Enter highlighted text...">{{ tag|get_tagdict_item:"highlighted" }}</textarea>
                     </div>
                 </div>
             </div>
@@ -81,8 +81,8 @@
                         <label for="reasoning_{{tag.id}}">Reasoning:</label>
                         <textarea id="reasoning_{{tag.id}}" name="reasoning_{{tag.id}}" rows="2" cols="50" class="form-control" placeholder="Enter reasoning...">{{ tag|get_tagdict_item:"reasoning" }}</textarea>
 
-                        <label for="highlighted-text_{{tag.id}}_{{answer.id}}">Highlighted Text:</label>
-                        <textarea id="highlighted-text_{{tag.id}}_{{answer.id}}" name="highlighted-text_{{tag.id}}_{{answer.id}}" rows="1" cols="50" class="form-control" placeholder="Enter highlighted text...">{{ tag|get_tagdict_item:"highlighted" }}</textarea>
+                        <label for="highlighted_{{tag.id}}_{{answer.id}}">Highlighted Text:</label>
+                        <textarea id="highlighted_{{tag.id}}_{{answer.id}}" name="highlighted_{{tag.id}}_{{answer.id}}" rows="1" cols="50" class="form-control" placeholder="Enter highlighted text...">{{ tag|get_tagdict_item:"highlighted" }}</textarea>
                     </div>
                 {% endfor %}
             </div>
@@ -100,6 +100,18 @@
 </style>
 
 <script>
+
+    function update_answer_tag(tag_id, reasoning_dict) {
+        $.ajax({
+            url: "{% url 'update_answer_tag' %}",
+            data: {csrfmiddlewaretoken: "{{ csrf_token }}", 'reasoning_dict':  JSON.stringify(reasoning_dict), 'tag_id': tag_id},
+            dataType: "json",
+            type: 'POST',
+        }).done(function(response){
+            console.log(response);
+        });
+    }
+
     $(document).ready(function () {
         // get all sliders and update slider values
         var sliders = document.querySelectorAll('input[type="range"]');
@@ -107,13 +119,13 @@
             updateSliderValue(slider, slider.id);
         });
 
-        // Get all forms, and highlight the text in the highlighted-text textarea
+        // Get all forms, and highlight the text in the highlighted textarea
         // when the document loads
         var forms = document.getElementsByClassName('form');
         for (var i = 0; i < forms.length; i++) {
             var form = forms[i];
-            // get all elements that have an id that starts with highlighted-text
-            var highlightedText = form.querySelectorAll('[id^="highlighted-text"]');
+            // get all elements that have an id that starts with highlighted
+            var highlightedText = form.querySelectorAll('[id^="highlighted"]');
             for (var j = 0; j < highlightedText.length; j++) {
                 var text = highlightedText[j];
                 var text_to_highlight = text.value;
@@ -129,10 +141,26 @@
             }
         }
 
-        // hide all taginfo divs
         var taginfo_divs = document.querySelectorAll('[id^="taginfo_"]');
         taginfo_divs.forEach(function(div) {
-            div.style.display = "none";
+            // div.style.display = "none"; // hide all taginfo divs
+            
+            // attach event listener to each textarea in the div to update the answer tag associated to the div when the input fields inside it changes
+            var textareas = div.querySelectorAll('textarea');
+            textareas.forEach(function(textarea) {
+                textarea.addEventListener('input', function() {
+                    var tag_id = div.id.split("_")[1];
+                    var reasoning_dict = {};
+                    var textareas = div.querySelectorAll('textarea');
+                    textareas.forEach(function(textarea) {
+                        var textarea_id = textarea.id.split("_")[0];
+                        var textarea_value = textarea.value;
+                        reasoning_dict[textarea_id] = textarea_value;
+                    });
+                    update_answer_tag(tag_id, reasoning_dict);
+                });
+            });
+
         });
         
     })

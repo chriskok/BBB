@@ -10,7 +10,7 @@ urlpatterns = [
     path('rubric_creation/<int:q_id>', views.rubric_creation, name='rubric_creation'),
     path('update_rubric_list/<int:q_id>', views.update_rubric_list, name='update_rubric_list'),     # non-page
     path('rubric_refinement/<int:q_id>', views.rubric_refinement, name='rubric_refinement'),
-    path('update_answer_tag/<int:tag_id>', views.update_answer_tag, name='update_answer_tag'),      # non-page
+    path('update_answer_tag/', views.update_answer_tag, name='update_answer_tag'),      # non-page
     path('rubric_feedback/<int:q_id>', views.rubric_feedback, name='rubric_feedback'),
     path('rubric_tagging/<int:q_id>', views.rubric_tagging, name='rubric_tagging'),
 

@@ -225,12 +225,20 @@ def rubric_refinement(request, q_id):
 
     return render(request, "rubric_refinement.html", context)
 
-def update_answer_tag(request, tag_id):
+def update_answer_tag(request):
     # get the current answer tag, and update the reasoning dict with new 'reasoning', 'highlighted', and 'relevancy' values
     if request.method == 'POST':
         new_reasoning_dict = json.loads(request.POST.get("reasoning_dict", None))
+        tag_id = json.loads(request.POST.get("tag_id", None))
+
         answer_tag_obj = AnswerTag.objects.filter(id=tag_id).first()
-        answer_tag_obj.set_reasoning_dict(new_reasoning_dict)
+        curr_dict = answer_tag_obj.get_reasoning_dict()
+
+        # update the reasoning dict with new values in new_reasoning_dict
+        for key in new_reasoning_dict:
+            curr_dict[key] = new_reasoning_dict[key]
+
+        answer_tag_obj.set_reasoning_dict(curr_dict)
         answer_tag_obj.save()
         message = 'update successful'
     else:
