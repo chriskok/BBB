@@ -191,8 +191,16 @@ def rubric_refinement(request, q_id):
     if not AnswerTag.objects.filter(question_id=q_id).exists():
         tags = llmh.apply_rubrics(current_question_obj, outlier_examples, rubric_list)
         for ans_id in tags:
+            tagged = []
             for tag_dict in tags[ans_id]:
                 AnswerTag.objects.create(question_id=q_id, answer_id=int(ans_id), tag=tag_dict["rubric"], reasoning_dict=json.dumps(tag_dict))
+                tagged.append(tag_dict["rubric"])
+            # create blank AnswerTag for answers that were not tagged
+            for rubric in rubric_list:
+                if rubric["id"] == 0: continue
+                rubric_tag = "R{}".format(rubric["id"])
+                if rubric_tag not in tagged:
+                    AnswerTag.objects.create(question_id=q_id, answer_id=int(ans_id), tag=rubric_tag, reasoning_dict=json.dumps({"rubric": rubric_tag, "reasoning": "", "highlighted": "", "relevancy": "0"}))
         ans_tags = AnswerTag.objects.filter(question_id=q_id)
     else:
         ans_tags = AnswerTag.objects.filter(question_id=q_id)
@@ -208,6 +216,18 @@ def rubric_refinement(request, q_id):
     }
 
     return render(request, "rubric_refinement.html", context)
+
+def update_answer_tag(request, tag_id):
+    # get the current answer tag, and update the reasoning dict with new 'reasoning', 'highlighted', and 'relevancy' values
+    if request.method == 'POST':
+        new_reasoning_dict = json.loads(request.POST.get("reasoning_dict", None))
+        answer_tag_obj = AnswerTag.objects.filter(id=tag_id).first()
+        answer_tag_obj.set_reasoning_dict(new_reasoning_dict)
+        answer_tag_obj.save()
+        message = 'update successful'
+    else:
+        message = 'update failed'
+    return HttpResponse(message)
 
 def rubric_feedback(request, q_id):
     q_list = Question.objects.extra(select={'sorted_num': 'CAST(question_exam_id AS FLOAT)'}).order_by('sorted_num')
