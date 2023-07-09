@@ -31,13 +31,13 @@ warnings.filterwarnings("ignore")
 #############################################
 
 def rubric_creation(request, q_id):
-    q_list = Question.objects.all()
+    q_list = Question.objects.extra(select={'sorted_num': 'CAST(question_exam_id AS FLOAT)'}).order_by('sorted_num')
 
     # if the question queried does not exist, get the first Question available
     if Question.objects.filter(pk=q_id).exists():
         current_question_obj = Question.objects.get(pk=q_id)
     else:
-        current_question_obj = Question.objects.first()
+        current_question_obj = q_list.first()
         q_id = current_question_obj.id
 
     chosen_answers = Answer.objects.filter(question_id=q_id)
@@ -102,13 +102,13 @@ def update_rubric_list(request, q_id):
     return HttpResponse(message)
 
 def old_rubric_creation(request, q_id):
-    q_list = Question.objects.all()
+    q_list = Question.objects.extra(select={'sorted_num': 'CAST(question_exam_id AS FLOAT)'}).order_by('sorted_num')
 
     # if the question queried does not exist, get the first Question available
     if Question.objects.filter(pk=q_id).exists():
         current_question_obj = Question.objects.get(pk=q_id)
     else:
-        current_question_obj = Question.objects.first()
+        current_question_obj = q_list.first()
         q_id = current_question_obj.id
 
     # on POST request, parse the form 
@@ -160,13 +160,13 @@ def old_rubric_creation(request, q_id):
     return render(request, "rubric_creation.html", context)
 
 def rubric_refinement(request, q_id):
-    q_list = Question.objects.all()
+    q_list = Question.objects.extra(select={'sorted_num': 'CAST(question_exam_id AS FLOAT)'}).order_by('sorted_num')
 
     # if the question queried does not exist, get the first Question available
     if Question.objects.filter(pk=q_id).exists():
         current_question_obj = Question.objects.get(pk=q_id)
     else:
-        current_question_obj = Question.objects.first()
+        current_question_obj = q_list.first()
         q_id = current_question_obj.id
     
     rubric_obj = RubricList.objects.filter(question_id=q_id).first()
@@ -211,13 +211,13 @@ def rubric_refinement(request, q_id):
     return render(request, "rubric_refinement.html", context)
 
 def rubric_feedback(request, q_id):
-    q_list = Question.objects.all()
+    q_list = Question.objects.extra(select={'sorted_num': 'CAST(question_exam_id AS FLOAT)'}).order_by('sorted_num')
 
     # if the question queried does not exist, get the first Question available
     if Question.objects.filter(pk=q_id).exists():
         current_question_obj = Question.objects.get(pk=q_id)
     else:
-        current_question_obj = Question.objects.first()
+        current_question_obj = q_list.first()
         q_id = current_question_obj.id
 
     chosen_answers = Answer.objects.filter(question_id=q_id)
@@ -247,13 +247,13 @@ def rubric_feedback(request, q_id):
     return render(request, "rubric_feedback.html", context)
 
 def rubric_tagging(request, q_id):
-    q_list = Question.objects.all()
+    q_list = Question.objects.extra(select={'sorted_num': 'CAST(question_exam_id AS FLOAT)'}).order_by('sorted_num')
 
     # if the question queried does not exist, get the first Question available
     if Question.objects.filter(pk=q_id).exists():
         current_question_obj = Question.objects.get(pk=q_id)
     else:
-        current_question_obj = Question.objects.first()
+        current_question_obj = q_list.first()
         q_id = current_question_obj.id
 
     chosen_answers = Answer.objects.filter(question_id=q_id)
@@ -504,13 +504,13 @@ def rule_suggestions(request, q_id):
 
 # @login_required
 def building_blocks_view(request, q_id, filter=None):
-    q_list = Question.objects.all()
+    q_list = Question.objects.extra(select={'sorted_num': 'CAST(question_exam_id AS FLOAT)'}).order_by('sorted_num')
 
     # if the question queried does not exist, get the first Question available
     if Question.objects.filter(pk=q_id).exists():
         current_question_obj = Question.objects.get(pk=q_id)
     else:
-        current_question_obj = Question.objects.first()
+        current_question_obj = q_list.first()
         q_id = current_question_obj.id
 
     chosen_answers = Answer.objects.filter(question_id=q_id).order_by('outlier_score')
@@ -569,7 +569,7 @@ def building_blocks_view(request, q_id, filter=None):
 
 # methods: question_only, examples, rubrics, rubrics_and_examples
 def chatgpt_view(request, q_id, method='question_only'):
-    q_list = Question.objects.all()
+    q_list = Question.objects.extra(select={'sorted_num': 'CAST(question_exam_id AS FLOAT)'}).order_by('sorted_num')
 
     # method = request.GET.get('method', 'question_only')
     model = request.GET.get('model', 'text-davinci-003')
@@ -578,7 +578,7 @@ def chatgpt_view(request, q_id, method='question_only'):
     if Question.objects.filter(pk=q_id).exists():
         current_question_obj = Question.objects.get(pk=q_id)
     else:
-        current_question_obj = Question.objects.first()
+        current_question_obj = q_list.first()
         q_id = current_question_obj.id
 
     chosen_answers = Answer.objects.filter(question_id=q_id)
