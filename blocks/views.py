@@ -204,12 +204,20 @@ def rubric_refinement(request, q_id):
         ans_tags = AnswerTag.objects.filter(question_id=q_id)
     else:
         ans_tags = AnswerTag.objects.filter(question_id=q_id)
+    
+    # make dictionary of R<number>: <rubric> for each rubric
+    rubric_dict = {}
+    for rubric in rubric_list:
+        if rubric["id"] == 0: continue
+        rubric_tag = "R{}".format(rubric["id"])
+        rubric_dict[rubric_tag] = rubric["title"]
 
     context = {
         "question_obj": current_question_obj,
         "question_exam_id": q_id,
         "question_list": q_list,
         "rubric_list": rubric_list,
+        "rubric_dict": rubric_dict,
         "answers": outlier_examples,
         "answer_count": answer_count,
         "ans_tags": ans_tags,

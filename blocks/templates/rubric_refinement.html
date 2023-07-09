@@ -70,12 +70,20 @@
             {% endfor %}
         </form>  {% endcomment %}
 
-        <form class="form">
+        <form class="form" id="form_{{answer.id}}">
             <div class="form-group">
                 <h5>Rubrics:</h5>
                 {% for tag in answer.answertag_set.all %}
-                    <label for="{{tag.tag}}_{{answer.id}}" id="label_{{tag.tag}}_{{answer.id}}">{{tag.tag}}:</label>
-                    <input type="range" id="{{tag.tag}}_{{answer.id}}" name="{{tag.tag}}_{{answer.id}}" min="0" max="1" step="0.5" value="1" class="form-control-range" oninput="updateSliderValue(this, '{{tag.tag}}_{{answer.id}}')">
+                    <label for="{{tag.tag}}_{{answer.id}}" id="label_{{tag.tag}}_{{answer.id}}">{{tag.tag}} - {{ rubric_dict|get_item:tag.tag }}:</label>
+                    <input type="range" id="{{tag.tag}}_{{answer.id}}" name="{{tag.tag}}_{{answer.id}}" min="0" max="1" step="0.5" value="{{ tag|get_tagdict_item:"relevancy" }}" class="form-control-range" oninput="updateSliderValue(this, '{{tag.tag}}_{{answer.id}}')">
+
+                    <div id='taginfo_{{tag.id}}' class="mb-3">
+                        <label for="reasoning_{{tag.id}}">Reasoning:</label>
+                        <textarea id="reasoning_{{tag.id}}" name="reasoning_{{tag.id}}" rows="2" cols="50" class="form-control" placeholder="Enter reasoning...">{{ tag|get_tagdict_item:"reasoning" }}</textarea>
+
+                        <label for="highlighted-text_{{tag.id}}_{{answer.id}}">Highlighted Text:</label>
+                        <textarea id="highlighted-text_{{tag.id}}_{{answer.id}}" name="highlighted-text_{{tag.id}}_{{answer.id}}" rows="1" cols="50" class="form-control" placeholder="Enter highlighted text...">{{ tag|get_tagdict_item:"highlighted" }}</textarea>
+                    </div>
                 {% endfor %}
             </div>
         </form>
@@ -109,7 +117,8 @@
             for (var j = 0; j < highlightedText.length; j++) {
                 var text = highlightedText[j];
                 var text_to_highlight = text.value;
-                var ans_id = text.id.split("_")[1];
+                if (text_to_highlight == "") { continue; }
+                var ans_id = text.id.split("_")[2];
                 var ans_text_el = document.getElementById("anstext_" + ans_id);
                 var ans_text = ans_text_el.innerHTML;
 
@@ -119,14 +128,20 @@
                 ans_text_el.innerHTML = highlighted_ans_text;
             }
         }
+
+        // hide all taginfo divs
+        var taginfo_divs = document.querySelectorAll('[id^="taginfo_"]');
+        taginfo_divs.forEach(function(div) {
+            div.style.display = "none";
+        });
         
     })
 
     function updateSliderValue(slider, sliderId) {
         var sliderValue = slider.value;
         var sliderLabel = document.getElementById("label_" + sliderId);
-        var rubricNum = sliderId.split("_")[0][1];
-        sliderLabel.innerHTML = "Rubric " + rubricNum + ":";
+        var preface = sliderLabel.innerHTML.split(":")[0];
+        sliderLabel.innerHTML = preface + ":";
 
         if (sliderValue == 0){ sliderLabel.innerHTML += " No Relevance"; }
         else if (sliderValue == 0.5){ sliderLabel.innerHTML += " Partial Relevance"; }
