@@ -112,12 +112,12 @@
                     var feedbacktext_el = document.getElementById("feedbacktext_" + key);
 
                     // create a link from this word
-                    var feedback_highlight_link = "<a href=\"#\" id=\"feedback_link" + key + "\">" + feedback_highlight + "</a>";
+                    var feedback_highlight_link = "<a href=\"#\" id=\"feedbacklink_" + key + "_" + i + "\">" + feedback_highlight + "</a>";
                     feedbacktext_el.innerHTML = feedbacktext_el.innerHTML.replace(feedback_highlight, feedback_highlight_link);
-                    var feedback_link_el = document.getElementById("feedback_link" + key);
+                    var feedbacklink_el = document.getElementById("feedbacklink_" + key + "_" + i);
                     var answer_highlighted = "<span class=\"highlight\">" + answer_highlight + "</span>";
 
-                    attachMouseover(feedback_link_el, anstext_el, answer_highlight, answer_highlighted);
+                    attachMouseover(feedbacklink_el, anstext_el, answer_highlight, answer_highlighted);
                 }
             }
         }
