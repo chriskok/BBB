@@ -103,7 +103,8 @@
             if (ans_feedbacks.hasOwnProperty(key)) {
                 associations = ans_feedbacks[key];
                 // iterate through each association (list of dicts)
-                for (var i = 0; i < associations.length; i++) {
+                //for (var i = 0; i < associations.length; i++) {  // TODO: include this for multiple instances of feedback links
+                for (var i = 0; i < 1; i++) {
                     // each dict has "answer_highlight" and "feedback_highlight" keys, use these to highlight the answer and feedback for the current answer id
                     var answer_highlight = associations[i]["answer_highlight"];
                     var feedback_highlight = associations[i]["feedback_highlight"];
