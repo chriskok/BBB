@@ -269,7 +269,18 @@ def rubric_feedback(request, q_id):
         curr_bin = chosen_answers.filter(outlier_score__gte=min_outlier_score['outlier_score__min']+i*bin_size, outlier_score__lt=min_outlier_score['outlier_score__min']+(i+1)*bin_size)
         if curr_bin.exists():
             # outlier_examples.append(curr_bin.order_by('?').first())
-            outlier_examples.append(curr_bin.last())
+            outlier_examples.append(curr_bin.first())
+    
+    # TODO: Check if there is already feedback for this question. If not, create them. 
+    if not AnswerFeedback.objects.filter(question_id=q_id).exists():
+        feedbacks = llmh.apply_feedback(current_question_obj, outlier_examples)
+    #     for ans_id in feedbacks:
+    #         feedback_dict = feedbacks[ans_id]
+    #         reasoning_dict = feedback_dict['reasoning']
+    #         AnswerFeedback.objects.create(question_id=q_id, answer_id=int(ans_id), feedback=feedback_dict['feedback'], reasoning_dict=json.dumps(reasoning_dict))
+    #     ans_feedbacks = AnswerFeedback.objects.filter(question_id=q_id)
+    # else:
+    #     ans_feedbacks = AnswerFeedback.objects.filter(question_id=q_id)
 
     context = {
         "question_obj": current_question_obj,
@@ -327,6 +338,30 @@ def rubric_tagging(request, q_id):
     }
 
     return render(request, "rubric_tagging.html", context)
+
+# TODO: make reset for answer tags and answer feedback instead --> ALSO save the output that was used previously. 
+def combv5_reset_view(request, question_id=None):
+
+    # # get specific answers for the current question
+    # chosen_answers = Answer.objects.filter(question_id=question_id).all() if question_id else Answer.objects.all()
+    # chosen_answers.update(rule_strings="[]") 
+    # chosen_answers.update(override_grade=None)  # remove previous overriden grade and feedback
+    # chosen_answers.update(override_feedback=None)
+    # chosen_answers.update(cluster=None)
+
+    # # delete all clusters
+    # if (question_id): Cluster.objects.filter(question_id=question_id).all().delete()
+    # else: Cluster.objects.all().delete()
+
+    # # delete all rules for the current question, iteratively - if not, the deletions will have a foreign key constraint error
+    # rules = Rule.objects.filter(question_id=question_id).all() if question_id else Rule.objects.all()
+    # while rules:
+    #     non_parent_rules = rules.filter(rule=None)
+    #     for rule in non_parent_rules:
+    #         rule.delete()
+    #     rules = Rule.objects.filter(question_id=question_id).all() if question_id else Rule.objects.all()
+
+    return JsonResponse({'message': "System Reset!"}) 
 
 #############################################
 #               RULE HELPERS                #

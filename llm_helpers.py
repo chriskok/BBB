@@ -172,6 +172,58 @@ def apply_rubrics_old(question, answers, rubrics):
 
     return tags
 
+def apply_feedback(question, answers):
+
+    # TODO: get all the associated answer tags per answer --> convert reasoning dicts of each answer tag
+    # def convert_reasoning_dict(reasoning_dict):
+    #     # convert dict of answer ID keys and reasoning values to a new-line separated string of Answer texts (from DB) and the reasoning
+    #     reasoning_str = ""
+    #     for answer_id, reasoning in reasoning_dict.items():
+    #         reasoning_str += "{} {}\n".format(Answer.objects.get(id=answer_id).answer_text, f"(REASON: {reasoning})" if reasoning != "" else "")
+    #     return reasoning_str if reasoning_str != "" else "None"
+
+    # answers_str = "\n".join(["{}. {}".format(answer.id, answer.answer_text) for i, answer in enumerate(answers)])
+    # rubrics_str = "\n\n".join(["R{}. {} (polarity: {}, meaning: {})\nR{} Examples:\n{}".format(rubric["id"], rubric["title"], rubric["polarity"], rubric['description'], rubric["id"], convert_reasoning_dict(rubric["reasoning_dict"])) for i, rubric in enumerate(rubrics) if rubric['id'] != 0])
+    # system_prompt = f"""You are an expert instructor for your given course. You've given the short-answer, open-ended question "{question.question_text}" on a recent final exam. You and your expert instructor partner created the following rubrics for this question (labelled R<rubric number> below, along with examples that your partner annotated with reasoning): \n\n{rubrics_str}"""
+
+    # user_prompt = """
+    # Given the rubrics mentioned and the following student answers (formatted: <answer ID>. <answer>):\n""" + answers_str + """
+
+    # Label and highlight each student's answer based on the rubric(s) that applies to it. Each answer can have multiple rubrics applied, so treat this as a multi-label classification task. Only highlight the most relevant words per rubric that you choose to apply - keep it short! Please provide reasoning for your labels and a relevancy score as well. For the output, create python dictionary that STRICTLY follow the JSON format:
+
+    # {"answer_id": [
+    #     {
+    #         "rubric": "<rubric that applies to this answer (labelled R<number>)>",
+    #         "reasoning": "<reason why rubric R<number> applies>",
+    #         "highlighted": "<substring within the answer of 3-6 words that best supports the reasoning>",
+    #         "relevancy": "<0.5 or 1 to indicate partial or full relevance to the answer>"
+    #     },
+    #     {
+    #         "rubric": "<rubric that applies to this answer (labelled R<number>)>",
+    #         "reasoning": "<reason why rubric R<number> applies>",
+    #         "highlighted": "<substring within the answer of 3-6 words that best supports the reasoning>",
+    #         "relevancy": "<0.5 or 1 to indicate partial or full relevance to the answer>"
+    #     },
+    #     ...
+    # ], ...}
+    # """
+
+    # TODO: update the prompts above to instead take the answer tags created and produce feedback with multiple instances of highlights? 
+
+    # msgs = [{"role": "system", "content": system_prompt}, {"role": "user", "content": user_prompt}]
+
+    # response = prompt_gpt4(msgs)
+
+    # try:
+    #     tags = json.loads(response)
+    # except Exception as e:
+    #     print(e)
+    #     tags = []
+
+    # return tags
+
+    return ""
+
 def main():
     response = prompt_gpt4([{"role": "system", "content": "You are a wise professor in HCI"}, {"role": "user", "content": "Give your students your top 3 tips for success in this class."}])
 

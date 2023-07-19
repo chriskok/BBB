@@ -172,7 +172,6 @@ class AnswerTag(models.Model):
     answer = models.ForeignKey(Answer, on_delete=models.CASCADE, default=None, null=True, blank=True)
     tag = models.CharField(max_length=200, default="", null=True, blank=True)
     reasoning_dict = models.TextField()  # dictionary with highlighted section and reasoning for chosen tags
-    feedback = models.TextField()
     
     def set_reasoning_dict(self, x):
         self.reasoning_dict = json.dumps(x)
@@ -183,6 +182,23 @@ class AnswerTag(models.Model):
     def __str__(self):
         return "{}. Answer: {}, Tag: {}".format(self.id, self.answer.id, self.tag)
     
-
     class Meta:
         ordering = ['question__id', 'answer__id', 'tag']
+
+class AnswerFeedback(models.Model):
+    question = models.ForeignKey(Question, on_delete=models.CASCADE, default=None, null=True, blank=True)
+    answer = models.ForeignKey(Answer, on_delete=models.CASCADE, default=None, null=True, blank=True)
+    feedback = models.TextField()
+    reasoning_dict = models.TextField()  # dictionary with highlighted sections of the answer and the sections of the feedback that correspond to those highlights
+    
+    def set_reasoning_dict(self, x):
+        self.reasoning_dict = json.dumps(x)
+
+    def get_reasoning_dict(self):
+        return json.loads(self.reasoning_dict)
+
+    def __str__(self):
+        return "{}. Answer: {}, Feedback: {}".format(self.id, self.answer.id, self.feedback)
+    
+    class Meta:
+        ordering = ['question__id', 'answer__id']
