@@ -255,6 +255,8 @@ def rubric_feedback(request, q_id):
         current_question_obj = q_list.first()
         q_id = current_question_obj.id
 
+    rubric_obj = RubricList.objects.filter(question_id=q_id).first()
+    rubric_list = rubric_obj.get_rubric_list()
     chosen_answers = Answer.objects.filter(question_id=q_id)
     answer_count = len(chosen_answers)
 
@@ -273,15 +275,17 @@ def rubric_feedback(request, q_id):
     
     # TODO: Check if there is already feedback for this question. If not, create them. 
     if not AnswerFeedback.objects.filter(question_id=q_id).exists():
-        feedbacks = llmh.apply_feedback(current_question_obj, outlier_examples)
+        feedbacks = llmh.apply_feedback(current_question_obj, outlier_examples, rubric_list)
     #     for ans_id in feedbacks:
     #         feedback_dict = feedbacks[ans_id]
-    #         reasoning_dict = feedback_dict['reasoning']
+    #         reasoning_dict = feedback_dict['associations']
     #         AnswerFeedback.objects.create(question_id=q_id, answer_id=int(ans_id), feedback=feedback_dict['feedback'], reasoning_dict=json.dumps(reasoning_dict))
     #     ans_feedbacks = AnswerFeedback.objects.filter(question_id=q_id)
     # else:
     #     ans_feedbacks = AnswerFeedback.objects.filter(question_id=q_id)
 
+    # TODO: use feedback objects similarly to the refinement page above
+    # for each feedback object get the answer to display, display the feedback and the rubric tags too
     context = {
         "question_obj": current_question_obj,
         "question_exam_id": q_id,

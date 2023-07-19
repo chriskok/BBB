@@ -172,55 +172,61 @@ def apply_rubrics_old(question, answers, rubrics):
 
     return tags
 
-def apply_feedback(question, answers):
+def apply_feedback(question, answers, rubrics):
 
-    # TODO: get all the associated answer tags per answer --> convert reasoning dicts of each answer tag
-    # def convert_reasoning_dict(reasoning_dict):
-    #     # convert dict of answer ID keys and reasoning values to a new-line separated string of Answer texts (from DB) and the reasoning
-    #     reasoning_str = ""
-    #     for answer_id, reasoning in reasoning_dict.items():
-    #         reasoning_str += "{} {}\n".format(Answer.objects.get(id=answer_id).answer_text, f"(REASON: {reasoning})" if reasoning != "" else "")
-    #     return reasoning_str if reasoning_str != "" else "None"
+    # convert dict of answer ID keys and reasoning values to a new-line separated string of Answer texts (from DB) and the reasoning
+    def convert_reasoning_dict(reasoning_dict):
+        reasoning_str = ""
+        for answer_id, reasoning in reasoning_dict.items():
+            reasoning_str += "{} {}\n".format(Answer.objects.get(id=answer_id).answer_text, f"(REASON: {reasoning})" if reasoning != "" else "")
+        return reasoning_str if reasoning_str != "" else "None"
 
-    # answers_str = "\n".join(["{}. {}".format(answer.id, answer.answer_text) for i, answer in enumerate(answers)])
-    # rubrics_str = "\n\n".join(["R{}. {} (polarity: {}, meaning: {})\nR{} Examples:\n{}".format(rubric["id"], rubric["title"], rubric["polarity"], rubric['description'], rubric["id"], convert_reasoning_dict(rubric["reasoning_dict"])) for i, rubric in enumerate(rubrics) if rubric['id'] != 0])
-    # system_prompt = f"""You are an expert instructor for your given course. You've given the short-answer, open-ended question "{question.question_text}" on a recent final exam. You and your expert instructor partner created the following rubrics for this question (labelled R<rubric number> below, along with examples that your partner annotated with reasoning): \n\n{rubrics_str}"""
+    rubrics_str = "\n\n".join(["R{}. {} (polarity: {}, meaning: {})\nR{} Examples:\n{}".format(rubric["id"], rubric["title"], rubric["polarity"], rubric['description'], rubric["id"], convert_reasoning_dict(rubric["reasoning_dict"])) for i, rubric in enumerate(rubrics) if rubric['id'] != 0])
+    system_prompt = f"""You are an expert instructor for your given course. You've given the short-answer, open-ended question "{question.question_text}" on a recent final exam. You and your expert instructor partner created the following rubrics for this question (labelled R<rubric number> below, along with examples that your partner annotated with reasoning): \n\n{rubrics_str}"""
 
-    # user_prompt = """
-    # Given the rubrics mentioned and the following student answers (formatted: <answer ID>. <answer>):\n""" + answers_str + """
+    # get all the associated answer tags per answer --> convert reasoning dicts of each answer tag
+    def convert_answer_tags(answer_tags):
+        tagged_strs = []
+        for tag in answer_tags:
+            # e.g. {"rubric": "R1", "reasoning": "", "highlighted": "", "relevancy": "0"}
+            reasoning_dict = tag.get_reasoning_dict()
+            if (reasoning_dict["relevancy"] != "0"): 
+                tagged_strs.append(f"{reasoning_dict['rubric']} (relevance: {reasoning_dict['relevancy']}, reason: {reasoning_dict['reasoning']})")
+        
+        return "\n".join(tagged_strs)
 
-    # Label and highlight each student's answer based on the rubric(s) that applies to it. Each answer can have multiple rubrics applied, so treat this as a multi-label classification task. Only highlight the most relevant words per rubric that you choose to apply - keep it short! Please provide reasoning for your labels and a relevancy score as well. For the output, create python dictionary that STRICTLY follow the JSON format:
+    full_tags_str = []
+    for ans in answers:
+        answer_tags = ans.answertag_set.all()
+        tags_str = convert_answer_tags(answer_tags)
+        curr_tags_str = f"{ans.id}. {ans.answer_text}\n{tags_str}"
+        full_tags_str.append(curr_tags_str)
+    
+    answers_str = "\n\n".join(full_tags_str)
 
-    # {"answer_id": [
-    #     {
-    #         "rubric": "<rubric that applies to this answer (labelled R<number>)>",
-    #         "reasoning": "<reason why rubric R<number> applies>",
-    #         "highlighted": "<substring within the answer of 3-6 words that best supports the reasoning>",
-    #         "relevancy": "<0.5 or 1 to indicate partial or full relevance to the answer>"
-    #     },
-    #     {
-    #         "rubric": "<rubric that applies to this answer (labelled R<number>)>",
-    #         "reasoning": "<reason why rubric R<number> applies>",
-    #         "highlighted": "<substring within the answer of 3-6 words that best supports the reasoning>",
-    #         "relevancy": "<0.5 or 1 to indicate partial or full relevance to the answer>"
-    #     },
-    #     ...
-    # ], ...}
-    # """
+    user_prompt = """Based on the rubrics mentioned, you now have the following student answers (formatted: <answer ID>. <answer>, along with annotated rubrics you recently associated with each underneath it):\n\n""" + answers_str + """
 
-    # TODO: update the prompts above to instead take the answer tags created and produce feedback with multiple instances of highlights? 
+    Provide feedback and list the connected associations for each student's answer based on the rubric(s) that applies to it. Each piece of feedback can have multiple associations between it and the answer itself - these will be used to highlight parts to the students. Only associate/highlight the most relevant words - keep it short! For the output, create python dictionary that STRICTLY follow the JSON format:
+
+    {"answer_id": {
+        "feedback": "<constructive and helpful feedback that you'd give the student based on the rubrics attached to the answer - try to understand the internal needs of the student instead of just saying what is missing from the answer>",
+        "associations": [<list of tuples that are a 4-7 words from the answer and 4-7 words from the feedback. Can be one or more. This is meant to show association between which part of the answer was commented upon>],
+    }, ...}
+    """
+
+    # TODO: actually use this with GPT!
 
     # msgs = [{"role": "system", "content": system_prompt}, {"role": "user", "content": user_prompt}]
 
     # response = prompt_gpt4(msgs)
 
     # try:
-    #     tags = json.loads(response)
+    #     feedbacks = json.loads(response)
     # except Exception as e:
     #     print(e)
-    #     tags = []
+    #     feedbacks = []
 
-    # return tags
+    # return feedbacks
 
     return ""
 
