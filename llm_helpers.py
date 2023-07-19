@@ -216,7 +216,6 @@ def apply_feedback(question, answers, rubrics):
 
     msgs = [{"role": "system", "content": system_prompt}, {"role": "user", "content": user_prompt}]
     response = prompt_gpt4(msgs)
-    print(response)
 
     try:
         feedbacks = json.loads(response)

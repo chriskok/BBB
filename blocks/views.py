@@ -277,7 +277,6 @@ def rubric_feedback(request, q_id):
     # Check if there is already feedback for this question. If not, create them. 
     if not AnswerFeedback.objects.filter(question_id=q_id).exists():
         feedbacks = llmh.apply_feedback(current_question_obj, outlier_examples, rubric_list)
-        print(feedbacks)
         for ans_id in feedbacks:
             feedback_dict = feedbacks[ans_id]
             reasoning_dict = feedback_dict['associations']
