@@ -210,25 +210,21 @@ def apply_feedback(question, answers, rubrics):
 
     {"answer_id": {
         "feedback": "<constructive and helpful feedback that you'd give the student based on the rubrics attached to the answer - try to understand the internal needs of the student instead of just saying what is missing from the answer>",
-        "associations": [<list of tuples that are a 4-7 words from the answer and 4-7 words from the feedback. Can be one or more. This is meant to show association between which part of the answer was commented upon>],
+        "associations": [<list of dicts in the format: {"answer_highlight": "<4-7 words from the answer>", "feedback_highlight": "<4-7 words from the feedback>"}. Can be one or more. This is meant to show association between which part of the answer was commented upon>],
     }, ...}
     """
 
-    # TODO: actually use this with GPT!
+    msgs = [{"role": "system", "content": system_prompt}, {"role": "user", "content": user_prompt}]
+    response = prompt_gpt4(msgs)
+    print(response)
 
-    # msgs = [{"role": "system", "content": system_prompt}, {"role": "user", "content": user_prompt}]
+    try:
+        feedbacks = json.loads(response)
+    except Exception as e:
+        print(e)
+        feedbacks = []
 
-    # response = prompt_gpt4(msgs)
-
-    # try:
-    #     feedbacks = json.loads(response)
-    # except Exception as e:
-    #     print(e)
-    #     feedbacks = []
-
-    # return feedbacks
-
-    return ""
+    return feedbacks
 
 def main():
     response = prompt_gpt4([{"role": "system", "content": "You are a wise professor in HCI"}, {"role": "user", "content": "Give your students your top 3 tips for success in this class."}])

@@ -2,6 +2,7 @@ import re
 import pandas as pd
 import json
 import csv
+import datetime
 
 from django.shortcuts import render, get_object_or_404, redirect
 from django.urls import reverse, reverse_lazy
@@ -273,19 +274,21 @@ def rubric_feedback(request, q_id):
             # outlier_examples.append(curr_bin.order_by('?').first())
             outlier_examples.append(curr_bin.first())
     
-    # TODO: Check if there is already feedback for this question. If not, create them. 
+    # Check if there is already feedback for this question. If not, create them. 
     if not AnswerFeedback.objects.filter(question_id=q_id).exists():
         feedbacks = llmh.apply_feedback(current_question_obj, outlier_examples, rubric_list)
-    #     for ans_id in feedbacks:
-    #         feedback_dict = feedbacks[ans_id]
-    #         reasoning_dict = feedback_dict['associations']
-    #         AnswerFeedback.objects.create(question_id=q_id, answer_id=int(ans_id), feedback=feedback_dict['feedback'], reasoning_dict=json.dumps(reasoning_dict))
-    #     ans_feedbacks = AnswerFeedback.objects.filter(question_id=q_id)
-    # else:
-    #     ans_feedbacks = AnswerFeedback.objects.filter(question_id=q_id)
+        print(feedbacks)
+        for ans_id in feedbacks:
+            feedback_dict = feedbacks[ans_id]
+            reasoning_dict = feedback_dict['associations']
+            AnswerFeedback.objects.create(question_id=q_id, answer_id=int(ans_id), feedback=feedback_dict['feedback'], reasoning_dict=json.dumps(reasoning_dict))
+        ans_feedbacks = AnswerFeedback.objects.filter(question_id=q_id)
+    else:
+        ans_feedbacks = AnswerFeedback.objects.filter(question_id=q_id)
 
     # TODO: use feedback objects similarly to the refinement page above
     # for each feedback object get the answer to display, display the feedback and the rubric tags too
+    # also add button for regenerating the next 10
     context = {
         "question_obj": current_question_obj,
         "question_exam_id": q_id,
@@ -345,6 +348,8 @@ def rubric_tagging(request, q_id):
 
 def combv5_reset_view(request, question_id=None):
 
+    # TODO: Include rubric lists?
+
     tags = None
     feedbacks = None
 
@@ -355,12 +360,21 @@ def combv5_reset_view(request, question_id=None):
         tags = AnswerTag.objects.all()
         feedbacks = AnswerFeedback.objects.all()
 
-    # TODO: save all the tags and feedback into a txt file or something --> into the results/demo_data folder
+    # save all the tags and feedback into a txt file  --> into the results/demo_data folder with the current time stamp
+    timestamp = datetime.datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
+    if (tags):
+        with open(f'results/demo_data/tags_{timestamp}.txt', 'w') as f:
+            for tag in tags:
+                f.write(f'{tag.question_id}: {tag.tag} - {tag.answer.answer_text}\n{tag.reasoning_dict}\n\n')
+    
+    if (feedbacks):
+        with open(f'results/demo_data/feedbacks_{timestamp}.txt', 'w') as f:
+            for feedback in feedbacks:
+                f.write(f'{feedback.question_id}: {feedback.answer.answer_text}\n{feedback.feedback},{feedback.reasoning_dict}\n\n')
 
-    print(f'DELETING: {tags}')
-    # # delete all
-    # tags.delete()
-    # feedbacks.delete()
+    # delete all
+    tags.delete()
+    feedbacks.delete()
 
     return JsonResponse({'message': "System Reset!"}) 
 
