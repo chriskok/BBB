@@ -285,15 +285,22 @@ def rubric_feedback(request, q_id):
     else:
         ans_feedbacks = AnswerFeedback.objects.filter(question_id=q_id)
 
-    # TODO: use feedback objects similarly to the refinement page above
-    # for each feedback object get the answer to display, display the feedback and the rubric tags too
-    # also add button for regenerating the next 10
+    # make dictionary of R<number>: <rubric> for each rubric
+    rubric_dict = {}
+    for rubric in rubric_list:
+        if rubric["id"] == 0: continue
+        rubric_tag = "R{}".format(rubric["id"])
+        rubric_dict[rubric_tag] = rubric["title"]
+
     context = {
         "question_obj": current_question_obj,
         "question_exam_id": q_id,
         "question_list": q_list,
         "answers": outlier_examples,
         "answer_count": answer_count,
+        "rubric_list": rubric_list,
+        "rubric_dict": rubric_dict,
+        "ans_feedbacks": {x.answer_id: x.get_reasoning_dict() for x in ans_feedbacks},
     }
 
     return render(request, "rubric_feedback.html", context)

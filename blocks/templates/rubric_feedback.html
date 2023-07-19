@@ -34,8 +34,9 @@
 
 {% comment %} Iterate through each answer and make a container containing a card for the answer text {% endcomment %}
 {% for answer in answers %}
+{% with feedback=answer.answerfeedback_set.all.first %}
 <div class="row mb-5">
-    <div class="col-4">
+    <div class="col-6">
         <div class="card">
             <div class="card-body">
                 <h5 class="card-title">Answer {{ forloop.counter }}</h5>
@@ -44,43 +45,31 @@
         </div>
     </div>
 
-    <div class="col-8">
-        <form class="form">
-            <div class="form-group">
-                <div class="row">
-                    <div class="col-6">
-                        <h5>Rubrics:</h5>
-                        <label for="r1_{{answer.id}}" id="label_r1_{{answer.id}}">Rubric 1:</label>
-                        <input type="range" id="r1_{{answer.id}}" name="r1_{{answer.id}}" min="0" max="1" step="0.5" value="1" class="form-control-range" oninput="updateSliderValue(this, 'r1_{{answer.id}}')">
-                        <label for="r2_{{answer.id}}" id="label_r2_{{answer.id}}">Rubric 2:</label>
-                        <input type="range" id="r2_{{answer.id}}" name="r2_{{answer.id}}" min="0" max="1" step="0.5" value="0" class="form-control-range" oninput="updateSliderValue(this, 'r2_{{answer.id}}')">
-                        <label for="r3_{{answer.id}}" id="label_r3_{{answer.id}}">Rubric 3:</label>
-                        <input type="range" id="r3_{{answer.id}}" name="r3_{{answer.id}}" min="0" max="1" step="0.5" value="0.5" class="form-control-range" oninput="updateSliderValue(this, 'r3_{{answer.id}}')">
-                    </div>
-                    <div class="col-6">
-                        <div class="row">
-                            <div class="col-6">
-                                <h5>Feedback:</h5>
-                            </div>
-                            <div class="col-6">
-                                <div class="btn-group btn-group-sm float-right" role="group" aria-label="Basic example">
-                                    <button type="button" class="btn btn-secondary">Edit</button>
-                                    <button type="button" class="btn btn-secondary">Regenerate</button>
-                                </div>
-                            </div>
-                        </div>
-                        <p id="feedbacktext_{{answer.id}}">{% lorem 1 b random %}</p>
-                        {% comment %} <label for="reasoning">Reasoning:</label>
-                        <textarea id="reasoning" name="reasoning" rows="1" cols="50" class="form-control" placeholder="Enter reasoning..."></textarea>
-                        <label for="highlighted-text">Highlighted Text:</label>
-                        <textarea id="highlighted-text_{{answer.id}}_1" name="highlighted-text_{{answer.id}}_1" rows="1" cols="50" class="form-control" placeholder="Enter highlighted text...">{% get_words answer.answer_text 4 True as words %}{{ words }}</textarea> {% endcomment %}
-                    </div>
+    <div class="col-6">
+        <div class="row">
+            <div class="col-6">
+                <h5>Feedback:</h5>
+            </div>
+            <div class="col-6">
+                <div class="btn-group btn-group-sm float-right" role="group" aria-label="Basic example">
+                    <button type="button" class="btn btn-secondary">Edit</button>
+                    <button type="button" class="btn btn-secondary">Regenerate</button>
                 </div>
             </div>
-        </form>          
+        </div>
+        <p id="feedbacktext_{{answer.id}}">{{feedback.feedback}}</p>
+        <h5>Rubrics:</h5>
+        {% for tag in answer.answertag_set.all %}
+            {% comment %} <li>{{tag.tag}} - {{ rubric_dict|get_item:tag.tag }} (relevance: {{ tag|get_tagdict_item:"relevancy" }}
+                {% if tag|get_tagdict_item:"relevancy" != "0" %}, reason: {{ tag|get_tagdict_item:"reasoning" }}{%endif%})</li> {% endcomment %}
+            {% if tag|get_tagdict_item:"relevancy" != "0" %}
+                <li><b>{{tag.tag}}</b> - {{ rubric_dict|get_item:tag.tag }} (relevance: {{ tag|get_tagdict_item:"relevancy" }}, reason: {{ tag|get_tagdict_item:"reasoning" }})</li>
+            {%endif%}
+        {% endfor %}
     </div>
 </div>
 
+{% endwith %}
 {% endfor %}
 
 <style>
@@ -90,58 +79,50 @@
 </style>
 
 <script>
+    ans_feedbacks = {{ ans_feedbacks|safe }};
+
     $(document).ready(function () {
-        // get all sliders and update slider values
-        var sliders = document.querySelectorAll('input[type="range"]');
-        sliders.forEach(function(slider) {
-            updateSliderValue(slider, slider.id);
-        });
 
-        // get all feedback textareas, select a substring at random and add an onmouseover call for highlighting a word in the anstext_{{answer.id}} element
-        var feedbackTextareas = document.querySelectorAll('[id^="feedbacktext"]');
-        feedbackTextareas.forEach(function(textarea) {
-            var anstextId = textarea.id.split("_")[1];
-            var anstext = document.getElementById("anstext_" + anstextId);
-            var anstextWords = anstext.innerHTML.split(" ");
+        // highlight function
+        function highlight(text, search) {
+            var re = new RegExp(search, "gi");
+            return text.replace(re, "<span class='highlight'>" + search + "</span>");
+        }
 
-            // select a random word from the textarea
-            var randomWord = textarea.innerHTML.split(" ")[Math.floor(Math.random() * textarea.innerHTML.split(" ").length)];
-            // create a link from this word
-            var randomWordLink = "<a href=\"#\" id=\"randomWordLink_" + anstextId + "\">" + randomWord + "</a>";
-            // replace the word in the textarea with the link
-            textarea.innerHTML = textarea.innerHTML.replace(randomWord, randomWordLink);
-            // get the link element
-            var randomWordLinkElement = document.getElementById("randomWordLink_" + anstextId);
-
-            // select a random word from the answer text
-            var randomWord = anstextWords[Math.floor(Math.random() * anstextWords.length)];
-            var randomWordIndex = anstextWords.indexOf(randomWord);
-            var randomWordLength = randomWord.length;
-            var randomWordStart = anstext.innerHTML.indexOf(randomWord);
-            var randomWordEnd = randomWordStart + randomWordLength;
-            var randomWordSubstring = anstext.innerHTML.substring(randomWordStart, randomWordEnd);
-            var randomWordHighlighted = "<span class=\"highlight\">" + randomWordSubstring + "</span>";
-
-            randomWordLinkElement.onmouseover = function() {
-                anstext.innerHTML = anstext.innerHTML.replace(randomWordSubstring, randomWordHighlighted);
+        function attachMouseover(link, answer, answer_highlight, answer_highlighted) {
+            link.onmouseover = function() {
+                answer.innerHTML = answer.innerHTML.replace(answer_highlight, answer_highlighted);
             }
-            randomWordLinkElement.onmouseout = function() {
-                // remove all highlights from anstext
-                anstext.innerHTML = anstext.innerHTML.replace(randomWordHighlighted, randomWordSubstring);
+            link.onmouseout = function() {
+                answer.innerHTML = answer.innerHTML.replace(answer_highlighted, answer_highlight);
             }
-        });
+        }
+
+        // for each item in ans_feedbacks dict...
+        for (var key in ans_feedbacks) {
+            if (ans_feedbacks.hasOwnProperty(key)) {
+                associations = ans_feedbacks[key];
+                // iterate through each association (list of dicts)
+                for (var i = 0; i < associations.length; i++) {
+                    // each dict has "answer_highlight" and "feedback_highlight" keys, use these to highlight the answer and feedback for the current answer id
+                    var answer_highlight = associations[i]["answer_highlight"];
+                    var feedback_highlight = associations[i]["feedback_highlight"];
+
+                    var anstext_el = document.getElementById("anstext_" + key);
+                    var feedbacktext_el = document.getElementById("feedbacktext_" + key);
+
+                    // create a link from this word
+                    var feedback_highlight_link = "<a href=\"#\" id=\"feedback_link" + key + "\">" + feedback_highlight + "</a>";
+                    feedbacktext_el.innerHTML = feedbacktext_el.innerHTML.replace(feedback_highlight, feedback_highlight_link);
+                    var feedback_link_el = document.getElementById("feedback_link" + key);
+                    var answer_highlighted = "<span class=\"highlight\">" + answer_highlight + "</span>";
+
+                    attachMouseover(feedback_link_el, anstext_el, answer_highlight, answer_highlighted);
+                }
+            }
+        }
+
     })
-
-    function updateSliderValue(slider, sliderId) {
-        var sliderValue = slider.value;
-        var sliderLabel = document.getElementById("label_" + sliderId);
-        var rubricNum = sliderId.split("_")[0][1];
-        sliderLabel.innerHTML = "Rubric " + rubricNum + ":";
-
-        if (sliderValue == 0){ sliderLabel.innerHTML += " No Relevance"; }
-        else if (sliderValue == 0.5){ sliderLabel.innerHTML += " Partial Relevance"; }
-        else if (sliderValue == 1){ sliderLabel.innerHTML += " Full Relevance"; }
-    }
 
 </script>
 
