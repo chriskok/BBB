@@ -343,27 +343,24 @@ def rubric_tagging(request, q_id):
 
     return render(request, "rubric_tagging.html", context)
 
-# TODO: make reset for answer tags and answer feedback instead --> ALSO save the output that was used previously. 
 def combv5_reset_view(request, question_id=None):
 
-    # # get specific answers for the current question
-    # chosen_answers = Answer.objects.filter(question_id=question_id).all() if question_id else Answer.objects.all()
-    # chosen_answers.update(rule_strings="[]") 
-    # chosen_answers.update(override_grade=None)  # remove previous overriden grade and feedback
-    # chosen_answers.update(override_feedback=None)
-    # chosen_answers.update(cluster=None)
+    tags = None
+    feedbacks = None
 
-    # # delete all clusters
-    # if (question_id): Cluster.objects.filter(question_id=question_id).all().delete()
-    # else: Cluster.objects.all().delete()
+    if (question_id): 
+        tags = AnswerTag.objects.filter(question_id=question_id).all()
+        feedbacks = AnswerFeedback.objects.filter(question_id=question_id).all()
+    else: 
+        tags = AnswerTag.objects.all()
+        feedbacks = AnswerFeedback.objects.all()
 
-    # # delete all rules for the current question, iteratively - if not, the deletions will have a foreign key constraint error
-    # rules = Rule.objects.filter(question_id=question_id).all() if question_id else Rule.objects.all()
-    # while rules:
-    #     non_parent_rules = rules.filter(rule=None)
-    #     for rule in non_parent_rules:
-    #         rule.delete()
-    #     rules = Rule.objects.filter(question_id=question_id).all() if question_id else Rule.objects.all()
+    # TODO: save all the tags and feedback into a txt file or something --> into the results/demo_data folder
+
+    print(f'DELETING: {tags}')
+    # # delete all
+    # tags.delete()
+    # feedbacks.delete()
 
     return JsonResponse({'message': "System Reset!"}) 
 

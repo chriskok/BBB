@@ -14,7 +14,8 @@
       <a class="nav-item nav-link {% if request.resolver_match.url_name == 'building_blocks' %}active{% endif %}" href="{% url 'building_blocks' 1 %}">Comb</a>
       <a class="nav-item nav-link {% if request.resolver_match.url_name == 'rubric_creation' %}active{% endif %}" href="{% url 'rubric_creation' 1 %}">Comb LLM</a>
       <a class="nav-item nav-link {% if request.resolver_match.url_name == 'chatgpt' %}active{% endif %}" href="{% url 'chatgpt' 1 %}">ChatGPT</a>
-      <a class="nav-item nav-link" role="button" data-toggle="modal" data-target="#ResetModal">System Reset</a>
+      <a class="nav-item nav-link" role="button" data-toggle="modal" data-target="#CombResetModal">Comb Reset</a>
+      <a class="nav-item nav-link" role="button" data-toggle="modal" data-target="#CombLLMResetModal">CombLLM Reset</a>
       <a class="nav-item nav-link" href="/admin">Admin Panel</a>
       {% comment %} <a class="nav-item nav-link active" href="{% url 'logout' %}">Log Out</a> {% endcomment %}
     </div>
@@ -22,11 +23,11 @@
 </nav>
 
   <!-- System Reset Modal -->
-<div class="modal fade" id="ResetModal" tabindex="-1" role="dialog" aria-labelledby="ResetModalLabel" aria-hidden="true">
+<div class="modal fade" id="CombResetModal" tabindex="-1" role="dialog" aria-labelledby="CombResetModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
       <div class="modal-content" id="navbar_modal_content">
           <div class="modal-header">
-            <h5 class="modal-title" id="ResetModalLabel">System Reset</h5>
+            <h5 class="modal-title" id="CombResetModalLabel">Comb Reset</h5>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
             </button>
@@ -48,3 +49,32 @@
       </div>
   </div>
 </div>
+
+
+  <!-- Comb LLM Reset Modal -->
+  <div class="modal fade" id="CombLLMResetModal" tabindex="-1" role="dialog" aria-labelledby="CombLLMResetModal" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content" id="navbar_modal_content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="CombLLMResetModalLabel">CombLLM Reset</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <p id="start_clustering_prompt">
+                Are you sure you want to remove all tags and feedback?
+              </p>
+            </div>
+            <div class="modal-footer" >
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <a type="button" class="btn btn-danger" href="#" hx-get="{% url 'combv5_reset' %}" 
+                  hx-swap="none" hx-trigger="click" onClick="setTimeout(function(){window.location.reload()}, 150);">Remove All</a>
+                {% if question_exam_id %}
+                <a type="button" class="btn btn-warning" href="#" hx-get="{% url 'combv5_reset' question_exam_id %}" 
+                  hx-swap="none" hx-trigger="click" onClick="setTimeout(function(){window.location.reload()}, 150);">This Question</a>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+  </div>

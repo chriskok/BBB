@@ -13,6 +13,8 @@ urlpatterns = [
     path('update_answer_tag/', views.update_answer_tag, name='update_answer_tag'),      # non-page
     path('rubric_feedback/<int:q_id>', views.rubric_feedback, name='rubric_feedback'),
     path('rubric_tagging/<int:q_id>', views.rubric_tagging, name='rubric_tagging'),
+    path('combv5_reset/', views.combv5_reset_view, name='combv5_reset'),                            # non-page
+    path('combv5_reset/<int:question_id>', views.combv5_reset_view, name='combv5_reset'),           # non-page
 
     # BUILDING BLOCKS
     path('rule_suggestions/<int:q_id>', views.rule_suggestions, name='rule_suggestions'),            # non-page
