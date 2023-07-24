@@ -82,37 +82,6 @@
                 </div>
             </div>
             <div id="positive_rubric_list"></div>
-
-            {% comment %}
-            {% for rubric in rubric_list %}
-            {% if rubric.id == 0 and rubric.polarity == "positive" %}
-            <div class="card" id="suggested_positive_{{forloop.counter}}" style="border-style: dashed; border-width: 4px;">
-                <div class="card-body" id="suggested_positive_heading_{{forloop.counter}}">
-                    <div class="row">
-                        <div class="col-8">
-                            <h5 class="mb-0">
-                                <button class="btn btn-link text-left" data-toggle="collapse" data-target="#suggested_positive_collapse{{forloop.counter}}" aria-expanded="true" aria-controls="suggested_positive_collapse{{forloop.counter}}" >
-                                Suggested: {{ rubric.title }}
-                                </button>
-                            </h5>
-                        </div>
-
-                        <div class="col-4">
-                            <div class="btn-group btn-group-sm float-right" role="group" aria-label="Basic example">
-                                <button type="button" class="btn btn-secondary">Add</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            
-                <div id="suggested_positive_collapse{{forloop.counter}}" class="collapse" aria-labelledby="suggested_positive_heading_{{forloop.counter}}">
-                <div class="card-body"  id="rubricbody_{{rubric.id}}">
-                    <p>Description: {{ rubric.description }}</p>
-                </div>
-                </div>
-            </div>
-            {% endif %}
-            {% endfor %} {% endcomment %}
             
             <div class="row mt-4 mb-2">
                 <div class="col-8">
@@ -123,36 +92,7 @@
                 </div>
             </div>
             <div id="negative_rubric_list"></div>
-            {% comment %}
-            {% for rubric in rubric_list %}
-            {% if rubric.id == 0 and rubric.polarity == "negative" %}
-            <div class="card" id="suggested_negative_{{forloop.counter}}" style="border-style: dashed; border-width: 4px;">
-                <div class="card-body" id="suggested_negative_heading_{{forloop.counter}}">
-                    <div class="row">
-                        <div class="col-8">
-                            <h5 class="mb-0">
-                                <button class="btn btn-link text-left" data-toggle="collapse" data-target="#suggested_negative_collapse{{forloop.counter}}" aria-expanded="true" aria-controls="suggested_negative_collapse{{forloop.counter}}" >
-                                Suggested: {{ rubric.title }}
-                                </button>
-                            </h5>
-                        </div>
-
-                        <div class="col-4">
-                            <div class="btn-group btn-group-sm float-right" role="group" aria-label="Basic example">
-                                <button type="button" class="btn btn-secondary">Add</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
             
-                <div id="suggested_negative_collapse{{forloop.counter}}" class="collapse" aria-labelledby="suggested_negative_heading_{{forloop.counter}}">
-                <div class="card-body"  id="rubricbody_{{rubric.id}}">
-                    <p>Description: {{ rubric.description }}</p>
-                </div>
-                </div>
-            </div>
-            {% endif %}
-            {% endfor %} {% endcomment %}
         </div>
     </div> 
 </div>
@@ -180,21 +120,55 @@
         });
     }
 
+    function get_highest_rubric_id(){
+        var highest_id = 0;
+        rubric_list.forEach(function(item) {
+            if (item.id > highest_id) {
+                highest_id = item.id;
+            }
+        });
+        return highest_id;
+    }
+
+    function add_new_rubric_item(polarity, rubric_dict= null){
+        var highest_id = get_highest_rubric_id();
+        var rubric_id = highest_id + 1;
+
+        if (rubric_dict){
+            new_rubric_dict = rubric_dict
+            new_rubric_dict.id = rubric_id;
+            //rubric_list.push(new_rubric_dict);
+        } else {
+            new_rubric_dict = {
+                "id": rubric_id,
+                "title": "N/A",
+                "description": "N/A",
+                "polarity": polarity,
+                "reasoning_dict": {}
+            }
+            rubric_list.push(new_rubric_dict);
+        }
+
+        update_rubric_list();
+        return new_rubric_dict
+    }
+
     function add_rubric_item(rubric_dict){
         // get polarity
         var polarity = rubric_dict.polarity;
         // get element to append to
         var rubric_list = document.getElementById(polarity + "_rubric_list");
+        var rubric_id = rubric_dict.id;
 
         const cardDiv = document.createElement("div");
         cardDiv.classList.add("card");
-        cardDiv.id = "rubric_" + rubric_dict.id;
+        cardDiv.id = "rubric_" + rubric_id;
         cardDiv.setAttribute("ondrop", "drop(event)");
         cardDiv.setAttribute("ondragover", "allowDrop(event)");
       
         const cardHeaderDiv = document.createElement("div");
         cardHeaderDiv.classList.add("card-header");
-        cardHeaderDiv.id = "rubricheading_" + rubric_dict.id;
+        cardHeaderDiv.id = "rubricheading_" + rubric_id;
       
         const rowDiv = document.createElement("div");
         rowDiv.classList.add("row");
@@ -207,10 +181,10 @@
         const button = document.createElement("button");
         button.classList.add("btn", "btn-link", "text-left");
         button.setAttribute("data-toggle", "collapse");
-        button.setAttribute("data-target", "#collapse" + rubric_dict.id);
+        button.setAttribute("data-target", "#collapse" + rubric_id);
         button.setAttribute("aria-expanded", "true");
-        button.setAttribute("aria-controls", "collapse" + rubric_dict.id);
-        button.textContent = "Rubric #" + rubric_dict.id + ": " + rubric_dict.title;
+        button.setAttribute("aria-controls", "collapse" + rubric_id);
+        button.textContent = "Rubric #" + rubric_id + ": " + rubric_dict.title;
         h5.appendChild(button);
         col8Div.appendChild(h5);
       
@@ -238,13 +212,13 @@
         cardHeaderDiv.appendChild(rowDiv);
       
         const collapseDiv = document.createElement("div");
-        collapseDiv.id = "collapse" + rubric_dict.id;
+        collapseDiv.id = "collapse" + rubric_id;
         collapseDiv.classList.add("collapse");
-        collapseDiv.setAttribute("aria-labelledby", "rubricheading_" + rubric_dict.id);
+        collapseDiv.setAttribute("aria-labelledby", "rubricheading_" + rubric_id);
       
         const cardBodyDiv = document.createElement("div");
         cardBodyDiv.classList.add("card-body");
-        cardBodyDiv.id = "rubricbody_" + rubric_dict.id;
+        cardBodyDiv.id = "rubricbody_" + rubric_id;
         cardBodyDiv.innerHTML = "<p>Description: " + rubric_dict.description + "</p>";
       
         collapseDiv.appendChild(cardBodyDiv);
@@ -299,6 +273,20 @@
         addButton.setAttribute("type", "button");
         addButton.classList.add("btn", "btn-secondary");
         addButton.textContent = "Add";
+
+        // attach event listener to Add button to remove current div and add to rubric list as new
+        addButton.addEventListener("click", function() {
+            // remove current div
+            var card_to_remove = document.getElementById("suggested_negative_" + forloopCounter);
+            card_to_remove.parentNode.removeChild(card_to_remove);
+
+            // add to rubric list
+            new_rubric_dict = add_new_rubric_item(polarity, rubric_dict);
+
+            // add to rubric list
+            add_rubric_item(new_rubric_dict);
+        });
+
         btnGroup.appendChild(addButton);
         col4Div.appendChild(btnGroup);
 
