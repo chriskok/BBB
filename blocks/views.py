@@ -25,11 +25,11 @@ from .tables import *
 from .colors import colors
 
 import warnings
-warnings.filterwarnings("ignore")     
+warnings.filterwarnings("ignore") 
 
 #############################################
 #                  COMB V5                  #
-#############################################
+############################################# 
 
 def check_suggestions(rubric_obj, current_question_obj, outlier_examples):
 
@@ -235,7 +235,8 @@ def rubric_refinement(request, q_id):
     for rubric in rubric_list:
         if rubric["id"] == 0: continue
         rubric_tag = "R{}".format(rubric["id"])
-        rubric_dict[rubric_tag] = rubric["title"]
+        polarity_emoji = "✔" if rubric["polarity"] == "positive" else "✘"
+        rubric_dict[rubric_tag] = polarity_emoji + " " + rubric["title"]
 
     context = {
         "question_obj": current_question_obj,
@@ -269,6 +270,19 @@ def update_answer_tag(request):
     else:
         message = 'update failed'
     return HttpResponse(message)
+
+def update_feedback(request, feedback_id):
+    if request.method == 'POST':
+        new_feedback = json.loads(request.POST.get("new_feedback", None)) 
+        feedback_obj = AnswerFeedback.objects.filter(id=new_feedback['feedback_id']).first()
+        feedback_obj.feedback = new_feedback['feedback']
+        new_reasoning_dict = [{"answer_highlight": new_feedback['answer_highlight'], "feedback_highlight": new_feedback['feedback_highlight']}]
+        feedback_obj.set_reasoning_dict(new_reasoning_dict)
+        feedback_obj.save()
+        message = 'update successful'
+    else:
+        message = 'update failed'
+    return HttpResponse(message)  
 
 def rubric_feedback(request, q_id):
     q_list = Question.objects.extra(select={'sorted_num': 'CAST(question_exam_id AS FLOAT)'}).order_by('sorted_num')
@@ -314,7 +328,21 @@ def rubric_feedback(request, q_id):
     for rubric in rubric_list:
         if rubric["id"] == 0: continue
         rubric_tag = "R{}".format(rubric["id"])
-        rubric_dict[rubric_tag] = rubric["title"]
+        polarity_emoji = "✔" if rubric["polarity"] == "positive" else "✘"
+        rubric_dict[rubric_tag] = polarity_emoji + " " + rubric["title"]
+
+    def format_ans_feedback(x):
+
+        current_dict = x.get_reasoning_dict()[0]
+
+        return [{
+            "answer_id": x.answer.id,
+            "answer_text": x.answer.answer_text,
+            "answer_highlight": current_dict['answer_highlight'],
+            "feedback_id": x.id,
+            "feedback": x.feedback,
+            "feedback_highlight": current_dict['feedback_highlight'],
+        }]
 
     context = {
         "question_obj": current_question_obj,
@@ -324,7 +352,7 @@ def rubric_feedback(request, q_id):
         "answer_count": answer_count,
         "rubric_list": rubric_list,
         "rubric_dict": rubric_dict,
-        "ans_feedbacks": {x.answer_id: x.get_reasoning_dict() for x in ans_feedbacks},
+        "ans_feedbacks": {x.answer_id: format_ans_feedback(x) for x in ans_feedbacks},
     }
 
     return render(request, "rubric_feedback.html", context)

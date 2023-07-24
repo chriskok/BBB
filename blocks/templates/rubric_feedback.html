@@ -47,18 +47,14 @@
 
     <div class="col-6">
         <div class="row">
-            <div class="col-6">
-                <h5>Feedback:</h5>
+            <div class="col-10">
+                <h4 id="feedbacktext_{{answer.id}}" style="color: lightseagreen">{{feedback.feedback}}</h4>
             </div>
-            <div class="col-6">
-                <div class="btn-group btn-group-sm float-right" role="group" aria-label="Basic example">
-                    <button type="button" class="btn btn-secondary">Edit</button>
-                    <button type="button" class="btn btn-secondary">Regenerate</button>
-                </div>
+            <div class="col-2">
+                <button type="button" id="feedbackedit_{{answer.id}}" class="btn btn-secondary btn-sm btn-block" onclick="edit_feedback({{answer.id}}, {{feedback.id}})">Edit</button>
+                <button type="button" id="feedbackregen_{{answer.id}}" class="btn btn-secondary btn-sm btn-block">Regen</button>
             </div>
         </div>
-        <p id="feedbacktext_{{answer.id}}">{{feedback.feedback}}</p>
-        <h5>Rubrics:</h5>
         {% for tag in answer.answertag_set.all %}
             {% comment %} <li>{{tag.tag}} - {{ rubric_dict|get_item:tag.tag }} (relevance: {{ tag|get_tagdict_item:"relevancy" }}
                 {% if tag|get_tagdict_item:"relevancy" != "0" %}, reason: {{ tag|get_tagdict_item:"reasoning" }}{%endif%})</li> {% endcomment %}
@@ -72,14 +68,50 @@
 {% endwith %}
 {% endfor %}
 
+<!-- Modal for editing feedback -->
+<div class="modal fade" id="editingModal" tabindex="-1" role="dialog" aria-labelledby="editingModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="editingModalLabel">Editing Feedback</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <p id="answer-text"> </p>
+                    <div class="form-group">
+                        <label for="feedback-text" class="col-form-label">Answer Highlight:</label>
+                        <textarea class="form-control" id="answer-highlight"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="feedback-text" class="col-form-label">Feedback:</label>
+                        <textarea rows="4" class="form-control" id="feedback-text"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="feedback-text" class="col-form-label">Feedback Highlight:</label>
+                        <textarea class="form-control" id="feedback-highlight"></textarea>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Update</button>
+            </div>
+        </div>
+    </div>
+</div>
+
 <style>
     .highlight {
-        background-color: yellow;
+        background-color: palegreen;
     }
 </style>
 
 <script>
     ans_feedbacks = {{ ans_feedbacks|safe }};
+    console.log(ans_feedbacks);
 
     $(document).ready(function () {
 
@@ -124,6 +156,50 @@
         }
 
     })
+
+    function update_feedback(new_feedback_dict) {
+        console.log(new_feedback_dict);
+        var feedback_id = new_feedback_dict["feedback_id"];
+
+        $.ajax({
+            url: "{% url 'update_feedback'%}" + feedback_id,
+            data: {csrfmiddlewaretoken: "{{ csrf_token }}", 'new_feedback':  JSON.stringify(new_feedback_dict)},
+            dataType: "json",
+            type: 'POST',
+        }).done(function(response){
+            console.log(response);
+        });
+    }
+
+    function edit_feedback(answer_id, feedback_id) {
+        // get the current answer data from ans_feedbacks
+        var answer_data = ans_feedbacks[answer_id][0];
+
+        // fill the current modal
+        var answer_text_el = document.getElementById("answer-text");
+        var answer_highlight_el = document.getElementById("answer-highlight");
+        var feedback_el = document.getElementById("feedback-text");
+        var feedback_highlight_el = document.getElementById("feedback-highlight");
+        answer_text_el.innerHTML = answer_data["answer_text"];
+        answer_highlight_el.innerHTML = answer_data["answer_highlight"];
+        feedback_el.innerHTML = answer_data["feedback"];
+        feedback_highlight_el.innerHTML = answer_data["feedback_highlight"];
+
+        // attach event listener to update button
+        var update_btn = document.getElementsByClassName("btn btn-primary")[0];
+        update_btn.onclick = function() {
+            var new_feedback = feedback_el.value;
+            var new_feedback_highlight = feedback_highlight_el.value;
+            var new_answer_highlight = answer_highlight_el.value;
+
+            new_feedback_dict = { "feedback": new_feedback, "feedback_highlight": new_feedback_highlight, "answer_highlight": new_answer_highlight, "answer_id": answer_id, "feedback_id": feedback_id };
+            update_feedback(new_feedback_dict);
+
+            location.reload();
+        }
+
+        $('#editingModal').modal('show');
+    }
 
 </script>
 
