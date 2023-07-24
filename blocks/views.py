@@ -25,11 +25,33 @@ from .tables import *
 from .colors import colors
 
 import warnings
-warnings.filterwarnings("ignore")    
+warnings.filterwarnings("ignore")     
 
 #############################################
 #                  COMB V5                  #
 #############################################
+
+def check_suggestions(rubric_obj, current_question_obj, outlier_examples):
+
+    rubric_list = rubric_obj.get_rubric_list()
+
+    # check if Rubric List has any suggestions (id = 0) for positive rubrics 
+    if not any(rubric["id"] == 0 and rubric['polarity'] == "positive" for rubric in rubric_list):
+        new_suggestions = llmh.create_rubric_suggestions(current_question_obj, outlier_examples, rubric_list, "positive")
+        new_rubric_list = rubric_list
+        for rubric in new_suggestions:
+            new_rubric_list.append(rubric)
+        rubric_obj.set_rubric_list(new_rubric_list)
+        rubric_obj.save()
+    
+    # check if Rubric List has any suggestions (id = 0) for negative rubrics 
+    if not any(rubric["id"] == 0 and rubric['polarity'] == "negative" for rubric in rubric_list):
+        new_suggestions = llmh.create_rubric_suggestions(current_question_obj, outlier_examples, rubric_list, "negative")
+        new_rubric_list = rubric_list
+        for rubric in new_suggestions:
+            new_rubric_list.append(rubric)
+        rubric_obj.set_rubric_list(new_rubric_list)
+        rubric_obj.save()
 
 def rubric_creation(request, q_id):
     q_list = Question.objects.extra(select={'sorted_num': 'CAST(question_exam_id AS FLOAT)'}).order_by('sorted_num')
@@ -64,19 +86,21 @@ def rubric_creation(request, q_id):
         examples_dict[answer.id] = answer.answer_text
 
     # check if rubric object exists for this question
-    default_list = [
-        {'id': 1, 'polarity': 'positive', 'title': 'Non-blocking Execution', 'description': 'Clearly states the purpose of asynchronous programming: to send, request, and receive data from a server without blocking other parts of the interface.', 'reasoning_dict': {}},
-        {'id': 2, 'polarity': 'positive', 'title': 'User Interaction and Background Tasks', 'description': 'Highlights the need to allow user interaction with the page/app while certain operations are in progress.', 'reasoning_dict': {}},
-        {'id': 3, 'polarity': 'negative', 'title': 'Reloading the Page', 'description': 'Mentions the need to reload the page when updating it.', 'reasoning_dict': {}},
-        {'id': 4, 'polarity': 'negative', 'title': 'Sequential Execution', 'description': 'Describes the execution of instructions in a strictly sequential manner, without considering concurrent execution.', 'reasoning_dict': {}},
-        {'id': 0, 'polarity': 'positive', 'title': 'Dynamic Web Pages', 'description': 'Emphasizes the capability to update specific parts of a page while keeping other parts unchanged.', 'reasoning_dict': {}},
-        {'id': 0, 'polarity': 'negative', 'title': 'Dependency on Frequent Data Sending', 'description': 'States that asynchronous programming requires frequent data sending for every change.', 'reasoning_dict': {}},
-    ]
+    # default_list = [
+    #     {'id': 1, 'polarity': 'positive', 'title': 'Non-blocking Execution', 'description': 'Clearly states the purpose of asynchronous programming: to send, request, and receive data from a server without blocking other parts of the interface.', 'reasoning_dict': {}},
+    #     {'id': 2, 'polarity': 'positive', 'title': 'User Interaction and Background Tasks', 'description': 'Highlights the need to allow user interaction with the page/app while certain operations are in progress.', 'reasoning_dict': {}},
+    #     {'id': 3, 'polarity': 'negative', 'title': 'Reloading the Page', 'description': 'Mentions the need to reload the page when updating it.', 'reasoning_dict': {}},
+    #     {'id': 4, 'polarity': 'negative', 'title': 'Sequential Execution', 'description': 'Describes the execution of instructions in a strictly sequential manner, without considering concurrent execution.', 'reasoning_dict': {}},
+    #     {'id': 0, 'polarity': 'positive', 'title': 'Dynamic Web Pages', 'description': 'Emphasizes the capability to update specific parts of a page while keeping other parts unchanged.', 'reasoning_dict': {}},
+    #     {'id': 0, 'polarity': 'negative', 'title': 'Dependency on Frequent Data Sending', 'description': 'States that asynchronous programming requires frequent data sending for every change.', 'reasoning_dict': {}},
+    # ]
+    default_list = []
     if not RubricList.objects.filter(question_id=q_id).exists():
         rubric_obj = RubricList.objects.create(question_id=q_id, rubric_list=json.dumps(default_list))
     else:
         rubric_obj = RubricList.objects.filter(question_id=q_id).first()
 
+    check_suggestions(rubric_obj, current_question_obj, outlier_examples)
     rubric_list = rubric_obj.get_rubric_list()
 
     context = {

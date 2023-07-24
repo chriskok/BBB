@@ -164,10 +164,22 @@
         var highest_id = get_highest_rubric_id();
         var rubric_id = highest_id + 1;
 
+        var index = 0;
+        var lowest = 1000;
+        rubric_list.forEach(function(item) {
+            curr_item_idx = rubric_list.indexOf(item)
+            if (item.id == 0 && curr_item_idx < lowest) {
+                index = curr_item_idx;
+                lowest = curr_item_idx;
+            }
+        });
+
         if (rubric_dict){
             new_rubric_dict = rubric_dict
             new_rubric_dict.id = rubric_id;
-            //rubric_list.push(new_rubric_dict);
+
+            // move rubric in list to before any rubrics with id of 0
+            rubric_list.splice(index, 0, rubric_list.splice(rubric_list.indexOf(rubric_dict), 1)[0]);
         } else {
             new_rubric_dict = {
                 "id": rubric_id,
@@ -178,15 +190,6 @@
             }
 
             // add new rubric to rubric_list before any rubrics with id of 0
-            var index = 0;
-            var lowest = 1000;
-            rubric_list.forEach(function(item) {
-                curr_item_idx = rubric_list.indexOf(item)
-                if (item.id == 0 && curr_item_idx < lowest) {
-                    index = curr_item_idx;
-                    lowest = curr_item_idx;
-                }
-            });
             rubric_list.splice(index, 0, new_rubric_dict);
 
             add_rubric_item_element(new_rubric_dict, true);
@@ -402,7 +405,7 @@
             new_rubric_dict = add_new_rubric_item(polarity, rubric_dict);
 
             // add to rubric list
-            add_rubric_item_element(new_rubric_dict);
+            add_rubric_item_element(new_rubric_dict, true);
         });
 
         btnGroup.appendChild(addButton);

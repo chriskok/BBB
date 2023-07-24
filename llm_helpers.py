@@ -86,6 +86,36 @@ def tag_answers(question, answers, rubrics, num_samples=40):
 
     return tags, msgs
 
+def create_rubric_suggestions(question, answers, rubrics, polarity="positive"):
+
+    print(f'Creating new {polarity} rubrics!')
+
+    answers_str = "\n".join(["{}. {}".format(answer.id, answer.answer_text) for i, answer in enumerate(answers)])
+    rubrics_str = "\n\n".join(["- {} (polarity: {}, description: {})".format(rubric["title"], rubric["polarity"], rubric['description']) for i, rubric in enumerate(rubrics) if rubric['id'] != 0])
+    system_prompt = f"""You are an expert instructor for your given course. You've given the short-answer, open-ended question "{question.question_text}" on a recent final exam. You previously created the following rubrics for this question: \n\n{rubrics_str}"""
+
+    user_prompt = """
+    Given the rubrics mentioned and the following student answers (formatted: <answer ID>. <answer>):\n""" + answers_str + """
+
+    Create a set of 2 additional """ + polarity + """ rubrics that are of high quality: mutually exclusive, easily understood, reflective, and encompasses all kinds of answers (even the unseen). For the output, create a comma-separated list of python dictionaries that STRICTLY follow the JSON format:
+
+    [{"id": <always 0 because that's how we identify suggestions>, "polarity": """ + polarity + """, "title": "<short title of the rubric (2-7 words)>", "description": "<longer description of the rubric>", "reasoning_dict": {}}, ...]
+    """
+
+    msgs = [{"role": "system", "content": system_prompt}, {"role": "user", "content": user_prompt}]
+
+    response = prompt_chatgpt(msgs)
+
+    try:
+        suggestions = json.loads(response)
+        for suggestion in suggestions:
+            suggestion["id"] = 0
+    except Exception as e:
+        print(e)
+        suggestions = []
+
+    return suggestions
+
 def apply_rubrics(question, answers, rubrics):
 
     def convert_reasoning_dict(reasoning_dict):
