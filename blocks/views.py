@@ -25,7 +25,7 @@ from .tables import *
 from .colors import colors
 
 import warnings
-warnings.filterwarnings("ignore")
+warnings.filterwarnings("ignore") 
 
 #############################################
 #                  COMB V5                  #
@@ -100,7 +100,7 @@ def update_rubric_list(request, q_id):
         message = 'update successful'
     else:
         message = 'update failed'
-    return HttpResponse(message)
+    return HttpResponse(message)  
 
 def old_rubric_creation(request, q_id):
     q_list = Question.objects.extra(select={'sorted_num': 'CAST(question_exam_id AS FLOAT)'}).order_by('sorted_num')

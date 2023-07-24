@@ -81,37 +81,9 @@
                     <a href="#" class="btn btn-success btn-sm">Add</a>
                 </div>
             </div>
-            {% for rubric in rubric_list %}
-            {% if rubric.id != 0 and rubric.polarity == "positive" %}
-            <div class="card" id="rubric_{{rubric.id}}" ondrop="drop(event)" ondragover="allowDrop(event)">
-                <div class="card-header" id="rubricheading_{{rubric.id}}">
-                    <div class="row">
-                        <div class="col-8">
-                            <h5 class="mb-0">
-                                <button class="btn btn-link text-left" data-toggle="collapse" data-target="#collapse{{rubric.id}}" aria-expanded="true" aria-controls="collapse{{rubric.id}}" >
-                                Rubric #{{rubric.id}}: {{ rubric.title }}
-                                </button>
-                            </h5>
-                        </div>
+            <div id="positive_rubric_list"></div>
 
-                        <div class="col-4">
-                            <div class="btn-group btn-group-sm float-right" role="group" aria-label="Basic example">
-                                <button type="button" class="btn btn-secondary">Edit</button>
-                                <button type="button" class="btn btn-secondary">Delete</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            
-                <div id="collapse{{rubric.id}}" class="collapse {% if rubric.id == 1 %}show{% endif %}" aria-labelledby="rubricheading_{{rubric.id}}" >
-                <div class="card-body"  id="rubricbody_{{rubric.id}}">
-                    <p>Description: {{ rubric.description }}</p>
-                </div>
-                </div>
-            </div>
-            {% endif %}
-            {% endfor %}
-
+            {% comment %}
             {% for rubric in rubric_list %}
             {% if rubric.id == 0 and rubric.polarity == "positive" %}
             <div class="card" id="suggested_positive_{{forloop.counter}}" style="border-style: dashed; border-width: 4px;">
@@ -140,8 +112,7 @@
                 </div>
             </div>
             {% endif %}
-            {% endfor %}
-
+            {% endfor %} {% endcomment %}
             
             <div class="row mt-4 mb-2">
                 <div class="col-8">
@@ -151,42 +122,8 @@
                     <a href="#" class="btn btn-success btn-sm">Add</a>
                 </div>
             </div>
-            {% for rubric in rubric_list %}
-            {% if rubric.id != 0 and rubric.polarity == "negative" %}
-            <div class="card" id="rubric_{{rubric.id}}" ondrop="drop(event)" ondragover="allowDrop(event)">
-                <div class="card-header" id="rubricheading_{{rubric.id}}">
-                    <div class="row">
-                        <div class="col-8">
-                            <h5 class="mb-0">
-                                <button class="btn btn-link text-left" data-toggle="collapse" data-target="#collapse{{rubric.id}}" aria-expanded="true" aria-controls="collapse{{rubric.id}}" >
-                                Rubric #{{rubric.id}}: {{ rubric.title }}
-                                </button>
-                            </h5>
-                        </div>
-
-                        <div class="col-4">
-                            <div class="btn-group btn-group-sm float-right" role="group" aria-label="Basic example">
-                                <button type="button" class="btn btn-secondary">Edit</button>
-                                <button type="button" class="btn btn-secondary">Delete</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            
-                <div id="collapse{{rubric.id}}" class="collapse" aria-labelledby="rubricheading_{{rubric.id}}">
-                <div class="card-body"  id="rubricbody_{{rubric.id}}">
-                    <p>Description: {{ rubric.description }}</p>
-                    {% comment %} <div class="card mb-2">
-                        <div class="card-body">
-                            <p class="card-text">Sample Answer {{rubric.id}}</p>
-                        </div>
-                    </div> {% endcomment %}
-                </div>
-                </div>
-            </div>
-            {% endif %}
-            {% endfor %}
-
+            <div id="negative_rubric_list"></div>
+            {% comment %}
             {% for rubric in rubric_list %}
             {% if rubric.id == 0 and rubric.polarity == "negative" %}
             <div class="card" id="suggested_negative_{{forloop.counter}}" style="border-style: dashed; border-width: 4px;">
@@ -215,7 +152,7 @@
                 </div>
             </div>
             {% endif %}
-            {% endfor %}
+            {% endfor %} {% endcomment %}
         </div>
     </div> 
 </div>
@@ -241,6 +178,151 @@
         }).done(function(response){
             console.log(response);
         });
+    }
+
+    function add_rubric_item(rubric_dict){
+        // get polarity
+        var polarity = rubric_dict.polarity;
+        // get element to append to
+        var rubric_list = document.getElementById(polarity + "_rubric_list");
+
+        const cardDiv = document.createElement("div");
+        cardDiv.classList.add("card");
+        cardDiv.id = "rubric_" + rubric_dict.id;
+        cardDiv.setAttribute("ondrop", "drop(event)");
+        cardDiv.setAttribute("ondragover", "allowDrop(event)");
+      
+        const cardHeaderDiv = document.createElement("div");
+        cardHeaderDiv.classList.add("card-header");
+        cardHeaderDiv.id = "rubricheading_" + rubric_dict.id;
+      
+        const rowDiv = document.createElement("div");
+        rowDiv.classList.add("row");
+      
+        const col8Div = document.createElement("div");
+        col8Div.classList.add("col-8");
+      
+        const h5 = document.createElement("h5");
+        h5.classList.add("mb-0");
+        const button = document.createElement("button");
+        button.classList.add("btn", "btn-link", "text-left");
+        button.setAttribute("data-toggle", "collapse");
+        button.setAttribute("data-target", "#collapse" + rubric_dict.id);
+        button.setAttribute("aria-expanded", "true");
+        button.setAttribute("aria-controls", "collapse" + rubric_dict.id);
+        button.textContent = "Rubric #" + rubric_dict.id + ": " + rubric_dict.title;
+        h5.appendChild(button);
+        col8Div.appendChild(h5);
+      
+        const col4Div = document.createElement("div");
+        col4Div.classList.add("col-4");
+        const btnGroup = document.createElement("div");
+        btnGroup.classList.add("btn-group", "btn-group-sm", "float-right");
+        btnGroup.setAttribute("role", "group");
+        btnGroup.setAttribute("aria-label", "Basic example");
+        const editButton = document.createElement("button");
+        editButton.setAttribute("type", "button");
+        editButton.classList.add("btn", "btn-secondary");
+        editButton.textContent = "Edit";
+        const deleteButton = document.createElement("button");
+        deleteButton.setAttribute("type", "button");
+        deleteButton.classList.add("btn", "btn-secondary");
+        deleteButton.textContent = "Delete";
+        btnGroup.appendChild(editButton);
+        btnGroup.appendChild(deleteButton);
+        col4Div.appendChild(btnGroup);
+      
+        rowDiv.appendChild(col8Div);
+        rowDiv.appendChild(col4Div);
+      
+        cardHeaderDiv.appendChild(rowDiv);
+      
+        const collapseDiv = document.createElement("div");
+        collapseDiv.id = "collapse" + rubric_dict.id;
+        collapseDiv.classList.add("collapse");
+        collapseDiv.setAttribute("aria-labelledby", "rubricheading_" + rubric_dict.id);
+      
+        const cardBodyDiv = document.createElement("div");
+        cardBodyDiv.classList.add("card-body");
+        cardBodyDiv.id = "rubricbody_" + rubric_dict.id;
+        cardBodyDiv.innerHTML = "<p>Description: " + rubric_dict.description + "</p>";
+      
+        collapseDiv.appendChild(cardBodyDiv);
+      
+        cardDiv.appendChild(cardHeaderDiv);
+        cardDiv.appendChild(collapseDiv);
+      
+        rubric_list.appendChild(cardDiv);
+    }
+
+    function add_rubric_suggestion(rubric_dict, forloopCounter){
+        // get polarity
+        var polarity = rubric_dict.polarity;
+        // get element to append to
+        var rubric_list = document.getElementById(polarity + "_rubric_list");
+
+        const cardDiv = document.createElement("div");
+        cardDiv.classList.add("card");
+        cardDiv.id = "suggested_negative_"  + forloopCounter;
+        cardDiv.style.borderStyle = "dashed";
+        cardDiv.style.borderWidth = "4px";
+
+        const cardBodyDiv = document.createElement("div");
+        cardBodyDiv.classList.add("card-body");
+        cardBodyDiv.id = "suggested_negative_heading_" + forloopCounter;
+
+        const rowDiv = document.createElement("div");
+        rowDiv.classList.add("row");
+
+        const col8Div = document.createElement("div");
+        col8Div.classList.add("col-8");
+
+        const h5 = document.createElement("h5");
+        h5.classList.add("mb-0");
+        const button = document.createElement("button");
+        button.classList.add("btn", "btn-link", "text-left");
+        button.setAttribute("data-toggle", "collapse");
+        button.setAttribute("data-target", "#suggested_negative_collapse" + forloopCounter);
+        button.setAttribute("aria-expanded", "true");
+        button.setAttribute("aria-controls", "suggested_negative_collapse" + forloopCounter);
+        button.textContent = `Suggested: ${rubric_dict.title}`;
+        h5.appendChild(button);
+        col8Div.appendChild(h5);
+
+        const col4Div = document.createElement("div");
+        col4Div.classList.add("col-4");
+        const btnGroup = document.createElement("div");
+        btnGroup.classList.add("btn-group", "btn-group-sm", "float-right");
+        btnGroup.setAttribute("role", "group");
+        btnGroup.setAttribute("aria-label", "Basic example");
+        const addButton = document.createElement("button");
+        addButton.setAttribute("type", "button");
+        addButton.classList.add("btn", "btn-secondary");
+        addButton.textContent = "Add";
+        btnGroup.appendChild(addButton);
+        col4Div.appendChild(btnGroup);
+
+        rowDiv.appendChild(col8Div);
+        rowDiv.appendChild(col4Div);
+
+        cardBodyDiv.appendChild(rowDiv);
+
+        const collapseDiv = document.createElement("div");
+        collapseDiv.id = "suggested_negative_collapse" + forloopCounter;
+        collapseDiv.classList.add("collapse");
+        collapseDiv.setAttribute("aria-labelledby", "suggested_negative_heading_" + forloopCounter);
+
+        const innerCardBodyDiv = document.createElement("div");
+        innerCardBodyDiv.classList.add("card-body");
+        innerCardBodyDiv.id = `rubricbody_${rubric_dict.id}`;
+        innerCardBodyDiv.innerHTML = `<p>Description: ${rubric_dict.description}</p>`;
+
+        collapseDiv.appendChild(innerCardBodyDiv);
+
+        cardDiv.appendChild(cardBodyDiv);
+        cardDiv.appendChild(collapseDiv);
+
+        rubric_list.appendChild(cardDiv);
     }
 
     function add_cards(answer_id, rubric_id) {
@@ -326,12 +408,17 @@
 
     $(document).ready(function () {
         // add cards for all reasoning_dict items in each rubric
+        var counter = 0;
         rubric_list.forEach(function(rubric) {
+            counter++;
             if (rubric.id != 0) {
+                add_rubric_item(rubric);
                 for (var answer_id in rubric.reasoning_dict) {
                     // console.log(answer_id, rubric.id, rubric.reasoning_dict[answer_id]);
                     add_cards(answer_id, rubric.id);
                 }
+            } else {
+                add_rubric_suggestion(rubric, counter);
             }
         });
     })
