@@ -78,7 +78,7 @@
                     <h4>Positive Rubrics</h4>
                 </div>
                 <div class="col-4 d-flex justify-content-end">
-                    <a href="#" class="btn btn-success btn-sm">Add</a>
+                    <a href="#" class="btn btn-success btn-sm" onclick="add_new_rubric_item('positive')">Add</a>
                 </div>
             </div>
             <div id="positive_rubric_list"></div>
@@ -88,7 +88,7 @@
                     <h4>Negative Rubrics</h4>
                 </div>
                 <div class="col-4 d-flex justify-content-end">
-                    <a href="#" class="btn btn-success btn-sm">Add</a>
+                    <a href="#" class="btn btn-success btn-sm" onclick="add_new_rubric_item('negative')">Add</a>
                 </div>
             </div>
             <div id="negative_rubric_list"></div>
@@ -146,18 +146,33 @@
                 "polarity": polarity,
                 "reasoning_dict": {}
             }
-            rubric_list.push(new_rubric_dict);
+
+            // add new rubric to rubric_list before any rubrics with id of 0
+            var index = 0;
+            var lowest = 1000;
+            rubric_list.forEach(function(item) {
+                curr_item_idx = rubric_list.indexOf(item)
+                if (item.id == 0 && curr_item_idx < lowest) {
+                    index = curr_item_idx;
+                    lowest = curr_item_idx;
+                }
+            });
+            rubric_list.splice(index, 0, new_rubric_dict);
+
+            // rubric_list.push(new_rubric_dict);
+
+            add_rubric_item_element(new_rubric_dict, true);
         }
 
         update_rubric_list();
         return new_rubric_dict
     }
 
-    function add_rubric_item(rubric_dict){
+    function add_rubric_item_element(rubric_dict, new_item=false){
         // get polarity
         var polarity = rubric_dict.polarity;
         // get element to append to
-        var rubric_list = document.getElementById(polarity + "_rubric_list");
+        var rubric_list_el = document.getElementById(polarity + "_rubric_list");
         var rubric_id = rubric_dict.id;
 
         const cardDiv = document.createElement("div");
@@ -202,6 +217,38 @@
         deleteButton.setAttribute("type", "button");
         deleteButton.classList.add("btn", "btn-secondary");
         deleteButton.textContent = "Delete";
+
+        // attach event listener to Edit button to open modal
+        editButton.addEventListener("click", function() {
+            // open modal
+            $('#editRubricModal').modal('show');
+
+            // populate modal with rubric info
+            document.getElementById("edit_rubric_id").value = rubric_id;
+            document.getElementById("edit_rubric_title").value = rubric_dict.title;
+            document.getElementById("edit_rubric_description").value = rubric_dict.description;
+            document.getElementById("edit_rubric_polarity").value = rubric_dict.polarity;
+        });
+
+        // attach event listener to Delete button to remove current div and remove from rubric list
+        deleteButton.addEventListener("click", function() {
+            // remove current div
+            var card_to_remove = document.getElementById("rubric_" + rubric_id);
+            card_to_remove.parentNode.removeChild(card_to_remove);
+
+            // get index in rubric list of the current rubric 
+            var index = 0;
+            rubric_list.forEach(function(item) {
+                if (item.id == rubric_id) {
+                    index = rubric_list.indexOf(item);
+                }
+            });
+
+            rubric_list.splice(index, 1);
+
+            update_rubric_list();
+        });
+
         btnGroup.appendChild(editButton);
         btnGroup.appendChild(deleteButton);
         col4Div.appendChild(btnGroup);
@@ -226,10 +273,18 @@
         cardDiv.appendChild(cardHeaderDiv);
         cardDiv.appendChild(collapseDiv);
       
-        rubric_list.appendChild(cardDiv);
+        // if it's a new item, add it before the first suggested rubric in the list
+        if (new_item) {
+            // get all suggested rubrics in this list
+            var suggested_rubrics = rubric_list_el.querySelectorAll("[id^='suggested_']");
+            var first_suggested_rubric = suggested_rubrics[0];
+            rubric_list_el.insertBefore(cardDiv, first_suggested_rubric);
+        } else {
+            rubric_list_el.appendChild(cardDiv);
+        }
     }
 
-    function add_rubric_suggestion(rubric_dict, forloopCounter){
+    function add_rubric_suggestion_element(rubric_dict, forloopCounter){
         // get polarity
         var polarity = rubric_dict.polarity;
         // get element to append to
@@ -284,7 +339,7 @@
             new_rubric_dict = add_new_rubric_item(polarity, rubric_dict);
 
             // add to rubric list
-            add_rubric_item(new_rubric_dict);
+            add_rubric_item_element(new_rubric_dict);
         });
 
         btnGroup.appendChild(addButton);
@@ -400,15 +455,16 @@
         rubric_list.forEach(function(rubric) {
             counter++;
             if (rubric.id != 0) {
-                add_rubric_item(rubric);
+                add_rubric_item_element(rubric);
                 for (var answer_id in rubric.reasoning_dict) {
                     // console.log(answer_id, rubric.id, rubric.reasoning_dict[answer_id]);
                     add_cards(answer_id, rubric.id);
                 }
             } else {
-                add_rubric_suggestion(rubric, counter);
+                add_rubric_suggestion_element(rubric, counter);
             }
         });
+
     })
 
     function allowDrop(ev) {
