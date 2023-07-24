@@ -25,7 +25,7 @@ from .tables import *
 from .colors import colors
 
 import warnings
-warnings.filterwarnings("ignore")  
+warnings.filterwarnings("ignore")    
 
 #############################################
 #                  COMB V5                  #

@@ -97,6 +97,36 @@
     </div> 
 </div>
 
+<!-- Modal for editing rubric -->
+<div class="modal fade" id="editingModal" tabindex="-1" role="dialog" aria-labelledby="editingModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="editingModalLabel">Editing Rubric #X</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="form-group">
+                        <label for="title-name" class="col-form-label">Title:</label>
+                        <input type="text" class="form-control" id="title-name">
+                    </div>
+                    <div class="form-group">
+                        <label for="description-text" class="col-form-label">Description:</label>
+                        <textarea class="form-control" id="description-text"></textarea>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Update</button>
+            </div>
+        </div>
+    </div>
+</div>
+
 <style>
     .highlight {
         background-color: yellow;
@@ -159,8 +189,6 @@
             });
             rubric_list.splice(index, 0, new_rubric_dict);
 
-            // rubric_list.push(new_rubric_dict);
-
             add_rubric_item_element(new_rubric_dict, true);
         }
 
@@ -221,13 +249,43 @@
         // attach event listener to Edit button to open modal
         editButton.addEventListener("click", function() {
             // open modal
-            $('#editRubricModal').modal('show');
+            $('#editingModal').modal('show');
+
+            // update modal title
+            document.getElementById("editingModalLabel").innerHTML = "Editing Rubric #" + rubric_id;
 
             // populate modal with rubric info
-            document.getElementById("edit_rubric_id").value = rubric_id;
-            document.getElementById("edit_rubric_title").value = rubric_dict.title;
-            document.getElementById("edit_rubric_description").value = rubric_dict.description;
-            document.getElementById("edit_rubric_polarity").value = rubric_dict.polarity;
+            document.getElementById("title-name").value = rubric_dict.title;
+            document.getElementById("description-text").value = rubric_dict.description;
+
+            // remove event listener from Update button
+            var old_element = document.getElementById("editingModal").querySelector("button.btn-primary");
+            var new_element = old_element.cloneNode(true);
+            old_element.parentNode.replaceChild(new_element, old_element);
+
+            // attach event listener to Update button to update rubric info
+            document.getElementById("editingModal").querySelector("button.btn-primary").addEventListener("click", function() {
+                // update rubric info
+                rubric_dict.title = document.getElementById("title-name").value;
+                rubric_dict.description = document.getElementById("description-text").value;
+
+                // update rubric item element
+                var rubric_item_el = document.getElementById("rubricheading_" + rubric_id).querySelector("button");
+                rubric_item_el.textContent = "Rubric #" + rubric_id + ": " + rubric_dict.title;
+
+                console.log(rubric_item_el);
+                console.log(rubric_dict.title);
+
+                // update the rubric item element's Description
+                var description_el = document.getElementById("description_" + rubric_id);
+                description_el.innerHTML = "<b>Description:</b> " + rubric_dict.description;
+
+                // update rubric list
+                update_rubric_list();
+
+                // close modal
+                $('#editingModal').modal('hide');
+            });
         });
 
         // attach event listener to Delete button to remove current div and remove from rubric list
@@ -266,7 +324,12 @@
         const cardBodyDiv = document.createElement("div");
         cardBodyDiv.classList.add("card-body");
         cardBodyDiv.id = "rubricbody_" + rubric_id;
-        cardBodyDiv.innerHTML = "<p>Description: " + rubric_dict.description + "</p>";
+
+        const descriptionElement = document.createElement("p");
+        descriptionElement.innerHTML = "<b>Description:</b> " + rubric_dict.description;
+        descriptionElement.id = "description_" + rubric_id;
+        cardBodyDiv.appendChild(descriptionElement);
+        // cardBodyDiv.innerHTML = "<p>Description: " + rubric_dict.description + "</p>";
       
         collapseDiv.appendChild(cardBodyDiv);
       
