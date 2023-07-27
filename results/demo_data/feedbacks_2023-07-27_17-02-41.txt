@@ -1,0 +1,31 @@
+35: Asynchronous programming allows the user to decide what elements of the code need to be run, instead of requiring a specific order.
+You're on the right track. Asynchronous programming does allow for flexibility in the order of code execution. However, it's not about user deciding the order, but about concurrent execution.,[{"answer_highlight": "user to decide what elements", "feedback_highlight": "about concurrent execution"}]
+
+35: We want to use asynchronous programming in Javascript as we want to update parts of the webpage without having to reload the whole page Through AJAX, we can send, request and receive data from a server without blocking the rest of the interface. This is better than synchronous Javascript wherein we can only update the page by reloading it and wherein all the event handling takes place in a single loop.
+Excellent! You've correctly identified the key benefits of asynchronous programming, including non-blocking interface and allowing changes without reloading the page.,[{"answer_highlight": "update parts of the webpage", "feedback_highlight": "changes without reloading the page"}]
+
+35: Asynchronous programming allows for updating a page without refreshing the whole page. Also, long-running functions can be executed without blocking the rest of the code and interaction.
+Well done! You've correctly identified that asynchronous programming allows for updating a page without refreshing and executing long-running functions without blocking the rest of the code.,[{"answer_highlight": "updating a page without refreshing", "feedback_highlight": "updating a page without refreshing"}]
+
+35: We want to use asynchronous programming in JavaScript when we have a promise that we are waiting to be resolved and we want to run other operations in meanwhile. It allows us to efficient and responsive web applications and prevent lag due to a request.
+You've made a good start. Asynchronous programming does allow us to run other operations while waiting for a promise to be resolved. However, it's not just about preventing lag, but also about non-blocking execution and user interaction.,[{"answer_highlight": "run other operations in meanwhile", "feedback_highlight": "non-blocking execution and user interaction"}]
+
+35: It allows us to run long execution time programs without making the user wait for the program to finish before using the webpage. 
+Good job! You've correctly identified that asynchronous programming allows long execution time programs to run without making the user wait.,[{"answer_highlight": "without making the user wait", "feedback_highlight": "run without making the user wait"}]
+
+35: – Change a page without reloading it
+– Send, request and receive data from a server without blocking the rest of your interface
+Good job! You've correctly identified the key benefits of asynchronous programming, including non-blocking interface and allowing changes without reloading the page.,[{"answer_highlight": "Change a page without reloading", "feedback_highlight": "changes without reloading the page"}]
+
+35: Because sometimes you would want to execute other functions while waiting for one function to finish.
+You're on the right track. Asynchronous programming does allow other functions to execute while waiting for one function to finish. However, it's not about waiting, but about concurrent execution.,[{"answer_highlight": "execute other functions while waiting", "feedback_highlight": "about concurrent execution"}]
+
+35: you can run a long task in the background and the program will be able to respond to other user events. Won't be bottlenecked and waiting until the task is finished.
+Well done! You've correctly identified that asynchronous programming allows long tasks to run in the background, enabling the program to respond to other user events.,[{"answer_highlight": "run a long task in the background", "feedback_highlight": "long tasks to run in the background"}]
+
+35: This will allow users to continue to use your website/app, while you work on parts of the website while not interfering with traffic to your website.
+Great! You've correctly identified that asynchronous programming allows users to continue interacting with the website while other tasks are being completed.,[{"answer_highlight": "continue to use your website/app", "feedback_highlight": "users to continue interacting"}]
+
+35: We have to wait for certain data to load (i.e. response of api call), so it pauses execution while this data is missing.
+You've correctly identified that asynchronous programming can help manage waiting for data. However, it's important to note that it doesn't pause execution, but allows other tasks to run concurrently.,[{"answer_highlight": "it pauses execution", "feedback_highlight": "doesn't pause execution"}]
+

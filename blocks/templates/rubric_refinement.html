@@ -8,94 +8,106 @@
 
 <link rel="stylesheet" href="{% static 'css/blocks.css' %}">
 
-<div class="row">
-    <div class="col-6 d-flex align-items-center">
-        <a href="{% url 'rubric_creation' question_obj.id %}" class="btn btn-secondary">Stage 1: Rubric Creation</a>
-    </div>
-    <div class="col-6 d-flex align-items-center justify-content-end">
-          <a href="{% url 'rubric_feedback' question_obj.id %}" class="btn btn-secondary">Stage 3: Feedback</a>
-    </div>
-</div>
-<br>
 
-<h2>Rubric Refinement 🔍</h2>
+<div id="loader" style="display:none">
+    <div class="d-flex justify-content-center align-items-center" style="height:85vh">
+        <h4 class="mr-4">Please wait while our AI generates feedback <br> for each answer based on the rubrics matched!</h4>
 
-{% if question_obj.question_image_url %}
-<h4>Question {{ question_obj.question_exam_id }}: {{ question_obj.question_text }}
-    <a data-toggle="collapse" href="#showImg" role="button" aria-expanded="false" aria-controls="showImg">[show image]</a></h4>
-<div class="collapse" id="showImg"> <img src="{% static question_obj.question_image_url %} "  class="rounded mx-auto d-block"></img> </div>
-{% else %}
-<h4>Question {{ question_obj.question_exam_id }}: {{ question_obj.question_text }}</h4>
-{% endif %}
-
-<p>Total answers: {{ answer_count }}</p>
-
-<br>
-
-{% comment %} Iterate through each answer and make a container containing a card for the answer text {% endcomment %}
-{% for answer in answers %}
-<div class="row mb-5">
-    <div class="col-6">
-        <div class="card">
-            <div class="card-body">
-                <h5 class="card-title">Answer {{ forloop.counter }}</h5>
-                <h1 class="card-text" id="anstext_{{answer.id}}">{{ answer.answer_text }}</h1>
-            </div>
+        <div class="spinner-border text-info" role="status" style="width: 4rem; height: 4rem;">
+            <span class="sr-only">Loading...</span>
         </div>
     </div>
+</div>
+<div id="loaded-page">
+    <div class="row">
+        <div class="col-6 d-flex align-items-center">
+            <a href="{% url 'rubric_creation' question_obj.id %}" class="btn btn-secondary">Stage 1: Rubric Creation</a>
+        </div>
+        <div class="col-6 d-flex align-items-center justify-content-end">
+            <a href="{% url 'rubric_feedback' question_obj.id %}" onclick="fadeOutLoadedPage()" class="btn btn-secondary">Stage 3: Feedback</a>
+        </div>
+    </div>
+    <br>
 
-    <div class="col-6">
-        {% comment %} <form class="form">
-            {% for tag in answer.answertag_set.all %}
-            <div class="form-group">
-                <div class="row">
-                    <div class="col-5">
-                        <label for="rubric">Rubric(s):</label>
-                        <select id="rubric" name="rubric" multiple class="form-control">
-                            {% for rubric in rubric_list %}
-                            {% if rubric.id != 0 %}
-                            <option value="rubric{{rubric.id}}" {% compare_rubrics rubric.id tag.tag as matched_rubric %}{% if matched_rubric %}selected{% endif %}>Rubric {{rubric.id}}: {{rubric.title}}</option>
-                            {% endif %}
-                            {% endfor %}
-                        </select>
-                    </div>
-                    <div class="col-7">
-                        <label for="reasoning">Reasoning:</label>
-                        <textarea id="reasoning" name="reasoning" rows="2" cols="50" class="form-control" placeholder="Enter reasoning...">{{ tag|get_tagdict_item:"reasoning" }}</textarea>
-                        <label for="highlighted">Highlighted Text:</label>
-                        <textarea id="highlighted_{{answer.id}}_1" name="highlighted_{{answer.id}}_1" rows="1" cols="50" class="form-control" placeholder="Enter highlighted text...">{{ tag|get_tagdict_item:"highlighted" }}</textarea>
-                    </div>
+    <h2>Rubric Refinement 🔍</h2>
+
+    {% if question_obj.question_image_url %}
+    <h4>Question {{ question_obj.question_exam_id }}: {{ question_obj.question_text }}
+        <a data-toggle="collapse" href="#showImg" role="button" aria-expanded="false" aria-controls="showImg">[show image]</a></h4>
+    <div class="collapse" id="showImg"> <img src="{% static question_obj.question_image_url %} "  class="rounded mx-auto d-block"></img> </div>
+    {% else %}
+    <h4>Question {{ question_obj.question_exam_id }}: {{ question_obj.question_text }}</h4>
+    {% endif %}
+
+    <p>Total answers: {{ answer_count }}</p>
+
+    <br>
+
+    {% comment %} Iterate through each answer and make a container containing a card for the answer text {% endcomment %}
+    {% for answer in answers %}
+    <div class="row mb-5">
+        <div class="col-6">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Answer {{ forloop.counter }}</h5>
+                    <h1 class="card-text" id="anstext_{{answer.id}}">{{ answer.answer_text }}</h1>
                 </div>
             </div>
-            {% endfor %}
-        </form>  {% endcomment %}
+        </div>
 
-        <form class="form" id="form_{{answer.id}}">
-            <div class="form-group">
-                <h5>Rubrics:</h5>
+        <div class="col-6">
+            {% comment %} <form class="form">
                 {% for tag in answer.answertag_set.all %}
-                    <label for="slider_{{tag.id}}" id="label_slider_{{tag.id}}">{{tag.tag}} - {{ rubric_dict|get_item:tag.tag }}:</label>
-                    <input type="range" id="slider_{{tag.id}}" name="slider_{{tag.id}}" min="0" max="1" step="0.5" value="{{ tag|get_tagdict_item:"relevancy" }}" class="form-control-range" oninput="updateSliderValue(this, 'slider_{{tag.id}}')">
-
-                    <div id='taginfo_{{tag.id}}' class="mb-3">
-                        <label for="reasoning_{{tag.id}}">Reasoning:</label>
-                        <textarea id="reasoning_{{tag.id}}" name="reasoning_{{tag.id}}" rows="2" cols="50" class="form-control" placeholder="Enter reasoning...">{{ tag|get_tagdict_item:"reasoning" }}</textarea>
-
-                        <label for="highlighted_{{tag.id}}_{{answer.id}}">Highlighted Text:</label>
-                        <textarea id="highlighted_{{tag.id}}_{{answer.id}}" name="highlighted_{{tag.id}}_{{answer.id}}" rows="1" cols="50" class="form-control" placeholder="Enter highlighted text...">{{ tag|get_tagdict_item:"highlighted" }}</textarea>
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-5">
+                            <label for="rubric">Rubric(s):</label>
+                            <select id="rubric" name="rubric" multiple class="form-control">
+                                {% for rubric in rubric_list %}
+                                {% if rubric.id != 0 %}
+                                <option value="rubric{{rubric.id}}" {% compare_rubrics rubric.id tag.tag as matched_rubric %}{% if matched_rubric %}selected{% endif %}>Rubric {{rubric.id}}: {{rubric.title}}</option>
+                                {% endif %}
+                                {% endfor %}
+                            </select>
+                        </div>
+                        <div class="col-7">
+                            <label for="reasoning">Reasoning:</label>
+                            <textarea id="reasoning" name="reasoning" rows="2" cols="50" class="form-control" placeholder="Enter reasoning...">{{ tag|get_tagdict_item:"reasoning" }}</textarea>
+                            <label for="highlighted">Highlighted Text:</label>
+                            <textarea id="highlighted_{{answer.id}}_1" name="highlighted_{{answer.id}}_1" rows="1" cols="50" class="form-control" placeholder="Enter highlighted text...">{{ tag|get_tagdict_item:"highlighted" }}</textarea>
+                        </div>
                     </div>
+                </div>
                 {% endfor %}
-            </div>
-        </form>
+            </form>  {% endcomment %}
 
+            <form class="form" id="form_{{answer.id}}">
+                <div class="form-group">
+                    <h5>Rubrics:</h5>
+                    {% for tag in answer.answertag_set.all %}
+                        <label for="slider_{{tag.id}}" id="label_slider_{{tag.id}}">{{tag.tag}} - {{ rubric_dict|get_item:tag.tag }}:</label>
+                        <input type="range" id="slider_{{tag.id}}" name="slider_{{tag.id}}" min="0" max="1" step="0.5" value="{{ tag|get_tagdict_item:"relevancy" }}" class="form-control-range" oninput="updateSliderValue(this, 'slider_{{tag.id}}')">
+
+                        <div id='taginfo_{{tag.id}}' class="mb-3">
+                            <label for="reasoning_{{tag.id}}">Reasoning:</label>
+                            <textarea id="reasoning_{{tag.id}}" name="reasoning_{{tag.id}}" rows="2" cols="50" class="form-control" placeholder="Enter reasoning...">{{ tag|get_tagdict_item:"reasoning" }}</textarea>
+
+                            <label for="highlighted_{{tag.id}}_{{answer.id}}">Highlighted Text:</label>
+                            <textarea id="highlighted_{{tag.id}}_{{answer.id}}" name="highlighted_{{tag.id}}_{{answer.id}}" rows="1" cols="50" class="form-control" placeholder="Enter highlighted text...">{{ tag|get_tagdict_item:"highlighted" }}</textarea>
+                        </div>
+                    {% endfor %}
+                </div>
+            </form>
+
+        </div>
     </div>
-</div>
-{% endfor %}
+    {% endfor %}
 
-{% comment %} big button to "Get 10 New Answers" {% endcomment %}
-<div class="row">
-    <div class="col-12 d-flex justify-content-center">
-        <button class="btn btn-primary btn-lg btn-block" id="get_new_answers">Apply to 10 New Answers</button>
+    {% comment %} big button to "Get 10 New Answers" {% endcomment %}
+    <div class="row">
+        <div class="col-12 d-flex justify-content-center">
+            <button class="btn btn-primary btn-lg btn-block" id="get_new_answers">Apply to 10 New Answers</button>
+        </div>
     </div>
 </div>
 
@@ -198,6 +210,13 @@
         if (sliderValue == 0){ sliderLabel.innerHTML += " No Relevance"; }
         else if (sliderValue == 0.5){ sliderLabel.innerHTML += " Partial Relevance"; }
         else if (sliderValue == 1){ sliderLabel.innerHTML += " Full Relevance"; }
+    }
+
+    // function to fade out loaded page when button is clicked and fade in loader
+    function fadeOutLoadedPage() {
+        $( "#loaded-page" ).fadeOut(400, function(){
+            $( "#loader" ).fadeIn(400);
+        });  
     }
 
 </script>
