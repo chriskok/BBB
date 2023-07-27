@@ -56,30 +56,6 @@
         </div>
 
         <div class="col-6">
-            {% comment %} <form class="form">
-                {% for tag in answer.answertag_set.all %}
-                <div class="form-group">
-                    <div class="row">
-                        <div class="col-5">
-                            <label for="rubric">Rubric(s):</label>
-                            <select id="rubric" name="rubric" multiple class="form-control">
-                                {% for rubric in rubric_list %}
-                                {% if rubric.id != 0 %}
-                                <option value="rubric{{rubric.id}}" {% compare_rubrics rubric.id tag.tag as matched_rubric %}{% if matched_rubric %}selected{% endif %}>Rubric {{rubric.id}}: {{rubric.title}}</option>
-                                {% endif %}
-                                {% endfor %}
-                            </select>
-                        </div>
-                        <div class="col-7">
-                            <label for="reasoning">Reasoning:</label>
-                            <textarea id="reasoning" name="reasoning" rows="2" cols="50" class="form-control" placeholder="Enter reasoning...">{{ tag|get_tagdict_item:"reasoning" }}</textarea>
-                            <label for="highlighted">Highlighted Text:</label>
-                            <textarea id="highlighted_{{answer.id}}_1" name="highlighted_{{answer.id}}_1" rows="1" cols="50" class="form-control" placeholder="Enter highlighted text...">{{ tag|get_tagdict_item:"highlighted" }}</textarea>
-                        </div>
-                    </div>
-                </div>
-                {% endfor %}
-            </form>  {% endcomment %}
 
             <form class="form" id="form_{{answer.id}}">
                 <div class="form-group">
