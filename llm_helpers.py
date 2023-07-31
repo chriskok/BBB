@@ -163,7 +163,7 @@ def apply_rubrics(question, answers, rubrics, existing_tags=None):
             if(float(curr_reasoning_dict['relevancy']) > 0.0): existing_tags_str += f"- {curr_ans.answer_text} [Rubric: {tag.tag} | Relevance: {curr_reasoning_dict['relevancy']} | Reason: {curr_reasoning_dict['reasoning']}]\n"
 
         user_prompt += "\n\n" + "Examples:\n" + existing_tags_str
-        
+
     msgs = [{"role": "system", "content": system_prompt}, {"role": "user", "content": user_prompt}]
 
     response = prompt_gpt4(msgs)
@@ -256,6 +256,68 @@ def apply_feedback(question, answers, rubrics):
         "associations": [<list of dicts in the format: {"answer_highlight": "<4-7 words from the answer>", "feedback_highlight": "<4-7 words from the feedback>"}. Can be one or more. This is meant to show association between which part of the answer was commented upon>],
     }, ...}
     """
+
+    msgs = [{"role": "system", "content": system_prompt}, {"role": "user", "content": user_prompt}]
+    response = prompt_gpt4(msgs)
+
+    try:
+        feedbacks = json.loads(response)
+    except Exception as e:
+        print(e)
+        feedbacks = []
+
+    return feedbacks
+
+def apply_feedback_full(question, answers, rubrics):
+
+    # convert dict of answer ID keys and reasoning values to a new-line separated string of Answer texts (from DB) and the reasoning
+    def convert_reasoning_dict(reasoning_dict):
+        reasoning_str = ""
+        for answer_id, reasoning in reasoning_dict.items():
+            reasoning_str += "{} {}\n".format(Answer.objects.get(id=answer_id).answer_text, f"(REASON: {reasoning})" if reasoning != "" else "")
+        return reasoning_str if reasoning_str != "" else "None"
+
+    rubrics_str = "\n\n".join(["R{}. {} (polarity: {}, meaning: {})\nR{} Examples:\n{}".format(rubric["id"], rubric["title"], rubric["polarity"], rubric['description'], rubric["id"], convert_reasoning_dict(rubric["reasoning_dict"])) for i, rubric in enumerate(rubrics) if rubric['id'] != 0])
+    system_prompt = f"""You are an expert instructor for your given course. You've given the short-answer, open-ended question "{question.question_text}" on a recent final exam. You and your expert instructor partner created the following rubrics for this question (labelled R<rubric number> below, along with examples that your partner annotated with reasoning): \n\n{rubrics_str}"""
+
+    # get all the associated answer tags per answer --> convert reasoning dicts of each answer tag
+    def convert_answer_tags(answer_tags):
+        tagged_strs = []
+        for tag in answer_tags:
+            # e.g. {"rubric": "R1", "reasoning": "", "highlighted": "", "relevancy": "0"}
+            reasoning_dict = tag.get_reasoning_dict()
+            if (reasoning_dict["relevancy"] != "0"): 
+                tagged_strs.append(f"{reasoning_dict['rubric']} (relevance: {reasoning_dict['relevancy']}, reason: {reasoning_dict['reasoning']})")
+        
+        return "\n".join(tagged_strs)
+
+    full_tags_str = []
+    for ans in answers:
+        answer_tags = ans.answertag_set.all()
+        tags_str = convert_answer_tags(answer_tags)
+        curr_tags_str = f"{ans.id}. {ans.answer_text}\n{tags_str}"
+        full_tags_str.append(curr_tags_str)
+    
+    answers_str = "\n\n".join(full_tags_str)
+
+    user_prompt = """Based on the rubrics mentioned, you now have the following student answers (formatted: <answer ID>. <answer>, along with annotated rubrics you recently associated with each underneath it):\n\n""" + answers_str + """
+
+    Provide feedback and list the connected associations for each student's answer based on the rubric(s) that applies to it. Each piece of feedback can have multiple associations between it and the answer itself - these will be used to highlight parts to the students. Only associate/highlight the most relevant words - keep it short! For the output, create python dictionary that STRICTLY follow the JSON format:
+
+    {"answer_id": {
+        "feedback": "<constructive and helpful feedback that you'd give the student based on the rubrics attached to the answer - try to understand the internal needs of the student instead of just saying what is missing from the answer>",
+        "associations": [<list of dicts in the format: {"answer_highlight": "<4-7 words from the answer>", "feedback_highlight": "<4-7 words from the feedback>"}. Can be one or more. This is meant to show association between which part of the answer was commented upon>],
+    }, ...}
+    """
+
+    # Create a string of existing feedback in the format <answer text> [Feedback: <feedback> | AnsH: <answer_highlight> | FeedH: <feedback_highlight>]
+    existing_feedback_str = ""
+    for ans in answers:
+        answer_feedbacks = ans.answerfeedback_set.all()
+        for feedback in answer_feedbacks[:1]:
+            existing_feedback_str += f"- {ans.answer_text} [Feedback: {feedback.feedback} | AnsH: {feedback.answer_highlight} | FeedH: {feedback.feedback_highlight}]\n"
+    
+    if (existing_feedback_str): user_prompt += "\n\n" + "Example Feedbacks:\n" + existing_feedback_str
 
     msgs = [{"role": "system", "content": system_prompt}, {"role": "user", "content": user_prompt}]
     response = prompt_gpt4(msgs)

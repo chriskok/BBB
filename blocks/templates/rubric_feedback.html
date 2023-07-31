@@ -25,7 +25,7 @@
             <a href="{% url 'rubric_refinement' question_obj.id %}" class="btn btn-secondary">Stage 2: Rubric Refinement</a>
         </div>
         <div class="col-6 d-flex align-items-center justify-content-end">
-            <a href="#" class="btn btn-secondary" onclick="fadeOutLoadedPage()" >Stage 4: Apply and Export!</a>
+            <a href="{% url 'generate_feedback_csv' question_obj.id %}" class="btn btn-secondary" onclick="fadeOutLoadedPage()" >Stage 4: Apply and Export!</a>
         </div>
     </div>
     <br>

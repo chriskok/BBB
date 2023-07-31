@@ -1,0 +1,31 @@
+35: Asynchronous programming allows the user to decide what elements of the code need to be run, instead of requiring a specific order.
+Your answer suggests a misunderstanding of asynchronous programming. It does not allow the user to decide what elements of the code need to be run, but rather allows the program to execute other tasks while waiting for a long-running task to finish.,[{"answer_highlight": "user to decide what elements", "feedback_highlight": "user to decide what elements"}]
+
+35: We want to use asynchronous programming in Javascript as we want to update parts of the webpage without having to reload the whole page Through AJAX, we can send, request and receive data from a server without blocking the rest of the interface. This is better than synchronous Javascript wherein we can only update the page by reloading it and wherein all the event handling takes place in a single loop.
+Great job on mentioning the ability of asynchronous programming to send, request, and receive data from a server without blocking the rest of the interface. However, updating a page without reloading it is not necessarily a feature of asynchronous programming.,[{"answer_highlight": "update parts of the webpage", "feedback_highlight": "updating a page without reloading"}]
+
+35: Asynchronous programming allows for updating a page without refreshing the whole page. Also, long-running functions can be executed without blocking the rest of the code and interaction.
+Good job on mentioning the ability of asynchronous programming to execute long-running functions without blocking the rest of the code. However, updating a page without refreshing it is not necessarily a feature of asynchronous programming.,[{"answer_highlight": "updating a page without refreshing", "feedback_highlight": "updating a page without refreshing"}]
+
+35: We want to use asynchronous programming in JavaScript when we have a promise that we are waiting to be resolved and we want to run other operations in meanwhile. It allows us to efficient and responsive web applications and prevent lag due to a request.
+Good job on mentioning the ability of asynchronous programming to run other operations while waiting for a promise to be resolved. Try to also mention how this improves user experience and allows for user interaction during these operations.,[{"answer_highlight": "run other operations in meanwhile", "feedback_highlight": "run other operations while waiting"}]
+
+35: It allows us to run long execution time programs without making the user wait for the program to finish before using the webpage. 
+Well done on mentioning the ability of asynchronous programming to run long execution time programs without making the user wait, improving the user experience. Also, consider mentioning how this non-blocking execution is achieved.,[{"answer_highlight": "run long execution time programs", "feedback_highlight": "run long execution time programs"}]
+
+35: – Change a page without reloading it
+– Send, request and receive data from a server without blocking the rest of your interface
+Great job on mentioning the ability of asynchronous programming to send, request, and receive data from a server without blocking the rest of the interface. However, updating a page without reloading it is not necessarily a feature of asynchronous programming.,[{"answer_highlight": "Change a page without reloading", "feedback_highlight": "updating a page without reloading"}]
+
+35: Because sometimes you would want to execute other functions while waiting for one function to finish.
+Good job on mentioning the ability of asynchronous programming to execute other functions while waiting for one function to finish. Try to also mention how this improves user experience and allows for user interaction during these operations.,[{"answer_highlight": "execute other functions while waiting", "feedback_highlight": "execute other functions while waiting"}]
+
+35: you can run a long task in the background and the program will be able to respond to other user events. Won't be bottlenecked and waiting until the task is finished.
+Good job on mentioning the ability of asynchronous programming to run a long task in the background while the program responds to other user events. Try to also mention how this improves user experience.,[{"answer_highlight": "run a long task in the background", "feedback_highlight": "run a long task in the background"}]
+
+35: This will allow users to continue to use your website/app, while you work on parts of the website while not interfering with traffic to your website.
+Well done on highlighting the ability of asynchronous programming to allow users to continue interacting with the website/app while certain operations are in progress. Also, consider mentioning how this non-blocking execution is achieved.,[{"answer_highlight": "users to continue to use", "feedback_highlight": "users to continue interacting"}]
+
+35: We have to wait for certain data to load (i.e. response of api call), so it pauses execution while this data is missing.
+Good job on recognizing that asynchronous programming allows the program to wait for data to load without blocking execution. Try to also mention how this improves user experience and allows for user interaction during these operations.,[{"answer_highlight": "wait for certain data to load", "feedback_highlight": "wait for data to load"}]
+

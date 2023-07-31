@@ -15,6 +15,7 @@ urlpatterns = [
     path('update_feedback/', views.update_feedback, name='update_feedback'),                        # non-page
     path('update_feedback/<int:feedback_id>', views.update_feedback, name='update_feedback'),       # non-page
     path('rubric_feedback/<int:q_id>', views.rubric_feedback, name='rubric_feedback'),
+    path('generate_feedback_csv/<int:q_id>', views.generate_feedback_csv, name='generate_feedback_csv'),
     path('rubric_tagging/<int:q_id>', views.rubric_tagging, name='rubric_tagging'),
     path('combv5_reset/', views.combv5_reset_view, name='combv5_reset'),                            # non-page
     path('combv5_reset/<int:question_id>', views.combv5_reset_view, name='combv5_reset'),           # non-page

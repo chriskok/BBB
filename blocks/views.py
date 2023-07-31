@@ -364,12 +364,16 @@ def rubric_feedback(request, q_id):
             "feedback": x.feedback,
             "feedback_highlight": current_dict['feedback_highlight'],
         }]
+    
+    # get all answers with AnswerFeedback objects for this question
+    answer_feedback_ids = AnswerFeedback.objects.filter(question_id=q_id).values_list("answer_id", flat=True)
+    feedback_answers = Answer.objects.filter(id__in=answer_feedback_ids)
 
     context = {
         "question_obj": current_question_obj,
         "question_exam_id": q_id,
         "question_list": q_list,
-        "answers": outlier_examples,
+        "answers": feedback_answers,
         "answer_count": answer_count,
         "rubric_list": rubric_list,
         "rubric_dict": rubric_dict,
@@ -377,6 +381,48 @@ def rubric_feedback(request, q_id):
     }
 
     return render(request, "rubric_feedback.html", context)
+
+# Django function to generate feedback for all answers and export them to a csv file
+def generate_feedback_csv(request, q_id):
+    # get the question object
+    current_question_obj = Question.objects.get(pk=q_id)
+
+    # get all feedback objects for this question
+    ans_feedbacks = AnswerFeedback.objects.filter(question_id=q_id)
+
+    # get 10 random answers for this question that aren't in ans_feedbacks
+    chosen_answers = Answer.objects.filter(question_id=q_id)
+    ans_feedback_ids = ans_feedbacks.values_list("answer_id", flat=True)
+    ans_without_feedback = chosen_answers.exclude(id__in=ans_feedback_ids)
+    ans_without_feedback = ans_without_feedback.order_by('?')[:10]
+
+    # generate feedback for these answers
+    rubric_obj = RubricList.objects.filter(question_id=q_id).first()
+    rubric_list = rubric_obj.get_rubric_list()
+    feedbacks = llmh.apply_feedback_full(current_question_obj, ans_without_feedback, rubric_list)
+
+    # create AnswerFeedback objects for these answers
+    for ans_id in feedbacks:
+        feedback_dict = feedbacks[ans_id]
+        reasoning_dict = feedback_dict['associations']
+        AnswerFeedback.objects.create(question_id=q_id, answer_id=int(ans_id), feedback=feedback_dict['feedback'], reasoning_dict=json.dumps(reasoning_dict))
+    
+    # get all feedback objects for this question
+    ans_feedbacks = AnswerFeedback.objects.filter(question_id=q_id)
+
+    # create csv file with all feedbacks and the current date/time
+    timestamp = datetime.datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
+    with open(f'results/demo_data/feedbacks_{timestamp}.csv', 'w') as f:
+        writer = csv.writer(f)
+        writer.writerow(["answer_id", "answer_text", "feedback_id", "feedback"])
+        for feedback in ans_feedbacks:
+            writer.writerow([feedback.answer_id, feedback.answer.answer_text, feedback.id, feedback.feedback])
+    
+    # return http reponse to download the csv file
+    response = HttpResponse(open(f'results/demo_data/feedbacks_{timestamp}.csv', 'rb'), content_type='text/csv')
+    response['Content-Disposition'] = 'attachment; filename=feedbacks.csv'
+    return response
+
 
 def rubric_tagging(request, q_id):
     q_list = Question.objects.extra(select={'sorted_num': 'CAST(question_exam_id AS FLOAT)'}).order_by('sorted_num')
