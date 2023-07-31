@@ -116,7 +116,7 @@ def create_rubric_suggestions(question, answers, rubrics, polarity="positive"):
 
     return suggestions
 
-def apply_rubrics(question, answers, rubrics):
+def apply_rubrics(question, answers, rubrics, existing_tags=None):
 
     def convert_reasoning_dict(reasoning_dict):
         # convert dict of answer ID keys and reasoning values to a new-line separated string of Answer texts (from DB) and the reasoning
@@ -128,6 +128,7 @@ def apply_rubrics(question, answers, rubrics):
     answers_str = "\n".join(["{}. {}".format(answer.id, answer.answer_text) for i, answer in enumerate(answers)])
     rubrics_str = "\n\n".join(["R{}. {} (polarity: {}, meaning: {})\nR{} Examples:\n{}".format(rubric["id"], rubric["title"], rubric["polarity"], rubric['description'], rubric["id"], convert_reasoning_dict(rubric["reasoning_dict"])) for i, rubric in enumerate(rubrics) if rubric['id'] != 0])
     system_prompt = f"""You are an expert instructor for your given course. You've given the short-answer, open-ended question "{question.question_text}" on a recent final exam. You and your expert instructor partner created the following rubrics for this question (labelled R<rubric number> below, along with examples that your partner annotated with reasoning): \n\n{rubrics_str}"""
+    
 
     user_prompt = """
     Given the rubrics mentioned and the following student answers (formatted: <answer ID>. <answer>):\n""" + answers_str + """
@@ -151,6 +152,18 @@ def apply_rubrics(question, answers, rubrics):
     ], ...}
     """
 
+    # Create a string of existing tags in the format <answer text> [R<rubric number> | <relevancy score> | <reasoning>]
+    existing_tags_str = ""
+    if (existing_tags is not None):
+        # get only tags with relevancy > 0.0
+        filtered_tags = [tag for tag in existing_tags.order_by('?') if float(tag.get_reasoning_dict()['relevancy']) > 0.0]
+        for tag in filtered_tags[:10]:
+            curr_ans = Answer.objects.get(id=tag.answer_id)
+            curr_reasoning_dict = tag.get_reasoning_dict()
+            if(float(curr_reasoning_dict['relevancy']) > 0.0): existing_tags_str += f"- {curr_ans.answer_text} [Rubric: {tag.tag} | Relevance: {curr_reasoning_dict['relevancy']} | Reason: {curr_reasoning_dict['reasoning']}]\n"
+
+        user_prompt += "\n\n" + "Examples:\n" + existing_tags_str
+        
     msgs = [{"role": "system", "content": system_prompt}, {"role": "user", "content": user_prompt}]
 
     response = prompt_gpt4(msgs)

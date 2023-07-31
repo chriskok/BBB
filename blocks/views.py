@@ -206,6 +206,7 @@ def rubric_refinement(request, q_id, additional="false"):
 
     # if additional == "true", get all the answers that are not tagged yet
     show_new = False
+    tagged_answers = None
     if additional == "true":
         tagged_answers = AnswerTag.objects.filter(question_id=q_id)
         # set all tagged_answers "new" field to False
@@ -226,7 +227,7 @@ def rubric_refinement(request, q_id, additional="false"):
 
     if not AnswerTag.objects.filter(question_id=q_id, answer_id__in=[x.id for x in outlier_examples]).exists():
     # if not AnswerTag.objects.filter(question_id=q_id).exists():
-        tags = llmh.apply_rubrics(current_question_obj, outlier_examples, rubric_list)
+        tags = llmh.apply_rubrics(current_question_obj, outlier_examples, rubric_list, tagged_answers)
         for ans_id in tags:
             tagged = []
             for tag_dict in tags[ans_id]:
