@@ -184,7 +184,7 @@ def old_rubric_creation(request, q_id):
 
     return render(request, "rubric_creation.html", context)
 
-def rubric_refinement(request, q_id):
+def rubric_refinement(request, q_id, additional="false"):
     q_list = Question.objects.extra(select={'sorted_num': 'CAST(question_exam_id AS FLOAT)'}).order_by('sorted_num')
 
     # if the question queried does not exist, get the first Question available
@@ -204,6 +204,18 @@ def rubric_refinement(request, q_id):
     number_of_bins = 10
     bin_size = (max_outlier_score['outlier_score__max'] - min_outlier_score['outlier_score__min']) / number_of_bins
 
+    # if additional == "true", get all the answers that are not tagged yet
+    show_new = False
+    if additional == "true":
+        tagged_answers = AnswerTag.objects.filter(question_id=q_id)
+        # set all tagged_answers "new" field to False
+        for ans in tagged_answers:
+            ans.new = False
+            ans.save() 
+        answer_tag_ids = tagged_answers.values_list("answer_id", flat=True)
+        chosen_answers = chosen_answers.exclude(id__in=answer_tag_ids)
+        show_new = True
+    
     # get one random example from each bin
     outlier_examples = []
     for i in range(number_of_bins):
@@ -211,9 +223,9 @@ def rubric_refinement(request, q_id):
         if curr_bin.exists():
             # outlier_examples.append(curr_bin.order_by('?').first())
             outlier_examples.append(curr_bin.first())
-    
-    # check if AnswerTag objects exist for this question
-    if not AnswerTag.objects.filter(question_id=q_id).exists():
+
+    if not AnswerTag.objects.filter(question_id=q_id, answer_id__in=[x.id for x in outlier_examples]).exists():
+    # if not AnswerTag.objects.filter(question_id=q_id).exists():
         tags = llmh.apply_rubrics(current_question_obj, outlier_examples, rubric_list)
         for ans_id in tags:
             tagged = []
@@ -237,6 +249,13 @@ def rubric_refinement(request, q_id):
         rubric_tag = "R{}".format(rubric["id"])
         polarity_emoji = "✔" if rubric["polarity"] == "positive" else "✘"
         rubric_dict[rubric_tag] = polarity_emoji + " " + rubric["title"]
+    
+    # get all the Answers with AnswerTags for this question
+    answer_tag_ids = AnswerTag.objects.filter(question_id=q_id).values_list("answer_id", flat=True)
+    tagged_answers = Answer.objects.filter(id__in=answer_tag_ids)
+
+    # sort tagged answers by the ones with new answer tags
+    tagged_answers = sorted(tagged_answers, key=lambda x: x.answertag_set.filter(question_id=q_id).first().new, reverse=True)
 
     context = {
         "question_obj": current_question_obj,
@@ -244,9 +263,10 @@ def rubric_refinement(request, q_id):
         "question_list": q_list,
         "rubric_list": rubric_list,
         "rubric_dict": rubric_dict,
-        "answers": outlier_examples,
+        "answers": tagged_answers,
         "answer_count": answer_count,
         "ans_tags": ans_tags,
+        "show_new": show_new,
     }
 
     return render(request, "rubric_refinement.html", context)

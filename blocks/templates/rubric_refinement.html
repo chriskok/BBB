@@ -11,7 +11,7 @@
 
 <div id="loader" style="display:none">
     <div class="d-flex justify-content-center align-items-center" style="height:85vh">
-        <h4 class="mr-4">Please wait while our AI generates feedback <br> for each answer based on the rubrics matched!</h4>
+        <h4 class="mr-4" id="loading_message">Please wait while our AI generates feedback <br> for each answer based on the rubrics matched!</h4>
 
         <div class="spinner-border text-info" role="status" style="width: 4rem; height: 4rem;">
             <span class="sr-only">Loading...</span>
@@ -24,7 +24,7 @@
             <a href="{% url 'rubric_creation' question_obj.id %}" class="btn btn-secondary">Stage 1: Rubric Creation</a>
         </div>
         <div class="col-6 d-flex align-items-center justify-content-end">
-            <a href="{% url 'rubric_feedback' question_obj.id %}" onclick="fadeOutLoadedPage()" class="btn btn-secondary">Stage 3: Feedback</a>
+            <a href="{% url 'rubric_feedback' question_obj.id %}" onclick="fadeOutLoadedPage('next')" class="btn btn-secondary">Stage 3: Feedback</a>
         </div>
     </div>
     <br>
@@ -49,7 +49,7 @@
         <div class="col-6">
             <div class="card">
                 <div class="card-body">
-                    <h5 class="card-title">Answer {{ forloop.counter }}</h5>
+                    <h5 class="card-title">Answer {{ forloop.counter }} {% with first_tag=answer.answertag_set.first %}{% if show_new and first_tag.new %}(new){% endif %}{% endwith %}</h5>
                     <h1 class="card-text" id="anstext_{{answer.id}}">{{ answer.answer_text }}</h1>
                 </div>
             </div>
@@ -82,7 +82,7 @@
     {% comment %} big button to "Get 10 New Answers" {% endcomment %}
     <div class="row">
         <div class="col-12 d-flex justify-content-center">
-            <button class="btn btn-primary btn-lg btn-block" id="get_new_answers">Apply to 10 New Answers</button>
+            <a href="{% url 'rubric_refinement' question_obj.id "true" %}" onclick="fadeOutLoadedPage('new')" class="btn btn-primary btn-lg btn-block" id="get_new_answers">Apply to 10 New Answers</a>
         </div>
     </div>
 </div>
@@ -189,8 +189,14 @@
     }
 
     // function to fade out loaded page when button is clicked and fade in loader
-    function fadeOutLoadedPage() {
+    function fadeOutLoadedPage(button_clicked) {
         $( "#loaded-page" ).fadeOut(400, function(){
+            // update loading message depending on button clicked
+            if (button_clicked == "next") {
+                $( "#loading_message" ).html("Please wait while our AI generates feedback <br> for each answer based on the rubrics matched!");
+            } else if (button_clicked == "new") {
+                $( "#loading_message" ).html("Please wait while we generate new examples <br> based off your input on the rubrics matches!");
+            } 
             $( "#loader" ).fadeIn(400);
         });  
     }

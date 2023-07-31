@@ -172,6 +172,7 @@ class AnswerTag(models.Model):
     answer = models.ForeignKey(Answer, on_delete=models.CASCADE, default=None, null=True, blank=True)
     tag = models.CharField(max_length=200, default="", null=True, blank=True)
     reasoning_dict = models.TextField()  # dictionary with highlighted section and reasoning for chosen tags
+    new = models.BooleanField(default=True)
     
     def set_reasoning_dict(self, x):
         self.reasoning_dict = json.dumps(x)
