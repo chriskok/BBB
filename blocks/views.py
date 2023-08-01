@@ -396,7 +396,7 @@ def generate_feedback_csv(request, q_id):
     ans_without_feedback = chosen_answers.exclude(id__in=ans_feedback_ids)
     ans_without_feedback = ans_without_feedback.order_by('?')[:10]
 
-    # generate feedback for these answers
+    # generate feedback for these answers 
     rubric_obj = RubricList.objects.filter(question_id=q_id).first()
     rubric_list = rubric_obj.get_rubric_list()
     feedbacks = llmh.apply_feedback_full(current_question_obj, ans_without_feedback, rubric_list)
