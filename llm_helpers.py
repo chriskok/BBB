@@ -88,7 +88,7 @@ def tag_answers(question, answers, rubrics, num_samples=40):
 
 def create_rubric_suggestions(question, answers, rubrics, polarity="positive"):
 
-    print(f'Creating new {polarity} rubrics!')
+    # print(f'Creating new {polarity} rubrics!')
 
     answers_str = "\n".join(["{}. {}".format(answer.id, answer.answer_text) for i, answer in enumerate(answers)])
     rubrics_str = "\n\n".join(["- {} (polarity: {}, description: {})".format(rubric["title"], rubric["polarity"], rubric['description']) for i, rubric in enumerate(rubrics) if rubric['id'] != 0])
