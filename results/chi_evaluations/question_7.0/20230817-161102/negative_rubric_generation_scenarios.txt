@@ -1,0 +1,44 @@
+AUTO SCENARIO 2
+
+- Partial Page Refresh: Asynchronous JavaScript enables updating parts of the page instead of full refresh.
+- Non-Blocking Operations: Enables the execution of other tasks while waiting on longer tasks.
+- Efficient Handling of Tasks: Allows concurrent execution of tasks, enhancing program efficiency and dynamism.
+- User Interaction: Ensures smooth user interaction with the interface while backend processes are ongoing.
+- Handle API Response Time: Good for uncertain API response times, avoids blocking the program.
+- Web Experience: Creates a more streamlined, responsive experience for users on webpages.
+
+Positive Rubric Items:
+- Understanding Partial Page Refresh: Can explain partial page updating through asynchronous JavaScript. (example: "Asynchronous programming allows for us to partially refresh the page rather than a full refresh")
+- Explanation of Non-Blocking Operations: Clearly explains how asynchronous JavaScript handles long-running tasks. (example: "Allows you to start a task that might take a long time and in the meantime still be responsive to other tasks while that first task is still running.")
+- Understanding Task Efficiency: Can articulate how asynchronous programming allows for concurrent tasks execution. (example: "Asynchronous programming allows JavaScript programs to perform multiple tasks concurrently...")
+- User Interaction Awareness: Understands that asynchronous JavaScript ensures a smoother user interaction. (example: "It enables me to send, request and receive data from a server without blocking the rest of my interface.")
+- Dealing with API Response: Can explain how asynchronous programming prevents program blockage with uncertain API response times. (example: "Using asynchronous programming, we can wait the proper amount of time, and execute code upon receiving the information we need.")
+
+Negative Rubric Items:
+- Misunderstanding of Non-Blocking Concept: Demonstrates confusion about asynchronous concept. (example: "Because it allows us to modify the website without having to send the data every time a change is made")
+- Incomplete Explanation on Task handling: Fails to acknowledge concurrency provided by asynchronous programming. (example: "You can respond to other tasks while you're waiting on a big task to run;")
+- Partial Page Refresh Misinterpretation: Unable to explain the concept of partial page updates through asynchronous JavaScript in-depth. (example: "This allows us to not interrupt the entire interface when the user prompts the website to make calls to a server.")
+- Unaware of User Interaction Impact: Does not mention the impact on the user interface and interaction. (example: "We want to use asynchronous programming in Javascript when we have the promise to resolve and also want to resolve other operations.")
+- Misunderstanding API Response Handling: Unable to explain how asynchronous programming deals with APIs’ uncertain response times. (example: "Because sometimes we are in a situation where a line of code may take an indefinite amount of time, we run it asynchronously.")
+
+
+---------------------------------------------------------------------------
+
+AUTO NO THEME SCENARIO
+
+Positive Rubric Items:
+- Understanding of Asynchronicity: Answer accurately describes asynchronous programming's non-blocking nature.
+- Mention of Page Refresh: Describes reduction in need for page refresh.
+- Mention of Task Simultaneity: States asynchronous programming allows for the handling of multiple tasks simultaneously. 
+- Description of Efficiency: Provides that asynchronous programming aids in more efficient execution of code.
+- Understanding of Performance: Highlights the benefit of preventing performance lags.
+
+Negative Rubric Items:
+- Lack of Understanding Asynchronicity: Failure to define asynchronous programming as non-blocking operations.
+- No Mention of Page Refresh: Does not describe how asynchrony can minimize complete page refreshes.
+- No Mention of Task Simultaneity: Doesn't mention the concurrent execution of multiple tasks that asynchronicity enables.
+- Absence of Efficiency Mention: Goes without acknowledging how asynchronous programming allows more efficient code.
+- Misunderstanding Performance: Does not recognize that asynchronous programming prevents slow webpage performance.
+
+---------------------------------------------------------------------------
+
