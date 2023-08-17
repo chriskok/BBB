@@ -239,3 +239,110 @@ Negative Rubric Items:
 
 ---------------------------------------------------------------------------
 
+AUTO SCENARIO
+
+1. Theme: Asynchronous programming allows for partial page updates. Polarity: Good
+2. Theme: Asynchronous programming allows for changes without page reloads. Polarity: Good
+3. Theme: Asynchronous programming decreases waiting time for tasks. Polarity: Good
+4. Theme: Prevents the locking of web browser. Polarity: Good
+5. Theme: It enables non-blocking I/O operations. Polarity: Good
+6. Theme: Helps execute long-running operations without stopping the main thread. Polarity: Good
+7. Theme: Promotes efficient web application performance. Polarity: Good
+8. Theme: Facilitates user interface responsiveness. Polarity: Good
+9. Theme: Favorable for making requests and sending data. Polarity: Good
+10. Theme: Enables executing instructions without having to wait for previous ones. Polarity: Misunderstanding (Asynchronous programming may still require waiting for promise resolution or callback functions; it simply doesn’t block other operations in the meantime.)
+
+Positive Rubric Items:
+1. Asynchronous Programming & Partial Page Updates: The answer recognizes asynchronous programming’s partial page update capability. 
+2. Changes Without Page Reloads: The response identifies asynchronous programming as a means to make changes without reloading the page. 
+3. Decrease in Waiting Time: The answer acknowledges that asynchronous programming can reduce task waiting times. 
+4. Prevention of Web Browser Locking: The student understands that asynchronous programming helps prevent browser locks.
+5. Enabling Non-blocking I/O Operations: The answer includes the fact that asynchronous programming enables non-blocking I/O operations.
+
+Negative Rubric Items:
+6. Unrelated Page Update Concepts: The student wrongly associates asynchronous programming with concepts unrelated to partial page updates. 
+7. Misunderstanding of Page Reloads: The answer misinterprets the role of asynchronous programming in page reloads. 
+8. Waiting Time Misconceptions: In this case, the student doesn't grasp how asynchronous programming specifically decreases task waiting times.
+9. Misinterpretation of Browser Locking: Answer show misunderstanding about preventing browser locks with asynchronous programming.
+10. Failure to Recognize Non-blocking I/O Operations: The response does not connect asynchronous programming to non-blocking I/O operations.
+
+---------------------------------------------------------------------------
+
+AUTO NO THEME SCENARIO
+
+Positive Rubric Items: 
+- Understanding of Asynchronicity: Demonstrates knowledge of asynchronous programming's non-blocking nature. (e.g. "This way you don't have to wait for things to finish")
+- AJAX Utilization: Understands how AJAX is used with asynchronous programming for partial page updates. (e.g. "For updating the web page partially, based on asynchronous AJAX")
+- Handling I/O Operations: Recognizes that I/O operations are a common use-case for asynchronous programming. (e.g. "When we are doing I/O functions, we don't want to block")
+- Concurrence with User Interactivity: Understands that asynchronous programming helps avoid freezing user interactivity during code execution. (e.g. "We use asynchronous programming to prevent the browser from freezing")
+- Leveraging Network Requests: Understands that asynchronous programming is beneficial while processing network requests. (e.g. "Asynchronous programming allows us to make changes without having to reload the entire page") 
+
+Negative Rubric Items: 
+- Blocking Misunderstanding: Believes that asynchronous code will block until task completion. (No example given, as this would be an incorrect answer)
+- AJAX Misconception: Thinks AJAX is the only way to achieve asynchronous programming in JavaScript. (No example given, as this would be an incorrect answer)
+- Assumes Full Page Reloads: Misunderstands that asynchronous programming implies full-page reloads for minor changes. (No example given, as this would be an incorrect answer)
+- Inappropriate Execution Cases: Believes that asynchronous programming is best when wanting to execute other code simultaneously. (e.g. "Because sometimes, you would want to execute other code simultaneously")
+- No Network Operations: Fails to mention the benefits of asynchronous programming in network operations. (No example given, as this would be an incorrect answer)
+
+---------------------------------------------------------------------------
+
+AUTO SCENARIO
+
+1. Theme: Efficiency of Page Updates - Many students correctly noted that asynchronous programming allows for efficient page updates without needing to reload the entire page. (Positive)
+
+2. Theme: Non-blocking Operations - Asynchronous programming is correctly perceived to allow multiple operations to happen simultaneously without waiting for prior operations to complete. (Positive)
+
+3. Theme: I/O Operations - Some students correctly noted that, in JavaScript, asynchronous programming is generally used during I/O operations to prevent blocking or lag in the user interface. (Positive)
+
+4. Theme: User Experience - Some students recognize that asynchronous programming enhances user experience as it keeps web applications responsive and prevents unnecessary waiting times for end-users. (Positive)
+
+5. Theme: Multithreading Misconceptions - A common misconception is equating asynchronous programming to multithreading in JavaScript. While both concepts involve performing tasks in parallel, they handle and implement parallelism differently. (Negative)
+
+6. Theme: Real-time Updates - Some students indicated correctly that asynchronous programming allows for real-time updates and dynamic content changes on the page. (Positive)
+
+7. Theme: AJAX Confusion - A few students seemed to confuse AJAX with asynchronous programming. Though AJAX does use asynchronous methods, they are not synonymous. (Negative)
+
+8. Theme: Network Requests - A number of students correctly identify the utility of asynchronous programming with long-running activities like network requests. (Positive)
+
+9. Theme: Simultaneous Tasks Execution - Some students correctly note that asynchronous programming enables tasks to run 'simultaneously'. However, given JavaScript's single-threaded nature, the 'simultaneous' execution is more of a logical flow than a real parallel execution at any instant. (Positive but could lead to misconceptions)
+
+10. Theme: Misconceptions of Asynchronous Benefits - Some students made vague claims about the benefits of asynchronous programming without detailing the real advantages, showing some level of misunderstanding. (Negative)
+
+Positive Rubric Items:
+
+1. Page Update Efficiency: Recognizing asynchronous programming's role in efficient page updates.
+2. Non-blocking Operation Identification: Understanding asynchronous programming permits simultaneous operations.
+3. I/O Operations Understanding: Correctly linking asynchronous programming to non-blocking I/O operations in Javascript.
+4. User Experience Enhancement Acknowledgement: Noting the role of asynchronous programming in enhancing user experience by preventing unnecessary wait times.
+5. Real-time Update Recognition: Correct identification of asynchronous programming's role in real-time updates and dynamic content changes.
+
+Negative Rubric Items:
+
+1. Multithreading Misconceptions: Incorrectly assuming asynchronous programming and multithreading in JavaScript are the same.
+2. AJAX Confusion: Mistaking AJAX as a synonym for asynchronous programming.
+3. Misinterpretation of 'Simultaneously': Misunderstanding JavaScript's single-threaded nature and misconstruing 'simultaneous' tasks running in asynchronous programming.
+4. Vague Asynchronous Benefits: Providing unclear or incorrect benefits of asynchronous programming.
+5. Absence of Network Requests: Failing to mention the use of asynchronous programming in dealing with long-running activities like network requests.
+
+---------------------------------------------------------------------------
+
+AUTO NO THEME SCENARIO
+
+Positive Rubric Items:
+
+- "Understanding Non-Blocking Nature": Recognizes asynchronous programming allows non-blocking I/O operations. (e.g. "Asynchronous processing allows for updating on the web page without locking it.")
+- "Mention of Task Distribution": Understands async programming allows simultaneous task execution. (e.g. "This allows for multiple tasks to run at the same time.")
+- "Understanding User Interface Benefits": Recognizes async programming prevents the entire interface from interruption. (e.g. "This allows us to not interrupt the entire interface.")
+- "Understanding Partial Update": Explains async programming allows partial updates. (e.g. "AJAX allows us to partially update a page without reloading it.")
+- "Interpreting Parallel Execution": Addresses async programming enables parallel execution. (e.g. "async programming allows us to run tasks simultaneously.")
+
+Negative Rubric Items:
+
+- "Usage of AJAX only": Answers only talking about AJAX partial update function, missing general idea of async programming. (e.g. "AJAX allows us to partially update a page without reloading it.")
+- "Misinterpretation of Simultaneous Execution": Misconstrues async programming as only allowing multiple task execution simultaneously. (e.g. "Because we are able to make things happen at the same time.")
+- "Lack of Understanding Blocking": Fails to mention non-blocking nature of asynchronous programming. (e.g. "This can allow us to continue to provide functionality while waiting for data.")
+- "Misunderstanding User Interface Benefits": Fails to note how async programming can improve UI experience. (e.g. "We want to use asynchronous programming to prevent the website from crashing.")
+- "Absence of Data Handling Explanation": Fails to explain how async programming helps handle data requests. (e.g. "It allows us to make changes to pages without refreshing them.")
+
+---------------------------------------------------------------------------
+
