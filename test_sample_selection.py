@@ -119,7 +119,6 @@ def write_to_file_cluster(df, filename, sample=1):
                 f.write(str(row['cluster']) + '\t')
                 f.write('\n')
 
-
 def prompt_gpt4(prompt):
     model="gpt-4"
     try:
@@ -207,28 +206,78 @@ def x_clusters_prompt(df, x, num_samples_per_cluster=5):
     full_response = all_rubrics + "\n\n" + response
     write_responses_to_file(f"{x} Clusters Prompt", full_response, 'results/chi_evaluations/cluster_size_prompts.txt')
 
+# Placeholder function for GPT prompting
+def prompt_gpt(system_prompt=None, prompt_text=""):
+    if (system_prompt): msgs = [{"role": "system", "content": system_prompt}, {"role": "user", "content": prompt_text}]
+    else: msgs = [{"role": "user", "content": prompt_text}]
+    response = prompt_gpt4(msgs)
+    return response
+
+def manual_scenario(answers):
+    # GPT generates themes
+    themes = prompt_gpt(f"Generate themes based on these answers: \n\n{answers}")
+    # Human labels the themes as positive or negative (this step is interactive and manual)
+    labeled_themes = input(f"Label the following themes as positive or negative: \n\n{themes}")
+    # GPT generates positive and negative rubrics based on human-labeled themes
+    rubrics = prompt_gpt(f"Generate 5 positive and 5 negative (covering all potential misunderstandings of the concept presented) rubrics based on these labeled themes: \n\n{labeled_themes}")
+    write_responses_to_file("Manual Scenario", rubrics, 'results/chi_evaluations/negative_rubric_generation_scenarios.txt')
+
+def semi_auto_scenario(answers):
+    # GPT generates themes and suggests polarity
+    themes_with_polarity = prompt_gpt(f"Generate themes and suggest polarity for these answers: \n\n{answers}")
+    # Human checks and edits polarity (this step is interactive)
+    checked_themes = input(f"Check and edit the polarity for the following themes: \n\n{themes_with_polarity}")
+    # GPT generates positive and negative rubrics based on checked themes
+    rubrics = prompt_gpt(f"Generate 5 positive and 5 negative (covering all potential misunderstandings of the concept presented) rubrics based on these checked themes: \n\n{checked_themes}")
+    write_responses_to_file("Semi-Auto Scenario", rubrics, 'results/chi_evaluations/negative_rubric_generation_scenarios.txt')
+
+def auto_scenario(answers):
+    # GPT generates themes and determines polarity
+    themes_with_polarity = prompt_gpt(f"You are an expert instructor for your given course. Currently, you are evaluating student responses to the question: 'Describe why we want to use asynchronous programming in Javascript?' from a recent final exam. Generate 10 themes for the given answers (along with a polarity - whether or not it's a common good answer vs common misunderstanding)", f"{answers}")
+    # GPT generates positive and negative rubrics based on themes with polarity
+    rubrics = prompt_gpt(f"You are an expert instructor for your given course. Currently, you are evaluating student responses to the question: 'Describe why we want to use asynchronous programming in Javascript?' from a recent final exam. Generate 5 positive (common good answers) and 5 negative (potential misunderstandings) rubric items based on the given answers and these themes: \n\n{themes_with_polarity} \n\n Please output in the following format: - <rubric title>: <rubric description kept to 15 words maximum> (e.g. <example answer>)", f"{answers}")
+    full_response = themes_with_polarity + "\n\n" + rubrics
+    write_responses_to_file("Auto Scenario", full_response, 'results/chi_evaluations/negative_rubric_generation_scenarios.txt')
+
+def auto_no_theme_scenario(answers):
+    # GPT generates positive and negative rubrics based on themes with polarity
+    rubrics = prompt_gpt(f"You are an expert instructor for your given course. Currently, you are evaluating student responses to the question: 'Describe why we want to use asynchronous programming in Javascript?' from a recent final exam. Generate 5 positive (common good answers) and 5 negative (potential misunderstandings) rubric items based on the given answers. Please output in the following format: - <rubric title>: <rubric description kept to 15 words maximum> (e.g. <example answer>)", f"{answers}")
+    write_responses_to_file("Auto No Theme Scenario", rubrics, 'results/chi_evaluations/negative_rubric_generation_scenarios.txt')
+
 # questions = Question.objects.all()
 questions = Question.objects.filter(id=35)
 for q in questions:
     print(q)
     df = pd.DataFrame(list(q.answer_set.values()))
+    # ---------------------------------------------
     # outlier_df = outlier_score(df)
     # write_to_file(outlier_df, 'results/chi_evaluations/outlier_score.txt')
     # further_df = outlier_score_furthest(df)
     # write_to_file(further_df, 'results/chi_evaluations/outlier_score_furthest.txt')
     # closer_df = outlier_score_closest(df)
     # write_to_file(closer_df, 'results/chi_evaluations/outlier_score_closest.txt')
-    # df = outlier_score(df)
+    # ---------------------------------------------
     # cluster10 = cluster(df, n_clusters=10)
     # write_to_file_cluster(cluster10, 'results/chi_evaluations/cluster10.txt', sample=2)
-    cluster20 = cluster(df, n_clusters=20)
+    # cluster20 = cluster(df, n_clusters=20)
     # write_to_file_cluster(cluster20, 'results/chi_evaluations/cluster20.txt', sample=1)
     # prompt_gpt_and_save(cluster20, 'results/chi_evaluations/prompt_evaluations.txt')
-    full_context_prompt(cluster20, num_samples=1)
-    time.sleep(30)
-    x_clusters_prompt(cluster20, x=2, num_samples_per_cluster=5)
-    time.sleep(30)
-    x_clusters_prompt(cluster20, x=5, num_samples_per_cluster=5)
-    time.sleep(30)
-    x_clusters_prompt(cluster20, x=10, num_samples_per_cluster=5)
+    # ---------------------------------------------
+    # cluster20 = cluster(df, n_clusters=20)
+    # full_context_prompt(cluster20, num_samples=1)
+    # x_clusters_prompt(cluster20, x=2, num_samples_per_cluster=5)
+    # x_clusters_prompt(cluster20, x=5, num_samples_per_cluster=5)
+    # x_clusters_prompt(cluster20, x=10, num_samples_per_cluster=5)
+    # ---------------------------------------------
+    cluster20 = cluster(df, n_clusters=20)
+    samples = []
+    num_clusters = df['cluster'].nunique()
+    for cluster_id in range(num_clusters): 
+        sample = df[df['cluster'] == cluster_id].sample(n=1)
+        samples.append(sample)
+    # manual_scenario(samples)
+    # semi_auto_scenario(samples)
+    auto_scenario(samples)
+    auto_no_theme_scenario(samples)
+
 
