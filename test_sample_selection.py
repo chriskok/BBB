@@ -7,6 +7,11 @@ modelPath = 'all-MiniLM-L6-v2'
 model = SentenceTransformer(modelPath)
 from sklearn.cluster import AgglomerativeClustering
 
+import openai
+from my_secrets import my_secrets
+openai_key = my_secrets.get('openai_key')
+openai.api_key = openai_key
+
 # further AND closest items from mean
 def outlier_score(df):
     sentences = df["answer_text"].apply(str).tolist()
@@ -113,6 +118,55 @@ def write_to_file_cluster(df, filename, sample=1):
                 f.write('\n')
 
 
+def prompt_gpt4(prompt):
+    model="gpt-4"
+    try:
+        response = openai.ChatCompletion.create(
+            model=model,
+            messages=prompt,
+            temperature=1.0,
+        )
+        if "error" in response:
+            print("OPENAI ERROR: {}".format(response))
+            return "ERROR"
+        else:
+            return response["choices"][0]["message"]["content"]
+    except Exception as e: 
+        print(e)
+        return "ERROR"
+
+def prompt_gpt_and_save(df, filename):
+    prompts = [
+        "Using the examples provided from a dataset, suggest potential rubric items that would be effective for evaluating students' answers.",
+        "Based on the provided answers, identify the main themes or recurrent topics that students emphasized.",
+        "Examine the answers and highlight the key insights students have provided.",
+        "From the students' responses, deduce the primary concepts or principles they understand.",
+        "If you were to summarize the essence of all student responses into a few critical takeaways, what would they be?",
+        "Looking at the student responses, what perspectives or viewpoints do they commonly adopt?",
+        "Assess the depth of understanding presented in the answers. What are the foundational, intermediate, and advanced concepts students touch upon?",
+        "Interpret the collective knowledge demonstrated by the answers. What holistic understanding or overarching message do students convey?"
+    ]
+    prepended_text = "You are an expert instructor for your given course. You're in the process of evaluating student answers to the short-answer, open-ended question: 'Describe why we want to use asynchronous programming in Javascript?' in the recent final exam. "
+    # get total number of clusters
+    num_clusters = df['cluster'].nunique()
+    # then get a random sample from each cluster and add the answer_texts to a list
+    sample_answers = []
+    for i in range(num_clusters):
+        cluster_df = df.loc[df['cluster'] == i]
+        cluster_sample = cluster_df.sample(n=1)
+        for index, row in cluster_sample.iterrows():
+            # remove new lines from answer_text
+            new_text = row['answer_text'].replace('\n', ' ')
+            sample_answers.append(new_text)
+    user_prompt = "\n\n".join(sample_answers)
+    with open(filename, 'a') as file:  # Open the file in append mode
+        for prompt in prompts:
+            curr_prompt = prepended_text + prompt
+            msgs = [{"role": "system", "content": curr_prompt}, {"role": "user", "content": user_prompt}]
+            response = prompt_gpt4(prompt=msgs)
+            uppercase_prompt = prompt.upper()
+            file.write(f"{uppercase_prompt}\n\n" + response + '\n\n---------------------------------------------------------------------------\n\n')
+
 # questions = Question.objects.all()
 questions = Question.objects.filter(id=35)
 for q in questions:
@@ -125,8 +179,9 @@ for q in questions:
     # closer_df = outlier_score_closest(df)
     # write_to_file(closer_df, 'results/chi_evaluations/outlier_score_closest.txt')
     # df = outlier_score(df)
-    cluster10 = cluster(df, n_clusters=10)
-    write_to_file_cluster(cluster10, 'results/chi_evaluations/cluster10.txt', sample=2)
+    # cluster10 = cluster(df, n_clusters=10)
+    # write_to_file_cluster(cluster10, 'results/chi_evaluations/cluster10.txt', sample=2)
     cluster20 = cluster(df, n_clusters=20)
-    write_to_file_cluster(cluster20, 'results/chi_evaluations/cluster20.txt', sample=1)
+    # write_to_file_cluster(cluster20, 'results/chi_evaluations/cluster20.txt', sample=1)
+    prompt_gpt_and_save(cluster20, 'results/chi_evaluations/prompt_evaluations.txt')
 

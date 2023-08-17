@@ -1,0 +1,98 @@
+1. Understanding of Asynchronous Programming: The student should demonstrate a clear understanding of what asynchronous programming is and why it is used in Javascript. 
+
+2. Gives Specific Examples: The student should include specific examples, such as using AJAX to partially update a page without refreshing the entire page, or executing instructions that may take a long time without blocking the rest of the code.
+
+3. Explains Main Advantages: Student clearly explains the main advantages of asynchronous programming such as executing tasks simultaneously, not freezing the program during long-running actions, improving overall performance and responsiveness, and not blocking the UI or other processes. 
+
+4. Application to Javascript: Student needs to apply asynchronous programming benefits to JavaScript, explaining specifically why JavaScript, as a single-threaded language, benefits from this technique.
+
+5. Understanding of Concepts: The student should demonstrate an understanding of important concepts involved in asynchronous programming, such as AJAX, APIs, promises, and event loops. 
+
+6. Use of Technical Terminology: The student should accurately use technical terminology associated with asynchronous programming (e.g., "single-threaded," "non-blocking," "callback," "promise," "event loop," etc.). 
+
+7. Communication: The student's answer should be clear, concise and well-structured, making it easy for other students or a layperson to understand the content and purpose of asynchronous programming. 
+
+8. Understanding of Real-world Implications: The response should demonstrate understanding of the real-world implications of asynchronous programming, such as improved web page responsiveness or enhanced user experience.
+
+The students have emphasized a few main points on why one would use asynchronous programming in Javascript:
+
+1. Non-Blocking: Asynchronous programming allows for non-blocking execution of code. This means that long tasks can be initiated and set aside without stopping the execution of the rest of the program until they are finished.
+
+2. User Interface (UI) Experience: It provides users a better experience by allowing the user to interact with the UI while the task is being processed.
+
+3. Concurrent Process Execution: It allows the execution of multiple tasks concurrently, not necessarily at the same time, instead of in a linear, synchronous manner.
+
+4. Partial Page Updates: Using technologies like AJAX, asynchronous programming can update parts of the web page without needing to reload the entire page. 
+
+5. Improve Efficiency: It allows the program to perform other tasks while waiting for more time-consuming operations (like API calls or data fetching).
+
+6. Improved Responsiveness: The capability to execute multiple tasks asynchronously can lead to a more responsive application and can enhance overall performance.  
+
+7. Background Data Transfer: Asynchronous programming enables the sending, receiving and requesting of data in the background, also without disturbing other operations or the UI.
+
+1. Asynchronous programming in Javascript allows partial updates of a webpage without refreshing the whole page (through AJAX).
+2. It enables the execution of potentially long-running tasks, such as API calls or file input/output operations, in the background without blocking the rest of the code or the main thread. 
+3. Asynchronous programming provides a better user experience as it doesn't block the user interface, it allows users to continuously interact with the webpage, even while other processes are running.
+4. It enables simultaneous execution of multiple functions on a page. This is particularly useful for handling numerous or complex tasks.
+5. Asynchronous programming increases the efficiency of overall operations as tasks are not dependent on the completion of one another.
+6. It offers the flexibility in task execution order, improving performance and responsiveness of the JavaScript application. 
+7. Asynchronous loops are essential when there is a large number of iterations or when loop operations are complicated.
+
+The majority of the students understand the following key concepts:
+
+1. Asynchronous programming allows multiple things (functions or operations) to be happening at the same time without blocking or waiting for other tasks to complete. This increases efficiency and user experience.
+   
+2. It is important in situations where a functionality may result in delay, such as an API call. The programming does not need to halt all other operations while waiting for a response.
+
+3. AJAX enables partial update of a page without the need of reloading the entire page. It can send, request, and receive data from a server without disturbing the UI or other ongoing processes.
+
+4. Asynchronous programming makes it possible to execute tasks that could take a long time to finish, for example, file input or output operations without halting other tasks in the process, thereby improving the overall performance and responsiveness of the application.
+
+5. JavaScript operates on a single thread, enabling only one task to occur at a time. Asynchronous programming allows the execution of tasks in the background while the main thread continues with other operations.
+
+6. The utilization of promises to manage how functions wait for delayed operations to finish without blocking other code. 
+
+7. In the context of user interaction, asynchronous programming provides a smoother and faster browsing experience since users do not need to wait for a single task to complete before proceeding with other tasks. 
+
+8. The students also understand that asynchronous programming allows the page or program to continue running while waiting for user input or a function to resolve.
+
+1. Asynchronous programming enhances the user experience by enabling the page to update or change sections without needing a full reload, making the page more responsive and interactive.
+   
+2. AJAX is commonly used in asynchronous programming to send, request, and receive data from the server in the background, without disturbing the user interface or blocking other operations.
+
+3. It allows multiple operations or functions to run simultaneously. This capability is particularly beneficial when dealing with tasks that take a significant amount of time, such as API calls or large data operations.
+
+4. As an essential part of Javascript, asynchronous programming prevents blocking or halting of other operations while awaiting a response. This usage avoids potential freezes in the program during these long-running actions and increases overall efficiency.
+
+5. It ensures that the website or program remains responsive and active even when one task runs or waits for a resolution, providing smoother and more efficient operation.
+
+6. In the context of Javascript being a single-threaded language, asynchronous programming allows long-running tasks to run in the 'background' while the rest of the code continues to run on the main thread, effectively improving the overall performance and responsiveness of the application. 
+
+7. It also enables the execution of tasks to be paused and resumed, allowing the program to handle user interactions or other tasks before continuing with the paused task.
+
+Common perspectives or viewpoints adopted by the students when discussing the use of asynchronous programming in JavaScript are:
+
+1. Improved User Interface Interactions: Students often mention the benefits asynchronous programming provides in terms of user interactions. They highlight how it allows for parts of a webpage to be updated without requiring a full page refresh, leading to smoother and unobtrusive interface changes.
+
+2. Non-Blocking/Concurrent Processing: Many responses point to the non-blocking nature of asynchronous programming. They emphasize how this allows multiple tasks to be performed concurrently without halting the execution of the entire program. This is particularly useful in scenarios dealing with long-running tasks or operations such as awaiting a response from an API call.
+
+3. Responsiveness and Efficiency: A common thread in the responses is the argument for improved responsiveness and efficiency. Asynchronous programming allows JavaScript to handle multiple operations without stalling its main thread, thus offering a better and faster user experience.
+
+4. Event Management: Some students discuss how asynchronous programming aids in managing events, listening for user input, and other tasks without interrupting the flow of the program. They identify this as a key feature for creating responsive websites or web applications.
+
+5. AJAX: Several responses refer to AJAX (Asynchronous JavaScript and XML) as an example of asynchronous programming in practice. They mention its ability to send, request, and receive data asynchronously without blocking user interface operations or reloading the entire page.
+
+6. Single-Threaded Language: Some students point out that JavaScript is a single-threaded language and asynchronous programming can overcome some of the limitations associated with it by allowing tasks to be executed in the background.
+
+Students have demonstrated a range of understanding for asynchronous programming in Javascript.
+
+Foundational concepts: Most students seem to grasp the foundational aspects of asynchronous programming. They understand that JS is a single-threaded runtime, which can be limiting for certain tasks. Asynchronous programming helps to allow continuous program operation, even when waiting on longer tasks. They understand that it allows for partial page updates without full reloads, and allows certain operations to transpire in the background without blocking the user interface.
+
+Intermediate concepts: Some students have touched on more intermediate concepts as well. They discuss how AJAX is instrumental in making requests and receiving data from a server while not blocking the rest of the interface. They understand that there can be efficiencies gained by handling certain tasks asynchronously, particularly in the realm of API calls. They also recognize that this contributes to improving the user's experience and overall performance of JavaScript applications.
+
+Advanced concepts: Asynchronously programming in JavaScript also includes understanding of complex features like Promises, async/await, and the event loop, which is not mentioned by the students. However, a few students provided a hint of more advanced understanding, referring to the execution of tasks in the background without blocking the main thread. This suggests a grasp of how JavaScript's event-driven, non-blocking I/O model allows for highly concurrent programming, which can be leveraged for high performance in heavy I/O workloads. But without explicit mention of Promises, Callback functions and Event Loops, it's hard to definitively say any student demonstrates advanced comprehension. 
+
+Overall, while the depth of understanding varies, all students have a foundational understanding of why we might use asynchronous programming in JavaScript. However, deeper understanding of related concepts like Callback functions, Promises, async/await syntax, and event loops would help to truly master asynchronous programming.
+
+The students collectively understand that asynchronous programming in JavaScript is crucial for building efficient and responsive web applications. They recognize that this technique allows for simultaneous execution of operations, which means the program does not have to wait for one task to finish before starting another. This is particularly useful when dealing with operations that take a long time, such as API calls or user interactions, and prevents these actions from blocking the rest of the code. Moreover, the students also demonstrated the understanding of AJAX, a set of techniques used for creating asynchronous web applications, and its role in partial webpage updates without complete reloads. The knowledge conveyed implies an understanding that asynchronous programming allows for a better user experience, as the interface remains interactive amidst various ongoing processes.
+
