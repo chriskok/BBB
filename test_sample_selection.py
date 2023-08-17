@@ -1,6 +1,7 @@
 import pandas as pd
 import torch
 import time
+import os
 
 from sentence_transformers import SentenceTransformer, util
 from transformers import pipeline
@@ -136,7 +137,7 @@ def prompt_gpt4(prompt):
         print(e)
         return "ERROR"
 
-def prompt_gpt_and_save(df, filename):
+def prompt_phrasing(df, filename):
     prompts = [
         "Using the examples provided from a dataset, suggest potential rubric items that would be effective for evaluating students' answers.",
         "Based on the provided answers, identify the main themes or recurrent topics that students emphasized.",
@@ -173,7 +174,7 @@ def write_responses_to_file(title, response, filename):
         uppercase_title = title.upper()
         file.write(f"{uppercase_title}\n\n" + response + '\n\n---------------------------------------------------------------------------\n\n')
 
-def full_context_prompt(df, num_samples=1):
+def full_context_prompt(df, file_location, num_samples=1):
     prompts = []
     num_clusters = df['cluster'].nunique()
     for cluster_id in range(num_clusters): 
@@ -183,9 +184,9 @@ def full_context_prompt(df, num_samples=1):
     system_prompt = "You are an expert instructor for your given course. You're in the process of evaluating student answers to the short-answer, open-ended question: 'Describe why we want to use asynchronous programming in Javascript?' in the recent final exam. Using the examples provided from a dataset, suggest potential rubric items that would be effective for evaluating students' answers."
     msgs = [{"role": "system", "content": system_prompt}, {"role": "user", "content": user_prompt}]
     response = prompt_gpt4(msgs)
-    write_responses_to_file("Full Context Prompt", response, 'results/chi_evaluations/cluster_size_prompts.txt')
+    write_responses_to_file("Full Context Prompt", response, file_location + 'cluster_size_prompts.txt')
 
-def x_clusters_prompt(df, x, num_samples_per_cluster=5):
+def x_clusters_prompt(df, x, file_location, num_samples_per_cluster=5):
     cluster_ids = sorted(df['cluster'].unique())
     system_prompt = "You are an expert instructor for your given course. Currently, you are evaluating student responses to the question: 'Describe why we want to use asynchronous programming in Javascript?' from a recent final exam. By examining diverse clusters, we hope to inspire more detailed insights based on the variations observed. Given a selection of answers from different pairings of clusters, please derive and suggest potential rubric items that capture the nuances and differences in students' understanding. What rubric items can best evaluate the diverse perspectives and knowledge levels reflected in these examples? Please output in the following format (one for each cluster): - <rubric title>: <rubric description kept to 15 words maximum>"
     responses = []
@@ -204,7 +205,7 @@ def x_clusters_prompt(df, x, num_samples_per_cluster=5):
     msgs = [{"role": "system", "content": summarizing_prompt}, {"role": "user", "content": all_rubrics}]
     response = prompt_gpt4(msgs)
     full_response = all_rubrics + "\n\n" + response
-    write_responses_to_file(f"{x} Clusters Prompt", full_response, 'results/chi_evaluations/cluster_size_prompts.txt')
+    write_responses_to_file(f"{x} Clusters Prompt", full_response, file_location + 'cluster_size_prompts.txt')
 
 # Placeholder function for GPT prompting
 def prompt_gpt(system_prompt=None, prompt_text=""):
@@ -213,71 +214,97 @@ def prompt_gpt(system_prompt=None, prompt_text=""):
     response = prompt_gpt4(msgs)
     return response
 
-def manual_scenario(answers):
+def manual_scenario(answers, file_location):
     # GPT generates themes
     themes = prompt_gpt(f"Generate themes based on these answers: \n\n{answers}")
     # Human labels the themes as positive or negative (this step is interactive and manual)
     labeled_themes = input(f"Label the following themes as positive or negative: \n\n{themes}")
     # GPT generates positive and negative rubrics based on human-labeled themes
     rubrics = prompt_gpt(f"Generate 5 positive and 5 negative (covering all potential misunderstandings of the concept presented) rubrics based on these labeled themes: \n\n{labeled_themes}")
-    write_responses_to_file("Manual Scenario", rubrics, 'results/chi_evaluations/negative_rubric_generation_scenarios.txt')
+    write_responses_to_file("Manual Scenario", rubrics, file_location + 'negative_rubric_generation_scenarios.txt')
 
-def semi_auto_scenario(answers):
+def semi_auto_scenario(answers, file_location):
     # GPT generates themes and suggests polarity
     themes_with_polarity = prompt_gpt(f"Generate themes and suggest polarity for these answers: \n\n{answers}")
     # Human checks and edits polarity (this step is interactive)
     checked_themes = input(f"Check and edit the polarity for the following themes: \n\n{themes_with_polarity}")
     # GPT generates positive and negative rubrics based on checked themes
     rubrics = prompt_gpt(f"Generate 5 positive and 5 negative (covering all potential misunderstandings of the concept presented) rubrics based on these checked themes: \n\n{checked_themes}")
-    write_responses_to_file("Semi-Auto Scenario", rubrics, 'results/chi_evaluations/negative_rubric_generation_scenarios.txt')
+    write_responses_to_file("Semi-Auto Scenario", rubrics, file_location + 'negative_rubric_generation_scenarios.txt')
 
-def auto_scenario(answers):
+def auto_scenario(answers, file_location):
     # GPT generates themes and determines polarity
     themes_with_polarity = prompt_gpt(f"You are an expert instructor for your given course. Currently, you are evaluating student responses to the question: 'Describe why we want to use asynchronous programming in Javascript?' from a recent final exam. Generate 10 themes for the given answers (along with a polarity - whether or not it's a common good answer vs common misunderstanding)", f"{answers}")
     # GPT generates positive and negative rubrics based on themes with polarity
     rubrics = prompt_gpt(f"You are an expert instructor for your given course. Currently, you are evaluating student responses to the question: 'Describe why we want to use asynchronous programming in Javascript?' from a recent final exam. Generate 5 positive (common good answers) and 5 negative (potential misunderstandings) rubric items based on the given answers and these themes: \n\n{themes_with_polarity} \n\n Please output in the following format: - <rubric title>: <rubric description kept to 15 words maximum> (e.g. <example answer from the dataset provided>)", f"DATASET:\n\n{answers}")
     full_response = themes_with_polarity + "\n\n" + rubrics
-    write_responses_to_file("Auto Scenario", full_response, 'results/chi_evaluations/negative_rubric_generation_scenarios.txt')
+    write_responses_to_file("Auto Scenario", full_response, file_location + 'negative_rubric_generation_scenarios.txt')
 
-def auto_no_theme_scenario(answers):
+def auto_scenario_2(answers, file_location):
+    # GPT generates themes and determines polarity
+    system_prompt = f"You are an expert instructor for your given course. You're in the process of evaluating student answers to the short-answer, open-ended question: 'Describe why we want to use asynchronous programming in Javascript?' in the recent final exam."
+    theme_prompt = f"Based on the provided answers, identify the main themes or recurrent topics that students emphasized. Keep each theme short and concise and don't overlap them too much with each other. Follow the format: \n- <theme title>: <theme description kept to 15 words maximum> \n\n{answers}"
+    msgs = [{"role": "system", "content": system_prompt}, {"role": "user", "content": theme_prompt}]
+    themes_response = prompt_gpt4(msgs)
+    # GPT generates positive and negative rubrics based on themes with polarity
+    rubrics_prompt = f"Generate 5 positive (common good answers) and 5 negative (potential misunderstandings) rubric items based on the given answers and the themes generated. Please output in the following format: \n- <rubric title>: <rubric description kept to 15 words maximum> (example: <example answer from the dataset provided>)"
+    msgs.append({"role": "assistant", "content": themes_response})
+    msgs.append({"role": "user", "content": rubrics_prompt})
+    rubrics_response = prompt_gpt4(msgs)
+    full_response = themes_response + "\n\n" + rubrics_response
+    write_responses_to_file("Auto Scenario 2", full_response, file_location + 'negative_rubric_generation_scenarios.txt')
+
+def auto_no_theme_scenario(answers, file_location):
     # GPT generates positive and negative rubrics based on themes with polarity
     rubrics = prompt_gpt(f"You are an expert instructor for your given course. Currently, you are evaluating student responses to the question: 'Describe why we want to use asynchronous programming in Javascript?' from a recent final exam. Generate 5 positive (common good answers) and 5 negative (potential misunderstandings) rubric items based on the given answers. Please output in the following format: - <rubric title>: <rubric description kept to 15 words maximum> (e.g. <example answer from the dataset provided>)", f"DATASET:\n\n{answers}")
-    write_responses_to_file("Auto No Theme Scenario", rubrics, 'results/chi_evaluations/negative_rubric_generation_scenarios.txt')
+    write_responses_to_file("Auto No Theme Scenario", rubrics, file_location + 'negative_rubric_generation_scenarios.txt')
 
 # questions = Question.objects.all()
 questions = Question.objects.filter(id=35)
 for q in questions:
-    print(q)
+    file_location = f"results/chi_evaluations/question_{q.question_exam_id}/" + time.strftime("%Y%m%d-%H%M%S") + "/"
+    # create directory if it doesn't exist
+    if not os.path.exists(file_location):
+        os.makedirs(file_location)
     df = pd.DataFrame(list(q.answer_set.values()))
-    # ---------------------------------------------
+    # --------------------------------------------- PROMPT PHRASING ---------------------------------------------
+    cluster20 = cluster(df, n_clusters=20)
+    prompt_phrasing(cluster20, file_location + 'prompt_evaluations.txt')
+    # --------------------------------------------- SAMPLE SIZE ---------------------------------------------
+    # --------------------------------------------- NUMBER OF RUBRICS ---------------------------------------------
+    # --------------------------------------------- SAMPLE SELECTION ---------------------------------------------
     # outlier_df = outlier_score(df)
-    # write_to_file(outlier_df, 'results/chi_evaluations/outlier_score.txt')
+    # write_to_file(outlier_df, file_location + 'outlier_score.txt')
     # further_df = outlier_score_furthest(df)
-    # write_to_file(further_df, 'results/chi_evaluations/outlier_score_furthest.txt')
+    # write_to_file(further_df, file_location + 'outlier_score_furthest.txt')
     # closer_df = outlier_score_closest(df)
-    # write_to_file(closer_df, 'results/chi_evaluations/outlier_score_closest.txt')
-    # ---------------------------------------------
+    # write_to_file(closer_df, file_location + 'outlier_score_closest.txt')
     # cluster10 = cluster(df, n_clusters=10)
-    # write_to_file_cluster(cluster10, 'results/chi_evaluations/cluster10.txt', sample=2)
+    # write_to_file_cluster(cluster10, file_location + 'cluster10.txt', sample=2)
     # cluster20 = cluster(df, n_clusters=20)
-    # write_to_file_cluster(cluster20, 'results/chi_evaluations/cluster20.txt', sample=1)
-    # prompt_gpt_and_save(cluster20, 'results/chi_evaluations/prompt_evaluations.txt')
-    # ---------------------------------------------
+    # write_to_file_cluster(cluster20, file_location + 'cluster20.txt', sample=1)
+    # --------------------------------------------- SHOWN CLUSTERS ---------------------------------------------
     # cluster20 = cluster(df, n_clusters=20)
-    # full_context_prompt(cluster20, num_samples=1)
-    # x_clusters_prompt(cluster20, x=2, num_samples_per_cluster=5)
-    # x_clusters_prompt(cluster20, x=5, num_samples_per_cluster=5)
-    # x_clusters_prompt(cluster20, x=10, num_samples_per_cluster=5)
-    # ---------------------------------------------
+    # full_context_prompt(cluster20, file_location, num_samples=1)
+    # x_clusters_prompt(cluster20, x=2, file_location, num_samples_per_cluster=5)
+    # x_clusters_prompt(cluster20, x=5, file_location, num_samples_per_cluster=5)
+    # x_clusters_prompt(cluster20, x=10, file_location, num_samples_per_cluster=5)
+    # --------------------------------------------- FULL PIPELINE ---------------------------------------------
     cluster20 = cluster(df, n_clusters=20)
     samples = []
     num_clusters = df['cluster'].nunique()
     for cluster_id in range(num_clusters): 
         sample = df[df['cluster'] == cluster_id].sample(n=1)
-        samples.append(sample)
-    # manual_scenario(samples)
-    # semi_auto_scenario(samples)
-    auto_scenario(samples)
-    auto_no_theme_scenario(samples)
+        for index, row in sample.iterrows():
+            # remove new lines from answer_text
+            new_text = row['answer_text'].replace('\n', ' ')
+            # append to samples
+            samples.append(new_text)
+    samples_string = "\n\n".join(samples)
+    # manual_scenario(samples_string, file_location)
+    # semi_auto_scenario(samples_string, file_location)
+    # auto_scenario(samples_string, file_location)
+    auto_scenario_2(samples_string, file_location)
+    auto_no_theme_scenario(samples_string, file_location)
 
 

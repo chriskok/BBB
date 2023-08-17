@@ -13,6 +13,12 @@ from django.views.generic.edit import UpdateView
 from django.forms.models import model_to_dict
 from django_tables2 import SingleTableView
 
+from sentence_transformers import SentenceTransformer, util
+from transformers import pipeline
+modelPath = 'all-MiniLM-L6-v2'
+model = SentenceTransformer(modelPath)
+from sklearn.cluster import AgglomerativeClustering
+
 from itertools import product
 import building_blocks as bb 
 import llm_helpers as llmh
@@ -52,6 +58,35 @@ def check_suggestions(rubric_obj, current_question_obj, outlier_examples):
             new_rubric_list.append(rubric)
         rubric_obj.set_rubric_list(new_rubric_list)
         rubric_obj.save()
+
+def cluster_answers(df, n_clusters=20):
+    sentences = df["answer_text"].apply(str).tolist()
+
+    # Compute SBERT embeddings
+    model = SentenceTransformer(modelPath)
+    embeddings = model.encode(sentences, convert_to_tensor=True)
+    # cosine_scores = util.cos_sim(embeddings, embeddings)
+
+    # Cluster sentences with AgglomerativeClustering
+    clustering_model = AgglomerativeClustering(n_clusters=n_clusters) #, affinity='cosine', linkage='average', distance_threshold=threshold)
+    clustering_model.fit(embeddings)
+
+    # Assign the cluster labels to the dataframe
+    df['cluster'] = clustering_model.labels_
+    return df
+
+def sample_answers(df, n_samples=1):
+    samples = []
+    num_clusters = df['cluster'].nunique()
+    for cluster_id in range(num_clusters): 
+        sample = df[df['cluster'] == cluster_id].sample(n=n_samples)
+        for index, row in sample.iterrows():
+            # remove new lines from answer_text
+            new_text = row['answer_text'].replace('\n', ' ')
+            # append to samples
+            samples.append(new_text)
+    
+    return samples
 
 def rubric_creation(request, q_id):
     q_list = Question.objects.extra(select={'sorted_num': 'CAST(question_exam_id AS FLOAT)'}).order_by('sorted_num')
