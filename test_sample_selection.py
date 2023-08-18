@@ -114,7 +114,7 @@ def write_to_file_cluster(df, filename, sample=1):
         # then get a random sample from each cluster to just print
         for i in range(num_clusters):
             cluster_df = df.loc[df['cluster'] == i]
-            cluster_sample = cluster_df.sample(n=sample)
+            cluster_sample = cluster_df.sample(n=sample, replace=True)
             for index, row in cluster_sample.iterrows():
                 # remove new lines from answer_text
                 new_text = row['answer_text'].replace('\n', ' ')
@@ -170,7 +170,7 @@ def prompt_phrasing(df, filename):
     sample_answers = []
     for i in range(num_clusters):
         cluster_df = df.loc[df['cluster'] == i]
-        cluster_sample = cluster_df.sample(n=1)
+        cluster_sample = cluster_df.sample(n=1, replace=True)
         for index, row in cluster_sample.iterrows():
             # remove new lines from answer_text
             new_text = row['answer_text'].replace('\n', ' ')
@@ -189,7 +189,7 @@ def sample_answers(df, n_samples=1):
     samples = []
     num_clusters = df['cluster'].nunique()
     for cluster_id in range(num_clusters): 
-        sample = df[df['cluster'] == cluster_id].sample(n=n_samples)
+        sample = df[df['cluster'] == cluster_id].sample(n=n_samples, replace=True)
         for index, row in sample.iterrows():
             # remove new lines from answer_text
             new_text = row['answer_text'].replace('\n', ' ')
@@ -256,7 +256,7 @@ def full_context_prompt(df, file_location, num_samples=1):
     prompts = []
     num_clusters = df['cluster'].nunique()
     for cluster_id in range(num_clusters): 
-        sample = df[df['cluster'] == cluster_id].sample(n=num_samples)
+        sample = df[df['cluster'] == cluster_id].sample(n=num_samples, replace=True)
         prompts.extend(sample['answer_text'].tolist())
     user_prompt = "\n\n".join(prompts)
     system_prompt = "You are an expert instructor for your given course. You're in the process of evaluating student answers to the short-answer, open-ended question: 'Describe why we want to use asynchronous programming in Javascript?' in the recent final exam. Using the examples provided from a dataset, suggest potential rubric items that would be effective for evaluating students' answers."
@@ -272,7 +272,7 @@ def x_clusters_prompt(df, x, file_location, num_samples_per_cluster=5):
         selected_clusters = cluster_ids[i:i+x]
         user_prompt = ""
         for cluster_id in selected_clusters:
-            sample = df[df['cluster'] == cluster_id].sample(n=num_samples_per_cluster)
+            sample = df[df['cluster'] == cluster_id].sample(n=num_samples_per_cluster, replace=True)
             cluster_string = f"\n\nCluster {cluster_id}: \n\n" + "\n\n".join(sample['answer_text'].tolist())
             user_prompt += cluster_string
         msgs = [{"role": "system", "content": system_prompt}, {"role": "user", "content": user_prompt}]
@@ -387,7 +387,7 @@ for q in questions:
     samples = []
     num_clusters = df['cluster'].nunique()
     for cluster_id in range(num_clusters): 
-        sample = df[df['cluster'] == cluster_id].sample(n=1)
+        sample = df[df['cluster'] == cluster_id].sample(n=1, replace=True)
         for index, row in sample.iterrows():
             # remove new lines from answer_text
             new_text = row['answer_text'].replace('\n', ' ')

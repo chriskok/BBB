@@ -1,0 +1,226 @@
+FULL CONTEXT PROMPT
+
+1. Understanding of Asynchronous Programming: The student properly explains what asynchronous programming in Javascript is.
+2. Benefits: The student is able to identify and discuss multiple benefits of asynchronous programming, such as efficiency, non-blocking code, improved user experience, better performance, etc.
+3. Real-World Applications: The student gives examples of real-world scenarios where asynchronous programming could be beneficial.
+4. Relevance to Javascript: The student should demonstrate how asynchronous coding is especially necessary in JavaScript given its single-threaded nature.
+5. Error handling: Mention of how asynchronous programming allows better handling of errors. 
+6. Knowledge of methods: The student mentions specific methods related to asynchronous programming in Javascript, such as Promises, Callbacks, async/await etc. 
+7. Clarity and Organization: The answer is well-organized and concepts are clearly explained. The student uses relevant terminology correctly.
+
+---------------------------------------------------------------------------
+
+2 CLUSTERS PROMPT
+
+- Understanding Asynchronous Programming: Evaluates the understanding of asynchronous programming concept in Javascript.
+- Practical Application: Assesses awareness and understanding of reusability and efficiency aspects.
+- Design Consistency: Gauges knowledge on maintaining design and format consistency.
+- Prototyping Knowledge: Checks understanding of prototyping and instances reusage.  
+- Interaction Knowledge: Evaluates understanding of interactive capabilities in JavaScript programming.
+
+- Understanding of Asynchronous Programming: Measures student's comprehension of asynchronous programming in Javascript.
+- Application of Asynchronous Concept: Student's ability to apply the understanding of asynchronous programming to real-use cases.
+- Efficiency Justification: Recognition of the time-saving aspect and efficiency of asynchronous programming.
+- Consistency Argument: Understanding of maintaining consistency in design as a reason for asynchronous programming.
+- Knowledge of Component Reusability: Student's comprehension of how component reusability enhances design and programming processes. 
+- Depth of Explanation: Evaluates how well the student articulates the concept using detailed examples.  
+- Concept Connection: Measures the student's ability to correlate asynchronous programming with other principles like reusability and DRY.
+- UI-Related Understanding: Evaluates the student's comprehension of how asynchronous helps in UI element reusability.
+
+- Understanding of Component Utility: Demonstrates knowledge of component's role in consistency, reusability, and organization
+- Application of Components in Design: Understands use of components for consistency across the project or prototype
+- Understanding of Component Interactivity: Explains integration of components for adding interactive features
+- Demonstration of Component Modification: Knowledge about 'master components' and their role in changing child components
+
+- Understanding of Design Consistency: Demonstrates knowledge about how asynchronous programming improves design consistency.
+- Ability to Explain Reusability: Effectively explains how asynchronous programming promotes design reusability.
+- Elucidating Interactivity: Clearly describes the interaction aspect associated with asynchronous programming.
+- Comprehension of State Management: Understands and explains well how state management is done in asynchronous programming.
+- Command over Asynchronous Programming Functions: Shows a mastery of the various functions achieved through asynchronous programming.
+
+- Understanding of Asynchronous Programming: Knowledge of key concepts in asynchronous programming.
+- JavaScript Implementation: Ability to explain how JavaScript uses asynchronous programming.
+- Beneficial Outcomes: Describing the practical benefits of asynchronous programming within an application.
+- Problem-Solving Application: Identifying and explaining scenarios or issues that asynchronous programming can solve efficiently.
+- Link to Design and Reusability: Understanding how asynchronous programming impacts design reusability. 
+- Awareness of Efficiency: Understanding how asynchronous programming enhances the efficiency of design changes. 
+- Understanding of Propagation: Demonstrating knowledge of property propagation in components related to asynchronous programming.
+
+- Understanding Async Programming: Demonstrates knowledge of asynchronous programming in Javascript.
+- Real-world Applicability: Shows understanding of why and when to use async programming practically.
+- Concept of Reusability: Understands factor of reusability in async programming.
+- Concept of Reduced Workload: Can explain how async programming helps to decrease the workload.
+- Idea of Consistency: Able to explain how async programming contributes to consistent design.
+
+- Understanding of Component Reusability: Demonstrates knowledge on the reusability of components in JavaScript.
+- Comprehension of Efficiency Improvement: Understands how components improve efficiency by reducing redundancy.
+- Knowledge of Instance Creation: Explains how components enable rapid and numerous instance creation.
+- Insight on Design Consistency: Displays understanding that components promote design consistency.
+- Grasp of Modification and Inheritance: Illustrates the concept of modifying master components and its effects on instances.
+
+- Understanding of Asynchronous Programming: Knowledge and explanation of asynchronous programming
+- Use of Technical Terminology: Uses correct terms related to asynchronous programming 
+- Explanation of Async Benefits: Understands and explains the benefits of asynchronous programming
+- Practical Application Understanding: Demonstrates understanding through practical examples
+- Correctness of Answer: Answer is correctly associated with asynchronous JavaScript programming
+
+- Understanding of Reusability: Demonstrates knowledge of component reusability in design.
+- Comprehension of Consistency: Understands role of components in maintaining design consistency.
+- Implementation and Efficiency Insight: Shows awareness of how components enhance efficiency in design building.
+- Familiarity with Aesthetics: Recognizes the contribution of components to the overall aesthetics in designs. 
+- Conceptualization of Standardization: Understands how components support standardization in design.
+
+- Understanding of Reusability: Demonstrates knowledge of component reusability in prototyping.
+- Application of Consistency: Show the understanding of design consistency with components.
+- Notion of Efficiency: Display understanding of time-saving aspects of components.
+- Understanding of Interactivity: Reflects on how components enhance interactivity.
+
+Rubrics to Retain:
+- Understanding Asynchronous Programming: Evaluates the understanding of asynchronous programming concept in Javascript.
+- Practical Application: Assesses awareness and understanding of reusability and efficiency aspects.
+- Efficiency Justification: Recognition of the time-saving aspect and efficiency of asynchronous programming.
+- Depth of Explanation: Evaluates how well the student articulates the concept using detailed examples.  
+- Concept Connection: Measures the student's ability to correlate asynchronous programming with other principles like reusability and DRY.
+- UI-Related Understanding: Evaluates the student's comprehension of how asynchronous helps in UI element reusability.
+- JavaScript Implementation: Ability to explain how JavaScript uses asynchronous programming.
+- Beneficial Outcomes: Describing the practical benefits of asynchronous programming within an application.
+- Problem-Solving Application: Identifying and explaining scenarios or issues that asynchronous programming can solve efficiently.
+- Use of Technical Terminology: Uses correct terms related to asynchronous programming.
+- Explanation of Async Benefits: Understands and explains the benefits of asynchronous programming.
+- Practical Application Understanding: Demonstrates understanding through practical examples.
+- Correctness of Answer: Answer is correctly associated with asynchronous JavaScript programming.
+
+Rubrics to Remove:
+- Design Consistency: Gauges knowledge on maintaining design and format consistency.
+- Prototyping Knowledge: Checks understanding of prototyping and instances reusage. (Not directly linked to asynchronous programming)
+- Interaction Knowledge: Evaluates understanding of interactive capabilities in JavaScript programming. (Irrelevant)
+- Understanding of Asynchronous Programming: Measures student's comprehension of asynchronous programming in Javascript. (Duplicate)
+- Application of Asynchronous Concept: Student's ability to apply the understanding of asynchronous programming to real-use cases. (Similar to "Practical Application")
+- Consistency Argument: Understanding of maintaining consistency in design as a reason for asynchronous programming. (Irrelevant)
+- Knowledge of Component Reusability: Student's comprehension of how component reusability enhances design and programming processes. (Irrelevant)
+- Understanding of Design Consistency: Demonstrates knowledge about how asynchronous programming improves design consistency. (Not directly related to asynchronous programming)
+- Comprehension of State Management: Understands and explains well how state management is done in asynchronous programming. (Irrelevant)
+- Command over Asynchronous Programming Functions: Shows a mastery of the various functions achieved through asynchronous programming. (Similar to "JavaScript Implementation") 
+- Understanding of Asynchronous Programming: Knowledge of key concepts in asynchronous programming. (Duplicate)
+- Link to Design and Reusability: Understanding how asynchronous programming impacts design reusability. (Similar to "Practical Application")
+- Awareness of Efficiency: Understanding how asynchronous programming enhances the efficiency of design changes. (Similar to "Efficiency Justification")
+- Understanding of Propagation: Demonstrating knowledge of property propagation in components related to asynchronous programming. (Irrelevant)
+- Understanding Async Programming: Demonstrates knowledge of asynchronous programming in Javascript. (Duplicate)
+- Real-world Applicability: Shows understanding of why and when to use async programming practically. (Similar to "Practical Application Understanding")
+- Concept of Reduced Workload: Can explain how async programming helps to decrease the workload. (Similar to "Efficiency Justification")
+- Idea of Consistency: Able to explain how async programming contributes to consistent design. (Irrelevant)
+- Familiarity with Aesthetics: Recognizes the contribution of components to the overall aesthetics in designs. (Irrelevant)
+- Conceptualization of Standardization: Understands how components support standardization in design. (Irrelevant)
+- Understanding of Interactivity: Reflects on how components enhance interactivity. (Irrelevant)
+
+
+---------------------------------------------------------------------------
+
+5 CLUSTERS PROMPT
+
+- Understanding of Asynchronous Programming: Ability to explain the main concept behind asynchronous programming
+- Benefits in Design Efficiency: Understanding of time and work efficiency benefits 
+- Understanding of Code Reusability: Clear comprehension of how asynchronous programming aids in code reusability
+- Design Consistency Insight: Ability to explain how asynchronous programming facilitates consistent design
+- Practical Usage Comprehension: Explains practical usage examples and the impact in JavaScript programming
+- Interaction Understanding: Understanding of how components interact or impact each other in asynchronous programming
+- User Interaction Comprehension: Explains how asynchronous programming can improve user interaction
+- Structural Understanding: Describes the structures like master components, instances and their functionalities.
+
+- Understanding of Figma Components: Demonstrates clear understanding of what Figma components are.
+- Application and Benefits of Components: Explains how components make design in Figma more efficient.
+- Component Reusability: Understands how components allow for reusability in design projects.
+- Component Interactivity: Describes how components enable interactive experiences in prototypes.
+- Component Consistency: Explains how components assist in maintaining consistent design elements.
+- Update Inheritance: Understands and can explain how changes to parent components affect child instances.
+
+- Understanding Reusability: Understanding and emphasizing the reusability of instances.  
+- Referencing Efficiency: Knowledge of the time and effort-saving benefits in reusing instances.
+- Pointing Consistent Design: Understanding that components foster consistency in design.
+- Identifying UI Components: Demonstration of how UI components are utilized in repetitive design.
+- Figma Specifics: Knowledge and explanation of why and how components are used in Figma software.
+
+- Understanding of Component Reusability: Mastery level of understanding component reusability in designs.
+- Knowledge of Component Efficiency: Exhibits understanding of how components speed up design process.
+- Understanding of Component Consistency: Understanding of component's role in maintaining design consistency.
+- Comprehension of Instance Creation: Displays understanding of ease of creating instances from components.
+- Understanding of Team Collaboration: Exhibits knowledge of components role in collaborative design projects.
+
+Retain these rubric items as they directly apply to evaluating student responses on using asynchronous programming in JavaScript:
+
+- Understanding of Asynchronous Programming: Ability to explain the main concept behind asynchronous programming
+- Benefits in Design Efficiency: Understanding of time and work efficiency benefits 
+- Understanding of Code Reusability: Clear comprehension of how asynchronous programming aids in code reusability
+- Design Consistency Insight: Ability to explain how asynchronous programming facilitates consistent design
+- Practical Usage Comprehension: Explains practical usage examples and the impact in JavaScript programming
+- Interaction Understanding: Understanding of how components interact or impact each other in asynchronous programming
+- User Interaction Comprehension: Explains how asynchronous programming can improve user interaction
+- Structural Understanding: Describes the structures like master components, instances and their functionalities.
+
+Remove these rubric items; they relate to Figma (a design tool), not asynchronous programming in JavaScript:
+
+- Understanding of Figma Components: Demonstrates clear understanding of what Figma components are.
+- Application and Benefits of Components: Explains how components make design in Figma more efficient.
+- Component Reusability: Understands how components allow for reusability in design projects.
+- Component Interactivity: Describes how components enable interactive experiences in prototypes.
+- Component Consistency: Explains how components assist in maintaining consistent design elements.
+- Update Inheritance: Understands and can explain how changes to parent components affect child instances.
+- Understanding Reusability: Understanding and emphasizing the reusability of instances.      
+- Referencing Efficiency: Knowledge of the time and effort-saving benefits in reusing instances.
+- Pointing Consistent Design: Understanding that components foster consistency in design.
+- Identifying UI Components: Demonstration of how UI components are utilized in repetitive design.
+- Figma Specifics: Knowledge and explanation of why and how components are used in Figma software.
+- Understanding of Component Reusability: Mastery level of understanding component reusability in designs.
+- Knowledge of Component Efficiency: Exhibits understanding of how components speed up design process.
+- Understanding of Component Consistency: Understanding of component's role in maintaining design consistency.
+- Comprehension of Instance Creation: Displays understanding of ease of creating instances from components.
+- Understanding of Team Collaboration: Exhibits knowledge of components role in collaborative design projects.
+
+---------------------------------------------------------------------------
+
+10 CLUSTERS PROMPT
+
+- Understanding of Asynchronicity: Ability to reference non-blocking code execution
+- Application of Asynchronous Programming: Mention of improved site performance or user experience
+- Real Life Example Usage: Providing examples of where asynchronous programming is applied
+- Knowledge of JavaScript Specifics: Understanding asynchronous programming in the JavaScript context
+- Asynchronous Techniques Knowledge: Referring to promises, callbacks, async/await, or event loop
+- Problem-Solving Through Asynchronicity: Realizing and articulating how asynchronous programming solves potential issues
+- Future Readability and Maintainability: Recognition of asynchronous programming enhancing clarity and maintenance
+- Efficiency and Time Management: Emphasis on speed or efficiency improvements due to asynchronicity.
+
+- Understanding of Reusability: Evaluation of the student's understanding of reusable components.
+- Awareness of Consistency: Assessment of understanding consistent design facilitated by components.
+- Knowledge of Efficiency: Measure of student's understanding of efficiency gained by using components.
+- Grasp of Changes Propagation: Evaluation of understanding how changes propagate to all instances.
+- Understanding of Design Uniformity: Assessment of student's understanding of promoting uniformity in design.
+- Awareness of Interactive Components: Measure of understanding of creating interactive components.
+- Recognition of Instance Control: Assessment of understanding controlling spacing and positioning between instances.
+- Understanding of Time Saving: Evaluate students' understanding of time-saving aspect when using components. 
+- Understanding of Team Collaboration: Assessment of student's understanding of convenient collaboration with components. 
+- Grasp of Inheritance: Evaluation of understanding property inheritance in instances.
+
+The following rubric items are not directly relevant to the core topic "Asynchronous Programming in JavaScript" and should be removed: 
+- Understanding of Reusability
+- Awareness of Consistency
+- Knowledge of Efficiency
+- Grasp of Changes Propagation 
+- Understanding of Design Uniformity
+- Awareness of Interactive Components
+- Recognition of Instance Control 
+- Understanding of Time Saving
+- Understanding of Team Collaboration
+- Grasp of Inheritance
+
+The following rubric items are relevant and should be retained:
+- Understanding of Asynchronicity
+- Application of Asynchronous Programming
+- Real Life Example Usage
+- Knowledge of JavaScript Specifics
+- Asynchronous Techniques Knowledge
+- Problem-Solving Through Asynchronicity
+- Future Readability and Maintainability
+- Efficiency and Time Management
+
+---------------------------------------------------------------------------
+

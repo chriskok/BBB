@@ -1,0 +1,79 @@
+RUBRICS - 20 ANSWERS
+
+1. Understanding of Asynchronous Programming: The student demonstrates a clear understanding of what asynchronous programming is. They should describe it as a form of programming that allows for operations to run concurrently, without having to wait for other operations to complete first.
+
+2. Benefits of Asynchronous Programming in JavaScript: The student successfully explains key benefits of using asynchronous programming in JavaScript. Key points can include improvement in performance and speed, better user experience, making multiple API calls, handling of heavy computation tasks without blocking user interface, etc.
+
+3. Application in Real World Scenarios: The student provides examples or typical scenarios where asynchronous programming in JavaScript can be beneficial. These can be examples like loading data from an API, file uploads, timers etc. 
+
+4. Potential Drawbacks: Even though this is not directly asked in the question, understanding the limitations or complexities asynchronous programming can introduce (like callback hell, difficulties in debugging, etc.) showcases a deeper level of understanding.
+
+5. Clarity and Organization: The answer is coherent, well structured, and easy to understand. The student uses technical vocabulary correctly. The concepts are logically ordered, and the narrative is easy to follow. 
+
+6. Precision and Accuracy: The student's descriptions are accurate and precise. The language used is clear, and the student avoids using ambiguous terms or phrases. 
+
+7. Understanding of JavaScript: The student shows a good grasp of JavaScript as a language and its intricacies - including how it uses single-threaded, non-blocking, asynchronous programming.
+
+---------------------------------------------------------------------------
+
+THEMES - 20 ANSWERS
+
+The main themes that students emphasized in their response to 'Describe why we want to use asynchronous programming in Javascript?' include:
+
+1. Understanding and Identifying User Needs and Preferences: Many students noted that asynchronous programming in JavaScript is used to understand what the user requires and prefers.
+
+2. Prototyping and Designing Solutions: Students also noted the importance of asynchronous programming in creating potential solutions to meet user needs.
+
+3. Validation and Verification of Ideas and Solutions: This theme was about checking if the proposed solution will satisfy the user needs or not.
+
+4. Testing and Evaluation of Solutions: Students described the use of asynchronous programming as a tool for usability testing to expose problems with project designs and ultimately improve them.
+
+5. Iteration and Improvement: This theme covered the ongoing process of refining and improving the designs based on user feedback and research.
+
+Note: The themes identified are not explaining the use of asynchronous programming in Javascript but rather explaining the general process of design thinking. The top themes for asynchronous programming in Javascript might include efficiency, performance, responsiveness, better user experience etc.
+
+---------------------------------------------------------------------------
+
+RUBRICS - 40 ANSWERS
+
+1. Understanding Asynchronous Programming: The student should be able to define what asynchronous programming is and how it operates differently from synchronous programming patterns in JavaScript.
+
+2. Need for Asynchronous Programming: The student should articulate why asynchronous programming is essential in JavaScript. This includes dealing with API waiting times or any process that takes significant time, improving the performance, and overall user experience of applications.
+
+3. Use Cases for Asynchronous Programming: The student should provide examples of scenarios where asynchronous JavaScript is beneficial, such as AJAX requests, promises, and callbacks.
+
+4. Understanding of Asynchronous Methods in JavaScript: The student is expected to outline and explain some JavaScript methods used for asynchronous programming like 'setTimeout', 'setInterval', and AJAX methods like 'fetch'.
+
+5. Conceptual Knowledge of Promises and Callbacks: A complete answer should involve an understanding of promises, callbacks, and possibly the async/await syntax. 
+
+6. Explanation of Single-threaded Model: The student should discuss the single-threaded, non-blocking model of JavaScript and how asynchronous programming enables JavaScript to handle multiple tasks concurrently. 
+
+7. Benefits of Asynchronous Programming: The student should emphasize on how asynchronous programming patterns can increase the efficiency of an application, improve user experience, and handle more requests simultaneously.
+
+8. Drawbacks and Solutions: The student should discuss potential issues associated with asynchronous programming, such as the possibility of callback hell and how these issues can be mitigated.
+
+---------------------------------------------------------------------------
+
+THEMES - 40 ANSWERS
+
+The main themes that students focused on in their answers can be categorized as follows:
+
+1. Understanding and Identifying User needs: Students emphasize the importance of user research in defining and deeply understanding the needs, challenges, and problems users face. It's a critical first step in the development process, and can be performed through interviews, observation, prototype testing, etc.
+
+2. Generating and Validating Ideas: This theme is about using user research to guide the creation and validation of potential solutions. It involves brainstorming, ideating, and creating prototypes based on the insights gleaned from understanding users' needs.
+
+3. Iterating and Evaluating Solutions: Here, students discuss how user research can be used to assess the effectiveness and usability of a product. It helps identify gaps, validate design decisions, get continual user feedback, and ensure the product is usable, meet users' needs and provides them with good user experience.
+
+4. Testing and Improving the Product: This theme involves continuous user research even after the product has been released, to keep improving it based on user feedback, ongoing user needs, and emerging trends.
+
+5. Target Audience Identification: A few students mentioned the need for user research to identify the precise target audience and design a product that appeals to their specific needs and preferences. 
+
+6. Mental Models: Some students touched upon understanding users' mental models, thought processes, and the terminology they use – all of which are critical for creating a user-friendly design. This step also includes determining familiar terminology and exploring how users interact with existing systems.
+
+7. Uncovering User Behavior: Observing and learning from users in their natural settings (Contextual Inquiry) allows designers to understand user behaviors and motivations. 
+
+These themes collectively underscore the importance of user research throughout the entirety of the product development process, from initial concept to post-release testing and improvement.
+
+
+---------------------------------------------------------------------------
+

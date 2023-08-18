@@ -1,0 +1,128 @@
+RUBRICS - 3 ITEMS
+
+1. Understanding of Asynchronous Programming: The student's answer should adequately explain what asynchronous programming is, indicating clear understanding of this concept in Javascript. It should also contrast asynchronous with synchronous programming to provide clear differentiation.
+   
+2. Benefits of Asynchronous Programming: The response should mention the key benefits of asynchronous programming. These include: efficiency in execution, enabling multiple processes to occur simultaneously, reducing the waiting time for other operations, and providing faster user experience in web development.
+   
+3. Application and Examples: The answer should provide real-world examples of when and why asynchronous programming would be beneficial in JavaScript, such as making API calls, reading or writing to a database, or handling user input. These examples should illustrate practical knowledge of asynchronous programming in Javascript.
+
+---------------------------------------------------------------------------
+
+THEMES - 3 ITEMS
+
+1. Efficiency and Time Saving: Many students emphasized the importance of components in reusability and reducing redundancy, which drastically cuts down the time taken to recreate similar design elements.
+
+2. Consistency: Components enable the repeated use of the same elements throughout a project which helps maintain uniformity and consistency across different designs or sections of the same design.
+
+3. Improved Functionality: Components were stated to not only simplify the creation process, but also introduce an additional layer of interactivity, programmability, and overall improvement in the functionality of the design.
+
+---------------------------------------------------------------------------
+
+RUBRICS - 5 ITEMS
+
+1. Understanding of asynchronous programming: The student should demonstrate a clear understanding of what asynchronous programming is in the context of Javascript.
+
+2. Relevance: The answer should highlight how Javascript inherently relies on single-threaded, non-blocking performance. The answer should clearly articulate that without asynchronous programming, Javascript applications would be much less responsive and efficient.
+
+3. Practical Illustration: The student should provide practical examples of how asynchronous programming is used in Javascript. This could include discussing callbacks, promises, or async/await syntax. 
+
+4. Benefits: The answer should underline the benefits of using asynchronous programming in Javascript, such as improved system performance and user experience since the system can handle other tasks while waiting for other operations to complete.
+
+5. Drawbacks/Challenges: Though this may not be crucial, an excellent answer may include the limitations or complexities attached to asynchronous programming in Javascript such as dealing with "callback hell" or proper error handling.
+
+---------------------------------------------------------------------------
+
+THEMES - 5 ITEMS
+
+1. Component Reusability: Many responses highlighted the notion of being able to reuse components across different parts of the project or design, saving time and effort.
+2. Design Consistency: Students often mentioned the ability of components to maintain consistent design across different screens, pages or projects.
+3. Efficiency in Updates/Changes: Several responses pointed towards the advantage of components in implementing design changes at one place that is automatically reflected in all instances of the component.
+4. Interactive States: Some students brought up the aspect of having interactive states in components that enhances user experience in a prototype.
+5. Inheritance-like Functionality: Few students emphasized on the inheritance functionality provided by components, which enables properties to be reproduced and consistent across instances.
+
+---------------------------------------------------------------------------
+
+RUBRICS - 10 ITEMS
+
+1. Understanding of Asynchronous Programming in Javascript: Student must demonstrate a clear understanding of what asynchronous programming in Javascript is.
+2. Explanation of Duplication and Reuse: Student can explain how asynchronous programming allows for the duplication and reuse of code.
+3. Efficiency: Student can explain how using asynchronous programming can increase efficiency, particularly relating to changing components.
+4. Use Across Frames: Student can describe scenarios where components would be reused across frames of a project.
+5. Component Interaction and user actions: Student can sufficiently explain how components created using asynchronous programming can be made to interact and respond to user actions.
+6. Parent-Child Relationships: Student describes how changes in parent components can automatically apply to child instances.
+7. Updates and Adjustments: Student can describe how components allow for easy and consistent upgrades and adjustments across multiple instances.
+8. U.I. Design Usage: Student can explain how asynchronous programming is beneficial in UI design, especially in creating components that will be reused across multiple screens.
+9. Time and Effort Saving: Student should mention the time and effort saving properties of asynchronous programming.
+10. Maintaining Design Consistency: Student explains how using components can help maintain design consistency across a project.
+
+---------------------------------------------------------------------------
+
+THEMES - 10 ITEMS
+
+1. Reusability of Components: Many students emphasize the use of components to create multiple instances without the need to recreate them each time. 
+
+2. Ease of Modification: A significant number discuss the advantages of making changes to a parent component and have these changes automatically reflected in all child instances.
+
+3. Design Consistency: Several responses stress the role of components in maintaining uniformity and consistency throughout a design or prototype. 
+
+4. Simplification of Creation Process: Some students pointed out that components simplify the creation of multiple, recurring items.
+
+5. Speed of Development: A handful of students noted that the use of components can accelerate the entire design or development process.
+
+6. Interactive Capability: A few responses highlighted that components can be made interactive and respond to user action.
+
+7. Efficiency: Some students emphasised on the efficiency brought about by the use of components in saving time and effort.
+
+8. Use in Multiple Screens: A few mentioned that components are ideal for designs that will be reused on multiple screens within an app.
+
+9. Prototype Design: Some students argue that the use of components ensures a consistent prototype design.
+
+10. Adherence to Design Heuristic: One student pointed out that the reuse of design elements aligns with the consistency and standards heuristic.
+
+---------------------------------------------------------------------------
+
+RUBRICS -  ITEMS
+
+1. Understanding of Asynchronous Programming: 
+   - The student should be able to properly define asynchronous programming and distinguish it from synchronous programming. 
+
+2. Importance in Javascript: 
+   - The student should highlight why asynchronous programming is important in Javascript. They should connect the use of features in Javascript that natively support asynchronous programming.
+
+3. Non-blocking Nature: 
+   - The student should describe how asynchronous programming allows Javascript to run non-blocking operations, which means different parts of the code can run simultaneously without waiting for the other parts to finish.
+
+4. Efficiency: 
+   - The student should discuss how asynchronous programming can increase efficiency through parallel execution.
+
+5. Handling of Time-Consuming Operations: 
+   - The student should explain how asynchronous programming helps in handling time-consuming operations such as network requests, file I/O, and timers.
+
+6. Usage of Callbacks, Promises, or Async/Await: 
+   - The student should provide examples of how asynchronous programming is typically implemented in Javascript, like the use of callbacks, promises, or async/await.
+
+7. Errors and Exceptions Handling: 
+   - The student should touch upon how asynchronous programming deals with errors and exceptions, allowing for easier debugging and cleaner code.
+
+8. Real-world Applications: 
+   - The student should be able to connect the theoretical concept to real-world applications to highlight its practical significance. They should explain how asynchronous programming improves the user experience by preventing the blocking of user-interface, leading to a responsive webpage/application.
+
+9. Expression and Clarity:  
+   - The student should clearly and concisely express their understanding. Definitions, explanations, etc., should be accurate. Jargon and technical terms should be appropriately used. 
+
+10. Organization:  
+    - The response should be well-structured and logically organized. It could start with a definition, move onto concepts, explain benefits, and end with real-world applications of asynchronous programming.
+
+---------------------------------------------------------------------------
+
+THEMES -  ITEMS
+
+1. Reusability: Multiple students mentioned the advantage of being able to reuse components across different parts of a system or design.
+2. Consistency: There was a strong emphasis on maintaining design and feature consistency by using components.
+3. Efficiency: Many students highlighted the time-saving aspect of using components, as it eliminates the need for creating new elements repetitively.
+4. Ease of modification: Students noticed that components make it easy to implement changes simultaneously across all instances by altering the master component.
+5. Reduced clutter: A few students pointed out that using components can simplify the overall design and decrease clutter.
+6. Prototype Interactivity: Some students mentioned that components can facilitate interactions within a prototype, allowing users to manipulate the design in predetermined ways.
+
+---------------------------------------------------------------------------
+

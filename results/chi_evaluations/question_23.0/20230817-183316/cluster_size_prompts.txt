@@ -1,0 +1,246 @@
+FULL CONTEXT PROMPT
+
+1. Understanding of asynchronous programming: The student accurately describes the concept of asynchronous programming in Javascript, explaining it involves executing code independently from the main application flow, allowing tasks to run concurrently.
+2. Benefits of asynchronous programming: The student should identify the key benefits of asynchronous programming such as better performance, improved responsiveness, better resource utilization and efficient handling of tasks like API calls, file I/O, and other operations that could block code execution.
+3. Real-world application: Scoring can also include whether the student provides examples of where asynchronous programming can be beneficial, such as in web development for handling user interactions, network requests, etc.
+4. Understanding of Promises, async/await: The student demonstrates knowledge of key asynchronous programming concepts in Javascript like callbacks, Promises, async/await, etc. 
+5. Handling of potential issues: The student should provide insights on how to handle potential issues arising from asynchronous programming, like callback hell, error propagation, and maintaining the order of operations. It should include techniques or tools utilized to overcome such problems.
+6. Comparison to synchronous programming: Bonus points if the student compares asynchronous programming to synchronous programming, highlighting when one might be preferable over the other.
+
+---------------------------------------------------------------------------
+
+2 CLUSTERS PROMPT
+
+- Understanding User Needs: Demonstrates ability to identify and respond to user challenges.
+- Prototyping Validation: Shows understanding of prototype testing and design suitability.
+- Testing & Iterative Refinement: Expresses knowledge of user testing methods and iterative refinement.
+- Heuristic Evaluation Application: Indicates understanding of heuristic evaluation and mental model alignment.
+- Direct Application to Real-world: Exhibits ability to apply concepts to address real-world usability issues.
+
+- Understanding Asynchronicity: Can explain the concept of asynchronous programming.
+- Javascript Specific Insights: Shows understanding of Javascript's single-threaded nature.
+- Importance of Performance: Understands how asynchronous programming improves user experience.
+- Non-blocking I/O Operations: Can articulate how asynchronous programming facilitates non-blocking operations.
+- Error Handling: Understands how asynchronous programming improves error handling.
+- Real-Life Applications: Provides examples of real-world application of asynchronous programming.
+- Concept of Callbacks, Promises & Async/Await: Student can explain these key concepts used in asynchronous programming. 
+- Event Loop Understanding: Can explain how event loop works in Javascript for asynchronous behavior.
+
+- Understanding User Needs: Showed ability to distinguish necessity of user needs assessment.
+- Emphasizing Ideation: Recognized importance of brainstorming relevant and meaningful designs.
+- Validation & Refinement: Understands importance of product validation during the design process.
+- Assessing Value and Impact: Ability to evaluate a product's usefulness and impact.
+- Discovering User Preferences: Recognized importance of discovering user likes and dislikes.
+- Feedback Analysis: Elucidated the need for gathering and analyzing user feedback.
+- User/navigation Understanding: Grasped importance of understanding how users navigate products.
+
+- Understanding Terminology Knowledge: Judges familiarity with technical terms and concepts.
+- Identification of Mental Models: Measures understanding of users' conceptual framework.
+- User Familiarity Insight: Assesses understanding of users' application comprehension.
+
+- User Needs Validation: Judges understanding of verifying user requirements.
+- Understanding User Behaviors: Measures comprehension of user habits and interactions.
+- System User-friendliness Evaluation: Evaluates understanding of assessing solution's usability.
+
+- Understanding Asynchronous Concepts: Assessment of comprehension and examples of asynchronous programming
+- Purpose of Asynchronous Programming: Ability to concisely express why asynchronous programming is used
+- User Impact: Student's perception of how asynchronous programming affects user experience 
+- Real-world Application: Connections to real-world implementation and the advantages there 
+- Technical Knowledge: Use of specific Javascript-related terminologies or concepts related to asynchronous programming
+- Critical Evaluation: Analysis on when and why to use asynchronous programming over synchronous programming
+- Testing & Debugging: Understanding of how asynchronous programming can help identify and manage potential bugs or errors in code
+
+- Understanding of User Research: Assesses student's grasp on the concept and application of user research.
+- Knowledge of Research Techniques: Tests student's familiarity with different user research techniques.
+
+- Understanding of Asynchronous Programming: Ability to explain the concept and purpose of asynchronous programming
+- Knowledge of Use Cases: Capacity to define specific situations where asynchronous programming is beneficial
+- Comprehension of Javascript: Understanding the application of asynchronous programming in Javascript 
+- Evidence of Technical Knowledge: Display understanding of underlying processes in asynchronous programming
+- Application and Examples: Utilization of clear, practical examples to illustrate points
+
+- Understanding of Asynchronous Programming: Students able to explain why asynchronous programming is used in JavaScript.
+- Recognizing Performance Benefits: Students highlight improvements to performance and responsiveness.
+- Using Examples: Use of specific examples to explain asynchronous programming.
+- Implementation Knowledge: Students show understanding of how to implement asynchronous programming in JavaScript. 
+- Error Handling: Explanation of how asynchronous programming helps in error handling. 
+- Application in Modern Web: Ability to explain the role of asynchronous programming in modern web design.
+
+- Understanding User Needs: Recognizes importance of identifying user needs through interviews or storyboarding.
+- Design Validation Techniques: Shows understanding of using storyboards, speed dating, or think-aloud protocols for evaluating needs and validating solutions.
+- Relationship Between User Research and Design: Demonstrates how user feedback can inform design and improve prototypes.
+- Identifying User Pain Points: Highlights how user research can identify unforeseen problems or usability issues.
+- Inclusion of Multiple research methods: Varied and appropriate uses of user research methods in different stages of design process.
+
+- Understanding of Asynchronous Characteristics: Demonstrates knowledge of asynchronous programming's non-blocking nature.
+- Explanation of Efficiency Gains: Can explain how asynchronous programming enables efficient execution.
+- User Experience Consideration: Understands asynchronous programming's impact on user experience in JavaScript.
+- Examples of Use Cases: Offers specific instances where asynchronous programming is beneficial.
+- Potential Challenges Understanding: Recognizes potential issues or difficulties that can come with asynchronous programming. 
+- Relevant JavaScript Methods: References and understands specific JavaScript functions related to asynchronous programming like promises, callbacks, or async/await.
+- Comprehensive Explanation: Provides a thorough, logical, and coherent explanation regarding the need for asynchronous programming.
+
+Retain:
+- Understanding Asynchronicity: Can explain the concept of asynchronous programming.
+- Javascript Specific Insights: Shows understanding of Javascript's single-threaded nature.
+- Importance of Performance: Understands how asynchronous programming improves user experience.
+- Non-blocking I/O Operations: Can articulate how asynchronous programming facilitates non-blocking operations.
+- Error Handling: Understands how asynchronous programming improves error handling.
+- Real-Life Applications: Provides examples of real-world application of asynchronous programming.
+- Concept of Callbacks, Promises & Async/Await: Student can explain these key concepts used in asynchronous programming. 
+- Event Loop Understanding: Can explain how event loop works in Javascript for asynchronous behavior.
+- Understanding Asynchronous Concepts: Assessment of comprehension and examples of asynchronous programming
+- Purpose of Asynchronous Programming: Ability to concisely express why asynchronous programming is used
+- User Impact: Student's perception of how asynchronous programming affects user experience 
+- Real-world Application: Connections to real-world implementation and the advantages there 
+- Technical Knowledge: Use of specific Javascript-related terminologies or concepts related to asynchronous programming
+- Critical Evaluation: Analysis on when and why to use asynchronous programming over synchronous programming
+- Testing & Debugging: Understanding of how asynchronous programming can help identify and manage potential bugs or errors in code
+- Understanding of Asynchronous Programming: Ability to explain the concept and purpose of asynchronous programming
+- Knowledge of Use Cases: Capacity to define specific situations where asynchronous programming is beneficial
+- Comprehension of Javascript: Understanding the application of asynchronous programming in Javascript 
+- Evidence of Technical Knowledge: Display understanding of underlying processes in asynchronous programming
+- Application and Examples: Utilization of clear, practical examples to illustrate points
+- Understanding of Asynchronous Programming: Students able to explain why asynchronous programming is used in JavaScript.
+- Recognizing Performance Benefits: Students highlight improvements to performance and responsiveness.
+- Using Examples: Use of specific examples to explain asynchronous programming.
+- Implementation Knowledge: Students show understanding of how to implement asynchronous programming in JavaScript. 
+- Error Handling: Explanation of how asynchronous programming helps in error handling. 
+- Application in Modern Web: Ability to explain the role of asynchronous programming in modern web design.
+- Understanding of Asynchronous Characteristics: Demonstrates knowledge of asynchronous programming's non-blocking nature.
+- Explanation of Efficiency Gains: Can explain how asynchronous programming enables efficient execution.
+- User Experience Consideration: Understands asynchronous programming's impact on user experience in JavaScript.
+- Examples of Use Cases: Offers specific instances where asynchronous programming is beneficial.
+- Potential Challenges Understanding: Recognizes potential issues or difficulties that can come with asynchronous programming. 
+- Relevant JavaScript Methods: References and understands specific JavaScript functions related to asynchronous programming like promises, callbacks, or async/await.
+- Comprehensive Explanation: Provides a thorough, logical, and coherent explanation regarding the need for asynchronous programming.
+
+Remove due to redundancy or irrelevance:
+- Understanding User Needs
+- Prototyping Validation
+- Testing & Iterative Refinement
+- Heuristic Evaluation Application
+- Direct Application to Real-world
+- Understanding User Needs
+- Emphasizing Ideation
+- Validation & Refinement
+- Assessing Value and Impact
+- Discovering User Preferences
+- Feedback Analysis
+- User/navigation Understanding
+- Understanding Terminology Knowledge
+- Identification of Mental Models
+- User Familiarity Insight
+- User Needs Validation
+- Understanding User Behaviors
+- System User-friendliness Evaluation
+- Understanding of User Research
+- Knowledge of Research Techniques
+- Understanding User Needs
+- Design Validation Techniques
+- Relationship Between User Research and Design
+- Identifying User Pain Points
+- Inclusion of Multiple research methods.
+
+---------------------------------------------------------------------------
+
+5 CLUSTERS PROMPT
+
+- Understanding User Needs: Recognizes importance of identifying user needs in programming.
+- Idea Generation Skills: Demonstrates ability to brainstorm solutions independent of feedback.
+- Design Validation: Understands value of feature and usability validation through prototypes.
+- User Feedback Utilization: Recognizes significance of considering user feedback in prototyping and testing.
+- User-Centered Programming: Displays understanding of need to design solutions that meet user needs and address pain points.
+- Privacy Savviness: Acknowledges potential privacy concerns in usability features.
+
+- Understanding User Needs: Marks for citing improved user interactions and product quality
+- Uncovering User Mental Model: Marks for recognizing assistance with understanding users' perceptions of the system.
+- User Research for Problem Identification: Marks for understanding users' needs and gaps for improvement in the system.
+- User Research for Solution Validation: Marks for citing its application in validating potential solutions' efficiency.
+- Improving Ideation and Design Process: Marks showing understanding of user research's role in system design. 
+- User Experience Evaluation: Marks for understanding its role in gauging system's user friendliness.
+- Needs Validation and Concept Refining: Marks for recognizing its importance in product development stage.
+- Effective Use of User Research: Marks for understanding user research utility for feedback, bugs and usability fixes.
+- User Research in Product Testing: Marks for recognizing its use in pre-launch product evaluation.
+
+- Understanding of Asynchronous Programming: Ability to explain the rationale behind using asynchronous programming in Javascript.
+- Knowledge of User Research: Capacity to describe the purposes of user research in product development.
+- Identification of Research Methods: Understanding of different user research methods such as observation, contextual inquiry, and interviews.
+- Explanation of Product Lifecycle: Ability to explain the role of user research in different stages of product development.
+- Reference to Specific Models: Reference to specific models such as IDEO framework in explaining the purposes of user research.
+
+- Understanding User Needs: Measures comprehension of why user needs are important in design.
+- Knowledge of Stages: Evalutes understanding of different design stages and their purpose.
+- Use of Techniques: Assesses knowledge of tools & techniques per design stage.
+- Relevance of Stage Execution: Considers understanding of how stages relate to user needs.
+- Prototype Testing Insight: Evaluates comprehension of testing stages and their importance.
+- Explaining User research: Checks knowledge and explanation of user research in design. 
+- Process & Application Link: Assesses understanding of tying research process to real application.
+- Recognizing Common Techniques: Checks recognition and understanding of frequently used methods.
+
+The following rubrics should be retained due to their relevance and uniqueness, 
+
+- Understanding of Asynchronous Programming: Ability to explain the rationale behind using asynchronous programming in Javascript.
+- Understanding User Needs: Recognizes importance of identifying user needs in programming.
+- User-Centered Programming: Displays understanding of need to design solutions that meet user needs and address pain points.
+- Design Validation: Understands value of feature and usability validation through prototypes.
+
+The remaining rubrics should be removed for redundancy or irrelevance as they majorly revolve around general user research and not specific to asynchronous programming in Javascript. These include;
+
+- Idea Generation Skills: Demonstrates ability to brainstorm solutions independent of feedback.
+- User Feedback Utilization: Recognizes significance of considering user feedback in prototyping and testing.
+- Privacy Savviness: Acknowledges potential privacy concerns in usability features.
+- Understanding User Needs: Marks for citing improved user interactions and product quality
+- Uncovering User Mental Model: Marks for recognizing assistance with understanding users' perceptions of the system.
+- User Research for Problem Identification: Marks for understanding users' needs and gaps for improvement in the system.
+- User Research for Solution Validation: Marks for citing its application in validating potential solutions' efficiency.
+- Improving Ideation and Design Process: Marks showing understanding of user research's role in system design. 
+- User Experience Evaluation: Marks for understanding its role in gauging system's user friendliness.
+- Needs Validation and Concept Refining: Marks for recognizing its importance in product development stage.
+- Effective Use of User Research: Marks for understanding user research utility for feedback, bugs and usability fixes.
+- User Research in Product Testing: Marks for recognizing its use in pre-launch product evaluation.
+- Knowledge of User Research: Capacity to describe the purposes of user research in product development.
+- Identification of Research Methods: Understanding of different user research methods such as observation, contextual inquiry, and interviews.
+- Explanation of Product Lifecycle: Ability to explain the role of user research in different stages of product development.
+- Reference to Specific Models: Reference to specific models such as IDEO framework in explaining the purposes of user research.
+- Understanding User Needs: Measures comprehension of why user needs are important in design.
+- Knowledge of Stages: Evaluates understanding of different design stages and their purpose.
+- Use of Techniques: Assesses knowledge of tools & techniques per design stage.
+- Relevance of Stage Execution: Considers understanding of how stages relate to user needs.
+- Prototype Testing Insight: Evaluates comprehension of testing stages and their importance.
+- Explaining User research: Checks knowledge and explanation of user research in design. 
+- Process & Application Link: Assesses understanding of tying research process to real application.
+- Recognizing Common Techniques: Checks recognition and understanding of frequently used methods.
+
+---------------------------------------------------------------------------
+
+10 CLUSTERS PROMPT
+
+- Understanding User Needs: Identification and validation of user needs, habits, and frustrations.
+- Validation & Feedback Collection: Capturing user responses to prototypes or ideas for usability improvement.
+- Idea Generation: Use of user research to inspire and refine design ideas.
+- Prototyping & Testing: Utilizing user insights during prototyping and testing to improve product usability.
+- User Mental Models: Identifying user mental models through research to enhance user experience.
+- Comprehension of Usage: Research to understand how users interact with a product/application.
+- User Satisfaction Enhancement: Use of research to better user experience and user satisfaction levels.
+- Uncovering User Challenges: Identifying user difficulties and designing solutions to address them.
+- Product Lifecycle Understanding: Recognition of user research values across product lifecycle stages.
+- Contextual Identification: Understanding the specific context or sector of the targeted user.
+- Uncovering User Terminology: Understanding user language or terminology to enhance communication and user experience.
+- Real-life Impact Assessment: Assessing the effect and usage of the product in real-life scenarios.
+- Design Effectiveness: Evaluation of how effective and user-friendly a product design is.
+- Pre-launch Evaluation: Research conducted prior to product launch to gauge usability and address potential issues.
+- After Release Feedback: Collection and integration of user feedback post product release for continuous improvement.
+
+- Understanding of User Research Purpose: Student's comprehension of user research in product development cycle.
+- Grasp on Research Methods: Evaluation of student's understanding of various user research methods.
+- Relationships Between Needs & Design: Knowledge of how users' needs should inform product design.
+- Understanding of Ideation & Prototyping: Student's perception of the role of user research in ideation & prototyping.
+- Interpretation of IDEO Framework: Discernment of role of user research in IDEO's inspiration, ideation, and implementation phases.
+- Connection of Research to Product Validation: Understanding the need for user research in product validation.
+- Understanding of Iterative Design Process: Awareness of the need for iterative user research in product design and improvement.
+
+The given rubrics are not focused on evaluating student responses to the question: 'Describe why we want to use asynchronous programming in Javascript?'. Instead, they focus on aspects of user research and product development, which are unrelated to the core topic of asynchronous programming in JavaScript. Therefore, all these rubric items should be removed due to irrelevance. Information about JavaScript, asynchronous programming, and its benefits should be included in the rubric.
+
+---------------------------------------------------------------------------
+

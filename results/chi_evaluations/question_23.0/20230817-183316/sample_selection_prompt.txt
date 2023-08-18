@@ -1,0 +1,116 @@
+RUBRICS - OUTLIER SCORE
+
+1. Understanding of Asynchronous Programming Concept: The student should demonstrate a clear understanding of what asynchronous programming is and how it works in Javascript. This may include mentioning its non-blocking nature and possibly how it relies on promises, callbacks, and events to handle multiple operations simultaneously.
+
+2. Explanation of Handling Multiple Operations Efficiently: The student should explain that one of the main reasons we use asynchronous programming in Javascript is to handle multiple operations without blocking the main thread. The student should highlight that this creates a more efficient program that can run multiple tasks simultaneously without waiting for one task to complete before starting another.
+
+3. Reference to Improved User Experience: The student should mention the resultant improved user experience from using asynchronous programming. This includes responsiveness and performances of web applications which do not freeze, hang or become unresponsive during data processing or network requests.
+
+4. Examples of Asynchronous Operations in JavaScript: The student could mention or give examples of asynchronous operations in JavaScript, such as AJAX requests, Fetch API, setTimeout, setIntervals, Promises, or Async/Await.
+
+5. Discussion on Error Handling: The student should explain how asynchronous programming allows efficient error handling through rejections in promises or using try/catch with Async/Await functions. This point emphasizes the importance of asynchronous programming in building robust applications.
+
+---------------------------------------------------------------------------
+
+THEMES - OUTLIER SCORE
+
+1. Improved Efficiency: Many students identified that asynchronous programming in JavaScript allows for increased efficiency by allowing tasks to run in the background without blocking other operations.
+2. Handling Multiple Tasks: A theme was the ability to handle multiple tasks simultaneously, improving the speed and responsiveness of JavaScript applications.
+3. Non-Blocking Behavior: Students emphasized the non-blocking nature of asynchronous programming, which prevents JavaScript applications from freezing when handling heavy computations or complex tasks.
+4. Better user experience: Asynchronous programming in JavaScript allows for smoother, more interactive web interfaces which improves the user experience 
+5. Handling Network Requests: Students often referred to the ability of asynchronous programming to effectively manage network requests, particularly for web development.
+
+---------------------------------------------------------------------------
+
+RUBRICS - FURTHEST FROM MEAN
+
+1. Understanding of Asynchronous Programming: The student demonstrates a thorough comprehension of what asynchronous programming in JavaScript is. They explain it accurately and clearly, using appropriate technical language.
+
+2. Explanation of Non-blocking Nature: The student explains that the asynchronous programming allows for the "non-blocking" or concurrently running operations, consistent to the event-driven nature of Javascript. 
+
+3. Real World Use Cases: The student is able to provide real examples or scenarios where asynchronous programming in JavaScript would be useful, such as handling UI events, fetching data from APIs, reading from files, etc.
+
+4. Explanation of Efficiency: The student explains how asynchronous JavaScript can make programs more efficient by not waiting for tasks to complete but continuing with other tasks and returning to the previous task when it is complete.
+
+5. Knowledge of Tools & Methods: The student shows understanding of concepts or tools that Javascript provides for asynchronous programming such as callbacks, promises and async/await.
+
+---------------------------------------------------------------------------
+
+THEMES - FURTHEST FROM MEAN
+
+1. Benefits of Asynchronous Programming: Many students highlighted the advantages of using asynchronous programming in Javascript to manage complex tasks without blocking the execution of the rest of the code.
+2. Non-blocking Behavior: Students often mentioned this aspect emphasizing that asynchronous programming allows for the execution of other tasks while waiting for another operation to complete.
+3. Scalability and Performance: Some students discussed how asynchronous programming improves the scalability and performance of applications by allowing them to handle multiple requests concurrently.
+4. JavaScript Event Loop: Another theme recurrent in the responses was the essence of the JavaScript event loop and how asynchronous programming works within this model.
+5. Specific Asynchronous Functions: Some answers outlined more specifics, like the use of JavaScript features like Promises, Callbacks, and Async/Await to achieve asynchronous behavior.
+
+---------------------------------------------------------------------------
+
+RUBRICS - CLOSEST TO MEAN
+
+1. Understanding Asynchronous Programming: The student should demonstrate a clear understanding of what asynchronous programming is and how it works in Javascript. This includes more than just a definition, but also how it affects the behavior of the program.
+
+2. Benefits of Asynchronous Programming: The student should list and explain the key benefits of using asynchronous programming in Javascript. These can include better responsiveness, improved performance and non-blocking behavior.
+
+3. Use Cases: The student should describe scenarios in which asynchronous programming would be preferred over synchronous programming. These can include instances where tasks are time-consuming or need to run independently without stalling the main thread of execution.
+
+4. Coding Knowledge: Answers should demonstrate the student's knowledge of how to implement asynchronous programming in Javascript. For instance, they can mention techniques like promises, async/await, or callbacks used in asynchronous programming.
+
+5. Understanding Pitfalls/Challenges: The student should acknowledge potential challenges or pitfalls associated with asynchronous programming in JavaScript, including managing complex flows of control, error handling or debugging issues.
+
+---------------------------------------------------------------------------
+
+THEMES - CLOSEST TO MEAN
+
+1) Understanding User Needs: Students frequently mentioned the importance of user research in identifying and validating user needs for product development. 
+
+2) Ideation: Answers highlighted how user research helps generate ideas and solutions tailored to address user pain points, enabling designers to create more effective and user-centric designs.
+
+3) Prototyping: Students discussed how user research is crucial in the prototype development stage, offering feedback on usability and effectiveness, thereby facilitating improvements and refinements.
+
+4) Testing and Validation: Students discussed the role of user research in testing the final product, ensuring usability and solving any potential issues before release.
+
+5) Continuous Improvement: Lastly, students emphasized that user research is not a one-time process, but a continuous one, offering insights for the evolution and improvement of the product based on user feedback and changing needs.
+
+---------------------------------------------------------------------------
+
+RUBRICS - CLUSTER 10
+
+1. Explanation of what is asynchronous programming: The student should be able to define asynchronous programming and distinguish it from synchronous programming.
+2. Benefits of asynchronous programming in JavaScript: The student should explain at least one key advantage of asynchronous programming, such as allowing web pages to continue loading while waiting for server response.
+3. Understanding of event loop: The student should express an understanding of the event loop principle in JavaScript, in the context of asynchronous programming.
+4. Real-world examples: The student should be able to provide at least one concrete example of when and why asynchronous programming would be used in JavaScript.
+5. Reference to key JavaScript concepts and functions: The student should mention and explain at least one JavaScript feature related to asynchronous programming, such as Promises, Callbacks, async/await.
+
+---------------------------------------------------------------------------
+
+THEMES - CLUSTER 10
+
+1. Enhancing Product Usability: Students mention using asynchronous programming to make products more user-friendly and intuitive. This includes making sure products match users' mental models.
+2. Identifying User Needs: Many students refer to the importance of understanding what users want and need from a product or service. This information informs and guides the design and development process.
+3. Ideation and Brainstorming: Asynchronous programming is discussed as a crucial tool for brainstorming and ideation, helping to generate potential solutions to user needs and problems.
+4. Feedback and Validation: There's a continual emphasis on gaining feedback and using it for validation, improvement, and evaluation of product concepts, prototypes, and final products.
+5. Problem-solving: A number of responses focus on using asynchronous programming as a method for identifying and solving design problems, making it a critical component of the design process.
+
+---------------------------------------------------------------------------
+
+RUBRICS - CLUSTER 20
+
+1. Understanding of Asynchronous Programming Concept: The student successfully understood and explained what asynchronous programming is.
+2. Importance of Asynchronous Programming: The student correctly highlighted why using asynchronous programming in JavaScript is important.
+3. Mentioning of Non-Blocking Code: The student explicitly mentioned the ability of Asynchronous programming to avoid 'blocking' or stopping the flow of code, which results in better performance.
+4. Real-time Programming Interaction: The student provided a clear understanding of how asynchronous programming in JavaScript can handle and facilitate real-time data and user interaction.
+5. Practical Example: The student used practical JavaScript code examples to clearly explain asynchronous programming concepts and its benefits.
+
+---------------------------------------------------------------------------
+
+THEMES - CLUSTER 20
+
+1) Understanding and identifying user needs.
+2) Ascertaining potential solutions to meet these needs.
+3) Validating and testing design decisions and prototypes.
+4) Enhancing existing products based on user feedback and behavior.
+5) Ensuring accessibility and equitability in solution implementation.
+
+---------------------------------------------------------------------------
+

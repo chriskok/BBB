@@ -1,0 +1,108 @@
+RUBRICS - 20 ANSWERS
+
+1. Understanding of Asynchronous Programming: The student should demonstrate a clear understanding of what asynchronous programming is in Javascript.
+
+2. Importance and Benefits: The student should discuss why asynchronous programming is important in Javascript, focusing on the key benefits such as improving efficiency, allowing for the reuse of code, reducing repetition, and handling concurrent operations.
+
+3. Clear examples: The student should provide practical examples of when asynchronous programming can be applied, and how it would improve the functionality or efficiency of the code.
+
+4. Understanding of Promises and Callbacks: Mentioning these terms in the answer will show a deeper understanding of asynchronous programming.
+
+5. Use of correct terms: The student should use correct programming terminology in their answer.
+
+6. Explain the consequences of not using asynchronous programming: The answer should detail what would happen if synchronous programming was used instead.
+
+7. Overall Clarity and Structure: The answer should be well-organized, clear, and easy to understand, with complete sentences and logical flow of ideas.
+
+
+---------------------------------------------------------------------------
+
+THEMES - 20 ANSWERS
+
+The students' provided answers do not directly address the question of asynchronous programming in Javascript. Instead, they center around the concept of reusable components in the context of design, particularly regarding user interface (UI) design and the tool known as Figma. The main themes include:
+
+1. Reusability and Consistency: Students emphasize the ability to reuse UI components across different frames or pages, leading to consistent designs.
+
+2. Efficiency: The use of components prevents repetitive work and creates a more efficient design process.
+
+3. Manageability: Changes made to a parent, or main, component are reflected in all its instances, keeping designs uniformly updated.
+
+4. Interactivity: Some students mention the interactive possibilities offered by components, including changing states.
+
+5. Minimalistic approach: Components help to keep the design cleaner and more minimalistic, avoiding excessive elements.
+
+6. Time-saving: A component edit propagates to all instances, saving time on implementing changes.
+
+---------------------------------------------------------------------------
+
+RUBRICS - 40 ANSWERS
+
+1. Understanding of Asynchronous Programming: The students should explain the basic concept of asynchronous programming in JavaScript in their own words.
+
+2. Implication of Asynchronous Programming: The students should clearly illustrate how asynchronous programming affects JavaScript's performance, and how operations are executed concurrently rather than sequentially.
+
+3. Benefits of using Asynchronous Programming: The students should be able to highlight the benefits of using asynchronous programming in JavaScript such as improved efficiency and effectiveness, non-blocking operations, and better user experience in interactive web applications.
+
+4. Application/Practical Usage: Students should be able to give practical examples or use cases where Asynchronous programming would be preferred to illustrate their understanding.
+
+5. Completion and Clarity: The students should provide complete and concise responses to the question. The answer should be intelligently structured and easy to understand indicating depth of understanding of the topic.
+
+6. Technical Accuracy: The students should use the correct technical language and jargon associated with JavaScript asynchronous operations.
+
+7. Error Handling: For an extra credit, students could mention the ability to properly handle errors and exceptions as a main advantage of asynchronous programming in JavaScript. 
+
+8. Advanced Concepts: Mention of advanced concepts such as Promises, Callbacks, and Async/Await use in Asynchronous programming could be an indicator of in-depth comprehension and thus rewarded in the rubric.
+
+9. Efficiency: Could the student explain how asynchronous programming could help improve the speed and responsiveness of an application?
+
+10. Real-world implications: Ability to link the use of asynchronous programming in Javascript to real-world scenarios or current developments in web application design, illustrating understanding on a larger scale.
+
+---------------------------------------------------------------------------
+
+THEMES - 40 ANSWERS
+
+The recurrent themes in the students' responses include:
+
+1. Reusability of components: Components can be defined once and used across multiple areas of an application or design, reducing repetition and promoting efficient use of resources.
+
+2. Consistency of design: Components ensure uniformity across different parts of a project or application, enhancing user experience. Any change made to a component gets reflected everywhere that component is used, ensuring a consistent appearance and behavior.
+
+3. Efficiency and time-saving: Using components saves time and effort by eliminating the need to repeatedly create similar elements or features.
+
+4. Easy maintenance and updates: Components allow for simple updates and modifications. Changes made to a single component automatically apply to all instances of that component, facilitating easy maintenance and updates. 
+
+5. Component instances: Students highlighted the utility of making multiple instances of a component, which share the same properties and behavior. Changes to a component are reflected in all its instances, making it efficient to manage large designs or applications.
+
+6. Streamlined design processes: Components help streamline design processes by reducing workload, enhancing design consistency, and making it easy to implement and manage changes. 
+
+7. Interaction and Interactivity: Components can be used to add interactivity to designs in an efficient way, using instances of a component to create interactive experiences.
+
+8. Grouping of elements: Components allow for easier copying/pasting by grouping multiple elements, allowing for efficient changes to the specifications of all elements at once. 
+
+9. Enhancing User Interface (UI) design: Using components supports the design of UI elements that can be re-used across different screens within a design or application. 
+
+Overall, students emphasized the benefits of using components in their design work, particularly in terms of re-use, efficiency, consistency, and ease of maintenance.
+
+---------------------------------------------------------------------------
+
+RUBRICS - 80 ANSWERS
+
+1. Understanding of Asynchronous Programming: The student should demonstrate a clear understanding of asynchronous programming, including its purpose and characteristics.
+2. Application in JavaScript: Explanation should specifically relate to using asynchronous programming in JavaScript, not just in general terms.
+3. Efficiency: The answer should illustrate understanding of how asynchronous programming enhances efficiency in JavaScript programming, such as non-blocking execution, optimized use of system resources, etc.
+4. Real-world Application: The response may reference or provide examples to illustrate the real-world implementation of asynchronous programming in JavaScript.
+5. Callbacks, Promises, and Async/Await: The student should mention or describe these key concepts or techniques of asynchronous programming in JavaScript.
+6. Benefits: The answer should detail the benefits of using asynchronous programming in JavaScript, such as improving user experience by preventing webpage freezing, ability to handle multiple tasks simultaneously, etc.
+7. Error Handling: The discussion could include aspects of error handling in asynchronous programming.
+8. Clear, Concise, and Coherent Response: The response should be well-organized and express thoughts clearly and effectively. It should avoid vague or unrelated comments.
+9. Use of Technical Language: The answer should use appropriate technical language and demonstrate understanding of core computer science principles.
+10. Depth of Understanding: The response should reflect that the student has a deep understanding of the topic, rather than just the baseline knowledge.
+
+---------------------------------------------------------------------------
+
+THEMES - 80 ANSWERS
+
+The main themes or recurrent topics that students emphasized in their answers are the efficiency, consistency, and reusability of components in JavaScript programming. They also highlighted the ease of making changes to multiple instances simultaneously, and the use of components to create interactive and uniform design elements across projects. Additionally, several students referenced the specific use of components for elements like buttons and other UI features that appear multiple times within a design.
+
+---------------------------------------------------------------------------
+

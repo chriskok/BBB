@@ -1,0 +1,47 @@
+AUTO SCENARIO 2
+
+- Non-blocking UI: Keeps the user interface responsive during time-consuming tasks.
+- Concurrent Task Execution: Allows multiple tasks to run concurrently without waiting for one to finish.
+- Dynamic Page Updates: Enables changing parts of a webpage without refreshing the entire page.
+- Handling Network Requests: Efficiently manages potentially slow network requests without slowing down the application.
+- Improved User Experience: Results in a smoother, faster user interaction as they don't have to wait for tasks to complete. 
+- Responsiveness to User Inputs: Allows the program to respond quickly to user actions regardless of other running tasks.
+- Server Communication: Enables sending, requesting, and receiving data from a server without interruption.
+- Efficient Resource Loading: Leverages asynchronous nature to load resources while other code executes.
+
+Positive Rubric Items:
+- Understanding Non-Blocking UI: Explains how asynchronous JavaScript keeps UI responsive. (Example: "Tasks over the network always have delays. We want the UI to remain responsive when it is completing a network request.")
+- Handling Network Requests: Describes how it manages slow network requests. (Example: "Asynchronous programming allows us to set, request, and receive data from a server without blocking the rest of the interface.")
+- Improving User Experience: Elucidates the effect of asynchronous programming on user experience. (Example: "It makes the website faster and provides a user with a better experience because they don't have to wait until one task to run for another one to show up")
+- Concurrency in Task Execution: Shows understanding of concurrent task execution. (Example: "We don’t have to wait for the first task to complete before we can address the second event.")
+- Knowledge on Server Communication: Clearly explains the server communication aspect. (Example: "Set, request and receive data from a server without blocking the rest of your interface")
+
+Negative Rubric Items:
+- Confusion with Asynchronous Nature: Incorrectly attributes synchronous behaviors to asynchronous JavaScript. 
+- Misunderstanding Non-Blocking UI: Fails to explain how asynchronous programming maintains UI responsiveness.
+- Inability to Explain Dynamic Page Updates: Doesn't relate asynchronous JavaScript to dynamic page updating.
+- Misinterpretation of Network Requests: Doesn't understand how network requests are handled asynchronously. 
+- Vague on User Experience: Fails to express how asynchronous programming affects user experience.
+
+---------------------------------------------------------------------------
+
+AUTO NO THEME SCENARIO
+
+Positive rubric items: 
+
+1. Non-blocking UI explanation: Detailed explanation of the non-blocking user interface principle. 
+2. Benefits of AJAX: Provides an in-depth understanding of AJAX in asynchronous programming. 
+3. Understanding of tasks execution: Explains that asynchronous programming allows simultaneous task execution. 
+4. Mention of HTTP requests: Provides examples of how HTTP requests are managed asynchronously. 
+5. Clear understanding of responsiveness: Accurate articulation of how asynchronous programming maintains responsiveness during long-running tasks.
+
+Negative rubric items:
+
+1. Misunderstanding of asynchronous tasks: Incorrectly explains that asynchronous programming lets multiple tasks run at once.
+2. Confusion with AJAX: Mistakes AJAX as a form of asynchronous programming rather than a technique for fetching data asynchronously.
+3. Lack of specificity: General, vague responses about speed and efficiency without addressing the core principles of asynchronous programming.
+4. Incomplete understanding: Only mentions the benefits of asynchronous programming without explaining the hows and whys.
+5. Incorrect examples: Gives incorrect or irrelevant examples of when to use asynchronous programming.
+
+---------------------------------------------------------------------------
+

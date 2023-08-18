@@ -1,0 +1,45 @@
+AUTO SCENARIO 2
+
+- Component Reusability: Mention of using components multiple times across different points in designs.
+- Consistent Design: Using components to maintain uniformity and standardization across projects. 
+- Ease of Modification: Changes made to a component are reflected across all of its instances.
+- Increase Efficiency: Reusing components reduces workload and extra effort.
+- Interactivity: Components facilitate adding interactions to prototypes.
+
+Positive:
+- Understanding of Reusability: Explains the use of components to be utilized multiple times. (Example: "We use components that we would like to use across multiple points and screens within the design.")
+- Grasp of Consistency: Demonstrates understanding of maintaining design uniformity using components. (Example: "UI components can be reused across multiple screen. We make our design consistent.")
+- Knowledge of Modification Ease: Recognizes that changes to components propagate to all instances. (Example: "A change on one component will be reflected elsewhere, which eliminates the need to change every instance of the element.")
+- Comprehension of Efficiency: Acknowledges that component reuse reduces workload and simplification of tasks. (Example: "Components allow us to easily deal with interface elements that may be repeated.")
+- Awareness of Interactivity: Understands the role components play in adding interactive elements to prototypes. (Example: "Components allow us to reuse designs and allow us to add interactivity to prototypes")
+
+Negative:
+- Limited Understanding of Reusability: Fails to mention the component's use for reutilization across designs. (Example: "This is so that our instances are consistent throughout our program.")
+- Misconception of Consistency: Does not refer to maintaining similar designs with components. (Example: "Components are features that we would like to reuse throughout our prototype.")
+- Incorrect Understanding of Modification Ease: Doesn't recognize changes to parent component being reflected in instances. (Example: "Components are elements you can reuse across your designs.")
+- Ignorance of Efficiency: Fails to mention reduced workload and simplification with component reuse. (Example: "Components allow designers to reuse elements in design such as buttons.")
+- Omission of Interactivity: Ignores the role of components in adding interactions to prototypes. (Example: "It allows us to reuse certain elements multiple times, and even create variations of those elements.")
+
+---------------------------------------------------------------------------
+
+AUTO NO THEME SCENARIO
+
+Positive Rubric items:
+
+1. Understanding of concept: Clear grasp on the concept of asynchronous programming in JavaScript.
+2. Non-blocking execution: Explains that asynchronous programming enables non-blocking execution of code.
+3. Callbacks and Promises: Mentioned the use of callbacks, promises, or async/await to manage asynchronous tasks.
+4. Performance Improvement: Explains how it speeds up program execution by allowing tasks to be performed in parallel.
+5. Reactiveness: Understanding that asynchronous programming leads to more responsive or interactive User Interfaces.
+
+Negative Rubric items:
+
+1. Confusion with components: Students misunderstand asynchronous programming with code/component reusability.
+2. UI design focus: Focused on User Interface design and consistency instead of JavaScript programming.
+3. Inconsistency prevention: Describe components prevents inconsistency but not about asynchronous tasks in JavaScript.
+4. Workload reduction: Mention workload reduction by reusing components instead of improving performance via asynchronous programming.
+5. Update propagation: Discuss update propagation among instances, without reference to async programming in JavaScript.
+
+
+---------------------------------------------------------------------------
+

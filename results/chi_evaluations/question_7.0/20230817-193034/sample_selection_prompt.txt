@@ -1,0 +1,126 @@
+RUBRICS - OUTLIER SCORE
+
+1. Understanding and Explanation of Asynchronous Programming: The student demonstrates a clear understanding of what asynchronous programming is and can succinctly explain its purpose in JavaScript.
+
+2. Uses in User Interface (UI): The student can detail how asynchronous programming can be used to enhance the user interface, by allowing the interface to still be interactive while waiting for long-running operations to complete.
+
+3. Partial Page Refresh: The student explains how asynchronous programming allows for partial updates to web pages without requiring a full page refresh.
+
+4. Efficiency in Executing Tasks: The student discusses the effectiveness of asynchronous programming in allowing multiple tasks to be run concurrently, improving the efficiency and performance of the application.
+
+5. Interaction with Server: The student clearly understands and explains the role of asynchronous programming in sending, requesting, and receiving data from a server without blocking the rest of the program.
+
+---------------------------------------------------------------------------
+
+THEMES - OUTLIER SCORE
+
+1. Non-blocking Interface: Asynchronous programming allows the execution of long-running operations without blocking the rest of the interface, allowing users to interact with the user interface continually.
+2. Partial Page Refresh: Asynchronous programming enables partial updates to a webpage without the need to refresh the entire page.
+3. Concurrent Tasks: Asynchronous programming allows for multiple tasks or instructions to be executed simultaneously or concurrently, improving the performance and responsiveness of applications.
+4. Server Communication: Asynchronous programming aids in sending, requesting, and receiving data to and from a server while allowing the continuation of other interface functions.
+5. Responsiveness During Data Retrieval: The use of asynchronous programming prevents an application from becoming unresponsive while waiting for data retrieval, such as API responses or accessing data from a remote server.
+
+---------------------------------------------------------------------------
+
+RUBRICS - FURTHEST FROM MEAN
+
+1. Understanding of Asynchronous Programming: The student correctly describes what asynchronous programming is, including its non-blocking nature, and how it works in JavaScript.
+2. Practical Application: The student describes why asynchronous programming is important for user interfaces, including its role in preventing freezing or slowing down.
+3. API Interaction: The student discusses how asynchronous programming enables interaction with APIs or servers without interrupting the user experience.
+4. Page Updates: The student explains how asynchronous programming facilitates updates to a web page without requiring a full page reload.
+5. Multitasking Capability: The student identifies how asynchronous programming in JavaScript allows for the simultaneous execution of multiple tasks or operations.
+
+---------------------------------------------------------------------------
+
+THEMES - FURTHEST FROM MEAN
+
+1. Maintaining user interface (UI) responsiveness: Students frequently mentioned the advantage of preserving the user interface's interactivity during data requests to keep the website or app active and engage the user.
+2. Concurrent task execution: Multiple tasks can run concurrently without waiting for one to finish before starting another.
+3. Partial page updates: Without having to reload the entire page, portions of it can be updated according to user interactions.
+4. Reducing bottleneck issues: Students referred to avoiding issues where a long task could take up resources and block progress, leading to an unpleasant user experience.
+5. Improving server interactions: The theme of efficiently sending, requesting, and receiving data from a server without blocking or slowing down the rest of the interface was also recurrent.
+
+---------------------------------------------------------------------------
+
+RUBRICS - CLOSEST TO MEAN
+
+Based on the dataset, the following rubric items can be formed to evaluate the student's answer:
+
+1. Identification and Explanation: The student correctly identifies asynchronous programming and provides a clear and accurate explanation of what it is in the context of Javascript.
+
+2. Benefits of Asynchronous Programming: The student mentions at least one key benefit of asynchronous programming, such as the program's ability to continue executing other tasks while waiting for a long-running operation to complete.
+
+3. Relation to User Interface (UI): The student understands and correctly explains how asynchronous programming allows for changes in the UI without requiring a whole page refresh.
+
+4. Relationship Between the UI and Server: The student accurately describes how using asynchronous programming in Javascript enables sending, requesting, and receiving data from a server without blocking the rest of the interface.
+
+5. Explanation of Specific Use Case: The student successfully applies the concept to a specific use case, such as executing a task that may take a long time to complete like awaiting HTTP responses, and explains how asynchronous programming can handle such cases.
+
+---------------------------------------------------------------------------
+
+THEMES - CLOSEST TO MEAN
+
+1. Partial Page Updates: Students frequently mentioned that asynchronous programming in JavaScript allows for updating specific parts of a webpage without requiring a full page refresh. 
+
+2. Non-Blocking Operations: A prevalent theme is the ability of asynchronous programming to execute operations that may take a significant amount of time without blocking or halting the execution of other parts of the code.
+
+3. User Interface Interactions: Many students emphasized that, during long-running operations, users can still interact with the user interface, contributing to a better user experience. 
+
+4. Concurrent Task Execution: Many students pointed out that asynchronous programming is useful in running multiple tasks at the same time for better program efficiency and responsiveness.
+
+5. Server Communication: A number of answers highlighted that asynchronous programming allows for sending, requesting, and receiving data from a server without disrupting the user interface.
+
+---------------------------------------------------------------------------
+
+RUBRICS - CLUSTER 10
+
+1. Explains the concept of asynchronous programming in Javascript: The student should explain what asynchronous programming is and how it works specifically in Javascript.
+
+2. Highlights the convenience of asynchronous programming: The student should emphasize on the ability of asynchronous programing to update only parts of the page without reloading the entire webpage.
+
+3. Addresses the benefits to user experience: Asynchronous programming allows users to interact with the interface without disruption - this key aspect should be highlighted.
+
+4. Gives examples of asynchronous programming applications: The student should name real-world applications or situations where asynchronous programming can be beneficial, such as dealing with delays in functionalities or the use of API calls.
+
+5. Discusses multi-tasking and efficiency: The student should discuss how asynchronous programming boosts efficiency by allowing multiple tasks to be performed at the same time, without blocking the execution of different tasks.
+
+---------------------------------------------------------------------------
+
+THEMES - CLUSTER 10
+
+1. Asynchronous programming allows selective updating of parts of a web page, enhancing user interaction and interface responsiveness. 
+2. Asynchronous programming prevents interface blocking while processing a request, providing uninterrupted user interaction. 
+3. Asynchronous code execution improves application efficiency by allowing tasks to be performed concurrently. 
+4. Asynchronous programming is especially useful in handling potentially slow processes such as API calls, as it allows other tasks to continue while waiting for a response.  
+5. Through the use of elements like event listeners, asynchronous programming enables user freedom, allowing them to navigate freely through an application without being confined to a specific route.
+
+---------------------------------------------------------------------------
+
+RUBRICS - CLUSTER 20
+
+1. Understanding of asynchronous programming: The student should display a clear conceptual understanding of asynchronous programming, demonstrating what it is and how it functions within JavaScript.
+  
+2. Importance of Non-blocking Code: The response should entail the concept of non-blocking code, explaining why it's crucial in programming, particularly in JavaScript.
+
+3. Efficient Management of Multiple Requests: Discuss how asynchronous programming enables efficient handling and response to multiple requests simultaneously.
+
+4. User Interaction and Interface: Explain the impact of asynchronous programming on the user interface and experience, highlighting the ability of the user to interact with the webpage even when it’s processing requests.
+
+5. Real Life Applications: Provide practical examples of asynchronous programming in JavaScript, such as interval setting, event listeners and AJAX. This will demonstrate a clear understanding of how asynchronous programming applies in real-world scenarios.
+
+---------------------------------------------------------------------------
+
+THEMES - CLUSTER 20
+
+1. Partial Page Updating: One recurrent theme is the ability of asynchronous programming to update parts of a web page without having to reload the entire page every time a change is implemented.
+
+2. Handling Long-Running Tasks: Asynchronous programming is described as an effective tool for handling long-running tasks or operations without blocking the execution of other tasks.
+
+3. Efficient Use of User Interface (UI): Asynchronous programming in JavaScript allows for instructions that take a long time to be executed in the background, providing a seamless interface interaction experience for users as they can still interact with the rest of the UI.
+
+4. Concurrent Task Execution: Students emphasize that asynchronous programming allows for multiple requests to be happening concurrently, or parallel execution of tasks, which leads to increased efficiency.
+
+5. Responsiveness: It's regularly brought up that asynchronous programming helps maintain the responsiveness of an application while waiting for a response, such as from server requests.
+
+---------------------------------------------------------------------------
+
