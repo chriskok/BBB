@@ -116,6 +116,50 @@ def create_rubric_suggestions(question, answers, rubrics, polarity="positive"):
 
     return suggestions
 
+def create_themes(df, x, question_text, num_samples_per_cluster=5):
+    cluster_ids = sorted(df['cluster'].unique())
+    system_prompt = f"You are an expert instructor for your given course. Currently, you are evaluating student responses to the question: '{question_text}' from a recent final exam. By examining diverse clusters, we hope to inspire more detailed insights based on the variations observed. Based on the provided answers, identify the main themes or recurrent topics that students emphasized.\n\nCome up with a list of themes that effectively encapsulate the types of answers in the dataset. Please output in the following format (one for each cluster): - <theme title>: <theme description kept to 15 words maximum>"
+    responses = []
+
+    # iterate through the clusters in batches of x
+    for i in range(0, len(cluster_ids), x):
+        selected_clusters = cluster_ids[i:i+x]
+        user_prompt = ""
+        for cluster_id in selected_clusters:
+            sample = df[df['cluster'] == cluster_id].sample(n=num_samples_per_cluster, replace=True)
+            cluster_string = f"\n\nCluster {cluster_id}: \n\n" + "\n\n".join(sample['answer_text'].tolist())
+            user_prompt += cluster_string
+
+        msgs = [{"role": "system", "content": system_prompt}, {"role": "user", "content": user_prompt}]
+        response = prompt_gpt4(msgs)
+        responses.append(response)
+
+    return responses
+
+def create_rubric_suggestions_2(df, answers, question_text):
+    # GPT generates themes
+    responses = create_themes(df, x=2, question_text=question_text, num_samples_per_cluster=5)
+    summarizing_prompt = f"You will be provided a list of themes intended for evaluating student responses on the question: '{question_text}'. Please select ONLY 10 line items to keep and eliminate those that are either too similar to points you select or not directly relevant to the core topic."
+    all_themes = "\n\n".join(responses)
+    msgs = [{"role": "system", "content": summarizing_prompt}, {"role": "user", "content": all_themes}]
+    themes_response = prompt_gpt4(msgs)
+
+    # GPT generates rubrics
+    rubrics_prompt = f"Based on the provided answers below, generate 5 positive (common good answers) and 5 negative (potential misunderstandings) rubric items based on the given answers and the themes generated. Please output in the following format: \n- <rubric title>: <rubric description kept to 15 words maximum> (example: <example answer from the dataset provided>) \n\n{answers}"
+    msgs.append({"role": "assistant", "content": themes_response})
+    msgs.append({"role": "user", "content": rubrics_prompt})
+    rubrics_response = prompt_gpt4(msgs)
+
+    formatting_prompt = """For the output, create a comma-separated list of python dictionaries that STRICTLY follow the JSON format:
+
+    [{"id": <unique ID for each rubric, starting from 1>, "polarity": "<positive/negative>", "title": "<short title of the rubric (2-7 words)>", "description": "<longer description of the rubric>", "reasoning_dict": {}}, ...]
+    """
+    msgs.append({"role": "assistant", "content": rubrics_response})
+    msgs.append({"role": "user", "content": formatting_prompt})
+    formatted_response = prompt_gpt4(msgs)
+
+    return formatted_response 
+
 def apply_rubrics(question, answers, rubrics, existing_tags=None):
 
     def convert_reasoning_dict(reasoning_dict):

@@ -59,35 +59,6 @@ def check_suggestions(rubric_obj, current_question_obj, outlier_examples):
         rubric_obj.set_rubric_list(new_rubric_list)
         rubric_obj.save()
 
-def cluster_answers(df, n_clusters=20):
-    sentences = df["answer_text"].apply(str).tolist()
-
-    # Compute SBERT embeddings
-    model = SentenceTransformer(modelPath)
-    embeddings = model.encode(sentences, convert_to_tensor=True)
-    # cosine_scores = util.cos_sim(embeddings, embeddings)
-
-    # Cluster sentences with AgglomerativeClustering
-    clustering_model = AgglomerativeClustering(n_clusters=n_clusters) #, affinity='cosine', linkage='average', distance_threshold=threshold)
-    clustering_model.fit(embeddings)
-
-    # Assign the cluster labels to the dataframe
-    df['cluster'] = clustering_model.labels_
-    return df
-
-def sample_answers(df, n_samples=1):
-    samples = []
-    num_clusters = df['cluster'].nunique()
-    for cluster_id in range(num_clusters): 
-        sample = df[df['cluster'] == cluster_id].sample(n=n_samples)
-        for index, row in sample.iterrows():
-            # remove new lines from answer_text
-            new_text = row['answer_text'].replace('\n', ' ')
-            # append to samples
-            samples.append(new_text)
-    
-    return samples
-
 def rubric_creation(request, q_id):
     q_list = Question.objects.extra(select={'sorted_num': 'CAST(question_exam_id AS FLOAT)'}).order_by('sorted_num')
 
@@ -149,6 +120,71 @@ def rubric_creation(request, q_id):
     }
 
     return render(request, "rubric_creation.html", context)
+
+def cluster_answers(df, n_clusters=20):
+    sentences = df["answer_text"].apply(str).tolist()
+
+    # Compute SBERT embeddings
+    model = SentenceTransformer(modelPath)
+    embeddings = model.encode(sentences, convert_to_tensor=True)
+    # cosine_scores = util.cos_sim(embeddings, embeddings)
+
+    # Cluster sentences with AgglomerativeClustering
+    clustering_model = AgglomerativeClustering(n_clusters=n_clusters) #, affinity='cosine', linkage='average', distance_threshold=threshold)
+    clustering_model.fit(embeddings)
+
+    # Assign the cluster labels to the dataframe
+    df['cluster'] = clustering_model.labels_
+    return df
+
+def sample_answers(df, n_samples=1):
+    samples = []
+    num_clusters = df['cluster'].nunique()
+    for cluster_id in range(num_clusters): 
+        sample = df[df['cluster'] == cluster_id].sample(n=n_samples)
+        for index, row in sample.iterrows():
+            # remove new lines from answer_text
+            new_text = row['answer_text'].replace('\n', ' ')
+            # append to samples
+            samples.append(new_text)
+    
+    return samples
+
+def rubric_creation_2(request, q_id):
+    q_list = Question.objects.extra(select={'sorted_num': 'CAST(question_exam_id AS FLOAT)'}).order_by('sorted_num')
+
+    # if the question queried does not exist, get the first Question available
+    if Question.objects.filter(pk=q_id).exists():
+        current_question_obj = Question.objects.get(pk=q_id)
+    else:
+        current_question_obj = q_list.first()
+        q_id = current_question_obj.id
+
+    chosen_answers = Answer.objects.filter(question_id=q_id)
+    answer_count = len(chosen_answers)
+    answer_df = pd.DataFrame(list(chosen_answers.values()))
+    cluster_df = cluster_answers(answer_df, n_clusters=20)
+    samples = sample_answers(cluster_df, n_samples=1)
+    samples_string = "\n\n".join(samples)
+
+    if not RubricList.objects.filter(question_id=q_id).exists():
+        new_rubric_list = llmh.create_rubric_suggestions_2(answer_df, samples_string, current_question_obj.question_text)
+        rubric_obj = RubricList.objects.create(question_id=q_id, rubric_list=json.dumps(new_rubric_list))
+    else:
+        rubric_obj = RubricList.objects.filter(question_id=q_id).first()
+
+    rubric_list = rubric_obj.get_rubric_list()
+
+    context = {
+        "question_obj": current_question_obj,
+        "question_exam_id": q_id,
+        "question_list": q_list,
+        "samples": samples,
+        "answer_count": answer_count,
+        "rubric_list": rubric_list,
+    }
+
+    return render(request, "rubric_creation_2.html", context) 
 
 def update_rubric_list(request, q_id):
     if request.method == 'POST':
