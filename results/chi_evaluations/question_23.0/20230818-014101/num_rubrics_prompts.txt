@@ -1,0 +1,103 @@
+RUBRICS - 3 ITEMS
+
+1. Did the student highlight the importance of identifying and understanding the needs of users prior to any product design or redesign? This could be through user interviews, observations or need-finding techniques.
+2. Did the student emphasize the critical role of validation through testing their ideas, solutions, or prototypes with their user base? This could be through lo-fi prototyping, think aloud protocols or other methods.
+3. Did the student discuss the iterative nature of user research, using feedback from all stages to continuously improve and enhance the product based on user's reactions? This could be through revisit and refinement of designs, improving prototypes, or evaluations of product usage.
+
+---------------------------------------------------------------------------
+
+THEMES - 3 ITEMS
+
+1. Identifying and Understanding User Needs: Students highlighted the need to identify user preferences, behaviors, and problems in the early stages of designing a product or solution as a crucial part of the research process. This could involve interviewing users, observing user behavior, usage patterns, conducting user surveys, etc.
+
+2. Validation and Iteration: Students emphasized that user research is essential for evaluating and refining ideas and prototypes. This reflection and iteration process helps designers understand if the product is effectively solving the user's problems, identify potential issues, and optimize the product design before it is fully developed or launched.
+
+3. Usability and User Experience Testing: Students noted the importance of user research in prototyping and testing stages to assess a product's usability and effectiveness, understanding how users interact with the system, and gathering user feedback for future improvement. This includes testing for usability, simplicity, intuitiveness, and how well the product matches the user's mental model.
+
+---------------------------------------------------------------------------
+
+RUBRICS - 5 ITEMS
+
+1. Identification of User Needs/Problems: The student must be able to outline how user research can be used to identify pain points, needs, or issues that users are experiencing, essentially the 'need-finding' phase in the product lifecycle.
+
+2. Terminology/Mental Models of User: Responses might highlight how research uncovers user's familiar language, their mental models, and perceptions of important concepts which helps in designing a product that suits their mental models. 
+
+3. Concept Testing/Prototype Evaluation: The student's answer should reflect an understanding of how user research is used to test concepts, validate prototypes, and user testing to identify usability issues.
+
+4. Product Evaluation/Improvement: The student's answer should demonstrate the importance of using user research to carry out evaluations of existing solutions/products, finding areas of refinement and obtaining feedback for improvement.
+
+5. Understanding of User Behavior and Preferences: Answers should reflect the use of user research in gaining insights into user preferences, attitudes towards the product, and their behavior, which helps prioritize and address user needs effectively in the design.
+
+---------------------------------------------------------------------------
+
+THEMES - 5 ITEMS
+
+1. Identifying / Validifying User Needs: Students frequently mentioned that user research is instrumental in identifying and validating user needs, challenges, and pain points as a critical first step in product development.
+2. Ideation / Solutioning: Students highlighted how user research can help generate and improve upon ideas during the early stages of the product design process.
+3. Usability Testing: The concept of testing and receiving feedback on prototypes or existing solutions from users was a prominent theme, allowing for the uncovering of usability issues or potential improvements.
+4. Understanding User Behaviors, Attitudes, and Preferences: Several students noted that user research helps to gain insight into the user's behaviors, attitudes, and preferences, thereby ensuring the final product or service aligns with these aspects.
+5. Evaluating Product Effectiveness: The importance of leveraging user research in evaluating the effectiveness and potential success of a product was widely acknowledged. This understanding allowing for ongoing refinement even post-release.
+
+---------------------------------------------------------------------------
+
+RUBRICS - 10 ITEMS
+
+1. Identification of user needs: the student should mention user research purpose as a way to better understand, from the potential users' point of view, what they desire in a product.
+2. Designing better solutions: the student should explain how user research informs the ideation and prototype development process, helping designers come up with tailored solutions.
+3. Usability testing: the student should discuss the role of user research in testing whether final product versions are user-friendly and meet the needs identified during research.
+4. Validation of design decisions: the student should identify that feedback from user research can be used to check and validate the product design and its functionalities, as it's being developed.
+5. Minimizing production cost: the student should elaborate on the aspect of user research potentially helping to avoid irrelevant features, hence reducing unnecessary development costs.
+6. Discovery of user behavior: the student should detail how user research can demonstrate users' interactions with technologies, possibly prompting design changes where necessary.
+7. Refinement of design concepts: the student should highlight how user research helps refine early design concepts to align better with user expectations and needs.
+8. Gathering user feedback: the student should note the importance of research to capture users' reactions and thoughts on prototypes or design ideas during the development cycle.
+9. Identifying existing problem in current solutions: the student should mention how user research can be used to learn about problems or pitfalls in current product alternatives, or how current solutions are helping users.
+10. Improving product effectiveness: the student should reflect on the role of user research in assessing whether the product has been successful in addressing user needs and achieving the desired impact post-launch.
+
+---------------------------------------------------------------------------
+
+THEMES - 10 ITEMS
+
+1. Identification of User Needs and Preferences
+2. Refinement and Validation of Product Ideas/Designs
+3. Testing and Evaluation of Product Effectiveness and Usability
+4. Assessment of User Interaction with the Product/Interface
+5. Generation of Potential Solutions and Exploring New Feature Areas
+6. Understanding of User Goals, Motivation, and Mental Models
+7. Clarification on Potential Mistakes, Issues, and Pitfalls in the Product
+8. Consideration of User's Familiar Technologies and Applications
+9. Reduction in Development Effort and Costs via Early User Feedback
+10. Use in Different Phases of Product Life Cycle (Inspiration, Ideation, Implementation)
+
+---------------------------------------------------------------------------
+
+RUBRICS -  ITEMS
+
+1. Identification of User Needs: The student's response should mention how user research can help identify and understand the needs and preferences of potential users before any kind of solution development or interface design occurs. This might be in the form of interviews, contextual inquiries, or observation of user behavior.
+
+2. Validation of Proposed Solutions: Answers should mention how user research is used as a tool for testing and validating proposed solutions to ensure they are effective and align with user needs. This might involve activities such as solution ideation, storyboarding, speed dating, and prototyping.
+
+3. Iteration and Improvement: Responses should cover how user research aids in the evaluation and iteration of designs and solutions. It can help identify usability issues, suggest improvements, and assess the impact or effectiveness of a product or design on the user. 
+
+4. Effective Use of Specific User Research Methods: The answers should demonstrate an understanding of specific user research methods/techniques such as interviews, contextual inquiries, prototyping, speed dating, and think-aloud sessions, and how they are applicable to different stages in the IDEO framework or a product life cycle.
+
+5. Links to Parts of a Product Life Cycle: Strong responses will clearly connect user research purposes to specific stages in a product life cycle, using frameworks such as IDEO as a reference.
+
+6. User-centric Approach: Responses should highlight how user research keeps the focus on the user, uncovering their needs, validating their needs, and ensuring a product aligns with their expectations and mental models.
+
+---------------------------------------------------------------------------
+
+THEMES -  ITEMS
+
+1. Understanding user needs: Identifying and validating what users want or need from a product.
+2. Solution validation: Ensuring proposed solutions meet user needs and solve the identified problem.
+3. User interaction: Understanding how users will interact with the product and identifying potential usability problems or mismatches with user mental models.
+4. Need finding: Discovering who the product's users are and what problems they have that the product could solve.
+5. Iteration and refinement: Using feedback to iterate and refine a product.
+6. Assessing impact and effectiveness: Evaluating the performance and effectiveness of a design or existing product.
+7. Gathering user feedback: Utilizing user feedback to improve designs and make informed decisions.
+8. Observation and Interview techniques: Incorporating various user research methods like watching user's reactions, contextual inquiry and conducting structured interviews.
+9. Prototyping: Testing of potential solutions, often through low or high fidelity prototypes, to uncover usability issues. 
+10. Ideation: Brainstorming potential solutions based on the user research.
+
+---------------------------------------------------------------------------
+

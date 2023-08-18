@@ -1,0 +1,251 @@
+FULL CONTEXT PROMPT
+
+1. Coverage of product life cycle stages: The student accurately refers to and describes how user research is used in different stages of the product life cycle such as inspiration/need-finding, ideation, and implementation.
+2. Explanation of user research objectives: The student clearly describes the purposes of user research such as identifying user needs, generating and validating design ideas, and evaluating and refining the product design.
+3. Specificity of research methods: The student explains or refers to specific user research methods such as doing interviews, using storyboards and speed dating methods for ideation, and using think-aloud protocol for testing prototypes.
+4. Understanding of user-centric design: The student demonstrates an understanding of the importance of user research in creating a product that fulfills user needs, fits users' mental models, and results in a product that is effective and user-friendly.
+5. Integration of feedback in design improvement: The student highlights the role of user research in generating user feedback that can be used to improve the design and development of the product at different stages.
+6. Application of the IDEO framework: The student correctly applies the IDEO methodology in explaining the purposes of user research.
+
+---------------------------------------------------------------------------
+
+2 CLUSTERS PROMPT
+
+- Understanding User-Centered Needs: Recognize user-centric needs and problem-solving approach.
+- Comprehending Usability Testing: Understand the significance of usability testing at different stages.
+- Recognition of Prototyping: Grasp the importance and usage of prototypes.
+- Acknowledging User Feedback: Understand the value of user feedback in the product life cycle.
+- Extent of User Research Utilization: Appreciate different uses of user research in the product life cycle. 
+- Knowledge of IDEO Framework: Awareness of the IDEO framework stages and integration of user research in it.
+- Grasping User Mental Models: Conceptualize user mental models for design improvement.
+
+- "Understanding of Methodology": Recognizes and can explicate each stage’s purpose in the user research cycle.
+- "Real-World Applicability": Provides practical examples or relates the user research process to real problems.
+- "Precision of Language": Demonstrates clear understanding through accurate use of user research terminology.
+- "Critical Analysis of Process": Recognizes the role of feedback, iteration, and testing in user research. 
+- "Holistic Understanding of Purpose": Shows comprehension of how different stages serve the overall goal of user research.
+
+- Understanding User Needs Rubric: Emphasizes on identification of user's problem, need, and preferences.
+- Design Iteration Rubric: Evaluates recognition of importance of feedback and iteration process.
+- Product Relevance Rubric: Assesses understanding of creating designs that are relevant to user.
+- Measuring Impact Rubric: Appraises knowledge about assessing product's impact and effectiveness.
+- User's Attitude Understanding Rubric: Evaluates identification of user's attitudes towards product.
+- Navigating User Experience Rubric: Consideration of how user might interact with product.
+- Identifying Target Audience Rubric: Reflects understanding of user audiences and profiles.
+
+-Rubric title: Understanding of User Research Concepts
+Rubric description: Demonstrates an understanding of the fundamental purposes of user research.
+
+-Rubric title: Application of User Research in Development Process
+Rubric description: Illustrates user research's role during different stages of product development.
+
+-Rubric title: Awareness of User-Centric Approach
+Rubric description: Shows comprehension of how user research focuses on fulfilling user needs.
+
+-Rubric title: Quality of Explanation
+Rubric description: Provides clear, concise, and logical explanation of user research purposes.
+
+-Rubric title: Real-life Usability of User Research
+Rubric description: Recognizes how user research informs real-world product usability and improvement.
+
+- Understanding User Needs Rubric: Evaluates student's understanding of user needs impact product development.
+- Design Outcome Rubric: Assesses knowledge on how user research informs and enhances product design.
+- Product Evaluation Rubric: Evaluates comprehension of user research role in product testing and improvement.
+- Ideation Process Rubric: Evaluates grasp of using user research for idea generation and concept refinement.
+- User-Centered Design Rubric: Appraises understanding of how user research tailors the design to target users.
+- Problem Solution Rubric: Assesses knowledge of using user research to identify and solve product-related problems.
+
+- User Research in Product Life Cycle: Understanding of how user research is deployed at various stages of product development.
+- Research Methodology Identification: Ability to identify and explain different methods of user research.
+
+- Understanding Needs Rubric: Depth of understanding on how user research gives insight into user needs.
+- Needs Validation Rubric: Understanding of how user research validates or negates perceived needs.
+- Iterative Enhancement Rubric: Recognition of user research as a tool for continuous product improvement.
+- User-Centered Design Rubric: Depth of understanding on incorporating user research in ideation, prototyping, and validation stages.
+- Usability Focus Rubric: Understanding the relevance of user research for ease of use and intuitive design.
+- Problem Identification & Solution Rubric: Evaluation of understanding user research in identifying issues and proposing solutions. 
+- User Feedback Incorporation Rubric: Assessing understanding of how user feedback impacts product iterations and development.
+
+- Understanding of IDEO Framework: Indicates knowledge of IDEO's human-centered design thinking stages.
+- Application of User Research: Shows understanding of how user research integrates with product design process.
+- Specific Research Methods: Mentions actual user research methodologies for different product life cycle stages.
+- User-Centric Approach: Evidence of understanding the importance of user needs, pains, and context in product design.
+- Ideation and Testing: Displays understanding of how user research influences ideation and testing in product development.
+- Conciseness and Clarity: Response is clear, concise and directly addresses the question.
+
+- Understanding User Needs Rubric: Evaluates knowledge of user research as a tool to understand user needs.
+- Generating Solutions Rubric: Assesses understanding of user research for creating potential solutions.
+- Testing and Validation Rubric: Evaluates how well a student understands using user research for testing and improvement.
+- Articulation of User Research Process Rubric: Evaluates student's knowledge of different phases and techniques in user research.
+- Application of User Research Techniques Rubric: Assesses understanding of applying specific user research methods in different stages.
+
+- Understanding User Needs: Identifies user requirements as the basis for product development.
+- Validating Concepts: Determines the viability and desirability of proposed solutions.
+- Evaluating Prototypes: Evaluates the performance of prototypes based on user experiences.
+- Identification of User Pain Points: Reflects understanding of user research for identifying problems.
+- Use of User Research Methods: Shows awareness of user research methods like speed dating, think-aloud. 
+- Comprehension of IDEO process: Shows understanding of user research in different stages of IDEO framework.
+- Application of User Research: Demonstrates ability to connect user research to real-world product development.
+
+Retained:
+- Understanding User-Centered Needs: Recognize user-centric needs and problem-solving approach.
+- Comprehending Usability Testing: Understand the significance of usability testing at different stages.
+- Recognition of Prototyping: Grasp the importance and usage of prototypes.
+- Knowledge of IDEO Framework: Awareness of the IDEO framework stages and integration of user research in it.
+- "Understanding of Methodology": Recognizes and can explicate each stage’s purpose in the user research cycle.
+- "Real-World Applicability": Provides practical examples or relates the user research process to real problems.
+- "Holistic Understanding of Purpose": Shows comprehension of how different stages serve the overall goal of user research.
+- User's Attitude Understanding Rubric: Evaluates identification of user's attitudes towards product.
+- Identifying Target Audience Rubric: Reflects understanding of user audiences and profiles.
+- Application of User Research in Development Process: Illustrates user research's role during different stages of product development.
+- Quality of Explanation: Provides clear, concise, and logical explanation of user research purposes.
+- Ideation Process Rubric: Evaluates grasp of using user research for idea generation and concept refinement.
+- User Research in Product Life Cycle: Understanding of how user research is deployed at various stages of product development.
+- Research Methodology Identification: Ability to identify and explain different methods of user research.
+- User-Centered Design Rubric: Depth of understanding on incorporating user research in ideation, prototyping, and validation stages.
+- Usability Focus Rubric: Understanding the relevance of user research for ease of use and intuitive design.
+- Understanding of IDEO Framework: Indicates knowledge of IDEO's human-centered design thinking stages.
+- Specific Research Methods: Mentions actual user research methodologies for different product life cycle stages.
+- Generating Solutions Rubric: Assesses understanding of user research for creating potential solutions.
+- Articulation of User Research Process Rubric: Evaluates student's knowledge of different phases and techniques in user research.
+- Identification of User Pain Points: Reflects understanding of user research for identifying problems.
+
+Removed:
+- Acknowledging User Feedback: Understand the value of user feedback in the product life cycle. (Redundant with "Comprehending Usability Testing")
+- Extent of User Research Utilization: Appreciate different uses of user research in the product life cycle. (Redundant with "Understanding of Methodology")
+- Grasping User Mental Models: Conceptualize user mental models for design improvement. (Not directly relevant to the core topic)
+- "Precision of Language": Demonstrates clear understanding through accurate use of user research terminology. (Not directly relevant to the core topic)
+- "Critical Analysis of Process": Recognizes the role of feedback, iteration, and testing in user research. (Redundant with "Comprehending Usability Testing")
+- Understanding User Needs Rubric: Emphasizes on identification of user's problem, need, and preferences. (Redundant with "Understanding User-Centered Needs")
+- Design Iteration Rubric: Evaluates recognition of importance of feedback and iteration process. (Redundant to "Comprehending Usability Testing")
+- Product Relevance Rubric: Assesses understanding of creating designs that are relevant to user. (Redundant to "Understanding User-Centered Needs")
+- Measuring Impact Rubric: Appraises knowledge about assessing product's impact and effectiveness. (Redundant with "Comprehending Usability Testing")
+- Navigating User Experience Rubric: Consideration of how a user might interact with a product. (Redundant to "Comprehending Usability Testing")
+- Understanding User Needs Rubric: Evaluates student's understanding of how user needs impact product development. (Redundant to "Understanding User-Centered Needs")
+- Design Outcome Rubric: Assesses knowledge on how user research informs and enhances product design. (Redundant to "Recognition of Prototyping")
+- Product Evaluation Rubric: Evaluates comprehension of user research role in product testing and improvement. (Redundant to "Comprehending Usability Testing")
+- User-Centered Design Rubric: Appraises understanding of how user research tailors the design to target users. (Redundant to "Understanding User-Centered Needs")
+- Problem Solution Rubric: Assesses knowledge of using user research to identify and solve product-related problems. (Redundant to "Understanding User-Centered Needs")
+- Understanding Needs Rubric: Depth of understanding on how user research gives insight into user needs. (Redundant with "Understanding User-Centered Needs")
+- Needs Validation Rubric: Understanding of how user research validates or negates perceived needs. (Redundant with "Understanding User-Centered Needs")
+- Iterative Enhancement Rubric: Recognition of user research as a tool for continuous product improvement. (Redundant with "Recognition of Prototyping")
+- Problem Identification & Solution Rubric: Evaluation of understanding user research in identifying issues and proposing solutions. (Redundant with "Recognition of Prototyping")
+- User Feedback Incorporation Rubric: Assessing understanding of how user feedback impacts product iterations and development. (Redundant to "Comprehending Usability Testing")
+- User-Centric Approach: Evidence of understanding the importance of user needs, pains, and context in product design. (Redundant to "Understanding User-Centered Needs")
+- Ideation and Testing: Displays understanding of how user research influences ideation and testing in product development. (Redundant to "Recognition of Prototyping")
+- Conciseness and Clarity: Response is clear, concise and directly addresses the question. (Not directly relevant to the core topic)
+- Understanding User Needs: Identifies user requirements as the basis for product development. (Redundant with "Understanding User-Centered Needs")
+- Validating Concepts: Determines the viability and desirability of proposed solutions. (Redundant to "Recognition of Prototyping")
+- Evaluating Prototypes: Evaluates the performance of prototypes based on user experiences. (Redundant to "Recognition of Prototyping")
+- Use of User Research Methods: Shows awareness of user research methods like speed dating, think-aloud. (Redundant with "Research Methodology Identification") 
+- Comprehension of IDEO process: Shows understanding of user research in different stages of IDEO framework. (Redundant with "Understanding of IDEO Framework")
+- Application of User Research: Demonstrates ability to connect user research to real-world product development. (Redundant with "Real-World Applicability")
+
+---------------------------------------------------------------------------
+
+5 CLUSTERS PROMPT
+
+- Understanding User Needs: Recognizes the importance of identifying problems and users' needs
+- Idea Generation and Validation: Understands the role of user research in validating and refining product ideas
+- Role in Prototyping: Understands the importance of user research in creating, testing, and refining prototypes
+- Recognizing User Preferences: Conveys the importance of observing and interviewing users to understand their preferences
+- Integration through Product Life Cycle: Understands how user research spans and integrates into different stages of product life cycle
+- Real-world Application in Iterative Design: Awareness of real-world application of user research in iterative design or IDEO framework
+- Impact Assessment: Demonstrates understanding of user research role in assessing the effectiveness of a product 
+- Articulation and Clarity: Answer is clear, logically structured, and exhibits understanding of user research.
+
+- Understanding User Needs: Evaluates student's grasp on identifying and prioritizing user needs.
+- User's Familiarity & Understanding: Assesses student's understanding of user experience with existing technology.
+- Observational & Ideating User Research: Measures student's comprehension of user research in product ideation.
+- User Research for Design Refinement: Considers student's insight on using user research to improve product design.
+- Usability and Relevance Assessment: Judges student's understanding of assessing solution usability and relevance.
+
+- Understanding the User Research Role: Demonstrates grasp of user research role in need finding, ideation, prototyping stages.
+- Research Techniques Knowledge: Reflects understanding of different research methods like observation, interviewing, contextual inquiry.
+- Grasp of Product Life Cycle: Showcases knowledge of the user research role in different stages of product development. 
+- Practical Realities Appreciation: Displays awareness of practical benefits e.g. cost saving, customer satisfaction from effective user research.
+- IDEO Methodology Proficiency: Demonstrates understanding of user research role in IDEO framework's stages: inspiration, ideation, implementation.
+
+- Understanding of IDEO Framework: Demonstrates comprehension of user research in the IDEO framework stages
+- Knowledge of Research Techniques: Mentions specific user research methods e.g. interviews, brainstorming 
+- Application Purpose Clarity: Clearly articulates purpose of user research in different product stages
+- Definition of User Needs: Explains importance of defining user needs through research
+- Concept Validation: Highlights importance of concept validation through user research
+- User Behavior Validation: Delineates the role of user research in validating user behavior and preferences
+- Usability Testing: Emphasizes user research's importance in testing product's usability
+- Market Demand Evaluation: Mentions use of user research in assessing product's market viability.
+
+Retained:
+
+- Understanding User Needs: Recognizes the importance of identifying problems and users' needs
+- Idea Generation and Validation: Understands the role of user research in validating and refining product ideas
+- Role in Prototyping: Understands the importance of user research in creating, testing, and refining prototypes
+- Integration through Product Life Cycle: Understands how user research spans and integrates into different stages of product life cycle
+- Real-world Application in Iterative Design: Awareness of real-world application of user research in iterative design or IDEO framework
+- Impact Assessment: Demonstrates understanding of user research role in assessing the effectiveness of a product
+- Articulation and Clarity: Answer is clear, logically structured, and exhibits understanding of user research.
+- Observational & Ideating User Research: Measures student's comprehension of user research in product ideation.
+- Research Techniques Knowledge: Reflects understanding of different research methods like observation, interviewing, contextual inquiry.
+- Practical Realities Appreciation: Displays awareness of practical benefits e.g. cost saving, customer satisfaction from effective user research.
+- Market Demand Evaluation: Mentions use of user research in assessing product's market viability.
+
+Removed due to redundancy:
+
+- Recognizing User Preferences: Conveys the importance of observing and interviewing users to understand their preferences (Merged with "Understanding User Needs")
+- Understanding User Needs: Evaluates student's grasp on identifying and prioritizing user needs. (Already covered by "Understanding User Needs")
+- User's Familiarity & Understanding: Assesses student's understanding of user experience with existing technology. (Covered by "Understanding User Needs" and "Role in Prototyping")
+- User Research for Design Refinement: Considers student's insight on using user research to improve product design. (Covered by "Role in Prototyping" and "Idea Generation and Validation")
+- Usability and Relevance Assessment: Judges student's understanding of assessing solution usability and relevance. (Covered by "Role in Prototyping" and "Impact Assessment")
+- Understanding the User Research Role: Demonstrates grasp of user research role in need finding, ideation, prototyping stages. (Covered by "Integration through Product Life Cycle" and "Real-world Application in Iterative Design")
+- Grasp of Product Life Cycle: Showcases knowledge of the user research role in different stages of product development. (Covered by "Integration through Product Life Cycle")
+- IDEO Methodology Proficiency: Demonstrates understanding of user research role in IDEO framework's stages: inspiration, ideation, implementation. (Covered by "Real-world Application in Iterative Design")
+- Understanding of IDEO Framework: Demonstrates comprehension of user research in the IDEO framework stages (Covered by "Real-world Application in Iterative Design")
+- Knowledge of Research Techniques: Mentions specific user research methods e.g. interviews, brainstorming (Covered by "Research Techniques Knowledge")
+- Application Purpose Clarity: Clearly articulates purpose of user research in different product stages (Covered by "Integration through Product Life Cycle")
+- Definition of User Needs: Explains importance of defining user needs through research (Covered by "Understanding User Needs")
+- Concept Validation: Highlights importance of concept validation through user research (Covered by "Idea Generation and Validation")
+- User Behavior Validation: Delineates the role of user research in validating user behavior and preferences (Covered by "Understanding User Needs" and "Idea Generation and Validation")
+- Usability Testing: Emphasizes user research's importance in testing product's usability (Covered by "Role in Prototyping" and "Impact Assessment").
+
+---------------------------------------------------------------------------
+
+10 CLUSTERS PROMPT
+
+- Understanding User Needs: Evaluates awareness of user research used to identify preferences, pain points, needs.
+- Product Usability Testing: Assesses understanding of user research in testing product prototypes for ease of use.
+- Idea Validation: Evaluates comprehension of user research used in validating ideated solutions to user's problems.
+- Probing User Thoughts: Assesses awareness of user's opinions on proposed solutions obtained through research.
+- User Participation in Design: Checks comprehension of user research in ideation, prototyping, and testing stages.
+- Evaluation of Proposed Solutions: Assesses understanding of user feedback in decision making and design modification.
+- Uncovering User Terminology & Concepts: Evaluates awareness of importance of understanding user's mental models and terminology.
+- Identify User Interaction: Assesses understanding of observing user interaction to evaluate and improve product design.
+- Understand Existing Service Perception: Checks ability to identify user attitudes towards current product/service to inform new designs.
+- Discovery Usage Challenges: Evaluates understanding of user research in finding potential improvements and uncovering issues in the application.
+
+- Understanding of Application Stages: Evidenced by clear delineation of user research's purpose in different product life cycle stages.
+- Recognition of Research Methods: Demonstrates understanding of various methods used in user research.
+- Comprehension of Research Goals: Captures understanding of core objectives of undertaking user research.
+- Depth of Insights: Assess depth and clarity in relation to insights gained from user research in design process.
+- Effectiveness of Communication: Assesses clarity and succinctness, and if answer includes specific examples.
+
+Retain:
+- Understanding User Needs: Evaluates awareness of user research used to identify preferences, pain points, needs.
+- Product Usability Testing: Assesses understanding of user research in testing product prototypes for ease of use.
+- Idea Validation: Evaluates comprehension of user research used in validating ideated solutions to user's problems.
+- User Participation in Design: Checks comprehension of user research in ideation, prototyping, and testing stages.
+- Uncovering User Terminology & Concepts: Evaluates awareness of importance of understanding user's mental models and terminology.
+- Identify User Interaction: Assesses understanding of observing user interaction to evaluate and improve product design.
+- Understand Existing Service Perception: Checks ability to identify user attitudes towards current product/service to inform new designs.
+- Discovery Usage Challenges: Evaluates understanding of user research in finding potential improvements and uncovering issues in the application.
+- Understanding of Application Stages: Evidenced by clear delineation of user research's purpose in different product life cycle stages.
+- Recognition of Research Methods: Demonstrates understanding of various methods used in user research.
+- Comprehension of Research Goals: Captures understanding of core objectives of undertaking user research.
+- Depth of Insights: Assess depth and clarity in relation to insights gained from user research in design process.
+- Effectiveness of Communication: Assesses clarity and succinctness, and if answer includes specific examples.
+
+Remove:
+- Probing User Thoughts: Redundant as it overlaps with 'Understanding User Needs' and 'Idea Validation'.
+- Evaluation of Proposed Solutions: This overlaps with 'Product Usability Testing' and 'User Participation in Design'.
+
+---------------------------------------------------------------------------
+

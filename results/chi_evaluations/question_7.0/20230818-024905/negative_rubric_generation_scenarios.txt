@@ -1,0 +1,45 @@
+AUTO SCENARIO 2
+
+- Partial Page Updates: Asynchronous programming allows updating parts of a page without reloading all of it.
+- Non-Blocking UI: Asynchronous code prevents UI from being blocked during long tasks.
+- Concurrent Task Handling: Asynchronous programming allows multiple tasks to run simultaneously.
+- Efficiency in Response Time: Asynchronous programming increases efficiency by not blocking code execution while waiting for a response.
+- User Interaction: Asynchronous programming ensures continuous user interaction even when part of the code is executing.
+- API Call Handling: Asynchronous programming handles waiting for API responses without blocking the entire program.
+
+Positive Rubric Items:
+- Understanding Non-Blocking UI: Articulates how asynchronous programming prevents UI blockage. (Example: "It also allows executing instructions that may take a really long time without blocking the rest of the code, so users may still interact with the UI.")
+- API Call Handling Knowledge: Reflects understanding of handling API calls asynchronously. (Example: "It helps us when we are making calls to API's or waiting for things to load.")
+- Awareness of Partial Page Updates: Shows understanding that asynchronous programming enables partial page updates. (Example: "We want to be able to make changes to a page without reloading it every time.")
+- Recognizes Multiple Tasks Handling: Grasps the concept of concurrent task handling. (Example: "Asynchronous programming allows for Javascript to handle multiple tasks simultaneously.")
+- Describing Efficiency in Response Time: Accurately describes how asynchronous programming speeds up response time. (Example: "Asynchronous programming allows tasks that take a longer time to be asynchronously answered while executing more immediate code. This means code doesn't have to be blocked, drastically increasing overall efficiency.")
+
+Negative Rubric Items:
+- Incomplete Understanding of Non-Blocking UI: Limited understanding of how asynchronous programming prevents UI blockage. 
+- Vague Understanding of API Calls: Does not fully understand or mentions how asynchronous programming handles API calls.
+- Lack of Awareness on Partial Page Updates: Does not illustrate understanding of asynchronous programming enabling partial page updates.
+- Misunderstanding Multiple Tasks Handling: Does not grasp or misunderstands the concept of concurrent task handling.
+- Incorrect Description of Efficiency in Response Time: Incorrectly or vaguely defines how asynchronous programming impacts response time.
+
+---------------------------------------------------------------------------
+
+AUTO NO THEME SCENARIO
+
+Positive Rubric Items:
+
+1. - Understanding of Non-blocking Operations: Described asynchronous programming as non-blocking and enabling continual code execution.
+2. - Awareness of Efficient Resource Utilization: Explained that asynchronous programming helps optimize usage of the JavaScript single-threaded model.
+3. - Integration with APIs or Databases: Recognized the need for asynchronous programming when interacting with external APIs or databases. 
+4. - Consideration of User Interface Update: Highlighted the use of asynchronous programming to update elements of the UI without reloading the entire page.
+5. - Knowledge of Concurrent Task Execution: Described how asynchronous programming allows multiple tasks to be started and run at the same time.
+
+Negative Rubric Items:
+
+1. - Misunderstanding Blocking: Incorrectly argued that asynchronous programming blocks or pauses execution of other code.
+2. - Lack of Understanding of API Interaction: Failed to mention the necessity of asynchronous programming when communicating with APIs or databases. 
+3. - No Mention of User Interface: Didn't mention the role of asynchronous programming in altering UI without reloading the entire page.
+4. - Absence of Efficiency Talk: Didn't refer to the efficient resource usage enabled by asynchronous programming in a single-threaded language like JavaScript.
+5. - Ignored Simultaneous Task Handling: Didn't address that asynchronous programming allows for multiple tasks to be initiated and processed simultaneously.
+
+---------------------------------------------------------------------------
+

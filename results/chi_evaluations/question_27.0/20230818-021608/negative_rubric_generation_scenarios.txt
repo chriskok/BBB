@@ -1,0 +1,43 @@
+AUTO SCENARIO 2
+
+- Efficiency in Design Process: Emphasizing on the efficiency components provide by allowing design reusability.
+- Design Consistency: Consistency across various design elements is maintained when using components.
+- Design Modification: Components help with design updates as modifications in the component affect all instances.
+- User Interactivity: Some students emphasize the role of components in adding user interactivity to prototypes.
+- Design Uniformity: Similar to consistency but focuses on uniform look and feel in designs, aiding design professionalism. 
+- Standards Heuristic: Reference to the principle of User Interface design that promotes consistency in designs to meet user expectations.
+
+Positive Rubric Items:
+- Efficiency Understanding: Shows understanding of component reusability for efficiency (example: "Components give us the ability to do so. Thus, it can be more convenience and entire design more consistent.")
+- Consistency Knowledge: Expresses idea of design consistency using components (example: "We want to use components to create instances because reusing the same component is efficient and it makes the design of the application consistent.")
+- Modification Management: Understands modification in design with components (example: "So that when we want to change an aspect of the design, we can just change the component and it will propagate to all places that it is used.")
+- Interactivity Awareness: Recognizes component usage in user interactivity (example: "Because components are reusable and can allow prototypes to have micro-interactions in order to make the prototype more realistic.")
+- Standards Heuristic Application: Illustrates knowledge of Consistency and Standards heuristic (example: "Components allow designers to reuse elements in design such as buttons and this ensures it is consistent across the design which will follow the Consistency and standards heuristic")
+
+Negative Rubric Items:
+- Misunderstanding of Efficiency: Displays misunderstanding of efficiency provided by components (example: "components are reusable across designs and have more possibilities in terms of design.")
+- Lack of Consistency Knowledge: Doesn't show understanding of design consistency with components. (example: "Components allow us to define an object and then easily duplicate that object.")
+- Misinterpretation of Modification Management: Misunderstands design modification with components (example: "Components makes for easier copying/pasting by grouping multiple elements.")
+- Ignorance of Interactivity Application: Disregards or misses the aspect of user interactivity with components (example: "Components are elements you can reuse across your designs.")
+- Misapplication of standards Heuristic: Displays incorrect correlation of Consistency heuristic and components (example: "We want to use components to be able to quickly and efficiently reuse instances that appear multiple times in the same prototype.")
+
+---------------------------------------------------------------------------
+
+AUTO NO THEME SCENARIO
+
+Positive:
+- Efficiency Highlight: Understands how components increase efficiency (e.g., "Components makes for easier copying/pasting by grouping multiple elements.")
+- Design Consistency: Recognizes components maintain design consistency (e.g., "Components allow designers to reuse elements in design such as buttons and this ensures it is consistent across the design")
+- Reusability Emphasis: Explains reusability aspect of components (e.g., "We want to use components to be able to quickly and efficiently reuse instances that appear multiple times in the same prototype.")
+- Prototype Interactivity: Highlights micro-interaction capability of components (e.g., "In prototypes, there are often many reused or very similar parts. Components make it easier to have uniform parts that are copied across the prototype. Additionally, you can add interactivity more easily.")
+- Change Propagation: Understands that changes in components propagate to instances (e.g., "So that when we want to change an aspect of the design, we can just change the component and it will propagate to all places that it is used.")
+
+Negative:
+- Interactivity Misunderstanding: Believes components only add interactivity, ignoring efficiency and consistency aspects (e.g., "They add a level of user interactivity to our prototype")
+- Incorrect Instance Representation: Thinks instances are a part of the original component, not copied objects (e.g., "Because components are reusable and can allow prototypes to have micro-interactions in order to make the prototype more realistic.")
+- Vague Explanation: Provides an unclear or too general explanation (e.g., "components are reusable across designs and have more possibilities in terms of design so it is better to use them for instances")
+- Misalignment with Heuristics: Incorrectly associates components with heuristics only (e.g., "Components allow designers to reuse elements in design which will follow the Consistency and standards heuristic")
+- Misconception about Duplication: Misunderstands the difference between duplicating and creating instances (e.g., "Components allow us to define an object (style, interactions, etc) and then easily duplicate that object into component instances (without having to recreate that object many times).")
+
+---------------------------------------------------------------------------
+

@@ -85,3 +85,51 @@ Note that many students also referenced various specific research methodologies,
 
 ---------------------------------------------------------------------------
 
+RUBRICS - 80 ANSWERS
+
+1. Identification of User Needs: Students should discuss how user research plays a role in the early stages of the product life cycle to understand the users' needs, motivations, and attitudes and to ensure that the product concept is relevant and provides a solution to users' problems.
+
+2. Generation of Ideas and Solutions: Students should highlight that user research aids in brainstorming and generating potential solutions to identified needs during ideation phases, drawing on user feedback and insights.
+
+3. Usefulness and Usability Evaluation: The answers should explain how user research is used to evaluate the usability and effectiveness of a design or product, whether it's a low-fidelity prototype or a final product. User engagement in this stage provides key feedback for design refinement.
+
+4. Validation of Design Decisions: Students should touch on how user research is critical for validating design choices, ensuring that the product aligns with users' expectations, needs, and behaviors.
+
+5. Continuous Improvement: Students would showcase understanding by indicating that user research is not just necessary throughout the early stages of product life cycle, but even after product launch, to collect data on user behavior, satisfaction, and identify areas for possible improvement.
+
+6. Real-Life Implementation Feedback: Students should convey that user research conducted after launch provides insights about how the product is used in real-world scenarios which can be valuable for future updates or versions.
+
+7. Accessibility: Rubric should encourage mention of how user research can be utilized to identify and rectify issues related to accessibility.
+
+8. Conceptual Application: Students should provide relevant examples or hypothetical scenarios illustrating the application of user research at different stages of a product life cycle.
+
+9. Clarity of Communication: The answer should be clear, concise, and effectively communicated, demonstrating the student's thorough understanding of user research's role in product development. 
+
+10. Accuracy: All information provided should be correct and relevant to the prompt. It should ideally reference the IDEO framework or any other credible design framework in context. 
+
+11. Contextual Understanding: The answer should tailor the purposes of user research to different parts of the product life cycle, demonstrating a holistic understanding. 
+
+12. Understanding of User-Centered Design: Mention of key terms and methods associated with user-centered design (e.g., interviews, ethnographic observation, usability testing, etc.) would demonstrate a higher level of understanding.
+
+---------------------------------------------------------------------------
+
+THEMES - 80 ANSWERS
+
+The main themes identified in the student responses highlight the importance of user research across different stages of the product life cycle.
+
+1. Understanding User Needs: At the early stages, user research helps identify and validate user needs, pain points, preferences, and behaviors. This is often referred to as need-finding. It's about uncovering problems users are facing that a product or solution could address.
+   
+2. Ideation and Concept Generation: Using the insights obtained from uncovering user needs, user research is used to inspire and validate design solutions. It allows for more effective brainstorming, more user-centered designs and takes into account the mental models of the users.
+
+3. Prototype Evaluation: User research is used to conduct usability testing, testing prototypes with end-users to identify and fix issues early on. This process involves gathering feedback, identifying problems, and refining and iterating on the design before full-blown development.
+
+4. Post-Launch Assessment: User research assists in evaluating the product after it has been launched. This helps identify usability issues in real-world usage, measuring the impact, and guiding future updates or development. 
+
+5. Accessibility and Contextual Factors: Some responses highlighted the role of user research in understanding accessibility issues and familiarizing the design team with the users' context, terminology, and mental models.
+  
+In methods used, some responses talked about interviews, observational studies, think-aloud protocols, collecting feedback, ideation methods like storyboarding and speed dating, and prototyping methods like low or hi-fi prototypes and wireframes. 
+
+Finally, the value of user research in ensuring that products are designed with the user in mind to guarantee successful usability and ensure a good return on investment was highlighted across multiple responses.
+
+---------------------------------------------------------------------------
+

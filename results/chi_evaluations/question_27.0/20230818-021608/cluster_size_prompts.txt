@@ -1,0 +1,239 @@
+FULL CONTEXT PROMPT
+
+1. Understanding of Components: Student demonstrates an understanding of what components in Figma are.
+2. Reusing Components: Explanation indicates how components can be reused throughout a design or prototype.
+3. Design Consistency: Answer shows understanding of how using components can help keep a design or prototype consistent.
+4. Streamlining Process: Student highlights how using components can make the design process more efficient or faster.
+5. Instance Management: Answer includes an explanation of how components are used to create instances, and how changes to the parent component affects its child instances.
+6. Prototyping Benefits: Illustration of how components can improve the prototyping process either for individual or collaborative work.
+7. Interaction and User Experience: Mention of how components can help create interactivity and enhance the user experience on prototypes. 
+8. Reducing Duplication: Answer indicates an understanding of how components can reduce the need for redoing or duplicating elements across a project.
+
+---------------------------------------------------------------------------
+
+2 CLUSTERS PROMPT
+
+- Understanding of Reusability: Acknowledges the feature of reusability offered by components in Figma.
+- Efficiency in Design Process: Recognizes the efficiency and time-saving benefits of using components.
+- Comprehension of Consistency: Recognizes the role of components in maintaining design consistency across the project. 
+- Knowledge of Organizational Benefits: Understands the structural and organizational benefits of using components. 
+- Application of Components: Exhibits an understanding of how to apply components to a project.
+
+- Understanding of Component Functionality: Demonstrates knowledge of component behavior and utility in design.
+- Understanding of Reusability: Describes how components foster consistency and reduce redundancy.
+- Application of Components: Explains practical usage and benefits in a workflow context.
+- Awareness of Variants and Auto-layout: Shows understanding of advanced features associated with components.
+- Comprehension of Efficiency: Recognizes components as a time-saving tool in design process.
+
+- Understanding of Reusability: Demonstrates clear comprehension of Components as reusability tools in Figma.
+- Knowledge on Consistency: Understands Components ensure design consistency across multiple projects.
+- Understanding of Efficiency: Knowledge of how Components improve efficiency in design tasks.
+- Perception of Interactions: Understands Components Purpose in Creating and Controlling Interactions. 
+- Conceptualization of Variants: Grasps the use of Components for creating variants of an object.
+
+- Understanding Component Functionality: Understanding the reusability and consistency of components
+- Explaining Interactivity: Understanding how components facilitate interactivity in prototypes
+
+- Understanding Efficiency: Capacity to express understanding of Figma components as efficient re-usable assets.
+- Grasping Consistency: Articulates how components ensure consistent design throughout Figma project.
+- Demonstrating Application: Can provide specific examples of how components in Figma enhance design work.
+- Perceiving Updates: Shows understanding that components provide universal update capacity across multiple instances.
+
+- Understanding of Component Use: Accurately explains using Components for easy and consistent updates.
+- Application Knowledge: Demonstrates the ability to apply component use in different scenarios.
+- Knowledge of Efficiency: Ability to convey the time-saving aspect of using Components.
+- Understanding of Reusability: Accurately explains the reusability of Components across different screens.
+- Knowledge of Consistency: Delineates how using Components contributes to design consistency.
+
+- Understanding of Reusability: Demonstrates understanding of component reusability and effort reduction
+- Comprehension of Consistency: Shows awareness of role of components in achieving design consistency
+- Knowledge on Efficiency: Recognizes efficiency gained from using components in reducing duplication
+- Grasp on Design Uniformity: Indicates understanding of components ensuring uniform appearance across instances
+- Awareness of Design Updates: Understands changes to master component reflects on all instances.
+
+- Understanding of Reusability: Recognizes the reusability of Components in Figma.
+- Grasp of Consistency: Demonstrates understanding of maintaining consistency using components.
+- Knowledge of Efficiency: Showcases knowledge of how Components enhance efficiency in design.
+- Comprehension of Template Use: Understands use of Components as templates for similar elements.
+- Understanding of Relationship: Demonstrates knowledge of the relationship between parent and instances.
+
+- Understanding of Components : Evidence of understanding of components and their reusability
+- Efficiency Understanding: Shows appreciation of efficiency gained through use of Components
+- Design Uniformity Awareness: Reflects comprehension of maintaining design uniformity using Components
+- Practical Application Knowledge: Demonstrates awareness of real-world application of Components in design
+- Consistency Insight: Displays understanding of how components contribute to design consistency
+
+- Understanding of Reusability: Demonstration of understanding that components are reusable.
+- Clarity of Concept: Explanation is clear, concise, and understandable.
+- Mention of Consistency: Reference to the role components play in achieving consistency.
+- Understanding of Efficiency: Recognizes the efficiency components provide in designing.
+- Editability Knowledge: Awareness of the ability to edit components.
+
+Retain:
+
+- Understanding of Reusability: Acknowledges the feature of reusability offered by components in Figma.
+- Efficiency in Design Process: Recognizes the efficiency and time-saving benefits of using components.
+- Comprehension of Consistency: Recognizes the role of components in maintaining design consistency across the project.
+- Knowledge of Organizational Benefits: Understands the structural and organizational benefits of using components.
+- Application of Components: Exhibits an understanding of how to apply components to a project.
+- Awareness of Variants and Auto-layout: Shows understanding of advanced features associated with components.
+- Perception of Interactions: Understands Components Purpose in Creating and Controlling Interactions.
+- Conceptualization of Variants: Grasps the use of Components for creating variants of an object.
+- Explaining Interactivity: Understanding how components facilitate interactivity in prototypes.
+- Demonstrating Application: Can provide specific examples of how components in Figma enhance design work.
+- Perceiving Updates: Shows understanding that components provide universal update capacity across multiple instances.
+- Understanding of Relationship: Demonstrates knowledge of the relationship between parent and instances.
+- Editability Knowledge: Awareness of the ability to edit components.
+
+Remove due to redundancy:
+
+- Understanding of Component Functionality: Demonstrates knowledge of component behavior and utility in design.
+- Understanding of Reusability: Describes how components foster consistency and reduce redundancy.
+- Application of Components: Explains practical usage and benefits in a workflow context.
+- Comprehension of Efficiency: Recognizes components as a time-saving tool in design process.
+- Understanding of Reusability: Demonstrates clear comprehension of Components as reusability tools in Figma.
+- Knowledge on Consistency: Understands Components ensure design consistency across multiple projects.
+- Understanding of Efficiency: Knowledge of how Components improve efficiency in design tasks.
+- Understanding Component Functionality: Understanding the reusability and consistency of components.
+- Understanding Efficiency: Capacity to express understanding of Figma components as efficient re-usable assets.
+- Grasping Consistency: Articulates how components ensure consistent design throughout Figma project.
+- Understanding of Component Use: Accurately explains using Components for easy and consistent updates.
+- Application Knowledge: Demonstrates the ability to apply component use in different scenarios.
+- Knowledge of Efficiency: Ability to convey the time-saving aspect of using Components.
+- Understanding of Reusability: Accurately explains the reusability of Components across different screens.
+- Knowledge of Consistency: Delineates how using Components contributes to design consistency.
+- Understanding of Reusability: Demonstrates understanding of component reusability and effort reduction.
+- Comprehension of Consistency: Shows awareness of role of components in achieving design consistency.
+- Knowledge on Efficiency: Recognizes efficiency gained from using components in reducing duplication.
+- Grasp on Design Uniformity: Indicates understanding of components ensuring uniform appearance across instances.
+- Awareness of Design Updates: Understands changes to master component reflects on all instances.
+- Understanding of Reusability: Recognizes the reusability of Components in Figma.
+- Grasp of Consistency: Demonstrates understanding of maintaining consistency using components.
+- Knowledge of Efficiency: Showcases knowledge of how Components enhance efficiency in design.
+- Understanding of Components : Evidence of understanding of components and their reusability.
+- Efficiency Understanding: Shows appreciation of efficiency gained through use of Components.
+- Design Uniformity Awareness: Reflects comprehension of maintaining design uniformity using Components.
+- Practical Application Knowledge: Demonstrates awareness of real-world application of Components in design.
+- Consistency Insight: Displays understanding of how components contribute to design consistency.
+- Understanding of Reusability: Demonstration of understanding that components are reusable.
+- Clarity of Concept: Explanation is clear, concise, and understandable.
+- Mention of Consistency: Reference to the role components play in achieving consistency.
+- Understanding of Efficiency: Recognizes the efficiency components provide in designing.
+
+
+---------------------------------------------------------------------------
+
+5 CLUSTERS PROMPT
+
+- "Understanding of Components Utility": Demonstrates understanding of components' reusability and efficiency.
+- "Importance of Design Consistency": Appreciates the role of components in maintaining design consistency.
+- "Conceptualization of Instances": Understands and explains the concept of Instances in relation to components.
+- "Perception of Micro-Interaction": Recognizes the ability of components to support micro-interactions in prototypes.
+- "Acknowledges Automated Updates": Identifies the automated updates across instances when master components are edited.
+- "Grasp of Organizational Aspect": Understands the role of components in organizing and managing designs.
+- "Distinguishing Components vs. Instances": Successfully distinguishes between components and instances in terms of creation and usage.
+
+- Understanding of Component Functionality in Figma: Demonstrates knowledge on reusability and consistency of components
+- Highlighting Efficiency through Components: Evidently understands how components increase design efficiency
+- Recognizing Components in Interaction Design: Connects knowledge of components with interactivity in prototype design
+- Visualizing Component Application: Explains how reusability of components leads to a more consistent and efficient design
+- Knowledge of Components and Property Inheritance: Demonstrates understanding of property inheritance and component editing in Figma.
+
+- Understanding of Components: Demonstrates clear understanding of components' purpose and use.
+- Reusability of Components: Explains how components can be reused across designs.
+- Efficiency & Time Management: Clarifies how components increase design efficiency.
+- Consistency in Design: Exploits components for maintaining consistency across designs.
+- Single Source of Truth: Recognises components as a single source of truth in a design.
+- Customization: Understands how components can be customized across instances.
+- Organizing Designs: Discusses how components organize and manage designs in Figma.
+
+- Understanding of Reusability: Demonstrates knowledge of component reuse for efficiency and consistency.
+- Application of Components: Can explain how components create instances and their benefits in design.
+- Concept of Consistency: Understands the role of components in maintaining design uniformity.
+- Knowledge of Interactivity: Shows understanding of creating interactive components.
+- Efficiency and Time Conservation: Understands how components save design time and reduce repetition.
+
+Retained Rubric Items:
+
+- "Understanding of Components Utility"
+- "Importance of Design Consistency"
+- "Conceptualization of Instances"
+- "Perception of Micro-Interaction"
+- "Acknowledges Automated Updates"
+- "Grasp of Organizational Aspect"
+- "Distinguishing Components vs. Instances"
+- "Knowledge of Components and Property Inheritance"
+- "Single Source of Truth"
+- "Customization"
+- "Concept of Consistency"
+- "Knowledge of Interactivity"
+
+Removed Rubric Items:
+
+- "Understanding of Component Functionality in Figma": Largely similar to "Understanding of Components Utility".
+- "Highlighting Efficiency through Components": Overlaps with "Understanding of Components Utility".
+- "Recognizing Components in Interaction Design": Same criteria as "Perception of Micro-Interaction".
+- "Visualizing Component Application": Merges "Understanding of Component Utility", "Importance of Design Consistency", and "Conceptualization of Instances".
+- "Understanding of Components": Covered in "Understanding Component Utility" and "Importance of Design Consistency".
+- "Reusability of Components": Incorporated in "Understanding Component Utility".
+- "Efficiency & Time Management": Overlaps with "Understanding of Components Utility".
+- "Consistency in Design": Redundant with "Importance of Design Consistency".
+- "Organizing Designs": Repetitive with "Grasp of Organizational Aspect".
+- "Understanding of Reusability": Duplicates "Understanding of Components Utility".
+- "Application of Components": Summarized by "Conceptualization of Instances".
+- "Efficiency and Time Conservation": Redundant with "Understanding of Components Utility".
+
+---------------------------------------------------------------------------
+
+10 CLUSTERS PROMPT
+
+- Understanding of Reusability: Illustrates understanding of component's reusability in Figma.
+- Efficiency Comprehension: Demonstrates understanding of efficiency components offer for design.
+- Design Consistency Knowledge: Demonstrates knowledge of how Figma components help maintain design consistency.
+- Understanding of Interaction: Showcases understanding of user interactivity with components.
+- Flexibility Comprehension: Explains how components offer flexibility in making changes to instances.
+- Knowledge of Component Instancing: Demonstrates clear understanding of instancing in Figma components.
+- Team Collaboration Understanding: Explains how components enable smoother team collaboration.
+- Component Variation Knowledge: Shows understanding of creation/variance of components using instances.
+- Error Reduction Understanding: Illustrates knowledge of how components can reduce the risk of design errors.
+- Knowledge of Design Standards: Demonstrates understanding of enforcing design standards using components.
+
+- Understanding of Component Reusability: Student describes components' reusability across screens.
+- Knowledge of Consistency: Demonstrates understanding of how components maintain design consistency.
+- Recognition of Efficiency: Shows appreciation for components' efficiency in design process.
+- Awareness of Variants and Interactions: Student explains usage of variants and interactions with components.
+- Explanation of Prototyping Efficiency: Recognizes role of components in efficient prototyping and reducing workload.
+- Conceptualization of Component Updates: Realizes updating a component reflects in all its instances.
+- Comprehension of Design Systems: Reflects understanding of managing and scaling projects using components.
+- Insight into Uniformity: Grasps the idea of how components provide uniformity in designs.
+- Grasp of Scripting Functions: Recognizes the programmable aspect of components.
+- Understanding of User Interface Elements: Knowledgeable about using components for replicating UI features.
+
+Retain:
+
+- Understanding of Reusability: Illustrates understanding of component's reusability in Figma.
+- Efficiency Comprehension: Demonstrates understanding of efficiency components offer for design.
+- Design Consistency Knowledge: Demonstrates knowledge of how Figma components help maintain design consistency.
+- Understanding of Interaction: Showcases understanding of user interactivity with components.
+- Flexibility Comprehension: Explains how components offer flexibility in making changes to instances.
+- Knowledge of Component Instancing: Demonstrates clear understanding of instancing in Figma components.
+- Team Collaboration Understanding: Explains how components enable smoother team collaboration.
+- Component Variation Knowledge: Shows understanding of creation/variance of components using instances.
+- Error Reduction Understanding: Illustrates knowledge of how components can reduce the risk of design errors.
+- Knowledge of Design Standards: Demonstrates understanding of enforcing design standards using components.
+- Comprehension of Design Systems: Reflects understanding of managing and scaling projects using components.
+- Grasp of Scripting Functions: Recognizes the programmable aspect of components.
+- Understanding of User Interface Elements: Knowledgeable about using components for replicating UI features.
+
+Remove due to redundancy:
+
+- Understanding of Component Reusability: Student describes components' reusability across screens. (Redundant with "Understanding of Reusability")
+- Knowledge of Consistency: Demonstrates understanding of how components maintain design consistency. (Redundant with "Design Consistency Knowledge")
+- Recognition of Efficiency: Shows appreciation for components' efficiency in design process. (Redundant with "Efficiency Comprehension")
+- Awareness of Variants and Interactions: Student explains usage of variants and interactions with components. (Redundant with "Component Variation Knowledge" and "Understanding of Interaction")
+- Explanation of Prototyping Efficiency: Recognizes role of components in efficient prototyping and reducing workload. (Subset of "Efficiency Comprehension")
+- Conceptualization of Component Updates: Realizes updating a component reflects in all its instances. (Subset of "Flexibility Comprehension")
+- Insight into Uniformity: Grasps the idea of how components provide uniformity in designs. (Subset of "Design Consistency Knowledge")
+
+---------------------------------------------------------------------------
+

@@ -1,0 +1,120 @@
+RUBRICS - OUTLIER SCORE
+
+1. Identification of User Needs: Student properly points out that user research is aimed at understanding the needs of the user in the beginning stages of development, forming the basis for the product's design and functionality.
+
+2. Validating Design Decisions: Valid use of user research during the ideation phase of a product life cycle to validate or question the chosen design direction. The student should articulate how user feedback helps determine which solutions are viable.
+
+3. Evaluating Prototypes: The student correctly recognizes that user research in the prototyping stage is used to evaluate the prototype's effectiveness and identify potential improvements before finalizing the design.
+
+4. Understanding User Behavior: Studying user behavior as a purpose of user research should be included in the student’s answer. This helps in creating more user-centric products and solutions.
+
+5. Assessing Product Effectiveness: In the implementation or post-production stages, user research serves to assess the effectiveness of the solution in real-world conditions, and informs future iterations or updates. The students should mention this as one of the purposes of user research.
+
+---------------------------------------------------------------------------
+
+THEMES - OUTLIER SCORE
+
+1. Identifying User Needs: Students often emphasized user research's fundamental role in understanding user needs and pain points during the need-finding stage. This included identifying what real issues the end-users face that the product is meant to resolve.
+
+2. Ideating Solutions: The responses indicated the use of user research as a tool to generate and validate potential solutions and ideas that align with identified user needs during the ideation phase. 
+
+3. Testing Prototypes: Many students mentioned the critical role of user research in the prototyping and testing phase, emphasizing its efficacy in revealing gaps, usability issues, and areas of improvement for the product.
+
+4. Validation of Design Decisions: Another recurrent theme was the use of user research to validate design decisions, ensuring that the solution built matches the identified user needs and is feasible for development.
+
+5. Evaluation of Final Products: Several students described user research's role in the implementation or post-launch stage, asserting its importance in gathering user feedback, examining product effectiveness, and informing future iterations or updates to the product.
+
+---------------------------------------------------------------------------
+
+RUBRICS - FURTHEST FROM MEAN
+
+1. Identification of the three purposes of user research: The answer must give a clear statement of three distinct purposes, which could include understanding user needs, identifying pain points, validating ideas, enabling iterative development, or informing return on investment. 
+
+2. Integration of the product life cycle: The answer should demonstrate understanding of how user research is used at different stages of the product life cycle, such as in the inspiration, ideation and implementation stages, or in concept generation, design, and testing.
+
+3. Use of appropriate research methods: Answers should, where possible, indicate or imply appropriate user research methods (observation, interviews, think-alouds, contextual inquiry) used to fulfill each purpose.
+
+4. Clarity of explanation: Each purpose should be clearly explained and the student should demonstrate understanding of the role of user research in product development.
+
+5. Application to real-world context: Whilst not strictly required, exemplary responses may illustrate their points with concrete examples of how user research meets the identified purpose(s) in actual product scenarios.
+
+---------------------------------------------------------------------------
+
+THEMES - FURTHEST FROM MEAN
+
+1. Understanding User behavior: Many responses indicated steps such as observation, interviews, contextual inquiry etc. to comprehend the actions, choices and reactions of the users.
+2. Identification of Problems and Needs: A lot of students mentioned the importance of identifying a problem or need in current solutions as a purpose for user research.
+3. Iterative Improvement: Several responses included aspects like prototyping, testing, and iterating based on the feedback obtained.
+4. Decision Making: The responses also indicated the use of user research for decision making like deciding the target audience or making a choice between multiple solutions.
+5. Validation of Solutions: Many of the responses include purposes like validating solutions, determining if they meet user expectations, and ensuring their relevance and usability.
+
+---------------------------------------------------------------------------
+
+RUBRICS - CLOSEST TO MEAN
+
+1. Identification of User Needs: This includes recognizing and understanding the needs and problems users are encountering. The student should mention the idea of conducting user research in the early stages of product development to align product design with user needs, and strategize basing product around these needs in the ideation phase.
+
+2. Validation of Design Decisions: This involves using user research during the design and prototyping stages to evaluate the match between the product and users' needs. The student should mention how user research validates potential solutions through processes like storyboarding, feedback on prototypes, and think-aloud protocols.
+
+3. Ensuring Product Effectiveness and Usability: The student should discuss the application of user research later in the product life cycle to evaluate and measure how well the product performs in the real-world, detecting usability issues, and obtaining user feedback for product improvement.
+
+4. User Research for Testing and Improvement: The student should discuss utilizing user research for the testing of prototypes and products, identifying problems and bugs, and guiding further product development based on this feedback.
+
+5. User Research for Ideation: This aspect involves using user research to better brainstorm and form ideas. By identifying user needs and obtaining user feedback, the ideation process becomes more directed towards creating solutions that fulfil user needs and preferences. This could be mentioned in the context of gathering insight for generating potential solutions.
+
+---------------------------------------------------------------------------
+
+THEMES - CLOSEST TO MEAN
+
+1) Identifying User Needs: Students consistently mentioned the importance of user research in the initial stages of the product life cycle for need-finding and understanding user behaviour. 
+2) Idea Validation: Many responses highlighted the role of user research in evaluating and validating concepts during the ideation and design stages.
+3) Prototype Evaluation: A recurrent theme was using user research during prototype testing stages to gather feedback and identify areas of improvement.
+4) Product Improvement and Iteration: Several students emphasized that user research is key in later stages to assess the product's effectiveness, fix possible bugs, and make iterative enhancements.
+5) Desired Usage Understanding: Students brought up that user research helps understand how a user actually uses a product, which might be different from the designer's intent. This can guide design alterations during all stages, particularly prototyping and testing.
+
+---------------------------------------------------------------------------
+
+RUBRICS - CLUSTER 10
+
+1. Identification of User Needs: The student should describe that user research is used to uncover, understand and identify the needs, problems, or pain points of users. This is the initial step in developing any product or service.
+
+2. Ideation: The student should discuss how user research contributes to idea generation, helping to brainstorm solutions that solve the user problems identified.
+
+3. Testing and Validation: The student should mention that user research is used for testing prototypes or existing products, validating if they serve their purpose and meet user needs effectively.
+
+4. Improvement and Refinement: The student's answer should highlight the role of user research in product improvement. This may include refining & optimizing products, resolving accessibility issues, or enhancing usability based on feedback.
+
+5. User Targeting and Market Understanding: Lastly, the student should touch upon the use of user research in understanding the market better and ensuring the correct user base is targeted with the product. The student could also highlight how research can inform the development of new, relevant features.
+
+---------------------------------------------------------------------------
+
+THEMES - CLUSTER 10
+
+1. Understanding User Needs/Problems: This theme involves researching user's needs or problems in order to develop a product or service that fulfils them. 
+2. Ideation: This theme reflects the use of user research in the generation and refining of ideas for addressing user needs. Students mentioned that user research plays a critical role in brainstorming product solutions. 
+3. Product Design Improvement: This encompasses refining, optimizing, and improving product designs to make them more accessible, usable, and intuitive for the end users. 
+4. Testing and Validation: This theme involves using user research for testing prototypes, validating designs, and verifying if the solutions match user's needs and real-world use. 
+5. Market Identification: This theme reflects the aspect of user research in defining or identifying the target user base for a specific product or service.
+
+---------------------------------------------------------------------------
+
+RUBRICS - CLUSTER 20
+
+1. Identification of User Needs - The response should illustrate an understanding of the need to identify and solidify the user's needs before proceeding with product development.
+2. Validation of User Needs - The answer should emphasize the role of user research in validating whether proposed solutions align with the user’s needs.
+3. Prototype Testing - Students should understand how user research aids in prototyping and testing stages, refining the user interaction with the product before the final design phase.
+4. Improvement of User Experience - Part of the response should show awareness of how user research can aid in assessing and improving the overall user experience associated with a product.
+5. Contributions to Ideation - Ideally, the answer should elucidate how user research can contribute to brainstorming sessions by generating potential solutions to user needs.
+
+---------------------------------------------------------------------------
+
+THEMES - CLUSTER 20
+
+1. Identification of User Needs: Students mentioned identifying user needs as a primary purpose of user research. This includes understanding the needs, preferences, and behaviors of users to better align product development to their requirements.
+2. Validation and Refinement of Ideas & Prototypes: This involves using user research to validate design proposals, test prototypes, and gather feedback for improvement. It also includes assessing if the designs or products actually solve the user's problems or if it fits within their workflow.
+3. Observing Usage and Interaction Patterns: Themes of observing and understanding how the user interacts with the system or product, probing into users' thought processes and mental models, and gathering data on potential issues or difficulties.
+4. Generate and Inspire Design Ideas: Students stated that user research can provide inspiration for new ideas and potential solutions during the ideation phase by referring to user needs and preferences.
+5. Evaluation of Final Product: Many students indicated the role of user research in assessing the overall user experience, usability, and effectiveness of the final product, by testing the product among users and collecting feedback.
+
+---------------------------------------------------------------------------
+

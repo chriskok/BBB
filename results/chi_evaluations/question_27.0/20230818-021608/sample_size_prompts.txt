@@ -1,0 +1,111 @@
+RUBRICS - 20 ANSWERS
+
+1. Understanding of Components in Figma: Students should demonstrate a clear understanding of what components are in Figma.
+2. Reusability Understanding: Students should mention the reusability of components, i.e., instances can be reused across different screens, helping to save time and keep consistency.
+3. Efficiency in Making Changes: The student should articulate how changes made to the original component are reflected across all its instances, increasing design efficiency.
+4. Consistency in Design: Students should elucidate how using components ensures a consistent design throughout the prototype.
+5. Element Understanding: The student displays knowledge about particular elements that can be encapsulated into components, such as buttons or checkboxes, providing succinct examples.
+6. Understanding of Interactivity: Students should touch upon the interactive nature of components, and how they can respond to user action or update information through different variants.
+7. Understanding of Prototype Management: The student should explain how using components can make the prototype better organized.
+8. Synthesis and Application of Knowledge: The student should be able to relate the knowledge about Components in Figma to real-world or practical design scenarios or usage. They can include potential benefits, productivity boosting, and design quality enhancing.
+9. Clarity and Precision: The explanation should be clear, concise, and get straight to the point. Jargon should be correctly used, and language should be formal and polished.
+10. Analytical & forward thinking: The student demonstrate forward thinking by explaining not only the benefits of components in the current design but also the potential usefulness/versatility for potential future changes in the design.
+
+---------------------------------------------------------------------------
+
+THEMES - 20 ANSWERS
+
+1. Reusability of components: Many students highlighted the ability to reuse components across different parts of a design or app, helping to reduce workload and increase efficiency.
+
+2. Maintaining design consistency: Several responses mentioned that using components helps maintain a consistent look and feel across a design, which is crucial in creating a visually coherent user interface.
+
+3. Efficiency in making changes: Another common theme is the efficiency component usage brings when making changes - updating the master component will automatically replicate the change in all instances of said component.
+
+4. Time Saving: Mention of using components to save time by reusing existing designs is also prevalent.
+
+5. Interactivity of components: Some students also pointed out that components in Figma can be interactive, allowing for more complex, dynamic designs.
+
+6. Organized design process: Few students also mentioned using components could lead to a more organized and efficient design process.
+
+---------------------------------------------------------------------------
+
+RUBRICS - 40 ANSWERS
+
+1. Understanding of Components and Instances: The answer should display an understanding of what components and instances are in Figma. For example, explanations should mention that components are reusable design elements and that instances are copies of these components.
+
+2. Efficiency and Reusability: The answer should mention the efficiency and reusability provided by using components in Figma. Students should explain how using components reduces manual labor and allows for easy duplication of design elements.
+
+3. Consistency: The answer should highlight the role of components in ensuring design consistency. Even if there are multiple variations of an element, the basic design remains the same across all instances, promoting consistency throughout the project.
+
+4. Interactive Functionality: The answer should discuss the interactive possibilities offered by components, such as the ability to change the state of an item.
+
+5. Response to Changes: The answer should adequately cover how components respond to changes. It should be highlighted that changes to the master component are automatically reflected in all instances, thus streamlining the editing process.
+
+6. Organized and Editable Design: A strong answer will recognize that using components helps maintain an organized and easily editable design.
+
+7. Time-saving: The answer should indicate the time-saving aspects of using components. Changes can be made to the master component rather than having to manually update each instance.
+
+8. Nesting and Master Component: The students should understand and explain the ability to create a master component and nest components.
+
+9. Reusability Across Projects: Explanations should mention the potential to reuse components not only within the same project, but also across different projects, increasing productivity and consistency. 
+
+10. Improved User Interface: The answer should discuss how the use of components can lead to a more consistent and effective user interface.
+
+11. Use of Specific Examples: To demonstrate a thorough understanding, answers could include specific examples of how components can be used in Figma, such as reusing a button design or replicating a page layout. These examples should show a pragmatic understanding of components.
+
+---------------------------------------------------------------------------
+
+THEMES - 40 ANSWERS
+
+The main themes or recurrent topics that students emphasized include:
+
+1. Reusability of components across designs: Students highlighted that components can be used multiple times across different parts of the prototype, saving considerable effort and time.
+
+2. Design consistency: Several students expressed that using components ensures that the design remains uniform across different instances. This helps in maintaining style and consistency throughout the project.
+
+3. Efficiency: The use of components in Figma helps to streamline the design process by reducing duplication and manual labor involved in creating similar UI elements.
+
+4. Ease of modifications: Students stressed that changes made in the master component are automatically reflected in all its instances. This feature contributes greatly in making the updating process convenient and efficient.
+
+5. Interactivity: Some students appreciate the interactive features of components that can be used to demonstrate different states of an item in a prototype.
+
+6. Organization and simplicity: Using components makes designs more manageable and organized, simplifying the design process.
+
+7. Specific features of components: A few students pointed out specific functionalities of components like auto layout, variants, and toggles that are not available in other Figma elements. 
+
+8. Reduced code duplication: Students mentioned reducing code duplication as a major advantage of using components in Figma.
+
+---------------------------------------------------------------------------
+
+RUBRICS - 80 ANSWERS
+
+1. Understanding of Components: Students must show an understanding of what components are in Figma and why they are employed in designing. For instance, recognising that components are reusable elements that can be used across multiple screens or prototypes.
+
+2. Efficiency: The answer should mention that using components can save time and make the design process more efficient. This is often achieved by reducing the duplication of work and by providing a means to edit multiple instances from a single component.
+
+3. Consistency and uniformity: The student's answer should touch upon how components allow for the maintenance of consistency in design elements across different frames or pages. This includes both visual properties (size, color, etc.) and functional behaviors.
+
+4. Flexibility: The flexibility that components offer in creating variations or managing slight modifications should be highlighted in the response. This can be achieved using the concept of component variants.
+
+5. Synchronization of Changes : Evaluating if the student understands that changes made at the component level are automatically reflected wherever the component is used or instances exist, thereby enabling easier and more streamlined updates.
+
+6. Interactivity: Recognizing that components facilitate the creation of interactive user interface elements (buttons, forms, sliders, etc.) that can be reused frequently across the design.
+
+7. Past real-life examples: Students, to earn this extra credit, should mention specific examples or case scenarios where the use of components is beneficial or necessary in Figma. This may demonstrate a deeper understanding of the subject.
+
+---------------------------------------------------------------------------
+
+THEMES - 80 ANSWERS
+
+The recurring themes in the students' responses are:
+
+1. Efficiency: Components allow for quick reuse of design elements, reducing the need for creating new ones each time.
+2. Consistency: With components, designers can ensure that the same design element maintains the same look and feel across prototypes.
+3. Centralized changes: Changes made to a main component are propagated to all its instances, making for effective and efficient updating.
+4. Variations: Components can generate variants or sub-components that can be altered independently, accommodating diverse use-cases while retaining overall consistency. 
+5. Interactivity: Components can integrate interactive features, enhancing the user experience within prototypes.
+6. Standardization: Components promote a standardized design methodology through the use of reusable elements.
+7. Flexibility: Components can be resized, moved, or manipulated to fit various design needs, offering great flexibility.
+
+---------------------------------------------------------------------------
+

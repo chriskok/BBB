@@ -1,0 +1,43 @@
+AUTO SCENARIO 2
+
+- Identifying User Needs: Gathering insights on the user's wants, problems, and situations.
+- Ideation and Brainstorming: Generating solutions based on the identified user needs.
+- Prototyping and User Feedback: Gaining valuable insights through user interaction with designed prototypes.
+- Testing and Validating: Comprehending the effectiveness and impact of the solution in addressing user needs.
+- Iteration and Refinement: Using feedback from usability tests to improve design and functionality.
+- User Context Understanding: Understanding specific language, behavior and contexts around users.
+
+Positive Rubric Items:
+- Understanding User Needs: Demonstrated comprehension of the need to identify user requirements. (Example: "In the need finding phase, we use user research to establish what problems most users encounter...")
+- Effective Ideation: Showed the ability to incorporate user needs into potential solutions. (Example: "Ideation, where potential solutions can be identified and evaluated by using user research...")
+- Use of Prototypes: Recognized the importance of prototyping in user research. (Example: "Prototyping, where design and development take place; user research can guide the design...")
+- Acknowledging User Feedback: Appreciated the role of user feedback in refining designs. (Example: "We can gather feedback on our initial design to determine ways to make it more effective...")
+- Recognizing Validation/Testing: Understood the need for testing and validating prototypes for usability. (Example: "The third purpose is to testing, where a sample of individuals from the target population tests the design suitability...")
+
+Negative Rubric Items:
+- Misunderstanding User Needs: Failed to grasp the importance of identifying user needs in the early stages. (Example: "Observation - Watching and learning from a distance, considering context when people are not watching the participant")
+- Ambiguity in Ideation: Did not explain how user needs influence the ideation process. (Example: "We can do user research for inspiration, ideation, or implementation.")
+- Neglecting Prototyping: Overlooked the significance of user interaction with prototypes in user research. (Example: "We then go into ideation which is brainstorming ideas based off of what the users' needs were...")
+- Ignoring User Feedback: Did not recognize the value of user feedback in refining the product. (Example: "The goal of the product is to fulfill what their user needs...")
+- Disregarding Validation/Testing: Did not acknowledge the critical role of testing and validation in user research. (Example: "Combine similar ideas to find user needs")
+
+---------------------------------------------------------------------------
+
+AUTO NO THEME SCENARIO
+
+Positive Rubric Items:
+- Correct Framework Understanding: Student correctly identifies all of the IDEO phases in user research. 
+- Clear Explanation of Needs Identification: Explains how user research is used to identify needs/problems.
+- Correct Assessment of Ideation: Describes how user research evaluates and improves potential solutions.
+- Precise Explanation of Prototyping: Details how user research guides the design and testing process.
+- Proper Testing Description: Explains how user research measures user's satisfaction and identifies areas of improvement.
+
+Negative Rubric Items:
+- Incorrect Framework Understanding: Student misrepresents or omits IDEO framework stages in user research.
+- Muddled Explanation of Needs Identification: Fails to explain how user research identifies user needs/problems.
+- Inadequate Description of Ideation: Does not correctly detail how user research shapes and refines potential solutions.
+- Vague Explanation of Prototyping: Does not accurately describe how user research influences design and prototype testing.
+- Incomplete Explanation of Testing: Does not completely detail how user research helps assess user satisfaction and improvement areas.
+
+---------------------------------------------------------------------------
+

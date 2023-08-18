@@ -1,0 +1,244 @@
+FULL CONTEXT PROMPT
+
+1. Understanding of Asynchronous Programming: The student should clearly explain what asynchronous programming is, that it allows different pieces of code to run simultaneously without having to wait for one task to complete before starting another.
+
+2. Use of Practical Examples: The student uses relevant examples to illustrate their understanding of asynchronous programming, such as fetch requests, AJAX, or I/O functions.
+
+3. Explanation of UI Updating: The student adequately explains how asynchronous programming povides the ability to update elements of the user interface without refreshing the whole page.
+
+4. Discussion on Non-blocking Nature: The student should point out that asynchronous programming in Javascript makes it possible for requests to run in the background without stopping or blocking other actions from occurring.
+
+5. Understanding of Real-world Application: Discusses the advantages this brings in terms of user interaction and responsiveness, i.e., the rest of the webpage remains responsive while a part of it is still awaiting certain operations to finish.
+
+6. Mention of Key JavaScript concepts: Student identifies terms and concepts such as 'Promises', 'Ajax', or callbacks that are integral to asynchronous programming in JavaScript. 
+
+7. Interaction with a server: Discusses how asynchronous programming can be used to send, request, and receive data from a server without disrupting user interface interaction.
+
+---------------------------------------------------------------------------
+
+2 CLUSTERS PROMPT
+
+- Understanding of Asynchronous Programming Concept: Can explain the core concept succinctly and accurately.
+- Application of Asynchronous Programming: Explains tangible examples and scenarios where asynchronous programming is useful.
+- Understanding of Non-blocking Code Execution: Demonstrates understanding of how asynchronous programming prevents blocking while waiting for long tasks.
+- Depth of Understanding: Shows complex understanding of asynchronous programming and its benefits, mentioning multiple tasks execution and user interface interactions. 
+- Clarity and Coherence: Presents ideas in a clear, understandable, and organized manner.
+
+- Understanding Asynchronous Programming Impact: The student can articulate the implications of asynchronous programming on user experience and web page functionality.
+- Knowledge of Asynchronous Programming Applications: The student demonstrates clear understanding of when to use asynchronous programming and its impact on functionality.
+
+- Asynchronous Programming Fundamentals: Understanding of fundamental benefits of asynchronous programming in Javascript
+- User Experience Enhancement: Recognition of asynchronous programming's impact on enhancing user experience
+- Non-blocking I/O Operations: Understanding that asynchronous programming allows non-blocking I/O operations
+- Real-World Application Understanding: Ability to relate benefits of asynchronous programming to real-world examples
+- Understanding Event Listeners: Demonstrates knowledge about event listeners as part of asynchronous programming.
+
+- Understanding of Concurrency: Evidence of understanding asynchronous programming as a means to achieve concurrency.
+- Application in Web Development: Mention of practical use in web development or improving user experience.
+- Mention of Non-Blocking Execution: Recognizes asynchronous programming as a tool for non-blocking execution.
+- Knowledge of Promises: References Javascript promises in the context of asynchronous programming.
+- Insight Into Efficiency & Responsiveness: Discusses the role of asynchronous programming in creating efficient and responsive applications.
+
+- Understanding Asynchronous Benefits: Demonstrates clear understanding of asynchronous programming advantages.
+- AJAX Mention and Understanding: Recognizes the role of AJAX in asynchronous programming.
+- Handling Long Processes: Understands asynchronous programming aids in long process completion without blocking.
+- Interaction, Performance, Responsiveness: Articulates how asynchronous programming enhances interaction, performance and responsiveness.
+- Explanation of Single-Threaded Nature: Understands and can explain Javascript's single-threaded nature in the context of async programming.
+- Knowledge of Code Scalability: Appreciates how asynchronous programming supports scalability and maintainability of code.
+
+- Understanding of Non-Blocking Nature: Ability to identify asynchronous programming prevents interface blocking
+- Practical Application Knowledge: Explains how asynchronous programming allows page updates without reloading
+- Server Interaction Understanding: Grasp of asynchronous programming's role in smooth server data handling
+- Notion of Efficiency: Identifies asynchronous programming's contribution to overall program efficiency
+- Insight on Background Execution: Demonstrates understanding that long-running executions can occur concurrently.
+
+- Understanding of Non-Blocking Concept: Demonstrates awareness of non-blocking interface through asynchronous programming.
+- Awareness of Simultaneous Execution: Shows understanding of executing multiple tasks or functions concurrently.
+- Coherent Example Usage: Provides relevant examples where asynchronous programming is advantageous.
+- Familiarity with Page Management: Understands asynchronous programming's impact on page reloading.
+- Identification of Promise Mechanisms: Recognizes and explains promise mechanisms in asynchronous programming.
+- Understanding of API Interaction: Depicts knowledge of API calls and managing indefinite waiting times through asynchronous programming.
+
+- Understanding of AJAX: Demonstrates comprehension of AJAX role within asynchronous programming.
+- Asynchronous Task Management: Explains the concurrent execution of tasks without blocking UI.
+- Efficiency Explanation: Evidences clear understanding of efficiency improvements due to asynchronous programming.
+- Application Responsiveness: Connects asynchronous programming to improved application responsiveness. 
+- Concurrent Execution Understanding: Understands simultaneous operational benefits of asynchronous programming.
+
+- Understanding of Async Concepts: Articulates asynchronous interaction with the server
+- Impact on User Experience: Explains how asynchronous programming improves user interface
+- Understanding of Partial Page Update: Explains the concept of partial page updates
+- Code Execution and Blocking: Describes how async prevents code blocking 
+- Real-World Applicability: Connects asynchronous programming to practical scenarios
+
+- Understanding of Concept: Demonstrates clear understanding of asynchronous programming.
+- Practical Application Knowledge: Can provide practical examples or scenarios using asynchronous programming.
+- Explanation Clarity: Response is clear, concise, and easy to understand.
+- Understanding Single Threaded Nature: Demonstrates the understanding of JavaScript's single-threaded nature.
+- Asynchronous Methods: Mentioned or described async methods (callbacks, promises, async/await).
+- Explanation of Non-blocking: Described how asynchronous programming is non-blocking.
+- Real-world Justification: Explains why we use asynchronous programming in terms of real-world applications.
+
+Retained:
+
+- Understanding of Asynchronous Programming Concept: Can explain the core concept succinctly and accurately.
+- Application of Asynchronous Programming: Explains tangible examples and scenarios where asynchronous programming is useful.
+- Understanding of Non-blocking Code Execution: Demonstrates understanding of how asynchronous programming prevents blocking while waiting for long tasks.
+- Depth of Understanding: Shows complex understanding of asynchronous programming and its benefits, mentioning multiple tasks execution and user interface interactions. 
+- Clarity and Coherence: Presents ideas in a clear, understandable, and organized manner.
+- Knowledge of Promises: References Javascript promises in the context of asynchronous programming.
+- Insight Into Efficiency & Responsiveness: Discusses the role of asynchronous programming in creating efficient and responsive applications.
+- Explanation of Single-Threaded Nature: Understands and can explain Javascript's single-threaded nature in the context of async programming.
+- Knowledge of Code Scalability: Appreciates how asynchronous programming supports scalability and maintainability of code.
+- Understanding of API Interaction: Depicts knowledge of API calls and managing indefinite waiting times through asynchronous programming.
+- Understanding of Async Concepts: Articulates asynchronous interaction with the server
+- Understanding of Partial Page Update: Explains the concept of partial page updates
+- Asynchronous Methods: Mentioned or described async methods (callbacks, promises, async/await).
+
+Removed:
+
+- Understanding Asynchronous Programming Impact: Redundant, similar to 'Insight Into Efficiency & Responsiveness'.
+- Knowledge of Asynchronous Programming Applications: Redundant, similar to 'Application of Asynchronous Programming'.
+- Asynchronous Programming Fundamentals: Vague and covers multiple elements already mentioned in other rubrics.
+- User Experience Enhancement: Redundant, similar to 'Insight Into Efficiency & Responsiveness'.
+- Non-blocking I/O Operations: Redundant, similar to 'Understanding of Non-blocking Code Execution'.
+- Real-World Application Understanding: Redundant, similar to 'Real-world Justification'.
+- Understanding Event Listeners: Irrelevant, Event listeners are not a direct part of asynchronous programming concept.
+- Understanding of Concurrency: Redundant, same as 'Depth of Understanding'.
+- Application in Web Development: Redundant, similar to 'Application of Asynchronous Programming'.
+- Mention of Non-Blocking Execution: Redundant, identical to 'Understanding of Non-blocking Code Execution'.
+- Understanding Asynchronous Benefits: Non-specific, multiple elements already covered in other rubrics.
+- AJAX Mention and Understanding: AJAX is one element of asynchronous programming, not essential for the overall understanding.
+- Handling Long Processes: Vague and overlaps with 'Non-blocking Code Execution'.
+- Interaction, Performance, Responsiveness: Redundant, similar to 'Insight Into Efficiency & Responsiveness'.
+- Understanding of Non-Blocking Nature: Redundant, already covered by 'Non-blocking Code Execution'.
+- Practical Application Knowledge: Redundant, similar to 'Application of Asynchronous Programming'.
+- Server Interaction Understanding: Covered by 'Understanding of API Interaction'.
+- Notion of Efficiency: Redundant, already mentioned in 'Insight Into Efficiency & Responsiveness'.
+- Insight on Background Execution: Covered by 'Understanding of Non-blocking Code Execution'.
+- Understanding of Non-Blocking Concept: Redundant, similar to 'Understanding of Non-blocking Code Execution'.
+- Awareness of Simultaneous Execution: Redundant, similar to 'Concurrent Execution Understanding'.
+- Coherent Example Usage: Redundant, covered by 'Application of Asynchronous Programming'.
+- Familiarity with Page Management: General web development skill, not specific to asynchronous programming.
+- Identification of Promise Mechanisms: Redundant, similar to 'Knowledge of Promises'.
+- Understanding of AJAX: AJAX is one element of asynchronous programming, not essential for the overall understanding.
+- Asynchronous Task Management: Redundant, similar to 'Concurrent Execution Understanding'.
+- Efficiency Explanation: Redundant, similar to 'Insight Into Efficiency & Responsiveness'.
+- Application Responsiveness: Redundant, similar to 'Insight Into Efficiency & Responsiveness'.
+- Concurrent Execution Understanding: Redundant, similar to 'Awareness of Simultaneous Execution'.
+- Impact on User Experience: Redundant, similar to 'Insight Into Efficiency & Responsiveness'.
+- Code Execution and Blocking: Redundant, similar to 'Non-blocking Code Execution'.
+- Real-World Applicability: Redundant, similar to 'Real-world Justification'.
+- Understanding of Concept: Vague and it is covered better in 'Understanding of Asynchronous Programming Concept'.
+- Practical Application Knowledge: Redundant, similar to 'Application of Asynchronous Programming'.
+- Explanation Clarity: Redundant, similar to 'Clarity and Coherence'.
+- Understanding Single Threaded Nature: Redundant, similar to 'Explanation of Single-Threaded Nature'.
+- Explanation of Non-blocking: Redundant, similar to 'Understanding of Non-blocking Code Execution'.
+- Real-world Justification: Redundant, covered by 'Application of Asynchronous Programming'.
+
+---------------------------------------------------------------------------
+
+5 CLUSTERS PROMPT
+
+- "Partial Page Refresh Understanding": Demonstrates understanding of asynchronous role against page reloading.
+- "Data Flow Comprehension": Shows grasp of sending/receiving data asynchronously via Javascript.
+- "Interaction Continuity Awareness": Articulates the benefit of maintaining UI interactivity during asynchronous operations.
+- "Networking Latency Insight": Displays understanding of asynchronous usage in context of network latency.
+- "Concurrent Tasks Knowledge": Understands potential of asynchronous programming for simultaneous requests.
+
+- Understanding Non-Blocking Behavior: Demonstrates understanding of asynchronous programming as non-blocking.
+- Understanding User Interface Impact: Explains the significance of asynchronous programming on the user interface.
+- Understanding of Concurrency: Showcases comprehension of concurrent task handling in asynchronous programming.
+- Application in Web Development: Explains the role of asynchronous programming in specific web development scenarios.
+- Understanding Performance Improvement: Displays understanding of how asynchronous programming can enhance application responsiveness and performance.
+
+- Understanding of Asynchronicity: Ability to explain the concept of asynchronous programming.
+- Application to User Interface: Insight into how asynchronous programming affects user interface interaction.
+- Understanding AJAX Concept: Clarity in explaining Asynchronous JavaScript And XML (AJAX) in asynchronous programming.
+- Example Application: Ability to apply concept in practical or hypothetical situations.
+- Explanation of Non-blocking Mechanism: Understanding of how asynchronous programming prevents blocking.
+
+- Understanding of Asynchrony: Demonstrates understanding of asynchronous programming principles
+- Efficiency Emphasis: Illustrates how asynchrony improves efficiency
+- Handling Network Delay: Student's understanding of handling network delay with asynchrony
+- UI Responsiveness: Describes how asynchrony ensures UI responsiveness
+- Partial Page Refresh: Understands and describes the benefits of partial page refresh
+- Knowledge of Promises: Demonstrates knowledge of Promises 
+- Multi-tasking Capability: Understanding of asynchrony's role in multitasking
+
+Retained:
+- "Partial Page Refresh Understanding": Demonstrates understanding of asynchronous role against page reloading.
+- "Data Flow Comprehension": Shows grasp of sending/receiving data asynchronously via Javascript.
+- "Interaction Continuity Awareness": Articulates the benefit of maintaining UI interactivity during asynchronous operations.
+- "Networking Latency Insight": Displays understanding of asynchronous usage in context of network latency.
+- "Concurrent Tasks Knowledge": Understands potential of asynchronous programming for simultaneous requests.
+- Application in Web Development: Explains the role of asynchronous programming in specific web development scenarios.
+- Understanding of AJAX Concept: Clarity in explaining Asynchronous JavaScript And XML (AJAX) in asynchronous programming.
+- Example Application: Ability to apply concept in practical or hypothetical situations.
+- Knowledge of Promises: Demonstrates knowledge of Promises 
+
+Removed due to redundancy:
+- Understanding Non-Blocking Behavior: Redundant to "Interaction Continuity Awareness".
+- Understanding User Interface Impact: Redundant to "Interaction Continuity Awareness".
+- Understanding of Concurrency: Redundant to "Concurrent Tasks Knowledge".
+- Understanding Performance Improvement: This is implied in several other points.
+- Understanding of Asynchronicity: This is a basic requirement and contained in "Data Flow Comprehension", "Networking Latency Insight", and others.
+- Application to User Interface: Redundant to 'Interaction Continuity Awareness'.
+- Explanation of Non-blocking Mechanism: Redundant to "Interaction Continuity Awareness".
+- Understanding of Asynchrony: Duplicate of the understanding of asynchronous programming in other points.
+- Efficiency Emphasis: Redundant to understanding the benefits mentioned in several other points.
+- Handling Network Delay: Redundant to "Networking Latency Insight".
+- UI Responsiveness: Covered under "Interaction Continuity Awareness".
+- Partial Page Refresh: Duplicate of "Partial Page Refresh Understanding".
+- Multi-tasking Capability: Similar to "Concurrent Tasks Knowledge".
+
+---------------------------------------------------------------------------
+
+10 CLUSTERS PROMPT
+
+- Understanding of Asychronous Programming Basics: Grasp of fundamental asynchronous programming in Javascript.
+- Understanding of Asynchronous Updates: Understanding of asynchronous programming's role in partial webpage updates.
+- Performance Awareness: Understanding of asynchronous programming's impact on user experience and overall performance.
+- Understanding of Non-Blocking Execution: Knowledge of how asychronous programming enables non-blocking execution in Javascript.
+- Understanding of Generic Vs. Specific Use Cases: Understanding of why asynchronous programming is used in general vs. specific coding scenarios.
+- Understanding of Server Interaction: Awareness of how asynchronous programming enables more efficient server interaction in Javascript.
+- Use of Technical Terminology: Use of appropriate technical language and terms related to asynchronous programming.
+- Understanding of Asynchronous Resource Handling: Knowledge of how asynchronous programming handles potentially long-running resources. 
+- Demonstration of Deep Knowledge: Depth of knowledge and nuances displayed in understanding asynchronous programming. 
+- Understanding of Concurrency: Comprehension of how asynchronous programming allows for task concurrency.
+
+- Understanding Refresh Mechanism: Ability to express how asynchronous programming minimizes page reloads
+- Long Execution Time Concept: Understanding how asynchronous programming handles instructions with long execution times
+- User Interface Responsiveness: Can explain how asynchronous coding enhances user interface interaction
+- Concept of Blockage: Ability to articulate how asynchronous programming prevents code blocking
+- Multitasking Knowledge: Understanding of parallel task execution in asynchronous programming
+- Real-life Application: Ability to relate asynchronous programming to user interaction scenarios
+- AJAX Specific Knowledge: Detailed understanding on how AJAX enables asynchronous programming
+- Understanding "Promises": Grasping how promises in asynchronous programming enhance performance
+- Background Execution Comprehension: Ability to describe how asynchronous programming enables background task execution
+
+Retain:
+- Understanding of Asychronous Programming Basics: Grasp of fundamental asynchronous programming in Javascript.
+- Understanding of Asynchronous Updates: Understanding of asynchronous programming's role in partial webpage updates.
+- Performance Awareness: Understanding of asynchronous programming's impact on user experience and overall performance.
+- Understanding of Non-Blocking Execution: Knowledge of how asychronous programming enables non-blocking execution in Javascript.
+- Understanding of Generic Vs. Specific Use Cases: Understanding of why asynchronous programming is used in general vs. specific coding scenarios.
+- Understanding of Server Interaction: Awareness of how asynchronous programming enables more efficient server interaction in Javascript.
+- Use of Technical Terminology: Use of appropriate technical language and terms related to asynchronous programming.
+- Understanding of Asynchronous Resource Handling: Knowledge of how asynchronous programming handles potentially long-running resources.
+- Understanding of Concurrency: Comprehension of how asynchronous programming allows for task concurrency.
+- User Interface Responsiveness: Can explain how asynchronous coding enhances user interface interaction.
+- Multitasking Knowledge: Understanding of parallel task execution in asynchronous programming.
+- Real-life Application: Ability to relate asynchronous programming to user interaction scenarios.
+- AJAX Specific Knowledge: Detailed understanding on how AJAX enables asynchronous programming.
+- Understanding "Promises": Grasping how promises in asynchronous programming enhance performance.
+- Background Execution Comprehension: Ability to describe how asynchronous programming enables background task execution.
+
+Remove due to redundancy: 
+- Demonstration of Deep Knowledge: Depth of knowledge and nuances displayed in understanding asynchronous programming.
+- Understanding Refresh Mechanism: Ability to express how asynchronous programming minimizes page reloads. (Similar to 'Understanding of Asynchronous Updates')
+- Long Execution Time Concept: Understanding how asynchronous programming handles instructions with long execution times. (Similar to 'Understanding of Asynchronous Resource Handling')
+- Concept of Blockage: Ability to articulate how asynchronous programming prevents code blocking. (Similar to 'Understanding of Non-Blocking Execution')
+
+---------------------------------------------------------------------------
+
