@@ -158,7 +158,13 @@ def create_rubric_suggestions_2(df, answers, question_text):
     msgs.append({"role": "user", "content": formatting_prompt})
     formatted_response = prompt_gpt4(msgs)
 
-    return formatted_response 
+    try:
+        suggestions = json.loads(formatted_response)
+    except Exception as e:
+        print(e)
+        suggestions = []
+
+    return suggestions
 
 def apply_rubrics(question, answers, rubrics, existing_tags=None):
 
