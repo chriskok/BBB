@@ -1,0 +1,87 @@
+RUBRICS - 20 ANSWERS
+
+Rubric Items:
+
+1. Identification of User Needs: Students should clearly identify that one purpose of user research is to determine the needs and requirements of the target users. They can also discuss the techniques used for this, such as interviews or use of personas. 
+
+2. Validation and Idea Generation: Students should mention that user research helps in validating the feasibility and desirability of ideas and prototypes. This could follow brainstorming during the ideation phase.
+
+3. Feedback and Iteration: Responses should include the use of user research for gathering feedback about the product's usability, functionality, and overall user experience. This feedback is used to make improvements during subsequent iterations of the product's design.
+
+4. Understanding User Context: The students should note that user research helps understand contextual information about the user, including their behaviors, attitudes, motivations, and environment.
+
+5. User Involvement: Students should mention the continuous involvement of users at all stages of the design process and the need to consider and value the user's perspective in decision-making related to product design and development.
+
+6. Bug Identification: Students should identify that user research is vital for troubleshooting and identifying any potential problems or issues with the product before it's released.
+
+7. Post-release Evaluation: Finally, it should be mentioned that user research can be used to gather feedback once a product has been released, to inform future updates and potential areas for improvement.
+
+---------------------------------------------------------------------------
+
+THEMES - 20 ANSWERS
+
+The main themes that the students emphasized in their answers are:
+
+1. Identifying and Understanding User Needs: Students repeatedly noted that user research is crucial for determining the needs, wants, motivations, and challenges of the target users. They highlighted different tools for this phase, such as interviews, affinity diagrams, and contextual inquiries.
+
+2. Idea Generation: They also emphasized that user research plays a key role in generating ideas that address the identified user needs. Techniques such as brainstorming and the use of storyboards were highlighted.
+
+3. Testing and Validation: Many responses focused on using user research to test and validate potential solutions, prototypes, or design decisions. Students mentioned techniques like user testing, think-aloud sessions, speed dating, and receiving feedback post-launch for ongoing improvement.
+
+4. Iteration and Improvement: Few students underlined the importance of using user research in drawing feedback from users after a product is released in the market, as a way to continually improve the product in line with user preferences and needs. 
+
+5. Understanding the User: A recurring theme is use of research to understand who the users are, their specific characteristics, behaviors, and how they will interact with the product.
+   
+6. Evaluation of Usability: There were mentions of user research being used to evaluate the usability and effectiveness of a product, looking for bugs, and identifying other improvement areas. 
+
+7. Involvement of users at all stages: Lastly, some students stressed on the significance of involving users at all stages of the design process echoing the heart of user-centered design.
+
+
+---------------------------------------------------------------------------
+
+RUBRICS - 40 ANSWERS
+
+Based on the examples provided, the potential rubric items can be:
+
+1. Comprehension of User Research Purpose: The student correctly identifies that the purpose of user research is to understand the users' needs and perspectives. This includes need-finding, validating, and refining stages.
+
+2. Application on the IDEO Framework: The student specifically links examples of user research application to the four parts of the IDEO framework - need finding, ideation, prototyping, and testing. 
+
+3. Accuracy of Explanation: Each listed purpose is explained accurately and comprehensively, and reflects the realistic application of user research in a product life cycle.
+
+4. Depth of Insight: The student demonstrates deep understanding of user research importance not only for product design but also for user understanding, engagement, and satisfaction. 
+
+5. Real-world applicability: The student can provide examples or scenarios where user research has proven critical in different stages of product development.
+
+6. Identification of Methodologies: The student accurately mentions or elucidates various methodologies used in user research such as interviews, observations, surveys, usability tests and contextual inquiries. 
+
+7. Language and Clarity: The student communicates their ideas clearly and professionally, using appropriate terminology. There's a logical flow from one idea to the next and the response is free of grammatical errors. 
+
+8. Originality: The student's response offers unique insights or perspectives, and is not simply a rehash of well-known facts or points.
+  
+9. Correct number of purposes: The student correctly provides three distinct purposes of user research.
+
+10. Relevance to prompt: The answer focuses on the specific question about user research and does not veer into unrelated topics.
+
+---------------------------------------------------------------------------
+
+THEMES - 40 ANSWERS
+
+The main themes that students emphasized in their responses to the relevance of user research in the product life cycle are:
+
+1. Need Finding: Identifying user needs and problems was a common starting point. Students discussed the importance of understanding user challenges, pain points and needs right from the inception of a product to ensure it provides a real solution to users.
+
+2. Ideation and Solution Generation: The brainstorming of potential solutions based on the user needs identified was another recurring topic. Students mentioned the importance of generating ideas that can effectively address user needs and create meaningful products.
+
+3. Prototype Testing and User Feedback: The discussion of how user research contributes to testing prototypes and iterating the design based on user feedback was prevalent. Students spoke about validating the usability and effectiveness of the design with users to ensure a satisfying user experience.
+
+4. Understanding User Behavior: Several students emphasized the importance of understanding user behavior, habits, and preferences in order to tailor a product's development and improvements.
+
+5. Validation: Many students pointed out the function of user research in validating the necessity and efficacy of the product/design, ensuring that a real demand is being met and that the product fulfills its intended function effectively.
+
+6. Developing User-specific Terminology and Insights: Some responses mentioned the use of user research to develop language and insights specific to the users, which can be effective in improving usability and user satisfaction.
+
+Note that many students also referenced various specific research methodologies, like semi-structured interviews, storyboards, speed dating sessions, and think-aloud techniques.
+
+---------------------------------------------------------------------------
+
