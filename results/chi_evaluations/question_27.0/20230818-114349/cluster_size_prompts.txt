@@ -1,0 +1,143 @@
+THEME - ALL CLUSTERS PROMPT
+
+- Reusability: Components promote reuse in new designs without duplication.
+- Efficiency: They boost design speed and accommodate design changes evenly.
+- Consistency: Maintaining uniformity across various projects is easier with components.
+- Interactivity : Components simplify interaction within prototypes.
+- Manageability: They facilitate better control over variations of similar elements.
+
+---------------------------------------------------------------------------
+
+THEME - 2 CLUSTERS PROMPT 
+
+- Components Efficiency: Highlighting the time and effort saved through reusability of components.
+- Design Consistency: Importance of maintaining consistent design elements across the platform.
+- Component Interactions: Emphasizing the interaction potential of reused components.
+- Reducing Repetition: Noting efficiency in avoiding repetitive design work.
+- Style Uniformity: Using components to maintain stylistic consistency throughout a design.
+
+- Efficiency and Reusability: Students emphasized the time efficiency of using components for repeated elements.
+- Consistency in Design: Students outlined the importance of consistent design through using components.
+- Changes Propagation: Many noted how changes to the original component affect all instances.
+- Simplifying Complex Designs: Some students highlighted the advantage of combining components for complex designs.
+- Use of Auto-Layout: A few students mentioned the benefit of automatically adjusting content using components.
+
+- Theme 1: Reusability of elements: Emphasizes the use of components to replicate and reuse design elements efficiently.
+- Theme 2: Consistency in designs: Highlights the role of components in ensuring uniformity across different designs and projects.
+- Theme 3: Easy updates and changes: Describes how modifying a parent component leads to automatic updates in all associated components.
+- Theme 4: Simulating user interaction: Discusses the use of components to represent dynamic user interactions and responses.
+- Theme 5: Collaboration among designers: Cites the facility of using components for shared work among multiple designers. 
+- Theme 6: Group Management: Talks about how components allow organization and interaction of related elements as a cohesive group.
+
+- Efficiency and Design Consistency: Using components prevents repetitive design creation and ensures design consistency.
+- Interactivity and User Experience: Components allow for an interactive and responsive user-experience design.
+
+- User Interaction: Understanding how interface interaction and feedback work with components.
+- Reusability: Emphasizing the purpose of components for reuse and achieving consistent design.
+- Design Changes Efficiency: Using components allows effective design changes propagation.
+- Development Simplicity: Components ease programming and development through reusability.
+- Simultaneous Modification: Ability to alter many elements having the same properties at once.
+- Design Replication: Utilizing the same design multiple times across an application.
+
+- Consistency and Efficiency: Using components promotes consistency and saves time during updates.
+- Reusability Across Screens: Components facilitate design uniformity and reusability across multiple screens.
+
+- Theme 1: Effort and Time Reduction: Using components simplifies and expedites design processes. 
+- Theme 2: Consistency of Design: Components maintain design uniformity across projects.
+- Theme 3: Reusability of Components: Reusing components for similar design elements.
+- Theme 4: Flexible Editing: One change in a component reflects it across all its instances.
+- Theme 5: Team Collaboration: Shared use of components eases group projects.
+- Theme 6: Efficiency in Design: Components prevent multiple-time designing of similar elements.
+
+- Component Reusability: Emphasizes on multiple usage of same design elements across project.
+- Time Efficiency: Highlights component's role in saving design time.
+- Change Reflection: Relevant updates on main component visible in all instances.
+- Ease of Modification: Creation & modification of variants through parent-child relation.
+- Scaling and Management: Efficacy of components in handling large projects efficiently.
+
+- Efficiency and Time Saving: Students highlighted the advantage of reusability of components in Figma, saving time and effort.
+- Design Consistency: They also mentioned how components ensure uniformity and consistency across the design platform.
+- Easy Updating: Themes around changing specifications for multiple elements simultaneously using components were also evident.
+- Component Standardization: Mentioned was the standardization brought by consistent component use, enhancing user intuitive interaction.
+
+- Theme 1: Component Reusability: Students pointed out the usefulness of reusing components for consistency and simplicity.
+- Theme 2: Component Uniformity: Students implied that components help maintain uniform designs across different parts of the prototype.
+- Theme 3: Time Efficiency: Several responses highlighted the benefit of saving time and work through duplicating components.
+- Theme 4: Collaborative Consistency: Responses showed the importance of using components for maintaining design consistency across team projects.
+
+- Components Efficiency: Highlighting the time and effort saved through reusability of components.
+- Design Consistency: Importance of maintaining consistent design elements across the platform.
+- Changes Propagation: Many noted how changes to the original component affect all instances.
+- Theme 4: Simulating user interaction: Discusses the use of components to represent dynamic user interactions and responses.
+- Theme 5: Collaboration among designers: Cites the facility of using components for shared work among multiple designers.
+
+---------------------------------------------------------------------------
+
+THEME - 5 CLUSTERS PROMPT 
+
+- Efficiency and Time Saving: Using components increases efficiency and saves time by avoiding repetition.
+- Design Consistency: Components maintain style and design consistency across the project.
+- Reusability: Components are reusable, reducing the need for creating similar elements repeatedly.
+- Automatic Updates: Changes made to one component automatically apply to all its instances.
+- Realistic Prototypes: Components allow the creation of realistic prototypes with reusable micro-interactions.
+- Cohesive Design Management: Components aid in creating and managing unified, consistent designs.
+
+- Efficiency and Consistency: Components allow quick changes and design uniformity.
+- Reusability: Components can be reused across designs, saving time.
+- Interactivity: Components enable manipulation and interaction within prototypes.
+- Organized Design: Components facilitate more structured, editable, and interactive designs.
+- Change Management: Changes in parent components are reflected in all instances.
+
+- Consistency: Ensures consistent interface and decreases manual alterations.
+- Reusability: Allows reuse of UI components over multiple screens, reducing workloads.
+- Efficiency: Accelerates the design process with reusable instances within the prototype.
+- Multistate Capability: Facilitates UI interaction through various component states.
+- Reducing Redundancy: Components help decrease design duplication and improve adaptability.
+- Uniformity: Supports the creation of uniform and standardized project elements.
+
+- Efficiency and Time-saving: Figma Components save time by enabling reuse of design elements.
+- Consistency: Maintains design uniformity and standardization throughout project.
+- Easy Updates: Allows single-point modification affecting all instances through parent Component.
+- Component Variants: Emphasizes use of Components as a basis for creating micro-interactions.
+- Team Collaboration: Fosters easier co-working through shared use of Components.
+- Component Interactivity: Recognizes use of Components for adding interactive elements to designs.
+
+- Efficiency and Time Saving: Using components increases efficiency and saves time by avoiding repetition.
+- Design Consistency: Components maintain style and design consistency across the project.
+- Automatic Updates: Changes made to one component automatically apply to all its instances.
+- Realistic Prototypes: Components allow the creation of realistic prototypes with reusable micro-interactions.
+- Team Collaboration: Fosters easier co-working through shared use of Components.
+
+---------------------------------------------------------------------------
+
+THEME - 10 CLUSTERS PROMPT 
+
+- Efficiency and Consistency: Components enable reuse of design elements, ensuring consistency across a project
+- Variability and Interactivity: Components allow for creating variations of an element, enhancing interactivity
+- Time-saving Design Changes: Components facilitate in making quick edits through instances, offering faster design iterations
+- Prototype Standardization: Components aid in maintaining standards and uniformity in a prototype
+- Component Customization: They provide the flexibility to tweak certain stylistic features within instances
+- Group Interaction: Components allow for grouping related elements and interactive modification
+- Reusability: The use of components promotes design sustainability by allowing repeated use of elements
+- Simplicity and Organization: Components simplify the design process and help maintain an organized workspace in Figma
+- Bulk Editing: Changes made to the master component propagate to all instances, allowing easy bulk edits.
+
+- Theme 1: Consistency in Interface Design: Students discuss using Components to maintain uniformity and consistency throughout the interface.
+- Theme 2: Components Reusability: Students frequently mention components' reusability across multiple screens, saving effort, and increasing productivity.
+- Theme 3: Components Instance Property: Learners highlight how modifying a component reflects changes in all its instances, making updates easy.
+- Theme 4: Components for Repetition: The recurring focus is on using components for frequent or repetitive design elements, to streamline design processes.
+- Theme 5: Standardization and Productivity: Students often tie using components to achieving standardized design elements and increased productivity.
+- Theme 6: Efficient Interface Element Management: Many students point out how components simplify managing repeated interface elements, facilitating easier changes.
+- Theme 7: Efficient and Consistent Designing: Students describe components as a tool for efficient, consistent designing, especially for frequently reused elements.
+- Theme 8: Efficient Design Updates: Students note the ease of updating design elements using components, saving time and maintaining design consistency.
+- Theme 9: Interactive Component Creation: Students frequently mention the use of components for interactive elements in prototypes, saving time and effort.
+- Theme 10: Collaborative and Uniform Designing: Students discuss using Components in Figma for easier collaboration on projects, ensuring uniform design throughout.
+
+- Efficiency and Consistency: Components enable reuse of design elements, ensuring consistency across a project
+- Variability and Interactivity: Components allow for creating variations of an element, enhancing interactivity
+- Time-saving Design Changes: Components facilitate in making quick edits through instances, offering faster design iterations
+- Component Customization: They provide the flexibility to tweak certain stylistic features within instances
+- Simplicity and Organization: Components simplify the design process and help maintain an organized workspace in Figma
+
+---------------------------------------------------------------------------
+

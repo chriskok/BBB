@@ -1,0 +1,173 @@
+THEME - ALL CLUSTERS PROMPT
+
+- Understanding User Needs: Recognizing user wants, preferences, and behaviors.
+- Ideation: Generating ideas and potential solutions through user feedback.
+- Prototyping: Utilizing user research to guide product design and development.
+- Evaluating Effectiveness: Assessing the impact and success of a product based on user experience.
+- Improvement and Iteration: Refining product concepts for improved user-friendliness and taking user suggestions into account.
+
+---------------------------------------------------------------------------
+
+THEME - 2 CLUSTERS PROMPT 
+
+- User Needs Identification: Understanding users' requirements during early product stages.
+- Usability Testing: Identifying usability issues and bugs through user testing.
+- User Feedback Analysis: Using feedback to refine and improve designs or features.
+- Accessibility Considerations: Evaluating product designs for different user accommodations.
+- Mental Model Alignment: Bridging gaps between engineers' and users' perspectives.
+- Product Validation: Verifying product matches user needs before full development.
+
+- User Needs Identification: Understanding and uncovering user's processes, challenges, and pain points.
+- Solution Validation: Using user research for validating potential solutions and prototypes.
+- User Feedback Integration: Collecting user sentiments on solutions for effective problem-solving.
+
+- Theme 1: Identifying User Needs: Understanding the needs, preferences, and behaviors of the user.
+- Theme 2: Design Validation: Using user feedback to validate or refine product designs during development.
+- Theme 3: Product Evaluation: Assessing the usability, impact, and value of a product post-launch.
+- Theme 4: Innovation Identification: Gaining insights for potential innovation, improvements, and problem solutions.
+- Theme 5: Usability Improvement: Enhancing product usability based on the interaction and navigation patterns of users. 
+- Theme 6: Safety Considerations: Recognizing and addressing user safety and privacy concerns in product designs.
+
+- Understanding User Needs: Identifying what the users actually require from the product.
+- Ideation and Development: Guiding idea generation and refining prototypes based on user feedback.
+- Evaluating Usability: Testing user interaction with the system and assessing overall user experience.
+- Uncovering Mental Models: Discovering how users perceive and understand the application's functionalities.
+- Post Deployment Assessment: Gathering user feedback after product release for future improvements.
+
+- Theme 1 - User Need Identification: Understanding user needs, issues, and context for optimal product design. 
+- Theme 2 - Product Evaluation: Assessing product effectiveness and usability through user feedback. 
+- Theme 3 - Measure Impact: Tracking the product's effects and outcomes on users.
+- Theme 4 - Context Understanding: Gaining insights about the target audience for bias reduction.
+- Theme 5 - Validation & Testing: Validating design decisions and early prototypes with user input.
+- Theme 6 - Empathy Development: Building empathy for user problems to guide product development.
+- Theme 7 - Iteration & Re-ideation: Using feedback to iterate on product design and ideation. 
+- Theme 8 - User Preference Understanding: Knowing users' preferences to tailor solutions accordingly. 
+- Theme 9 - Problem Framing: Ensuring that design addresses valid user-centered problems. 
+- Theme 10 - Need Finding: Ensuring a genuine demand or need exists for a product.
+
+- User Needs Identification: Understanding user preferences, needs and problems for initial idea creation.
+- Design Validation: Utilizing research to test and validate design solutions and user interface.
+- Post-Deployment Evaluation: Assessing product effectiveness and areas for improvement after deployment.
+- Observation Techniques: Emphasizing observation as a non-interactive form of user research.
+- Contextual Inquiry: Highlighting the importance of discussions and engagement with participants.
+- User Interviews: Using structured/unstructured interviews to gain insights about subjects.
+
+- Understanding User Needs: Exploring user preferences and requirements for product development
+- Feedback and Improvement: Using user feedback to iterate and enhance the product
+- Validation of Ideas: Testing early design concepts with users to verify their effectiveness
+- Identification of Pain Points: Diagnosis of user struggles to drive product improvements
+- Examining User Interaction: Studying how users interact with product features for refinement
+- Design Verification: User input for confirming design viability and solution relevance
+- Improved Usability: Ensuring user-friendly and intuitive product through user research.
+
+- Understanding User Needs: Emphasis on need-finding and understanding user terminology and mental models.
+- Informing Solution Generation: Role of user research in ideation stage to generate solutions based on user needs.
+- Testing and Refinement: Importance of user research for testing prototypes and refining designs.
+- Idea Divergence and Convergence: Reference to using user research in diverging and converging ideas through the product lifecycle.
+- Usability and Clarity: Highlighting the role of user research ensuring user-friendly design and clear usage.
+
+- User Understanding: Understanding users' needs, motivations, and behaviors
+- Product Improvement: Identifying usability issues and improving design
+- Validation and Testing: Validating design decisions, testing prototypes, and final product evaluation
+- User Involvement: Gathering feedback from users throughout design process
+- User-centric Solutions: Identifying and validating solutions that address user needs
+- Usability Evaluation: Using techniques like think-aloud to assess usability and uncover issues in prototypes
+
+- Understanding User Needs: Identification and comprehension of user needs for product creation. 
+- Solution Identification: Research to understand suitable solutions that cater to user needs.
+- Usability Enhancements: Conducting research to enhance and improve product usability.
+- Purpose Validation: Conducting user research to ensure that the product has relevance and fulfills a need.
+- Concept Testing: Utilizing user research to understand how a user interacts with prototypes.
+- Idea Advancement: Utilization of user research methods such a speed-dating to validate the product concepts among users.
+- Usability Testing: Using think-aloud protocols as user research to find usability issues with the prototype.
+
+- User Needs Identification: Understanding users' requirements during early product stages.
+- Usability Testing: Identifying usability issues and bugs through user testing.
+- Solution Validation: Using user research for validating potential solutions and prototypes.
+- Product Evaluation: Assessing the usability, impact, and value of a product post-launch.
+- Post Deployment Assessment: Gathering user feedback after product release for future improvements.
+
+---------------------------------------------------------------------------
+
+THEME - 5 CLUSTERS PROMPT 
+
+- Identifying Target Audience: Understanding who the product is intended for.
+- Needfinding: Discovering what problems or needs the product can solve.
+- Ideation: Generating and refining ideas based on user feedback.
+- Prototyping and Testing: Validating designs and uncovering usability issues.
+- User Experience Enhancement: Ensuring the design is easy, relevant, and pleasurable to use.
+- ROI of UX design: Understanding the product's financial value from the user experience perspective. 
+- Improvement and Iteration: Continual refinement of design based on feedback and testing results. 
+- Contextual Understanding: Gathering comprehensive information about user behaviors, preferences and environment.
+
+- Understanding Users' Needs: Identification and prioritization of users' needs and attitudes about a product/service.
+- User Terminology & Mental Models: Uncovering users' language preferences, familiarity with a concept, and understanding of applications.
+- Ideation, Validation & Evaluation: Relevance of user research at different stages like need finding, ideation, and usability testing.
+- Need Fulfillment & Solution Refinement: Checking if design ideas meet user needs, gathering user opinions to refine solutions.
+- Contextual Usage & Enhancement: Research aiding in understanding user problems, their needs, and providing solutions for improvement.
+
+- Understanding User Needs: Identifying and understanding user problems or needs
+- Need Validation: Assuring that the problem being solved is relevant for the user
+- Prototype Evaluation: Identifying usability issues and bugs in prototypes
+- Observation Methods: Learning about subjects through distance observation
+- Interview Techniques: Gathering data through structured or semi-structured interviews
+- Contextual Inquiry: Engaging in discussions about participant activities
+- User Feedback: Obtaining feedback after the product's release to iterate and improve
+- Uncovering Mental Models: Understanding how users think to design intuitive products
+- Design Decision Validation: Confirming design choices through user interaction
+- Post-launch Evaluation: Continual testing and improvements based on user feedback.
+- IDEO Framework Understanding: Awareness of research in the stages of the IDEO framework.
+
+- Inspiration and Need Finding: Understanding user needs through interviews or observations.
+- Ideation and Prototyping: Generating solutions based on user needs and receiving feedback.
+- Validation and Testing: Evaluating designs or prototypes based on user feedback.
+- Improve Usability: Using research to troubleshoot any potential user issues.
+- User behavior and Motivations: Gathering information about user habits and what drives them.
+- Effective Impact: Checking if the product is useful and achieves desired outcomes.
+- User-Centric Design: Ensuring the product aligns with user needs and expectations.
+
+- Identifying Target Audience: Understanding who the product is intended for.
+- Needfinding: Discovering what problems or needs the product can solve.
+- Prototyping and Testing: Validating designs and uncovering usability issues.
+- User Experience Enhancement: Ensuring the design is easy, relevant, and pleasurable to use.
+- Improvement and Iteration: Continual refinement of design based on feedback and testing results.
+
+---------------------------------------------------------------------------
+
+THEME - 10 CLUSTERS PROMPT 
+
+- Theme 1: Understanding User Needs: This encapsulates students' emphasis on identifying user requirements and pain points. 
+- Theme 2: Evaluating and Refining Solutions: Students frequently mentioned the role of user research in assessing initial solutions and prototypes, making improvements based on feedback. 
+- Theme 3: Usability and Accessibility: Several responses highlight the importance of user research in ensuring product usability and accommodating different user needs. 
+- Theme 4: Identifying Target Audience: This theme covers the use of user research for identifying specific user groups for the product. 
+- Theme 5: Insights Generation for Innovation: Many students mentioned using user research to generate insights, understand user behavior and identify potential areas for product innovation. 
+- Theme 6: User Familiarity and Mental Models: Students noted the role of user research in understanding users' familiarity with technology and uncovering user thought processes. 
+- Theme 7: Validating User Preferences: This theme captures the idea of using user research to identify user preferences and validate product relevance to these preferences. 
+- Theme 8: Product Viability and Efficiency: Some responses emphasized the use of user research for determining product viability and efficiency. 
+- Theme 9: Discovery of Issues and Bugs: Students noted the purpose of user research for discovering potential issues, bugs or challenges with the product. 
+- Theme 10: User Understanding for Relevance: This theme encompasses responses that highlighted the importance of understanding users to create relevant and enjoyable solutions.
+
+- Understanding User Needs: Students highlight the importance of identifying what users require from a product or service.
+- Observation and Interaction: Students describe the significance of observing user interactions and discussions to better understand their needs.
+- Need-Finding and Ideation: Mentioned ways research is used to find needs and generate ideas in the product life cycle.
+- Double Diamond Process: Some answers referred to the double diamond design process as a framework for user research.
+- Feedback and Testing: Answers focused on utilizing user feedback for testing and improving products.
+- Prototyping: Importance of using research in different prototyping stages to refine design iteratively.
+- Interview Techniques: The use of interviews in user research, both structured and semi-structured.
+- Defining Problems: Recognition of user research in defining problems that the product should solve.
+- Usability and Effectiveness: Students mentioned assessing user experience and product functionality.
+- Users' Reactions: Highlighted the significance of understanding user reactions and experiences.
+- Validation and Refinement: Students noted user research for validating and refining design concepts or prototypes.
+- Need Validation: Discussions revolved around confirming that the product addresses user needs accurately.
+- IDEO Framework: Several responses referred to various stages of the IDEO framework and how research is associated.
+- Speed Dating and Storyboarding: Identified speed dating and storyboarding as effective user research techniques.
+- Context and User Behavior: Acknowledged the importance of understanding user context and behaviors.
+
+- Theme 1: Understanding User Needs: This encapsulates students' emphasis on identifying user requirements and pain points. 
+- Theme 2: Evaluating and Refining Solutions: Students frequently mentioned the role of user research in assessing initial solutions and prototypes, making improvements based on feedback. 
+- Theme 4: Identifying Target Audience: This theme covers the use of user research for identifying specific user groups for the product. 
+- Theme 5: Insights Generation for Innovation: Many students mentioned using user research to generate insights, understand user behavior and identify potential areas for product innovation. 
+- Theme 9: Discovery of Issues and Bugs: Students noted the purpose of user research for discovering potential issues, bugs or challenges with the product.
+
+---------------------------------------------------------------------------
+

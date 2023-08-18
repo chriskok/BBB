@@ -1,0 +1,151 @@
+THEME - ALL CLUSTERS PROMPT
+
+- Non-Blocking UI: Asynchronous programming avoids blocking user interface 
+- Concurrent Execution: Enables simultaneous execution of multiple tasks
+- Server Interaction: Improves interactions with external resources or servers
+- Partial Page Update: Allows page updates without complete reload
+- Responsiveness: Ensures constant user engagement during long running tasks
+
+---------------------------------------------------------------------------
+
+THEME - 2 CLUSTERS PROMPT 
+
+- Partial Page Updates: Asynchronous programming enables updating specific parts of a webpage without reloading the entire page. 
+- Uninterrupted Interface: Allows users to interact with the program while long-running tasks execute asynchronously. 
+- Non-blocking operations: Mechanism that prevents code execution from being blocked while awaiting longer processes.
+
+- Non-blocking Operations: Asynchronous programming doesn't block or delay other operations.
+- Partial Page Update: Allows updating parts of a page without reloading the whole page.
+- Efficient Handling of Long Operations: Helps efficiently manage operations with potentially long waits.
+- Enhanced User Interactivity: Lets users continue interacting with UI while other operations are in progress.
+- Superior Site Capabilities: Increases website capabilities by scheduling and delaying codes. 
+- API Interaction: Ensures efficient handling and non-blocking application during API calls.
+
+- Non-blocking Data Interactions: Asynchronous programming for uninterrupted interface interaction.
+- Partial Page Updates: Enables selective page updates without full reloads.
+- Task Concurrency: Allows handling of multiple tasks simultaneously. 
+- Long Task Management: Facilitates functionality while running long tasks.
+
+- Enhancing Multitasking: Allows simultaneous execution of tasks without blocking.
+- Improving User Experience: Maintains application responsiveness despite time-consuming tasks.
+- Non-Blocking Execution: Enables management of long-running operations while keeping interface interactive.
+- Better Utilization: Increases efficiency by enabling code to run in the background.
+
+- User Interaction: Asynchronous programming allows for interaction while code executes
+- Effective API Use: This approach ensures that tasks involving uncertain response times don't block execution
+- Partial Page Updates: Enhancing user experience by refreshing parts of a webpage rather than the entire structure
+- Application of Promises: Using promises to handle async operations efficiently and robustly
+- Concurrency: Allows multiple operations to run simultaneously without blocking actions
+- Efficiency: Increases application efficiency by not waiting for longer tasks to complete
+- Non-blocking Code: Code execution isn't blocked even during longer operations, such as API or server calls.
+
+- Non-blocking UI: Asynchronous programming allows UI interaction during long operations.
+- Efficiency & Waiting: Enhances efficiency by enabling operations to continue during waits.
+- Fetch Requests: Enables fetch requests without delaying entire page loads.
+- Page Update without Reloading: Allows the page to update without a complete reload.
+- Server Communication: Enables non-blocking data exchange with the server.
+
+- Non-blocking interface: Ability to send, request, and retrieve data without affecting interface usability.
+- Page Reloading: Asynchronous programming allows modification without page reload.
+- Indefinite execution time: Handles jobs that may take an uncertain length of time.
+- Concurrent task execution: Enables other functions to operate while one is completing.
+- Respond to user input: Facilitates responsiveness to user actions and background tasks concurrently.
+
+- AJAX and Partial Page Updates: Discussing AJAX's ability to partially update pages without full refreshes.
+- Non-blocking Code Execution: Highlighting asynchronous programming's ability to avoid code blockage during long tasks.
+- Interface Responsiveness: Underscoring how asynchronous programming enables user interfaces to remain responsive.
+- Task Parallelism: Insights on simultaneous, independent task processing through asynchronous programming.
+- Increased Efficiency: Explained asynchronous programming's role in improving application efficiency.
+
+- Efficiency and Responsiveness: Asynchronous programming improves program's efficiency and responsiveness
+- UI Interaction: It allows users to interact with the application during long operations
+- Partial Page Updates: Asynchronous programming supports partial page updates without refreshing whole page
+- Increase User Experience: Provides a quicker, more streamlined experience for users
+- Allows Parallel Execution: Enables other tasks to execute while waiting for another task.
+
+- Non-blocking Execution: Asynchronous programming prevents freezing of programs whilst waiting for response.
+- Responsiveness: Asynchronous programming allows the code to remain responsive during data fetching or long tasks.
+- Concurrent Processing: Several tasks are able to run simultaneously using asynchronous programming.
+- Utilization of Promises: Asynchronous programming uses promises for background data fetching.
+- Efficient Task Management: It allows long running tasks to start while handling other events, decreasing waiting times.
+
+- Partial Page Updates: Asynchronous programming enables updating specific parts of a webpage without reloading the entire page. 
+- Uninterrupted Interface: Allows users to interact with the program while long-running tasks execute asynchronously. 
+- Non-blocking operations: Mechanism that prevents code execution from being blocked while awaiting longer processes.
+- Task Concurrency: Allows handling of multiple tasks simultaneously.
+- Efficient Handling of Long Operations: Helps efficiently manage operations with potentially long waits.
+
+---------------------------------------------------------------------------
+
+THEME - 5 CLUSTERS PROMPT 
+
+- Non-page Refresh: Students mention that asynchronous programming prevents entire page refresh.
+- User Interaction: Several students highlight that asynchronous coding allows continued user interface interaction.
+- Partial Updates: The ability to do selective or partial page updates is a frequently referred theme.
+- Uninterrupted Execution: A key theme is that async programming allows other codes to run while waiting for responses.
+- Server Communication: Sending, requesting, and receiving data without interface blockage is another notable theme.
+
+- Non-blocking UI: Asynchronous programming allows UI to function while performing I/O tasks
+- Handling Network Delays: Improves UI responsiveness during network requests
+- Event Listening: Enables application to react to user actions anytime
+- Parallel Execution: Allows running of multiple tasks concurrently
+- Control of Execution Flow: Asynchronous programming supports better control of execution flow
+- Better User Experience: Prevents program freezing, maintains interactive UI during long operations
+- Partial Page Reload: Enables page updates without complete refresh
+- Efficiency and Speed: Facilitates simultaneous execution for better efficiency
+- Accommodating User Input: Enables program to respond when user input is received
+- Concurrent Rendering: Allows different page elements to load concurrently.
+
+- Non-blocking Operations: Asynchronous programming supports long running operations without blocking other code executions.
+- Partial Page Updates: Students highlighted the ability to update portions of a webpage without requiring a full refresh.
+- Server Interaction: Handling data sending, requesting, and receiving from a server asynchronously supports efficient UI interaction.
+- User Interaction: Student responses emphasized maintaining UI interactivity, even during lengthy operations.
+- AJAX Use: Some students specifically noted the role of AJAX in executing asynchronous partial updates in JavaScript.
+
+- Concurrent Task Execution: Asynchronous programming enables tasks to run simultaneously, resulting in more efficient code.
+- Non-Blocking: Avoids blocking or delaying of other tasks, improving application responsiveness.  
+- User Interaction: Better handles unpredictable user interactions, addressing various scenarios of user inputs.
+- Partial Page Updates: Facilitates partial updating of a webpage avoiding re-rendering of the entire page. 
+- Event-Based Programming: Allows programming flow based on events or messages for better user experience.
+- Long-Running Tasks Management: Manages long-running tasks without disrupting responsiveness to ongoing events.
+
+- Non-page Refresh: Students mention that asynchronous programming prevents entire page refresh.
+- User Interaction: Several students highlight that asynchronous coding allows continued user interface interaction.
+- Uninterrupted Execution: A key theme is that async programming allows other codes to run while waiting for responses.
+- Server Communication: Sending, requesting, and receiving data without interface blockage is another notable theme.
+- Non-Blocking: Avoids blocking or delaying of other tasks, improving application responsiveness.
+
+---------------------------------------------------------------------------
+
+THEME - 10 CLUSTERS PROMPT 
+
+- Non-blocking execution: Async programming allows tasks to occur simultaneously without obstructing others.
+- Improved User Interaction: Enables better UI interaction while executing long-duration tasks.
+- Concurrent Task Execution: Allows multiple tasks to run at once, improving efficiency.
+- Enhanced Page Updating: Permits partial page updates without a full refresh.
+- Efficient Server Communication: Facilitates efficient data transfer without blocking the interface.
+- Event Handling Strategy: Allows proactive event management without requiring page reload.
+- Better Coding Organization: Asynchronous coding aids in efficient segmentation and code organization.
+- Greater Performance: Prevents code execution roadblocks, resulting in enhanced performance.
+- Time Management: Handles time-sensitive tasks without hindering ongoing processes.
+- Reducing Wait Time: Makes operations faster, minimizing waiting time for responses.
+
+- Efficiency: Asynchronous programming improves efficiency by allowing simultaneous operations 
+- Non-blocking UI: It allows user interaction with the interface while tasks are processing
+- Partial Page Update: It allows selective page updates without refreshing the entire page
+- Network Requests: Enables server data requests without blocking the rest of the interface
+- Background Tasks: Allows certain tasks or instructions to run in the background
+- AJAX/HTTP Requests: It's crucial for handling AJAX calls and waiting for HTTP responses
+- Task Order: It enables task prioritization and handling, deciding which tasks should wait
+- Long Running Tasks: Manages tasks that may take an extended time to execute
+- Multiple Tasks: Allows multiple operations to happen simultaneously without blocking each other
+- User Responsiveness: Ensures continued user interface responsiveness during long operations.
+
+- Non-blocking execution: Async programming allows tasks to occur simultaneously without obstructing others.
+- Concurrent Task Execution: Allows multiple tasks to run at once, improving efficiency.
+- Efficient Server Communication: Facilitates efficient data transfer without blocking the interface.
+- Enhanced Page Updating: Permits partial page updates without a full refresh.
+- Better Coding Organization: Asynchronous coding aids in efficient segmentation and code organization.
+
+---------------------------------------------------------------------------
+

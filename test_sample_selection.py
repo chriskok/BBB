@@ -264,6 +264,18 @@ def full_context_prompt(df, question_text, file_location, num_samples=1):
     response = prompt_gpt4(msgs)
     write_responses_to_file("Full Context Prompt", response, file_location + 'cluster_size_prompts.txt')
 
+def all_clusters_prompt_theme(df, question_text, file_location, num_samples=1):
+    prompts = []
+    num_clusters = df['cluster'].nunique()
+    for cluster_id in range(num_clusters): 
+        sample = df[df['cluster'] == cluster_id].sample(n=num_samples, replace=True)
+        prompts.extend(sample['answer_text'].tolist())
+    user_prompt = "\n\n".join(prompts)
+    system_prompt = f"You are an expert instructor for your given course. You're in the process of evaluating student answers to the short-answer, open-ended question: '{question_text}' in the recent final exam. Based on the provided answers, identify the main themes or recurrent topics that students emphasized.\n\nCome up with a list of 5 themes that effectively encapsulate the types of answers in the dataset. Please output in the following format (one for each cluster): - <theme title>: <theme description kept to 15 words maximum>"
+    msgs = [{"role": "system", "content": system_prompt}, {"role": "user", "content": user_prompt}]
+    response = prompt_gpt4(msgs)
+    write_responses_to_file("THEME - All Clusters Prompt", response, file_location + 'cluster_size_prompts.txt')
+
 def x_clusters_prompt(df, x, question_text, file_location, num_samples_per_cluster=5):
     cluster_ids = sorted(df['cluster'].unique())
     system_prompt = f"You are an expert instructor for your given course. Currently, you are evaluating student responses to the question: '{question_text}' from a recent final exam. By examining diverse clusters, we hope to inspire more detailed insights based on the variations observed. Given a selection of answers from different pairings of clusters, please derive and suggest potential rubric items that capture the nuances and differences in students' understanding. What rubric items can best evaluate the diverse perspectives and knowledge levels reflected in these examples? Please output in the following format (one for each cluster): - <rubric title>: <rubric description kept to 15 words maximum>"
@@ -284,6 +296,27 @@ def x_clusters_prompt(df, x, question_text, file_location, num_samples_per_clust
     response = prompt_gpt4(msgs)
     full_response = all_rubrics + "\n\n" + response
     write_responses_to_file(f"{x} Clusters Prompt", full_response, file_location + 'cluster_size_prompts.txt')
+
+def x_clusters_prompt_theme(df, x, question_text, file_location, num_samples_per_cluster=5):
+    cluster_ids = sorted(df['cluster'].unique())
+    system_prompt = f"You are an expert instructor for your given course. Currently, you are evaluating student responses to the question: '{question_text}' from a recent final exam. By examining diverse clusters, we hope to inspire more detailed insights based on the variations observed. Based on the provided answers, identify the main themes or recurrent topics that students emphasized.\n\nCome up with a list of themes that effectively encapsulate the types of answers in the dataset. Please output in the following format (one for each cluster): - <theme title>: <theme description kept to 15 words maximum>"
+    responses = []
+    for i in range(0, len(cluster_ids), x):
+        selected_clusters = cluster_ids[i:i+x]
+        user_prompt = ""
+        for cluster_id in selected_clusters:
+            sample = df[df['cluster'] == cluster_id].sample(n=num_samples_per_cluster, replace=True)
+            cluster_string = f"\n\nCluster {cluster_id}: \n\n" + "\n\n".join(sample['answer_text'].tolist())
+            user_prompt += cluster_string
+        msgs = [{"role": "system", "content": system_prompt}, {"role": "user", "content": user_prompt}]
+        response = prompt_gpt4(msgs)
+        responses.append(response)
+    summarizing_prompt = f"You will be provided a list of themes intended for evaluating student responses on the question: '{question_text}'. Please select ONLY 5 line items to keep and eliminate those that are either too similar to points you select or not directly relevant to the core topic."
+    all_themes = "\n\n".join(responses)
+    msgs = [{"role": "system", "content": summarizing_prompt}, {"role": "user", "content": all_themes}]
+    response = prompt_gpt4(msgs)
+    full_response = all_themes + "\n\n" + response
+    write_responses_to_file(f"THEME - {x} Clusters Prompt ", full_response, file_location + 'cluster_size_prompts.txt')
 
 # --------------------------------------------- NEGATIVE/POSITIVE SCENARIOS ---------------------------------------------
 def manual_scenario(answers, file_location):
@@ -341,64 +374,72 @@ for q in questions:
     if not os.path.exists(file_location):
         os.makedirs(file_location)
     df = pd.DataFrame(list(q.answer_set.values()))
-    # --------------------------------------------- PROMPT PHRASING ---------------------------------------------
-    cluster20 = cluster(df, n_clusters=20)
-    prompt_phrasing(cluster20, question_text, file_location + 'prompt_evaluations.txt')
-    time.sleep(60)
-    # --------------------------------------------- SAMPLE SIZE ---------------------------------------------
-    cluster20 = cluster(df, n_clusters=20)
-    sample_size_prompt(cluster20, question_text, file_location)
-    time.sleep(60)
-    # --------------------------------------------- NUMBER OF RUBRICS ---------------------------------------------
-    cluster20 = cluster(df, n_clusters=20)
-    num_rubrics_list = ["3", "5", "10", ""]
-    for n in num_rubrics_list:
-        num_rubrics_prompt(cluster20, question_text, file_location, n=n)
-        time.sleep(60)
-    # --------------------------------------------- SAMPLE SELECTION ---------------------------------------------
-    outlier_df = outlier_score(df)
-    sample_selection_prompt(outlier_df, question_text, file_location, method_name="Outlier Score", clustered=False)
-    # write_to_file(outlier_df, file_location + 'outlier_score.txt')
-    further_df = outlier_score_furthest(df)
-    sample_selection_prompt(further_df, question_text, file_location, method_name="Furthest from Mean", clustered=False)
-    # write_to_file(further_df, file_location + 'outlier_score_furthest.txt')
-    closer_df = outlier_score_closest(df)
-    sample_selection_prompt(closer_df, question_text, file_location, method_name="Closest to Mean", clustered=False)
-    time.sleep(60)
-    # write_to_file(closer_df, file_location + 'outlier_score_closest.txt')
-    cluster10 = cluster(df, n_clusters=10)
-    sample_selection_prompt(cluster10, question_text, file_location, method_name="Cluster 10")
-    # write_to_file_cluster(cluster10, file_location + 'cluster10.txt', sample=2)
-    cluster20 = cluster(df, n_clusters=20)
-    sample_selection_prompt(cluster20, question_text, file_location, method_name="Cluster 20")
-    # write_to_file_cluster(cluster20, file_location + 'cluster20.txt', sample=1)
-    time.sleep(60)
+    # # --------------------------------------------- PROMPT PHRASING ---------------------------------------------
+    # cluster20 = cluster(df, n_clusters=20)
+    # prompt_phrasing(cluster20, question_text, file_location + 'prompt_evaluations.txt')
+    # time.sleep(60)
+    # # --------------------------------------------- SAMPLE SIZE ---------------------------------------------
+    # cluster20 = cluster(df, n_clusters=20)
+    # sample_size_prompt(cluster20, question_text, file_location)
+    # time.sleep(60)
+    # # --------------------------------------------- NUMBER OF RUBRICS ---------------------------------------------
+    # cluster20 = cluster(df, n_clusters=20)
+    # num_rubrics_list = ["3", "5", "10", ""]
+    # for n in num_rubrics_list:
+    #     num_rubrics_prompt(cluster20, question_text, file_location, n=n)
+    #     time.sleep(60)
+    # # --------------------------------------------- SAMPLE SELECTION ---------------------------------------------
+    # outlier_df = outlier_score(df)
+    # sample_selection_prompt(outlier_df, question_text, file_location, method_name="Outlier Score", clustered=False)
+    # # write_to_file(outlier_df, file_location + 'outlier_score.txt')
+    # further_df = outlier_score_furthest(df)
+    # sample_selection_prompt(further_df, question_text, file_location, method_name="Furthest from Mean", clustered=False)
+    # # write_to_file(further_df, file_location + 'outlier_score_furthest.txt')
+    # closer_df = outlier_score_closest(df)
+    # sample_selection_prompt(closer_df, question_text, file_location, method_name="Closest to Mean", clustered=False)
+    # time.sleep(60)
+    # # write_to_file(closer_df, file_location + 'outlier_score_closest.txt')
+    # cluster10 = cluster(df, n_clusters=10)
+    # sample_selection_prompt(cluster10, question_text, file_location, method_name="Cluster 10")
+    # # write_to_file_cluster(cluster10, file_location + 'cluster10.txt', sample=2)
+    # cluster20 = cluster(df, n_clusters=20)
+    # sample_selection_prompt(cluster20, question_text, file_location, method_name="Cluster 20")
+    # # write_to_file_cluster(cluster20, file_location + 'cluster20.txt', sample=1)
+    # time.sleep(60)
     # --------------------------------------------- # SHOWN CLUSTERS ---------------------------------------------
     cluster20 = cluster(df, n_clusters=20)
-    full_context_prompt(cluster20, question_text, file_location, num_samples=1)
+    # full_context_prompt(cluster20, question_text, file_location, num_samples=1)
+    # time.sleep(60)
+    # x_clusters_prompt(cluster20, x=2, question_text=question_text, file_location=file_location, num_samples_per_cluster=5)
+    # time.sleep(60)
+    # x_clusters_prompt(cluster20, x=5, question_text=question_text,  file_location=file_location, num_samples_per_cluster=5)
+    # time.sleep(60)
+    # x_clusters_prompt(cluster20, x=10, question_text=question_text, file_location=file_location, num_samples_per_cluster=5)
+    # time.sleep(60)
+    all_clusters_prompt_theme(cluster20, question_text, file_location, num_samples=1)
     time.sleep(60)
-    x_clusters_prompt(cluster20, x=2, question_text=question_text, file_location=file_location, num_samples_per_cluster=5)
+    x_clusters_prompt_theme(cluster20, x=2, question_text=question_text, file_location=file_location, num_samples_per_cluster=5)
     time.sleep(60)
-    x_clusters_prompt(cluster20, x=5, question_text=question_text,  file_location=file_location, num_samples_per_cluster=5)
+    x_clusters_prompt_theme(cluster20, x=5, question_text=question_text,  file_location=file_location, num_samples_per_cluster=5)
     time.sleep(60)
-    x_clusters_prompt(cluster20, x=10, question_text=question_text, file_location=file_location, num_samples_per_cluster=5)
+    x_clusters_prompt_theme(cluster20, x=10, question_text=question_text, file_location=file_location, num_samples_per_cluster=5)
     time.sleep(60)
-    # --------------------------------------------- FULL PIPELINE ---------------------------------------------
-    cluster20 = cluster(df, n_clusters=20)
-    samples = []
-    num_clusters = df['cluster'].nunique()
-    for cluster_id in range(num_clusters): 
-        sample = df[df['cluster'] == cluster_id].sample(n=1, replace=True)
-        for index, row in sample.iterrows():
-            # remove new lines from answer_text
-            new_text = row['answer_text'].replace('\n', ' ')
-            # append to samples
-            samples.append(new_text)
-    samples_string = "\n\n".join(samples)
-    # manual_scenario(samples_string, file_location)
-    # semi_auto_scenario(samples_string, file_location)
-    # auto_scenario(samples_string, file_location)
-    auto_scenario_2(samples_string, question_text, file_location)
-    auto_no_theme_scenario(samples_string, question_text, file_location)
+    # # --------------------------------------------- FULL PIPELINE ---------------------------------------------
+    # cluster20 = cluster(df, n_clusters=20)
+    # samples = []
+    # num_clusters = df['cluster'].nunique()
+    # for cluster_id in range(num_clusters): 
+    #     sample = df[df['cluster'] == cluster_id].sample(n=1, replace=True)
+    #     for index, row in sample.iterrows():
+    #         # remove new lines from answer_text
+    #         new_text = row['answer_text'].replace('\n', ' ')
+    #         # append to samples
+    #         samples.append(new_text)
+    # samples_string = "\n\n".join(samples)
+    # # manual_scenario(samples_string, file_location)
+    # # semi_auto_scenario(samples_string, file_location)
+    # # auto_scenario(samples_string, file_location)
+    # auto_scenario_2(samples_string, question_text, file_location)
+    # auto_no_theme_scenario(samples_string, question_text, file_location)
 
 
