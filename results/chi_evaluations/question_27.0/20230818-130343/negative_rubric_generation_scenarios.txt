@@ -1,0 +1,46 @@
+AUTO SCENARIO 2
+
+- Design Consistency: Emphasizes the benefit of maintaining uniformity in the design through reusable components.
+- Time Efficiency: Highlights the time-saving aspect of reusing instead of recreating elements.
+- Easy Update and Modification: Explains the convenience of making alterations in one place that reflect in all instances.
+- Interactivity facilitation: Expounds on how components can simplify adding interactive features. 
+- Reduction in Repetitive Effort: Points out reducing duplication of tasks by reusing similar parts or templates across projects.
+
+Positive Rubric Items:
+
+- Design Consistency Understanding: Demonstrates the concept of maintaining uniform design. (Example: "We would want to use components to make it re-usable.")
+- Time Efficiency Cognizance: Clearly expresses the time-saving benefits of using components. (Example: "So we can easily reuse instances instead of making new elements from scratch.")
+- Proper Grasp on Updatability: Explains the easy update and modification convenience rightly. (Example: "They can be easily copied and reused throughout the project, and if a change needs to be made...")
+- Interactivity Handling Comprehension: Understands using components can aid in adding interactive features. (Example: "So we can easily interact with the item and change the state of it.")
+- Reduction in Repetitive Effort Appreciation: Identifies how reusing components reduces duplication of effort. (Example: "Using components in Figma allows designers to create instances that can be easily reused...")
+
+Negative Rubric Items:
+
+- Poor Design Consistency Explanation: Fails to properly indicate how components aid in upholding design uniformity. 
+- Misunderstanding Time Efficiency Aspect: Doesn't relate the efficient use of time to using components. 
+- Confusing Updatability of Components: Provides incorrect or unclear explanation regarding updating components. 
+- Misconception in Interactivity Element: Misrepresents or fails to mention how components facilitate adding interactive aspects. 
+- Overlooking Redundancy Reduction: Omits or misunderstands how components help in curbing repetitive tasks.
+
+---------------------------------------------------------------------------
+
+AUTO NO THEME SCENARIO
+
+Positive Rubric Items:
+
+- Understanding of Reusability: Student correctly identifies that components can be reused multiple times.
+- Proper Application Context: Student accurately describes a practical usage for components in Figma, e.g., creating buttons.
+- Understanding of Consistency: Student appreciates the role of components in maintaining design consistency.
+- Knowledge of Efficiency: Student recognizes that components can reduce the need to recreate the same design elements.
+- Recognizing Flexibility: Student understands the use of components in making changes quickly to all instances.
+
+Negative Rubric Items:
+
+- Lack of Practical Understanding: Student fails to provide examples of using components in Figma.
+- Misunderstanding Reusability: Student doesn't acknowledge that components can be reused across multiple designs.
+- Ignoring Consistency: Student overlooks the important role of components in maintaining design consistency.
+- Not Acknowledging Efficiency: Student doesn't recognize the time-saving aspect of using components.
+- Ignoring Propagation: Student doesn't mention that changes will affect all instances of a component.
+
+---------------------------------------------------------------------------
+

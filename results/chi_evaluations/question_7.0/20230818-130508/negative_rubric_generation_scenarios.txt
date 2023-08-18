@@ -1,0 +1,42 @@
+AUTO SCENARIO 2
+
+- Partial Page Update: Updating a segment of a page instead of reloading the entire page.
+- Non-Blocking Code Execution: Can execute lengthy processes without blocking other tasks.
+- User Interaction Continuity: Maintains UI interactions while other tasks run.
+- Multitasking Efficiency: Improves operational efficiency by enabling concurrent tasks.
+- Consistent Logic Flow: Preserves flow of logic during fetches and promises.
+
+Positive Rubric Items:
+- Conceptual Understanding: Demonstrates clear understanding of asynchronous programming. (example: Asynchronous programming allows us to update part of a webpage without having to reload it.)
+- User Interface Continuity: Discusses the role of asynchronous programming in maintaining user interface interactions. (example: It allows changing a page without reloading it and makes it possible to send, request, and receive data without blocking the rest of the interface.)
+- Enhancing Efficiency: Links asynchronous programming to efficiency and performance improvements. (example: A technique that enables your program to start a potentially long-running task and still be able to be responsive to other events while that tasks runs.)
+- Task Management: Understands the concept of non-blocking execution in multitasking context. (example: We want to use asynchronous programming in Javascript because it allows multiple tasks to run at the same time, without interfering with the execution of the rest of the program.)
+- Handling Fetch Requests: Describes how asynchronous programming can preserve logic flow during fetch requests. (example: Asynchronous programming is useful because it allows a flow of logic to be consistent during fetch requests/promises.)
+
+Negative Rubric Items:
+- Missed Concept of Asynchrony: Fails to mention the non-blocking nature of asynchronous programming. (example: Asynchronous programming helps the system run more efficiently and faster and helps to avoid wait times.)
+- Misunderstands Purpose: Incorrectly assumes Asynchronous programming is only for interface updates. (example: Asynchronous programming in Javascript allows us to update parts of the page without refreshing the entire page.)
+- Partial Understanding: Lacks understanding of user interface interactivity during asynchronous operations. (example: It allows one to partially update a page without refreshing the whole page.)
+- Lack of Examples: Answer doesn't include specific applications or examples. (example: Asynchronous programming makes it possible to be waiting for actions that take longer without stopping the program while these actions are executing.)
+- Incorrect Interpretation: Misinterprets the programming sequence managed by asynchronous programming. (example: Asynchronous programming helps you wait for one task to finish before starting another task.)
+
+---------------------------------------------------------------------------
+
+AUTO NO THEME SCENARIO
+
+Positive Rubric Items:
+- Understanding of Non-blocking Behavior: Successfully explains asynchronous programming's benefit of non-blocking code execution.
+- Improvement in Efficiency: Clearly communicates how asynchronous programming enhances the efficiency of the program.
+- User Experience Improvement: Mentions how asynchronous programming contributes to a more seamless and responsive user experience.
+- Operational Concurrency: Adequately explains how asynchronous programming allows multiple tasks to run simultaneously without interfering with each other.
+- Mention of real-world Applications: Provides appropriate examples of asynchronous programming in practical use, such as AJAX or Promises.
+
+Negative Rubric Items:
+- Mistaken Synchronous Explanation: Incorrectly defines asynchronous programming as waiting for one task to finish before starting another.
+- Lack of Specific Examples: Fails to mention actual applications or use-cases such as AJAX or fetch API.
+- Not Focusing on Efficiency: Neglects to explain how asynchronous programming improves efficiency by allowing the program to continue executing other tasks during lengthy operations.
+- Not Highlighting Non-blocking Nature: Does not emphasize the primary advantage of asynchronous programming, which is its non-blocking nature.
+- Oversimplified Answers: Provides too basic or generalized answers, missing the complexity and importance of asynchronous programming in JavaScript.
+
+---------------------------------------------------------------------------
+

@@ -1,0 +1,45 @@
+AUTO SCENARIO 2
+
+- User Needs Identification: Understand the challenges or problems users face.
+- Idea Validation: Confirm whether proposed designs or solutions meet user requirements.
+- User Feedback: Collect opinions and suggestions on existing or proposed solutions.
+- Understanding User Conduct: Discover the user's mental models and typical terminology.
+- Prototype Testing: Evaluate the effectiveness and usability of a new product or design.
+
+
+Positive Rubric Items:
+- User Needs Understanding: Demonstrates understanding of learning user requirements (example: "Helps understand user needs")
+- Design Validation: Aptly explains how user research helps in validating solutions (example: "Helps improve design")
+- Efficacy of Feedback: Understands importance of feedback in product development (example: "Evaluate user needs")
+- Comprehension of Mental Models: Appreciates that user research uncovers familiar user terminology and models (example: "- Help uncover user mental model - Help uncover user's familiar terminology")
+- Prototyping Evaluation: Recognises role of user research in testing designs (example: "Validate prototype UI via think aloud")
+
+Negative Rubric Items:
+- Overemphasis on Ideation: Overestimates the role of ideation without reference to user research utility (example: "We need ideation to generate potential solutions.")
+- Too Focused on Empathy: Excessively focuses on empathy instead of practical aspects of user research (example: "One purpose of user research is to have greater empathy for a user's problems.")
+- Ignorance of Terminology: Neglects to mention the understanding of user familiar terminologies (example: "- can make your project geared towards a specific group")
+- Unstructured Process Description: Displays loose concept of the structured process of user research (example: "Then after the feedback of the low-fidelity prototype, if its good enough and fix it accordingly to the feedback...")
+- Ignoring Users' Feedback: Not mentioning the importance of user feedback for product improvement (example: "1.) Identify the design problem 2.) Identify solutions that work")
+
+---------------------------------------------------------------------------
+
+AUTO NO THEME SCENARIO
+
+Positive Rubric Items:
+
+- User Need Identification: Student correctly mentioned identifying user needs (e.g., "Identify the problems or challenges users are facing.")
+- Solution Validation: Response includes validating potential solutions through user research (e.g., "validate whether proposed design fits user needs")
+- User Feedback Utilization: Recognizes importance of receiving user feedback (e.g., "Get user feedback on existing ideas or products")
+- Mental Model Uncovering: Understands research helps uncover user's mental models (e.g., "Help uncover user mental model")
+- User Understanding: Notes purpose of user research for empathy and understanding limitations (e.g., "have greater empathy for a user's problems")
+
+Negative Rubric Items:
+
+- Vague Answer: Student gives a generic answer without specific steps (e.g., "Helps understand user needs")
+- Missing Validation: Fail to mention idea or solution validation (e.g., "understand user needs so that people creating products")
+- Excludes Feedback: Doesn't specify user feedback for improvement (e.g., "Observation - Watching and learning from a distance")
+- Lack of Empathy: Doesn't mention to better understand or empathize users (e.g., "Helps improve design")
+- Misunderstands Purpose: Confuses product stages such as prototypes with user research (e.g., "Then we create low-fidelity prototypes").
+
+---------------------------------------------------------------------------
+

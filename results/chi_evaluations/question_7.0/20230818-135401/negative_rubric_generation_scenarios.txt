@@ -1,0 +1,71 @@
+AUTO SCENARIO 2
+
+- Non-blocking/Responsive UI: Enhances user interface responsiveness by preventing blocking.
+- Efficient Server Interactions: Facilitates sending/receiving data from the server without interruptions.
+- Concurrent Tasks Execution: Allows multiple tasks to run independently and concurrently
+- Partial Page Updates: Enables changing parts of page content without entire page reload.
+- Background Execution: Allows for long-running and time-consuming tasks to run in the background.
+
+Positive Rubric Items:
+- Non-blocking Understanding: Explains UI non-blocking benefits accurately (example: "We want to be able to run code in the background without blocking the user interface")
+- Interaction with servers: Clearly defines synchronous and asynchronous server interactivity (example: "Asynchronous programming allows us to send, request, and receive data from a server without blocking the interface")
+- Understanding Concurrent Tasks: Understands multiple task execution (example: "Asynchronous programming is useful because it allows us to efficiently run several independent tasks at once")
+- Knowledge of AJAX: Exhibits understanding of partial page refresh (example: "AJAX allows us to partially update a page without refreshing the whole page")
+- Background Execution Explanation: Explains how it works and benefits (example: "Asynchronous programming allows our program to start tasks that may be very long while still running tasks of other things")
+
+Negative Rubric Items:
+- No Reference to UI blocking: Fails to mention non-blocking UI (example: "We use asynchronous programming because it allows us to change the page without reloading it.")
+- Undetailed Server Interactions: Lacks details on server interactions with asynchronous programming (example: "We want to send, receive, and gather data from a server.")
+- Single Task Focus: Only cites one task running, misunderstanding concurrency of asynchronous programming (example: "It allows a program to start a potentially long-running task.")
+- Missing AJAX Understanding: Doesn't refer to partial page updates or understand AJAX role (example: "It allows the program to be more time-efficient.")
+- Background Task Misunderstanding: Misconception about what tasks are done in the background (example: "We don't want to force the users into a specific route on the application.")
+
+---------------------------------------------------------------------------
+
+AUTO SCENARIO 3
+
+- Non-blocking Interface: Asynchronous programming offers rapid, seamless user interface, not blocked by server requests.
+- Partial Page Update: Asynchronous programming allows selective updates, avoiding full page refresh.
+- Responsiveness During Long Tasks: Ensures user interactivity even during the execution of time-consuming tasks.
+- Efficient API Requests: Provides efficiency in making calls to APIs, enabling specific updates when new information is received.
+- Handling Time Delays: Compensates for time delays in processes such as API interaction
+- Server Request Handling: Enhances user experience by managing server request times effectively
+- Efficient Code Execution: Assures responsive, efficient, and scalable code, fostering multiple tasks simultaneously.
+- Control Over Execution Flow: Asynchronous programming allows for controlled execution, e.g., processing API responses. 
+- Task Simultaneity: Allows handling of multiple user requests at once.
+- Network Efficiency: It allows for operations to continue efficiently despite network delays.
+
+Positive:
+- Understanding Non-blocking: Recognizes async programming for non-blocking interfaces or user experiences. (Because you want to be able to run code in the background without blocking the user interface)
+- Grasping Parallel Execution: Understands async programming allows simultaneous task completion. (Because we are able to make things happen at the same time)
+- Comprehending Partial Page Updates: Understands async programming enables partial page reloads. (AJAX allows us to partially update a page without refreshing the whole page)
+- Knowing Server Requests: Appreciates async programming facilitates non-blocking server data transfers. (We want to be able to send, request, and receive data from a server without blocking other parts of the interface)
+- Recognizing Responsiveness: Acknowledges async programming ensures responsiveness during long tasks. (Asynchronous programming allows us to have a page that is responsive to other tasks)
+
+Negative:
+- Misunderstanding UI Block: Believes async programming blocks the user interface. (Asynchronous programming blocks our program to start tasks)
+- Not Grasping Parallel Execution: Fails to understand async programming allows simultaneous tasks. (We want to use asynchronous programming in Javascript so it can run the task in the background)
+- Not Realizing Partial Page Updates: Unable to connect partial page reloads to async programming. (Because we want to change the page without reloading it)
+- Not Recognizing Server Requests: Unaware async programming enables non-blocking server requests. (Asynchronous programming in Javascript allows us to send and receive data without having to refresh the interface)
+- Unaware of Responsiveness: Does not understand async programming maintains responsiveness. (Asynchronous programming makes us wait for each function)
+
+---------------------------------------------------------------------------
+
+AUTO NO THEME SCENARIO
+
+Positive Rubric Items:
+- Understanding Non-Blocking: Explains asynchronous as non-blocking operations (example: "Asynchronous programming is non-blocking, allowing for code to execute in response to a user without blocking or pausing the entire UI.")
+- Efficiency Explanation: Illustrates improvement in time efficiency (example: "It allows the program to start a potentially long-running task and still be able to be responsive to other events while that task runs.")
+- User Interface Impact: Underlines enhancement in responsiveness for user interface (example: "Because we want to change the page without reloading it and send, request, and receive data from a server without blocking the rest of my interface.")
+- AJAX Mention: Explicitly cites AJAX as one implementation of asynchronous programming (example: "AJAX allows us to partially update a page without refreshing the whole page.")
+- Event Listeners Mention: Brings up Event Listeners as part of Javascript's asynchronous programming (example: "We don't want to shoehorn the users into a specific route on the application, we want them to be able to click any button at any time, and this can only be achieved through event listeners.")
+
+Negative Rubric Items:
+- Doesn’t Mention Non-Blocking: Neglects to reference asynchronous programming as non-blocking (example: "We can execute functions in the background of a page.")
+- Incorrectly Described Efficiency: Misrepresents efficiency of asynchronous programming (example: "Because we want to be able to run code in the background.")
+- Lacks Specific Example: Fails to provide a specific example or use case example (example: "This is to allow other components when showing the webpage does not get blocked by operations that require long time.")
+- UI Responsiveness Not Mentioned: Misses importance of UI responsiveness in asynchronous programming (example: "We want to be able to send, request, and receive data from a server without blocking other parts of the interface.")
+- Event Listeners Ignored: Makes no mention of how event listeners play into asynchronous programming (example: "Asynchronous programming allows us to have a page that is responsive to other tasks.")
+
+---------------------------------------------------------------------------
+

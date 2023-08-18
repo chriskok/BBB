@@ -1,0 +1,71 @@
+AUTO SCENARIO 2
+
+- Understanding User Needs: Identifying common behaviors, preferences, and needs of users. 
+- Solution Validation: Confirming if potential solutions meet user expectations and are effective.
+- User-Product Interaction: Learning how users would interact with the product or system.
+- Usability Evaluation: Checking prototypes for usability issues and user understanding. 
+- Post-Launch Feedback: Obtaining real-time user feedback on the product after its release.
+
+Positive Rubric Items:
+1. Identifying User Needs: Clearly recognizes need to understand user behaviors, preferences, and needs (example: "Understand target audience 2. Understand common wants/needs that the product can be made to address")
+2. Highlighting Solution Validation: Outlines importance of validating potential solutions via user research (example: "Discover if the potential solutions are effective in solving the user needs")
+3. Exploring User-Product Interaction: Explains the need to discover how users would interact with the product (example: "to find out how the users would interact with the product")
+4. Understanding Usability Evaluation: Describes the practice of testing prototypes for usability (example: "prototyping is building mockups of each potential solution, and testing to identify any usability")
+5. Addressing Post-Launch Feedback: Discusses gathering user feedback after product release (example: "User research after a product launch can give real-time feedback about how feasible a product is")
+
+Negative Rubric Items:
+1. Missing Target Audience: Fails to recognize the importance of understanding target demographic (example: "- can make your project geared towards a specific group")
+2. Ignoring Validation of Solutions: Neglects validation phase of potential solutions (example: "To create designs that are truly relevant, to create designs that are easy and pleasurable to use")
+3. Bypassing User-Product Interaction: Overlooks understanding how the product is used by the user (example: "We then go into ideation which is brainstorming ideas based off of what the users' needs were") 
+4. Neglecting Usability Evaluation: Fails to recognize importance of usability testing (example: "Then in the ideation stage, user research is helpful to figure out what ideas fulfill those needs")
+5. Overlooking Post-Launch Feedback: Doesn't recognize the importance of feedback after the product's release (example: "One purpose of user research is to understand users' preferences, which might be done with a semi-structured interview").
+
+---------------------------------------------------------------------------
+
+AUTO SCENARIO 3
+
+- User Needs Identification: Understanding and identifying user needs or demands.
+- Ideation and Validation: Brainstorming potential solutions and validating user needs.
+- Usability Evaluation: Assessing product for usability and prototype problems.
+- Feedback Integration: Obtaining and using the feedback for design improvement and enhancements.
+- Discovering User Preferences: Understanding what users like and accept
+- Privacy Insights: Gaining understanding about user's privacy concerns
+- Feedback Collection: Collating user feedback for product improvements
+- User Interaction Understanding: Knowing how users will interact with product
+- Post-Release Assessment: Evaluating product success after its release.
+- Contextual Inquiry: Analyzing users' actions and their motivations.
+
+Positive Rubric Items:
+- Understanding User Needs: Recognizes the importance and process of identifying user needs. (example: "Determine needs of a user, validate user needs, improve an existing prototype")
+- Validating Ideas: Appropriately applies user research to validate or invalidate design ideas. (example: "...once you have an idea, user research is great for validating or invalidating that idea.")
+- Usability Evaluation: Understands how user research aids in spotting and resolving usability issues. (example: "...participating in a think aloud session helps uncover the users’ thought processes while they’re interacting with the software and find usability issues.")
+- Prototyping & Testing: Demonstrates awareness about the role of user research in developing and testing prototypes. (example: "Once you have a prototype, user research is great for making sure the user understands the UI.")
+- Value of Feedback: Acknowledges the role of feedback collection and integration throughout product life cycle. (example: "Low- and High-Fidelity prototypes can be improved based on user feedback that may impact usability functions")
+
+Negative Rubric Items:
+- Inadequate Understanding of User Research: Incorrect or unclear understanding of user research purposes. (example: "Help uncover user mental model - Help uncover user's familiar terminology - Help figure out user needs")
+- Overemphasis on One Stage: Disproportionate focus on one part of the product life cycle, like ideation. (example: "We then go into ideation which is brainstorming ideas based off of what the users' needs were.")
+- Neglecting Usability Testing: Missing or lack of mention of usability testing in research process. (example: "One purpose of user research is to understand users' preferences, which might be done with a semi-structured interview.")
+- Superficial Understanding of User Needs: Only surface-level mention of identifying user needs, without understanding the how and why. (example: "...to find out the user needs as what users needs improvement for, these usually consist of semi interviews or observations.")
+- Incomplete View on Feedback: Fails to acknowledge the continual integration of user feedback into product development. (example: "User research is used in the inspiration stage to figure out what are the problems users have and how can you help them...")
+
+---------------------------------------------------------------------------
+
+AUTO NO THEME SCENARIO
+
+Positive Rubric Items:
+- Understanding Target Audience: Student mentions determining users' needs, behaviors, preferences (e.g., 'Determine needs of a user, validate user needs, improve an existing prototype')
+- Design Relevance: Evidence of understanding importance of designing product aimed at user needs (e.g., 'to create designs that are truly relevant')
+- Identifying Usability Issues: Student recognizes the role of user research in identifying/addressing usability problems (e.g., 'prototyping is building mockups of each potential solution, and testing to identify any usability issues.')
+- Application in Design Frameworks: Student applies user research within stages of IDEO framework or similar (e.g., 'User research is used in the inspiration stage...')
+- Post-Launch Feedback: Acknowledge the importance of continued user research after product launch to measure success or reveal issues (e.g., 'User research after a product launch can give real-time feedback...')
+
+Negative Rubric Items:
+- Misconnecting User Research to UX Design: Student does not make clear connections between user research and UX design (e.g., 'It helps to find out the user needs as what users needs improvement for...')
+- Incomplete Understanding of Stages: Student's responses show gaps in understanding how user research applies at different stages of product life cycle (e.g., 'We can do user research for inspiration, ideation, or implementation.')
+- Absence of User Participation: Failure to mention or highlight the user's active role in the research process (e.g., 'Development can discover new user needs...')
+- General Answer: Vague or general statement about user research without concrete examples or applications (e.g., 'it can help you understand user needs...')
+- Overemphasis on Market Segmentation: Overemphasis on user research for market segmentation while neglecting its other aspects (e.g., 'can make your project geared towards a specific group...')
+
+---------------------------------------------------------------------------
+

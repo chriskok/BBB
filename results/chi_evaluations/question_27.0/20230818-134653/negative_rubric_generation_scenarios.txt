@@ -1,0 +1,73 @@
+AUTO SCENARIO 2
+
+- Efficiency in design: Various references to components improving design efficiency.
+- Element reusability: Recurring theme of the ability to reuse components multiple times.
+- Consistency across design: Accentuation on coherence and uniformity due to components.
+- Time saving: Multiple mentions of time conservation achieved with component use.
+- Interactive components: Frequent emphasis on interactivity within components.
+
+Positive Rubric Items:
+- Understanding reusability: Demonstrates understanding of component reusability for efficiency (example: "We can group together multiple elements, and we can reuse components across our design.")
+- Time-saving applications: Recognizes the convenience and time-saving potential of components (example: "It allows us to build a smaller part of a greater system and enables us to reuse existing parts saving us time on otherwise repetitive and tedious work.")
+- Comprehension of interactive components: Shows insights into the interactive potentials of components (example: "Components in Figma are interactive allowing the user to navigate to other pages or update the information on the page through different variants.")
+- Maintaining design consistency: Displays awareness of the role of components in maintaining design consistency (example: "Components allow designers to reuse elements in design such as buttons and this ensures it is consistent across the design which will follow the Consistency and standards heuristic.")
+- Component link feature: Demonstrates understanding of the feature that links original components with its instances (example: "Using components in Figma allows designers to create instances of an object that are linked together.")
+
+Negative Rubric Items:
+- Lack of specific examples: Fails to provide specific examples of where components can be used (example: "They can be reused across designs. This makes designs much more efficient.")
+- Vague about reusability: Doesn't explain how components can be reused in designs (example: "This is because with components allow us to reuse certain elements throughout our prototype.")
+- Misses interactive features: Overlooks the interactive features of components (example: "Components make it easier to create the element repeatedly from a single source of truth.")
+- Neglects design consistency: Does not indicate knowledge about components' role in design consistency (example: "Components allow us to make reusable design elements which can save a lot of time and effort.")
+- Ignoring propagation feature: Neglects to discuss the propagation feature of components (example: "We use Components to create instances in Figma so that way we are able to reuse certain things over and over again, whether it be a checkbox or a other things similar to it.")
+
+---------------------------------------------------------------------------
+
+AUTO SCENARIO 3
+
+- Efficiency and Reusability: Components avoid creating the same element repeatedly, increasing work efficiency.
+- Design Consistency: Components help maintain a consistent design style across platforms.
+- Team Coordination: Facilitates better teamwork by establishing a standard for design elements.
+- Convenience and Speed: Components enable designers to reuse parts quickly.
+- Universal Components and Variants: Components maintain consistent designs and handle design variations simultaneously.
+- Error Management: A few responses discussed how use of components allows for easy corrections.
+- Component Customizability: Some students discussed the customizable aspect of components to simplify designs.
+- Flexibility and Adaptability: Components allow easy changes without manually adjusting each item.
+- Centralized Changes: Changes made to a component are automatically applied to all its instances.
+- Design Organization: Students discuss the role of components in creating more organized designs.
+
+Positive:
+- Efficient Design Creation: Efficient component use reduces repetitious work. (example: "It allows us to build a smaller part of a greater system and enables us to reuse existing parts saving us time on otherwise repetitive and tedious work.")
+- Design Consistency Maintenance: Regular component use improves overall design uniformity. (example: "Also, it can help to keep the same design style across the same platform.")
+- Mistake Management: Component use simplifies the process of fixing errors swiftly. (example: "By making them into components, we can also change the component to change all the instances, in case we made a mistake or something.")
+- Grouped and Reusable Elements: Demonstrates understanding of grouping and reusing design elements. (example: "We can group together multiple elements, and we can reuse components across our design.")
+- Standardization and Efficiency: Indicates understanding of component reusability and automatic instance updating for efficient design. (example: "When a change is made to the original component, all of the instances of that component will be updated automatically.")
+
+Negative:
+- Misunderstanding Components Purpose: Fails to elaborate on the fundamental purpose and function of components. (example: "We want to use components.")
+- Mismatch Of Component Role: Incorrectly attributes roles and functionalities to components. (example: "They add a level of user interactivity to our prototype")
+- Incoherent Component Reasoning: The reasoning behind using components is unclear or poorly articulated. (example: "Components make it easier to create the element repeatedly from a single source of truth.")
+- Limited Understanding of Components: Only a partial understanding of the potential benefits of components is demonstrated. (example: "This makes designs much more efficient.")
+- Superficial Component Importance: Provides oversimplified explanation of the importance of using components in Figma. (example: "So that when we want to change an aspect of the design, we can just change the component.")
+
+---------------------------------------------------------------------------
+
+AUTO NO THEME SCENARIO
+
+Positive Rubric Items:
+
+- Reusability Understanding: Recognizes components can be reused to save time (example: "It allows us to build a smaller part of a greater system and enables us to reuse existing parts saving us time on otherwise repetitive and tedious work.")
+- Efficiency Concept: Explains how components contribute to efficient design work (example: "Using components in Figma allows designers to create instances of an object that are linked together. This means that when a change is made to the original component, all of the instances of that component will be updated automatically to reflect the change.")
+- Consistency Knowledge: Understands that components help maintain design consistency (example: "This is so that our instances are consistent throughout our program and we would not have to recreate each instance (e.g. button) every time we would want to use it.")
+- UI Understanding: Realizes that components can be useful in creating UI elements (example: "UI components can be reused across multiple screen. We make our design consistent. It also reduces workload.")
+- Interaction Awareness: Identifies that components allow for easier interactive elements in a prototype (example: "In prototypes, there are often many reused or very similar parts. Components make it easier to have uniform parts that are copied across the prototype. Additionally, you can add interactivity more easily.")
+
+Negative Rubric Items:
+
+- Misunderstanding Interactivity: Believes that components mainly provide user interactivity (example: "They add a level of user interactivity to our prototype")
+- Misinterpretation of Design Elements: Thinks that components are abstract representations of physical elements (example: "Components allow us to create abstract representations of certain physical elements we want to see in our prototype.")
+- Missing Efficiency Element: Fails to mention the efficiency of using components (example: "They can be reused across designs. This makes designs much more efficient.")
+- Overlooking Updates: Doesn't understand that updating a component updates all instances (example: "We can group together multiple elements, and we can reuse components across our design. This helps with consistent designs.")
+- Lack of Understanding on Reusability: Doesn't mention that components lead to design reusability (example: "We use Components to create instances in Figma so that way we are able to reuse certain things over and over again, whether it be a checkbox or other things similar to it.")
+
+---------------------------------------------------------------------------
+
