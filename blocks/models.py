@@ -106,6 +106,8 @@ class Answer(models.Model):
     outlier_score = models.FloatField(default=0.0)
     concept_scores = models.CharField(max_length=1000, default="[]")  
 
+    chi_cluster_id = models.IntegerField(default=0)  # TODO: temporary for CHI 2023
+
     # https://stackoverflow.com/questions/22340258/list-field-in-model
     def set_rule_strings(self, x):
         self.rule_strings = json.dumps(x)

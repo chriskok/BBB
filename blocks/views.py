@@ -135,6 +135,13 @@ def cluster_answers(df, n_clusters=20):
 
     # Assign the cluster labels to the dataframe
     df['cluster'] = clustering_model.labels_
+
+    # set each answer's chi_cluster_id to its cluster
+    for index, row in df.iterrows():
+        answer_obj = Answer.objects.get(pk=row['id'])
+        answer_obj.chi_cluster_id = row['cluster']
+        answer_obj.save()
+
     return df
 
 def sample_answers(df, n_samples=1):
@@ -163,6 +170,11 @@ def rubric_creation_2(request, q_id):
     chosen_answers = Answer.objects.filter(question_id=q_id)
     answer_df = pd.DataFrame(list(chosen_answers.values()))
     answer_count = len(chosen_answers)
+
+    # check if chosen_answers have been clustered (chi_cluster_id != 0)
+    if all(answer_df['chi_cluster_id'] == 0):
+        print('Clustering Answers for Q: {}'.format(q_id))
+        cluster_df = cluster_answers(answer_df, n_clusters=20)
 
     if not RubricList.objects.filter(question_id=q_id).exists():
         cluster_df = cluster_answers(answer_df, n_clusters=20)
@@ -358,6 +370,84 @@ def rubric_refinement(request, q_id, additional="false"):
         "answer_count": answer_count,
         "ans_tags": ans_tags,
         "show_new": show_new,
+    }
+
+    return render(request, "rubric_refinement.html", context)
+
+def rubric_refinement_2(request, q_id, additional="false"):
+    q_list = Question.objects.extra(select={'sorted_num': 'CAST(question_exam_id AS FLOAT)'}).order_by('sorted_num')
+
+    # if the question queried does not exist, get the first Question available
+    if Question.objects.filter(pk=q_id).exists():
+        current_question_obj = Question.objects.get(pk=q_id)
+    else:
+        current_question_obj = q_list.first()
+        q_id = current_question_obj.id
+    
+    rubric_obj = RubricList.objects.filter(question_id=q_id).first()
+    rubric_list = rubric_obj.get_rubric_list()
+    chosen_answers = Answer.objects.filter(question_id=q_id)
+
+    # interate through chosen answers until we get 50 examples, look through one cluster at a time to diversify
+    examples = []
+    curr_index = 0
+    curr_cluster_idx = 0
+    cluster_ids = chosen_answers.values_list('chi_cluster_id', flat=True).distinct()
+    while len(examples) < 50:
+        curr_cluster_id = cluster_ids[curr_cluster_idx]
+        if (len(chosen_answers.filter(chi_cluster_id=curr_cluster_id)) <= curr_index):
+            continue
+        chosen_answer = chosen_answers.filter(chi_cluster_id=curr_cluster_id)[curr_index]
+        examples.append(chosen_answer)
+        curr_cluster_idx += 1
+        if curr_cluster_idx >= len(cluster_ids):
+            curr_cluster_idx = 0
+            curr_index += 1
+    print(examples)
+    answer_count = len(examples)
+
+    # if not AnswerTag.objects.filter(question_id=q_id, answer_id__in=[x.id for x in examples]).exists():
+    if not AnswerTag.objects.filter(question_id=q_id).exists():
+        tags = llmh.apply_rubrics(current_question_obj, examples, rubric_list, tagged_answers)
+        for ans_id in tags:
+            tagged = []
+            for tag_dict in tags[ans_id]:
+                AnswerTag.objects.create(question_id=q_id, answer_id=int(ans_id), tag=tag_dict["rubric"], reasoning_dict=json.dumps(tag_dict))
+                tagged.append(tag_dict["rubric"])
+            # create blank AnswerTag for answers that were not tagged
+            for rubric in rubric_list:
+                if rubric["id"] == 0: continue
+                rubric_tag = "R{}".format(rubric["id"])
+                if rubric_tag not in tagged:
+                    AnswerTag.objects.create(question_id=q_id, answer_id=int(ans_id), tag=rubric_tag, reasoning_dict=json.dumps({"rubric": rubric_tag, "reasoning": "", "highlighted": "", "relevancy": "0"}))
+        ans_tags = AnswerTag.objects.filter(question_id=q_id)
+    else:
+        ans_tags = AnswerTag.objects.filter(question_id=q_id)
+    
+    # make dictionary of R<number>: <rubric> for each rubric
+    rubric_dict = {}
+    for rubric in rubric_list:
+        if rubric["id"] == 0: continue
+        rubric_tag = "R{}".format(rubric["id"])
+        polarity_emoji = "✔" if rubric["polarity"] == "positive" else "✘"
+        rubric_dict[rubric_tag] = polarity_emoji + " " + rubric["title"]
+    
+    # get all the Answers with AnswerTags for this question
+    answer_tag_ids = AnswerTag.objects.filter(question_id=q_id).values_list("answer_id", flat=True)
+    tagged_answers = Answer.objects.filter(id__in=answer_tag_ids)
+
+    # sort tagged answers by the ones with new answer tags
+    tagged_answers = sorted(tagged_answers, key=lambda x: x.answertag_set.filter(question_id=q_id).first().new, reverse=True)
+
+    context = {
+        "question_obj": current_question_obj,
+        "question_exam_id": q_id,
+        "question_list": q_list,
+        "rubric_list": rubric_list,
+        "rubric_dict": rubric_dict,
+        "answers": tagged_answers,
+        "answer_count": answer_count,
+        "ans_tags": ans_tags,
     }
 
     return render(request, "rubric_refinement.html", context)
