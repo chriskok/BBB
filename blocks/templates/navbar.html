@@ -11,11 +11,11 @@
     <div class="navbar-nav">
       {% comment %} <a class="nav-item nav-link active" href="/clustering/question_list">Questions</a>
       <a class="nav-item nav-link active" href="/clustering/answer_list">Answers</a> {% endcomment %}
-      <a class="nav-item nav-link {% if request.resolver_match.url_name == 'building_blocks' %}active{% endif %}" href="{% url 'building_blocks' 1 %}">Comb</a>
-      <a class="nav-item nav-link {% if request.resolver_match.url_name == 'rubric_creation' %}active{% endif %}" href="{% url 'rubric_creation_2' 1 %}">Comb LLM</a>
-      <a class="nav-item nav-link {% if request.resolver_match.url_name == 'chatgpt' %}active{% endif %}" href="{% url 'chatgpt' 1 %}">ChatGPT</a>
-      <a class="nav-item nav-link" role="button" data-toggle="modal" data-target="#CombResetModal">Comb Reset</a>
+      <a class="nav-item nav-link {% if request.resolver_match.url_name == 'rubric_creation_2' %}active{% endif %}" href="{% url 'rubric_creation_2' 1 %}">Comb LLM</a>
       <a class="nav-item nav-link" role="button" data-toggle="modal" data-target="#CombLLMResetModal">CombLLM Reset</a>
+      <a class="nav-item nav-link {% if request.resolver_match.url_name == 'building_blocks' %}active{% endif %}" href="{% url 'building_blocks' 1 %}">Comb</a>
+      <a class="nav-item nav-link" role="button" data-toggle="modal" data-target="#CombResetModal">Comb Reset</a>
+      <a class="nav-item nav-link {% if request.resolver_match.url_name == 'chatgpt' %}active{% endif %}" href="{% url 'chatgpt' 1 %}">ChatGPT</a>
       <a class="nav-item nav-link" href="/admin">Admin Panel</a>
       {% comment %} <a class="nav-item nav-link active" href="{% url 'logout' %}">Log Out</a> {% endcomment %}
     </div>

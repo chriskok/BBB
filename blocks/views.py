@@ -37,12 +37,12 @@ warnings.filterwarnings("ignore")
 #                  COMB V5                  #
 ############################################# 
 
-def check_suggestions(rubric_obj, current_question_obj, samples, using_df=False):
+def check_suggestions(rubric_obj, current_question_obj, samples, using_df=False, button_pressed="none"):
 
     rubric_list = rubric_obj.get_rubric_list()
 
     # check if Rubric List has any suggestions (id = 0) for positive rubrics 
-    if not any(rubric["id"] == 0 and rubric['polarity'] == "positive" for rubric in rubric_list):
+    if not any(rubric["id"] == 0 and rubric['polarity'] == "positive" for rubric in rubric_list) or button_pressed == "positive":
         new_suggestions = llmh.create_rubric_suggestions(current_question_obj, samples, rubric_list, "positive", using_df=using_df)
         new_rubric_list = rubric_list
         for rubric in new_suggestions:
@@ -51,7 +51,7 @@ def check_suggestions(rubric_obj, current_question_obj, samples, using_df=False)
         rubric_obj.save()
     
     # check if Rubric List has any suggestions (id = 0) for negative rubrics 
-    if not any(rubric["id"] == 0 and rubric['polarity'] == "negative" for rubric in rubric_list):
+    if not any(rubric["id"] == 0 and rubric['polarity'] == "negative" for rubric in rubric_list) or button_pressed == "negative":
         new_suggestions = llmh.create_rubric_suggestions(current_question_obj, samples, rubric_list, "negative", using_df=using_df)
         new_rubric_list = rubric_list
         for rubric in new_suggestions:
@@ -185,6 +185,25 @@ def rubric_creation_2(request, q_id):
     }
 
     return render(request, "rubric_creation_2.html", context) 
+
+# function to update the rubric list with new suggestions and then redirect to rubric_creation_2
+def generate_new_suggestions(request, q_id, button_pressed="none"):
+    q_list = Question.objects.extra(select={'sorted_num': 'CAST(question_exam_id AS FLOAT)'}).order_by('sorted_num')
+
+    # if the question queried does not exist, get the first Question available
+    if Question.objects.filter(pk=q_id).exists():
+        current_question_obj = Question.objects.get(pk=q_id)
+    else:
+        current_question_obj = q_list.first()
+        q_id = current_question_obj.id
+
+    chosen_answers = Answer.objects.filter(question_id=q_id)
+    answer_df = pd.DataFrame(list(chosen_answers.values()))
+    rubric_obj = RubricList.objects.filter(question_id=q_id).first()
+    check_suggestions(rubric_obj, current_question_obj, answer_df, using_df=True, button_pressed=button_pressed)
+
+    # redirect to rubric_creation_2
+    return redirect('rubric_creation_2', q_id=q_id)
 
 def update_rubric_list(request, q_id):
     if request.method == 'POST':

@@ -84,24 +84,35 @@
         <div class="col-6">
             <div class="row mb-2">
                 <div class="col-8">
-                    <h4>Positive Rubrics</h4>
+                    <h4>Positive Rubrics ✔️</h4>
                 </div>
                 <div class="col-4 d-flex justify-content-end">
                     <a href="#" class="btn btn-success btn-sm" onclick="add_new_rubric_item('positive')">Add</a>
                 </div>
             </div>
             <div id="positive_rubric_list"></div>
+            {% comment %} Button to add more suggestions through the URL 'generate_new_suggestions/<int:q_id>/<str:button_pressed>' {% endcomment %}
+            <div class="row mt-2">
+                <div class="col-12 d-flex justify-content-center">
+                    <a href="{% url 'generate_new_suggestions' question_obj.id 'positive' %}" class="btn btn-secondary btn-sm">Generate more suggestions</a>
+                </div>
+            </div>
         </div> 
         <div class="col-6">
             <div class="row mb-2">
                 <div class="col-8">
-                    <h4>Negative Rubrics</h4>
+                    <h4>Negative Rubrics ❌</h4>
                 </div>
                 <div class="col-4 d-flex justify-content-end">
                     <a href="#" class="btn btn-success btn-sm" onclick="add_new_rubric_item('negative')">Add</a>
                 </div>
             </div>
             <div id="negative_rubric_list"></div>
+            <div class="row mt-2">
+                <div class="col-12 d-flex justify-content-center">
+                    <a href="{% url 'generate_new_suggestions' question_obj.id 'negative' %}" class="btn btn-secondary btn-sm">Generate more suggestions</a>
+                </div>
+            </div>
         </div> 
     </div> 
 
