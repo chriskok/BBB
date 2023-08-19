@@ -202,6 +202,8 @@ def create_rubric_suggestions_2(df, answers, question_text):
 
 def apply_rubrics(question, answers, rubrics, existing_tags=None):
 
+    answers = sorted(answers, key=lambda x: x.id)
+
     def convert_reasoning_dict(reasoning_dict):
         # convert dict of answer ID keys and reasoning values to a new-line separated string of Answer texts (from DB) and the reasoning
         reasoning_str = ""
@@ -213,11 +215,31 @@ def apply_rubrics(question, answers, rubrics, existing_tags=None):
     rubrics_str = "\n\n".join(["R{}. {} (polarity: {}, meaning: {})\nR{} Examples:\n{}".format(rubric["id"], rubric["title"], rubric["polarity"], rubric['description'], rubric["id"], convert_reasoning_dict(rubric["reasoning_dict"])) for i, rubric in enumerate(rubrics) if rubric['id'] != 0])
     system_prompt = f"""You are an expert instructor for your given course. You've given the short-answer, open-ended question "{question.question_text}" on a recent final exam. You and your expert instructor partner created the following rubrics for this question (labelled R<rubric number> below, along with examples that your partner annotated with reasoning): \n\n{rubrics_str}"""
     
-
     user_prompt = """
     Given the rubrics mentioned and the following student answers (formatted: <answer ID>. <answer>):\n""" + answers_str + """
 
-    Label and highlight each student's answer based on the rubric(s) that applies to it. Each answer can have multiple rubrics applied, so treat this as a multi-label classification task. Only highlight the most relevant words per rubric that you choose to apply - keep it short! Please provide reasoning for your labels and a relevancy score as well. For the output, create python dictionary that STRICTLY follow the JSON format:
+    Label and highlight each student's answer based on the rubric(s) that applies to it. Each answer can have multiple rubrics applied, so treat this as a multi-label classification task. Please output in the following format:
+
+    <answer_id>: <comma-separated list of rubrics (labelled R<number>) that apply to this answer> (example: 1: R1, R2, R3)
+    """
+
+    # Create a string of existing tags in the format <answer text> [R<rubric number> | <relevancy score> | <reasoning>]
+    existing_tags_str = ""
+    if (existing_tags is not None):
+        # get only tags with relevancy > 0.0
+        filtered_tags = [tag for tag in existing_tags.order_by('?') if float(tag.get_reasoning_dict()['relevancy']) > 0.0]
+        for tag in filtered_tags[:10]:
+            curr_ans = Answer.objects.get(id=tag.answer_id)
+            curr_reasoning_dict = tag.get_reasoning_dict()
+            if(float(curr_reasoning_dict['relevancy']) > 0.0): existing_tags_str += f"- {curr_ans.answer_text} [Rubric: {tag.tag} | Relevance: {curr_reasoning_dict['relevancy']} | Reason: {curr_reasoning_dict['reasoning']}]\n"
+
+        user_prompt += "\n\n" + "Examples:\n" + existing_tags_str
+
+    msgs = [{"role": "system", "content": system_prompt}, {"role": "user", "content": user_prompt}]
+    matching_response = prompt_gpt4(msgs)
+    print(matching_response)
+
+    formatting_prompt = """For the final output, create one large JSON dictionary that elaborates on the labels through reasoning and highlighting. Only highlight the most relevant words per rubric that you choose to apply - keep it short! Please provide reasoning for your labels and a relevancy score as well. For the output, create python dictionary that STRICTLY follow the JSON format:
 
     {"answer_id": [
         {
@@ -235,22 +257,10 @@ def apply_rubrics(question, answers, rubrics, existing_tags=None):
         ...
     ], ...}
     """
-
-    # Create a string of existing tags in the format <answer text> [R<rubric number> | <relevancy score> | <reasoning>]
-    existing_tags_str = ""
-    if (existing_tags is not None):
-        # get only tags with relevancy > 0.0
-        filtered_tags = [tag for tag in existing_tags.order_by('?') if float(tag.get_reasoning_dict()['relevancy']) > 0.0]
-        for tag in filtered_tags[:10]:
-            curr_ans = Answer.objects.get(id=tag.answer_id)
-            curr_reasoning_dict = tag.get_reasoning_dict()
-            if(float(curr_reasoning_dict['relevancy']) > 0.0): existing_tags_str += f"- {curr_ans.answer_text} [Rubric: {tag.tag} | Relevance: {curr_reasoning_dict['relevancy']} | Reason: {curr_reasoning_dict['reasoning']}]\n"
-
-        user_prompt += "\n\n" + "Examples:\n" + existing_tags_str
-
-    msgs = [{"role": "system", "content": system_prompt}, {"role": "user", "content": user_prompt}]
-
+    msgs.append({"role": "assistant", "content": matching_response})
+    msgs.append({"role": "user", "content": formatting_prompt})
     response = prompt_gpt4(msgs)
+    print(response)
 
     try:
         tags = json.loads(response)

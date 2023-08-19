@@ -94,8 +94,8 @@
                         <input type="range" id="slider_{{tag.id}}" name="slider_{{tag.id}}" min="0" max="1" step="0.5" value="{{ tag|get_tagdict_item:"relevancy" }}" class="form-control-range" oninput="updateSliderValue(this, 'slider_{{tag.id}}')">
 
                         <div id='taginfo_{{tag.id}}' class="mb-3">
-                            <label for="reasoning_{{tag.id}}">Reasoning:</label>
-                            <textarea id="reasoning_{{tag.id}}" name="reasoning_{{tag.id}}" rows="2" cols="50" class="form-control" placeholder="Enter reasoning...">{{ tag|get_tagdict_item:"reasoning" }}</textarea>
+                            <label for="reasoning_{{tag.id}}" class="d-none">Reasoning:</label>
+                            <textarea id="reasoning_{{tag.id}}" name="reasoning_{{tag.id}}" rows="2" cols="50" class="form-control d-none" placeholder="Enter reasoning...">{{ tag|get_tagdict_item:"reasoning" }}</textarea>
 
                             <label for="highlighted_{{tag.id}}_{{answer.id}}">Highlighted Text:</label>
                             <textarea id="highlighted_{{tag.id}}_{{answer.id}}" name="highlighted_{{tag.id}}_{{answer.id}}" rows="1" cols="50" class="form-control" placeholder="Enter highlighted text...">{{ tag|get_tagdict_item:"highlighted" }}</textarea>
@@ -118,6 +118,9 @@
 </style>
 
 <script>
+    // parse django answers to js dict
+    var stats = {{ stats|safe }};
+    console.log(stats);
 
     function update_answer_tag(tag_id, reasoning_dict) {
         $.ajax({

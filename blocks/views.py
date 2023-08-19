@@ -393,9 +393,10 @@ def rubric_refinement_2(request, q_id, additional="false"):
     curr_index = 0
     curr_cluster_idx = 0
     cluster_ids = chosen_answers.values_list('chi_cluster_id', flat=True).distinct()
-    while len(examples) < 50:
+    while len(examples) < 20:
         curr_cluster_id = cluster_ids[curr_cluster_idx]
         if (len(chosen_answers.filter(chi_cluster_id=curr_cluster_id)) <= curr_index):
+            curr_cluster_idx += 1
             continue
         chosen_answer = chosen_answers.filter(chi_cluster_id=curr_cluster_id)[curr_index]
         examples.append(chosen_answer)
@@ -403,12 +404,16 @@ def rubric_refinement_2(request, q_id, additional="false"):
         if curr_cluster_idx >= len(cluster_ids):
             curr_cluster_idx = 0
             curr_index += 1
-    print(examples)
+    
+    # # print list of cluster ids in the examples
+    # print([x.chi_cluster_id for x in examples])
+    # # print count of cluster ids in the examples
+    # print({x.chi_cluster_id: [y.chi_cluster_id for y in examples].count(x.chi_cluster_id) for x in examples})
     answer_count = len(examples)
 
     # if not AnswerTag.objects.filter(question_id=q_id, answer_id__in=[x.id for x in examples]).exists():
     if not AnswerTag.objects.filter(question_id=q_id).exists():
-        tags = llmh.apply_rubrics(current_question_obj, examples, rubric_list, tagged_answers)
+        tags = llmh.apply_rubrics(current_question_obj, examples, rubric_list)
         for ans_id in tags:
             tagged = []
             for tag_dict in tags[ans_id]:
@@ -436,8 +441,39 @@ def rubric_refinement_2(request, q_id, additional="false"):
     answer_tag_ids = AnswerTag.objects.filter(question_id=q_id).values_list("answer_id", flat=True)
     tagged_answers = Answer.objects.filter(id__in=answer_tag_ids)
 
-    # sort tagged answers by the ones with new answer tags
-    tagged_answers = sorted(tagged_answers, key=lambda x: x.answertag_set.filter(question_id=q_id).first().new, reverse=True)
+    # calculate stats of the tagged answers
+    stats = {}
+    for rubric in rubric_list:
+        if rubric["id"] == 0: continue
+        rubric_tag = "R{}".format(rubric["id"])
+        stats[rubric_tag] = {"total": 0, "relevance": 0}
+        for answer in tagged_answers:
+            answer_tag = answer.answertag_set.filter(question_id=q_id, tag=rubric_tag).first()
+            curr_reasoning_dict = answer_tag.get_reasoning_dict()
+            if answer_tag.tag == rubric_tag and curr_reasoning_dict['relevancy'] != "0":
+                stats[rubric_tag]["total"] += 1
+                stats[rubric_tag]["relevance"] += float(curr_reasoning_dict['relevancy'])
+
+    # # interate through tagged answers until we get 10 examples, make sure we're diversified by getting one from each type of tag
+    # final_examples = []
+    # curr_index = 0
+    # curr_tag_idx = 0
+    # tag_ids = tagged_answers.values_list('answertag__tag', flat=True).distinct()
+    # while len(final_examples) < 10:
+    #     curr_tag_id = tag_ids[curr_tag_idx]
+    #     if (len(tagged_answers.filter(answertag__tag=curr_tag_id)) <= curr_index):
+    #         curr_tag_idx += 1
+    #         continue
+    #     chosen_answer = tagged_answers.filter(answertag__tag=curr_tag_id)[curr_index]
+    #     final_examples.append(chosen_answer)
+    #     curr_tag_idx += 1
+    #     if curr_tag_idx >= len(tag_ids):
+    #         curr_tag_idx = 0
+    #         curr_index += 1
+
+
+    # # sort tagged answers by the ones with new answer tags
+    # tagged_answers = sorted(tagged_answers, key=lambda x: x.answertag_set.filter(question_id=q_id).first().new, reverse=True)
 
     context = {
         "question_obj": current_question_obj,
@@ -446,8 +482,10 @@ def rubric_refinement_2(request, q_id, additional="false"):
         "rubric_list": rubric_list,
         "rubric_dict": rubric_dict,
         "answers": tagged_answers,
+        # "answers": final_examples,
         "answer_count": answer_count,
         "ans_tags": ans_tags,
+        "stats": stats,
     }
 
     return render(request, "rubric_refinement_2.html", context)
