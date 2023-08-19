@@ -104,86 +104,6 @@
             <div id="negative_rubric_list"></div>
         </div> 
     </div> 
-    
-    {% comment %} <div class="card-deck" id="rubric_card_deck">           
-        {% for rubric in rubric_list %}
-        <div class="card mb-2">
-            <div class="card-header">
-                <div class="row align-items-center">
-                    <div class="col-9">
-                        <b>Rubric #{{ rubric.id }}: {{ rubric.title }} {% if rubric.polarity == "positive" %}✔️{% else %}❌{% endif %}</b>
-                    </div>
-                    <div class="col-3 d-flex justify-content-end">
-                        <p class="text-secondary px-2 font-weight-bold" id="status_{{ rubric.id }}"></p>
-                    </div>
-                </div>
-            </div>
-            <div class="card-body">
-                <p>Description: {{ rubric.description }}</p>
-                {% for example in rubric.examples %}
-                <p>Example: {{ example }}</p>
-                {% endfor %}
-            </div>
-        </div>
-        {% if forloop.counter|divisibleby:2  %} 
-        <div class="w-100 d-none d-block"></div> 
-        {% endif %}
-        {% endfor %}
-    </div> {% endcomment %}
-
-    {% comment %} <div class="row">
-        <div class="col-8">
-            <div class="card-deck" id="answer_card_deck">
-                {% for answer in answers %}
-                <div id="answer_{{answer.id}}" class="card mb-2" draggable="true" ondragstart="drag(event)" value="{{answer.answer_text}}">
-                    <div class="card-header">
-                        <div class="row align-items-center">
-                            <div class="col-6">
-                                <b>Answer {{ forloop.counter }}</b>
-                            </div>
-                            <div class="col-6 d-flex justify-content-end">
-                                <p class="text-secondary px-2 font-weight-bold" id="status_{{ answer.id }}"></p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card-body">
-                        <div class="row">
-                            <p>{{ answer.answer_text }}</p>
-                        </div>
-                    </div>
-                </div>
-                {% if forloop.counter|divisibleby:2  %} 
-                <div class="w-100 d-none d-block"></div> 
-                {% endif %}
-                {% endfor%}
-            </div>
-        </div>
-        <div class="col-4">
-            <div class="container sticky-top">
-
-                <div class="row mb-2">
-                    <div class="col-8">
-                        <h4>Positive Rubrics</h4>
-                    </div>
-                    <div class="col-4 d-flex justify-content-end">
-                        <a href="#" class="btn btn-success btn-sm" onclick="add_new_rubric_item('positive')">Add</a>
-                    </div>
-                </div>
-                <div id="positive_rubric_list"></div>
-                
-                <div class="row mt-4 mb-2">
-                    <div class="col-8">
-                        <h4>Negative Rubrics</h4>
-                    </div>
-                    <div class="col-4 d-flex justify-content-end">
-                        <a href="#" class="btn btn-success btn-sm" onclick="add_new_rubric_item('negative')">Add</a>
-                    </div>
-                </div>
-                <div id="negative_rubric_list"></div>
-                
-            </div>
-        </div> 
-    </div> {% endcomment %}
 
     <!-- Modal for editing rubric -->
     <div class="modal fade" id="editingModal" tabindex="-1" role="dialog" aria-labelledby="editingModalLabel" aria-hidden="true">
@@ -293,7 +213,7 @@
         return new_rubric_dict
     }
 
-    function add_rubric_item_element(rubric_dict, new_item=false){
+    function add_rubric_item_element(rubric_dict, new_item=false, from_suggested=false){
         // get polarity
         var polarity = rubric_dict.polarity;
         // get element to append to
@@ -316,7 +236,6 @@
         col8Div.classList.add("col-8");
       
         const rubric_title = document.createElement("p");
-        // make h5 show rubric title
         rubric_title.innerHTML = "<b>Rubric #" + rubric_id + ": " + rubric_dict.title + "</b>";
         col8Div.appendChild(rubric_title);
       
@@ -346,7 +265,8 @@
             // populate modal with rubric info
             document.getElementById("title-name").value = rubric_dict.title;
             document.getElementById("description-text").value = rubric_dict.description;
-            document.getElementById("examples-text").value = rubric_dict.examples.join(", ");
+            var examples_str = rubric_dict.examples ? rubric_dict.examples.join(", ") : "N/A";
+            document.getElementById("examples-text").value = examples_str;
 
             // remove event listener from Update button
             var old_element = document.getElementById("editingModal").querySelector("button.btn-primary");
@@ -373,7 +293,8 @@
 
                 // update the rubric item element's examples
                 var examples_el = document.getElementById("examples_" + rubric_id);
-                examples_el.innerHTML = "<b>Example(s):</b> " + rubric_dict.examples.join(", ");
+                var examples_str = rubric_dict.examples ? rubric_dict.examples.join(", ") : "N/A";
+                examples_el.innerHTML = "<b>Example(s):</b> " + examples_str;
 
                 // update rubric list
                 update_rubric_list();
@@ -420,7 +341,9 @@
         descriptionElement.id = "description_" + rubric_id;
 
         const exampleElement = document.createElement("p");
-        exampleElement.innerHTML = "<b>Example(s):</b> " + rubric_dict.examples.join(", ");
+        // ternary statement if rubric_dict.examples exists
+        var examples_str = rubric_dict.examples ? rubric_dict.examples.join(", ") : "N/A";
+        exampleElement.innerHTML = "<b>Example(s):</b> " + examples_str;
         exampleElement.id = "examples_" + rubric_id;
 
         cardBodyDiv.appendChild(descriptionElement);
@@ -430,16 +353,98 @@
 
         // insert new rubric item element before any other rubrics in this list
         if (new_item) {
+            // get all suggested rubrics in this list
+            var suggested_rubrics = rubric_list_el.querySelectorAll("[id^='suggested_']");
+            var first_suggested_rubric = suggested_rubrics[0];
+            rubric_list_el.insertBefore(cardDiv, first_suggested_rubric);
+        } else if (new_item) {
             rubric_list_el.insertBefore(cardDiv, rubric_list_el.childNodes[0]);
         } else {
             rubric_list_el.appendChild(cardDiv);
         }
     }
 
+    function add_rubric_suggestion_element(rubric_dict, forloopCounter){
+        // get polarity
+        var polarity = rubric_dict.polarity;
+        // get element to append to
+        var rubric_list = document.getElementById(polarity + "_rubric_list");
+        var rubric_id = rubric_dict.id;
+
+        const cardDiv = document.createElement("div");
+        cardDiv.classList.add("card");
+        cardDiv.classList.add("mb-2");
+        cardDiv.id = "suggested_negative_"  + forloopCounter;
+        cardDiv.style.borderStyle = "dashed";
+        cardDiv.style.borderWidth = "4px";
+
+        const cardBodyDiv = document.createElement("div");
+        cardBodyDiv.classList.add("card-body");
+        cardBodyDiv.id = "suggested_negative_heading_" + forloopCounter;
+
+        const rowDiv = document.createElement("div");
+        rowDiv.classList.add("row");
+
+        const col8Div = document.createElement("div");
+        col8Div.classList.add("col-8");
+
+        const rubric_title = document.createElement("p");
+        rubric_title.innerHTML = "<b>Suggested: " + rubric_dict.title + "</b>";
+        col8Div.appendChild(rubric_title);
+
+        const col4Div = document.createElement("div");
+        col4Div.classList.add("col-4");
+        const btnGroup = document.createElement("div");
+        btnGroup.classList.add("btn-group", "btn-group-sm", "float-right");
+        btnGroup.setAttribute("role", "group");
+        btnGroup.setAttribute("aria-label", "Basic example");
+        const addButton = document.createElement("button");
+        addButton.setAttribute("type", "button");
+        addButton.classList.add("btn", "btn-secondary");
+        addButton.textContent = "Add";
+
+        // attach event listener to Add button to remove current div and add to rubric list as new
+        addButton.addEventListener("click", function() {
+            // remove current div
+            var card_to_remove = document.getElementById("suggested_negative_" + forloopCounter);
+            card_to_remove.parentNode.removeChild(card_to_remove);
+
+            // add to rubric list
+            new_rubric_dict = add_new_rubric_item(polarity, rubric_dict);
+
+            // add to rubric list
+            add_rubric_item_element(new_rubric_dict, true);
+        });
+
+        btnGroup.appendChild(addButton);
+        col4Div.appendChild(btnGroup);
+
+        rowDiv.appendChild(col8Div);
+        rowDiv.appendChild(col4Div);
+
+        cardBodyDiv.appendChild(rowDiv);
+
+        const innerCardBodyDiv = document.createElement("p");
+        //innerCardBodyDiv.classList.add("card-body");
+        innerCardBodyDiv.id = `rubricbody_${rubric_dict.id}`;
+        innerCardBodyDiv.innerHTML = `<b>Description</b>: ${rubric_dict.description}`;
+
+        cardBodyDiv.appendChild(innerCardBodyDiv);
+        cardDiv.appendChild(cardBodyDiv);
+        // cardDiv.appendChild(innerCardBodyDiv);
+
+        rubric_list.appendChild(cardDiv);
+    }
+
     $(document).ready(function () {
+        var counter = 0;
         rubric_list.forEach(function(rubric) {
+            counter++;
             if (rubric.id != 0) {
                 add_rubric_item_element(rubric);
+            } else {
+                add_rubric_suggestion_element(rubric, counter);
+                console.log(rubric)
             }
         });
     })
