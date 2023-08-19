@@ -80,29 +80,56 @@
     <p>Total answers: {{ answer_count }}</p>
 
     <br>
-    <div>
-        {{samples}}
-        {% comment %} Make list of each rubric item from rubric_list {% endcomment %}
+    <div class="row mt-4 mb-2">
+        <div class="col-6">
+            <div class="row mb-2">
+                <div class="col-8">
+                    <h4>Positive Rubrics</h4>
+                </div>
+                <div class="col-4 d-flex justify-content-end">
+                    <a href="#" class="btn btn-success btn-sm" onclick="add_new_rubric_item('positive')">Add</a>
+                </div>
+            </div>
+            <div id="positive_rubric_list"></div>
+        </div> 
+        <div class="col-6">
+            <div class="row mb-2">
+                <div class="col-8">
+                    <h4>Negative Rubrics</h4>
+                </div>
+                <div class="col-4 d-flex justify-content-end">
+                    <a href="#" class="btn btn-success btn-sm" onclick="add_new_rubric_item('negative')">Add</a>
+                </div>
+            </div>
+            <div id="negative_rubric_list"></div>
+        </div> 
+    </div> 
+    
+    {% comment %} <div class="card-deck" id="rubric_card_deck">           
         {% for rubric in rubric_list %}
         <div class="card mb-2">
             <div class="card-header">
                 <div class="row align-items-center">
-                    <div class="col-6">
-                        <b>Rubric Item {{ forloop.counter }}</b>
+                    <div class="col-9">
+                        <b>Rubric #{{ rubric.id }}: {{ rubric.title }} {% if rubric.polarity == "positive" %}✔️{% else %}❌{% endif %}</b>
                     </div>
-                    <div class="col-6 d-flex justify-content-end">
+                    <div class="col-3 d-flex justify-content-end">
                         <p class="text-secondary px-2 font-weight-bold" id="status_{{ rubric.id }}"></p>
                     </div>
                 </div>
             </div>
             <div class="card-body">
-                <p>{{ rubric.polarity }}</p>
-                <p>{{ rubric.title }}</p>
-                <p>{{ rubric.description }}</p>
+                <p>Description: {{ rubric.description }}</p>
+                {% for example in rubric.examples %}
+                <p>Example: {{ example }}</p>
+                {% endfor %}
             </div>
         </div>
+        {% if forloop.counter|divisibleby:2  %} 
+        <div class="w-100 d-none d-block"></div> 
+        {% endif %}
         {% endfor %}
-    </div>
+    </div> {% endcomment %}
 
     {% comment %} <div class="row">
         <div class="col-8">
@@ -197,6 +224,215 @@
 </style>
 
 <script>
+    // parse django answers to js dict
+    var rubric_list = {{ rubric_list|safe }};
+    console.log(rubric_list);
+
+    function update_rubric_list() {
+        $.ajax({
+            url: "{% url 'update_rubric_list' question_obj.id %}",
+            data: {csrfmiddlewaretoken: "{{ csrf_token }}", 'rubric_list':  JSON.stringify(rubric_list)},
+            dataType: "json",
+            type: 'POST',
+        }).done(function(response){
+            console.log(response);
+        });
+    }
+
+    function get_highest_rubric_id(){
+        var highest_id = 0;
+        rubric_list.forEach(function(item) {
+            if (item.id > highest_id) {
+                highest_id = item.id;
+            }
+        });
+        return highest_id;
+    }
+
+    function add_new_rubric_item(polarity, rubric_dict= null){
+        var highest_id = get_highest_rubric_id();
+        var rubric_id = highest_id + 1;
+
+        var index = 0;
+        var lowest = 1000;
+        rubric_list.forEach(function(item) {
+            curr_item_idx = rubric_list.indexOf(item)
+            if (item.id == 0 && curr_item_idx < lowest) {
+                index = curr_item_idx;
+                lowest = curr_item_idx;
+            }
+        });
+
+        if (rubric_dict){
+            new_rubric_dict = rubric_dict
+            new_rubric_dict.id = rubric_id;
+
+            // move rubric in list to before any rubrics with id of 0
+            rubric_list.splice(index, 0, rubric_list.splice(rubric_list.indexOf(rubric_dict), 1)[0]);
+        } else {
+            new_rubric_dict = {
+                "id": rubric_id,
+                "title": "N/A",
+                "description": "N/A",
+                "polarity": polarity,
+                "examples": [],
+                "reasoning_dict": {},
+            }
+
+            // add new rubric to rubric_list before any rubrics with id of 0
+            rubric_list.splice(index, 0, new_rubric_dict);
+
+            add_rubric_item_element(new_rubric_dict, true);
+        }
+
+        update_rubric_list();
+        return new_rubric_dict
+    }
+
+    function add_rubric_item_element(rubric_dict, new_item=false){
+        // get polarity
+        var polarity = rubric_dict.polarity;
+        // get element to append to
+        var rubric_list_el = document.getElementById(polarity + "_rubric_list");
+        var rubric_id = rubric_dict.id;
+
+        const cardDiv = document.createElement("div");
+        cardDiv.classList.add("card");
+        cardDiv.classList.add("mb-2");
+        cardDiv.id = "rubric_" + rubric_id;
+      
+        const cardHeaderDiv = document.createElement("div");
+        cardHeaderDiv.classList.add("card-header");
+        cardHeaderDiv.id = "rubricheading_" + rubric_id;
+      
+        const rowDiv = document.createElement("div");
+        rowDiv.classList.add("row");
+      
+        const col8Div = document.createElement("div");
+        col8Div.classList.add("col-8");
+      
+        const rubric_title = document.createElement("p");
+        // make h5 show rubric title
+        rubric_title.innerHTML = "<b>Rubric #" + rubric_id + ": " + rubric_dict.title + "</b>";
+        col8Div.appendChild(rubric_title);
+      
+        const col4Div = document.createElement("div");
+        col4Div.classList.add("col-4");
+        const btnGroup = document.createElement("div");
+        btnGroup.classList.add("btn-group", "btn-group-sm", "float-right");
+        btnGroup.setAttribute("role", "group");
+        btnGroup.setAttribute("aria-label", "Basic example");
+        const editButton = document.createElement("button");
+        editButton.setAttribute("type", "button");
+        editButton.classList.add("btn", "btn-secondary");
+        editButton.textContent = "Edit";
+        const deleteButton = document.createElement("button");
+        deleteButton.setAttribute("type", "button");
+        deleteButton.classList.add("btn", "btn-secondary");
+        deleteButton.textContent = "Delete";
+
+        // attach event listener to Edit button to open modal
+        editButton.addEventListener("click", function() {
+            // open modal
+            $('#editingModal').modal('show');
+
+            // update modal title
+            document.getElementById("editingModalLabel").innerHTML = "Editing Rubric #" + rubric_id;
+
+            // populate modal with rubric info
+            document.getElementById("title-name").value = rubric_dict.title;
+            document.getElementById("description-text").value = rubric_dict.description;
+
+            // remove event listener from Update button
+            var old_element = document.getElementById("editingModal").querySelector("button.btn-primary");
+            var new_element = old_element.cloneNode(true);
+            old_element.parentNode.replaceChild(new_element, old_element);
+
+            // attach event listener to Update button to update rubric info
+            document.getElementById("editingModal").querySelector("button.btn-primary").addEventListener("click", function() {
+                // update rubric info
+                rubric_dict.title = document.getElementById("title-name").value;
+                rubric_dict.description = document.getElementById("description-text").value;
+
+                // update rubric item element
+                var rubric_item_el = document.getElementById("rubricheading_" + rubric_id).querySelector("button");
+                rubric_item_el.textContent = "Rubric #" + rubric_id + ": " + rubric_dict.title;
+
+                console.log(rubric_item_el);
+                console.log(rubric_dict.title);
+
+                // update the rubric item element's Description
+                var description_el = document.getElementById("description_" + rubric_id);
+                description_el.innerHTML = "<b>Description:</b> " + rubric_dict.description;
+
+                // update rubric list
+                update_rubric_list();
+
+                // close modal
+                $('#editingModal').modal('hide');
+            });
+        });
+
+        // attach event listener to Delete button to remove current div and remove from rubric list
+        deleteButton.addEventListener("click", function() {
+            // remove current div
+            var card_to_remove = document.getElementById("rubric_" + rubric_id);
+            card_to_remove.parentNode.removeChild(card_to_remove);
+
+            // get index in rubric list of the current rubric 
+            var index = 0;
+            rubric_list.forEach(function(item) {
+                if (item.id == rubric_id) {
+                    index = rubric_list.indexOf(item);
+                }
+            });
+
+            rubric_list.splice(index, 1);
+
+            update_rubric_list();
+        });
+
+        btnGroup.appendChild(editButton);
+        btnGroup.appendChild(deleteButton);
+        col4Div.appendChild(btnGroup);
+      
+        rowDiv.appendChild(col8Div);
+        rowDiv.appendChild(col4Div);
+      
+        cardHeaderDiv.appendChild(rowDiv);
+      
+        const cardBodyDiv = document.createElement("div");
+        cardBodyDiv.classList.add("card-body");
+        cardBodyDiv.id = "rubricbody_" + rubric_id;
+
+        const descriptionElement = document.createElement("p");
+        descriptionElement.innerHTML = "<b>Description:</b> " + rubric_dict.description;
+        descriptionElement.id = "description_" + rubric_id;
+
+        const exampleElement = document.createElement("p");
+        exampleElement.innerHTML = "<b>Example(s):</b> " + rubric_dict.examples.join(", ");
+
+        cardBodyDiv.appendChild(descriptionElement);
+        cardBodyDiv.appendChild(exampleElement);
+        cardDiv.appendChild(cardHeaderDiv);
+        cardDiv.appendChild(cardBodyDiv);
+        rubric_list_el.appendChild(cardDiv);
+    }
+
+    $(document).ready(function () {
+        rubric_list.forEach(function(rubric) {
+            if (rubric.id != 0) {
+                add_rubric_item_element(rubric);
+            }
+        });
+    })
+
+    // function to fade out loaded page when button is clicked and fade in loader
+    function fadeOutLoadedPage() {
+        $( "#loaded-page" ).fadeOut(400, function(){
+            $( "#loader" ).fadeIn(400);
+        });  
+    }
 
 </script>
 

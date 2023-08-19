@@ -162,12 +162,12 @@ def rubric_creation_2(request, q_id):
 
     chosen_answers = Answer.objects.filter(question_id=q_id)
     answer_count = len(chosen_answers)
-    answer_df = pd.DataFrame(list(chosen_answers.values()))
-    cluster_df = cluster_answers(answer_df, n_clusters=20)
-    samples = sample_answers(cluster_df, n_samples=1)
-    samples_string = "\n\n".join(samples)
 
     if not RubricList.objects.filter(question_id=q_id).exists():
+        answer_df = pd.DataFrame(list(chosen_answers.values()))
+        cluster_df = cluster_answers(answer_df, n_clusters=20)
+        samples = sample_answers(cluster_df, n_samples=1)
+        samples_string = "\n\n".join(samples)
         new_rubric_list = llmh.create_rubric_suggestions_2(answer_df, samples_string, current_question_obj.question_text)
         rubric_obj = RubricList.objects.create(question_id=q_id, rubric_list=json.dumps(new_rubric_list))
     else:
@@ -179,7 +179,6 @@ def rubric_creation_2(request, q_id):
         "question_obj": current_question_obj,
         "question_exam_id": q_id,
         "question_list": q_list,
-        "samples": samples,
         "answer_count": answer_count,
         "rubric_list": rubric_list,
     }

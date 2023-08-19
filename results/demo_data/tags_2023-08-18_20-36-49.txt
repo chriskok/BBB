@@ -1,0 +1,324 @@
+35: R1,R3 - We want to use asynchronous programming in Javascript because it allows the program to run more efficiently as it will run other tasks while waiting for a response from something else. The application can send, request, and receive data from a server without blocking the rest of the interface from loading. 
+The answer mentions that asynchronous programming allows the program to run more efficiently and send, request, and receive data without blocking the rest of the interface.
+
+35: R3 - We want to use asynchronous programming in Javascript because our web applications often have to wait for data to be loaded into the program. Often, it is the case that programming in Javascript attempts to fetch some data. In this process, we don't know how long it will take for the data to be fetched. We don't want to block the user from interacting with the application while the data is being fetched, so we take advantage of asynchronous programming to allow the user to continue to interact with the application until the data is loaded.
+The answer mentions that asynchronous programming allows the user to continue interacting with the application until data is loaded, preventing blocking.
+
+35: R1,R2,R3 - We want to use asynchronous programming in JavaScript because it allows us to write code that is more efficient, responsive, and scalable. With asynchronous programming, we can write code that can perform multiple tasks concurrently, without blocking or halting the execution of the program. This means that our code can continue to run and respond to user input, even if some tasks take a long time to complete.
+The answer mentions that asynchronous programming allows for code that is more efficient, responsive, and scalable. It also mentions the ability to perform multiple tasks concurrently without blocking the execution of the program.
+
+35: R3 - We want to use asynchronous programming so that we do not get slowed down by instructions that take a long time to return, such as fetching data from an API, which ensures that users can still interact with the user interface.
+The answer mentions that asynchronous programming prevents being slowed down by instructions that take a long time to return, allowing users to still interact with the UI.
+
+35: R3 - When writing web apps, we often read and write to a server which takes time. To make sure each function has completely finished running, we need to wait for each function. Otherwise, if we execute in real time (synchronous) we may not get desired output.
+
+As an example, consider an app that writes a to-do list to a server. We want to add an item to the list and then print the list. Adding an item may take more time than printing. So, if asynchronous programming is not used the list that is printed will be the list before the new item was added which is not the desired output.
+The answer mentions that asynchronous programming is needed to prevent blocking the execution of other functions or the user interface while waiting for a response or performing long-running tasks.
+
+35: R3,R5 - We use async programming when we need to compensate for time delays and promises that need to be resolved, especially for example when interacting with APIs. We can also use this for parallelizing different processes,
+The answer mentions that asynchronous programming is used to compensate for time delays and promises that need to be resolved. It also mentions the ability to parallelize different processes.
+
+35: R1,R3 - It allows the program to start a potentially long-running task and still be able to be responsive to other events while that task runs, rather than having to wait until that task has finished so essentially it's more time-efficient.
+The answer mentions that asynchronous programming allows the program to start a potentially long-running task and still be responsive to other events. It also mentions that it is more time-efficient.
+
+35: R1,R3,R4 - Asynchronous programming allows to partially update a page without refreshing the whole page. It also allows for executing instructions that may take a really long time without blocking the rest of the code, so users are still able to interact with the UI.
+The answer mentions that asynchronous programming allows for partial page updates without refreshing the whole page. It also mentions that it allows for executing instructions that may take a long time without blocking the rest of the code.
+
+35: R1,R3 - We want to use asynchronous programming in Javascript so that the front end user interface still allows for user interaction while waiting for the javascript code to return or finish executing.
+The answer mentions that asynchronous programming allows the front-end user interface to still allow for user interaction while waiting for code to return or finish executing.
+
+35: R1,R3,R4 - It allows us to update only part of the webpage instead of reloading the entire page. It also prevents the execution of the programming from blocking if certain processes are taking too long to execute.
+The answer mentions that asynchronous programming allows for partial page updates without reloading the entire page. It also mentions that it prevents the execution of the program from blocking if certain processes are taking too long.
+
+35: R3 - Waiting for HTTP response can take a lot of time. Asynchronous programming allows the code to be executed in a non-blocking way. The program can continue execution while waiting for the response asynchronously, which can save a lot of wait time for users.
+The answer mentions that asynchronous programming allows the code to be executed in a non-blocking way, allowing the program to continue execution while waiting for a response asynchronously.
+
+35: R2 - This allows for multiple tasks to run at the same time.
+The answer mentions that asynchronous programming allows for running multiple tasks at the same time.
+
+35: R1,R3,R4 - Asynchronous programming enables a program to start a potentially long-running task and still be able to be responsive to other events while that task runs, rather than having to wait until that task has finished. This is beneficial, as we are able to change a page without reloading it as well as send, request and receive data from a server without blocking the rest of the interface.
+The answer mentions that asynchronous programming allows for partial page updates without reloading the entire page. It also mentions the ability to execute instructions that may take a long time without locking the rest of the code.
+
+35: R3,R4 - So we can reload data from the server and selectively update parts of a web page without reloading the whole page. It also prevents us from blocking the rest of the interface while waiting for the data.
+The answer mentions that asynchronous programming allows for updating parts of a webpage without reloading the entire page. It also mentions that it prevents blocking the rest of the interface while waiting for data.
+
+35: R1,R3 - Asynchronous programming allows us to partially update a page without refreshing it. In particular, it allows for the execution of instructions that may take a long time (e.g. awaiting HTTP responses) without locking the rest of the code. This way, users may still interact with the UI while awaiting these instructions.
+The answer mentions that asynchronous programming allows for partial page updates without refreshing the whole page. It also mentions the ability to execute instructions that may take a long time without blocking the rest of the code.
+
+35: R3 - There may be times where we are required to wait for a response from a server, for example. During this time, we still want the user to be able to use other features on a site, without being locked out until a response is received.
+The answer mentions that asynchronous programming allows for waiting for a response from a server without blocking the rest of the code.
+
+35: R3 - Because it allows executing time-consuming instructions such as waiting for HTTP responses without blocking the rest of the code so that users can still interact with the UI.
+The answer mentions that asynchronous programming allows for executing time-consuming instructions without blocking the rest of the code, enabling users to interact with the UI.
+
+35: R1 - We would want to use asynchronous programming because it allows users to still be able to interact with some of the UI elements while the others are still loading. It allows us to have promises.
+The answer mentions that asynchronous programming allows users to interact with some UI elements while others are still loading.
+
+35: R4 - Asynchronous programming allows us to not block the rest of the interface when sending, requesting, and receiving data from a server.
+The answer mentions that asynchronous programming allows for partially updating a page without refreshing it.
+
+35: R4 - Asynchronous programming in JS allows your program to load part of a task/webpage while the slower to load portions take their time. 
+The answer mentions that asynchronous programming allows for loading part of a task/webpage while slower portions take their time.
+
+35: R1,R2,R3 - Asynchronous programming is a technique that allows a program to perform multiple tasks concurrently, without blocking or halting execution. In JavaScript, this is useful because it allows the program to continue running and responding to user input, even if it is waiting for a slow operation, such as loading data from a remote server or performing a complex computation. This can improve the performance and responsiveness of the program, and it can also make it easier to write code that handles multiple concurrent events, such as user input and server responses. 
+The answer mentions that asynchronous programming allows for efficient, concurrent execution without blocking the program. It also mentions that it improves performance and responsiveness.
+
+35: R2 - We want to use it to enable our program to start a potentially long-running task and still be responsive to other events while that task runs, rather than having to wait until the task is finished.
+The answer mentions that asynchronous programming allows the program to start a potentially long-running task and still be responsive to other events.
+
+35: R2 - Allows the program to start long/expensive running function while still being responsive to other tasks (i.e handle clicks) without blocking and having to wait. Leads to a better user experience
+The answer mentions that asynchronous programming allows the program to start long/expensive running functions while still being responsive to other tasks.
+
+35: R2 - Asynchronous programming in javascript allows us to perform more than one task at a time without blocking execution of the other tasks. 
+The answer mentions that asynchronous programming allows for performing multiple tasks at the same time without blocking execution.
+
+35: R2,R3 - Asynchronous programming allows the program to continue running and responding to user input without having to wait for other tasks to complete. For example, we can fire off an api call and not have to halt the execution of other tasks because we can use asynchronous programming to run this api call concurrently with the other tasks.
+The answer mentions that asynchronous programming allows the program to continue running and responding to user input without waiting for other tasks to complete. It also mentions the ability to run an API call concurrently with other tasks.
+
+35: R2 - Asynchronous programming allows programs to perform multiple tasks at the same time. It allows the program to continue running even if one task is taking a long time to complete., as the program can complete other tasks in parallel. 
+The answer mentions that asynchronous programming allows for performing multiple tasks at the same time, completing other tasks in parallel.
+
+35: R2,R5 - Because you want to be able to run code in the background without blocking the user interface
+The answer mentions that asynchronous programming allows for running code in the background, enabling concurrency and responsiveness.
+
+35: R3 - Sometimes, fetching data from the web can take a long time. We want our code/website to still be able to work whilst waiting for this response. Asynchronous programming allows us to do this.
+The answer mentions that asynchronous programming allows the code/website to still work while waiting for a response, preventing it from being blocked.
+
+35: R1,R2,R3 - We want to use asynchronous programming in JavaScript because asynchronous programming is a technique that allow many tasks to run concurrently without interfering with the main thread of operation. Which means that the program may continue to operate and react to user input even if one or more activities are still running in the background. Therefore, this can improve the program's responsiveness and performance, especially when numerous time-consuming tasks are in progress.
+The answer mentions that asynchronous programming allows for running multiple tasks concurrently without interfering with the main thread of operation. It also mentions the improvement in responsiveness and performance.
+
+35: R3 - We want to use asynchronous programming in javascript because it allows us to use callbacks, which makes it such that when running long tasks, it does not freeze the rest of the program being used. For example, a webpage would be able to refresh itself rather than waiting for a user to refresh the page after a change. This is why we use AJAX.
+The answer mentions that asynchronous programming allows for the execution of long tasks without freezing the rest of the program.
+
+35: R1,R4 - It helps us when we are making calls to API's or waiting for things to load on, so that certain parts of the page can be updated when we get the new info that we need and do not need to refresh the whole page. 
+The answer mentions that asynchronous programming allows for updating parts of a page without refreshing the whole page. It also mentions the ability to run code without interrupting the execution.
+
+35: R2,R5 - We want to use asynchronous programming in Javascript so that we can run multiple lines of code in the background without interrupting the executions that are already occurring.
+The answer mentions that asynchronous programming allows for running multiple lines of code in the background without interrupting the executions that are already occurring.
+
+35: R2 - We want to use asynchronous programming so we don't need to run one process after another process and can run them simultaneously
+The answer mentions that asynchronous programming allows for running processes simultaneously instead of one after another.
+
+35: R1,R3 - One reason is that in JavaScript, there are multple tasks being executed at once at any given time, and it would be extremely slow and inefficient to have to wait for a task to complete before starting another one. With asynchronous programming, you don't have to pause your entire website while a task is being executed.
+The answer mentions that asynchronous programming allows users to interact with the UI while tasks are being executed. It also mentions that it prevents the website from pausing while a task is being executed.
+
+35: R1,R2,R3 - We want to use asynchronous programming in Javascript because it allows us to execute long-running or resource-intensive tasks without blocking the execution of the rest of the program. This is important because blocking the main thread of execution can lead to poor performance and a poor user experience. Asynchronous programming allows us to run multiple tasks concurrently and handle their results as they become available, improving the overall performance and responsiveness of the program. For example, when making a network request, asynchronous programming allows us to send the request and continue executing other parts of the program while waiting for the response. When the response is received, we can handle it without disrupting the rest of the program. This improves the user experience by making the program more responsive and less likely to appear "frozen" while waiting for a response.
+The answer mentions that asynchronous programming allows for executing long-running or resource-intensive tasks without blocking the execution of the rest of the program. It also mentions the ability to run multiple tasks concurrently and handle their results as they become available.
+
+35: R2,R3,R5 - Asynchronous programming allows for a program to continue executing while other operations are performed in the background. This can be useful for allowing a program to continue running without getting stuck or blocked waiting for a long-running operation to complete. For example, in a web application, using asynchronous programming can prevent the user interface from becoming unresponsive while the program is waiting for a network request to complete.
+The answer mentions that asynchronous programming allows for concurrent execution and responsiveness while waiting for tasks to complete. It also mentions that it prevents the user interface from becoming unresponsive while waiting for a network request to complete.
+
+35: R2,R3 - Asynchronous programming allows us to program the flow of actions based on events or messages rather than in a sequential order of code. This is especially useful in Javascript as we may be waiting for user actions and/or API responses, and must delay the execution of our code until we get this data. 
+The answer mentions that asynchronous programming allows for concurrent execution and responsiveness while waiting for user actions and/or API responses.
+
+35: R1,R4 - It enables more dynamic change for users without reloading using webpages. For example, AJAX is used to enable Asynchronous Javascript and XML and it enables you to change a page without reloading as it can send, request, and receive data without immediately reloading the page. This way the user can have a quicker and more streamlined experience on a webpage.
+The answer mentions that asynchronous programming enables dynamic changes without reloading webpages. It also mentions the ability to send, request, and receive data without immediately reloading the page.
+
+35: R1,R4 - It allows changing a page without reloading it and makes it possible to send, request, and receive data without blocking the rest of the interface.
+The answer mentions that asynchronous programming allows for changing a page without reloading it and sending, requesting, and receiving data without blocking the rest of the interface.
+
+35: R2,R3 - Because it's difficult to manage responses from multiple asynchronous function and we want to execute other lines of code without blocking.
+The answer mentions that asynchronous programming is used to manage responses from multiple asynchronous functions and execute other lines of code without blocking.
+
+36: R1,R2,R3 - 3 purposes of user research is to find out user problems, find out what the user needs, and give the user a solution where they can solve their problems and receive their needs.
+This answer mentions finding user problems and needs (R1), providing solutions to solve user problems and needs (R2), and giving the user a solution to their problems (R3).
+
+36: R1,R2,R3 - 1. understand user needs so that people creating products can tailor their product to those user needs
+2. make sure that the solution meets the needs of the users so that the product will actually be used by people and is relevant
+3. conduct user testing so that we can have feedback and improve the current design to address any usability issues.
+This answer mentions understanding user needs (R1), making sure the solution meets user needs (R2), and conducting user testing to address usability issues (R3).
+
+36: R1,R2,R3 - 3 purposes:
+1) To understand the needs of the user and what they want the most (we can understand their mental models)
+2) To perfect our prototype through user testing and fix smaller bugs that we may be unable to find.
+3) User research can also help figure out the viability of a design that we may have (whether or not it will be successful). It can also help reduce excessive effort and design time for the creators of the product and save time and money in the process.
+This answer mentions understanding user needs and preferences (R1), validating design decisions through user testing (R2), and fixing smaller bugs through user testing (R3).
+
+36: R1,R2,R3 - To improve the quality of the product, to improve the usability of the product, to identify the preferences of users, to make sure the product is safe for the user
+This answer mentions improving the quality and usability of the product (R1,R2), and identifying user preferences and safety concerns (R3).
+
+36: R1,R2,R3 - User research is first needed to identify a user need. User research is also needed after ideating to check with users about whether they like certain solutions. Finally, user research is needed in the final stages to fix usability errors and make the product more user friendly.
+This answer mentions identifying user needs (R1), checking with users about their preferences (R2), and fixing usability errors through user research (R3).
+
+36: R1,R2,R3 - User research is used in the ideation stage to evaluate user needs and help start drafting a prototype. It is also useful when you already have a prototype you can evaluate how easy it is to use and navigate through think-alouds and observations. User research is also used to find bugs in a prototype. 
+This answer mentions evaluating user needs in the ideation stage (R1), evaluating usability through think-alouds and observations (R2), and finding bugs in a prototype through user research (R3).
+
+36: R1,R2,R3 - Three purposes of User Research is to understand the user need on how your particular product is solving a problem, evaluate your product amongst users by gathering user feedback and explore potential solutions to problems as a product is being created in the industry. There are more, but these are just 3. 
+This answer mentions understanding user needs (R1), gathering user feedback (R2), and exploring potential solutions (R3).
+
+36: R1,R3 - User research is needed in observation and ideation to identify the user needs and build the product around them. User research is needed in prototyping through think-aloud protocols to identify problems in the product. User research is needed in the implementation through user testing to fix any possible bugs that appear in the product. 
+This answer mentions understanding user needs and building the product around them (R1) and identifying problems in the product through user testing (R3).
+
+36: R1,R2,R3 - 1. To gather user needs.
+2. To evaluate the effectiveness and usability of a UI/Product
+3. To gather feedback and refine the product
+
+This answer mentions gathering user needs (R1), evaluating the effectiveness and usability of a product (R2), and gathering feedback to refine the product (R3).
+
+36: R1,R2,R3 - User research is 
+- used to find target group and used to develop and find user needs by uncovering user challenges or problems that they may want to solve.
+- This helps brainstorm and generate potential ideas, which can be used in IDEO framework through selecting an idea by speed dating with story boards.
+- It also helps with prototyping because the prototype should address user needs found through user research. Furthermore, there should be more user research or questions asked during prototyping to further develop the prototype into final design.
+This answer mentions finding user needs and challenges (R1), generating potential ideas (R2), and addressing user needs through user research during prototyping (R3).
+
+36: R1,R2,R5 - 1)  during need finding user research is needed to figure out what the user will want from the app
+2) during ideation, user research will be used to figure out what the interface should look like and how it should behave
+3) during prototyping the user research will be used to iterate previous ideas
+This answer mentions understanding user needs (R1), figuring out the interface and behavior of the product (R2), and iterating previous ideas through user research (R5).
+
+36: R1,R2,R3 - The first purpose of user research can be during the need finding phase of designing a product - the users can provide information about an issue that they might have. The researchers can then use this information to come up with a potential issue that users may have in a particular field. The second purpose is during ideation, where the researchers can come up with storyboards for various ideas and propose this information to users, where they can provide their opinions and overall influence the future designs of a potential product. The third purpose is during final user testing, where the users can utilize and interact with a final design and provide information such as what they think of the product and the researchers can use the results of the user interaction with the product to fix any parts of the design that the users may have had trouble with.
+This answer mentions gathering user needs (R1), involving users in the ideation stage (R2), and getting feedback on the final design (R3).
+
+36: R1,R2,R3 - User research is useful in the need-finding stage of development in order to validate user needs. In the Ideation stage, we probe into users’ preferences in the design space. In the prototyping stage, we get feedback on the usability of a given design and learn how to improve it based on that feedback.
+This answer mentions validating user needs (R1), probing into users' preferences (R2), and getting feedback on usability and improving the design (R3).
+
+36: R1,R2,R3 - 1. Understand users' needs.
+2. Make sure the designs are truly needed and relavent.
+3. Make sure the product are easy to use. 
+This answer mentions understanding users' needs (R1), ensuring the relevance of the designs (R2), and ensuring the product is easy to use (R3).
+
+36: R1,R3 - uncover users' needs and challenges, find usability issues with the prototype, find out what a user's current experience is and improve upon it
+This answer mentions uncovering users' needs and challenges (R1) and finding usability issues with the prototype (R3).
+
+36: R1,R2,R3 - Three purposes of human research are need validation, uncovering mental models, and receiving feedback.
+Need validation occurs before development of the product during story board and speed dating and is used in order to explore different proposed solutions to identify which solutions would be best.
+Uncovering mental models is used throughout the process during think aloud sessions in order to see how the user thinks and how the designers and developers can make their product easier to use. 
+Receiving feedback is used during testing and after each release in order to see how designers and developers can better improve their product for users in the future. The most important part about user research is realizing that users should be involved at all stages of the design process and the user is NOT you!
+This answer mentions need validation (R1), uncovering mental models (R2), and receiving feedback (R3).
+
+36: R1,R2,R3 - User research is incredibly useful to figure out a user's needs when trying to develop the product and what you want it to accomplish. Additionally, user research helps you on the diverge path of the ideation period of the IDEO framework to narrow down on specific ideas that benefit users and customers the most. Lastly, user research helps you on the diverge path of the inspiration path of the IDEO framework because it allows you to be conservative with your inspiration and understand what users would need to be solved or improved in their lives.
+This answer mentions understanding user needs (R1), narrowing down ideas that benefit users (R2), and understanding what users need to be solved or improved (R3).
+
+36: R1,R2,R3 - 1.) Get feedback from users about what they need rather than assuming needs and fixing them in post
+2.) See if the product actually improves/solves the problem being addressed
+3.) Continue to fix the product from previous iterations to solve previous problems in prototyped products
+This answer mentions understanding user needs (R1), validating the need for the product (R2), and fixing previous problems through iterative improvements (R3).
+
+36: R1,R2,R3 - Identify user needs, confirm that ideas meet user needs, evaluate to what extent prototype meets user needs and help user achieve goal.  
+This answer mentions identifying user needs (R1), confirming that ideas meet user needs (R2), and evaluating the extent to which the prototype meets user needs (R3).
+
+36: R1,R2,R3 - 1. Help designers uncover users' processes and challenges.
+2. Generate potential solutions to address users' needs.
+3. Build a mock-up of potential solutions to get users' feedback, and improve the design.
+This answer mentions uncovering users' processes and challenges (R1), generating potential solutions (R2), and improving the design based on user feedback (R3).
+
+37: R1 - Just as we do not want to use duplicate code in textual programming, Components allow us to re-use an element, so that we do not have to take the time creating/editing new elements when we want them to all have the same functionality.
+The answer mentions that components allow for reusing elements and avoiding the time-consuming process of creating/editing new elements, indicating an understanding of consistency and reusability.
+
+37: R1 - By having reusable designs we would have greater consistancy within our project. This leads to a more pleasant design. This also allows us to reduce our work as we can reuse designs rather than making them again.
+The answer mentions that reusable designs lead to greater consistency and reduce work, indicating an understanding of consistency and reusability.
+
+37: R1,R3 - We use components to create instances in Figma so that we can easily reuse element designs and keep these element design consistent across our prototype.
+The answer mentions that components allow for reusing element designs and keeping them consistent, indicating an understanding of consistency and reusability as well as design management and organization.
+
+37: R1 - you can reuse components in your project which makes the prototype much cleaner and minimalistic.
+The answer mentions that components can be reused in a project, indicating an understanding of consistency and reusability.
+
+37: R1,R2 - Components help us to reduce copies of the same object (say we want to use a similar template but with different information). With the help of components, we can also quickly make changes to all our sub-components by changing the parent components, thus making revisions much easier.
+The answer mentions that components help reduce copies of the same object and make revisions easier, indicating an understanding of consistency and reusability as well as efficiency and time-saving.
+
+37: R1,R4 - Components can help make figma designs consistent and allow the designer to make multiple instances of the same object. They can also be used to add functionality to the figma prototype
+The answer mentions that components make designs consistent, allow for creating multiple instances, and adding functionality, indicating an understanding of consistency and reusability as well as flexibility and variability.
+
+37: R1 - So that we don't have to creating the same thing more than one time
+The answer mentions that components help avoid creating the same thing multiple times, indicating an understanding of consistency and reusability.
+
+37: R1 - Components allow us to create re-usable items that we can use throughout our prototype
+The answer mentions that components allow for creating reusable items, indicating an understanding of consistency and reusability.
+
+37: R1 - Components help with the design goal of consistency and standards. When one component is used across a design it makes the button very familiar. Such as an accept button on a design, if all the accept buttons are from the same component, the user will intuitively know that the button is an accept button based off of its design. 
+The answer mentions that components help with the design goal of consistency and standards, indicating an understanding of consistency and reusability.
+
+37: R1,R4 - Components make it easier to create and iterate on a previously created design element, as they provide a sort of template for an element that can be changed to have different states. You can also introduce microinteractions with components, such as a checked and unchecked state for a checkbox.  
+The answer mentions that components make it easier to create and iterate on design elements and introduce microinteractions, indicating an understanding of consistency and reusability as well as flexibility and variability.
+
+37: R1,R2 - We can use components to create consistent designs, and designs that can be modified en masse, making it easier to change, for example, the color of our "submit" buttons uniformly across ten different frames.
+The answer mentions that components help create consistent designs and make it easier to change design elements uniformly across frames, indicating an understanding of consistency and reusability as well as efficiency and time-saving.
+
+37: R1,R2,R3 - We want to use components because it can be reused and edited throughout the prototype. This allows us to maintain a design system that remains consistent throughout the Figma and also makes designign the Figma easier because you do not have to create a new instance if you can reuse one. On top of that it is easier to edit because we can edit it outside of the page we are working on.
+The answer mentions that using components allows for reusing and editing them, maintaining consistency, and making the design process easier, indicating an understanding of consistency and reusability, efficiency and time-saving, as well as design management and organization.
+
+37: R1,R4 - Components allow creation of consistent user interfaces across the application. Components are similar to creating functions, as they reduce "code reuse" in Figma. We can also turn components into variants, in the case that it must be slightly changed. 
+The answer mentions that components allow for creating consistent user interfaces and reducing code reuse, indicating an understanding of consistency and reusability as well as flexibility and variability.
+
+37: R1,R2 - You want to use components to create instances in Figma to standardize how particular elements are going to function on in your prototype so that there are not inconsistencies, moreover they increase your productivity in the form of allowing you to essentially copy and paste details to where they need to be. 
+The answer mentions that components help standardize elements and increase productivity by copying and pasting details, indicating an understanding of consistency and reusability as well as efficiency and time-saving.
+
+37: R1,R2 - By using components, we are able to reuse these components across multiple designs which reduces time spent on other designs and help keep these components' design consistent across projects and pages.
+The answer mentions that using components reduces time spent on other designs, keeps design consistent, and allows for reusing components across projects, indicating an understanding of consistency and reusability as well as efficiency and time-saving.
+
+37: R1,R2 - Using components to create instances in Figma allow for consistency and efficiency when adding the same features through out different frames and simplifies giving actions to large chunks of features.
+The answer mentions that using components allows for consistency and efficiency when adding the same features across different frames, indicating an understanding of consistency and reusability as well as efficiency and time-saving.
+
+37: R1 - Components allow you to create reusable elements that can be used multiple times within a design. For example, if you create a button Component, you can easily create multiple instances of the button and use them throughout your design, without having to recreate the button each time. This can save time and make your design more consistent.
+The answer mentions that components allow for creating reusable elements and saving time, indicating an understanding of consistency and reusability.
+
+37: R1 - Components allow Figma designers to use one single element multiple times with consistency. 
+The answer mentions that components allow for using one single element multiple times with consistency, indicating an understanding of consistency and reusability.
+
+37: R1,R2 - Components are used to create instances of an object that can be easily reused and updated throughout a design. This can save time and improve consistency, because changes made to the original component are automatically applied to all of its instances.
+The answer mentions that components allow for reusing and updating objects throughout a design, indicating an understanding of consistency and reusability as well as efficiency and time-saving.
+
+37: R1,R3 - Instances created from Components can be reused and customized across the entire app, so when updates are needed for multiple instances, we can update the Component and the changes will apply to all of them.
+The answer mentions that instances created from components can be reused and customized, indicating an understanding of consistency and reusability as well as design management and organization.
+
+37: R1 - Allows us to resuse designs
+The answer mentions that components allow for reusing designs, indicating an understanding of consistency and reusability.
+
+37: R1,R3 - Components are important so that they can be reused easily and keep the entire Figma organized. This can manage consistent design across projects.
+The answer mentions that components can be reused easily and help in managing consistent design across projects, indicating an understanding of consistency and reusability as well as design management and organization.
+
+37: R1 - Components are elements that we can reuse across our designs without having to do repetitive work. 
+The answer mentions that components can be reused without repetitive work, indicating an understanding of consistency and reusability.
+
+37: R1,R2 - you can reuse instances of a component rather than making a new component over and over again. Reusing instances saves time and effort.
+The answer mentions that reusing instances of a component saves time and effort, indicating an understanding of consistency and reusability as well as efficiency and time-saving.
+
+37: R1,R2 - Components save on time and boost efficiency because Figma allows you to create new instances of components easily. For example, if you want a consistent design so you choose to reuse your company logo, it makes sense to create a component to easily create new instances of that logo and place it on several pages.
+The answer mentions that components save time and effort by reusing design elements and creating new instances easily, indicating an understanding of consistency and reusability as well as efficiency and time-saving.
+
+37: R1,R3 - Components allow the ready reuse of objects created in Figma. These components can also be easily updated at any time by changing the original component while also allowing for sub components to be altered for their particular use without changing any of the sibling or parent components.
+The answer mentions that components allow for ready reuse, easy updates, and alteration of sub-components, indicating an understanding of consistency and reusability as well as design management and organization.
+
+37: R1,R5 - Because we may want to use the same instance, e.g. a button, on many pages of our prototype and it is important to keep the designs consistent in order to adhere to Nielson's heuristic of "Consistency and standards".
+The answer mentions that components help in reusing the same instance and adhering to consistency and standards, indicating an understanding of consistency and reusability as well as collaboration and standardization.
+
+37: R1,R2 - We want to use components for reusable design so that you don't have to repeat the same components if you're using the same thing repeatedly. This saves the user's time. 
+The answer mentions that components save time and are important for reusable design, indicating an understanding of consistency and reusability as well as efficiency and time-saving.
+
+37: R4 - We want to use components to create instances in Figma because they allow us to create interactions with user input or other components within the prototype. 
+The answer mentions that components allow for creating interactions within the prototype, indicating an understanding of flexibility and variability.
+
+37: R4 - We use components because they are like templates that you can edit to make variants from.
+The answer mentions that components can be turned into variants and edited, indicating an understanding of flexibility and variability.
+
+37: R1,R3 - Components allow users to create multiple design elements like buttons or boxes that can be reused many times. This ensures that the design is uniform across the entire prototype.
+The answer mentions that components allow for creating reusable design elements and ensuring uniformity, indicating an understanding of consistency and reusability as well as design management and organization.
+
+37: R1,R4 - Components allow us to create multiple instances of an object that we can modify such that when the parent is modified, so too are the children. It allows for mass changes and the creation of variants, which can also be modified in mass. Variants allow for small changes while still preserving most of the object's style/behavior.
+The answer mentions that components allow for creating multiple instances, mass changes, and variants, indicating an understanding of consistency and reusability as well as flexibility and variability.
+
+37: R1,R4 - Instances allow you to move and resize the component as you wish and it also allows you ro reuse objets throughout your design (if you can one, it will change all of them that you used the instance). It saves time for the programmer 
+The answer mentions that instances allow for reusing objects, saving time, and making updates easier, indicating an understanding of consistency and reusability as well as flexibility and variability.
+
+37: R4 - Because we can reuse components and have them interact with each other as users seem fit 
+The answer mentions that components can be reused and interact with each other, indicating an understanding of flexibility and variability.
+
+37: R1 - Because it's easy to operate when we want to reuse the components.
+The answer mentions that using components makes it easy to reuse them, indicating an understanding of consistency and reusability.
+
+37: R1,R2 - The main reason we want to use components to create to create instances in Figma is to efficiently create consistent user interfaces by not having having to recreate the entire same component for each use.
+The answer mentions that using components allows for efficient creation of consistent user interfaces, indicating an understanding of consistency and reusability as well as efficiency and time-saving.
+
+37: R1,R2,R3 - We use components since we can make multiple instances of an object without duplicating it for every use. This saves time and makes designs more organized, efficient and standardized. Since all instances are linked to the parent one, updating the parent will update all instances which makes the design process much easier and quicker.
+The answer mentions that using components saves time, makes designs more organized and efficient, and allows for easy updating, indicating an understanding of consistency and reusability, efficiency and time-saving, as well as design management and organization.
+
+37: R1,R2 - We want to use components because it is more efficient. It allows us to change properties of the component to change it for all of its copies as well as to change properties for its individual copy without changing things for the rest. It also helps aid consistency and standards in the instances of the Figma prototype.
+The answer mentions that components aid consistency and standards, allow for changing properties of individual copies, and make the design process easier, indicating an understanding of consistency and reusability as well as efficiency and time-saving.
+
+37: R1,R4 - Components allow for design consistency as well as the recognition of multiple parts of a component as one item.
+The answer mentions that components allow for design consistency and treating multiple parts as one item, indicating an understanding of consistency and reusability as well as flexibility and variability.
+
+37: R1,R2 - You can re-use existing parts and pages and other elements which helps you to ensure design consistency and helps you save time as well. It would also allow designers to update the elements quickly.
+The answer mentions that components help ensure design consistency, save time, and allow for quick updates, indicating an understanding of consistency and reusability as well as efficiency and time-saving.
+

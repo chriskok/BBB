@@ -152,7 +152,7 @@ def create_rubric_suggestions_2(df, answers, question_text):
 
     formatting_prompt = """For the output, create a comma-separated list of python dictionaries that STRICTLY follow the JSON format:
 
-    [{"id": <unique ID for each rubric, starting from 1>, "polarity": "<positive/negative>", "title": "<short title of the rubric (2-7 words)>", "description": "<longer description of the rubric>", "reasoning_dict": {}}, ...]
+    [{"id": <unique ID for each rubric, starting from 1>, "polarity": "<positive/negative>", "title": "<short title of the rubric (2-7 words)>", "description": "<longer description of the rubric>", "examples": ["<first example answer from dataset>", "<second example answer from dataset>"], "reasoning_dict": {}}, ...]
     """
     msgs.append({"role": "assistant", "content": rubrics_response})
     msgs.append({"role": "user", "content": formatting_prompt})
