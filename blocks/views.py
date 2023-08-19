@@ -450,7 +450,7 @@ def rubric_refinement_2(request, q_id, additional="false"):
         "ans_tags": ans_tags,
     }
 
-    return render(request, "rubric_refinement.html", context)
+    return render(request, "rubric_refinement_2.html", context)
 
 def update_answer_tag(request):
     # get the current answer tag, and update the reasoning dict with new 'reasoning', 'highlighted', and 'relevancy' values
