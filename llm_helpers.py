@@ -237,7 +237,6 @@ def apply_rubrics(question, answers, rubrics, existing_tags=None):
 
     msgs = [{"role": "system", "content": system_prompt}, {"role": "user", "content": user_prompt}]
     matching_response = prompt_gpt4(msgs)
-    print(matching_response)
 
     formatting_prompt = """For the final output, create one large JSON dictionary that elaborates on the labels through reasoning and highlighting. Only highlight the most relevant words per rubric that you choose to apply - keep it short! Please provide reasoning for your labels and a relevancy score as well. For the output, create python dictionary that STRICTLY follow the JSON format:
 
@@ -260,7 +259,6 @@ def apply_rubrics(question, answers, rubrics, existing_tags=None):
     msgs.append({"role": "assistant", "content": matching_response})
     msgs.append({"role": "user", "content": formatting_prompt})
     response = prompt_gpt4(msgs)
-    print(response)
 
     try:
         tags = json.loads(response)
