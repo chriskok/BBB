@@ -205,6 +205,10 @@
                             <label for="description-text" class="col-form-label">Description:</label>
                             <textarea class="form-control" id="description-text"></textarea>
                         </div>
+                        <div class="form-group">
+                            <label for="examples-text" class="col-form-label">Example(s):</label>
+                            <textarea class="form-control" id="examples-text"></textarea>
+                        </div>
                     </form>
                 </div>
                 <div class="modal-footer">
@@ -275,7 +279,7 @@
                 "title": "N/A",
                 "description": "N/A",
                 "polarity": polarity,
-                "examples": [],
+                "examples": ["N/A"],
                 "reasoning_dict": {},
             }
 
@@ -342,6 +346,7 @@
             // populate modal with rubric info
             document.getElementById("title-name").value = rubric_dict.title;
             document.getElementById("description-text").value = rubric_dict.description;
+            document.getElementById("examples-text").value = rubric_dict.examples.join(", ");
 
             // remove event listener from Update button
             var old_element = document.getElementById("editingModal").querySelector("button.btn-primary");
@@ -353,10 +358,11 @@
                 // update rubric info
                 rubric_dict.title = document.getElementById("title-name").value;
                 rubric_dict.description = document.getElementById("description-text").value;
+                rubric_dict.examples = [document.getElementById("examples-text").value];
 
                 // update rubric item element
-                var rubric_item_el = document.getElementById("rubricheading_" + rubric_id).querySelector("button");
-                rubric_item_el.textContent = "Rubric #" + rubric_id + ": " + rubric_dict.title;
+                var rubric_item_el = document.getElementById("rubricheading_" + rubric_id).querySelector("p");
+                rubric_item_el.innerHTML = "<b>Rubric #" + rubric_id + ": " + rubric_dict.title + "</b>";
 
                 console.log(rubric_item_el);
                 console.log(rubric_dict.title);
@@ -364,6 +370,10 @@
                 // update the rubric item element's Description
                 var description_el = document.getElementById("description_" + rubric_id);
                 description_el.innerHTML = "<b>Description:</b> " + rubric_dict.description;
+
+                // update the rubric item element's examples
+                var examples_el = document.getElementById("examples_" + rubric_id);
+                examples_el.innerHTML = "<b>Example(s):</b> " + rubric_dict.examples.join(", ");
 
                 // update rubric list
                 update_rubric_list();
@@ -411,12 +421,19 @@
 
         const exampleElement = document.createElement("p");
         exampleElement.innerHTML = "<b>Example(s):</b> " + rubric_dict.examples.join(", ");
+        exampleElement.id = "examples_" + rubric_id;
 
         cardBodyDiv.appendChild(descriptionElement);
         cardBodyDiv.appendChild(exampleElement);
         cardDiv.appendChild(cardHeaderDiv);
         cardDiv.appendChild(cardBodyDiv);
-        rubric_list_el.appendChild(cardDiv);
+
+        // insert new rubric item element before any other rubrics in this list
+        if (new_item) {
+            rubric_list_el.insertBefore(cardDiv, rubric_list_el.childNodes[0]);
+        } else {
+            rubric_list_el.appendChild(cardDiv);
+        }
     }
 
     $(document).ready(function () {
