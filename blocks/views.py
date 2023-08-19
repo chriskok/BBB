@@ -37,13 +37,13 @@ warnings.filterwarnings("ignore")
 #                  COMB V5                  #
 ############################################# 
 
-def check_suggestions(rubric_obj, current_question_obj, outlier_examples):
+def check_suggestions(rubric_obj, current_question_obj, samples, using_df=False):
 
     rubric_list = rubric_obj.get_rubric_list()
 
     # check if Rubric List has any suggestions (id = 0) for positive rubrics 
     if not any(rubric["id"] == 0 and rubric['polarity'] == "positive" for rubric in rubric_list):
-        new_suggestions = llmh.create_rubric_suggestions(current_question_obj, outlier_examples, rubric_list, "positive")
+        new_suggestions = llmh.create_rubric_suggestions(current_question_obj, samples, rubric_list, "positive", using_df=using_df)
         new_rubric_list = rubric_list
         for rubric in new_suggestions:
             new_rubric_list.append(rubric)
@@ -52,7 +52,7 @@ def check_suggestions(rubric_obj, current_question_obj, outlier_examples):
     
     # check if Rubric List has any suggestions (id = 0) for negative rubrics 
     if not any(rubric["id"] == 0 and rubric['polarity'] == "negative" for rubric in rubric_list):
-        new_suggestions = llmh.create_rubric_suggestions(current_question_obj, outlier_examples, rubric_list, "negative")
+        new_suggestions = llmh.create_rubric_suggestions(current_question_obj, samples, rubric_list, "negative", using_df=using_df)
         new_rubric_list = rubric_list
         for rubric in new_suggestions:
             new_rubric_list.append(rubric)
@@ -161,10 +161,10 @@ def rubric_creation_2(request, q_id):
         q_id = current_question_obj.id
 
     chosen_answers = Answer.objects.filter(question_id=q_id)
+    answer_df = pd.DataFrame(list(chosen_answers.values()))
     answer_count = len(chosen_answers)
 
     if not RubricList.objects.filter(question_id=q_id).exists():
-        answer_df = pd.DataFrame(list(chosen_answers.values()))
         cluster_df = cluster_answers(answer_df, n_clusters=20)
         samples = sample_answers(cluster_df, n_samples=1)
         samples_string = "\n\n".join(samples)
@@ -173,6 +173,7 @@ def rubric_creation_2(request, q_id):
     else:
         rubric_obj = RubricList.objects.filter(question_id=q_id).first()
 
+    check_suggestions(rubric_obj, current_question_obj, answer_df, using_df=True)
     rubric_list = rubric_obj.get_rubric_list()
 
     context = {

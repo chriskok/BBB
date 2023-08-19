@@ -206,7 +206,7 @@
             // add new rubric to rubric_list before any rubrics with id of 0
             rubric_list.splice(index, 0, new_rubric_dict);
 
-            add_rubric_item_element(new_rubric_dict, true);
+            add_rubric_item_element(new_rubric_dict, true, false);
         }
 
         update_rubric_list();
@@ -352,7 +352,7 @@
         cardDiv.appendChild(cardBodyDiv);
 
         // insert new rubric item element before any other rubrics in this list
-        if (new_item) {
+        if (from_suggested) {
             // get all suggested rubrics in this list
             var suggested_rubrics = rubric_list_el.querySelectorAll("[id^='suggested_']");
             var first_suggested_rubric = suggested_rubrics[0];
@@ -413,7 +413,7 @@
             new_rubric_dict = add_new_rubric_item(polarity, rubric_dict);
 
             // add to rubric list
-            add_rubric_item_element(new_rubric_dict, true);
+            add_rubric_item_element(new_rubric_dict, false, true);
         });
 
         btnGroup.appendChild(addButton);

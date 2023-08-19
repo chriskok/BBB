@@ -8,6 +8,12 @@ random.seed(37)
 import json
 from blocks.models import Question, Answer, Rubric, RubricList
 
+from sentence_transformers import SentenceTransformer, util
+from transformers import pipeline
+modelPath = 'all-MiniLM-L6-v2'
+model = SentenceTransformer(modelPath)
+from sklearn.cluster import AgglomerativeClustering
+
 # e.g. "messages": [{"role": "system", "content": "You are a helpful assistant."}, {"role": "user", "content": "Hello!"}, {"role": "assistant", "content": "Hello!"}]
 def prompt_chatgpt(prompt):
     model="gpt-3.5-turbo-16k"
@@ -86,11 +92,39 @@ def tag_answers(question, answers, rubrics, num_samples=40):
 
     return tags, msgs
 
-def create_rubric_suggestions(question, answers, rubrics, polarity="positive"):
+def cluster_answers(df, n_clusters=20):
+    sentences = df["answer_text"].apply(str).tolist()
 
-    # print(f'Creating new {polarity} rubrics!')
+    # Compute SBERT embeddings
+    model = SentenceTransformer(modelPath)
+    embeddings = model.encode(sentences, convert_to_tensor=True)
+    # cosine_scores = util.cos_sim(embeddings, embeddings)
 
-    answers_str = "\n".join(["{}. {}".format(answer.id, answer.answer_text) for i, answer in enumerate(answers)])
+    # Cluster sentences with AgglomerativeClustering
+    clustering_model = AgglomerativeClustering(n_clusters=n_clusters) #, affinity='cosine', linkage='average', distance_threshold=threshold)
+    clustering_model.fit(embeddings)
+
+    # Assign the cluster labels to the dataframe
+    df['cluster'] = clustering_model.labels_
+    return df
+
+def create_rubric_suggestions(question, answers, rubrics, polarity="positive", using_df=False):
+
+    if (using_df):
+        cluster_df = cluster_answers(answers, n_clusters=20)
+        samples = []
+        num_clusters = cluster_df['cluster'].nunique()
+        for cluster_id in range(num_clusters): 
+            sample = cluster_df[cluster_df['cluster'] == cluster_id].sample(n=1)
+            for index, row in sample.iterrows():
+                # convert sample to dict and add to samples
+                sample_dict = row.to_dict()
+                samples.append(sample_dict)
+        answers = samples
+        answers_str = "\n".join(["{}. {}".format(answer['id'], answer['answer_text']) for i, answer in enumerate(answers)])
+    else: 
+        answers_str = "\n".join(["{}. {}".format(answer.id, answer.answer_text) for i, answer in enumerate(answers)])
+
     rubrics_str = "\n\n".join(["- {} (polarity: {}, description: {})".format(rubric["title"], rubric["polarity"], rubric['description']) for i, rubric in enumerate(rubrics) if rubric['id'] != 0])
     system_prompt = f"""You are an expert instructor for your given course. You've given the short-answer, open-ended question "{question.question_text}" on a recent final exam. You previously created the following rubrics for this question: \n\n{rubrics_str}"""
 
