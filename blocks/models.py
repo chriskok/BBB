@@ -173,6 +173,7 @@ class AnswerTag(models.Model):
     question = models.ForeignKey(Question, on_delete=models.CASCADE, default=None, null=True, blank=True)
     answer = models.ForeignKey(Answer, on_delete=models.CASCADE, default=None, null=True, blank=True)
     tag = models.CharField(max_length=200, default="", null=True, blank=True)
+    numeric_tag = models.IntegerField(default=0)
     reasoning_dict = models.TextField()  # dictionary with highlighted section and reasoning for chosen tags
     new = models.BooleanField(default=True)
     
@@ -182,11 +183,15 @@ class AnswerTag(models.Model):
     def get_reasoning_dict(self):
         return json.loads(self.reasoning_dict)
 
+    def get_tag_number(self):
+        # convert tag (usually R<number>) to integer for sorting
+        return int(self.tag[1:])
+
     def __str__(self):
         return "{}. Answer: {}, Tag: {}".format(self.id, self.answer.id, self.tag)
     
     class Meta:
-        ordering = ['question__id', 'answer__id', 'tag']
+        ordering = ['question__id', 'answer__id', 'numeric_tag', 'tag']
 
 class AnswerFeedback(models.Model):
     question = models.ForeignKey(Question, on_delete=models.CASCADE, default=None, null=True, blank=True)

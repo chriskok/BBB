@@ -3,6 +3,9 @@ import pandas as pd
 import json
 import csv
 import datetime
+import time
+import threading
+import math
 
 from django.shortcuts import render, get_object_or_404, redirect
 from django.urls import reverse, reverse_lazy
@@ -374,6 +377,21 @@ def rubric_refinement(request, q_id, additional="false"):
 
     return render(request, "rubric_refinement.html", context)
 
+# asyncronously apply rubrics to all answers for a question
+def apply_rubrics(q_id, current_question_obj, batch, rubric_list):
+    tags = llmh.apply_rubrics(current_question_obj, batch, rubric_list)
+    for ans_id in tags:
+        tagged = []
+        for tag_dict in tags[ans_id]:
+            AnswerTag.objects.create(question_id=q_id, answer_id=int(ans_id), tag=tag_dict["rubric"], numberic_tag=int(tag_dict["rubric"][1:]), reasoning_dict=json.dumps(tag_dict))
+            tagged.append(tag_dict["rubric"])
+        # create blank AnswerTag for answers that were not tagged
+        for rubric in rubric_list:
+            if rubric["id"] == 0: continue
+            rubric_tag = "R{}".format(rubric["id"])
+            if rubric_tag not in tagged:
+                AnswerTag.objects.create(question_id=q_id, answer_id=int(ans_id), tag=rubric_tag, numberic_tag=int(rubric["id"]), reasoning_dict=json.dumps({"rubric": rubric_tag, "reasoning": "", "highlighted": "", "relevancy": "0"}))
+
 def rubric_refinement_2(request, q_id, additional="false"):
     q_list = Question.objects.extra(select={'sorted_num': 'CAST(question_exam_id AS FLOAT)'}).order_by('sorted_num')
 
@@ -392,7 +410,7 @@ def rubric_refinement_2(request, q_id, additional="false"):
     examples = []
     curr_index = 0
     curr_cluster_idx = 0
-    n_samples = 40
+    n_samples = 20
     cluster_ids = chosen_answers.values_list('chi_cluster_id', flat=True).distinct()
     while len(examples) < n_samples:
         curr_cluster_id = cluster_ids[curr_cluster_idx]
@@ -414,18 +432,22 @@ def rubric_refinement_2(request, q_id, additional="false"):
 
     # if not AnswerTag.objects.filter(question_id=q_id, answer_id__in=[x.id for x in examples]).exists():
     if not AnswerTag.objects.filter(question_id=q_id).exists():
-        tags = llmh.apply_rubrics(current_question_obj, examples, rubric_list)
-        for ans_id in tags:
-            tagged = []
-            for tag_dict in tags[ans_id]:
-                AnswerTag.objects.create(question_id=q_id, answer_id=int(ans_id), tag=tag_dict["rubric"], reasoning_dict=json.dumps(tag_dict))
-                tagged.append(tag_dict["rubric"])
-            # create blank AnswerTag for answers that were not tagged
-            for rubric in rubric_list:
-                if rubric["id"] == 0: continue
-                rubric_tag = "R{}".format(rubric["id"])
-                if rubric_tag not in tagged:
-                    AnswerTag.objects.create(question_id=q_id, answer_id=int(ans_id), tag=rubric_tag, reasoning_dict=json.dumps({"rubric": rubric_tag, "reasoning": "", "highlighted": "", "relevancy": "0"}))
+        # batches of 10 examples at a time
+        threads = []
+        for i in range(0, len(examples), 10):
+            batch = examples[i:i+10]
+            # start thread with apply_rubrics function
+            t = threading.Thread(target=apply_rubrics, args=(q_id, current_question_obj, batch, rubric_list))
+            threads.append(t)
+
+        # Start all threads
+        for x in threads:
+            x.start()
+
+        # Wait for all of them to finish
+        for x in threads:
+            x.join()
+
         ans_tags = AnswerTag.objects.filter(question_id=q_id)
     else:
         ans_tags = AnswerTag.objects.filter(question_id=q_id)
@@ -455,26 +477,16 @@ def rubric_refinement_2(request, q_id, additional="false"):
                 stats[rubric_tag]["total"] += 1
                 stats[rubric_tag]["relevance"] += float(curr_reasoning_dict['relevancy'])
 
-    # # interate through tagged answers until we get 10 examples, make sure we're diversified by getting one from each type of tag
-    # final_examples = []
-    # curr_index = 0
-    # curr_tag_idx = 0
-    # tag_ids = tagged_answers.values_list('answertag__tag', flat=True).distinct()
-    # while len(final_examples) < 10:
-    #     curr_tag_id = tag_ids[curr_tag_idx]
-    #     if (len(tagged_answers.filter(answertag__tag=curr_tag_id)) <= curr_index):
-    #         curr_tag_idx += 1
-    #         continue
-    #     chosen_answer = tagged_answers.filter(answertag__tag=curr_tag_id)[curr_index]
-    #     final_examples.append(chosen_answer)
-    #     curr_tag_idx += 1
-    #     if curr_tag_idx >= len(tag_ids):
-    #         curr_tag_idx = 0
-    #         curr_index += 1
+    # use stats to calculate average number of rubrics per answer
+    avg_rubrics = 0
+    for rubric in stats:
+        if stats[rubric]["total"] != 0:
+            avg_rubrics += stats[rubric]["total"]
+    avg_rubrics = avg_rubrics / len(tagged_answers)
+    # round to integer 
+    avg_rubrics = round(avg_rubrics)
 
-
-    # # sort tagged answers by the ones with new answer tags
-    # tagged_answers = sorted(tagged_answers, key=lambda x: x.answertag_set.filter(question_id=q_id).first().new, reverse=True)
+    print(avg_rubrics)
 
     context = {
         "question_obj": current_question_obj,
