@@ -585,7 +585,7 @@ def rubric_refinement_2(request, q_id, additional="false"):
     for rubric in rubric_list:
         if rubric["id"] == 0: continue
         rubric_tag = "R{}".format(rubric["id"])
-        stats[rubric_tag] = {"total": 0, "relevance": 0}
+        stats[rubric_tag] = {"title": rubric_dict[rubric_tag], "total": 0, "relevance": 0}
         for answer in tagged_answers:
             if not answer.id in answer_rubric_dict:
                 answer_rubric_dict[answer.id] = []

@@ -73,7 +73,22 @@
             </button>
             </div>
             <div class="modal-body">
-                {{ stats }}
+                {% for rubric_id in stats %}
+                    {% with rubric_dict=stats|get_item:rubric_id %}
+                    {% if rubric_dict|get_item:'total' > 0 %}
+                        <h4>{{ rubric_dict|get_item:'title' }}</h4>
+                        <p>Number of answers matched: {{ rubric_dict|get_item:'total' }}</p>
+                        <p>Total Relevance: {{ rubric_dict|get_item:'relevance' }}</p>
+                        <p>Combinations: </p>
+                        {% with combinations=rubric_dict|get_item:'combinations' %}
+                            {% for combination in combinations %}
+                                <p>{{ combination }} - {{ combinations|get_item:combination}} times</p>
+                            {% endfor %}
+                        {% endwith %}
+                        <br>
+                    {% endif %}
+                    {% endwith %}
+                {% endfor %}
             </div>
             <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
