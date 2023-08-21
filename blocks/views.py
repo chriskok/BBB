@@ -383,14 +383,92 @@ def apply_rubrics(q_id, current_question_obj, batch, rubric_list):
     for ans_id in tags:
         tagged = []
         for tag_dict in tags[ans_id]:
-            AnswerTag.objects.create(question_id=q_id, answer_id=int(ans_id), tag=tag_dict["rubric"], numberic_tag=int(tag_dict["rubric"][1:]), reasoning_dict=json.dumps(tag_dict))
+            AnswerTag.objects.create(question_id=q_id, answer_id=int(ans_id), tag=tag_dict["rubric"], numeric_tag=int(tag_dict["rubric"][1:]), reasoning_dict=json.dumps(tag_dict))
             tagged.append(tag_dict["rubric"])
         # create blank AnswerTag for answers that were not tagged
         for rubric in rubric_list:
             if rubric["id"] == 0: continue
             rubric_tag = "R{}".format(rubric["id"])
             if rubric_tag not in tagged:
-                AnswerTag.objects.create(question_id=q_id, answer_id=int(ans_id), tag=rubric_tag, numberic_tag=int(rubric["id"]), reasoning_dict=json.dumps({"rubric": rubric_tag, "reasoning": "", "highlighted": "", "relevancy": "0"}))
+                AnswerTag.objects.create(question_id=q_id, answer_id=int(ans_id), tag=rubric_tag, numeric_tag=int(rubric["id"]), reasoning_dict=json.dumps({"rubric": rubric_tag, "reasoning": "", "highlighted": "", "relevancy": "0"}))
+
+def frequency_inverse_sampling(answer_rubric_dict, limit=5):
+    # Calculate rubric frequencies
+    rubric_freq = {}
+    for rubrics in answer_rubric_dict.values():
+        for rubric in rubrics:
+            rubric_freq[rubric] = rubric_freq.get(rubric, 0) + 1
+
+    # Score answers based on the inverse frequency of their rubrics
+    def score(answer):
+        return sum(1 / rubric_freq[rubric] for rubric in answer_rubric_dict[answer])
+
+    # Sort answers by score and select top ones
+    sorted_answers = sorted(answer_rubric_dict.keys(), key=score, reverse=True)
+
+    return sorted_answers[:limit]
+
+def coverage_sampling(answer_rubric_dict, limit=5):
+    covered_rubrics = set()
+    selected_answers = []
+
+    # Sort answers by the count of unique rubrics they have that aren't yet covered
+    sorted_answers = sorted(answer_rubric_dict.keys(), key=lambda x: len(set(answer_rubric_dict[x]) - covered_rubrics), reverse=True)
+
+    for answer in sorted_answers:
+        if len(selected_answers) >= limit:
+            break
+        if not covered_rubrics.intersection(answer_rubric_dict[answer]):  # If no overlap
+            selected_answers.append(answer)
+            covered_rubrics.update(answer_rubric_dict[answer])
+
+    return selected_answers
+
+def greedy_selection(answer_rubric_dict, limit=5):
+    selected_answers = set()
+    remaining_answers = set(answer_rubric_dict.keys())
+    
+    while len(selected_answers) < limit and remaining_answers:
+        next_answer = max(remaining_answers, key=lambda x: len(set(answer_rubric_dict[x]) - set([rubric for answer in selected_answers for rubric in answer_rubric_dict[answer]])))
+        selected_answers.add(next_answer)
+        remaining_answers.remove(next_answer)
+    
+    return list(selected_answers)
+
+from sklearn.cluster import KMeans
+
+def cluster_sampling(answer_rubric_dict, limit=5):
+    # Here, I'm representing answers as a vector of rubrics. 
+    # Answers will be represented by presence (1) or absence (0) of rubrics.
+    all_rubrics = sorted(list({rubric for rubrics in answer_rubric_dict.values() for rubric in rubrics}))
+    data = [[1 if rubric in answer_rubric_dict[answer] else 0 for rubric in all_rubrics] for answer in answer_rubric_dict.keys()]
+    
+    n_clusters = min(len(answer_rubric_dict), limit)
+    kmeans = KMeans(n_clusters=n_clusters)
+    clusters = kmeans.fit_predict(data)
+
+    representative_answers = []
+    for cluster in set(clusters):
+        cluster_indices = [index for index, value in enumerate(clusters) if value == cluster]
+        representative = max(cluster_indices, key=lambda x: len(answer_rubric_dict[list(answer_rubric_dict.keys())[x]]))
+        representative_answers.append(list(answer_rubric_dict.keys())[representative])
+    
+    return representative_answers[:limit]
+
+def rubric_first_selection(answer_rubric_dict, limit=5):
+    all_rubrics = sorted(list({rubric for rubrics in answer_rubric_dict.values() for rubric in rubrics}), key=lambda r: -sum(1 for rubrics in answer_rubric_dict.values() if r in rubrics))
+    
+    selected_answers = []
+    for rubric in all_rubrics:
+        if len(selected_answers) >= limit:
+            break
+        potential_answers = [answer for answer, rubrics in answer_rubric_dict.items() if rubric in rubrics]
+        selected = max(potential_answers, key=lambda a: len(answer_rubric_dict[a]))
+        if selected not in selected_answers:
+            selected_answers.append(selected)
+    
+    return selected_answers
+
 
 def rubric_refinement_2(request, q_id, additional="false"):
     q_list = Question.objects.extra(select={'sorted_num': 'CAST(question_exam_id AS FLOAT)'}).order_by('sorted_num')
@@ -423,11 +501,7 @@ def rubric_refinement_2(request, q_id, additional="false"):
         if curr_cluster_idx >= len(cluster_ids):
             curr_cluster_idx = 0
             curr_index += 1
-    
-    # # print list of cluster ids in the examples
-    # print([x.chi_cluster_id for x in examples])
-    # # print count of cluster ids in the examples
-    # print({x.chi_cluster_id: [y.chi_cluster_id for y in examples].count(x.chi_cluster_id) for x in examples})
+
     answer_count = len(examples)
 
     # if not AnswerTag.objects.filter(question_id=q_id, answer_id__in=[x.id for x in examples]).exists():
@@ -466,27 +540,30 @@ def rubric_refinement_2(request, q_id, additional="false"):
 
     # calculate stats of the tagged answers
     stats = {}
+    answer_rubric_dict = {}
     for rubric in rubric_list:
         if rubric["id"] == 0: continue
         rubric_tag = "R{}".format(rubric["id"])
         stats[rubric_tag] = {"total": 0, "relevance": 0}
         for answer in tagged_answers:
+            if not answer.id in answer_rubric_dict:
+                answer_rubric_dict[answer.id] = []
             answer_tag = answer.answertag_set.filter(question_id=q_id, tag=rubric_tag).first()
             curr_reasoning_dict = answer_tag.get_reasoning_dict()
             if answer_tag.tag == rubric_tag and curr_reasoning_dict['relevancy'] != "0":
                 stats[rubric_tag]["total"] += 1
                 stats[rubric_tag]["relevance"] += float(curr_reasoning_dict['relevancy'])
+                answer_rubric_dict[answer.id].append(rubric_tag)
+    
+    selected_by_coverage = coverage_sampling(answer_rubric_dict)
+    selected_by_freq_inv = frequency_inverse_sampling(answer_rubric_dict)
+    selected_by_greed = greedy_selection(answer_rubric_dict)
+    selected_by_cluster = cluster_sampling(answer_rubric_dict)
+    selected_by_rubric_first = rubric_first_selection(answer_rubric_dict)
+    # print(selected_by_coverage, selected_by_freq_inv, selected_by_greed, selected_by_cluster, selected_by_rubric_first)
 
-    # use stats to calculate average number of rubrics per answer
-    avg_rubrics = 0
-    for rubric in stats:
-        if stats[rubric]["total"] != 0:
-            avg_rubrics += stats[rubric]["total"]
-    avg_rubrics = avg_rubrics / len(tagged_answers)
-    # round to integer 
-    avg_rubrics = round(avg_rubrics)
-
-    print(avg_rubrics)
+    # select from tagged_answers only those that are in selected_by_coverage
+    selected_answers = Answer.objects.filter(id__in=selected_by_cluster)
 
     context = {
         "question_obj": current_question_obj,
@@ -494,8 +571,8 @@ def rubric_refinement_2(request, q_id, additional="false"):
         "question_list": q_list,
         "rubric_list": rubric_list,
         "rubric_dict": rubric_dict,
-        "answers": tagged_answers,
-        # "answers": final_examples,
+        "answers": selected_answers,
+        # "answers": tagged_answers,
         "answer_count": answer_count,
         "ans_tags": ans_tags,
         "stats": stats,
