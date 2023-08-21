@@ -215,6 +215,68 @@ def apply_rubrics(question, answers, rubrics, existing_tags=None):
     rubrics_str = "\n\n".join(["R{}. {} (polarity: {}, meaning: {})\nR{} Examples:\n{}".format(rubric["id"], rubric["title"], rubric["polarity"], rubric['description'], rubric["id"], convert_reasoning_dict(rubric["reasoning_dict"])) for i, rubric in enumerate(rubrics) if rubric['id'] != 0])
     system_prompt = f"""You are an expert instructor for your given course. You've given the short-answer, open-ended question "{question.question_text}" on a recent final exam. You and your expert instructor partner created the following rubrics for this question (labelled R<rubric number> below, along with examples that your partner annotated with reasoning): \n\n{rubrics_str}"""
     
+
+    user_prompt = """
+    Given the rubrics mentioned and the following student answers (formatted: <answer ID>. <answer>):\n""" + answers_str + """
+
+    Label and highlight each student's answer based on the rubric(s) that applies to it. Each answer can have multiple rubrics applied, so treat this as a multi-label classification task. Only highlight the most relevant words per rubric that you choose to apply - keep it short! Please provide reasoning for your labels and a relevancy score as well. For the output, create python dictionary that STRICTLY follow the JSON format:
+
+    {"answer_id": [
+        {
+            "rubric": "<rubric that applies to this answer (labelled R<number>)>",
+            "reasoning": "<reason why rubric R<number> applies>",
+            "highlighted": "<substring within the answer of 3-6 words that best supports the reasoning>",
+            "relevancy": "<0.5 or 1 to indicate partial or full relevance to the answer>"
+        },
+        {
+            "rubric": "<rubric that applies to this answer (labelled R<number>)>",
+            "reasoning": "<reason why rubric R<number> applies>",
+            "highlighted": "<substring within the answer of 3-6 words that best supports the reasoning>",
+            "relevancy": "<0.5 or 1 to indicate partial or full relevance to the answer>"
+        },
+        ...
+    ], ...}
+    """
+
+    # Create a string of existing tags in the format <answer text> [R<rubric number> | <relevancy score> | <reasoning>]
+    existing_tags_str = ""
+    if (existing_tags is not None):
+        # get only tags with relevancy > 0.0
+        filtered_tags = [tag for tag in existing_tags.order_by('?') if float(tag.get_reasoning_dict()['relevancy']) > 0.0]
+        for tag in filtered_tags[:10]:
+            curr_ans = Answer.objects.get(id=tag.answer_id)
+            curr_reasoning_dict = tag.get_reasoning_dict()
+            if(float(curr_reasoning_dict['relevancy']) > 0.0): existing_tags_str += f"- {curr_ans.answer_text} [Rubric: {tag.tag} | Relevance: {curr_reasoning_dict['relevancy']} | Reason: {curr_reasoning_dict['reasoning']}]\n"
+
+        user_prompt += "\n\n" + "Examples:\n" + existing_tags_str
+
+    msgs = [{"role": "system", "content": system_prompt}, {"role": "user", "content": user_prompt}]
+
+    response = prompt_gpt4(msgs)
+
+    try:
+        tags = json.loads(response)
+    except Exception as e:
+        print(e)
+        tags = []
+
+    return tags
+
+def apply_rubrics_2(question, answers, rubrics, existing_tags=None):
+
+    answers = sorted(answers, key=lambda x: x.id)
+
+    def convert_reasoning_dict(reasoning_dict):
+        # convert dict of answer ID keys and reasoning values to a new-line separated string of Answer texts (from DB) and the reasoning
+        reasoning_str = ""
+        for answer_id, reasoning in reasoning_dict.items():
+            reasoning_str += "{} {}\n".format(Answer.objects.get(id=answer_id).answer_text, f"(REASON: {reasoning})" if reasoning != "" else "")
+        return reasoning_str if reasoning_str != "" else "None"
+
+    answers_str = "\n".join(["{}. {}".format(answer.id, answer.answer_text) for i, answer in enumerate(answers)])
+    rubrics_str = "\n\n".join(["R{}. {} (polarity: {}, meaning: {})\nR{} Examples:\n{}".format(rubric["id"], rubric["title"], rubric["polarity"], rubric['description'], rubric["id"], convert_reasoning_dict(rubric["reasoning_dict"])) for i, rubric in enumerate(rubrics) if rubric['id'] != 0])
+    system_prompt = f"""You are an expert instructor for your given course. You've given the short-answer, open-ended question "{question.question_text}" on a recent final exam. You and your expert instructor partner created the following rubrics for this question (labelled R<rubric number> below, along with examples that your partner annotated with reasoning): \n\n{rubrics_str}"""
+    
     user_prompt = """
     Given the rubrics mentioned and the following student answers (formatted: <answer ID>. <answer>):\n""" + answers_str + """
 
@@ -237,42 +299,6 @@ def apply_rubrics(question, answers, rubrics, existing_tags=None):
 
     msgs = [{"role": "system", "content": system_prompt}, {"role": "user", "content": user_prompt}]
     matching_response = prompt_gpt4(msgs)
-
-    # NOTE: This is a temporary solution to the problem of sampling the top 5 answers that are most representative of the rubrics applied to them
-    # # Parsing the string into a dictionary
-    # answer_rubric_dict = {}
-    # for line in matching_response.split("\n"):
-    #     answer_id, rubric_list_str = line.split(":")
-    #     rubrics = [r.strip() for r in rubric_list_str.split(",")]
-    #     answer_rubric_dict[int(answer_id)] = rubrics
-
-    # # Create an inverted dictionary of rubrics to answer IDs
-    # rubric_answer_dict = {}
-    # for answer_id, rubrics in answer_rubric_dict.items():
-    #     for rubric in rubrics:
-    #         if rubric not in rubric_answer_dict:
-    #             rubric_answer_dict[rubric] = []
-    #         rubric_answer_dict[rubric].append(answer_id)
-    
-    # # Select the first item from each rubric's list of answer IDs
-    # selection_str = ""
-    # selected = []
-    # for rubric, answer_ids in rubric_answer_dict.items():
-    #     while answer_ids[0] in selected:
-    #         answer_ids.pop(0)
-    #         if len(answer_ids) == 0: break
-
-    #     first_ans_id = answer_ids[0]
-    #     selected.append(first_ans_id)
-    #     selection_str += f"ID: {first_ans_id}, Rubrics: {answer_rubric_dict[first_ans_id]}, Text: {Answer.objects.get(id=first_ans_id).answer_text}\n"
-        
-    # # TODO: replace with actual algorithm for selecting samples
-    # selection_prompt = """Now based on the rubrics that have been applied to each answer, select the top 5 answer IDs that are would provide the most diverse set of answer-rubric pairs. Please output in the following format: 
-    # ID: <answer ID>, RUBRICS: <rubrics applied>, TEXT: <text of the answer itself> (example: ID: 1, RUBRICS: R1, R2, R3, TEXT: <answer text>) 
-    # """
-    # msgs.append({"role": "assistant", "content": matching_response})
-    # msgs.append({"role": "user", "content": selection_prompt})
-    # selection_response = prompt_gpt4(msgs)
 
     formatting_prompt = """Based on the list of rubrics applied to answers you created, create a JSON dictionary that elaborates on the labels through reasoning and highlighting. Only highlight the most relevant words per rubric that you choose to apply - keep it short! Please provide reasoning for your labels and a relevancy score as well. For the output, create python dictionary that STRICTLY follow the JSON format:
 

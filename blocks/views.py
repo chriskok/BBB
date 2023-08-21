@@ -6,6 +6,7 @@ import datetime
 import time
 import threading
 import math
+import random
 
 from django.shortcuts import render, get_object_or_404, redirect
 from django.urls import reverse, reverse_lazy
@@ -20,7 +21,7 @@ from sentence_transformers import SentenceTransformer, util
 from transformers import pipeline
 modelPath = 'all-MiniLM-L6-v2'
 model = SentenceTransformer(modelPath)
-from sklearn.cluster import AgglomerativeClustering
+from sklearn.cluster import AgglomerativeClustering, KMeans
 
 from itertools import product
 import building_blocks as bb 
@@ -176,7 +177,7 @@ def rubric_creation_2(request, q_id):
 
     # check if chosen_answers have been clustered (chi_cluster_id != 0)
     if all(answer_df['chi_cluster_id'] == 0):
-        print('Clustering Answers for Q: {}'.format(q_id))
+        # print('Clustering Answers for Q: {}'.format(q_id))
         cluster_df = cluster_answers(answer_df, n_clusters=20)
 
     if not RubricList.objects.filter(question_id=q_id).exists():
@@ -435,8 +436,6 @@ def greedy_selection(answer_rubric_dict, limit=5):
     
     return list(selected_answers)
 
-from sklearn.cluster import KMeans
-
 def cluster_sampling(answer_rubric_dict, limit=5):
     # Here, I'm representing answers as a vector of rubrics. 
     # Answers will be represented by presence (1) or absence (0) of rubrics.
@@ -469,6 +468,48 @@ def rubric_first_selection(answer_rubric_dict, limit=5):
     
     return selected_answers
 
+def combination_selection(answer_rubric_dict, limit=5):
+    if limit <= 0:
+        return []
+
+    # Compute the frequency of each rubric
+    rubric_frequency = {}
+    for rubrics in answer_rubric_dict.values():
+        for rubric in rubrics:
+            rubric_frequency[rubric] = rubric_frequency.get(rubric, 0) + 1
+
+    # 1. Select the answer with the most rubrics.
+    selected_answer = max(answer_rubric_dict, key=lambda k: len(answer_rubric_dict[k]))
+    selected_answers = [selected_answer]
+
+    if limit == 1:
+        return selected_answers
+
+    # 2. Select one answer with a unique and less common rubric.
+    least_common_rubrics = sorted(rubric_frequency, key=lambda k: rubric_frequency[k])
+    for rubric in least_common_rubrics:
+        potential_answers = [answer for answer, answer_rubrics in answer_rubric_dict.items() if rubric in answer_rubrics and answer not in selected_answers]
+        if potential_answers:
+            selected_answers.append(random.choice(potential_answers))
+            break
+
+    if limit == 2:
+        return selected_answers
+
+    # 3. Use frequency-inverse sampling for the next few.
+    answers_sorted_by_rarity = sorted(answer_rubric_dict, key=lambda k: sum(1/rubric_frequency[rubric] for rubric in answer_rubric_dict[k]), reverse=True)
+    for answer in answers_sorted_by_rarity:
+        if answer not in selected_answers:
+            selected_answers.append(answer)
+        if len(selected_answers) == limit - 1:
+            break
+
+    if len(selected_answers) < limit:
+        # 4. Finish with a randomly selected answer to add unpredictability.
+        remaining_answers = set(answer_rubric_dict.keys()) - set(selected_answers)
+        selected_answers.append(random.choice(list(remaining_answers)))
+
+    return selected_answers
 
 def rubric_refinement_2(request, q_id, additional="false"):
     q_list = Question.objects.extra(select={'sorted_num': 'CAST(question_exam_id AS FLOAT)'}).order_by('sorted_num')
@@ -555,11 +596,26 @@ def rubric_refinement_2(request, q_id, additional="false"):
                 stats[rubric_tag]["relevance"] += float(curr_reasoning_dict['relevancy'])
                 answer_rubric_dict[answer.id].append(rubric_tag)
     
+    # add all combinations of rubrics associated to that answer (into stats dict as "combinations" with a list of combos) by iterating over the answer_rubric_dict
+    for answer in answer_rubric_dict:
+        for rubric in answer_rubric_dict[answer]:
+            if "combinations" not in stats[rubric]:
+                stats[rubric]["combinations"] = {}
+            if ",".join(answer_rubric_dict[answer]) not in stats[rubric]["combinations"]:
+                stats[rubric]["combinations"][",".join(answer_rubric_dict[answer])] = 0
+            stats[rubric]["combinations"][",".join(answer_rubric_dict[answer])] += 1
+    
+    # sort each of the combination dictionaries by number of times they appear
+    for rubric in stats:
+        if "combinations" in stats[rubric]:
+            stats[rubric]["combinations"] = {k: v for k, v in sorted(stats[rubric]["combinations"].items(), key=lambda item: item[1], reverse=True)}
+
     selected_by_coverage = coverage_sampling(answer_rubric_dict)
     selected_by_freq_inv = frequency_inverse_sampling(answer_rubric_dict)
     selected_by_greed = greedy_selection(answer_rubric_dict)
     selected_by_cluster = cluster_sampling(answer_rubric_dict)
     selected_by_rubric_first = rubric_first_selection(answer_rubric_dict)
+    selected_by_combination = combination_selection(answer_rubric_dict)
     # print(selected_by_coverage, selected_by_freq_inv, selected_by_greed, selected_by_cluster, selected_by_rubric_first)
 
     # select from tagged_answers only those that are in selected_by_coverage
