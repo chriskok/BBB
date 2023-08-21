@@ -392,8 +392,9 @@ def rubric_refinement_2(request, q_id, additional="false"):
     examples = []
     curr_index = 0
     curr_cluster_idx = 0
+    n_samples = 40
     cluster_ids = chosen_answers.values_list('chi_cluster_id', flat=True).distinct()
-    while len(examples) < 20:
+    while len(examples) < n_samples:
         curr_cluster_id = cluster_ids[curr_cluster_idx]
         if (len(chosen_answers.filter(chi_cluster_id=curr_cluster_id)) <= curr_index):
             curr_cluster_idx += 1

@@ -1,0 +1,50 @@
+36: R1 - 1) User research helps identify the needs, preferences, and behaviors of target users during early stages of development. 
+2) User research is used to evaluate the effectiveness of the product during design and development. 
+3) User research is needed to assess the success of the product after it has been released as a final product.
+{"rubric": "R1", "reasoning": "The student understands that user research is used to identify the needs, preferences, and behaviors of target users.", "highlighted": "identify the needs, preferences, and behaviors", "relevancy": 1}
+
+36: R10 - 1) User research helps identify the needs, preferences, and behaviors of target users during early stages of development. 
+2) User research is used to evaluate the effectiveness of the product during design and development. 
+3) User research is needed to assess the success of the product after it has been released as a final product.
+{"rubric": "R10", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+36: R2 - 1) User research helps identify the needs, preferences, and behaviors of target users during early stages of development. 
+2) User research is used to evaluate the effectiveness of the product during design and development. 
+3) User research is needed to assess the success of the product after it has been released as a final product.
+{"rubric": "R2", "reasoning": "The student recognizes that user research is used to identify problems during the early stages of development.", "highlighted": "identify the needs, preferences, and behaviors", "relevancy": 1}
+
+36: R3 - 1) User research helps identify the needs, preferences, and behaviors of target users during early stages of development. 
+2) User research is used to evaluate the effectiveness of the product during design and development. 
+3) User research is needed to assess the success of the product after it has been released as a final product.
+{"rubric": "R3", "reasoning": "The student understands that user research is used to validate the effectiveness of the product during design and development.", "highlighted": "evaluate the effectiveness of the product", "relevancy": 1}
+
+36: R4 - 1) User research helps identify the needs, preferences, and behaviors of target users during early stages of development. 
+2) User research is used to evaluate the effectiveness of the product during design and development. 
+3) User research is needed to assess the success of the product after it has been released as a final product.
+{"rubric": "R4", "reasoning": "The student recognizes that user research is used to gather feedback on the product after it has been released.", "highlighted": "assess the success of the product", "relevancy": 1}
+
+36: R5 - 1) User research helps identify the needs, preferences, and behaviors of target users during early stages of development. 
+2) User research is used to evaluate the effectiveness of the product during design and development. 
+3) User research is needed to assess the success of the product after it has been released as a final product.
+{"rubric": "R5", "reasoning": "The student understands that user research is used to improve the product after it has been released.", "highlighted": "assess the success of the product", "relevancy": 1}
+
+36: R6 - 1) User research helps identify the needs, preferences, and behaviors of target users during early stages of development. 
+2) User research is used to evaluate the effectiveness of the product during design and development. 
+3) User research is needed to assess the success of the product after it has been released as a final product.
+{"rubric": "R6", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+36: R7 - 1) User research helps identify the needs, preferences, and behaviors of target users during early stages of development. 
+2) User research is used to evaluate the effectiveness of the product during design and development. 
+3) User research is needed to assess the success of the product after it has been released as a final product.
+{"rubric": "R7", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+36: R8 - 1) User research helps identify the needs, preferences, and behaviors of target users during early stages of development. 
+2) User research is used to evaluate the effectiveness of the product during design and development. 
+3) User research is needed to assess the success of the product after it has been released as a final product.
+{"rubric": "R8", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+36: R9 - 1) User research helps identify the needs, preferences, and behaviors of target users during early stages of development. 
+2) User research is used to evaluate the effectiveness of the product during design and development. 
+3) User research is needed to assess the success of the product after it has been released as a final product.
+{"rubric": "R9", "reasoning": "", "highlighted": "", "relevancy": "0"}
+

@@ -238,7 +238,43 @@ def apply_rubrics(question, answers, rubrics, existing_tags=None):
     msgs = [{"role": "system", "content": system_prompt}, {"role": "user", "content": user_prompt}]
     matching_response = prompt_gpt4(msgs)
 
-    formatting_prompt = """For the final output, create one large JSON dictionary that elaborates on the labels through reasoning and highlighting. Only highlight the most relevant words per rubric that you choose to apply - keep it short! Please provide reasoning for your labels and a relevancy score as well. For the output, create python dictionary that STRICTLY follow the JSON format:
+    # Parsing the string into a dictionary
+    answer_rubric_dict = {}
+    for line in matching_response.split("\n"):
+        answer_id, rubric_list_str = line.split(":")
+        rubrics = [r.strip() for r in rubric_list_str.split(",")]
+        answer_rubric_dict[int(answer_id)] = rubrics
+
+    # Create an inverted dictionary of rubrics to answer IDs
+    rubric_answer_dict = {}
+    for answer_id, rubrics in answer_rubric_dict.items():
+        for rubric in rubrics:
+            if rubric not in rubric_answer_dict:
+                rubric_answer_dict[rubric] = []
+            rubric_answer_dict[rubric].append(answer_id)
+    
+    # Select the first item from each rubric's list of answer IDs
+    selection_str = ""
+    selected = []
+    for rubric, answer_ids in rubric_answer_dict.items():
+        while answer_ids[0] in selected:
+            answer_ids.pop(0)
+            if len(answer_ids) == 0: break
+
+        first_ans_id = answer_ids[0]
+        selected.append(first_ans_id)
+        selection_str += f"ID: {first_ans_id}, Rubrics: {answer_rubric_dict[first_ans_id]}, Text: {Answer.objects.get(id=first_ans_id).answer_text}\n"
+        
+
+    # # TODO: replace with actual algorithm for selecting samples
+    # selection_prompt = """Now based on the rubrics that have been applied to each answer, select the top 5 answer IDs that are would provide the most diverse set of answer-rubric pairs. Please output in the following format: 
+    # ID: <answer ID>, RUBRICS: <rubrics applied>, TEXT: <text of the answer itself> (example: ID: 1, RUBRICS: R1, R2, R3, TEXT: <answer text>) 
+    # """
+    # msgs.append({"role": "assistant", "content": matching_response})
+    # msgs.append({"role": "user", "content": selection_prompt})
+    # selection_response = prompt_gpt4(msgs)
+
+    formatting_prompt = """Based on ONLY the selected answers below, create a JSON dictionary that elaborates on the labels through reasoning and highlighting. Only highlight the most relevant words per rubric that you choose to apply - keep it short! Please provide reasoning for your labels and a relevancy score as well. For the output, create python dictionary that STRICTLY follow the JSON format:
 
     {"answer_id": [
         {
@@ -255,7 +291,8 @@ def apply_rubrics(question, answers, rubrics, existing_tags=None):
         },
         ...
     ], ...}
-    """
+
+    Selected Answers:\n""" + selection_str
     msgs.append({"role": "assistant", "content": matching_response})
     msgs.append({"role": "user", "content": formatting_prompt})
     response = prompt_gpt4(msgs)

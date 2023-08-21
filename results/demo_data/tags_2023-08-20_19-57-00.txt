@@ -1,0 +1,870 @@
+35: R1 - Asynchronous programming allows the user to decide what elements of the code need to be run, instead of requiring a specific order.
+{"rubric": "R1", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+35: R10 - Asynchronous programming allows the user to decide what elements of the code need to be run, instead of requiring a specific order.
+{"rubric": "R10", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+35: R2 - Asynchronous programming allows the user to decide what elements of the code need to be run, instead of requiring a specific order.
+{"rubric": "R2", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+35: R3 - Asynchronous programming allows the user to decide what elements of the code need to be run, instead of requiring a specific order.
+{"rubric": "R3", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+35: R4 - Asynchronous programming allows the user to decide what elements of the code need to be run, instead of requiring a specific order.
+{"rubric": "R4", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+35: R5 - Asynchronous programming allows the user to decide what elements of the code need to be run, instead of requiring a specific order.
+{"rubric": "R5", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+35: R6 - Asynchronous programming allows the user to decide what elements of the code need to be run, instead of requiring a specific order.
+{"rubric": "R6", "reasoning": "The student incorrectly describes asynchronous programming as allowing the user to decide what elements of the code need to be run, which is not the concept of non-blocking execution.", "highlighted": "user to decide what elements", "relevancy": 1}
+
+35: R7 - Asynchronous programming allows the user to decide what elements of the code need to be run, instead of requiring a specific order.
+{"rubric": "R7", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+35: R8 - Asynchronous programming allows the user to decide what elements of the code need to be run, instead of requiring a specific order.
+{"rubric": "R8", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+35: R9 - Asynchronous programming allows the user to decide what elements of the code need to be run, instead of requiring a specific order.
+{"rubric": "R9", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+35: R1 - We want to use asynchronous programming in Javascript as we want to update parts of the webpage without having to reload the whole page Through AJAX, we can send, request and receive data from a server without blocking the rest of the interface. This is better than synchronous Javascript wherein we can only update the page by reloading it and wherein all the event handling takes place in a single loop.
+{"rubric": "R1", "reasoning": "The student correctly explains that asynchronous programming allows for non-blocking execution.", "highlighted": "without blocking the rest", "relevancy": 1}
+
+35: R10 - We want to use asynchronous programming in Javascript as we want to update parts of the webpage without having to reload the whole page Through AJAX, we can send, request and receive data from a server without blocking the rest of the interface. This is better than synchronous Javascript wherein we can only update the page by reloading it and wherein all the event handling takes place in a single loop.
+{"rubric": "R10", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+35: R2 - We want to use asynchronous programming in Javascript as we want to update parts of the webpage without having to reload the whole page Through AJAX, we can send, request and receive data from a server without blocking the rest of the interface. This is better than synchronous Javascript wherein we can only update the page by reloading it and wherein all the event handling takes place in a single loop.
+{"rubric": "R2", "reasoning": "The student correctly explains that asynchronous programming allows for partial page updates.", "highlighted": "update parts of the webpage", "relevancy": 1}
+
+35: R3 - We want to use asynchronous programming in Javascript as we want to update parts of the webpage without having to reload the whole page Through AJAX, we can send, request and receive data from a server without blocking the rest of the interface. This is better than synchronous Javascript wherein we can only update the page by reloading it and wherein all the event handling takes place in a single loop.
+{"rubric": "R3", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+35: R4 - We want to use asynchronous programming in Javascript as we want to update parts of the webpage without having to reload the whole page Through AJAX, we can send, request and receive data from a server without blocking the rest of the interface. This is better than synchronous Javascript wherein we can only update the page by reloading it and wherein all the event handling takes place in a single loop.
+{"rubric": "R4", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+35: R5 - We want to use asynchronous programming in Javascript as we want to update parts of the webpage without having to reload the whole page Through AJAX, we can send, request and receive data from a server without blocking the rest of the interface. This is better than synchronous Javascript wherein we can only update the page by reloading it and wherein all the event handling takes place in a single loop.
+{"rubric": "R5", "reasoning": "The student correctly explains that asynchronous programming facilitates server communication.", "highlighted": "send, request and receive data", "relevancy": 1}
+
+35: R6 - We want to use asynchronous programming in Javascript as we want to update parts of the webpage without having to reload the whole page Through AJAX, we can send, request and receive data from a server without blocking the rest of the interface. This is better than synchronous Javascript wherein we can only update the page by reloading it and wherein all the event handling takes place in a single loop.
+{"rubric": "R6", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+35: R7 - We want to use asynchronous programming in Javascript as we want to update parts of the webpage without having to reload the whole page Through AJAX, we can send, request and receive data from a server without blocking the rest of the interface. This is better than synchronous Javascript wherein we can only update the page by reloading it and wherein all the event handling takes place in a single loop.
+{"rubric": "R7", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+35: R8 - We want to use asynchronous programming in Javascript as we want to update parts of the webpage without having to reload the whole page Through AJAX, we can send, request and receive data from a server without blocking the rest of the interface. This is better than synchronous Javascript wherein we can only update the page by reloading it and wherein all the event handling takes place in a single loop.
+{"rubric": "R8", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+35: R9 - We want to use asynchronous programming in Javascript as we want to update parts of the webpage without having to reload the whole page Through AJAX, we can send, request and receive data from a server without blocking the rest of the interface. This is better than synchronous Javascript wherein we can only update the page by reloading it and wherein all the event handling takes place in a single loop.
+{"rubric": "R9", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+35: R1 - Asynchronous programming in Javascript allows us to change a page and make calls to the server without reloading the entire page.
+{"rubric": "R1", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+35: R10 - Asynchronous programming in Javascript allows us to change a page and make calls to the server without reloading the entire page.
+{"rubric": "R10", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+35: R2 - Asynchronous programming in Javascript allows us to change a page and make calls to the server without reloading the entire page.
+{"rubric": "R2", "reasoning": "The student correctly explains that asynchronous programming allows for partial page updates.", "highlighted": "change a page", "relevancy": 0.5}
+
+35: R3 - Asynchronous programming in Javascript allows us to change a page and make calls to the server without reloading the entire page.
+{"rubric": "R3", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+35: R4 - Asynchronous programming in Javascript allows us to change a page and make calls to the server without reloading the entire page.
+{"rubric": "R4", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+35: R5 - Asynchronous programming in Javascript allows us to change a page and make calls to the server without reloading the entire page.
+{"rubric": "R5", "reasoning": "The student correctly explains that asynchronous programming facilitates server communication.", "highlighted": "make calls to the server", "relevancy": 1}
+
+35: R6 - Asynchronous programming in Javascript allows us to change a page and make calls to the server without reloading the entire page.
+{"rubric": "R6", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+35: R7 - Asynchronous programming in Javascript allows us to change a page and make calls to the server without reloading the entire page.
+{"rubric": "R7", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+35: R8 - Asynchronous programming in Javascript allows us to change a page and make calls to the server without reloading the entire page.
+{"rubric": "R8", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+35: R9 - Asynchronous programming in Javascript allows us to change a page and make calls to the server without reloading the entire page.
+{"rubric": "R9", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+35: R1 - Asynchronous programming allows for updating a page without refreshing the whole page. Also, long-running functions can be executed without blocking the rest of the code and interaction.
+{"rubric": "R1", "reasoning": "The student correctly explains that asynchronous programming allows for non-blocking execution.", "highlighted": "without blocking the rest", "relevancy": 1}
+
+35: R10 - Asynchronous programming allows for updating a page without refreshing the whole page. Also, long-running functions can be executed without blocking the rest of the code and interaction.
+{"rubric": "R10", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+35: R2 - Asynchronous programming allows for updating a page without refreshing the whole page. Also, long-running functions can be executed without blocking the rest of the code and interaction.
+{"rubric": "R2", "reasoning": "The student correctly explains that asynchronous programming allows for partial page updates.", "highlighted": "updating a page without refreshing", "relevancy": 1}
+
+35: R3 - Asynchronous programming allows for updating a page without refreshing the whole page. Also, long-running functions can be executed without blocking the rest of the code and interaction.
+{"rubric": "R3", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+35: R4 - Asynchronous programming allows for updating a page without refreshing the whole page. Also, long-running functions can be executed without blocking the rest of the code and interaction.
+{"rubric": "R4", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+35: R5 - Asynchronous programming allows for updating a page without refreshing the whole page. Also, long-running functions can be executed without blocking the rest of the code and interaction.
+{"rubric": "R5", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+35: R6 - Asynchronous programming allows for updating a page without refreshing the whole page. Also, long-running functions can be executed without blocking the rest of the code and interaction.
+{"rubric": "R6", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+35: R7 - Asynchronous programming allows for updating a page without refreshing the whole page. Also, long-running functions can be executed without blocking the rest of the code and interaction.
+{"rubric": "R7", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+35: R8 - Asynchronous programming allows for updating a page without refreshing the whole page. Also, long-running functions can be executed without blocking the rest of the code and interaction.
+{"rubric": "R8", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+35: R9 - Asynchronous programming allows for updating a page without refreshing the whole page. Also, long-running functions can be executed without blocking the rest of the code and interaction.
+{"rubric": "R9", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+35: R1 - We want to use asynchronous programming in JavaScript when we have a promise that we are waiting to be resolved and we want to run other operations in meanwhile. It allows us to efficient and responsive web applications and prevent lag due to a request.
+{"rubric": "R1", "reasoning": "The student correctly explains that asynchronous programming allows for non-blocking execution.", "highlighted": "run other operations in meanwhile", "relevancy": 1}
+
+35: R10 - We want to use asynchronous programming in JavaScript when we have a promise that we are waiting to be resolved and we want to run other operations in meanwhile. It allows us to efficient and responsive web applications and prevent lag due to a request.
+{"rubric": "R10", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+35: R2 - We want to use asynchronous programming in JavaScript when we have a promise that we are waiting to be resolved and we want to run other operations in meanwhile. It allows us to efficient and responsive web applications and prevent lag due to a request.
+{"rubric": "R2", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+35: R3 - We want to use asynchronous programming in JavaScript when we have a promise that we are waiting to be resolved and we want to run other operations in meanwhile. It allows us to efficient and responsive web applications and prevent lag due to a request.
+{"rubric": "R3", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+35: R4 - We want to use asynchronous programming in JavaScript when we have a promise that we are waiting to be resolved and we want to run other operations in meanwhile. It allows us to efficient and responsive web applications and prevent lag due to a request.
+{"rubric": "R4", "reasoning": "The student correctly explains that asynchronous programming improves efficiency and performance.", "highlighted": "efficient and responsive web applications", "relevancy": 1}
+
+35: R5 - We want to use asynchronous programming in JavaScript when we have a promise that we are waiting to be resolved and we want to run other operations in meanwhile. It allows us to efficient and responsive web applications and prevent lag due to a request.
+{"rubric": "R5", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+35: R6 - We want to use asynchronous programming in JavaScript when we have a promise that we are waiting to be resolved and we want to run other operations in meanwhile. It allows us to efficient and responsive web applications and prevent lag due to a request.
+{"rubric": "R6", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+35: R7 - We want to use asynchronous programming in JavaScript when we have a promise that we are waiting to be resolved and we want to run other operations in meanwhile. It allows us to efficient and responsive web applications and prevent lag due to a request.
+{"rubric": "R7", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+35: R8 - We want to use asynchronous programming in JavaScript when we have a promise that we are waiting to be resolved and we want to run other operations in meanwhile. It allows us to efficient and responsive web applications and prevent lag due to a request.
+{"rubric": "R8", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+35: R9 - We want to use asynchronous programming in JavaScript when we have a promise that we are waiting to be resolved and we want to run other operations in meanwhile. It allows us to efficient and responsive web applications and prevent lag due to a request.
+{"rubric": "R9", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+35: R1 - It allows us to run long execution time programs without making the user wait for the program to finish before using the webpage. 
+{"rubric": "R1", "reasoning": "The student correctly explains that asynchronous programming allows for non-blocking execution.", "highlighted": "run long execution time programs", "relevancy": 1}
+
+35: R10 - It allows us to run long execution time programs without making the user wait for the program to finish before using the webpage. 
+{"rubric": "R10", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+35: R2 - It allows us to run long execution time programs without making the user wait for the program to finish before using the webpage. 
+{"rubric": "R2", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+35: R3 - It allows us to run long execution time programs without making the user wait for the program to finish before using the webpage. 
+{"rubric": "R3", "reasoning": "The student correctly explains that asynchronous programming improves user experience.", "highlighted": "without making the user wait", "relevancy": 1}
+
+35: R4 - It allows us to run long execution time programs without making the user wait for the program to finish before using the webpage. 
+{"rubric": "R4", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+35: R5 - It allows us to run long execution time programs without making the user wait for the program to finish before using the webpage. 
+{"rubric": "R5", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+35: R6 - It allows us to run long execution time programs without making the user wait for the program to finish before using the webpage. 
+{"rubric": "R6", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+35: R7 - It allows us to run long execution time programs without making the user wait for the program to finish before using the webpage. 
+{"rubric": "R7", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+35: R8 - It allows us to run long execution time programs without making the user wait for the program to finish before using the webpage. 
+{"rubric": "R8", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+35: R9 - It allows us to run long execution time programs without making the user wait for the program to finish before using the webpage. 
+{"rubric": "R9", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+35: R1 - For updating the web page partially, based on an asynchronous process like a web server api call, without reloading the whole page. It makes the user experience faster because it's only changing the visual elements that need to be changed. Reloading fully will use more resources and time. 
+{"rubric": "R1", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+35: R10 - For updating the web page partially, based on an asynchronous process like a web server api call, without reloading the whole page. It makes the user experience faster because it's only changing the visual elements that need to be changed. Reloading fully will use more resources and time. 
+{"rubric": "R10", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+35: R2 - For updating the web page partially, based on an asynchronous process like a web server api call, without reloading the whole page. It makes the user experience faster because it's only changing the visual elements that need to be changed. Reloading fully will use more resources and time. 
+{"rubric": "R2", "reasoning": "The student correctly explains that asynchronous programming allows for partial page updates.", "highlighted": "updating the web page partially", "relevancy": 1}
+
+35: R3 - For updating the web page partially, based on an asynchronous process like a web server api call, without reloading the whole page. It makes the user experience faster because it's only changing the visual elements that need to be changed. Reloading fully will use more resources and time. 
+{"rubric": "R3", "reasoning": "The student correctly explains that asynchronous programming improves user experience.", "highlighted": "makes the user experience faster", "relevancy": 1}
+
+35: R4 - For updating the web page partially, based on an asynchronous process like a web server api call, without reloading the whole page. It makes the user experience faster because it's only changing the visual elements that need to be changed. Reloading fully will use more resources and time. 
+{"rubric": "R4", "reasoning": "The student correctly explains that asynchronous programming improves efficiency and performance.", "highlighted": "Reloading fully will use more resources", "relevancy": 1}
+
+35: R5 - For updating the web page partially, based on an asynchronous process like a web server api call, without reloading the whole page. It makes the user experience faster because it's only changing the visual elements that need to be changed. Reloading fully will use more resources and time. 
+{"rubric": "R5", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+35: R6 - For updating the web page partially, based on an asynchronous process like a web server api call, without reloading the whole page. It makes the user experience faster because it's only changing the visual elements that need to be changed. Reloading fully will use more resources and time. 
+{"rubric": "R6", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+35: R7 - For updating the web page partially, based on an asynchronous process like a web server api call, without reloading the whole page. It makes the user experience faster because it's only changing the visual elements that need to be changed. Reloading fully will use more resources and time. 
+{"rubric": "R7", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+35: R8 - For updating the web page partially, based on an asynchronous process like a web server api call, without reloading the whole page. It makes the user experience faster because it's only changing the visual elements that need to be changed. Reloading fully will use more resources and time. 
+{"rubric": "R8", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+35: R9 - For updating the web page partially, based on an asynchronous process like a web server api call, without reloading the whole page. It makes the user experience faster because it's only changing the visual elements that need to be changed. Reloading fully will use more resources and time. 
+{"rubric": "R9", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+35: R1 - – Change a page without reloading it
+– Send, request and receive data from a server without blocking the rest of your interface
+{"rubric": "R1", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+35: R10 - – Change a page without reloading it
+– Send, request and receive data from a server without blocking the rest of your interface
+{"rubric": "R10", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+35: R2 - – Change a page without reloading it
+– Send, request and receive data from a server without blocking the rest of your interface
+{"rubric": "R2", "reasoning": "The student correctly explains that asynchronous programming allows for partial page updates.", "highlighted": "Change a page without reloading", "relevancy": "1"}
+
+35: R3 - – Change a page without reloading it
+– Send, request and receive data from a server without blocking the rest of your interface
+{"rubric": "R3", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+35: R4 - – Change a page without reloading it
+– Send, request and receive data from a server without blocking the rest of your interface
+{"rubric": "R4", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+35: R5 - – Change a page without reloading it
+– Send, request and receive data from a server without blocking the rest of your interface
+{"rubric": "R5", "reasoning": "The student correctly explains that asynchronous programming facilitates server communication.", "highlighted": "Send, request and receive data", "relevancy": 1}
+
+35: R6 - – Change a page without reloading it
+– Send, request and receive data from a server without blocking the rest of your interface
+{"rubric": "R6", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+35: R7 - – Change a page without reloading it
+– Send, request and receive data from a server without blocking the rest of your interface
+{"rubric": "R7", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+35: R8 - – Change a page without reloading it
+– Send, request and receive data from a server without blocking the rest of your interface
+{"rubric": "R8", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+35: R9 - – Change a page without reloading it
+– Send, request and receive data from a server without blocking the rest of your interface
+{"rubric": "R9", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+35: R1 -  AJAX allows us to partially update a page without refreshing the whole page. It also allows executing instructions that may take a really long time (e.g. waiting for HTTP responses) without blocking the rest of the code, so users may still interact with the UI.
+
+{"rubric": "R1", "reasoning": "The student correctly explains that asynchronous programming allows for non-blocking execution.", "highlighted": "without blocking the rest", "relevancy": 1}
+
+35: R10 -  AJAX allows us to partially update a page without refreshing the whole page. It also allows executing instructions that may take a really long time (e.g. waiting for HTTP responses) without blocking the rest of the code, so users may still interact with the UI.
+
+{"rubric": "R10", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+35: R2 -  AJAX allows us to partially update a page without refreshing the whole page. It also allows executing instructions that may take a really long time (e.g. waiting for HTTP responses) without blocking the rest of the code, so users may still interact with the UI.
+
+{"rubric": "R2", "reasoning": "The student correctly explains that asynchronous programming allows for partial page updates.", "highlighted": "partially update a page", "relevancy": 1}
+
+35: R3 -  AJAX allows us to partially update a page without refreshing the whole page. It also allows executing instructions that may take a really long time (e.g. waiting for HTTP responses) without blocking the rest of the code, so users may still interact with the UI.
+
+{"rubric": "R3", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+35: R4 -  AJAX allows us to partially update a page without refreshing the whole page. It also allows executing instructions that may take a really long time (e.g. waiting for HTTP responses) without blocking the rest of the code, so users may still interact with the UI.
+
+{"rubric": "R4", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+35: R5 -  AJAX allows us to partially update a page without refreshing the whole page. It also allows executing instructions that may take a really long time (e.g. waiting for HTTP responses) without blocking the rest of the code, so users may still interact with the UI.
+
+{"rubric": "R5", "reasoning": "The student correctly explains that asynchronous programming facilitates server communication.", "highlighted": "waiting for HTTP responses", "relevancy": 1}
+
+35: R6 -  AJAX allows us to partially update a page without refreshing the whole page. It also allows executing instructions that may take a really long time (e.g. waiting for HTTP responses) without blocking the rest of the code, so users may still interact with the UI.
+
+{"rubric": "R6", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+35: R7 -  AJAX allows us to partially update a page without refreshing the whole page. It also allows executing instructions that may take a really long time (e.g. waiting for HTTP responses) without blocking the rest of the code, so users may still interact with the UI.
+
+{"rubric": "R7", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+35: R8 -  AJAX allows us to partially update a page without refreshing the whole page. It also allows executing instructions that may take a really long time (e.g. waiting for HTTP responses) without blocking the rest of the code, so users may still interact with the UI.
+
+{"rubric": "R8", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+35: R9 -  AJAX allows us to partially update a page without refreshing the whole page. It also allows executing instructions that may take a really long time (e.g. waiting for HTTP responses) without blocking the rest of the code, so users may still interact with the UI.
+
+{"rubric": "R9", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+35: R1 - The main benefit of asynchronous programming in Javascript is that you can run multiple tasks to be run at the same time without stalling other ones. For example, this means that you can render a certain thing while waiting for another thing to render instead of waiting for everything to load before loading the webpage.
+{"rubric": "R1", "reasoning": "The student correctly explains that asynchronous programming allows for non-blocking execution.", "highlighted": "run multiple tasks to be run", "relevancy": 1}
+
+35: R10 - The main benefit of asynchronous programming in Javascript is that you can run multiple tasks to be run at the same time without stalling other ones. For example, this means that you can render a certain thing while waiting for another thing to render instead of waiting for everything to load before loading the webpage.
+{"rubric": "R10", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+35: R2 - The main benefit of asynchronous programming in Javascript is that you can run multiple tasks to be run at the same time without stalling other ones. For example, this means that you can render a certain thing while waiting for another thing to render instead of waiting for everything to load before loading the webpage.
+{"rubric": "R2", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+35: R3 - The main benefit of asynchronous programming in Javascript is that you can run multiple tasks to be run at the same time without stalling other ones. For example, this means that you can render a certain thing while waiting for another thing to render instead of waiting for everything to load before loading the webpage.
+{"rubric": "R3", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+35: R4 - The main benefit of asynchronous programming in Javascript is that you can run multiple tasks to be run at the same time without stalling other ones. For example, this means that you can render a certain thing while waiting for another thing to render instead of waiting for everything to load before loading the webpage.
+{"rubric": "R4", "reasoning": "The student correctly explains that asynchronous programming improves efficiency and performance.", "highlighted": "without stalling other ones", "relevancy": 1}
+
+35: R5 - The main benefit of asynchronous programming in Javascript is that you can run multiple tasks to be run at the same time without stalling other ones. For example, this means that you can render a certain thing while waiting for another thing to render instead of waiting for everything to load before loading the webpage.
+{"rubric": "R5", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+35: R6 - The main benefit of asynchronous programming in Javascript is that you can run multiple tasks to be run at the same time without stalling other ones. For example, this means that you can render a certain thing while waiting for another thing to render instead of waiting for everything to load before loading the webpage.
+{"rubric": "R6", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+35: R7 - The main benefit of asynchronous programming in Javascript is that you can run multiple tasks to be run at the same time without stalling other ones. For example, this means that you can render a certain thing while waiting for another thing to render instead of waiting for everything to load before loading the webpage.
+{"rubric": "R7", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+35: R8 - The main benefit of asynchronous programming in Javascript is that you can run multiple tasks to be run at the same time without stalling other ones. For example, this means that you can render a certain thing while waiting for another thing to render instead of waiting for everything to load before loading the webpage.
+{"rubric": "R8", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+35: R9 - The main benefit of asynchronous programming in Javascript is that you can run multiple tasks to be run at the same time without stalling other ones. For example, this means that you can render a certain thing while waiting for another thing to render instead of waiting for everything to load before loading the webpage.
+{"rubric": "R9", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+35: R1 - Because sometimes you would want to execute other functions while waiting for one function to finish.
+{"rubric": "R1", "reasoning": "The student correctly explains that asynchronous programming allows for non-blocking execution.", "highlighted": "execute other functions while waiting", "relevancy": 1}
+
+35: R10 - Because sometimes you would want to execute other functions while waiting for one function to finish.
+{"rubric": "R10", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+35: R2 - Because sometimes you would want to execute other functions while waiting for one function to finish.
+{"rubric": "R2", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+35: R3 - Because sometimes you would want to execute other functions while waiting for one function to finish.
+{"rubric": "R3", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+35: R4 - Because sometimes you would want to execute other functions while waiting for one function to finish.
+{"rubric": "R4", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+35: R5 - Because sometimes you would want to execute other functions while waiting for one function to finish.
+{"rubric": "R5", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+35: R6 - Because sometimes you would want to execute other functions while waiting for one function to finish.
+{"rubric": "R6", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+35: R7 - Because sometimes you would want to execute other functions while waiting for one function to finish.
+{"rubric": "R7", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+35: R8 - Because sometimes you would want to execute other functions while waiting for one function to finish.
+{"rubric": "R8", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+35: R9 - Because sometimes you would want to execute other functions while waiting for one function to finish.
+{"rubric": "R9", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+35: R1 - It helps change a page without having to reload it and you can send, request, and receive data from a server without blocking the rest of your interface.
+{"rubric": "R1", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+35: R10 - It helps change a page without having to reload it and you can send, request, and receive data from a server without blocking the rest of your interface.
+{"rubric": "R10", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+35: R2 - It helps change a page without having to reload it and you can send, request, and receive data from a server without blocking the rest of your interface.
+{"rubric": "R2", "reasoning": "The student correctly explains that asynchronous programming allows for partial page updates.", "highlighted": "change a page without having", "relevancy": 1}
+
+35: R3 - It helps change a page without having to reload it and you can send, request, and receive data from a server without blocking the rest of your interface.
+{"rubric": "R3", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+35: R4 - It helps change a page without having to reload it and you can send, request, and receive data from a server without blocking the rest of your interface.
+{"rubric": "R4", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+35: R5 - It helps change a page without having to reload it and you can send, request, and receive data from a server without blocking the rest of your interface.
+{"rubric": "R5", "reasoning": "The student correctly explains that asynchronous programming facilitates server communication.", "highlighted": "send, request, and receive data", "relevancy": 1}
+
+35: R6 - It helps change a page without having to reload it and you can send, request, and receive data from a server without blocking the rest of your interface.
+{"rubric": "R6", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+35: R7 - It helps change a page without having to reload it and you can send, request, and receive data from a server without blocking the rest of your interface.
+{"rubric": "R7", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+35: R8 - It helps change a page without having to reload it and you can send, request, and receive data from a server without blocking the rest of your interface.
+{"rubric": "R8", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+35: R9 - It helps change a page without having to reload it and you can send, request, and receive data from a server without blocking the rest of your interface.
+{"rubric": "R9", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+35: R1 - you can run a long task in the background and the program will be able to respond to other user events. Won't be bottlenecked and waiting until the task is finished.
+{"rubric": "R1", "reasoning": "The student correctly explains that asynchronous programming allows for non-blocking execution.", "highlighted": "run a long task in the background", "relevancy": 1}
+
+35: R10 - you can run a long task in the background and the program will be able to respond to other user events. Won't be bottlenecked and waiting until the task is finished.
+{"rubric": "R10", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+35: R2 - you can run a long task in the background and the program will be able to respond to other user events. Won't be bottlenecked and waiting until the task is finished.
+{"rubric": "R2", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+35: R3 - you can run a long task in the background and the program will be able to respond to other user events. Won't be bottlenecked and waiting until the task is finished.
+{"rubric": "R3", "reasoning": "The student correctly explains that asynchronous programming improves user experience.", "highlighted": "program will be able to respond", "relevancy": 1}
+
+35: R4 - you can run a long task in the background and the program will be able to respond to other user events. Won't be bottlenecked and waiting until the task is finished.
+{"rubric": "R4", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+35: R5 - you can run a long task in the background and the program will be able to respond to other user events. Won't be bottlenecked and waiting until the task is finished.
+{"rubric": "R5", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+35: R6 - you can run a long task in the background and the program will be able to respond to other user events. Won't be bottlenecked and waiting until the task is finished.
+{"rubric": "R6", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+35: R7 - you can run a long task in the background and the program will be able to respond to other user events. Won't be bottlenecked and waiting until the task is finished.
+{"rubric": "R7", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+35: R8 - you can run a long task in the background and the program will be able to respond to other user events. Won't be bottlenecked and waiting until the task is finished.
+{"rubric": "R8", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+35: R9 - you can run a long task in the background and the program will be able to respond to other user events. Won't be bottlenecked and waiting until the task is finished.
+{"rubric": "R9", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+35: R1 - We want to use asynchronous programming so that we do not get slowed down by instructions that take a long time to return, such as fetching data from an API, which ensures that users can still interact with the user interface.
+{"rubric": "R1", "reasoning": "The student correctly explains that asynchronous programming allows for non-blocking execution.", "highlighted": "do not get slowed down", "relevancy": 1}
+
+35: R10 - We want to use asynchronous programming so that we do not get slowed down by instructions that take a long time to return, such as fetching data from an API, which ensures that users can still interact with the user interface.
+{"rubric": "R10", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+35: R2 - We want to use asynchronous programming so that we do not get slowed down by instructions that take a long time to return, such as fetching data from an API, which ensures that users can still interact with the user interface.
+{"rubric": "R2", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+35: R3 - We want to use asynchronous programming so that we do not get slowed down by instructions that take a long time to return, such as fetching data from an API, which ensures that users can still interact with the user interface.
+{"rubric": "R3", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+35: R4 - We want to use asynchronous programming so that we do not get slowed down by instructions that take a long time to return, such as fetching data from an API, which ensures that users can still interact with the user interface.
+{"rubric": "R4", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+35: R5 - We want to use asynchronous programming so that we do not get slowed down by instructions that take a long time to return, such as fetching data from an API, which ensures that users can still interact with the user interface.
+{"rubric": "R5", "reasoning": "The student correctly explains that asynchronous programming facilitates server communication.", "highlighted": "fetching data from an API", "relevancy": 1}
+
+35: R6 - We want to use asynchronous programming so that we do not get slowed down by instructions that take a long time to return, such as fetching data from an API, which ensures that users can still interact with the user interface.
+{"rubric": "R6", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+35: R7 - We want to use asynchronous programming so that we do not get slowed down by instructions that take a long time to return, such as fetching data from an API, which ensures that users can still interact with the user interface.
+{"rubric": "R7", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+35: R8 - We want to use asynchronous programming so that we do not get slowed down by instructions that take a long time to return, such as fetching data from an API, which ensures that users can still interact with the user interface.
+{"rubric": "R8", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+35: R9 - We want to use asynchronous programming so that we do not get slowed down by instructions that take a long time to return, such as fetching data from an API, which ensures that users can still interact with the user interface.
+{"rubric": "R9", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+35: R1 - When writing web apps, we often read and write to a server which takes time. To make sure each function has completely finished running, we need to wait for each function. Otherwise, if we execute in real time (synchronous) we may not get desired output.
+
+As an example, consider an app that writes a to-do list to a server. We want to add an item to the list and then print the list. Adding an item may take more time than printing. So, if asynchronous programming is not used the list that is printed will be the list before the new item was added which is not the desired output.
+{"rubric": "R1", "reasoning": "The student correctly explains that asynchronous programming allows for non-blocking execution.", "highlighted": "wait for each function", "relevancy": 1}
+
+35: R10 - When writing web apps, we often read and write to a server which takes time. To make sure each function has completely finished running, we need to wait for each function. Otherwise, if we execute in real time (synchronous) we may not get desired output.
+
+As an example, consider an app that writes a to-do list to a server. We want to add an item to the list and then print the list. Adding an item may take more time than printing. So, if asynchronous programming is not used the list that is printed will be the list before the new item was added which is not the desired output.
+{"rubric": "R10", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+35: R2 - When writing web apps, we often read and write to a server which takes time. To make sure each function has completely finished running, we need to wait for each function. Otherwise, if we execute in real time (synchronous) we may not get desired output.
+
+As an example, consider an app that writes a to-do list to a server. We want to add an item to the list and then print the list. Adding an item may take more time than printing. So, if asynchronous programming is not used the list that is printed will be the list before the new item was added which is not the desired output.
+{"rubric": "R2", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+35: R3 - When writing web apps, we often read and write to a server which takes time. To make sure each function has completely finished running, we need to wait for each function. Otherwise, if we execute in real time (synchronous) we may not get desired output.
+
+As an example, consider an app that writes a to-do list to a server. We want to add an item to the list and then print the list. Adding an item may take more time than printing. So, if asynchronous programming is not used the list that is printed will be the list before the new item was added which is not the desired output.
+{"rubric": "R3", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+35: R4 - When writing web apps, we often read and write to a server which takes time. To make sure each function has completely finished running, we need to wait for each function. Otherwise, if we execute in real time (synchronous) we may not get desired output.
+
+As an example, consider an app that writes a to-do list to a server. We want to add an item to the list and then print the list. Adding an item may take more time than printing. So, if asynchronous programming is not used the list that is printed will be the list before the new item was added which is not the desired output.
+{"rubric": "R4", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+35: R5 - When writing web apps, we often read and write to a server which takes time. To make sure each function has completely finished running, we need to wait for each function. Otherwise, if we execute in real time (synchronous) we may not get desired output.
+
+As an example, consider an app that writes a to-do list to a server. We want to add an item to the list and then print the list. Adding an item may take more time than printing. So, if asynchronous programming is not used the list that is printed will be the list before the new item was added which is not the desired output.
+{"rubric": "R5", "reasoning": "The student correctly explains that asynchronous programming facilitates server communication.", "highlighted": "read and write to a server", "relevancy": 1}
+
+35: R6 - When writing web apps, we often read and write to a server which takes time. To make sure each function has completely finished running, we need to wait for each function. Otherwise, if we execute in real time (synchronous) we may not get desired output.
+
+As an example, consider an app that writes a to-do list to a server. We want to add an item to the list and then print the list. Adding an item may take more time than printing. So, if asynchronous programming is not used the list that is printed will be the list before the new item was added which is not the desired output.
+{"rubric": "R6", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+35: R7 - When writing web apps, we often read and write to a server which takes time. To make sure each function has completely finished running, we need to wait for each function. Otherwise, if we execute in real time (synchronous) we may not get desired output.
+
+As an example, consider an app that writes a to-do list to a server. We want to add an item to the list and then print the list. Adding an item may take more time than printing. So, if asynchronous programming is not used the list that is printed will be the list before the new item was added which is not the desired output.
+{"rubric": "R7", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+35: R8 - When writing web apps, we often read and write to a server which takes time. To make sure each function has completely finished running, we need to wait for each function. Otherwise, if we execute in real time (synchronous) we may not get desired output.
+
+As an example, consider an app that writes a to-do list to a server. We want to add an item to the list and then print the list. Adding an item may take more time than printing. So, if asynchronous programming is not used the list that is printed will be the list before the new item was added which is not the desired output.
+{"rubric": "R8", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+35: R9 - When writing web apps, we often read and write to a server which takes time. To make sure each function has completely finished running, we need to wait for each function. Otherwise, if we execute in real time (synchronous) we may not get desired output.
+
+As an example, consider an app that writes a to-do list to a server. We want to add an item to the list and then print the list. Adding an item may take more time than printing. So, if asynchronous programming is not used the list that is printed will be the list before the new item was added which is not the desired output.
+{"rubric": "R9", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+35: R1 - Asynchronous programming allows for multiple tasks to be carried out simultaneously, without blocking or delaying the execution of other tasks. It can help us make more efficient processing of data, allowing our app to handle larger amounts of data and traffic.
+{"rubric": "R1", "reasoning": "The student correctly explains that asynchronous programming allows for non-blocking execution.", "highlighted": "multiple tasks to be carried out simultaneously", "relevancy": 1}
+
+35: R10 - Asynchronous programming allows for multiple tasks to be carried out simultaneously, without blocking or delaying the execution of other tasks. It can help us make more efficient processing of data, allowing our app to handle larger amounts of data and traffic.
+{"rubric": "R10", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+35: R2 - Asynchronous programming allows for multiple tasks to be carried out simultaneously, without blocking or delaying the execution of other tasks. It can help us make more efficient processing of data, allowing our app to handle larger amounts of data and traffic.
+{"rubric": "R2", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+35: R3 - Asynchronous programming allows for multiple tasks to be carried out simultaneously, without blocking or delaying the execution of other tasks. It can help us make more efficient processing of data, allowing our app to handle larger amounts of data and traffic.
+{"rubric": "R3", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+35: R4 - Asynchronous programming allows for multiple tasks to be carried out simultaneously, without blocking or delaying the execution of other tasks. It can help us make more efficient processing of data, allowing our app to handle larger amounts of data and traffic.
+{"rubric": "R4", "reasoning": "The student correctly explains that asynchronous programming improves efficiency and performance.", "highlighted": "more efficient processing of data", "relevancy": 1}
+
+35: R5 - Asynchronous programming allows for multiple tasks to be carried out simultaneously, without blocking or delaying the execution of other tasks. It can help us make more efficient processing of data, allowing our app to handle larger amounts of data and traffic.
+{"rubric": "R5", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+35: R6 - Asynchronous programming allows for multiple tasks to be carried out simultaneously, without blocking or delaying the execution of other tasks. It can help us make more efficient processing of data, allowing our app to handle larger amounts of data and traffic.
+{"rubric": "R6", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+35: R7 - Asynchronous programming allows for multiple tasks to be carried out simultaneously, without blocking or delaying the execution of other tasks. It can help us make more efficient processing of data, allowing our app to handle larger amounts of data and traffic.
+{"rubric": "R7", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+35: R8 - Asynchronous programming allows for multiple tasks to be carried out simultaneously, without blocking or delaying the execution of other tasks. It can help us make more efficient processing of data, allowing our app to handle larger amounts of data and traffic.
+{"rubric": "R8", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+35: R9 - Asynchronous programming allows for multiple tasks to be carried out simultaneously, without blocking or delaying the execution of other tasks. It can help us make more efficient processing of data, allowing our app to handle larger amounts of data and traffic.
+{"rubric": "R9", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+35: R1 - Asynchronous programming helps you wait for one task to finish before starting another task
+{"rubric": "R1", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+35: R10 - Asynchronous programming helps you wait for one task to finish before starting another task
+{"rubric": "R10", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+35: R2 - Asynchronous programming helps you wait for one task to finish before starting another task
+{"rubric": "R2", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+35: R3 - Asynchronous programming helps you wait for one task to finish before starting another task
+{"rubric": "R3", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+35: R4 - Asynchronous programming helps you wait for one task to finish before starting another task
+{"rubric": "R4", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+35: R5 - Asynchronous programming helps you wait for one task to finish before starting another task
+{"rubric": "R5", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+35: R6 - Asynchronous programming helps you wait for one task to finish before starting another task
+{"rubric": "R6", "reasoning": "The student incorrectly describes asynchronous programming as waiting for one task to finish before starting another, which is not the concept of non-blocking execution.", "highlighted": "wait for one task to finish", "relevancy": 1}
+
+35: R7 - Asynchronous programming helps you wait for one task to finish before starting another task
+{"rubric": "R7", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+35: R8 - Asynchronous programming helps you wait for one task to finish before starting another task
+{"rubric": "R8", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+35: R9 - Asynchronous programming helps you wait for one task to finish before starting another task
+{"rubric": "R9", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+35: R1 - It allows the program to start a potentially long-running task and still be able to be responsive to other events while that task runs, rather than having to wait until that task has finished so essentially it's more time-efficient.
+{"rubric": "R1", "reasoning": "The student correctly explains that asynchronous programming allows for non-blocking execution.", "highlighted": "start a potentially long-running task", "relevancy": 1}
+
+35: R10 - It allows the program to start a potentially long-running task and still be able to be responsive to other events while that task runs, rather than having to wait until that task has finished so essentially it's more time-efficient.
+{"rubric": "R10", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+35: R2 - It allows the program to start a potentially long-running task and still be able to be responsive to other events while that task runs, rather than having to wait until that task has finished so essentially it's more time-efficient.
+{"rubric": "R2", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+35: R3 - It allows the program to start a potentially long-running task and still be able to be responsive to other events while that task runs, rather than having to wait until that task has finished so essentially it's more time-efficient.
+{"rubric": "R3", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+35: R4 - It allows the program to start a potentially long-running task and still be able to be responsive to other events while that task runs, rather than having to wait until that task has finished so essentially it's more time-efficient.
+{"rubric": "R4", "reasoning": "The student correctly explains that asynchronous programming improves efficiency and performance.", "highlighted": "it's more time-efficient", "relevancy": 1}
+
+35: R5 - It allows the program to start a potentially long-running task and still be able to be responsive to other events while that task runs, rather than having to wait until that task has finished so essentially it's more time-efficient.
+{"rubric": "R5", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+35: R6 - It allows the program to start a potentially long-running task and still be able to be responsive to other events while that task runs, rather than having to wait until that task has finished so essentially it's more time-efficient.
+{"rubric": "R6", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+35: R7 - It allows the program to start a potentially long-running task and still be able to be responsive to other events while that task runs, rather than having to wait until that task has finished so essentially it's more time-efficient.
+{"rubric": "R7", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+35: R8 - It allows the program to start a potentially long-running task and still be able to be responsive to other events while that task runs, rather than having to wait until that task has finished so essentially it's more time-efficient.
+{"rubric": "R8", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+35: R9 - It allows the program to start a potentially long-running task and still be able to be responsive to other events while that task runs, rather than having to wait until that task has finished so essentially it's more time-efficient.
+{"rubric": "R9", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+35: R1 - It allows us to update parts of a webpage at a time in order to handle requests to/from servers and avoid having to re-render the entire page.
+{"rubric": "R1", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+35: R10 - It allows us to update parts of a webpage at a time in order to handle requests to/from servers and avoid having to re-render the entire page.
+{"rubric": "R10", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+35: R2 - It allows us to update parts of a webpage at a time in order to handle requests to/from servers and avoid having to re-render the entire page.
+{"rubric": "R2", "reasoning": "The student correctly explains that asynchronous programming allows for partial page updates.", "highlighted": "update parts of a webpage", "relevancy": 1}
+
+35: R3 - It allows us to update parts of a webpage at a time in order to handle requests to/from servers and avoid having to re-render the entire page.
+{"rubric": "R3", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+35: R4 - It allows us to update parts of a webpage at a time in order to handle requests to/from servers and avoid having to re-render the entire page.
+{"rubric": "R4", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+35: R5 - It allows us to update parts of a webpage at a time in order to handle requests to/from servers and avoid having to re-render the entire page.
+{"rubric": "R5", "reasoning": "The student correctly explains that asynchronous programming facilitates server communication.", "highlighted": "handle requests to/from servers", "relevancy": 1}
+
+35: R6 - It allows us to update parts of a webpage at a time in order to handle requests to/from servers and avoid having to re-render the entire page.
+{"rubric": "R6", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+35: R7 - It allows us to update parts of a webpage at a time in order to handle requests to/from servers and avoid having to re-render the entire page.
+{"rubric": "R7", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+35: R8 - It allows us to update parts of a webpage at a time in order to handle requests to/from servers and avoid having to re-render the entire page.
+{"rubric": "R8", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+35: R9 - It allows us to update parts of a webpage at a time in order to handle requests to/from servers and avoid having to re-render the entire page.
+{"rubric": "R9", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+35: R1 - This will allow users to continue to use your website/app, while you work on parts of the website while not interfering with traffic to your website.
+{"rubric": "R1", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+35: R10 - This will allow users to continue to use your website/app, while you work on parts of the website while not interfering with traffic to your website.
+{"rubric": "R10", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+35: R2 - This will allow users to continue to use your website/app, while you work on parts of the website while not interfering with traffic to your website.
+{"rubric": "R2", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+35: R3 - This will allow users to continue to use your website/app, while you work on parts of the website while not interfering with traffic to your website.
+{"rubric": "R3", "reasoning": "The student correctly explains that asynchronous programming improves user experience.", "highlighted": "users to continue to use", "relevancy": 1}
+
+35: R4 - This will allow users to continue to use your website/app, while you work on parts of the website while not interfering with traffic to your website.
+{"rubric": "R4", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+35: R5 - This will allow users to continue to use your website/app, while you work on parts of the website while not interfering with traffic to your website.
+{"rubric": "R5", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+35: R6 - This will allow users to continue to use your website/app, while you work on parts of the website while not interfering with traffic to your website.
+{"rubric": "R6", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+35: R7 - This will allow users to continue to use your website/app, while you work on parts of the website while not interfering with traffic to your website.
+{"rubric": "R7", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+35: R8 - This will allow users to continue to use your website/app, while you work on parts of the website while not interfering with traffic to your website.
+{"rubric": "R8", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+35: R9 - This will allow users to continue to use your website/app, while you work on parts of the website while not interfering with traffic to your website.
+{"rubric": "R9", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+36: R1 - In the starting stage of the IDEO framework, we do user research to understand the user needs and conduct research to get ideas about what solutions are needed. Thus,  after brainstorming a list of solutions to user needs, by doing user research through storyboards and speed dating, we get an idea as to which of the designers solutions are applicable to user needs and what changes we could incorporate into a low fidelity prototype.
+
+Heuristic evaluation and user testing of our low fidelity prototypes with a simple visual interface lets users learn about the simple functionalities of our app, and thus, through the low functionality prototypes and iteration, we get more feedback from the users as to what works for our app and what needs to be implemented for the high fidelity prototypes.  This si the prototyping stage.
+
+For our high fidelity prototypes, we can conduct think alouds to get an understand of what specific features of our app is considered positive by users. Thus, through more iteration and think aloud with a large subset of people, we address the UI issues and usabliity issues to make a functional app for our users. This is the testing stage
+{"rubric": "R1", "reasoning": "The answer demonstrates understanding of user needs and how to address them.", "highlighted": "understand the user needs", "relevancy": 1}
+
+36: R10 - In the starting stage of the IDEO framework, we do user research to understand the user needs and conduct research to get ideas about what solutions are needed. Thus,  after brainstorming a list of solutions to user needs, by doing user research through storyboards and speed dating, we get an idea as to which of the designers solutions are applicable to user needs and what changes we could incorporate into a low fidelity prototype.
+
+Heuristic evaluation and user testing of our low fidelity prototypes with a simple visual interface lets users learn about the simple functionalities of our app, and thus, through the low functionality prototypes and iteration, we get more feedback from the users as to what works for our app and what needs to be implemented for the high fidelity prototypes.  This si the prototyping stage.
+
+For our high fidelity prototypes, we can conduct think alouds to get an understand of what specific features of our app is considered positive by users. Thus, through more iteration and think aloud with a large subset of people, we address the UI issues and usabliity issues to make a functional app for our users. This is the testing stage
+{"rubric": "R10", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+36: R2 - In the starting stage of the IDEO framework, we do user research to understand the user needs and conduct research to get ideas about what solutions are needed. Thus,  after brainstorming a list of solutions to user needs, by doing user research through storyboards and speed dating, we get an idea as to which of the designers solutions are applicable to user needs and what changes we could incorporate into a low fidelity prototype.
+
+Heuristic evaluation and user testing of our low fidelity prototypes with a simple visual interface lets users learn about the simple functionalities of our app, and thus, through the low functionality prototypes and iteration, we get more feedback from the users as to what works for our app and what needs to be implemented for the high fidelity prototypes.  This si the prototyping stage.
+
+For our high fidelity prototypes, we can conduct think alouds to get an understand of what specific features of our app is considered positive by users. Thus, through more iteration and think aloud with a large subset of people, we address the UI issues and usabliity issues to make a functional app for our users. This is the testing stage
+{"rubric": "R2", "reasoning": "The answer identifies solutions to user needs.", "highlighted": "get ideas about what solutions", "relevancy": 1}
+
+36: R3 - In the starting stage of the IDEO framework, we do user research to understand the user needs and conduct research to get ideas about what solutions are needed. Thus,  after brainstorming a list of solutions to user needs, by doing user research through storyboards and speed dating, we get an idea as to which of the designers solutions are applicable to user needs and what changes we could incorporate into a low fidelity prototype.
+
+Heuristic evaluation and user testing of our low fidelity prototypes with a simple visual interface lets users learn about the simple functionalities of our app, and thus, through the low functionality prototypes and iteration, we get more feedback from the users as to what works for our app and what needs to be implemented for the high fidelity prototypes.  This si the prototyping stage.
+
+For our high fidelity prototypes, we can conduct think alouds to get an understand of what specific features of our app is considered positive by users. Thus, through more iteration and think aloud with a large subset of people, we address the UI issues and usabliity issues to make a functional app for our users. This is the testing stage
+{"rubric": "R3", "reasoning": "The answer validates user needs through storyboards and speed dating.", "highlighted": "applicable to user needs", "relevancy": 1}
+
+36: R4 - In the starting stage of the IDEO framework, we do user research to understand the user needs and conduct research to get ideas about what solutions are needed. Thus,  after brainstorming a list of solutions to user needs, by doing user research through storyboards and speed dating, we get an idea as to which of the designers solutions are applicable to user needs and what changes we could incorporate into a low fidelity prototype.
+
+Heuristic evaluation and user testing of our low fidelity prototypes with a simple visual interface lets users learn about the simple functionalities of our app, and thus, through the low functionality prototypes and iteration, we get more feedback from the users as to what works for our app and what needs to be implemented for the high fidelity prototypes.  This si the prototyping stage.
+
+For our high fidelity prototypes, we can conduct think alouds to get an understand of what specific features of our app is considered positive by users. Thus, through more iteration and think aloud with a large subset of people, we address the UI issues and usabliity issues to make a functional app for our users. This is the testing stage
+{"rubric": "R4", "reasoning": "The answer gathers feedback on usability through user testing.", "highlighted": "feedback from the users", "relevancy": 1}
+
+36: R5 - In the starting stage of the IDEO framework, we do user research to understand the user needs and conduct research to get ideas about what solutions are needed. Thus,  after brainstorming a list of solutions to user needs, by doing user research through storyboards and speed dating, we get an idea as to which of the designers solutions are applicable to user needs and what changes we could incorporate into a low fidelity prototype.
+
+Heuristic evaluation and user testing of our low fidelity prototypes with a simple visual interface lets users learn about the simple functionalities of our app, and thus, through the low functionality prototypes and iteration, we get more feedback from the users as to what works for our app and what needs to be implemented for the high fidelity prototypes.  This si the prototyping stage.
+
+For our high fidelity prototypes, we can conduct think alouds to get an understand of what specific features of our app is considered positive by users. Thus, through more iteration and think aloud with a large subset of people, we address the UI issues and usabliity issues to make a functional app for our users. This is the testing stage
+{"rubric": "R5", "reasoning": "The answer uses user research to improve prototypes.", "highlighted": "implemented for the high fidelity prototypes", "relevancy": 1}
+
+36: R6 - In the starting stage of the IDEO framework, we do user research to understand the user needs and conduct research to get ideas about what solutions are needed. Thus,  after brainstorming a list of solutions to user needs, by doing user research through storyboards and speed dating, we get an idea as to which of the designers solutions are applicable to user needs and what changes we could incorporate into a low fidelity prototype.
+
+Heuristic evaluation and user testing of our low fidelity prototypes with a simple visual interface lets users learn about the simple functionalities of our app, and thus, through the low functionality prototypes and iteration, we get more feedback from the users as to what works for our app and what needs to be implemented for the high fidelity prototypes.  This si the prototyping stage.
+
+For our high fidelity prototypes, we can conduct think alouds to get an understand of what specific features of our app is considered positive by users. Thus, through more iteration and think aloud with a large subset of people, we address the UI issues and usabliity issues to make a functional app for our users. This is the testing stage
+{"rubric": "R6", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+36: R7 - In the starting stage of the IDEO framework, we do user research to understand the user needs and conduct research to get ideas about what solutions are needed. Thus,  after brainstorming a list of solutions to user needs, by doing user research through storyboards and speed dating, we get an idea as to which of the designers solutions are applicable to user needs and what changes we could incorporate into a low fidelity prototype.
+
+Heuristic evaluation and user testing of our low fidelity prototypes with a simple visual interface lets users learn about the simple functionalities of our app, and thus, through the low functionality prototypes and iteration, we get more feedback from the users as to what works for our app and what needs to be implemented for the high fidelity prototypes.  This si the prototyping stage.
+
+For our high fidelity prototypes, we can conduct think alouds to get an understand of what specific features of our app is considered positive by users. Thus, through more iteration and think aloud with a large subset of people, we address the UI issues and usabliity issues to make a functional app for our users. This is the testing stage
+{"rubric": "R7", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+36: R8 - In the starting stage of the IDEO framework, we do user research to understand the user needs and conduct research to get ideas about what solutions are needed. Thus,  after brainstorming a list of solutions to user needs, by doing user research through storyboards and speed dating, we get an idea as to which of the designers solutions are applicable to user needs and what changes we could incorporate into a low fidelity prototype.
+
+Heuristic evaluation and user testing of our low fidelity prototypes with a simple visual interface lets users learn about the simple functionalities of our app, and thus, through the low functionality prototypes and iteration, we get more feedback from the users as to what works for our app and what needs to be implemented for the high fidelity prototypes.  This si the prototyping stage.
+
+For our high fidelity prototypes, we can conduct think alouds to get an understand of what specific features of our app is considered positive by users. Thus, through more iteration and think aloud with a large subset of people, we address the UI issues and usabliity issues to make a functional app for our users. This is the testing stage
+{"rubric": "R8", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+36: R9 - In the starting stage of the IDEO framework, we do user research to understand the user needs and conduct research to get ideas about what solutions are needed. Thus,  after brainstorming a list of solutions to user needs, by doing user research through storyboards and speed dating, we get an idea as to which of the designers solutions are applicable to user needs and what changes we could incorporate into a low fidelity prototype.
+
+Heuristic evaluation and user testing of our low fidelity prototypes with a simple visual interface lets users learn about the simple functionalities of our app, and thus, through the low functionality prototypes and iteration, we get more feedback from the users as to what works for our app and what needs to be implemented for the high fidelity prototypes.  This si the prototyping stage.
+
+For our high fidelity prototypes, we can conduct think alouds to get an understand of what specific features of our app is considered positive by users. Thus, through more iteration and think aloud with a large subset of people, we address the UI issues and usabliity issues to make a functional app for our users. This is the testing stage
+{"rubric": "R9", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+36: R1 - 1. Ensure the user need is met (need validation)
+2. Ensure there are no severe usability issues, and that the design tends to be easily usable by the intended users
+3. Determine levels of non-usability features (such as privacy concerns)
+{"rubric": "R1", "reasoning": "The answer demonstrates understanding of user needs.", "highlighted": "Ensure the user need is met", "relevancy": 1}
+
+36: R10 - 1. Ensure the user need is met (need validation)
+2. Ensure there are no severe usability issues, and that the design tends to be easily usable by the intended users
+3. Determine levels of non-usability features (such as privacy concerns)
+{"rubric": "R10", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+36: R2 - 1. Ensure the user need is met (need validation)
+2. Ensure there are no severe usability issues, and that the design tends to be easily usable by the intended users
+3. Determine levels of non-usability features (such as privacy concerns)
+{"rubric": "R2", "reasoning": "The answer identifies usability issues.", "highlighted": "severe usability issues", "relevancy": 1}
+
+36: R3 - 1. Ensure the user need is met (need validation)
+2. Ensure there are no severe usability issues, and that the design tends to be easily usable by the intended users
+3. Determine levels of non-usability features (such as privacy concerns)
+{"rubric": "R3", "reasoning": "The answer validates user needs.", "highlighted": "user need is met", "relevancy": 1}
+
+36: R4 - 1. Ensure the user need is met (need validation)
+2. Ensure there are no severe usability issues, and that the design tends to be easily usable by the intended users
+3. Determine levels of non-usability features (such as privacy concerns)
+{"rubric": "R4", "reasoning": "The answer gathers feedback on usability.", "highlighted": "design tends to be easily usable", "relevancy": 1}
+
+36: R5 - 1. Ensure the user need is met (need validation)
+2. Ensure there are no severe usability issues, and that the design tends to be easily usable by the intended users
+3. Determine levels of non-usability features (such as privacy concerns)
+{"rubric": "R5", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+36: R6 - 1. Ensure the user need is met (need validation)
+2. Ensure there are no severe usability issues, and that the design tends to be easily usable by the intended users
+3. Determine levels of non-usability features (such as privacy concerns)
+{"rubric": "R6", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+36: R7 - 1. Ensure the user need is met (need validation)
+2. Ensure there are no severe usability issues, and that the design tends to be easily usable by the intended users
+3. Determine levels of non-usability features (such as privacy concerns)
+{"rubric": "R7", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+36: R8 - 1. Ensure the user need is met (need validation)
+2. Ensure there are no severe usability issues, and that the design tends to be easily usable by the intended users
+3. Determine levels of non-usability features (such as privacy concerns)
+{"rubric": "R8", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+36: R9 - 1. Ensure the user need is met (need validation)
+2. Ensure there are no severe usability issues, and that the design tends to be easily usable by the intended users
+3. Determine levels of non-usability features (such as privacy concerns)
+{"rubric": "R9", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+36: R1 - Three purposes of user research are creating relevant designs, creating designs that are rewarding to use, and it allows us to better design products that address user's pain points. 
+{"rubric": "R1", "reasoning": "The answer demonstrates understanding of user needs.", "highlighted": "creating relevant designs", "relevancy": 1}
+
+36: R10 - Three purposes of user research are creating relevant designs, creating designs that are rewarding to use, and it allows us to better design products that address user's pain points. 
+{"rubric": "R10", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+36: R2 - Three purposes of user research are creating relevant designs, creating designs that are rewarding to use, and it allows us to better design products that address user's pain points. 
+{"rubric": "R2", "reasoning": "The answer identifies user's pain points.", "highlighted": "address user's pain points", "relevancy": 1}
+
+36: R3 - Three purposes of user research are creating relevant designs, creating designs that are rewarding to use, and it allows us to better design products that address user's pain points. 
+{"rubric": "R3", "reasoning": "The answer validates user needs through design.", "highlighted": "creating designs that are rewarding", "relevancy": 1}
+
+36: R4 - Three purposes of user research are creating relevant designs, creating designs that are rewarding to use, and it allows us to better design products that address user's pain points. 
+{"rubric": "R4", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+36: R5 - Three purposes of user research are creating relevant designs, creating designs that are rewarding to use, and it allows us to better design products that address user's pain points. 
+{"rubric": "R5", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+36: R6 - Three purposes of user research are creating relevant designs, creating designs that are rewarding to use, and it allows us to better design products that address user's pain points. 
+{"rubric": "R6", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+36: R7 - Three purposes of user research are creating relevant designs, creating designs that are rewarding to use, and it allows us to better design products that address user's pain points. 
+{"rubric": "R7", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+36: R8 - Three purposes of user research are creating relevant designs, creating designs that are rewarding to use, and it allows us to better design products that address user's pain points. 
+{"rubric": "R8", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+36: R9 - Three purposes of user research are creating relevant designs, creating designs that are rewarding to use, and it allows us to better design products that address user's pain points. 
+{"rubric": "R9", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+36: R1 - Understanding user needs, understanding patterns with user's interactions to create better designs, and trying to discover issues with the interface.
+{"rubric": "R1", "reasoning": "The answer demonstrates understanding of user needs.", "highlighted": "Understanding user needs", "relevancy": 1}
+
+36: R10 - Understanding user needs, understanding patterns with user's interactions to create better designs, and trying to discover issues with the interface.
+{"rubric": "R10", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+36: R2 - Understanding user needs, understanding patterns with user's interactions to create better designs, and trying to discover issues with the interface.
+{"rubric": "R2", "reasoning": "The answer identifies issues with the interface.", "highlighted": "discover issues with the interface", "relevancy": 1}
+
+36: R3 - Understanding user needs, understanding patterns with user's interactions to create better designs, and trying to discover issues with the interface.
+{"rubric": "R3", "reasoning": "The answer validates user needs through understanding patterns with user's interactions.", "highlighted": "understanding patterns with user's interactions", "relevancy": 1}
+
+36: R4 - Understanding user needs, understanding patterns with user's interactions to create better designs, and trying to discover issues with the interface.
+{"rubric": "R4", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+36: R5 - Understanding user needs, understanding patterns with user's interactions to create better designs, and trying to discover issues with the interface.
+{"rubric": "R5", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+36: R6 - Understanding user needs, understanding patterns with user's interactions to create better designs, and trying to discover issues with the interface.
+{"rubric": "R6", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+36: R7 - Understanding user needs, understanding patterns with user's interactions to create better designs, and trying to discover issues with the interface.
+{"rubric": "R7", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+36: R8 - Understanding user needs, understanding patterns with user's interactions to create better designs, and trying to discover issues with the interface.
+{"rubric": "R8", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+36: R9 - Understanding user needs, understanding patterns with user's interactions to create better designs, and trying to discover issues with the interface.
+{"rubric": "R9", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+36: R1 - Observation - Watching from a distance without interaction. Observe user choices and reactions. 
+Contextual Inquiry - Have discussion with participants about what they are doing and why they have done it. 
+Interview - Can be both highly structured and not. Helps learning about subjects and reactions to things.
+{"rubric": "R1", "reasoning": "The answer demonstrates understanding of user choices and reactions.", "highlighted": "Observe user choices and reactions", "relevancy": 1}
+
+36: R10 - Observation - Watching from a distance without interaction. Observe user choices and reactions. 
+Contextual Inquiry - Have discussion with participants about what they are doing and why they have done it. 
+Interview - Can be both highly structured and not. Helps learning about subjects and reactions to things.
+{"rubric": "R10", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+36: R2 - Observation - Watching from a distance without interaction. Observe user choices and reactions. 
+Contextual Inquiry - Have discussion with participants about what they are doing and why they have done it. 
+Interview - Can be both highly structured and not. Helps learning about subjects and reactions to things.
+{"rubric": "R2", "reasoning": "The answer identifies user's actions and motivations.", "highlighted": "what they are doing and why", "relevancy": 1}
+
+36: R3 - Observation - Watching from a distance without interaction. Observe user choices and reactions. 
+Contextual Inquiry - Have discussion with participants about what they are doing and why they have done it. 
+Interview - Can be both highly structured and not. Helps learning about subjects and reactions to things.
+{"rubric": "R3", "reasoning": "The answer validates user needs through interviews.", "highlighted": "Helps learning about subjects and reactions", "relevancy": 1}
+
+36: R4 - Observation - Watching from a distance without interaction. Observe user choices and reactions. 
+Contextual Inquiry - Have discussion with participants about what they are doing and why they have done it. 
+Interview - Can be both highly structured and not. Helps learning about subjects and reactions to things.
+{"rubric": "R4", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+36: R5 - Observation - Watching from a distance without interaction. Observe user choices and reactions. 
+Contextual Inquiry - Have discussion with participants about what they are doing and why they have done it. 
+Interview - Can be both highly structured and not. Helps learning about subjects and reactions to things.
+{"rubric": "R5", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+36: R6 - Observation - Watching from a distance without interaction. Observe user choices and reactions. 
+Contextual Inquiry - Have discussion with participants about what they are doing and why they have done it. 
+Interview - Can be both highly structured and not. Helps learning about subjects and reactions to things.
+{"rubric": "R6", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+36: R7 - Observation - Watching from a distance without interaction. Observe user choices and reactions. 
+Contextual Inquiry - Have discussion with participants about what they are doing and why they have done it. 
+Interview - Can be both highly structured and not. Helps learning about subjects and reactions to things.
+{"rubric": "R7", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+36: R8 - Observation - Watching from a distance without interaction. Observe user choices and reactions. 
+Contextual Inquiry - Have discussion with participants about what they are doing and why they have done it. 
+Interview - Can be both highly structured and not. Helps learning about subjects and reactions to things.
+{"rubric": "R8", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+36: R9 - Observation - Watching from a distance without interaction. Observe user choices and reactions. 
+Contextual Inquiry - Have discussion with participants about what they are doing and why they have done it. 
+Interview - Can be both highly structured and not. Helps learning about subjects and reactions to things.
+{"rubric": "R9", "reasoning": "", "highlighted": "", "relevancy": "0"}
+

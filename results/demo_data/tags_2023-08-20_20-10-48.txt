@@ -1,0 +1,270 @@
+36: R1 - In the starting stage of the IDEO framework, we do user research to understand the user needs and conduct research to get ideas about what solutions are needed. Thus,  after brainstorming a list of solutions to user needs, by doing user research through storyboards and speed dating, we get an idea as to which of the designers solutions are applicable to user needs and what changes we could incorporate into a low fidelity prototype.
+
+Heuristic evaluation and user testing of our low fidelity prototypes with a simple visual interface lets users learn about the simple functionalities of our app, and thus, through the low functionality prototypes and iteration, we get more feedback from the users as to what works for our app and what needs to be implemented for the high fidelity prototypes.  This si the prototyping stage.
+
+For our high fidelity prototypes, we can conduct think alouds to get an understand of what specific features of our app is considered positive by users. Thus, through more iteration and think aloud with a large subset of people, we address the UI issues and usabliity issues to make a functional app for our users. This is the testing stage
+{"rubric": "R1", "reasoning": "The answer demonstrates an understanding of the user needs and how to conduct research to identify solutions.", "highlighted": "understand the user needs", "relevancy": 1}
+
+36: R10 - In the starting stage of the IDEO framework, we do user research to understand the user needs and conduct research to get ideas about what solutions are needed. Thus,  after brainstorming a list of solutions to user needs, by doing user research through storyboards and speed dating, we get an idea as to which of the designers solutions are applicable to user needs and what changes we could incorporate into a low fidelity prototype.
+
+Heuristic evaluation and user testing of our low fidelity prototypes with a simple visual interface lets users learn about the simple functionalities of our app, and thus, through the low functionality prototypes and iteration, we get more feedback from the users as to what works for our app and what needs to be implemented for the high fidelity prototypes.  This si the prototyping stage.
+
+For our high fidelity prototypes, we can conduct think alouds to get an understand of what specific features of our app is considered positive by users. Thus, through more iteration and think aloud with a large subset of people, we address the UI issues and usabliity issues to make a functional app for our users. This is the testing stage
+{"rubric": "R10", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+36: R2 - In the starting stage of the IDEO framework, we do user research to understand the user needs and conduct research to get ideas about what solutions are needed. Thus,  after brainstorming a list of solutions to user needs, by doing user research through storyboards and speed dating, we get an idea as to which of the designers solutions are applicable to user needs and what changes we could incorporate into a low fidelity prototype.
+
+Heuristic evaluation and user testing of our low fidelity prototypes with a simple visual interface lets users learn about the simple functionalities of our app, and thus, through the low functionality prototypes and iteration, we get more feedback from the users as to what works for our app and what needs to be implemented for the high fidelity prototypes.  This si the prototyping stage.
+
+For our high fidelity prototypes, we can conduct think alouds to get an understand of what specific features of our app is considered positive by users. Thus, through more iteration and think aloud with a large subset of people, we address the UI issues and usabliity issues to make a functional app for our users. This is the testing stage
+{"rubric": "R2", "reasoning": "The answer identifies the need for solutions to user needs and how to incorporate changes into a prototype.", "highlighted": "what solutions are needed", "relevancy": 1}
+
+36: R3 - In the starting stage of the IDEO framework, we do user research to understand the user needs and conduct research to get ideas about what solutions are needed. Thus,  after brainstorming a list of solutions to user needs, by doing user research through storyboards and speed dating, we get an idea as to which of the designers solutions are applicable to user needs and what changes we could incorporate into a low fidelity prototype.
+
+Heuristic evaluation and user testing of our low fidelity prototypes with a simple visual interface lets users learn about the simple functionalities of our app, and thus, through the low functionality prototypes and iteration, we get more feedback from the users as to what works for our app and what needs to be implemented for the high fidelity prototypes.  This si the prototyping stage.
+
+For our high fidelity prototypes, we can conduct think alouds to get an understand of what specific features of our app is considered positive by users. Thus, through more iteration and think aloud with a large subset of people, we address the UI issues and usabliity issues to make a functional app for our users. This is the testing stage
+{"rubric": "R3", "reasoning": "The answer validates user needs through storyboards and speed dating.", "highlighted": "applicable to user needs", "relevancy": 1}
+
+36: R4 - In the starting stage of the IDEO framework, we do user research to understand the user needs and conduct research to get ideas about what solutions are needed. Thus,  after brainstorming a list of solutions to user needs, by doing user research through storyboards and speed dating, we get an idea as to which of the designers solutions are applicable to user needs and what changes we could incorporate into a low fidelity prototype.
+
+Heuristic evaluation and user testing of our low fidelity prototypes with a simple visual interface lets users learn about the simple functionalities of our app, and thus, through the low functionality prototypes and iteration, we get more feedback from the users as to what works for our app and what needs to be implemented for the high fidelity prototypes.  This si the prototyping stage.
+
+For our high fidelity prototypes, we can conduct think alouds to get an understand of what specific features of our app is considered positive by users. Thus, through more iteration and think aloud with a large subset of people, we address the UI issues and usabliity issues to make a functional app for our users. This is the testing stage
+{"rubric": "R4", "reasoning": "The answer discusses gathering feedback from users to understand what works for the app and what needs to be implemented.", "highlighted": "get more feedback from the users", "relevancy": 1}
+
+36: R5 - In the starting stage of the IDEO framework, we do user research to understand the user needs and conduct research to get ideas about what solutions are needed. Thus,  after brainstorming a list of solutions to user needs, by doing user research through storyboards and speed dating, we get an idea as to which of the designers solutions are applicable to user needs and what changes we could incorporate into a low fidelity prototype.
+
+Heuristic evaluation and user testing of our low fidelity prototypes with a simple visual interface lets users learn about the simple functionalities of our app, and thus, through the low functionality prototypes and iteration, we get more feedback from the users as to what works for our app and what needs to be implemented for the high fidelity prototypes.  This si the prototyping stage.
+
+For our high fidelity prototypes, we can conduct think alouds to get an understand of what specific features of our app is considered positive by users. Thus, through more iteration and think aloud with a large subset of people, we address the UI issues and usabliity issues to make a functional app for our users. This is the testing stage
+{"rubric": "R5", "reasoning": "The answer discusses using user research to improve prototypes and address UI and usability issues.", "highlighted": "address the UI issues", "relevancy": 1}
+
+36: R6 - In the starting stage of the IDEO framework, we do user research to understand the user needs and conduct research to get ideas about what solutions are needed. Thus,  after brainstorming a list of solutions to user needs, by doing user research through storyboards and speed dating, we get an idea as to which of the designers solutions are applicable to user needs and what changes we could incorporate into a low fidelity prototype.
+
+Heuristic evaluation and user testing of our low fidelity prototypes with a simple visual interface lets users learn about the simple functionalities of our app, and thus, through the low functionality prototypes and iteration, we get more feedback from the users as to what works for our app and what needs to be implemented for the high fidelity prototypes.  This si the prototyping stage.
+
+For our high fidelity prototypes, we can conduct think alouds to get an understand of what specific features of our app is considered positive by users. Thus, through more iteration and think aloud with a large subset of people, we address the UI issues and usabliity issues to make a functional app for our users. This is the testing stage
+{"rubric": "R6", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+36: R7 - In the starting stage of the IDEO framework, we do user research to understand the user needs and conduct research to get ideas about what solutions are needed. Thus,  after brainstorming a list of solutions to user needs, by doing user research through storyboards and speed dating, we get an idea as to which of the designers solutions are applicable to user needs and what changes we could incorporate into a low fidelity prototype.
+
+Heuristic evaluation and user testing of our low fidelity prototypes with a simple visual interface lets users learn about the simple functionalities of our app, and thus, through the low functionality prototypes and iteration, we get more feedback from the users as to what works for our app and what needs to be implemented for the high fidelity prototypes.  This si the prototyping stage.
+
+For our high fidelity prototypes, we can conduct think alouds to get an understand of what specific features of our app is considered positive by users. Thus, through more iteration and think aloud with a large subset of people, we address the UI issues and usabliity issues to make a functional app for our users. This is the testing stage
+{"rubric": "R7", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+36: R8 - In the starting stage of the IDEO framework, we do user research to understand the user needs and conduct research to get ideas about what solutions are needed. Thus,  after brainstorming a list of solutions to user needs, by doing user research through storyboards and speed dating, we get an idea as to which of the designers solutions are applicable to user needs and what changes we could incorporate into a low fidelity prototype.
+
+Heuristic evaluation and user testing of our low fidelity prototypes with a simple visual interface lets users learn about the simple functionalities of our app, and thus, through the low functionality prototypes and iteration, we get more feedback from the users as to what works for our app and what needs to be implemented for the high fidelity prototypes.  This si the prototyping stage.
+
+For our high fidelity prototypes, we can conduct think alouds to get an understand of what specific features of our app is considered positive by users. Thus, through more iteration and think aloud with a large subset of people, we address the UI issues and usabliity issues to make a functional app for our users. This is the testing stage
+{"rubric": "R8", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+36: R9 - In the starting stage of the IDEO framework, we do user research to understand the user needs and conduct research to get ideas about what solutions are needed. Thus,  after brainstorming a list of solutions to user needs, by doing user research through storyboards and speed dating, we get an idea as to which of the designers solutions are applicable to user needs and what changes we could incorporate into a low fidelity prototype.
+
+Heuristic evaluation and user testing of our low fidelity prototypes with a simple visual interface lets users learn about the simple functionalities of our app, and thus, through the low functionality prototypes and iteration, we get more feedback from the users as to what works for our app and what needs to be implemented for the high fidelity prototypes.  This si the prototyping stage.
+
+For our high fidelity prototypes, we can conduct think alouds to get an understand of what specific features of our app is considered positive by users. Thus, through more iteration and think aloud with a large subset of people, we address the UI issues and usabliity issues to make a functional app for our users. This is the testing stage
+{"rubric": "R9", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+36: R1 - User research helps discover who your users are and what their needs are. Research also helps distinguish the context of the problem you are trying to solve: the mission of the project. Also, user research helps distinguish what needs to come from your product in the end.
+{"rubric": "R1", "reasoning": "The answer demonstrates an understanding of who the users are and what their needs are.", "highlighted": "discover who your users are", "relevancy": 1}
+
+36: R10 - User research helps discover who your users are and what their needs are. Research also helps distinguish the context of the problem you are trying to solve: the mission of the project. Also, user research helps distinguish what needs to come from your product in the end.
+{"rubric": "R10", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+36: R2 - User research helps discover who your users are and what their needs are. Research also helps distinguish the context of the problem you are trying to solve: the mission of the project. Also, user research helps distinguish what needs to come from your product in the end.
+{"rubric": "R2", "reasoning": "The answer identifies the context of the problem that the product is trying to solve.", "highlighted": "context of the problem", "relevancy": 1}
+
+36: R3 - User research helps discover who your users are and what their needs are. Research also helps distinguish the context of the problem you are trying to solve: the mission of the project. Also, user research helps distinguish what needs to come from your product in the end.
+{"rubric": "R3", "reasoning": "The answer discusses how user research helps distinguish what needs to come from the product in the end.", "highlighted": "what needs to come from your product", "relevancy": 1}
+
+36: R4 - User research helps discover who your users are and what their needs are. Research also helps distinguish the context of the problem you are trying to solve: the mission of the project. Also, user research helps distinguish what needs to come from your product in the end.
+{"rubric": "R4", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+36: R5 - User research helps discover who your users are and what their needs are. Research also helps distinguish the context of the problem you are trying to solve: the mission of the project. Also, user research helps distinguish what needs to come from your product in the end.
+{"rubric": "R5", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+36: R6 - User research helps discover who your users are and what their needs are. Research also helps distinguish the context of the problem you are trying to solve: the mission of the project. Also, user research helps distinguish what needs to come from your product in the end.
+{"rubric": "R6", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+36: R7 - User research helps discover who your users are and what their needs are. Research also helps distinguish the context of the problem you are trying to solve: the mission of the project. Also, user research helps distinguish what needs to come from your product in the end.
+{"rubric": "R7", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+36: R8 - User research helps discover who your users are and what their needs are. Research also helps distinguish the context of the problem you are trying to solve: the mission of the project. Also, user research helps distinguish what needs to come from your product in the end.
+{"rubric": "R8", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+36: R9 - User research helps discover who your users are and what their needs are. Research also helps distinguish the context of the problem you are trying to solve: the mission of the project. Also, user research helps distinguish what needs to come from your product in the end.
+{"rubric": "R9", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+36: R1 - 1. To understand user needs and preferences
+2. To validate design decisions
+3. To identify potential usability issues
+{"rubric": "R1", "reasoning": "The answer demonstrates an understanding of user needs and preferences.", "highlighted": "understand user needs and preferences", "relevancy": 1}
+
+36: R10 - 1. To understand user needs and preferences
+2. To validate design decisions
+3. To identify potential usability issues
+{"rubric": "R10", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+36: R2 - 1. To understand user needs and preferences
+2. To validate design decisions
+3. To identify potential usability issues
+{"rubric": "R2", "reasoning": "The answer identifies the need to validate design decisions.", "highlighted": "validate design decisions", "relevancy": 1}
+
+36: R3 - 1. To understand user needs and preferences
+2. To validate design decisions
+3. To identify potential usability issues
+{"rubric": "R3", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+36: R4 - 1. To understand user needs and preferences
+2. To validate design decisions
+3. To identify potential usability issues
+{"rubric": "R4", "reasoning": "The answer discusses identifying potential usability issues.", "highlighted": "identify potential usability issues", "relevancy": 1}
+
+36: R5 - 1. To understand user needs and preferences
+2. To validate design decisions
+3. To identify potential usability issues
+{"rubric": "R5", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+36: R6 - 1. To understand user needs and preferences
+2. To validate design decisions
+3. To identify potential usability issues
+{"rubric": "R6", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+36: R7 - 1. To understand user needs and preferences
+2. To validate design decisions
+3. To identify potential usability issues
+{"rubric": "R7", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+36: R8 - 1. To understand user needs and preferences
+2. To validate design decisions
+3. To identify potential usability issues
+{"rubric": "R8", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+36: R9 - 1. To understand user needs and preferences
+2. To validate design decisions
+3. To identify potential usability issues
+{"rubric": "R9", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+36: R1 - Get to know users, and what they want (need-finding)
+Leverage what we learned throughout development (Ideation, prototyping)
+Finding out what they don't want and how the user does things we couldn't expect (testing)
+
+{"rubric": "R1", "reasoning": "The answer demonstrates an understanding of user needs and what they want.", "highlighted": "Get to know users, and what they want", "relevancy": 1}
+
+36: R10 - Get to know users, and what they want (need-finding)
+Leverage what we learned throughout development (Ideation, prototyping)
+Finding out what they don't want and how the user does things we couldn't expect (testing)
+
+{"rubric": "R10", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+36: R2 - Get to know users, and what they want (need-finding)
+Leverage what we learned throughout development (Ideation, prototyping)
+Finding out what they don't want and how the user does things we couldn't expect (testing)
+
+{"rubric": "R2", "reasoning": "The answer identifies the need to leverage what is learned throughout development.", "highlighted": "Leverage what we learned", "relevancy": 1}
+
+36: R3 - Get to know users, and what they want (need-finding)
+Leverage what we learned throughout development (Ideation, prototyping)
+Finding out what they don't want and how the user does things we couldn't expect (testing)
+
+{"rubric": "R3", "reasoning": "The answer discusses how user research helps find out what users don't want.", "highlighted": "Finding out what they don't want", "relevancy": 1}
+
+36: R4 - Get to know users, and what they want (need-finding)
+Leverage what we learned throughout development (Ideation, prototyping)
+Finding out what they don't want and how the user does things we couldn't expect (testing)
+
+{"rubric": "R4", "reasoning": "The answer discusses how user research helps understand how the user does things that were not expected.", "highlighted": "how the user does things", "relevancy": 1}
+
+36: R5 - Get to know users, and what they want (need-finding)
+Leverage what we learned throughout development (Ideation, prototyping)
+Finding out what they don't want and how the user does things we couldn't expect (testing)
+
+{"rubric": "R5", "reasoning": "The answer discusses how user research helps leverage what is learned throughout development.", "highlighted": "Leverage what we learned", "relevancy": 1}
+
+36: R6 - Get to know users, and what they want (need-finding)
+Leverage what we learned throughout development (Ideation, prototyping)
+Finding out what they don't want and how the user does things we couldn't expect (testing)
+
+{"rubric": "R6", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+36: R7 - Get to know users, and what they want (need-finding)
+Leverage what we learned throughout development (Ideation, prototyping)
+Finding out what they don't want and how the user does things we couldn't expect (testing)
+
+{"rubric": "R7", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+36: R8 - Get to know users, and what they want (need-finding)
+Leverage what we learned throughout development (Ideation, prototyping)
+Finding out what they don't want and how the user does things we couldn't expect (testing)
+
+{"rubric": "R8", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+36: R9 - Get to know users, and what they want (need-finding)
+Leverage what we learned throughout development (Ideation, prototyping)
+Finding out what they don't want and how the user does things we couldn't expect (testing)
+
+{"rubric": "R9", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+36: R1 - Identifying user needs
+Generating ideas
+Testing ideas
+
+{"rubric": "R1", "reasoning": "The answer demonstrates an understanding of user needs.", "highlighted": "Identifying user needs", "relevancy": 1}
+
+36: R10 - Identifying user needs
+Generating ideas
+Testing ideas
+
+{"rubric": "R10", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+36: R2 - Identifying user needs
+Generating ideas
+Testing ideas
+
+{"rubric": "R2", "reasoning": "The answer identifies the need to generate ideas.", "highlighted": "Generating ideas", "relevancy": 1}
+
+36: R3 - Identifying user needs
+Generating ideas
+Testing ideas
+
+{"rubric": "R3", "reasoning": "The answer discusses how user research helps in testing ideas.", "highlighted": "Testing ideas", "relevancy": 1}
+
+36: R4 - Identifying user needs
+Generating ideas
+Testing ideas
+
+{"rubric": "R4", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+36: R5 - Identifying user needs
+Generating ideas
+Testing ideas
+
+{"rubric": "R5", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+36: R6 - Identifying user needs
+Generating ideas
+Testing ideas
+
+{"rubric": "R6", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+36: R7 - Identifying user needs
+Generating ideas
+Testing ideas
+
+{"rubric": "R7", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+36: R8 - Identifying user needs
+Generating ideas
+Testing ideas
+
+{"rubric": "R8", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+36: R9 - Identifying user needs
+Generating ideas
+Testing ideas
+
+{"rubric": "R9", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
