@@ -661,7 +661,7 @@ def rubric_refinement_2(request, q_id, additional="false"):
     selected_by_cluster = cluster_sampling(answer_rubric_dict)
 
     # select from tagged_answers only those that are in selected_by_coverage
-    selected_answers = Answer.objects.filter(id__in=selected_by_freq_inv)
+    selected_answers = Answer.objects.filter(id__in=selected_by_cluster)
 
     context = {
         "question_obj": current_question_obj,
