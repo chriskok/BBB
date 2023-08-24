@@ -1,0 +1,142 @@
+Total Rubric Counts
+R1	✔ User Understanding	56
+R2	✔ Problem Identification	29
+R3	✔ Need Validation	27
+R4	✔ Usability Feedback	38
+R5	✔ Prototype Improvement	46
+R6	✘ Lack of User Understanding	1
+R7	✘ Incomplete Problem Identification	0
+R8	✘ Insufficient Need Validation	1
+R9	✘ Absence of Usability Feedback	1
+R10	✘ Inadequate Prototype Improvement	1
+
+
+COVERAGE
+User research is used to find the need for products so that a proposed solution is actually going to solve a problem that people have and not one designers just think they have. Additionally, user research is used to generate and create solutions after a need is identified so that designers are able to consider many different solutions to find the best one and not just chose the first solution they come up with. Additionally, by collecting user research in this phase, designers can gather information to work towards creating prototypes based off of solutions users liked. 
+Finally, user research is needed to test the solution generated to meet an identified need in order to discover any usability issues and determine if the solution is usable or has any problem in meeting the need. 	R1,R2,R3,R4,R5
+
+Selected Rubric Counts
+R1	1
+R2	1
+R3	1
+R4	1
+R5	1
+
+
+FREQUENCY_INVERSE
+User research will help you uncover your users' familiar terminology, as well as their mental models around important concepts.	R1,R6,R8,R9,R10
+User research is used to find the need for products so that a proposed solution is actually going to solve a problem that people have and not one designers just think they have. Additionally, user research is used to generate and create solutions after a need is identified so that designers are able to consider many different solutions to find the best one and not just chose the first solution they come up with. Additionally, by collecting user research in this phase, designers can gather information to work towards creating prototypes based off of solutions users liked. 
+Finally, user research is needed to test the solution generated to meet an identified need in order to discover any usability issues and determine if the solution is usable or has any problem in meeting the need. 	R1,R2,R3,R4,R5
+1. To find a user need/issue that people are facing
+2. To improve your existing solution, by having users test if there are usability problems with your design
+3. To validate your prototype/early solution with users to see if it solves the user need	R1,R2,R3,R4,R5
+Purposes of user research include: Finding user needs, evaluating the suitability of a solution, and generating ideas to build a prototype.	R1,R2,R3,R4,R5
+1. Identify and validate user needs for a product within a specified market. This connects the designers to the users and ensures a product is actually worth making.
+2. Develop low-fi and high-fi prototypes to evaluate the product and how it is meeting user needs. This allows initial design choices to be evaluated by potential users and gives feedback to designers to improve their product, helping both the future user and the designer.
+3. Iterate on the product and develop a full solution to the user need and prepare to put the product on the market. Given the feedback from the previous evaluations, we can now improve our product and make sure it is as user friendly and successful as we want it to be.	R1,R2,R3,R4,R5
+
+Selected Rubric Counts
+R1	5
+R6	1
+R8	1
+R9	1
+R10	1
+R2	4
+R3	4
+R4	4
+R5	4
+
+
+GREEDY
+1. To evaluate a user's needs and preferences.
+2. To evaluate the usability of a particular product design and make improvements.
+3. To test hypotheses that the design team has around user behavior.	R1,R4,R5
+1. come up with lots of ideas through storyboarding.
+2. understand user needs and user pain points.
+3. Evaluate prototype and rapidly explore application concepts during speed dating.	R1,R2,R3,R4,R5
+Gather information and validate user needs (interviews)
+Confirm what solutions users want (storyboarding and speed dating)
+Confirm that the prototyped designs are easily usable and solve users' issues (think aloud)	R3,R4,R5
+1.  To understand the common behaviors and needs of users
+2.  To validate the found user needs and build the product toward serving those
+3.  To be able to measure the success, user research is necessary to evaluate whether or not the product serves the user needs	R1,R3,R4
+User research will help you uncover your users' familiar terminology, as well as their mental models around important concepts.	R1,R6,R8,R9,R10
+
+Selected Rubric Counts
+R1	4
+R4	4
+R5	3
+R2	1
+R3	3
+R6	1
+R8	1
+R9	1
+R10	1
+
+
+CLUSTER
+1. Allows us to get a fuller picture of the user's wants, needs, and preferences in order to brainstorm a solution
+2. Allows us to validate user needs before creating an expensive prototype
+3. Allows us to validate if an early prototype solves the user's problem	R1,R3,R5
+User research is used to find the need for products so that a proposed solution is actually going to solve a problem that people have and not one designers just think they have. Additionally, user research is used to generate and create solutions after a need is identified so that designers are able to consider many different solutions to find the best one and not just chose the first solution they come up with. Additionally, by collecting user research in this phase, designers can gather information to work towards creating prototypes based off of solutions users liked. 
+Finally, user research is needed to test the solution generated to meet an identified need in order to discover any usability issues and determine if the solution is usable or has any problem in meeting the need. 	R1,R2,R3,R4,R5
+During need finding, we need to conduct user research to understand user needs, and preference.
+We need user research for ideation because we want to collect users' thoughts on the user needs we found and their attitudes towards the possible solutions we proposed.
+We need user research for testing in order to collect actual feedback from users and refine our product.
+	R1,R2,R4,R5
+User research will help you uncover your users' familiar terminology, as well as their mental models around important concepts.	R1,R6,R8,R9,R10
+User research is done to identify who your users are, what they want to get done, and how to get it done.  For example, the double diamond design process gives us insight into the problem, scope down the focus, what are the potential solutions, and focusing on the solutions that work. 	R1,R2,R5
+
+Selected Rubric Counts
+R1	5
+R3	2
+R5	4
+R2	3
+R4	2
+R6	1
+R8	1
+R9	1
+R10	1
+
+
+RUBRIC_FIRST
+User research is used to find the need for products so that a proposed solution is actually going to solve a problem that people have and not one designers just think they have. Additionally, user research is used to generate and create solutions after a need is identified so that designers are able to consider many different solutions to find the best one and not just chose the first solution they come up with. Additionally, by collecting user research in this phase, designers can gather information to work towards creating prototypes based off of solutions users liked. 
+Finally, user research is needed to test the solution generated to meet an identified need in order to discover any usability issues and determine if the solution is usable or has any problem in meeting the need. 	R1,R2,R3,R4,R5
+User research will help you uncover your users' familiar terminology, as well as their mental models around important concepts.	R1,R6,R8,R9,R10
+
+Selected Rubric Counts
+R1	2
+R2	1
+R3	1
+R4	1
+R5	1
+R6	1
+R8	1
+R9	1
+R10	1
+
+
+COMBINATION
+User research is used to find the need for products so that a proposed solution is actually going to solve a problem that people have and not one designers just think they have. Additionally, user research is used to generate and create solutions after a need is identified so that designers are able to consider many different solutions to find the best one and not just chose the first solution they come up with. Additionally, by collecting user research in this phase, designers can gather information to work towards creating prototypes based off of solutions users liked. 
+Finally, user research is needed to test the solution generated to meet an identified need in order to discover any usability issues and determine if the solution is usable or has any problem in meeting the need. 	R1,R2,R3,R4,R5
+User research will help you uncover your users' familiar terminology, as well as their mental models around important concepts.	R1,R6,R8,R9,R10
+1. To find a user need/issue that people are facing
+2. To improve your existing solution, by having users test if there are usability problems with your design
+3. To validate your prototype/early solution with users to see if it solves the user need	R1,R2,R3,R4,R5
+Purposes of user research include: Finding user needs, evaluating the suitability of a solution, and generating ideas to build a prototype.	R1,R2,R3,R4,R5
+1. Allows us to get a fuller picture of the user's wants, needs, and preferences in order to brainstorm a solution
+2. Allows us to validate user needs before creating an expensive prototype
+3. Allows us to validate if an early prototype solves the user's problem	R1,R3,R5
+
+Selected Rubric Counts
+R1	5
+R2	3
+R3	4
+R4	3
+R5	4
+R6	1
+R8	1
+R9	1
+R10	1
+
+

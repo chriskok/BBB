@@ -7,6 +7,7 @@ import time
 import threading
 import math
 import random
+import os
 
 from django.shortcuts import render, get_object_or_404, redirect
 from django.urls import reverse, reverse_lazy
@@ -511,6 +512,43 @@ def combination_selection(answer_rubric_dict, limit=5):
 
     return selected_answers
 
+def analyze_sampling_methods(answer_rubric_dict, q, stats):
+    file_location = f"results/chi_evaluations/question_{q.question_exam_id}/" + time.strftime("%Y%m%d-%H%M%S") + "/"
+    # create directory if it doesn't exist
+    if not os.path.exists(file_location):
+        os.makedirs(file_location)
+
+    selected_by_coverage = coverage_sampling(answer_rubric_dict)
+    selected_by_freq_inv = frequency_inverse_sampling(answer_rubric_dict)
+    selected_by_greed = greedy_selection(answer_rubric_dict)
+    selected_by_cluster = cluster_sampling(answer_rubric_dict)
+    selected_by_rubric_first = rubric_first_selection(answer_rubric_dict)
+    selected_by_combination = combination_selection(answer_rubric_dict)
+
+    all_selections = [selected_by_coverage, selected_by_freq_inv, selected_by_greed, selected_by_cluster, selected_by_rubric_first, selected_by_combination]
+    selection_names = ["coverage", "frequency_inverse", "greedy", "cluster", "rubric_first", "combination"]
+
+    # for each selection method, write out the answer_text and the rubrics applied for each answer (tab seperated)
+    with open(file_location + 'refinement_sampling_analysis.txt', 'w', encoding="utf-8") as f:
+        f.write("Total Rubric Counts\n")
+        for rubric in stats:
+            f.write(rubric + "\t" + stats[rubric]["title"] + "\t" + str(stats[rubric]["total"]) + "\n")
+        f.write("\n\n")
+        
+        for idx, selection in enumerate(all_selections):
+            f.write(selection_names[idx].upper() + "\n")
+            rubrics_count = {}
+            for answer in selection:
+                curr_answer = Answer.objects.get(pk=answer)
+                f.write(curr_answer.answer_text + "\t" + ",".join(answer_rubric_dict[answer]) + "\n")
+                for rubric in answer_rubric_dict[answer]:
+                    rubrics_count[rubric] = rubrics_count.get(rubric, 0) + 1
+            f.write("\n")
+            f.write("Selected Rubric Counts\n")
+            for rubric in rubrics_count:
+                f.write(rubric + "\t" + str(rubrics_count[rubric]) + "\n")
+            f.write("\n\n")
+
 def rubric_refinement_2(request, q_id, additional="false"):
     q_list = Question.objects.extra(select={'sorted_num': 'CAST(question_exam_id AS FLOAT)'}).order_by('sorted_num')
 
@@ -546,7 +584,7 @@ def rubric_refinement_2(request, q_id, additional="false"):
     answer_count = len(examples)
 
     # if not AnswerTag.objects.filter(question_id=q_id, answer_id__in=[x.id for x in examples]).exists():
-    n_samples_per_thread = 20
+    n_samples_per_thread = 10
     if not AnswerTag.objects.filter(question_id=q_id).exists():
         # batches of 10 examples at a time
         threads = []
@@ -556,13 +594,20 @@ def rubric_refinement_2(request, q_id, additional="false"):
             t = threading.Thread(target=apply_rubrics, args=(q_id, current_question_obj, batch, rubric_list))
             threads.append(t)
 
-        # Start all threads
-        for x in threads:
-            x.start()
+        # Start all threads, but every 2 threads, wait for them to finish before starting the next 2
+        for i in range(0, len(threads), 2):
+            threads[i].start()
+            threads[i+1].start()
+            threads[i].join()
+            threads[i+1].join()
+            time.sleep(30)
 
-        # Wait for all of them to finish
-        for x in threads:
-            x.join()
+        # # Start all threads
+        # for x in threads:
+        #     x.start()
+        # # Wait for all of them to finish
+        # for x in threads:
+        #     x.join()
 
         ans_tags = AnswerTag.objects.filter(question_id=q_id)
     else:
@@ -611,16 +656,12 @@ def rubric_refinement_2(request, q_id, additional="false"):
         if "combinations" in stats[rubric]:
             stats[rubric]["combinations"] = {k: v for k, v in sorted(stats[rubric]["combinations"].items(), key=lambda item: item[1], reverse=True)}
 
-    selected_by_coverage = coverage_sampling(answer_rubric_dict)
+    analyze_sampling_methods(answer_rubric_dict, current_question_obj, stats)
     selected_by_freq_inv = frequency_inverse_sampling(answer_rubric_dict)
-    selected_by_greed = greedy_selection(answer_rubric_dict)
     selected_by_cluster = cluster_sampling(answer_rubric_dict)
-    selected_by_rubric_first = rubric_first_selection(answer_rubric_dict)
-    selected_by_combination = combination_selection(answer_rubric_dict)
-    # print(selected_by_coverage, selected_by_freq_inv, selected_by_greed, selected_by_cluster, selected_by_rubric_first)
 
     # select from tagged_answers only those that are in selected_by_coverage
-    selected_answers = Answer.objects.filter(id__in=selected_by_cluster)
+    selected_answers = Answer.objects.filter(id__in=selected_by_freq_inv)
 
     context = {
         "question_obj": current_question_obj,

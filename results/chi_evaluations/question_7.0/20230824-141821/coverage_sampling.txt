@@ -1,0 +1,109 @@
+Total Rubric Counts
+R1	✔ Non-blocking Execution Understanding	42
+R2	✔ Partial Page Updates Comprehension	23
+R3	✔ User Experience Improvement	11
+R4	✔ Efficiency and Performance	13
+R5	✔ Server Communication	18
+R6	✘ Misunderstanding Non-blocking Execution	2
+R7	✘ Incorrect Partial Page Updates	0
+R8	✘ Misinterpretation of User Experience	0
+R9	✘ Misunderstanding Efficiency and Performance	0
+R10	✘ Incorrect Server Communication	0
+
+
+COVERAGE
+We want to use asynchronous programming in Javascript as we want to update parts of the webpage without having to reload the whole page Through AJAX, we can send, request and receive data from a server without blocking the rest of the interface. This is better than synchronous Javascript wherein we can only update the page by reloading it and wherein all the event handling takes place in a single loop.	R1,R2,R5
+Asynchronous programming allows the user to decide what elements of the code need to be run, instead of requiring a specific order.	R6
+Asynchronous programming allows different tasks to be run simultaneously, resulting in more efficient and responsive applications.	R4
+This will allow users to continue to use your website/app, while you work on parts of the website while not interfering with traffic to your website.	R3
+
+Selected Rubric Counts
+R1	1
+R2	1
+R5	1
+R6	1
+R4	1
+R3	1
+
+
+FREQUENCY_INVERSE
+Asynchronous programming allows the user to decide what elements of the code need to be run, instead of requiring a specific order.	R6
+Asynchronous programming helps you wait for one task to finish before starting another task	R6
+For updating the web page partially, based on an asynchronous process like a web server api call, without reloading the whole page. It makes the user experience faster because it's only changing the visual elements that need to be changed. Reloading fully will use more resources and time. 	R2,R3,R4
+We want to use asynchronous programming in Javascript because it allows the program to run more efficiently as it will run other tasks while waiting for a response from something else. The application can send, request, and receive data from a server without blocking the rest of the interface from loading. 	R1,R4,R5
+Asynchronous programming is a way for a program to run a potentially long-running task and still be responsive to other events while that task runs, rather than having to wait until that task has finished. This is especially important in Javascript because it is a single-threaded language, meaning that only one task can be executed at a time. Asynchronous programming allows multiple tasks to be performed simultaneously, improving the performance and responsiveness of various web applications. Additionally, it enables JavaScript applications to interact with external resources, such as databases or web services, without blocking the main thread, which would otherwise make the user interface to freeze.	R1,R4,R5
+
+Selected Rubric Counts
+R6	2
+R2	1
+R3	1
+R4	3
+R1	2
+R5	2
+
+
+GREEDY
+So we can reload data from the server and selectively update parts of a web page without reloading the whole page. It also prevents us from blocking the rest of the interface while waiting for the data.	R2,R5
+It allows us to run long execution time programs without making the user wait for the program to finish before using the webpage. 	R1,R3
+For updating the web page partially, based on an asynchronous process like a web server api call, without reloading the whole page. It makes the user experience faster because it's only changing the visual elements that need to be changed. Reloading fully will use more resources and time. 	R2,R3,R4
+– Change a page without reloading it
+– Send, request and receive data from a server without blocking the rest of your interface	R1,R2,R5
+Asynchronous programming allows the user to decide what elements of the code need to be run, instead of requiring a specific order.	R6
+
+Selected Rubric Counts
+R2	3
+R5	2
+R1	2
+R3	2
+R4	1
+R6	1
+
+
+CLUSTER
+When writing web apps, we often read and write to a server which takes time. To make sure each function has completely finished running, we need to wait for each function. Otherwise, if we execute in real time (synchronous) we may not get desired output.
+
+As an example, consider an app that writes a to-do list to a server. We want to add an item to the list and then print the list. Adding an item may take more time than printing. So, if asynchronous programming is not used the list that is printed will be the list before the new item was added which is not the desired output.	R1,R5
+For updating the web page partially, based on an asynchronous process like a web server api call, without reloading the whole page. It makes the user experience faster because it's only changing the visual elements that need to be changed. Reloading fully will use more resources and time. 	R2,R3,R4
+We want to use asynchronous programming in Javascript because it allows the program to run more efficiently as it will run other tasks while waiting for a response from something else. The application can send, request, and receive data from a server without blocking the rest of the interface from loading. 	R1,R4,R5
+We want to use asynchronous programming in Javascript as we want to update parts of the webpage without having to reload the whole page Through AJAX, we can send, request and receive data from a server without blocking the rest of the interface. This is better than synchronous Javascript wherein we can only update the page by reloading it and wherein all the event handling takes place in a single loop.	R1,R2,R5
+It allows us to run long execution time programs without making the user wait for the program to finish before using the webpage. 	R1,R3
+
+Selected Rubric Counts
+R1	4
+R5	3
+R2	2
+R3	2
+R4	2
+
+
+RUBRIC_FIRST
+We want to use asynchronous programming in Javascript as we want to update parts of the webpage without having to reload the whole page Through AJAX, we can send, request and receive data from a server without blocking the rest of the interface. This is better than synchronous Javascript wherein we can only update the page by reloading it and wherein all the event handling takes place in a single loop.	R1,R2,R5
+We want to use asynchronous programming in Javascript because it allows the program to run more efficiently as it will run other tasks while waiting for a response from something else. The application can send, request, and receive data from a server without blocking the rest of the interface from loading. 	R1,R4,R5
+For updating the web page partially, based on an asynchronous process like a web server api call, without reloading the whole page. It makes the user experience faster because it's only changing the visual elements that need to be changed. Reloading fully will use more resources and time. 	R2,R3,R4
+Asynchronous programming allows the user to decide what elements of the code need to be run, instead of requiring a specific order.	R6
+
+Selected Rubric Counts
+R1	2
+R2	2
+R5	2
+R4	2
+R3	1
+R6	1
+
+
+COMBINATION
+We want to use asynchronous programming in Javascript as we want to update parts of the webpage without having to reload the whole page Through AJAX, we can send, request and receive data from a server without blocking the rest of the interface. This is better than synchronous Javascript wherein we can only update the page by reloading it and wherein all the event handling takes place in a single loop.	R1,R2,R5
+Asynchronous programming helps you wait for one task to finish before starting another task	R6
+Asynchronous programming allows the user to decide what elements of the code need to be run, instead of requiring a specific order.	R6
+For updating the web page partially, based on an asynchronous process like a web server api call, without reloading the whole page. It makes the user experience faster because it's only changing the visual elements that need to be changed. Reloading fully will use more resources and time. 	R2,R3,R4
+Asynchronous programming allows different tasks to be run simultaneously, resulting in more efficient and responsive applications.	R4
+
+Selected Rubric Counts
+R1	1
+R2	2
+R5	1
+R6	2
+R3	1
+R4	2
+
+

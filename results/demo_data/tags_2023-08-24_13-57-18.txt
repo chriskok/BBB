@@ -1,0 +1,600 @@
+37: R1 - Using components allows you to create multiple occurrences of the same object, which can save time and help organize the project. Additionally, you can make variants of components to assist in prototyping.
+{"rubric": "R1", "reasoning": "The student understands that using components can save time and help organize the project.", "highlighted": "save time and help organize", "relevancy": 1}
+
+37: R2 - Using components allows you to create multiple occurrences of the same object, which can save time and help organize the project. Additionally, you can make variants of components to assist in prototyping.
+{"rubric": "R2", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+37: R3 - Using components allows you to create multiple occurrences of the same object, which can save time and help organize the project. Additionally, you can make variants of components to assist in prototyping.
+{"rubric": "R3", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+37: R4 - Using components allows you to create multiple occurrences of the same object, which can save time and help organize the project. Additionally, you can make variants of components to assist in prototyping.
+{"rubric": "R4", "reasoning": "The student recognizes that variants of components can be made to assist in prototyping, indicating an understanding of the ease of making changes to components.", "highlighted": "make variants of components", "relevancy": 1}
+
+37: R5 - Using components allows you to create multiple occurrences of the same object, which can save time and help organize the project. Additionally, you can make variants of components to assist in prototyping.
+{"rubric": "R5", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+37: R6 - Using components allows you to create multiple occurrences of the same object, which can save time and help organize the project. Additionally, you can make variants of components to assist in prototyping.
+{"rubric": "R6", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+37: R7 - Using components allows you to create multiple occurrences of the same object, which can save time and help organize the project. Additionally, you can make variants of components to assist in prototyping.
+{"rubric": "R7", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+37: R8 - Using components allows you to create multiple occurrences of the same object, which can save time and help organize the project. Additionally, you can make variants of components to assist in prototyping.
+{"rubric": "R8", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+37: R9 - Using components allows you to create multiple occurrences of the same object, which can save time and help organize the project. Additionally, you can make variants of components to assist in prototyping.
+{"rubric": "R9", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+37: R10 - Using components allows you to create multiple occurrences of the same object, which can save time and help organize the project. Additionally, you can make variants of components to assist in prototyping.
+{"rubric": "R10", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+37: R1 - Components are features that we can reuse across multiple screens in Figma. A components allows to use a feature that we think is applicable across multiple screens, such as a favourite star icon or a checkbox of interactive features. By reusing the same component to create instances in Figma, we are reducing the time taken to create the same feature across multiple pages of our prototype. We can also reduce time of changing multiple instances of the same component (the sub-components) across all pages by simply changing the parent compent
+{"rubric": "R1", "reasoning": "The student mentions that using components reduces the time taken to create the same feature across multiple pages.", "highlighted": "reducing the time taken", "relevancy": 1}
+
+37: R2 - Components are features that we can reuse across multiple screens in Figma. A components allows to use a feature that we think is applicable across multiple screens, such as a favourite star icon or a checkbox of interactive features. By reusing the same component to create instances in Figma, we are reducing the time taken to create the same feature across multiple pages of our prototype. We can also reduce time of changing multiple instances of the same component (the sub-components) across all pages by simply changing the parent compent
+{"rubric": "R2", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+37: R3 - Components are features that we can reuse across multiple screens in Figma. A components allows to use a feature that we think is applicable across multiple screens, such as a favourite star icon or a checkbox of interactive features. By reusing the same component to create instances in Figma, we are reducing the time taken to create the same feature across multiple pages of our prototype. We can also reduce time of changing multiple instances of the same component (the sub-components) across all pages by simply changing the parent compent
+{"rubric": "R3", "reasoning": "The student understands the concept of reusing components across multiple screens.", "highlighted": "reuse across multiple screens", "relevancy": 1}
+
+37: R4 - Components are features that we can reuse across multiple screens in Figma. A components allows to use a feature that we think is applicable across multiple screens, such as a favourite star icon or a checkbox of interactive features. By reusing the same component to create instances in Figma, we are reducing the time taken to create the same feature across multiple pages of our prototype. We can also reduce time of changing multiple instances of the same component (the sub-components) across all pages by simply changing the parent compent
+{"rubric": "R4", "reasoning": "The student recognizes that changes to the parent component can reduce the time of changing multiple instances across all pages.", "highlighted": "changing the parent compent", "relevancy": 1}
+
+37: R5 - Components are features that we can reuse across multiple screens in Figma. A components allows to use a feature that we think is applicable across multiple screens, such as a favourite star icon or a checkbox of interactive features. By reusing the same component to create instances in Figma, we are reducing the time taken to create the same feature across multiple pages of our prototype. We can also reduce time of changing multiple instances of the same component (the sub-components) across all pages by simply changing the parent compent
+{"rubric": "R5", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+37: R6 - Components are features that we can reuse across multiple screens in Figma. A components allows to use a feature that we think is applicable across multiple screens, such as a favourite star icon or a checkbox of interactive features. By reusing the same component to create instances in Figma, we are reducing the time taken to create the same feature across multiple pages of our prototype. We can also reduce time of changing multiple instances of the same component (the sub-components) across all pages by simply changing the parent compent
+{"rubric": "R6", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+37: R7 - Components are features that we can reuse across multiple screens in Figma. A components allows to use a feature that we think is applicable across multiple screens, such as a favourite star icon or a checkbox of interactive features. By reusing the same component to create instances in Figma, we are reducing the time taken to create the same feature across multiple pages of our prototype. We can also reduce time of changing multiple instances of the same component (the sub-components) across all pages by simply changing the parent compent
+{"rubric": "R7", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+37: R8 - Components are features that we can reuse across multiple screens in Figma. A components allows to use a feature that we think is applicable across multiple screens, such as a favourite star icon or a checkbox of interactive features. By reusing the same component to create instances in Figma, we are reducing the time taken to create the same feature across multiple pages of our prototype. We can also reduce time of changing multiple instances of the same component (the sub-components) across all pages by simply changing the parent compent
+{"rubric": "R8", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+37: R9 - Components are features that we can reuse across multiple screens in Figma. A components allows to use a feature that we think is applicable across multiple screens, such as a favourite star icon or a checkbox of interactive features. By reusing the same component to create instances in Figma, we are reducing the time taken to create the same feature across multiple pages of our prototype. We can also reduce time of changing multiple instances of the same component (the sub-components) across all pages by simply changing the parent compent
+{"rubric": "R9", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+37: R10 - Components are features that we can reuse across multiple screens in Figma. A components allows to use a feature that we think is applicable across multiple screens, such as a favourite star icon or a checkbox of interactive features. By reusing the same component to create instances in Figma, we are reducing the time taken to create the same feature across multiple pages of our prototype. We can also reduce time of changing multiple instances of the same component (the sub-components) across all pages by simply changing the parent compent
+{"rubric": "R10", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+37: R1 - Just as we do not want to use duplicate code in textual programming, Components allow us to re-use an element, so that we do not have to take the time creating/editing new elements when we want them to all have the same functionality.
+{"rubric": "R1", "reasoning": "The student understands that using components can save time by not having to create/edit new elements.", "highlighted": "do not have to take the time", "relevancy": 1}
+
+37: R2 - Just as we do not want to use duplicate code in textual programming, Components allow us to re-use an element, so that we do not have to take the time creating/editing new elements when we want them to all have the same functionality.
+{"rubric": "R2", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+37: R3 - Just as we do not want to use duplicate code in textual programming, Components allow us to re-use an element, so that we do not have to take the time creating/editing new elements when we want them to all have the same functionality.
+{"rubric": "R3", "reasoning": "The student understands the concept of reusing an element across multiple instances.", "highlighted": "re-use an element", "relevancy": 1}
+
+37: R4 - Just as we do not want to use duplicate code in textual programming, Components allow us to re-use an element, so that we do not have to take the time creating/editing new elements when we want them to all have the same functionality.
+{"rubric": "R4", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+37: R5 - Just as we do not want to use duplicate code in textual programming, Components allow us to re-use an element, so that we do not have to take the time creating/editing new elements when we want them to all have the same functionality.
+{"rubric": "R5", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+37: R6 - Just as we do not want to use duplicate code in textual programming, Components allow us to re-use an element, so that we do not have to take the time creating/editing new elements when we want them to all have the same functionality.
+{"rubric": "R6", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+37: R7 - Just as we do not want to use duplicate code in textual programming, Components allow us to re-use an element, so that we do not have to take the time creating/editing new elements when we want them to all have the same functionality.
+{"rubric": "R7", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+37: R8 - Just as we do not want to use duplicate code in textual programming, Components allow us to re-use an element, so that we do not have to take the time creating/editing new elements when we want them to all have the same functionality.
+{"rubric": "R8", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+37: R9 - Just as we do not want to use duplicate code in textual programming, Components allow us to re-use an element, so that we do not have to take the time creating/editing new elements when we want them to all have the same functionality.
+{"rubric": "R9", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+37: R10 - Just as we do not want to use duplicate code in textual programming, Components allow us to re-use an element, so that we do not have to take the time creating/editing new elements when we want them to all have the same functionality.
+{"rubric": "R10", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+37: R1 - We want to use components to create instances in Figma because they enable us to create instances of this components to replicate the feature very easily across many screens. 
+{"rubric": "R1", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+37: R2 - We want to use components to create instances in Figma because they enable us to create instances of this components to replicate the feature very easily across many screens. 
+{"rubric": "R2", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+37: R3 - We want to use components to create instances in Figma because they enable us to create instances of this components to replicate the feature very easily across many screens. 
+{"rubric": "R3", "reasoning": "The student understands the concept of reusing components across many screens.", "highlighted": "replicate the feature very easily", "relevancy": 1}
+
+37: R4 - We want to use components to create instances in Figma because they enable us to create instances of this components to replicate the feature very easily across many screens. 
+{"rubric": "R4", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+37: R5 - We want to use components to create instances in Figma because they enable us to create instances of this components to replicate the feature very easily across many screens. 
+{"rubric": "R5", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+37: R6 - We want to use components to create instances in Figma because they enable us to create instances of this components to replicate the feature very easily across many screens. 
+{"rubric": "R6", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+37: R7 - We want to use components to create instances in Figma because they enable us to create instances of this components to replicate the feature very easily across many screens. 
+{"rubric": "R7", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+37: R8 - We want to use components to create instances in Figma because they enable us to create instances of this components to replicate the feature very easily across many screens. 
+{"rubric": "R8", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+37: R9 - We want to use components to create instances in Figma because they enable us to create instances of this components to replicate the feature very easily across many screens. 
+{"rubric": "R9", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+37: R10 - We want to use components to create instances in Figma because they enable us to create instances of this components to replicate the feature very easily across many screens. 
+{"rubric": "R10", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+37: R1 - Components allow us to group objects and create a "master component". By changing the master compinenet, we are able to change all of it's child components in the same way at the same time, drastically reducing the efforts needed to change parts of a figma project.
+{"rubric": "R1", "reasoning": "The student understands that using components can drastically reduce the efforts needed to change parts of a project.", "highlighted": "drastically reducing the efforts", "relevancy": 1}
+
+37: R2 - Components allow us to group objects and create a "master component". By changing the master compinenet, we are able to change all of it's child components in the same way at the same time, drastically reducing the efforts needed to change parts of a figma project.
+{"rubric": "R2", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+37: R3 - Components allow us to group objects and create a "master component". By changing the master compinenet, we are able to change all of it's child components in the same way at the same time, drastically reducing the efforts needed to change parts of a figma project.
+{"rubric": "R3", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+37: R4 - Components allow us to group objects and create a "master component". By changing the master compinenet, we are able to change all of it's child components in the same way at the same time, drastically reducing the efforts needed to change parts of a figma project.
+{"rubric": "R4", "reasoning": "The student recognizes that changes to the master component can affect all of its child components, indicating an understanding of the ease of making changes to components.", "highlighted": "changing the master compinenet", "relevancy": 1}
+
+37: R5 - Components allow us to group objects and create a "master component". By changing the master compinenet, we are able to change all of it's child components in the same way at the same time, drastically reducing the efforts needed to change parts of a figma project.
+{"rubric": "R5", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+37: R6 - Components allow us to group objects and create a "master component". By changing the master compinenet, we are able to change all of it's child components in the same way at the same time, drastically reducing the efforts needed to change parts of a figma project.
+{"rubric": "R6", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+37: R7 - Components allow us to group objects and create a "master component". By changing the master compinenet, we are able to change all of it's child components in the same way at the same time, drastically reducing the efforts needed to change parts of a figma project.
+{"rubric": "R7", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+37: R8 - Components allow us to group objects and create a "master component". By changing the master compinenet, we are able to change all of it's child components in the same way at the same time, drastically reducing the efforts needed to change parts of a figma project.
+{"rubric": "R8", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+37: R9 - Components allow us to group objects and create a "master component". By changing the master compinenet, we are able to change all of it's child components in the same way at the same time, drastically reducing the efforts needed to change parts of a figma project.
+{"rubric": "R9", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+37: R10 - Components allow us to group objects and create a "master component". By changing the master compinenet, we are able to change all of it's child components in the same way at the same time, drastically reducing the efforts needed to change parts of a figma project.
+{"rubric": "R10", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+37: R1 - Components allow us to reuse things that have been created in the past, by ourselves or others. We can create button components so that instead of manually creating and setting the properties of a button, we simply create the component and it will have those same properties.
+{"rubric": "R1", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+37: R2 - Components allow us to reuse things that have been created in the past, by ourselves or others. We can create button components so that instead of manually creating and setting the properties of a button, we simply create the component and it will have those same properties.
+{"rubric": "R2", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+37: R3 - Components allow us to reuse things that have been created in the past, by ourselves or others. We can create button components so that instead of manually creating and setting the properties of a button, we simply create the component and it will have those same properties.
+{"rubric": "R3", "reasoning": "The student understands the concept of reusing components that have been created in the past.", "highlighted": "reuse things that have been created", "relevancy": 1}
+
+37: R4 - Components allow us to reuse things that have been created in the past, by ourselves or others. We can create button components so that instead of manually creating and setting the properties of a button, we simply create the component and it will have those same properties.
+{"rubric": "R4", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+37: R5 - Components allow us to reuse things that have been created in the past, by ourselves or others. We can create button components so that instead of manually creating and setting the properties of a button, we simply create the component and it will have those same properties.
+{"rubric": "R5", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+37: R6 - Components allow us to reuse things that have been created in the past, by ourselves or others. We can create button components so that instead of manually creating and setting the properties of a button, we simply create the component and it will have those same properties.
+{"rubric": "R6", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+37: R7 - Components allow us to reuse things that have been created in the past, by ourselves or others. We can create button components so that instead of manually creating and setting the properties of a button, we simply create the component and it will have those same properties.
+{"rubric": "R7", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+37: R8 - Components allow us to reuse things that have been created in the past, by ourselves or others. We can create button components so that instead of manually creating and setting the properties of a button, we simply create the component and it will have those same properties.
+{"rubric": "R8", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+37: R9 - Components allow us to reuse things that have been created in the past, by ourselves or others. We can create button components so that instead of manually creating and setting the properties of a button, we simply create the component and it will have those same properties.
+{"rubric": "R9", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+37: R10 - Components allow us to reuse things that have been created in the past, by ourselves or others. We can create button components so that instead of manually creating and setting the properties of a button, we simply create the component and it will have those same properties.
+{"rubric": "R10", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+37: R1 - Components provide inheritance-like functionality to the design because it allows properties to be reproduced and inherited without manually recreating them each time. This also makes each instance of the component consistent. 
+{"rubric": "R1", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+37: R2 - Components provide inheritance-like functionality to the design because it allows properties to be reproduced and inherited without manually recreating them each time. This also makes each instance of the component consistent. 
+{"rubric": "R2", "reasoning": "The student explains how components ensure design uniformity by allowing properties to be reproduced and inherited.", "highlighted": "each instance of the component consistent", "relevancy": 1}
+
+37: R3 - Components provide inheritance-like functionality to the design because it allows properties to be reproduced and inherited without manually recreating them each time. This also makes each instance of the component consistent. 
+{"rubric": "R3", "reasoning": "The student understands the concept of reusing components by reproducing and inheriting properties.", "highlighted": "properties to be reproduced and inherited", "relevancy": 1}
+
+37: R4 - Components provide inheritance-like functionality to the design because it allows properties to be reproduced and inherited without manually recreating them each time. This also makes each instance of the component consistent. 
+{"rubric": "R4", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+37: R5 - Components provide inheritance-like functionality to the design because it allows properties to be reproduced and inherited without manually recreating them each time. This also makes each instance of the component consistent. 
+{"rubric": "R5", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+37: R6 - Components provide inheritance-like functionality to the design because it allows properties to be reproduced and inherited without manually recreating them each time. This also makes each instance of the component consistent. 
+{"rubric": "R6", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+37: R7 - Components provide inheritance-like functionality to the design because it allows properties to be reproduced and inherited without manually recreating them each time. This also makes each instance of the component consistent. 
+{"rubric": "R7", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+37: R8 - Components provide inheritance-like functionality to the design because it allows properties to be reproduced and inherited without manually recreating them each time. This also makes each instance of the component consistent. 
+{"rubric": "R8", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+37: R9 - Components provide inheritance-like functionality to the design because it allows properties to be reproduced and inherited without manually recreating them each time. This also makes each instance of the component consistent. 
+{"rubric": "R9", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+37: R10 - Components provide inheritance-like functionality to the design because it allows properties to be reproduced and inherited without manually recreating them each time. This also makes each instance of the component consistent. 
+{"rubric": "R10", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+37: R1 - Components are features that we would like to reuse throughout our prototype. Often, there are standard designs across pages that dont need to change much. For example, a background or settings/logout button. These can be created as separate components and then can be easily used in different parts of the prototype. It also allows use to create master and nest components. 
+{"rubric": "R1", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+37: R2 - Components are features that we would like to reuse throughout our prototype. Often, there are standard designs across pages that dont need to change much. For example, a background or settings/logout button. These can be created as separate components and then can be easily used in different parts of the prototype. It also allows use to create master and nest components. 
+{"rubric": "R2", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+37: R3 - Components are features that we would like to reuse throughout our prototype. Often, there are standard designs across pages that dont need to change much. For example, a background or settings/logout button. These can be created as separate components and then can be easily used in different parts of the prototype. It also allows use to create master and nest components. 
+{"rubric": "R3", "reasoning": "The student understands the concept of reusing components throughout the prototype.", "highlighted": "reuse throughout our prototype", "relevancy": 1}
+
+37: R4 - Components are features that we would like to reuse throughout our prototype. Often, there are standard designs across pages that dont need to change much. For example, a background or settings/logout button. These can be created as separate components and then can be easily used in different parts of the prototype. It also allows use to create master and nest components. 
+{"rubric": "R4", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+37: R5 - Components are features that we would like to reuse throughout our prototype. Often, there are standard designs across pages that dont need to change much. For example, a background or settings/logout button. These can be created as separate components and then can be easily used in different parts of the prototype. It also allows use to create master and nest components. 
+{"rubric": "R5", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+37: R6 - Components are features that we would like to reuse throughout our prototype. Often, there are standard designs across pages that dont need to change much. For example, a background or settings/logout button. These can be created as separate components and then can be easily used in different parts of the prototype. It also allows use to create master and nest components. 
+{"rubric": "R6", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+37: R7 - Components are features that we would like to reuse throughout our prototype. Often, there are standard designs across pages that dont need to change much. For example, a background or settings/logout button. These can be created as separate components and then can be easily used in different parts of the prototype. It also allows use to create master and nest components. 
+{"rubric": "R7", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+37: R8 - Components are features that we would like to reuse throughout our prototype. Often, there are standard designs across pages that dont need to change much. For example, a background or settings/logout button. These can be created as separate components and then can be easily used in different parts of the prototype. It also allows use to create master and nest components. 
+{"rubric": "R8", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+37: R9 - Components are features that we would like to reuse throughout our prototype. Often, there are standard designs across pages that dont need to change much. For example, a background or settings/logout button. These can be created as separate components and then can be easily used in different parts of the prototype. It also allows use to create master and nest components. 
+{"rubric": "R9", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+37: R10 - Components are features that we would like to reuse throughout our prototype. Often, there are standard designs across pages that dont need to change much. For example, a background or settings/logout button. These can be created as separate components and then can be easily used in different parts of the prototype. It also allows use to create master and nest components. 
+{"rubric": "R10", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+37: R1 - Components inherit properties that can be copied and re-used. This lets us make broad changes to the UI without manually going through each component and copying over changes.
+{"rubric": "R1", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+37: R2 - Components inherit properties that can be copied and re-used. This lets us make broad changes to the UI without manually going through each component and copying over changes.
+{"rubric": "R2", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+37: R3 - Components inherit properties that can be copied and re-used. This lets us make broad changes to the UI without manually going through each component and copying over changes.
+{"rubric": "R3", "reasoning": "The student understands the concept of reusing components by inheriting properties that can be copied.", "highlighted": "inherit properties that can be copied", "relevancy": 1}
+
+37: R4 - Components inherit properties that can be copied and re-used. This lets us make broad changes to the UI without manually going through each component and copying over changes.
+{"rubric": "R4", "reasoning": "The student recognizes that broad changes to the UI can be made without manually going through each component, indicating an understanding of the ease of making changes to components.", "highlighted": "make broad changes to the UI", "relevancy": 1}
+
+37: R5 - Components inherit properties that can be copied and re-used. This lets us make broad changes to the UI without manually going through each component and copying over changes.
+{"rubric": "R5", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+37: R6 - Components inherit properties that can be copied and re-used. This lets us make broad changes to the UI without manually going through each component and copying over changes.
+{"rubric": "R6", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+37: R7 - Components inherit properties that can be copied and re-used. This lets us make broad changes to the UI without manually going through each component and copying over changes.
+{"rubric": "R7", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+37: R8 - Components inherit properties that can be copied and re-used. This lets us make broad changes to the UI without manually going through each component and copying over changes.
+{"rubric": "R8", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+37: R9 - Components inherit properties that can be copied and re-used. This lets us make broad changes to the UI without manually going through each component and copying over changes.
+{"rubric": "R9", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+37: R10 - Components inherit properties that can be copied and re-used. This lets us make broad changes to the UI without manually going through each component and copying over changes.
+{"rubric": "R10", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+37: R1 - By having reusable designs we would have greater consistancy within our project. This leads to a more pleasant design. This also allows us to reduce our work as we can reuse designs rather than making them again.
+{"rubric": "R1", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+37: R2 - By having reusable designs we would have greater consistancy within our project. This leads to a more pleasant design. This also allows us to reduce our work as we can reuse designs rather than making them again.
+{"rubric": "R2", "reasoning": "The student explains how using reusable designs can lead to greater consistency within the project.", "highlighted": "greater consistancy within our project", "relevancy": 1}
+
+37: R3 - By having reusable designs we would have greater consistancy within our project. This leads to a more pleasant design. This also allows us to reduce our work as we can reuse designs rather than making them again.
+{"rubric": "R3", "reasoning": "The student understands the concept of reusing designs rather than making them again.", "highlighted": "reuse designs rather than making", "relevancy": 1}
+
+37: R4 - By having reusable designs we would have greater consistancy within our project. This leads to a more pleasant design. This also allows us to reduce our work as we can reuse designs rather than making them again.
+{"rubric": "R4", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+37: R5 - By having reusable designs we would have greater consistancy within our project. This leads to a more pleasant design. This also allows us to reduce our work as we can reuse designs rather than making them again.
+{"rubric": "R5", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+37: R6 - By having reusable designs we would have greater consistancy within our project. This leads to a more pleasant design. This also allows us to reduce our work as we can reuse designs rather than making them again.
+{"rubric": "R6", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+37: R7 - By having reusable designs we would have greater consistancy within our project. This leads to a more pleasant design. This also allows us to reduce our work as we can reuse designs rather than making them again.
+{"rubric": "R7", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+37: R8 - By having reusable designs we would have greater consistancy within our project. This leads to a more pleasant design. This also allows us to reduce our work as we can reuse designs rather than making them again.
+{"rubric": "R8", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+37: R9 - By having reusable designs we would have greater consistancy within our project. This leads to a more pleasant design. This also allows us to reduce our work as we can reuse designs rather than making them again.
+{"rubric": "R9", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+37: R10 - By having reusable designs we would have greater consistancy within our project. This leads to a more pleasant design. This also allows us to reduce our work as we can reuse designs rather than making them again.
+{"rubric": "R10", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+37: R1 - Components can be replicated for multiple instances and be synchronised. This allows you to create a component  that is used in multiple places, but if you wanted to change it you would only need to change the master component.
+{"rubric": "R1", "reasoning": "The student understands that using components can save time as changes only need to be made to the master component.", "highlighted": "only need to change the master", "relevancy": 1}
+
+37: R2 - Components can be replicated for multiple instances and be synchronised. This allows you to create a component  that is used in multiple places, but if you wanted to change it you would only need to change the master component.
+{"rubric": "R2", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+37: R3 - Components can be replicated for multiple instances and be synchronised. This allows you to create a component  that is used in multiple places, but if you wanted to change it you would only need to change the master component.
+{"rubric": "R3", "reasoning": "The student mentions that components can be used in multiple places, indicating an understanding of reusability.", "highlighted": "used in multiple places", "relevancy": 1}
+
+37: R4 - Components can be replicated for multiple instances and be synchronised. This allows you to create a component  that is used in multiple places, but if you wanted to change it you would only need to change the master component.
+{"rubric": "R4", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+37: R5 - Components can be replicated for multiple instances and be synchronised. This allows you to create a component  that is used in multiple places, but if you wanted to change it you would only need to change the master component.
+{"rubric": "R5", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+37: R6 - Components can be replicated for multiple instances and be synchronised. This allows you to create a component  that is used in multiple places, but if you wanted to change it you would only need to change the master component.
+{"rubric": "R6", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+37: R7 - Components can be replicated for multiple instances and be synchronised. This allows you to create a component  that is used in multiple places, but if you wanted to change it you would only need to change the master component.
+{"rubric": "R7", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+37: R8 - Components can be replicated for multiple instances and be synchronised. This allows you to create a component  that is used in multiple places, but if you wanted to change it you would only need to change the master component.
+{"rubric": "R8", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+37: R9 - Components can be replicated for multiple instances and be synchronised. This allows you to create a component  that is used in multiple places, but if you wanted to change it you would only need to change the master component.
+{"rubric": "R9", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+37: R10 - Components can be replicated for multiple instances and be synchronised. This allows you to create a component  that is used in multiple places, but if you wanted to change it you would only need to change the master component.
+{"rubric": "R10", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+37: R1 - Using components to create instances can be efficient because components can be copied. The components can also be combined to create more complex designs.
+{"rubric": "R1", "reasoning": "The student mentions that components can be efficient because they can be copied, indicating an understanding of time-saving benefits.", "highlighted": "components can be copied", "relevancy": 1}
+
+37: R2 - Using components to create instances can be efficient because components can be copied. The components can also be combined to create more complex designs.
+{"rubric": "R2", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+37: R3 - Using components to create instances can be efficient because components can be copied. The components can also be combined to create more complex designs.
+{"rubric": "R3", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+37: R4 - Using components to create instances can be efficient because components can be copied. The components can also be combined to create more complex designs.
+{"rubric": "R4", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+37: R5 - Using components to create instances can be efficient because components can be copied. The components can also be combined to create more complex designs.
+{"rubric": "R5", "reasoning": "The student mentions that components can be combined to create more complex designs, indicating an understanding of component integration.", "highlighted": "combined to create more complex", "relevancy": 1}
+
+37: R6 - Using components to create instances can be efficient because components can be copied. The components can also be combined to create more complex designs.
+{"rubric": "R6", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+37: R7 - Using components to create instances can be efficient because components can be copied. The components can also be combined to create more complex designs.
+{"rubric": "R7", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+37: R8 - Using components to create instances can be efficient because components can be copied. The components can also be combined to create more complex designs.
+{"rubric": "R8", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+37: R9 - Using components to create instances can be efficient because components can be copied. The components can also be combined to create more complex designs.
+{"rubric": "R9", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+37: R10 - Using components to create instances can be efficient because components can be copied. The components can also be combined to create more complex designs.
+{"rubric": "R10", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+37: R1 - you can reuse components in your project which makes the prototype much cleaner and minimalistic.
+{"rubric": "R1", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+37: R2 - you can reuse components in your project which makes the prototype much cleaner and minimalistic.
+{"rubric": "R2", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+37: R3 - you can reuse components in your project which makes the prototype much cleaner and minimalistic.
+{"rubric": "R3", "reasoning": "The student mentions that components can be reused, indicating an understanding of reusability.", "highlighted": "reuse components in your project", "relevancy": 1}
+
+37: R4 - you can reuse components in your project which makes the prototype much cleaner and minimalistic.
+{"rubric": "R4", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+37: R5 - you can reuse components in your project which makes the prototype much cleaner and minimalistic.
+{"rubric": "R5", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+37: R6 - you can reuse components in your project which makes the prototype much cleaner and minimalistic.
+{"rubric": "R6", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+37: R7 - you can reuse components in your project which makes the prototype much cleaner and minimalistic.
+{"rubric": "R7", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+37: R8 - you can reuse components in your project which makes the prototype much cleaner and minimalistic.
+{"rubric": "R8", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+37: R9 - you can reuse components in your project which makes the prototype much cleaner and minimalistic.
+{"rubric": "R9", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+37: R10 - you can reuse components in your project which makes the prototype much cleaner and minimalistic.
+{"rubric": "R10", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+37: R1 - We want to use components in Figma to allow the user to interact with the interface and receive feedback and information about what their interactions are doing.
+{"rubric": "R1", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+37: R2 - We want to use components in Figma to allow the user to interact with the interface and receive feedback and information about what their interactions are doing.
+{"rubric": "R2", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+37: R3 - We want to use components in Figma to allow the user to interact with the interface and receive feedback and information about what their interactions are doing.
+{"rubric": "R3", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+37: R4 - We want to use components in Figma to allow the user to interact with the interface and receive feedback and information about what their interactions are doing.
+{"rubric": "R4", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+37: R5 - We want to use components in Figma to allow the user to interact with the interface and receive feedback and information about what their interactions are doing.
+{"rubric": "R5", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+37: R6 - We want to use components in Figma to allow the user to interact with the interface and receive feedback and information about what their interactions are doing.
+{"rubric": "R6", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+37: R7 - We want to use components in Figma to allow the user to interact with the interface and receive feedback and information about what their interactions are doing.
+{"rubric": "R7", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+37: R8 - We want to use components in Figma to allow the user to interact with the interface and receive feedback and information about what their interactions are doing.
+{"rubric": "R8", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+37: R9 - We want to use components in Figma to allow the user to interact with the interface and receive feedback and information about what their interactions are doing.
+{"rubric": "R9", "reasoning": "The student does not mention how components integrate across designs, indicating a misunderstanding of component integration.", "highlighted": "interact with the interface", "relevancy": 1}
+
+37: R10 - We want to use components in Figma to allow the user to interact with the interface and receive feedback and information about what their interactions are doing.
+{"rubric": "R10", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+37: R1 - Because then we can reuse them in different areas, rather than hardcoding them to one area.
+{"rubric": "R1", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+37: R2 - Because then we can reuse them in different areas, rather than hardcoding them to one area.
+{"rubric": "R2", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+37: R3 - Because then we can reuse them in different areas, rather than hardcoding them to one area.
+{"rubric": "R3", "reasoning": "The student mentions that components can be reused in different areas, indicating an understanding of reusability.", "highlighted": "reuse them in different areas", "relevancy": 1}
+
+37: R4 - Because then we can reuse them in different areas, rather than hardcoding them to one area.
+{"rubric": "R4", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+37: R5 - Because then we can reuse them in different areas, rather than hardcoding them to one area.
+{"rubric": "R5", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+37: R6 - Because then we can reuse them in different areas, rather than hardcoding them to one area.
+{"rubric": "R6", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+37: R7 - Because then we can reuse them in different areas, rather than hardcoding them to one area.
+{"rubric": "R7", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+37: R8 - Because then we can reuse them in different areas, rather than hardcoding them to one area.
+{"rubric": "R8", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+37: R9 - Because then we can reuse them in different areas, rather than hardcoding them to one area.
+{"rubric": "R9", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+37: R10 - Because then we can reuse them in different areas, rather than hardcoding them to one area.
+{"rubric": "R10", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+37: R1 - We are able to create multiple objects of one design. This allows for easily managed features in a prototype.
+{"rubric": "R1", "reasoning": "The student mentions that multiple objects of one design can be created, indicating an understanding of time-saving benefits.", "highlighted": "create multiple objects of one", "relevancy": 1}
+
+37: R2 - We are able to create multiple objects of one design. This allows for easily managed features in a prototype.
+{"rubric": "R2", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+37: R3 - We are able to create multiple objects of one design. This allows for easily managed features in a prototype.
+{"rubric": "R3", "reasoning": "The student mentions that multiple objects of one design can be created, indicating an understanding of reusability.", "highlighted": "create multiple objects of one", "relevancy": 1}
+
+37: R4 - We are able to create multiple objects of one design. This allows for easily managed features in a prototype.
+{"rubric": "R4", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+37: R5 - We are able to create multiple objects of one design. This allows for easily managed features in a prototype.
+{"rubric": "R5", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+37: R6 - We are able to create multiple objects of one design. This allows for easily managed features in a prototype.
+{"rubric": "R6", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+37: R7 - We are able to create multiple objects of one design. This allows for easily managed features in a prototype.
+{"rubric": "R7", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+37: R8 - We are able to create multiple objects of one design. This allows for easily managed features in a prototype.
+{"rubric": "R8", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+37: R9 - We are able to create multiple objects of one design. This allows for easily managed features in a prototype.
+{"rubric": "R9", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+37: R10 - We are able to create multiple objects of one design. This allows for easily managed features in a prototype.
+{"rubric": "R10", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+37: R1 - So we can easily interact with the item and change the state of it. For example, by creating a heart component that has 2 states (red and empty), we can allow users to interact with it in our prototype while tapping on it. The state will show the current status of an item,
+{"rubric": "R1", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+37: R2 - So we can easily interact with the item and change the state of it. For example, by creating a heart component that has 2 states (red and empty), we can allow users to interact with it in our prototype while tapping on it. The state will show the current status of an item,
+{"rubric": "R2", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+37: R3 - So we can easily interact with the item and change the state of it. For example, by creating a heart component that has 2 states (red and empty), we can allow users to interact with it in our prototype while tapping on it. The state will show the current status of an item,
+{"rubric": "R3", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+37: R4 - So we can easily interact with the item and change the state of it. For example, by creating a heart component that has 2 states (red and empty), we can allow users to interact with it in our prototype while tapping on it. The state will show the current status of an item,
+{"rubric": "R4", "reasoning": "The student mentions that the state of a component can be changed, indicating an understanding of the ease of making changes to components.", "highlighted": "change the state of it", "relevancy": 1}
+
+37: R5 - So we can easily interact with the item and change the state of it. For example, by creating a heart component that has 2 states (red and empty), we can allow users to interact with it in our prototype while tapping on it. The state will show the current status of an item,
+{"rubric": "R5", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+37: R6 - So we can easily interact with the item and change the state of it. For example, by creating a heart component that has 2 states (red and empty), we can allow users to interact with it in our prototype while tapping on it. The state will show the current status of an item,
+{"rubric": "R6", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+37: R7 - So we can easily interact with the item and change the state of it. For example, by creating a heart component that has 2 states (red and empty), we can allow users to interact with it in our prototype while tapping on it. The state will show the current status of an item,
+{"rubric": "R7", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+37: R8 - So we can easily interact with the item and change the state of it. For example, by creating a heart component that has 2 states (red and empty), we can allow users to interact with it in our prototype while tapping on it. The state will show the current status of an item,
+{"rubric": "R8", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+37: R9 - So we can easily interact with the item and change the state of it. For example, by creating a heart component that has 2 states (red and empty), we can allow users to interact with it in our prototype while tapping on it. The state will show the current status of an item,
+{"rubric": "R9", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+37: R10 - So we can easily interact with the item and change the state of it. For example, by creating a heart component that has 2 states (red and empty), we can allow users to interact with it in our prototype while tapping on it. The state will show the current status of an item,
+{"rubric": "R10", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+37: R1 - So that if we ever need to change all the instances we made, we only need to change the main component, and all the instances will be changed, saving time and effort.
+{"rubric": "R1", "reasoning": "The student understands that using components can save time as changes only need to be made to the main component.", "highlighted": "only need to change the main", "relevancy": 1}
+
+37: R2 - So that if we ever need to change all the instances we made, we only need to change the main component, and all the instances will be changed, saving time and effort.
+{"rubric": "R2", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+37: R3 - So that if we ever need to change all the instances we made, we only need to change the main component, and all the instances will be changed, saving time and effort.
+{"rubric": "R3", "reasoning": "The student mentions that changes to the main component will affect all instances, indicating an understanding of reusability.", "highlighted": "all the instances will be changed", "relevancy": 1}
+
+37: R4 - So that if we ever need to change all the instances we made, we only need to change the main component, and all the instances will be changed, saving time and effort.
+{"rubric": "R4", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+37: R5 - So that if we ever need to change all the instances we made, we only need to change the main component, and all the instances will be changed, saving time and effort.
+{"rubric": "R5", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+37: R6 - So that if we ever need to change all the instances we made, we only need to change the main component, and all the instances will be changed, saving time and effort.
+{"rubric": "R6", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+37: R7 - So that if we ever need to change all the instances we made, we only need to change the main component, and all the instances will be changed, saving time and effort.
+{"rubric": "R7", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+37: R8 - So that if we ever need to change all the instances we made, we only need to change the main component, and all the instances will be changed, saving time and effort.
+{"rubric": "R8", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+37: R9 - So that if we ever need to change all the instances we made, we only need to change the main component, and all the instances will be changed, saving time and effort.
+{"rubric": "R9", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+37: R10 - So that if we ever need to change all the instances we made, we only need to change the main component, and all the instances will be changed, saving time and effort.
+{"rubric": "R10", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+37: R1 - You want to use Components when you design some UI components that you want to reuse across multiple screens within an app.
+{"rubric": "R1", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+37: R2 - You want to use Components when you design some UI components that you want to reuse across multiple screens within an app.
+{"rubric": "R2", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+37: R3 - You want to use Components when you design some UI components that you want to reuse across multiple screens within an app.
+{"rubric": "R3", "reasoning": "The student mentions that components can be reused across multiple screens, indicating an understanding of reusability.", "highlighted": "reuse across multiple screens", "relevancy": 1}
+
+37: R4 - You want to use Components when you design some UI components that you want to reuse across multiple screens within an app.
+{"rubric": "R4", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+37: R5 - You want to use Components when you design some UI components that you want to reuse across multiple screens within an app.
+{"rubric": "R5", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+37: R6 - You want to use Components when you design some UI components that you want to reuse across multiple screens within an app.
+{"rubric": "R6", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+37: R7 - You want to use Components when you design some UI components that you want to reuse across multiple screens within an app.
+{"rubric": "R7", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+37: R8 - You want to use Components when you design some UI components that you want to reuse across multiple screens within an app.
+{"rubric": "R8", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+37: R9 - You want to use Components when you design some UI components that you want to reuse across multiple screens within an app.
+{"rubric": "R9", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+37: R10 - You want to use Components when you design some UI components that you want to reuse across multiple screens within an app.
+{"rubric": "R10", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+37: R1 - Because components allow us reuse elements easily, and make individual modifications to them with instances. 
+{"rubric": "R1", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+37: R2 - Because components allow us reuse elements easily, and make individual modifications to them with instances. 
+{"rubric": "R2", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+37: R3 - Because components allow us reuse elements easily, and make individual modifications to them with instances. 
+{"rubric": "R3", "reasoning": "The student mentions that components can be reused, indicating an understanding of reusability.", "highlighted": "reuse elements easily", "relevancy": 1}
+
+37: R4 - Because components allow us reuse elements easily, and make individual modifications to them with instances. 
+{"rubric": "R4", "reasoning": "The student mentions that individual modifications can be made to instances, indicating an understanding of the ease of making changes to components.", "highlighted": "individual modifications to them", "relevancy": 1}
+
+37: R5 - Because components allow us reuse elements easily, and make individual modifications to them with instances. 
+{"rubric": "R5", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+37: R6 - Because components allow us reuse elements easily, and make individual modifications to them with instances. 
+{"rubric": "R6", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+37: R7 - Because components allow us reuse elements easily, and make individual modifications to them with instances. 
+{"rubric": "R7", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+37: R8 - Because components allow us reuse elements easily, and make individual modifications to them with instances. 
+{"rubric": "R8", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+37: R9 - Because components allow us reuse elements easily, and make individual modifications to them with instances. 
+{"rubric": "R9", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+37: R10 - Because components allow us reuse elements easily, and make individual modifications to them with instances. 
+{"rubric": "R10", "reasoning": "", "highlighted": "", "relevancy": "0"}
+

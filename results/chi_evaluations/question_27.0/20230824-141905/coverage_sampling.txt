@@ -1,0 +1,102 @@
+Total Rubric Counts
+R1	✔ Efficiency and Time Saving	20
+R2	✔ Consistency in Design	23
+R3	✔ Reusability	40
+R4	✔ Quick Modifications	21
+R5	✔ Component Integration	3
+R6	✘ Misunderstanding Reusability	0
+R7	✘ Confusion about Consistency	0
+R8	✘ Misinterpretation of Quick Modifications	0
+R9	✘ Misunderstanding Component Integration	2
+R10	✘ Misinterpretation of Efficiency	0
+
+
+COVERAGE
+Components allow users to replicate editable features throughout their prototype, such as a button, which they can insert on multiple pages, and by changing the component the user can edit all the instances as well. This is efficient for the user and also provides uniformity throughout their design. It can also make working with a team easier as a component can then be shared and multiple users can create instances without stepping on each others toes.	R1,R2,R3,R5
+Components can be replicated for multiple instances and be synchronised. This allows you to create a component  that is used in multiple places, but if you wanted to change it you would only need to change the master component.	R4
+We want to use components in Figma to allow the user to interact with the interface and receive feedback and information about what their interactions are doing.	R9
+
+Selected Rubric Counts
+R1	1
+R2	1
+R3	1
+R5	1
+R4	1
+R9	1
+
+
+FREQUENCY_INVERSE
+We want to use components in Figma to allow the user to interact with the interface and receive feedback and information about what their interactions are doing.	R9
+They add a level of user interactivity to our prototype	R9
+Components allow users to replicate editable features throughout their prototype, such as a button, which they can insert on multiple pages, and by changing the component the user can edit all the instances as well. This is efficient for the user and also provides uniformity throughout their design. It can also make working with a team easier as a component can then be shared and multiple users can create instances without stepping on each others toes.	R1,R2,R3,R5
+Components help maintain consistency across designs for projects. Components also allow for more possibilities as they can be made interactive or given actions.	R2,R5
+So we can easily interact with the item and change the state of it. For example, by creating a heart component that has 2 states (red and empty), we can allow users to interact with it in our prototype while tapping on it. The state will show the current status of an item,	R5
+
+Selected Rubric Counts
+R9	2
+R1	1
+R2	2
+R3	1
+R5	3
+
+
+GREEDY
+Components allow us to group objects and create a "master component". By changing the master compinenet, we are able to change all of it's child components in the same way at the same time, drastically reducing the efforts needed to change parts of a figma project.	R1,R4
+So we can easily interact with the item and change the state of it. For example, by creating a heart component that has 2 states (red and empty), we can allow users to interact with it in our prototype while tapping on it. The state will show the current status of an item,	R5
+Components allow us to reuse things that have been created in the past, by ourselves or others. We can create button components so that instead of manually creating and setting the properties of a button, we simply create the component and it will have those same properties.	R3
+Components allow users to replicate editable features throughout their prototype, such as a button, which they can insert on multiple pages, and by changing the component the user can edit all the instances as well. This is efficient for the user and also provides uniformity throughout their design. It can also make working with a team easier as a component can then be shared and multiple users can create instances without stepping on each others toes.	R1,R2,R3,R5
+They add a level of user interactivity to our prototype	R9
+
+Selected Rubric Counts
+R1	2
+R4	1
+R5	2
+R3	2
+R2	1
+R9	1
+
+
+CLUSTER
+Suppose you have a toggle button that is highlighted blue. A stakeholder wants you to change the color to green. If you made the toggle button a component, you’d be able to just edit the main component and the changes will be reflected throughout the design. Additionally, having components helps maintain a consistent design throughout the interface. 	R2,R4
+Components allow users to replicate editable features throughout their prototype, such as a button, which they can insert on multiple pages, and by changing the component the user can edit all the instances as well. This is efficient for the user and also provides uniformity throughout their design. It can also make working with a team easier as a component can then be shared and multiple users can create instances without stepping on each others toes.	R1,R2,R3,R5
+Components inherit properties that can be copied and re-used. This lets us make broad changes to the UI without manually going through each component and copying over changes.	R3,R4
+Components in Figma enable designers to create reusable design elements which can be modified and customized very easily and intuitively. This can save time and effort and also ensures consistency across the design by ensuring that all instances of the same element match. Components in Figma also allow designers to make changes to an element once and have those changes automatically applied to all instances of that element, which ensures consistency.	R1,R2,R3,R4
+Components help maintain consistency across designs for projects. Components also allow for more possibilities as they can be made interactive or given actions.	R2,R5
+
+Selected Rubric Counts
+R2	4
+R4	3
+R1	2
+R3	3
+R5	2
+
+
+RUBRIC_FIRST
+Components allow users to replicate editable features throughout their prototype, such as a button, which they can insert on multiple pages, and by changing the component the user can edit all the instances as well. This is efficient for the user and also provides uniformity throughout their design. It can also make working with a team easier as a component can then be shared and multiple users can create instances without stepping on each others toes.	R1,R2,R3,R5
+Components in Figma enable designers to create reusable design elements which can be modified and customized very easily and intuitively. This can save time and effort and also ensures consistency across the design by ensuring that all instances of the same element match. Components in Figma also allow designers to make changes to an element once and have those changes automatically applied to all instances of that element, which ensures consistency.	R1,R2,R3,R4
+We want to use components in Figma to allow the user to interact with the interface and receive feedback and information about what their interactions are doing.	R9
+
+Selected Rubric Counts
+R1	2
+R2	2
+R3	2
+R5	1
+R4	1
+R9	1
+
+
+COMBINATION
+Components allow users to replicate editable features throughout their prototype, such as a button, which they can insert on multiple pages, and by changing the component the user can edit all the instances as well. This is efficient for the user and also provides uniformity throughout their design. It can also make working with a team easier as a component can then be shared and multiple users can create instances without stepping on each others toes.	R1,R2,R3,R5
+We want to use components in Figma to allow the user to interact with the interface and receive feedback and information about what their interactions are doing.	R9
+They add a level of user interactivity to our prototype	R9
+Components help maintain consistency across designs for projects. Components also allow for more possibilities as they can be made interactive or given actions.	R2,R5
+Components in Figma allow your designs to be consistent across all your pages. You can also group elements together in components to be reused. A new component will create new instances rather than just a copy.	R2,R3
+
+Selected Rubric Counts
+R1	1
+R2	3
+R3	2
+R5	2
+R9	2
+
+

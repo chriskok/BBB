@@ -1,0 +1,1270 @@
+36: R1 - User research helps discover who your users are and what their needs are. Research also helps distinguish the context of the problem you are trying to solve: the mission of the project. Also, user research helps distinguish what needs to come from your product in the end.
+{"rubric": "R1", "reasoning": "The student demonstrates understanding of the target audience by stating that user research helps discover who the users are and what their needs are.", "highlighted": "discover who your users are", "relevancy": 1}
+
+36: R2 - User research helps discover who your users are and what their needs are. Research also helps distinguish the context of the problem you are trying to solve: the mission of the project. Also, user research helps distinguish what needs to come from your product in the end.
+{"rubric": "R2", "reasoning": "The student identifies user problems by stating that user research helps distinguish the context of the problem.", "highlighted": "context of the problem", "relevancy": 1}
+
+36: R3 - User research helps discover who your users are and what their needs are. Research also helps distinguish the context of the problem you are trying to solve: the mission of the project. Also, user research helps distinguish what needs to come from your product in the end.
+{"rubric": "R3", "reasoning": "The student validates user needs by stating that user research helps distinguish what needs to come from the product.", "highlighted": "what needs to come from your product", "relevancy": 1}
+
+36: R4 - User research helps discover who your users are and what their needs are. Research also helps distinguish the context of the problem you are trying to solve: the mission of the project. Also, user research helps distinguish what needs to come from your product in the end.
+{"rubric": "R4", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+36: R5 - User research helps discover who your users are and what their needs are. Research also helps distinguish the context of the problem you are trying to solve: the mission of the project. Also, user research helps distinguish what needs to come from your product in the end.
+{"rubric": "R5", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+36: R6 - User research helps discover who your users are and what their needs are. Research also helps distinguish the context of the problem you are trying to solve: the mission of the project. Also, user research helps distinguish what needs to come from your product in the end.
+{"rubric": "R6", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+36: R7 - User research helps discover who your users are and what their needs are. Research also helps distinguish the context of the problem you are trying to solve: the mission of the project. Also, user research helps distinguish what needs to come from your product in the end.
+{"rubric": "R7", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+36: R8 - User research helps discover who your users are and what their needs are. Research also helps distinguish the context of the problem you are trying to solve: the mission of the project. Also, user research helps distinguish what needs to come from your product in the end.
+{"rubric": "R8", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+36: R9 - User research helps discover who your users are and what their needs are. Research also helps distinguish the context of the problem you are trying to solve: the mission of the project. Also, user research helps distinguish what needs to come from your product in the end.
+{"rubric": "R9", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+36: R10 - User research helps discover who your users are and what their needs are. Research also helps distinguish the context of the problem you are trying to solve: the mission of the project. Also, user research helps distinguish what needs to come from your product in the end.
+{"rubric": "R10", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+36: R1 - User research is done to identify who your users are, what they want to get done, and how to get it done.  For example, the double diamond design process gives us insight into the problem, scope down the focus, what are the potential solutions, and focusing on the solutions that work. 
+{"rubric": "R1", "reasoning": "The student demonstrates understanding of the target audience by mentioning the need to identify who the users are and what they want to get done.", "highlighted": "identify who your users are", "relevancy": "1"}
+
+36: R2 - User research is done to identify who your users are, what they want to get done, and how to get it done.  For example, the double diamond design process gives us insight into the problem, scope down the focus, what are the potential solutions, and focusing on the solutions that work. 
+{"rubric": "R2", "reasoning": "The student identifies user problems or challenges by discussing the need to understand what users want to get done and how to do it.", "highlighted": "what they want to get done", "relevancy": "1"}
+
+36: R3 - User research is done to identify who your users are, what they want to get done, and how to get it done.  For example, the double diamond design process gives us insight into the problem, scope down the focus, what are the potential solutions, and focusing on the solutions that work. 
+{"rubric": "R3", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+36: R4 - User research is done to identify who your users are, what they want to get done, and how to get it done.  For example, the double diamond design process gives us insight into the problem, scope down the focus, what are the potential solutions, and focusing on the solutions that work. 
+{"rubric": "R4", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+36: R5 - User research is done to identify who your users are, what they want to get done, and how to get it done.  For example, the double diamond design process gives us insight into the problem, scope down the focus, what are the potential solutions, and focusing on the solutions that work. 
+{"rubric": "R5", "reasoning": "The student mentions the use of user research to focus on solutions that work, implying the improvement of prototypes.", "highlighted": "focusing on the solutions that work", "relevancy": "1"}
+
+36: R6 - User research is done to identify who your users are, what they want to get done, and how to get it done.  For example, the double diamond design process gives us insight into the problem, scope down the focus, what are the potential solutions, and focusing on the solutions that work. 
+{"rubric": "R6", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+36: R7 - User research is done to identify who your users are, what they want to get done, and how to get it done.  For example, the double diamond design process gives us insight into the problem, scope down the focus, what are the potential solutions, and focusing on the solutions that work. 
+{"rubric": "R7", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+36: R8 - User research is done to identify who your users are, what they want to get done, and how to get it done.  For example, the double diamond design process gives us insight into the problem, scope down the focus, what are the potential solutions, and focusing on the solutions that work. 
+{"rubric": "R8", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+36: R9 - User research is done to identify who your users are, what they want to get done, and how to get it done.  For example, the double diamond design process gives us insight into the problem, scope down the focus, what are the potential solutions, and focusing on the solutions that work. 
+{"rubric": "R9", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+36: R10 - User research is done to identify who your users are, what they want to get done, and how to get it done.  For example, the double diamond design process gives us insight into the problem, scope down the focus, what are the potential solutions, and focusing on the solutions that work. 
+{"rubric": "R10", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+36: R1 - - Evaluate user needs
+- Create design ideas with the user needs and context in mind
+- Get feedback from users on whether they like an idea and then iterate on the prototype
+{"rubric": "R1", "reasoning": "The student demonstrates understanding of the target audience by stating that user research is used to evaluate user needs.", "highlighted": "Evaluate user needs", "relevancy": 1}
+
+36: R2 - - Evaluate user needs
+- Create design ideas with the user needs and context in mind
+- Get feedback from users on whether they like an idea and then iterate on the prototype
+{"rubric": "R2", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+36: R3 - - Evaluate user needs
+- Create design ideas with the user needs and context in mind
+- Get feedback from users on whether they like an idea and then iterate on the prototype
+{"rubric": "R3", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+36: R4 - - Evaluate user needs
+- Create design ideas with the user needs and context in mind
+- Get feedback from users on whether they like an idea and then iterate on the prototype
+{"rubric": "R4", "reasoning": "The student gathers feedback on usability by stating that user research is used to get feedback from users on whether they like an idea.", "highlighted": "Get feedback from users", "relevancy": 1}
+
+36: R5 - - Evaluate user needs
+- Create design ideas with the user needs and context in mind
+- Get feedback from users on whether they like an idea and then iterate on the prototype
+{"rubric": "R5", "reasoning": "The student uses user research to improve prototypes by stating that user research is used to iterate on the prototype.", "highlighted": "iterate on the prototype", "relevancy": 1}
+
+36: R6 - - Evaluate user needs
+- Create design ideas with the user needs and context in mind
+- Get feedback from users on whether they like an idea and then iterate on the prototype
+{"rubric": "R6", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+36: R7 - - Evaluate user needs
+- Create design ideas with the user needs and context in mind
+- Get feedback from users on whether they like an idea and then iterate on the prototype
+{"rubric": "R7", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+36: R8 - - Evaluate user needs
+- Create design ideas with the user needs and context in mind
+- Get feedback from users on whether they like an idea and then iterate on the prototype
+{"rubric": "R8", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+36: R9 - - Evaluate user needs
+- Create design ideas with the user needs and context in mind
+- Get feedback from users on whether they like an idea and then iterate on the prototype
+{"rubric": "R9", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+36: R10 - - Evaluate user needs
+- Create design ideas with the user needs and context in mind
+- Get feedback from users on whether they like an idea and then iterate on the prototype
+{"rubric": "R10", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+36: R1 - User research
+
+1. Evaluates the needs and constraints of users. What do users care about? What do they dislike or want to improve about current solutions? What can and can't they afford in a design?
+2. Feedback and gauging which designs work best for users. What do they like about the ideas presented, what would they want to see, whether an idea addresses their needs or not.
+3. Feedback on prototypes/the later stages of design lets designers understand how their design functions when in the hands of a user. It lets designers discover accessibility + clarity issues and further evaluate how useful features are to users.
+{"rubric": "R1", "reasoning": "The student demonstrates understanding of the target audience by stating that user research evaluates the needs and constraints of users.", "highlighted": "Evaluates the needs and constraints of users", "relevancy": 1}
+
+36: R2 - User research
+
+1. Evaluates the needs and constraints of users. What do users care about? What do they dislike or want to improve about current solutions? What can and can't they afford in a design?
+2. Feedback and gauging which designs work best for users. What do they like about the ideas presented, what would they want to see, whether an idea addresses their needs or not.
+3. Feedback on prototypes/the later stages of design lets designers understand how their design functions when in the hands of a user. It lets designers discover accessibility + clarity issues and further evaluate how useful features are to users.
+{"rubric": "R2", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+36: R3 - User research
+
+1. Evaluates the needs and constraints of users. What do users care about? What do they dislike or want to improve about current solutions? What can and can't they afford in a design?
+2. Feedback and gauging which designs work best for users. What do they like about the ideas presented, what would they want to see, whether an idea addresses their needs or not.
+3. Feedback on prototypes/the later stages of design lets designers understand how their design functions when in the hands of a user. It lets designers discover accessibility + clarity issues and further evaluate how useful features are to users.
+{"rubric": "R3", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+36: R4 - User research
+
+1. Evaluates the needs and constraints of users. What do users care about? What do they dislike or want to improve about current solutions? What can and can't they afford in a design?
+2. Feedback and gauging which designs work best for users. What do they like about the ideas presented, what would they want to see, whether an idea addresses their needs or not.
+3. Feedback on prototypes/the later stages of design lets designers understand how their design functions when in the hands of a user. It lets designers discover accessibility + clarity issues and further evaluate how useful features are to users.
+{"rubric": "R4", "reasoning": "The student gathers feedback on usability by stating that user research is used to gauge which designs work best for users.", "highlighted": "gauging which designs work best", "relevancy": 1}
+
+36: R5 - User research
+
+1. Evaluates the needs and constraints of users. What do users care about? What do they dislike or want to improve about current solutions? What can and can't they afford in a design?
+2. Feedback and gauging which designs work best for users. What do they like about the ideas presented, what would they want to see, whether an idea addresses their needs or not.
+3. Feedback on prototypes/the later stages of design lets designers understand how their design functions when in the hands of a user. It lets designers discover accessibility + clarity issues and further evaluate how useful features are to users.
+{"rubric": "R5", "reasoning": "The student uses user research to improve prototypes by stating that user research is used to discover accessibility and clarity issues.", "highlighted": "discover accessibility + clarity issues", "relevancy": 1}
+
+36: R6 - User research
+
+1. Evaluates the needs and constraints of users. What do users care about? What do they dislike or want to improve about current solutions? What can and can't they afford in a design?
+2. Feedback and gauging which designs work best for users. What do they like about the ideas presented, what would they want to see, whether an idea addresses their needs or not.
+3. Feedback on prototypes/the later stages of design lets designers understand how their design functions when in the hands of a user. It lets designers discover accessibility + clarity issues and further evaluate how useful features are to users.
+{"rubric": "R6", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+36: R7 - User research
+
+1. Evaluates the needs and constraints of users. What do users care about? What do they dislike or want to improve about current solutions? What can and can't they afford in a design?
+2. Feedback and gauging which designs work best for users. What do they like about the ideas presented, what would they want to see, whether an idea addresses their needs or not.
+3. Feedback on prototypes/the later stages of design lets designers understand how their design functions when in the hands of a user. It lets designers discover accessibility + clarity issues and further evaluate how useful features are to users.
+{"rubric": "R7", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+36: R8 - User research
+
+1. Evaluates the needs and constraints of users. What do users care about? What do they dislike or want to improve about current solutions? What can and can't they afford in a design?
+2. Feedback and gauging which designs work best for users. What do they like about the ideas presented, what would they want to see, whether an idea addresses their needs or not.
+3. Feedback on prototypes/the later stages of design lets designers understand how their design functions when in the hands of a user. It lets designers discover accessibility + clarity issues and further evaluate how useful features are to users.
+{"rubric": "R8", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+36: R9 - User research
+
+1. Evaluates the needs and constraints of users. What do users care about? What do they dislike or want to improve about current solutions? What can and can't they afford in a design?
+2. Feedback and gauging which designs work best for users. What do they like about the ideas presented, what would they want to see, whether an idea addresses their needs or not.
+3. Feedback on prototypes/the later stages of design lets designers understand how their design functions when in the hands of a user. It lets designers discover accessibility + clarity issues and further evaluate how useful features are to users.
+{"rubric": "R9", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+36: R10 - User research
+
+1. Evaluates the needs and constraints of users. What do users care about? What do they dislike or want to improve about current solutions? What can and can't they afford in a design?
+2. Feedback and gauging which designs work best for users. What do they like about the ideas presented, what would they want to see, whether an idea addresses their needs or not.
+3. Feedback on prototypes/the later stages of design lets designers understand how their design functions when in the hands of a user. It lets designers discover accessibility + clarity issues and further evaluate how useful features are to users.
+{"rubric": "R10", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+36: R1 - 1. get feedback from users after the final product has been released, to continue to improve on it 
+2. validate usability and effectiveness of product 
+3. identify user needs to develop a product that meets and addresses these needs.
+{"rubric": "R1", "reasoning": "The student demonstrates understanding of the target audience by stating that user research is used to identify user needs.", "highlighted": "identify user needs", "relevancy": 1}
+
+36: R2 - 1. get feedback from users after the final product has been released, to continue to improve on it 
+2. validate usability and effectiveness of product 
+3. identify user needs to develop a product that meets and addresses these needs.
+{"rubric": "R2", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+36: R3 - 1. get feedback from users after the final product has been released, to continue to improve on it 
+2. validate usability and effectiveness of product 
+3. identify user needs to develop a product that meets and addresses these needs.
+{"rubric": "R3", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+36: R4 - 1. get feedback from users after the final product has been released, to continue to improve on it 
+2. validate usability and effectiveness of product 
+3. identify user needs to develop a product that meets and addresses these needs.
+{"rubric": "R4", "reasoning": "The student gathers feedback on usability by stating that user research is used to get feedback from users after the final product has been released.", "highlighted": "get feedback from users", "relevancy": 1}
+
+36: R5 - 1. get feedback from users after the final product has been released, to continue to improve on it 
+2. validate usability and effectiveness of product 
+3. identify user needs to develop a product that meets and addresses these needs.
+{"rubric": "R5", "reasoning": "The student uses user research to improve prototypes by stating that user research is used to validate usability and effectiveness of product.", "highlighted": "validate usability and effectiveness", "relevancy": 1}
+
+36: R6 - 1. get feedback from users after the final product has been released, to continue to improve on it 
+2. validate usability and effectiveness of product 
+3. identify user needs to develop a product that meets and addresses these needs.
+{"rubric": "R6", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+36: R7 - 1. get feedback from users after the final product has been released, to continue to improve on it 
+2. validate usability and effectiveness of product 
+3. identify user needs to develop a product that meets and addresses these needs.
+{"rubric": "R7", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+36: R8 - 1. get feedback from users after the final product has been released, to continue to improve on it 
+2. validate usability and effectiveness of product 
+3. identify user needs to develop a product that meets and addresses these needs.
+{"rubric": "R8", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+36: R9 - 1. get feedback from users after the final product has been released, to continue to improve on it 
+2. validate usability and effectiveness of product 
+3. identify user needs to develop a product that meets and addresses these needs.
+{"rubric": "R9", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+36: R10 - 1. get feedback from users after the final product has been released, to continue to improve on it 
+2. validate usability and effectiveness of product 
+3. identify user needs to develop a product that meets and addresses these needs.
+{"rubric": "R10", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+36: R1 - 3 purposes of user research is to find out user problems, find out what the user needs, and give the user a solution where they can solve their problems and receive their needs.
+{"rubric": "R1", "reasoning": "The student demonstrates understanding of the target audience by stating that one purpose of user research is to find out what the user needs.", "highlighted": "find out what the user needs", "relevancy": 1}
+
+36: R2 - 3 purposes of user research is to find out user problems, find out what the user needs, and give the user a solution where they can solve their problems and receive their needs.
+{"rubric": "R2", "reasoning": "The student identifies user problems by stating that one purpose of user research is to find out user problems.", "highlighted": "find out user problems", "relevancy": 1}
+
+36: R3 - 3 purposes of user research is to find out user problems, find out what the user needs, and give the user a solution where they can solve their problems and receive their needs.
+{"rubric": "R3", "reasoning": "The student validates user needs by stating that one purpose of user research is to give the user a solution where they can solve their problems and receive their needs.", "highlighted": "give the user a solution", "relevancy": 1}
+
+36: R4 - 3 purposes of user research is to find out user problems, find out what the user needs, and give the user a solution where they can solve their problems and receive their needs.
+{"rubric": "R4", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+36: R5 - 3 purposes of user research is to find out user problems, find out what the user needs, and give the user a solution where they can solve their problems and receive their needs.
+{"rubric": "R5", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+36: R6 - 3 purposes of user research is to find out user problems, find out what the user needs, and give the user a solution where they can solve their problems and receive their needs.
+{"rubric": "R6", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+36: R7 - 3 purposes of user research is to find out user problems, find out what the user needs, and give the user a solution where they can solve their problems and receive their needs.
+{"rubric": "R7", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+36: R8 - 3 purposes of user research is to find out user problems, find out what the user needs, and give the user a solution where they can solve their problems and receive their needs.
+{"rubric": "R8", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+36: R9 - 3 purposes of user research is to find out user problems, find out what the user needs, and give the user a solution where they can solve their problems and receive their needs.
+{"rubric": "R9", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+36: R10 - 3 purposes of user research is to find out user problems, find out what the user needs, and give the user a solution where they can solve their problems and receive their needs.
+{"rubric": "R10", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+36: R1 - There are multiple reasons to pursue user research. One stage is to find user needs. Finding the needs that user wants prior to creating a product is important to ensure that the product fulfills an actual user need. Another purpose of user research is to test already created products. This allows designers to discover the mental models of users and adjust their designs to fall further in line with users mental models. Finally, one more purpose is for ideation. User research in the ideation stage allows for designers to determine whether or not they are truly answering the user need.
+{"rubric": "R1", "reasoning": "The student demonstrates understanding of the target audience by discussing the need to find user needs before creating a product.", "highlighted": "find user needs", "relevancy": "1"}
+
+36: R2 - There are multiple reasons to pursue user research. One stage is to find user needs. Finding the needs that user wants prior to creating a product is important to ensure that the product fulfills an actual user need. Another purpose of user research is to test already created products. This allows designers to discover the mental models of users and adjust their designs to fall further in line with users mental models. Finally, one more purpose is for ideation. User research in the ideation stage allows for designers to determine whether or not they are truly answering the user need.
+{"rubric": "R2", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+36: R3 - There are multiple reasons to pursue user research. One stage is to find user needs. Finding the needs that user wants prior to creating a product is important to ensure that the product fulfills an actual user need. Another purpose of user research is to test already created products. This allows designers to discover the mental models of users and adjust their designs to fall further in line with users mental models. Finally, one more purpose is for ideation. User research in the ideation stage allows for designers to determine whether or not they are truly answering the user need.
+{"rubric": "R3", "reasoning": "The student validates user needs through research by discussing the need to find user needs before creating a product.", "highlighted": "find user needs", "relevancy": "1"}
+
+36: R4 - There are multiple reasons to pursue user research. One stage is to find user needs. Finding the needs that user wants prior to creating a product is important to ensure that the product fulfills an actual user need. Another purpose of user research is to test already created products. This allows designers to discover the mental models of users and adjust their designs to fall further in line with users mental models. Finally, one more purpose is for ideation. User research in the ideation stage allows for designers to determine whether or not they are truly answering the user need.
+{"rubric": "R4", "reasoning": "The student gathers feedback on usability by discussing the need to test already created products.", "highlighted": "test already created products", "relevancy": "1"}
+
+36: R5 - There are multiple reasons to pursue user research. One stage is to find user needs. Finding the needs that user wants prior to creating a product is important to ensure that the product fulfills an actual user need. Another purpose of user research is to test already created products. This allows designers to discover the mental models of users and adjust their designs to fall further in line with users mental models. Finally, one more purpose is for ideation. User research in the ideation stage allows for designers to determine whether or not they are truly answering the user need.
+{"rubric": "R5", "reasoning": "The student uses user research to improve prototypes by discussing the need to adjust designs to fall further in line with users' mental models.", "highlighted": "adjust their designs", "relevancy": "1"}
+
+36: R6 - There are multiple reasons to pursue user research. One stage is to find user needs. Finding the needs that user wants prior to creating a product is important to ensure that the product fulfills an actual user need. Another purpose of user research is to test already created products. This allows designers to discover the mental models of users and adjust their designs to fall further in line with users mental models. Finally, one more purpose is for ideation. User research in the ideation stage allows for designers to determine whether or not they are truly answering the user need.
+{"rubric": "R6", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+36: R7 - There are multiple reasons to pursue user research. One stage is to find user needs. Finding the needs that user wants prior to creating a product is important to ensure that the product fulfills an actual user need. Another purpose of user research is to test already created products. This allows designers to discover the mental models of users and adjust their designs to fall further in line with users mental models. Finally, one more purpose is for ideation. User research in the ideation stage allows for designers to determine whether or not they are truly answering the user need.
+{"rubric": "R7", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+36: R8 - There are multiple reasons to pursue user research. One stage is to find user needs. Finding the needs that user wants prior to creating a product is important to ensure that the product fulfills an actual user need. Another purpose of user research is to test already created products. This allows designers to discover the mental models of users and adjust their designs to fall further in line with users mental models. Finally, one more purpose is for ideation. User research in the ideation stage allows for designers to determine whether or not they are truly answering the user need.
+{"rubric": "R8", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+36: R9 - There are multiple reasons to pursue user research. One stage is to find user needs. Finding the needs that user wants prior to creating a product is important to ensure that the product fulfills an actual user need. Another purpose of user research is to test already created products. This allows designers to discover the mental models of users and adjust their designs to fall further in line with users mental models. Finally, one more purpose is for ideation. User research in the ideation stage allows for designers to determine whether or not they are truly answering the user need.
+{"rubric": "R9", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+36: R10 - There are multiple reasons to pursue user research. One stage is to find user needs. Finding the needs that user wants prior to creating a product is important to ensure that the product fulfills an actual user need. Another purpose of user research is to test already created products. This allows designers to discover the mental models of users and adjust their designs to fall further in line with users mental models. Finally, one more purpose is for ideation. User research in the ideation stage allows for designers to determine whether or not they are truly answering the user need.
+{"rubric": "R10", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+36: R1 - 1. Identify user need
+2. Identify usability issues by users
+3. Test functionality of application or product
+{"rubric": "R1", "reasoning": "The student demonstrates understanding of the target audience by stating that one purpose of user research is to identify user need.", "highlighted": "Identify user need", "relevancy": 1}
+
+36: R2 - 1. Identify user need
+2. Identify usability issues by users
+3. Test functionality of application or product
+{"rubric": "R2", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+36: R3 - 1. Identify user need
+2. Identify usability issues by users
+3. Test functionality of application or product
+{"rubric": "R3", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+36: R4 - 1. Identify user need
+2. Identify usability issues by users
+3. Test functionality of application or product
+{"rubric": "R4", "reasoning": "The student gathers feedback on usability by stating that one purpose of user research is to identify usability issues by users.", "highlighted": "Identify usability issues", "relevancy": 1}
+
+36: R5 - 1. Identify user need
+2. Identify usability issues by users
+3. Test functionality of application or product
+{"rubric": "R5", "reasoning": "The student uses user research to improve prototypes by stating that one purpose of user research is to test functionality of application or product.", "highlighted": "Test functionality of application", "relevancy": 1}
+
+36: R6 - 1. Identify user need
+2. Identify usability issues by users
+3. Test functionality of application or product
+{"rubric": "R6", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+36: R7 - 1. Identify user need
+2. Identify usability issues by users
+3. Test functionality of application or product
+{"rubric": "R7", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+36: R8 - 1. Identify user need
+2. Identify usability issues by users
+3. Test functionality of application or product
+{"rubric": "R8", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+36: R9 - 1. Identify user need
+2. Identify usability issues by users
+3. Test functionality of application or product
+{"rubric": "R9", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+36: R10 - 1. Identify user need
+2. Identify usability issues by users
+3. Test functionality of application or product
+{"rubric": "R10", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+36: R1 - Get to know users, and what they want (need-finding)
+Leverage what we learned throughout development (Ideation, prototyping)
+Finding out what they don't want and how the user does things we couldn't expect (testing)
+
+{"rubric": "R1", "reasoning": "The student demonstrates understanding of the target audience by stating that one purpose of user research is to get to know users, and what they want.", "highlighted": "get to know users", "relevancy": 1}
+
+36: R2 - Get to know users, and what they want (need-finding)
+Leverage what we learned throughout development (Ideation, prototyping)
+Finding out what they don't want and how the user does things we couldn't expect (testing)
+
+{"rubric": "R2", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+36: R3 - Get to know users, and what they want (need-finding)
+Leverage what we learned throughout development (Ideation, prototyping)
+Finding out what they don't want and how the user does things we couldn't expect (testing)
+
+{"rubric": "R3", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+36: R4 - Get to know users, and what they want (need-finding)
+Leverage what we learned throughout development (Ideation, prototyping)
+Finding out what they don't want and how the user does things we couldn't expect (testing)
+
+{"rubric": "R4", "reasoning": "The student gathers feedback on usability by stating that one purpose of user research is to find out what they don't want and how the user does things.", "highlighted": "how the user does things", "relevancy": 1}
+
+36: R5 - Get to know users, and what they want (need-finding)
+Leverage what we learned throughout development (Ideation, prototyping)
+Finding out what they don't want and how the user does things we couldn't expect (testing)
+
+{"rubric": "R5", "reasoning": "The student uses user research to improve prototypes by stating that one purpose of user research is to leverage what we learned throughout development.", "highlighted": "leverage what we learned", "relevancy": 1}
+
+36: R6 - Get to know users, and what they want (need-finding)
+Leverage what we learned throughout development (Ideation, prototyping)
+Finding out what they don't want and how the user does things we couldn't expect (testing)
+
+{"rubric": "R6", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+36: R7 - Get to know users, and what they want (need-finding)
+Leverage what we learned throughout development (Ideation, prototyping)
+Finding out what they don't want and how the user does things we couldn't expect (testing)
+
+{"rubric": "R7", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+36: R8 - Get to know users, and what they want (need-finding)
+Leverage what we learned throughout development (Ideation, prototyping)
+Finding out what they don't want and how the user does things we couldn't expect (testing)
+
+{"rubric": "R8", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+36: R9 - Get to know users, and what they want (need-finding)
+Leverage what we learned throughout development (Ideation, prototyping)
+Finding out what they don't want and how the user does things we couldn't expect (testing)
+
+{"rubric": "R9", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+36: R10 - Get to know users, and what they want (need-finding)
+Leverage what we learned throughout development (Ideation, prototyping)
+Finding out what they don't want and how the user does things we couldn't expect (testing)
+
+{"rubric": "R10", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+36: R1 - User research will help you uncover your users' familiar terminology, as well as their mental models around important concepts.
+{"rubric": "R1", "reasoning": "The student demonstrates understanding of the target audience by discussing the need to uncover users' familiar terminology and mental models.", "highlighted": "uncover your users' familiar terminology", "relevancy": "1"}
+
+36: R2 - User research will help you uncover your users' familiar terminology, as well as their mental models around important concepts.
+{"rubric": "R2", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+36: R3 - User research will help you uncover your users' familiar terminology, as well as their mental models around important concepts.
+{"rubric": "R3", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+36: R4 - User research will help you uncover your users' familiar terminology, as well as their mental models around important concepts.
+{"rubric": "R4", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+36: R5 - User research will help you uncover your users' familiar terminology, as well as their mental models around important concepts.
+{"rubric": "R5", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+36: R6 - User research will help you uncover your users' familiar terminology, as well as their mental models around important concepts.
+{"rubric": "R6", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+36: R7 - User research will help you uncover your users' familiar terminology, as well as their mental models around important concepts.
+{"rubric": "R7", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+36: R8 - User research will help you uncover your users' familiar terminology, as well as their mental models around important concepts.
+{"rubric": "R8", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+36: R9 - User research will help you uncover your users' familiar terminology, as well as their mental models around important concepts.
+{"rubric": "R9", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+36: R10 - User research will help you uncover your users' familiar terminology, as well as their mental models around important concepts.
+{"rubric": "R10", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+36: R1 - 1. To evaluate a user's needs and preferences.
+2. To evaluate the usability of a particular product design and make improvements.
+3. To test hypotheses that the design team has around user behavior.
+{"rubric": "R1", "reasoning": "The student demonstrates understanding of the target audience by stating that one purpose of user research is to evaluate a user's needs and preferences.", "highlighted": "evaluate a user's needs", "relevancy": 1}
+
+36: R2 - 1. To evaluate a user's needs and preferences.
+2. To evaluate the usability of a particular product design and make improvements.
+3. To test hypotheses that the design team has around user behavior.
+{"rubric": "R2", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+36: R3 - 1. To evaluate a user's needs and preferences.
+2. To evaluate the usability of a particular product design and make improvements.
+3. To test hypotheses that the design team has around user behavior.
+{"rubric": "R3", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+36: R4 - 1. To evaluate a user's needs and preferences.
+2. To evaluate the usability of a particular product design and make improvements.
+3. To test hypotheses that the design team has around user behavior.
+{"rubric": "R4", "reasoning": "The student gathers feedback on usability by stating that one purpose of user research is to evaluate the usability of a particular product design and make improvements.", "highlighted": "evaluate the usability", "relevancy": 1}
+
+36: R5 - 1. To evaluate a user's needs and preferences.
+2. To evaluate the usability of a particular product design and make improvements.
+3. To test hypotheses that the design team has around user behavior.
+{"rubric": "R5", "reasoning": "The student uses user research to improve prototypes by stating that one purpose of user research is to test hypotheses that the design team has around user behavior.", "highlighted": "test hypotheses", "relevancy": 1}
+
+36: R6 - 1. To evaluate a user's needs and preferences.
+2. To evaluate the usability of a particular product design and make improvements.
+3. To test hypotheses that the design team has around user behavior.
+{"rubric": "R6", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+36: R7 - 1. To evaluate a user's needs and preferences.
+2. To evaluate the usability of a particular product design and make improvements.
+3. To test hypotheses that the design team has around user behavior.
+{"rubric": "R7", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+36: R8 - 1. To evaluate a user's needs and preferences.
+2. To evaluate the usability of a particular product design and make improvements.
+3. To test hypotheses that the design team has around user behavior.
+{"rubric": "R8", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+36: R9 - 1. To evaluate a user's needs and preferences.
+2. To evaluate the usability of a particular product design and make improvements.
+3. To test hypotheses that the design team has around user behavior.
+{"rubric": "R9", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+36: R10 - 1. To evaluate a user's needs and preferences.
+2. To evaluate the usability of a particular product design and make improvements.
+3. To test hypotheses that the design team has around user behavior.
+{"rubric": "R10", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+36: R1 - Ideation: Potential solutions can be identified by leveraging user research to identify user needs.
+Prototyping: Design and development process uses user research to inform the design of interfaces.
+Testing: Potential users from the intended audience test the suitability or usability of a prototype.
+
+{"rubric": "R1", "reasoning": "The student demonstrates understanding of the target audience by stating that one purpose of user research in the ideation phase is to identify user needs.", "highlighted": "identify user needs", "relevancy": 1}
+
+36: R2 - Ideation: Potential solutions can be identified by leveraging user research to identify user needs.
+Prototyping: Design and development process uses user research to inform the design of interfaces.
+Testing: Potential users from the intended audience test the suitability or usability of a prototype.
+
+{"rubric": "R2", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+36: R3 - Ideation: Potential solutions can be identified by leveraging user research to identify user needs.
+Prototyping: Design and development process uses user research to inform the design of interfaces.
+Testing: Potential users from the intended audience test the suitability or usability of a prototype.
+
+{"rubric": "R3", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+36: R4 - Ideation: Potential solutions can be identified by leveraging user research to identify user needs.
+Prototyping: Design and development process uses user research to inform the design of interfaces.
+Testing: Potential users from the intended audience test the suitability or usability of a prototype.
+
+{"rubric": "R4", "reasoning": "The student gathers feedback on usability by stating that one purpose of user research in the testing phase is to test the suitability or usability of a prototype.", "highlighted": "test the suitability or usability", "relevancy": 1}
+
+36: R5 - Ideation: Potential solutions can be identified by leveraging user research to identify user needs.
+Prototyping: Design and development process uses user research to inform the design of interfaces.
+Testing: Potential users from the intended audience test the suitability or usability of a prototype.
+
+{"rubric": "R5", "reasoning": "The student uses user research to improve prototypes by stating that one purpose of user research in the prototyping phase is to inform the design of interfaces.", "highlighted": "inform the design of interfaces", "relevancy": 1}
+
+36: R6 - Ideation: Potential solutions can be identified by leveraging user research to identify user needs.
+Prototyping: Design and development process uses user research to inform the design of interfaces.
+Testing: Potential users from the intended audience test the suitability or usability of a prototype.
+
+{"rubric": "R6", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+36: R7 - Ideation: Potential solutions can be identified by leveraging user research to identify user needs.
+Prototyping: Design and development process uses user research to inform the design of interfaces.
+Testing: Potential users from the intended audience test the suitability or usability of a prototype.
+
+{"rubric": "R7", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+36: R8 - Ideation: Potential solutions can be identified by leveraging user research to identify user needs.
+Prototyping: Design and development process uses user research to inform the design of interfaces.
+Testing: Potential users from the intended audience test the suitability or usability of a prototype.
+
+{"rubric": "R8", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+36: R9 - Ideation: Potential solutions can be identified by leveraging user research to identify user needs.
+Prototyping: Design and development process uses user research to inform the design of interfaces.
+Testing: Potential users from the intended audience test the suitability or usability of a prototype.
+
+{"rubric": "R9", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+36: R10 - Ideation: Potential solutions can be identified by leveraging user research to identify user needs.
+Prototyping: Design and development process uses user research to inform the design of interfaces.
+Testing: Potential users from the intended audience test the suitability or usability of a prototype.
+
+{"rubric": "R10", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+36: R1 - 1. To gather feedback from users during the design process to make improvements and improve UX
+2. To identify potential problems and usability issues with a product/service and to develop solutions to address these issues
+3. To validate design decisions and ensure that a product or service is usable and effective for its users
+{"rubric": "R1", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+36: R2 - 1. To gather feedback from users during the design process to make improvements and improve UX
+2. To identify potential problems and usability issues with a product/service and to develop solutions to address these issues
+3. To validate design decisions and ensure that a product or service is usable and effective for its users
+{"rubric": "R2", "reasoning": "The student identifies user problems or challenges by discussing the need to identify potential problems and usability issues.", "highlighted": "identify potential problems", "relevancy": "1"}
+
+36: R3 - 1. To gather feedback from users during the design process to make improvements and improve UX
+2. To identify potential problems and usability issues with a product/service and to develop solutions to address these issues
+3. To validate design decisions and ensure that a product or service is usable and effective for its users
+{"rubric": "R3", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+36: R4 - 1. To gather feedback from users during the design process to make improvements and improve UX
+2. To identify potential problems and usability issues with a product/service and to develop solutions to address these issues
+3. To validate design decisions and ensure that a product or service is usable and effective for its users
+{"rubric": "R4", "reasoning": "The student gathers feedback on usability by discussing the need to gather feedback from users during the design process.", "highlighted": "gather feedback from users", "relevancy": "1"}
+
+36: R5 - 1. To gather feedback from users during the design process to make improvements and improve UX
+2. To identify potential problems and usability issues with a product/service and to develop solutions to address these issues
+3. To validate design decisions and ensure that a product or service is usable and effective for its users
+{"rubric": "R5", "reasoning": "The student uses user research to improve prototypes by discussing the need to validate design decisions and ensure that a product or service is usable and effective.", "highlighted": "validate design decisions", "relevancy": "1"}
+
+36: R6 - 1. To gather feedback from users during the design process to make improvements and improve UX
+2. To identify potential problems and usability issues with a product/service and to develop solutions to address these issues
+3. To validate design decisions and ensure that a product or service is usable and effective for its users
+{"rubric": "R6", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+36: R7 - 1. To gather feedback from users during the design process to make improvements and improve UX
+2. To identify potential problems and usability issues with a product/service and to develop solutions to address these issues
+3. To validate design decisions and ensure that a product or service is usable and effective for its users
+{"rubric": "R7", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+36: R8 - 1. To gather feedback from users during the design process to make improvements and improve UX
+2. To identify potential problems and usability issues with a product/service and to develop solutions to address these issues
+3. To validate design decisions and ensure that a product or service is usable and effective for its users
+{"rubric": "R8", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+36: R9 - 1. To gather feedback from users during the design process to make improvements and improve UX
+2. To identify potential problems and usability issues with a product/service and to develop solutions to address these issues
+3. To validate design decisions and ensure that a product or service is usable and effective for its users
+{"rubric": "R9", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+36: R10 - 1. To gather feedback from users during the design process to make improvements and improve UX
+2. To identify potential problems and usability issues with a product/service and to develop solutions to address these issues
+3. To validate design decisions and ensure that a product or service is usable and effective for its users
+{"rubric": "R10", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+36: R1 - 1. Allows us to get a fuller picture of the user's wants, needs, and preferences in order to brainstorm a solution
+2. Allows us to validate user needs before creating an expensive prototype
+3. Allows us to validate if an early prototype solves the user's problem
+{"rubric": "R1", "reasoning": "The student demonstrates understanding of the target audience by discussing the need to get a fuller picture of the user's wants, needs, and preferences.", "highlighted": "fuller picture of the user's wants", "relevancy": "1"}
+
+36: R2 - 1. Allows us to get a fuller picture of the user's wants, needs, and preferences in order to brainstorm a solution
+2. Allows us to validate user needs before creating an expensive prototype
+3. Allows us to validate if an early prototype solves the user's problem
+{"rubric": "R2", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+36: R3 - 1. Allows us to get a fuller picture of the user's wants, needs, and preferences in order to brainstorm a solution
+2. Allows us to validate user needs before creating an expensive prototype
+3. Allows us to validate if an early prototype solves the user's problem
+{"rubric": "R3", "reasoning": "The student validates user needs through research by discussing the need to validate user needs before creating an expensive prototype.", "highlighted": "validate user needs", "relevancy": "1"}
+
+36: R4 - 1. Allows us to get a fuller picture of the user's wants, needs, and preferences in order to brainstorm a solution
+2. Allows us to validate user needs before creating an expensive prototype
+3. Allows us to validate if an early prototype solves the user's problem
+{"rubric": "R4", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+36: R5 - 1. Allows us to get a fuller picture of the user's wants, needs, and preferences in order to brainstorm a solution
+2. Allows us to validate user needs before creating an expensive prototype
+3. Allows us to validate if an early prototype solves the user's problem
+{"rubric": "R5", "reasoning": "The student uses user research to improve prototypes by discussing the need to validate if an early prototype solves the user's problem.", "highlighted": "validate if an early prototype", "relevancy": "1"}
+
+36: R6 - 1. Allows us to get a fuller picture of the user's wants, needs, and preferences in order to brainstorm a solution
+2. Allows us to validate user needs before creating an expensive prototype
+3. Allows us to validate if an early prototype solves the user's problem
+{"rubric": "R6", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+36: R7 - 1. Allows us to get a fuller picture of the user's wants, needs, and preferences in order to brainstorm a solution
+2. Allows us to validate user needs before creating an expensive prototype
+3. Allows us to validate if an early prototype solves the user's problem
+{"rubric": "R7", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+36: R8 - 1. Allows us to get a fuller picture of the user's wants, needs, and preferences in order to brainstorm a solution
+2. Allows us to validate user needs before creating an expensive prototype
+3. Allows us to validate if an early prototype solves the user's problem
+{"rubric": "R8", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+36: R9 - 1. Allows us to get a fuller picture of the user's wants, needs, and preferences in order to brainstorm a solution
+2. Allows us to validate user needs before creating an expensive prototype
+3. Allows us to validate if an early prototype solves the user's problem
+{"rubric": "R9", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+36: R10 - 1. Allows us to get a fuller picture of the user's wants, needs, and preferences in order to brainstorm a solution
+2. Allows us to validate user needs before creating an expensive prototype
+3. Allows us to validate if an early prototype solves the user's problem
+{"rubric": "R10", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+36: R1 - Need-finding helps designers uncover users’ processes and challenges and design products that are geared toward users’ pain points and actual needs. User research will help you uncover your users' familiar terminology, as well as their mental models around important concepts. Prototyping is necessary to get evaluation & feedback on designs which is central to interaction design.
+
+{"rubric": "R1", "reasoning": "The student demonstrates understanding of the target audience by discussing the need to uncover users' processes and challenges.", "highlighted": "uncover users\u2019 processes and challenges", "relevancy": "1"}
+
+36: R2 - Need-finding helps designers uncover users’ processes and challenges and design products that are geared toward users’ pain points and actual needs. User research will help you uncover your users' familiar terminology, as well as their mental models around important concepts. Prototyping is necessary to get evaluation & feedback on designs which is central to interaction design.
+
+{"rubric": "R2", "reasoning": "The student identifies user problems or challenges by discussing the need to design products that are geared toward users\u2019 pain points and actual needs.", "highlighted": "users\u2019 pain points and actual needs", "relevancy": "1"}
+
+36: R3 - Need-finding helps designers uncover users’ processes and challenges and design products that are geared toward users’ pain points and actual needs. User research will help you uncover your users' familiar terminology, as well as their mental models around important concepts. Prototyping is necessary to get evaluation & feedback on designs which is central to interaction design.
+
+{"rubric": "R3", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+36: R4 - Need-finding helps designers uncover users’ processes and challenges and design products that are geared toward users’ pain points and actual needs. User research will help you uncover your users' familiar terminology, as well as their mental models around important concepts. Prototyping is necessary to get evaluation & feedback on designs which is central to interaction design.
+
+{"rubric": "R4", "reasoning": "The student gathers feedback on usability by discussing the need to get evaluation & feedback on designs.", "highlighted": "get evaluation & feedback", "relevancy": "1"}
+
+36: R5 - Need-finding helps designers uncover users’ processes and challenges and design products that are geared toward users’ pain points and actual needs. User research will help you uncover your users' familiar terminology, as well as their mental models around important concepts. Prototyping is necessary to get evaluation & feedback on designs which is central to interaction design.
+
+{"rubric": "R5", "reasoning": "The student uses user research to improve prototypes by discussing the need to get evaluation & feedback on designs.", "highlighted": "get evaluation & feedback", "relevancy": "1"}
+
+36: R6 - Need-finding helps designers uncover users’ processes and challenges and design products that are geared toward users’ pain points and actual needs. User research will help you uncover your users' familiar terminology, as well as their mental models around important concepts. Prototyping is necessary to get evaluation & feedback on designs which is central to interaction design.
+
+{"rubric": "R6", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+36: R7 - Need-finding helps designers uncover users’ processes and challenges and design products that are geared toward users’ pain points and actual needs. User research will help you uncover your users' familiar terminology, as well as their mental models around important concepts. Prototyping is necessary to get evaluation & feedback on designs which is central to interaction design.
+
+{"rubric": "R7", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+36: R8 - Need-finding helps designers uncover users’ processes and challenges and design products that are geared toward users’ pain points and actual needs. User research will help you uncover your users' familiar terminology, as well as their mental models around important concepts. Prototyping is necessary to get evaluation & feedback on designs which is central to interaction design.
+
+{"rubric": "R8", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+36: R9 - Need-finding helps designers uncover users’ processes and challenges and design products that are geared toward users’ pain points and actual needs. User research will help you uncover your users' familiar terminology, as well as their mental models around important concepts. Prototyping is necessary to get evaluation & feedback on designs which is central to interaction design.
+
+{"rubric": "R9", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+36: R10 - Need-finding helps designers uncover users’ processes and challenges and design products that are geared toward users’ pain points and actual needs. User research will help you uncover your users' familiar terminology, as well as their mental models around important concepts. Prototyping is necessary to get evaluation & feedback on designs which is central to interaction design.
+
+{"rubric": "R10", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+36: R1 - Need finding, discovering users likes and dislikes, discovering how users navigate the product, etc. 
+{"rubric": "R1", "reasoning": "The student demonstrates understanding of the target audience by stating that one purpose of user research is need finding.", "highlighted": "Need finding", "relevancy": 1}
+
+36: R2 - Need finding, discovering users likes and dislikes, discovering how users navigate the product, etc. 
+{"rubric": "R2", "reasoning": "The student identifies user problems by stating that one purpose of user research is discovering users likes and dislikes.", "highlighted": "discovering users likes and dislikes", "relevancy": 1}
+
+36: R3 - Need finding, discovering users likes and dislikes, discovering how users navigate the product, etc. 
+{"rubric": "R3", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+36: R4 - Need finding, discovering users likes and dislikes, discovering how users navigate the product, etc. 
+{"rubric": "R4", "reasoning": "The student gathers feedback on usability by stating that one purpose of user research is discovering how users navigate the product.", "highlighted": "how users navigate the product", "relevancy": 1}
+
+36: R5 - Need finding, discovering users likes and dislikes, discovering how users navigate the product, etc. 
+{"rubric": "R5", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+36: R6 - Need finding, discovering users likes and dislikes, discovering how users navigate the product, etc. 
+{"rubric": "R6", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+36: R7 - Need finding, discovering users likes and dislikes, discovering how users navigate the product, etc. 
+{"rubric": "R7", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+36: R8 - Need finding, discovering users likes and dislikes, discovering how users navigate the product, etc. 
+{"rubric": "R8", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+36: R9 - Need finding, discovering users likes and dislikes, discovering how users navigate the product, etc. 
+{"rubric": "R9", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+36: R10 - Need finding, discovering users likes and dislikes, discovering how users navigate the product, etc. 
+{"rubric": "R10", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+36: R1 - During need finding, we need to conduct user research to understand user needs, and preference.
+We need user research for ideation because we want to collect users' thoughts on the user needs we found and their attitudes towards the possible solutions we proposed.
+We need user research for testing in order to collect actual feedback from users and refine our product.
+
+{"rubric": "R1", "reasoning": "The student demonstrates understanding of the target audience by stating that one purpose of user research during need finding is to understand user needs, and preference.", "highlighted": "understand user needs", "relevancy": 1}
+
+36: R2 - During need finding, we need to conduct user research to understand user needs, and preference.
+We need user research for ideation because we want to collect users' thoughts on the user needs we found and their attitudes towards the possible solutions we proposed.
+We need user research for testing in order to collect actual feedback from users and refine our product.
+
+{"rubric": "R2", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+36: R3 - During need finding, we need to conduct user research to understand user needs, and preference.
+We need user research for ideation because we want to collect users' thoughts on the user needs we found and their attitudes towards the possible solutions we proposed.
+We need user research for testing in order to collect actual feedback from users and refine our product.
+
+{"rubric": "R3", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+36: R4 - During need finding, we need to conduct user research to understand user needs, and preference.
+We need user research for ideation because we want to collect users' thoughts on the user needs we found and their attitudes towards the possible solutions we proposed.
+We need user research for testing in order to collect actual feedback from users and refine our product.
+
+{"rubric": "R4", "reasoning": "The student gathers feedback on usability by stating that one purpose of user research during ideation is to collect users' thoughts on the user needs and their attitudes towards the possible solutions.", "highlighted": "collect users' thoughts", "relevancy": 1}
+
+36: R5 - During need finding, we need to conduct user research to understand user needs, and preference.
+We need user research for ideation because we want to collect users' thoughts on the user needs we found and their attitudes towards the possible solutions we proposed.
+We need user research for testing in order to collect actual feedback from users and refine our product.
+
+{"rubric": "R5", "reasoning": "The student uses user research to improve prototypes by stating that one purpose of user research during testing is to collect actual feedback from users and refine the product.", "highlighted": "collect actual feedback", "relevancy": 1}
+
+36: R6 - During need finding, we need to conduct user research to understand user needs, and preference.
+We need user research for ideation because we want to collect users' thoughts on the user needs we found and their attitudes towards the possible solutions we proposed.
+We need user research for testing in order to collect actual feedback from users and refine our product.
+
+{"rubric": "R6", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+36: R7 - During need finding, we need to conduct user research to understand user needs, and preference.
+We need user research for ideation because we want to collect users' thoughts on the user needs we found and their attitudes towards the possible solutions we proposed.
+We need user research for testing in order to collect actual feedback from users and refine our product.
+
+{"rubric": "R7", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+36: R8 - During need finding, we need to conduct user research to understand user needs, and preference.
+We need user research for ideation because we want to collect users' thoughts on the user needs we found and their attitudes towards the possible solutions we proposed.
+We need user research for testing in order to collect actual feedback from users and refine our product.
+
+{"rubric": "R8", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+36: R9 - During need finding, we need to conduct user research to understand user needs, and preference.
+We need user research for ideation because we want to collect users' thoughts on the user needs we found and their attitudes towards the possible solutions we proposed.
+We need user research for testing in order to collect actual feedback from users and refine our product.
+
+{"rubric": "R9", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+36: R10 - During need finding, we need to conduct user research to understand user needs, and preference.
+We need user research for ideation because we want to collect users' thoughts on the user needs we found and their attitudes towards the possible solutions we proposed.
+We need user research for testing in order to collect actual feedback from users and refine our product.
+
+{"rubric": "R10", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+36: R1 - need finding allows you to explore different ideas and create a product that will actually benefit users, ideation allows you to come up with several creative ideas for the identified problem. and testing allows  you testi deas with real users
+{"rubric": "R1", "reasoning": "The student demonstrates understanding of the target audience by discussing the need to explore different ideas and create a product that will actually benefit users.", "highlighted": "product that will actually benefit users", "relevancy": "1"}
+
+36: R2 - need finding allows you to explore different ideas and create a product that will actually benefit users, ideation allows you to come up with several creative ideas for the identified problem. and testing allows  you testi deas with real users
+{"rubric": "R2", "reasoning": "The student identifies user problems or challenges by discussing the need to come up with several creative ideas for the identified problem.", "highlighted": "creative ideas for the identified problem", "relevancy": "1"}
+
+36: R3 - need finding allows you to explore different ideas and create a product that will actually benefit users, ideation allows you to come up with several creative ideas for the identified problem. and testing allows  you testi deas with real users
+{"rubric": "R3", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+36: R4 - need finding allows you to explore different ideas and create a product that will actually benefit users, ideation allows you to come up with several creative ideas for the identified problem. and testing allows  you testi deas with real users
+{"rubric": "R4", "reasoning": "The student gathers feedback on usability by discussing the need to test ideas with real users.", "highlighted": "test ideas with real users", "relevancy": "1"}
+
+36: R5 - need finding allows you to explore different ideas and create a product that will actually benefit users, ideation allows you to come up with several creative ideas for the identified problem. and testing allows  you testi deas with real users
+{"rubric": "R5", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+36: R6 - need finding allows you to explore different ideas and create a product that will actually benefit users, ideation allows you to come up with several creative ideas for the identified problem. and testing allows  you testi deas with real users
+{"rubric": "R6", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+36: R7 - need finding allows you to explore different ideas and create a product that will actually benefit users, ideation allows you to come up with several creative ideas for the identified problem. and testing allows  you testi deas with real users
+{"rubric": "R7", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+36: R8 - need finding allows you to explore different ideas and create a product that will actually benefit users, ideation allows you to come up with several creative ideas for the identified problem. and testing allows  you testi deas with real users
+{"rubric": "R8", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+36: R9 - need finding allows you to explore different ideas and create a product that will actually benefit users, ideation allows you to come up with several creative ideas for the identified problem. and testing allows  you testi deas with real users
+{"rubric": "R9", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+36: R10 - need finding allows you to explore different ideas and create a product that will actually benefit users, ideation allows you to come up with several creative ideas for the identified problem. and testing allows  you testi deas with real users
+{"rubric": "R10", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+36: R1 - In IDEO, need-finding helps designers uncover users’ processes and challenges and
+design products that are geared toward users’ pain points and actual needs. Additionally, using speed dating in the ideation phase allows designers to validate user needs and to probe into users’ preferences in the design space. Lastly, after creating a prototype, participating in a think aloud session helps uncover the users’ thought processes while they’re interacting with the software and find usability issues.
+{"rubric": "R1", "reasoning": "The student demonstrates understanding of the target audience by stating that one purpose of user research in need-finding is to uncover users\u2019 processes and challenges.", "highlighted": "uncover users\u2019 processes and challenges", "relevancy": 1}
+
+36: R2 - In IDEO, need-finding helps designers uncover users’ processes and challenges and
+design products that are geared toward users’ pain points and actual needs. Additionally, using speed dating in the ideation phase allows designers to validate user needs and to probe into users’ preferences in the design space. Lastly, after creating a prototype, participating in a think aloud session helps uncover the users’ thought processes while they’re interacting with the software and find usability issues.
+{"rubric": "R2", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+36: R3 - In IDEO, need-finding helps designers uncover users’ processes and challenges and
+design products that are geared toward users’ pain points and actual needs. Additionally, using speed dating in the ideation phase allows designers to validate user needs and to probe into users’ preferences in the design space. Lastly, after creating a prototype, participating in a think aloud session helps uncover the users’ thought processes while they’re interacting with the software and find usability issues.
+{"rubric": "R3", "reasoning": "The student validates user needs by stating that one purpose of user research in the ideation phase is to validate user needs and to probe into users\u2019 preferences in the design space.", "highlighted": "validate user needs", "relevancy": 1}
+
+36: R4 - In IDEO, need-finding helps designers uncover users’ processes and challenges and
+design products that are geared toward users’ pain points and actual needs. Additionally, using speed dating in the ideation phase allows designers to validate user needs and to probe into users’ preferences in the design space. Lastly, after creating a prototype, participating in a think aloud session helps uncover the users’ thought processes while they’re interacting with the software and find usability issues.
+{"rubric": "R4", "reasoning": "The student gathers feedback on usability by stating that one purpose of user research after creating a prototype is to uncover the users\u2019 thought processes while they\u2019re interacting with the software and find usability issues.", "highlighted": "find usability issues", "relevancy": 1}
+
+36: R5 - In IDEO, need-finding helps designers uncover users’ processes and challenges and
+design products that are geared toward users’ pain points and actual needs. Additionally, using speed dating in the ideation phase allows designers to validate user needs and to probe into users’ preferences in the design space. Lastly, after creating a prototype, participating in a think aloud session helps uncover the users’ thought processes while they’re interacting with the software and find usability issues.
+{"rubric": "R5", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+36: R6 - In IDEO, need-finding helps designers uncover users’ processes and challenges and
+design products that are geared toward users’ pain points and actual needs. Additionally, using speed dating in the ideation phase allows designers to validate user needs and to probe into users’ preferences in the design space. Lastly, after creating a prototype, participating in a think aloud session helps uncover the users’ thought processes while they’re interacting with the software and find usability issues.
+{"rubric": "R6", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+36: R7 - In IDEO, need-finding helps designers uncover users’ processes and challenges and
+design products that are geared toward users’ pain points and actual needs. Additionally, using speed dating in the ideation phase allows designers to validate user needs and to probe into users’ preferences in the design space. Lastly, after creating a prototype, participating in a think aloud session helps uncover the users’ thought processes while they’re interacting with the software and find usability issues.
+{"rubric": "R7", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+36: R8 - In IDEO, need-finding helps designers uncover users’ processes and challenges and
+design products that are geared toward users’ pain points and actual needs. Additionally, using speed dating in the ideation phase allows designers to validate user needs and to probe into users’ preferences in the design space. Lastly, after creating a prototype, participating in a think aloud session helps uncover the users’ thought processes while they’re interacting with the software and find usability issues.
+{"rubric": "R8", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+36: R9 - In IDEO, need-finding helps designers uncover users’ processes and challenges and
+design products that are geared toward users’ pain points and actual needs. Additionally, using speed dating in the ideation phase allows designers to validate user needs and to probe into users’ preferences in the design space. Lastly, after creating a prototype, participating in a think aloud session helps uncover the users’ thought processes while they’re interacting with the software and find usability issues.
+{"rubric": "R9", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+36: R10 - In IDEO, need-finding helps designers uncover users’ processes and challenges and
+design products that are geared toward users’ pain points and actual needs. Additionally, using speed dating in the ideation phase allows designers to validate user needs and to probe into users’ preferences in the design space. Lastly, after creating a prototype, participating in a think aloud session helps uncover the users’ thought processes while they’re interacting with the software and find usability issues.
+{"rubric": "R10", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+36: R1 - In the need finding phase, we use user research to establish what problems most users enocunter, so we can plan to fix these issues. In the ideation phase, we create story boards and present them to users. The users can then give feedback on which design they would find the most practical and useful. In the prototype phase we perform the think-aloud protocol to find any bugs or potential issues with our prototype before creating the final product.
+{"rubric": "R1", "reasoning": "The student demonstrates understanding of the target audience by stating that one purpose of user research in the need finding phase is to establish what problems most users encounter.", "highlighted": "establish what problems most users encounter", "relevancy": 1}
+
+36: R2 - In the need finding phase, we use user research to establish what problems most users enocunter, so we can plan to fix these issues. In the ideation phase, we create story boards and present them to users. The users can then give feedback on which design they would find the most practical and useful. In the prototype phase we perform the think-aloud protocol to find any bugs or potential issues with our prototype before creating the final product.
+{"rubric": "R2", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+36: R3 - In the need finding phase, we use user research to establish what problems most users enocunter, so we can plan to fix these issues. In the ideation phase, we create story boards and present them to users. The users can then give feedback on which design they would find the most practical and useful. In the prototype phase we perform the think-aloud protocol to find any bugs or potential issues with our prototype before creating the final product.
+{"rubric": "R3", "reasoning": "The student validates user needs by stating that one purpose of user research in the ideation phase is to get feedback from users on which design they would find the most practical and useful.", "highlighted": "get feedback from users", "relevancy": 1}
+
+36: R4 - In the need finding phase, we use user research to establish what problems most users enocunter, so we can plan to fix these issues. In the ideation phase, we create story boards and present them to users. The users can then give feedback on which design they would find the most practical and useful. In the prototype phase we perform the think-aloud protocol to find any bugs or potential issues with our prototype before creating the final product.
+{"rubric": "R4", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+36: R5 - In the need finding phase, we use user research to establish what problems most users enocunter, so we can plan to fix these issues. In the ideation phase, we create story boards and present them to users. The users can then give feedback on which design they would find the most practical and useful. In the prototype phase we perform the think-aloud protocol to find any bugs or potential issues with our prototype before creating the final product.
+{"rubric": "R5", "reasoning": "The student uses user research to improve prototypes by stating that one purpose of user research in the prototype phase is to find any bugs or potential issues with the prototype before creating the final product.", "highlighted": "find any bugs or potential issues", "relevancy": 1}
+
+36: R6 - In the need finding phase, we use user research to establish what problems most users enocunter, so we can plan to fix these issues. In the ideation phase, we create story boards and present them to users. The users can then give feedback on which design they would find the most practical and useful. In the prototype phase we perform the think-aloud protocol to find any bugs or potential issues with our prototype before creating the final product.
+{"rubric": "R6", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+36: R7 - In the need finding phase, we use user research to establish what problems most users enocunter, so we can plan to fix these issues. In the ideation phase, we create story boards and present them to users. The users can then give feedback on which design they would find the most practical and useful. In the prototype phase we perform the think-aloud protocol to find any bugs or potential issues with our prototype before creating the final product.
+{"rubric": "R7", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+36: R8 - In the need finding phase, we use user research to establish what problems most users enocunter, so we can plan to fix these issues. In the ideation phase, we create story boards and present them to users. The users can then give feedback on which design they would find the most practical and useful. In the prototype phase we perform the think-aloud protocol to find any bugs or potential issues with our prototype before creating the final product.
+{"rubric": "R8", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+36: R9 - In the need finding phase, we use user research to establish what problems most users enocunter, so we can plan to fix these issues. In the ideation phase, we create story boards and present them to users. The users can then give feedback on which design they would find the most practical and useful. In the prototype phase we perform the think-aloud protocol to find any bugs or potential issues with our prototype before creating the final product.
+{"rubric": "R9", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+36: R10 - In the need finding phase, we use user research to establish what problems most users enocunter, so we can plan to fix these issues. In the ideation phase, we create story boards and present them to users. The users can then give feedback on which design they would find the most practical and useful. In the prototype phase we perform the think-aloud protocol to find any bugs or potential issues with our prototype before creating the final product.
+{"rubric": "R10", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+36: R1 - 1. come up with lots of ideas through storyboarding.
+2. understand user needs and user pain points.
+3. Evaluate prototype and rapidly explore application concepts during speed dating.
+{"rubric": "R1", "reasoning": "The student demonstrates understanding of the target audience by discussing the need to understand user needs and user pain points.", "highlighted": "understand user needs", "relevancy": "1"}
+
+36: R2 - 1. come up with lots of ideas through storyboarding.
+2. understand user needs and user pain points.
+3. Evaluate prototype and rapidly explore application concepts during speed dating.
+{"rubric": "R2", "reasoning": "The student identifies user problems or challenges by discussing the need to understand user needs and user pain points.", "highlighted": "user needs and user pain points", "relevancy": "1"}
+
+36: R3 - 1. come up with lots of ideas through storyboarding.
+2. understand user needs and user pain points.
+3. Evaluate prototype and rapidly explore application concepts during speed dating.
+{"rubric": "R3", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+36: R4 - 1. come up with lots of ideas through storyboarding.
+2. understand user needs and user pain points.
+3. Evaluate prototype and rapidly explore application concepts during speed dating.
+{"rubric": "R4", "reasoning": "The student gathers feedback on usability by discussing the need to evaluate prototype and rapidly explore application concepts during speed dating.", "highlighted": "Evaluate prototype and rapidly explore", "relevancy": "1"}
+
+36: R5 - 1. come up with lots of ideas through storyboarding.
+2. understand user needs and user pain points.
+3. Evaluate prototype and rapidly explore application concepts during speed dating.
+{"rubric": "R5", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+36: R6 - 1. come up with lots of ideas through storyboarding.
+2. understand user needs and user pain points.
+3. Evaluate prototype and rapidly explore application concepts during speed dating.
+{"rubric": "R6", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+36: R7 - 1. come up with lots of ideas through storyboarding.
+2. understand user needs and user pain points.
+3. Evaluate prototype and rapidly explore application concepts during speed dating.
+{"rubric": "R7", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+36: R8 - 1. come up with lots of ideas through storyboarding.
+2. understand user needs and user pain points.
+3. Evaluate prototype and rapidly explore application concepts during speed dating.
+{"rubric": "R8", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+36: R9 - 1. come up with lots of ideas through storyboarding.
+2. understand user needs and user pain points.
+3. Evaluate prototype and rapidly explore application concepts during speed dating.
+{"rubric": "R9", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+36: R10 - 1. come up with lots of ideas through storyboarding.
+2. understand user needs and user pain points.
+3. Evaluate prototype and rapidly explore application concepts during speed dating.
+{"rubric": "R10", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+36: R1 - Receive feedback about an upcoming design
+Find out their needs
+Ask what more they can add, what is currently missing, how their current experience is going
+{"rubric": "R1", "reasoning": "The student demonstrates understanding of the target audience by discussing the need to find out their needs.", "highlighted": "Find out their needs", "relevancy": "1"}
+
+36: R2 - Receive feedback about an upcoming design
+Find out their needs
+Ask what more they can add, what is currently missing, how their current experience is going
+{"rubric": "R2", "reasoning": "The student identifies user problems or challenges by discussing the need to ask what is currently missing and how their current experience is going.", "highlighted": "what is currently missing", "relevancy": "1"}
+
+36: R3 - Receive feedback about an upcoming design
+Find out their needs
+Ask what more they can add, what is currently missing, how their current experience is going
+{"rubric": "R3", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+36: R4 - Receive feedback about an upcoming design
+Find out their needs
+Ask what more they can add, what is currently missing, how their current experience is going
+{"rubric": "R4", "reasoning": "The student gathers feedback on usability by discussing the need to receive feedback about an upcoming design.", "highlighted": "Receive feedback about an upcoming design", "relevancy": "1"}
+
+36: R5 - Receive feedback about an upcoming design
+Find out their needs
+Ask what more they can add, what is currently missing, how their current experience is going
+{"rubric": "R5", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+36: R6 - Receive feedback about an upcoming design
+Find out their needs
+Ask what more they can add, what is currently missing, how their current experience is going
+{"rubric": "R6", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+36: R7 - Receive feedback about an upcoming design
+Find out their needs
+Ask what more they can add, what is currently missing, how their current experience is going
+{"rubric": "R7", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+36: R8 - Receive feedback about an upcoming design
+Find out their needs
+Ask what more they can add, what is currently missing, how their current experience is going
+{"rubric": "R8", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+36: R9 - Receive feedback about an upcoming design
+Find out their needs
+Ask what more they can add, what is currently missing, how their current experience is going
+{"rubric": "R9", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+36: R10 - Receive feedback about an upcoming design
+Find out their needs
+Ask what more they can add, what is currently missing, how their current experience is going
+{"rubric": "R10", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+36: R1 - To improve the quality of the product, to improve the usability of the product, to identify the preferences of users, to make sure the product is safe for the user
+{"rubric": "R1", "reasoning": "The student demonstrates understanding of the target audience by discussing the need to identify the preferences of users.", "highlighted": "identify the preferences of users", "relevancy": "1"}
+
+36: R2 - To improve the quality of the product, to improve the usability of the product, to identify the preferences of users, to make sure the product is safe for the user
+{"rubric": "R2", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+36: R3 - To improve the quality of the product, to improve the usability of the product, to identify the preferences of users, to make sure the product is safe for the user
+{"rubric": "R3", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+36: R4 - To improve the quality of the product, to improve the usability of the product, to identify the preferences of users, to make sure the product is safe for the user
+{"rubric": "R4", "reasoning": "The student gathers feedback on usability by discussing the need to improve the usability of the product.", "highlighted": "improve the usability of the product", "relevancy": "1"}
+
+36: R5 - To improve the quality of the product, to improve the usability of the product, to identify the preferences of users, to make sure the product is safe for the user
+{"rubric": "R5", "reasoning": "The student uses user research to improve prototypes by discussing the need to improve the quality of the product.", "highlighted": "improve the quality of the product", "relevancy": "1"}
+
+36: R6 - To improve the quality of the product, to improve the usability of the product, to identify the preferences of users, to make sure the product is safe for the user
+{"rubric": "R6", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+36: R7 - To improve the quality of the product, to improve the usability of the product, to identify the preferences of users, to make sure the product is safe for the user
+{"rubric": "R7", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+36: R8 - To improve the quality of the product, to improve the usability of the product, to identify the preferences of users, to make sure the product is safe for the user
+{"rubric": "R8", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+36: R9 - To improve the quality of the product, to improve the usability of the product, to identify the preferences of users, to make sure the product is safe for the user
+{"rubric": "R9", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+36: R10 - To improve the quality of the product, to improve the usability of the product, to identify the preferences of users, to make sure the product is safe for the user
+{"rubric": "R10", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+36: R1 - 1. Understand user needs
+2. Understand how users feel towards potential solutions to their needs
+3. Understand how different users feel about a particular solution
+{"rubric": "R1", "reasoning": "The student demonstrates understanding of the target audience by discussing the need to understand user needs.", "highlighted": "Understand user needs", "relevancy": "1"}
+
+36: R2 - 1. Understand user needs
+2. Understand how users feel towards potential solutions to their needs
+3. Understand how different users feel about a particular solution
+{"rubric": "R2", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+36: R3 - 1. Understand user needs
+2. Understand how users feel towards potential solutions to their needs
+3. Understand how different users feel about a particular solution
+{"rubric": "R3", "reasoning": "The student validates user needs through research by discussing the need to understand how users feel towards potential solutions to their needs.", "highlighted": "feel towards potential solutions", "relevancy": "1"}
+
+36: R4 - 1. Understand user needs
+2. Understand how users feel towards potential solutions to their needs
+3. Understand how different users feel about a particular solution
+{"rubric": "R4", "reasoning": "The student gathers feedback on usability by discussing the need to understand how different users feel about a particular solution.", "highlighted": "feel about a particular solution", "relevancy": "1"}
+
+36: R5 - 1. Understand user needs
+2. Understand how users feel towards potential solutions to their needs
+3. Understand how different users feel about a particular solution
+{"rubric": "R5", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+36: R6 - 1. Understand user needs
+2. Understand how users feel towards potential solutions to their needs
+3. Understand how different users feel about a particular solution
+{"rubric": "R6", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+36: R7 - 1. Understand user needs
+2. Understand how users feel towards potential solutions to their needs
+3. Understand how different users feel about a particular solution
+{"rubric": "R7", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+36: R8 - 1. Understand user needs
+2. Understand how users feel towards potential solutions to their needs
+3. Understand how different users feel about a particular solution
+{"rubric": "R8", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+36: R9 - 1. Understand user needs
+2. Understand how users feel towards potential solutions to their needs
+3. Understand how different users feel about a particular solution
+{"rubric": "R9", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+36: R10 - 1. Understand user needs
+2. Understand how users feel towards potential solutions to their needs
+3. Understand how different users feel about a particular solution
+{"rubric": "R10", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+36: R1 - User research is first needed to identify a user need. User research is also needed after ideating to check with users about whether they like certain solutions. Finally, user research is needed in the final stages to fix usability errors and make the product more user friendly.
+{"rubric": "R1", "reasoning": "The student demonstrates understanding of the target audience by discussing the need to identify a user need.", "highlighted": "identify a user need", "relevancy": "1"}
+
+36: R2 - User research is first needed to identify a user need. User research is also needed after ideating to check with users about whether they like certain solutions. Finally, user research is needed in the final stages to fix usability errors and make the product more user friendly.
+{"rubric": "R2", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+36: R3 - User research is first needed to identify a user need. User research is also needed after ideating to check with users about whether they like certain solutions. Finally, user research is needed in the final stages to fix usability errors and make the product more user friendly.
+{"rubric": "R3", "reasoning": "The student validates user needs through research by discussing the need to check with users about whether they like certain solutions.", "highlighted": "check with users about whether", "relevancy": "1"}
+
+36: R4 - User research is first needed to identify a user need. User research is also needed after ideating to check with users about whether they like certain solutions. Finally, user research is needed in the final stages to fix usability errors and make the product more user friendly.
+{"rubric": "R4", "reasoning": "The student gathers feedback on usability by discussing the need to fix usability errors and make the product more user friendly.", "highlighted": "fix usability errors", "relevancy": "1"}
+
+36: R5 - User research is first needed to identify a user need. User research is also needed after ideating to check with users about whether they like certain solutions. Finally, user research is needed in the final stages to fix usability errors and make the product more user friendly.
+{"rubric": "R5", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+36: R6 - User research is first needed to identify a user need. User research is also needed after ideating to check with users about whether they like certain solutions. Finally, user research is needed in the final stages to fix usability errors and make the product more user friendly.
+{"rubric": "R6", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+36: R7 - User research is first needed to identify a user need. User research is also needed after ideating to check with users about whether they like certain solutions. Finally, user research is needed in the final stages to fix usability errors and make the product more user friendly.
+{"rubric": "R7", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+36: R8 - User research is first needed to identify a user need. User research is also needed after ideating to check with users about whether they like certain solutions. Finally, user research is needed in the final stages to fix usability errors and make the product more user friendly.
+{"rubric": "R8", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+36: R9 - User research is first needed to identify a user need. User research is also needed after ideating to check with users about whether they like certain solutions. Finally, user research is needed in the final stages to fix usability errors and make the product more user friendly.
+{"rubric": "R9", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+36: R10 - User research is first needed to identify a user need. User research is also needed after ideating to check with users about whether they like certain solutions. Finally, user research is needed in the final stages to fix usability errors and make the product more user friendly.
+{"rubric": "R10", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+36: R1 - Observation - Watching from a distance without interaction. Observe user choices and reactions. 
+Contextual Inquiry - Have discussion with participants about what they are doing and why they have done it. 
+Interview - Can be both highly structured and not. Helps learning about subjects and reactions to things.
+{"rubric": "R1", "reasoning": "The student demonstrates understanding of the target audience by stating that one purpose of user research is to observe user choices and reactions.", "highlighted": "Observe user choices and reactions", "relevancy": 1}
+
+36: R2 - Observation - Watching from a distance without interaction. Observe user choices and reactions. 
+Contextual Inquiry - Have discussion with participants about what they are doing and why they have done it. 
+Interview - Can be both highly structured and not. Helps learning about subjects and reactions to things.
+{"rubric": "R2", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+36: R3 - Observation - Watching from a distance without interaction. Observe user choices and reactions. 
+Contextual Inquiry - Have discussion with participants about what they are doing and why they have done it. 
+Interview - Can be both highly structured and not. Helps learning about subjects and reactions to things.
+{"rubric": "R3", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+36: R4 - Observation - Watching from a distance without interaction. Observe user choices and reactions. 
+Contextual Inquiry - Have discussion with participants about what they are doing and why they have done it. 
+Interview - Can be both highly structured and not. Helps learning about subjects and reactions to things.
+{"rubric": "R4", "reasoning": "The student gathers feedback on usability by stating that one purpose of user research is to have discussion with participants about what they are doing and why they have done it.", "highlighted": "discussion with participants", "relevancy": 1}
+
+36: R5 - Observation - Watching from a distance without interaction. Observe user choices and reactions. 
+Contextual Inquiry - Have discussion with participants about what they are doing and why they have done it. 
+Interview - Can be both highly structured and not. Helps learning about subjects and reactions to things.
+{"rubric": "R5", "reasoning": "The student uses user research to improve prototypes by stating that one purpose of user research is to learn about subjects and reactions to things through interviews.", "highlighted": "learn about subjects and reactions", "relevancy": 1}
+
+36: R6 - Observation - Watching from a distance without interaction. Observe user choices and reactions. 
+Contextual Inquiry - Have discussion with participants about what they are doing and why they have done it. 
+Interview - Can be both highly structured and not. Helps learning about subjects and reactions to things.
+{"rubric": "R6", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+36: R7 - Observation - Watching from a distance without interaction. Observe user choices and reactions. 
+Contextual Inquiry - Have discussion with participants about what they are doing and why they have done it. 
+Interview - Can be both highly structured and not. Helps learning about subjects and reactions to things.
+{"rubric": "R7", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+36: R8 - Observation - Watching from a distance without interaction. Observe user choices and reactions. 
+Contextual Inquiry - Have discussion with participants about what they are doing and why they have done it. 
+Interview - Can be both highly structured and not. Helps learning about subjects and reactions to things.
+{"rubric": "R8", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+36: R9 - Observation - Watching from a distance without interaction. Observe user choices and reactions. 
+Contextual Inquiry - Have discussion with participants about what they are doing and why they have done it. 
+Interview - Can be both highly structured and not. Helps learning about subjects and reactions to things.
+{"rubric": "R9", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+36: R10 - Observation - Watching from a distance without interaction. Observe user choices and reactions. 
+Contextual Inquiry - Have discussion with participants about what they are doing and why they have done it. 
+Interview - Can be both highly structured and not. Helps learning about subjects and reactions to things.
+{"rubric": "R10", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+36: R1 - User research through interviews allows us to develop a product that will actually benefit the users by allowing us to see what user needs there are before starting anything. Also, we need to see if our ideas that we come up with will be useful for users, and we can do this through speed dating. Lastly, we need to make sure that our product makes sense and is usable, which we can do through the think-aloud protocol.
+{"rubric": "R1", "reasoning": "The student demonstrates understanding of the target audience by discussing the need to develop a product that will actually benefit the users.", "highlighted": "product that will actually benefit", "relevancy": "1"}
+
+36: R2 - User research through interviews allows us to develop a product that will actually benefit the users by allowing us to see what user needs there are before starting anything. Also, we need to see if our ideas that we come up with will be useful for users, and we can do this through speed dating. Lastly, we need to make sure that our product makes sense and is usable, which we can do through the think-aloud protocol.
+{"rubric": "R2", "reasoning": "The student identifies user problems or challenges by discussing the need to see what user needs there are before starting anything.", "highlighted": "see what user needs", "relevancy": "1"}
+
+36: R3 - User research through interviews allows us to develop a product that will actually benefit the users by allowing us to see what user needs there are before starting anything. Also, we need to see if our ideas that we come up with will be useful for users, and we can do this through speed dating. Lastly, we need to make sure that our product makes sense and is usable, which we can do through the think-aloud protocol.
+{"rubric": "R3", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+36: R4 - User research through interviews allows us to develop a product that will actually benefit the users by allowing us to see what user needs there are before starting anything. Also, we need to see if our ideas that we come up with will be useful for users, and we can do this through speed dating. Lastly, we need to make sure that our product makes sense and is usable, which we can do through the think-aloud protocol.
+{"rubric": "R4", "reasoning": "The student gathers feedback on usability by discussing the need to make sure that the product makes sense and is usable.", "highlighted": "product makes sense and is usable", "relevancy": "1"}
+
+36: R5 - User research through interviews allows us to develop a product that will actually benefit the users by allowing us to see what user needs there are before starting anything. Also, we need to see if our ideas that we come up with will be useful for users, and we can do this through speed dating. Lastly, we need to make sure that our product makes sense and is usable, which we can do through the think-aloud protocol.
+{"rubric": "R5", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+36: R6 - User research through interviews allows us to develop a product that will actually benefit the users by allowing us to see what user needs there are before starting anything. Also, we need to see if our ideas that we come up with will be useful for users, and we can do this through speed dating. Lastly, we need to make sure that our product makes sense and is usable, which we can do through the think-aloud protocol.
+{"rubric": "R6", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+36: R7 - User research through interviews allows us to develop a product that will actually benefit the users by allowing us to see what user needs there are before starting anything. Also, we need to see if our ideas that we come up with will be useful for users, and we can do this through speed dating. Lastly, we need to make sure that our product makes sense and is usable, which we can do through the think-aloud protocol.
+{"rubric": "R7", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+36: R8 - User research through interviews allows us to develop a product that will actually benefit the users by allowing us to see what user needs there are before starting anything. Also, we need to see if our ideas that we come up with will be useful for users, and we can do this through speed dating. Lastly, we need to make sure that our product makes sense and is usable, which we can do through the think-aloud protocol.
+{"rubric": "R8", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+36: R9 - User research through interviews allows us to develop a product that will actually benefit the users by allowing us to see what user needs there are before starting anything. Also, we need to see if our ideas that we come up with will be useful for users, and we can do this through speed dating. Lastly, we need to make sure that our product makes sense and is usable, which we can do through the think-aloud protocol.
+{"rubric": "R9", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+36: R10 - User research through interviews allows us to develop a product that will actually benefit the users by allowing us to see what user needs there are before starting anything. Also, we need to see if our ideas that we come up with will be useful for users, and we can do this through speed dating. Lastly, we need to make sure that our product makes sense and is usable, which we can do through the think-aloud protocol.
+{"rubric": "R10", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+36: R1 - To find out what is most important to focus on for your product, to find bugs/issues with your product, to see how users interact with your product so you can make changes to make its use easier
+{"rubric": "R1", "reasoning": "The student demonstrates understanding of the target audience by discussing the need to find out what is most important to focus on for the product.", "highlighted": "most important to focus on", "relevancy": "1"}
+
+36: R2 - To find out what is most important to focus on for your product, to find bugs/issues with your product, to see how users interact with your product so you can make changes to make its use easier
+{"rubric": "R2", "reasoning": "The student identifies user problems or challenges by discussing the need to find bugs/issues with the product.", "highlighted": "find bugs/issues with your product", "relevancy": "1"}
+
+36: R3 - To find out what is most important to focus on for your product, to find bugs/issues with your product, to see how users interact with your product so you can make changes to make its use easier
+{"rubric": "R3", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+36: R4 - To find out what is most important to focus on for your product, to find bugs/issues with your product, to see how users interact with your product so you can make changes to make its use easier
+{"rubric": "R4", "reasoning": "The student gathers feedback on usability by discussing the need to see how users interact with the product so changes can be made to make its use easier.", "highlighted": "see how users interact", "relevancy": "1"}
+
+36: R5 - To find out what is most important to focus on for your product, to find bugs/issues with your product, to see how users interact with your product so you can make changes to make its use easier
+{"rubric": "R5", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+36: R6 - To find out what is most important to focus on for your product, to find bugs/issues with your product, to see how users interact with your product so you can make changes to make its use easier
+{"rubric": "R6", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+36: R7 - To find out what is most important to focus on for your product, to find bugs/issues with your product, to see how users interact with your product so you can make changes to make its use easier
+{"rubric": "R7", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+36: R8 - To find out what is most important to focus on for your product, to find bugs/issues with your product, to see how users interact with your product so you can make changes to make its use easier
+{"rubric": "R8", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+36: R9 - To find out what is most important to focus on for your product, to find bugs/issues with your product, to see how users interact with your product so you can make changes to make its use easier
+{"rubric": "R9", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+36: R10 - To find out what is most important to focus on for your product, to find bugs/issues with your product, to see how users interact with your product so you can make changes to make its use easier
+{"rubric": "R10", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+36: R1 - 1) To discover whether there is a user need in an area and what that user need is (in the inspiration phase of IDEO)
+2) To understand whether proposed solutions fit the user need, such as in storyboarding and speed dating (in the ideation phase of IDEO)
+3) To understand how users utilize the final product and if its solves their initial user need (in the implementation phase of IDEO)
+{"rubric": "R1", "reasoning": "The student demonstrates understanding of the target audience by stating that one purpose of user research in the inspiration phase of IDEO is to discover whether there is a user need in an area and what that user need is.", "highlighted": "discover whether there is a user need", "relevancy": 1}
+
+36: R2 - 1) To discover whether there is a user need in an area and what that user need is (in the inspiration phase of IDEO)
+2) To understand whether proposed solutions fit the user need, such as in storyboarding and speed dating (in the ideation phase of IDEO)
+3) To understand how users utilize the final product and if its solves their initial user need (in the implementation phase of IDEO)
+{"rubric": "R2", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+36: R3 - 1) To discover whether there is a user need in an area and what that user need is (in the inspiration phase of IDEO)
+2) To understand whether proposed solutions fit the user need, such as in storyboarding and speed dating (in the ideation phase of IDEO)
+3) To understand how users utilize the final product and if its solves their initial user need (in the implementation phase of IDEO)
+{"rubric": "R3", "reasoning": "The student validates user needs by stating that one purpose of user research in the ideation phase of IDEO is to understand whether proposed solutions fit the user need.", "highlighted": "proposed solutions fit the user need", "relevancy": 1}
+
+36: R4 - 1) To discover whether there is a user need in an area and what that user need is (in the inspiration phase of IDEO)
+2) To understand whether proposed solutions fit the user need, such as in storyboarding and speed dating (in the ideation phase of IDEO)
+3) To understand how users utilize the final product and if its solves their initial user need (in the implementation phase of IDEO)
+{"rubric": "R4", "reasoning": "The student gathers feedback on usability by stating that one purpose of user research in the implementation phase of IDEO is to understand how users utilize the final product and if it solves their initial user need.", "highlighted": "how users utilize the final product", "relevancy": 1}
+
+36: R5 - 1) To discover whether there is a user need in an area and what that user need is (in the inspiration phase of IDEO)
+2) To understand whether proposed solutions fit the user need, such as in storyboarding and speed dating (in the ideation phase of IDEO)
+3) To understand how users utilize the final product and if its solves their initial user need (in the implementation phase of IDEO)
+{"rubric": "R5", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+36: R6 - 1) To discover whether there is a user need in an area and what that user need is (in the inspiration phase of IDEO)
+2) To understand whether proposed solutions fit the user need, such as in storyboarding and speed dating (in the ideation phase of IDEO)
+3) To understand how users utilize the final product and if its solves their initial user need (in the implementation phase of IDEO)
+{"rubric": "R6", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+36: R7 - 1) To discover whether there is a user need in an area and what that user need is (in the inspiration phase of IDEO)
+2) To understand whether proposed solutions fit the user need, such as in storyboarding and speed dating (in the ideation phase of IDEO)
+3) To understand how users utilize the final product and if its solves their initial user need (in the implementation phase of IDEO)
+{"rubric": "R7", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+36: R8 - 1) To discover whether there is a user need in an area and what that user need is (in the inspiration phase of IDEO)
+2) To understand whether proposed solutions fit the user need, such as in storyboarding and speed dating (in the ideation phase of IDEO)
+3) To understand how users utilize the final product and if its solves their initial user need (in the implementation phase of IDEO)
+{"rubric": "R8", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+36: R9 - 1) To discover whether there is a user need in an area and what that user need is (in the inspiration phase of IDEO)
+2) To understand whether proposed solutions fit the user need, such as in storyboarding and speed dating (in the ideation phase of IDEO)
+3) To understand how users utilize the final product and if its solves their initial user need (in the implementation phase of IDEO)
+{"rubric": "R9", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+36: R10 - 1) To discover whether there is a user need in an area and what that user need is (in the inspiration phase of IDEO)
+2) To understand whether proposed solutions fit the user need, such as in storyboarding and speed dating (in the ideation phase of IDEO)
+3) To understand how users utilize the final product and if its solves their initial user need (in the implementation phase of IDEO)
+{"rubric": "R10", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+36: R1 - At the first stage of the IDEO framework (need finding), user research is used to find the exact audience that will be using the product. In the second stage, ideation, user research and feedback will be used to understand the shortcomings and/or pros of certain ideas and which will be worth it to implement. The third and fourth stage, prototyping and testing, users will give their opinions on the prototypes and allow researchers to consider different avenues or how to make the actual product better. 
+{"rubric": "R1", "reasoning": "The student demonstrates understanding of the target audience by discussing the need to find the exact audience that will be using the product.", "highlighted": "find the exact audience", "relevancy": "1"}
+
+36: R2 - At the first stage of the IDEO framework (need finding), user research is used to find the exact audience that will be using the product. In the second stage, ideation, user research and feedback will be used to understand the shortcomings and/or pros of certain ideas and which will be worth it to implement. The third and fourth stage, prototyping and testing, users will give their opinions on the prototypes and allow researchers to consider different avenues or how to make the actual product better. 
+{"rubric": "R2", "reasoning": "The student identifies user problems or challenges by discussing the need to understand the shortcomings and/or pros of certain ideas.", "highlighted": "shortcomings and/or pros of certain ideas", "relevancy": "1"}
+
+36: R3 - At the first stage of the IDEO framework (need finding), user research is used to find the exact audience that will be using the product. In the second stage, ideation, user research and feedback will be used to understand the shortcomings and/or pros of certain ideas and which will be worth it to implement. The third and fourth stage, prototyping and testing, users will give their opinions on the prototypes and allow researchers to consider different avenues or how to make the actual product better. 
+{"rubric": "R3", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+36: R4 - At the first stage of the IDEO framework (need finding), user research is used to find the exact audience that will be using the product. In the second stage, ideation, user research and feedback will be used to understand the shortcomings and/or pros of certain ideas and which will be worth it to implement. The third and fourth stage, prototyping and testing, users will give their opinions on the prototypes and allow researchers to consider different avenues or how to make the actual product better. 
+{"rubric": "R4", "reasoning": "The student gathers feedback on usability by discussing the need for users to give their opinions on the prototypes.", "highlighted": "give their opinions on the prototypes", "relevancy": "1"}
+
+36: R5 - At the first stage of the IDEO framework (need finding), user research is used to find the exact audience that will be using the product. In the second stage, ideation, user research and feedback will be used to understand the shortcomings and/or pros of certain ideas and which will be worth it to implement. The third and fourth stage, prototyping and testing, users will give their opinions on the prototypes and allow researchers to consider different avenues or how to make the actual product better. 
+{"rubric": "R5", "reasoning": "The student uses user research to improve prototypes by discussing the need for researchers to consider different avenues or how to make the actual product better.", "highlighted": "make the actual product better", "relevancy": "1"}
+
+36: R6 - At the first stage of the IDEO framework (need finding), user research is used to find the exact audience that will be using the product. In the second stage, ideation, user research and feedback will be used to understand the shortcomings and/or pros of certain ideas and which will be worth it to implement. The third and fourth stage, prototyping and testing, users will give their opinions on the prototypes and allow researchers to consider different avenues or how to make the actual product better. 
+{"rubric": "R6", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+36: R7 - At the first stage of the IDEO framework (need finding), user research is used to find the exact audience that will be using the product. In the second stage, ideation, user research and feedback will be used to understand the shortcomings and/or pros of certain ideas and which will be worth it to implement. The third and fourth stage, prototyping and testing, users will give their opinions on the prototypes and allow researchers to consider different avenues or how to make the actual product better. 
+{"rubric": "R7", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+36: R8 - At the first stage of the IDEO framework (need finding), user research is used to find the exact audience that will be using the product. In the second stage, ideation, user research and feedback will be used to understand the shortcomings and/or pros of certain ideas and which will be worth it to implement. The third and fourth stage, prototyping and testing, users will give their opinions on the prototypes and allow researchers to consider different avenues or how to make the actual product better. 
+{"rubric": "R8", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+36: R9 - At the first stage of the IDEO framework (need finding), user research is used to find the exact audience that will be using the product. In the second stage, ideation, user research and feedback will be used to understand the shortcomings and/or pros of certain ideas and which will be worth it to implement. The third and fourth stage, prototyping and testing, users will give their opinions on the prototypes and allow researchers to consider different avenues or how to make the actual product better. 
+{"rubric": "R9", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
+36: R10 - At the first stage of the IDEO framework (need finding), user research is used to find the exact audience that will be using the product. In the second stage, ideation, user research and feedback will be used to understand the shortcomings and/or pros of certain ideas and which will be worth it to implement. The third and fourth stage, prototyping and testing, users will give their opinions on the prototypes and allow researchers to consider different avenues or how to make the actual product better. 
+{"rubric": "R10", "reasoning": "", "highlighted": "", "relevancy": "0"}
+
