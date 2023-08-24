@@ -529,7 +529,7 @@ def rubric_refinement_2(request, q_id, additional="false"):
     examples = []
     curr_index = 0
     curr_cluster_idx = 0
-    n_samples = 20
+    n_samples = 60
     cluster_ids = chosen_answers.values_list('chi_cluster_id', flat=True).distinct()
     while len(examples) < n_samples:
         curr_cluster_id = cluster_ids[curr_cluster_idx]
@@ -546,11 +546,12 @@ def rubric_refinement_2(request, q_id, additional="false"):
     answer_count = len(examples)
 
     # if not AnswerTag.objects.filter(question_id=q_id, answer_id__in=[x.id for x in examples]).exists():
+    n_samples_per_thread = 20
     if not AnswerTag.objects.filter(question_id=q_id).exists():
         # batches of 10 examples at a time
         threads = []
-        for i in range(0, len(examples), 10):
-            batch = examples[i:i+10]
+        for i in range(0, len(examples), n_samples_per_thread):
+            batch = examples[i:i+n_samples_per_thread]
             # start thread with apply_rubrics function
             t = threading.Thread(target=apply_rubrics, args=(q_id, current_question_obj, batch, rubric_list))
             threads.append(t)
