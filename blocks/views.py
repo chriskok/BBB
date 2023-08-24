@@ -656,7 +656,7 @@ def rubric_refinement_2(request, q_id, additional="false"):
         if "combinations" in stats[rubric]:
             stats[rubric]["combinations"] = {k: v for k, v in sorted(stats[rubric]["combinations"].items(), key=lambda item: item[1], reverse=True)}
 
-    analyze_sampling_methods(answer_rubric_dict, current_question_obj, stats)
+    # analyze_sampling_methods(answer_rubric_dict, current_question_obj, stats)
     selected_by_freq_inv = frequency_inverse_sampling(answer_rubric_dict)
     selected_by_cluster = cluster_sampling(answer_rubric_dict)
 
